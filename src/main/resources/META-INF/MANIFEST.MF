@@ -1,3 +1,0 @@
-Manifest-Version: 1.0
-Main-Class: ru.sfedu.course_project.Main
-Class-Path: lib/log4j-api-2.13.3.jar lib/log4j-core-2.13.3.jar

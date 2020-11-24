@@ -1,7 +1,0 @@
-24 нояб. 2020 22:33:30,576 [main] WARN  ru.sfedu.course_project.Main - arguments {datatype=csv, type=shape}
-24 нояб. 2020 22:36:40,713 [main] WARN  ru.sfedu.course_project.Main - arguments {datatype=csv, type=shape}
-24 нояб. 2020 22:36:40,713 [main] WARN  ru.sfedu.course_project.Main - csv
-24 нояб. 2020 22:37:15,494 [main] WARN  ru.sfedu.course_project.Main - arguments {datatype=csv, type=shape}
-24 нояб. 2020 22:37:51,989 [main] WARN  ru.sfedu.course_project.Main - arguments {datatype=csv, type=shape}
-24 нояб. 2020 22:37:52,004 [main] INFO  ru.sfedu.course_project.Main - Attempt to create csv data provider
-24 нояб. 2020 22:37:52,004 [main] INFO  ru.sfedu.course_project.api.DataProvider - Created csv data provider
