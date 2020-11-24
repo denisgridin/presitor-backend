@@ -1,0 +1,6 @@
+mvn package
+java -cp target/CourseProject-1.0-SNAPSHOT.jar ru.sfedu.course_project.Main
+
+Исключение логов
+java -Dlog4j.configuration=file:/ru.sfedu.course_project.resources.log4j2.xml -jar target/CourseProject-1.0-SNAPSHOT.jar ru.sfedu.course_project.Main.ja
+va
