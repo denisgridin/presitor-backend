@@ -5,7 +5,7 @@ import com.opencsv.bean.CsvBindByName;
 import java.io.Serializable;
 import java.util.Objects;
 
-public class Content implements Serializable {
+public class Content extends Element implements Serializable {
 
     @CsvBindByName
     private Font font;
@@ -13,7 +13,8 @@ public class Content implements Serializable {
     @CsvBindByName
     private String text;
 
-    public Content (Font font, String text) {
+    public Content (long id, String name, ElementType elementType, Layout layout, Font font, String text) {
+        super(id, name, elementType, layout);
         this.font = font;
         this.text = text;
     }

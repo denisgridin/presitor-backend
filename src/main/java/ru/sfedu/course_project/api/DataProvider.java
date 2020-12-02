@@ -1,30 +1,17 @@
 package ru.sfedu.course_project.api;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import ru.sfedu.course_project.enums.DataType;
+import ru.sfedu.course_project.bean.Feedback;
+import ru.sfedu.course_project.bean.Font;
+import ru.sfedu.course_project.bean.Presentation;
+import ru.sfedu.course_project.bean.Slide;
 
-public class DataProvider {
-    private static Logger log = LogManager.getLogger(DataProvider.class);
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.List;
 
-    public DataProvider () {}
-
-    public DataProvider (DataType type) {
-        try {
-            switch (type) {
-                case csv: {
-                    DataProvider provider = new DataProviderCSV();
-                    break;
-                }
-                case xml: {
-                    log.debug("xml");
-                    break;
-                }
-            }
-            log.info(String.format("Created %s data provider", type));
-        } catch (RuntimeException e) {
-            log.error(String.format("Unable to create %s data provider", type));
-        }
-    }
+public interface DataProvider {
+    public void createPresentation (HashMap arguments);
+    public Presentation getPresentationById (long id) throws IOException;
+    public String getName();
 
 }

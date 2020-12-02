@@ -1,8 +1,16 @@
 package ru.sfedu.course_project.bean;
 
+import com.opencsv.bean.CsvBindAndSplitByName;
 import com.opencsv.bean.CsvBindByName;
+import com.opencsv.bean.CsvCustomBindByName;
+import ru.sfedu.course_project.converters.FeedbackConverter;
+import ru.sfedu.course_project.converters.FontConverter;
+import ru.sfedu.course_project.converters.ListConverter;
+import ru.sfedu.course_project.tools.ArgsValidator;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
 
@@ -20,24 +28,30 @@ public class Presentation implements Serializable {
     private String fillColor;
 
     @CsvBindByName
-    private Font font;
+    private String fontFamily;
 
-    @CsvBindByName
+    @CsvBindAndSplitByName(column = "feedbacks", elementType = List.class, splitOn = ",", writeDelimiter = ";", converter = FeedbackConverter.class)
     private List<Feedback> feedbacks;
 
-    public Presentation () {
+    public String[] requiredArgs = { "id" };
+
+    public Presentation () {}
+
+    public Presentation (HashMap args){
+        this.id = (long) args.get("id");
+        this.name = (String) args.get("name");
+        this.slides = (List<Slide>) args.get("slides");;
+        this.fillColor = (String) args.get("fillColor");;
+        this.fontFamily = (String) args.get("fontFamily");;
+        this.feedbacks = (List<Feedback>) args.get("feedbacks");;
     }
 
-    public Presentation (String name) {
-
-    }
-
-    public Presentation (long id, String name, List<Slide> slides, String fillColor, Font font, List<Feedback> feedbacks) {
+    public Presentation (long id, String name, List<Slide> slides, String fillColor, String fontFamily, List<Feedback> feedbacks) {
         this.id = id;
         this.name = name;
         this.slides = slides;
         this.fillColor = fillColor;
-        this.font = font;
+        this.fontFamily = fontFamily;
         this.feedbacks = feedbacks;
     }
 
@@ -73,12 +87,12 @@ public class Presentation implements Serializable {
         this.fillColor = fillColor;
     }
 
-    public Font getFont() {
-        return font;
+    public String getFontFamily() {
+        return fontFamily;
     }
 
-    public void setFont(Font font) {
-        this.font = font;
+    public void setFontFamily(String fontFamily) {
+        this.fontFamily = fontFamily;
     }
 
     public List<Feedback> getFeedbacks() {
@@ -98,13 +112,13 @@ public class Presentation implements Serializable {
                 Objects.equals(name, that.name) &&
                 Objects.equals(slides, that.slides) &&
                 Objects.equals(fillColor, that.fillColor) &&
-                Objects.equals(font, that.font) &&
+                Objects.equals(fontFamily, that.fontFamily) &&
                 Objects.equals(feedbacks, that.feedbacks);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, slides, fillColor, font, feedbacks);
+        return Objects.hash(id, name, slides, fillColor, fontFamily, feedbacks);
     }
 
     @Override
@@ -112,9 +126,9 @@ public class Presentation implements Serializable {
         return "Presentation{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", slides=" + slides +
-                ", fillColor='" + fillColor + '\'' +
-                ", font=" + font +
+                ", slides=[" + slides +
+                "], fillColor='" + fillColor + '\'' +
+                ", fontFamily=" + fontFamily +
                 ", feedbacks=[" + feedbacks +
                 "]}";
     }

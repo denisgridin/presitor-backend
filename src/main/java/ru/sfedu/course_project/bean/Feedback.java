@@ -1,35 +1,39 @@
 package ru.sfedu.course_project.bean;
 
 import com.opencsv.bean.CsvBindByName;
+import ru.sfedu.course_project.enums.Role;
 
 import java.io.Serializable;
 import java.util.Objects;
+import java.util.UUID;
 
 public abstract class Feedback implements Serializable {
     @CsvBindByName
-    private long userId;
+    private Role role;
 
     @CsvBindByName
-    private long id;
+    private UUID id;
 
-    public Feedback (long id, long userId) {
+    public Feedback() {}
+
+    public Feedback (UUID id, Role role) {
         this.id = id;
-        this.userId = id;
+        this.role = role;
     }
 
-    public long getUserId() {
-        return userId;
+    public Role getRole() {
+        return role;
     }
 
-    public void setUserId(long userId) {
-        this.userId = userId;
+    public void setRole(Role role) {
+        this.role = role;
     }
 
-    public long getId() {
+    public UUID getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 
@@ -38,19 +42,19 @@ public abstract class Feedback implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Feedback feedback = (Feedback) o;
-        return userId == feedback.userId &&
+        return role == feedback.role &&
                 id == feedback.id;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(userId, id);
+        return Objects.hash(role, id);
     }
 
     @Override
     public String toString() {
         return "Feedback{" +
-                "userId=" + userId +
+                "role=" + role +
                 ", id=" + id +
                 '}';
     }
