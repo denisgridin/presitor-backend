@@ -120,3 +120,57 @@
 02 дек. 2020 20:39:42,164 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - com.opencsv.bean.CsvToBean@710b18a6
 02 дек. 2020 20:39:42,202 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Attempt to find presentation: fcca8e22-e755-43f2-a36e-799113dccc57
 02 дек. 2020 20:39:42,203 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Optional[Presentation{id=fcca8e22-e755-43f2-a36e-799113dccc57, name='New presentation', slides=[[]], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[[]]}]
+02 дек. 2020 20:40:26,166 [main] WARN  ru.sfedu.course_project.Main - arguments {method=getPresentationById, datatype=csv, id=fcca8e22-e755-43f2-a36e-799113dccc57}
+02 дек. 2020 20:40:26,174 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [method=getPresentationById, datatype=csv, id=fcca8e22-e755-43f2-a36e-799113dccc57]
+02 дек. 2020 20:40:26,176 [main] INFO  ru.sfedu.course_project.Main - Attempt to create csv data provider
+02 дек. 2020 20:40:26,182 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: csv
+02 дек. 2020 20:40:26,184 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: getPresentationById
+02 дек. 2020 20:40:26,310 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - com.opencsv.bean.CsvToBean@c055c54
+02 дек. 2020 20:40:26,342 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Attempt to find presentation: fcca8e22-e755-43f2-a36e-799113dccc57
+02 дек. 2020 20:40:26,343 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Optional[Presentation{id=fcca8e22-e755-43f2-a36e-799113dccc57, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}]
+02 дек. 2020 21:10:41,225 [main] DEBUG ru.sfedu.course_project.bean.Presentation - Arguments was successfully validated
+02 дек. 2020 21:10:41,229 [main] DEBUG ru.sfedu.course_project.bean.Presentation - Arguments was successfully validated
+02 дек. 2020 21:10:41,330 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - Presentation was successfully created: 10b91306-28d2-4bbe-943c-8200876355b7
+02 дек. 2020 21:10:41,331 [main] DEBUG ru.sfedu.course_project.bean.Presentation - Arguments was successfully validated
+02 дек. 2020 21:10:41,348 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - Presentation was successfully created: 10b91306-28d2-4bbe-943c-8200876355b7
+02 дек. 2020 21:11:39,307 [main] DEBUG ru.sfedu.course_project.bean.Presentation - Arguments was successfully validated
+02 дек. 2020 21:11:39,310 [main] DEBUG ru.sfedu.course_project.bean.Presentation - Arguments was successfully validated
+02 дек. 2020 21:11:39,422 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - Presentation was successfully created: 0fd57240-d9e9-4b85-8a35-f2049d733caf
+02 дек. 2020 21:13:28,820 [main] ERROR ru.sfedu.course_project.bean.Presentation - Unable to validate Presentation fields
+02 дек. 2020 21:13:28,824 [main] ERROR ru.sfedu.course_project.bean.Presentation - Unable to validate Presentation fields
+02 дек. 2020 21:13:28,927 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - Presentation was successfully created: null
+02 дек. 2020 21:13:28,961 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - com.opencsv.bean.CsvToBean@2970a5bc
+02 дек. 2020 21:16:22,056 [main] DEBUG ru.sfedu.course_project.bean.Presentation - Arguments was successfully validated
+02 дек. 2020 21:16:22,060 [main] DEBUG ru.sfedu.course_project.bean.Presentation - Arguments was successfully validated
+02 дек. 2020 21:16:22,189 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - Presentation was successfully created: fb403120-7797-4a17-bb44-1122a4035e83
+02 дек. 2020 21:17:14,516 [main] DEBUG ru.sfedu.course_project.bean.Presentation - Arguments was successfully validated
+02 дек. 2020 21:17:14,520 [main] DEBUG ru.sfedu.course_project.bean.Presentation - Arguments was successfully validated
+02 дек. 2020 21:17:14,688 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - Presentation was successfully created: 577c7b9d-b027-4c7e-9c6b-7643fdcfa5a4
+02 дек. 2020 21:18:22,642 [main] DEBUG ru.sfedu.course_project.bean.Presentation - Arguments was successfully validated
+02 дек. 2020 21:18:22,649 [main] DEBUG ru.sfedu.course_project.bean.Presentation - Arguments was successfully validated
+02 дек. 2020 21:18:22,771 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - Presentation was successfully created: 59fdabfc-f189-4816-82a7-971e6bcf83a7
+02 дек. 2020 21:18:22,799 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - com.opencsv.bean.CsvToBean@2970a5bc
+02 дек. 2020 21:18:22,814 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Attempt to find presentation: 59fdabfc-f189-4816-82a7-971e6bcf83a7
+02 дек. 2020 21:18:22,815 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Optional[Presentation{id=59fdabfc-f189-4816-82a7-971e6bcf83a7, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}]
+02 дек. 2020 21:19:28,499 [main] DEBUG ru.sfedu.course_project.bean.Presentation - Arguments was successfully validated
+02 дек. 2020 21:19:28,503 [main] DEBUG ru.sfedu.course_project.bean.Presentation - Arguments was successfully validated
+02 дек. 2020 21:19:28,648 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - Presentation was successfully created: 51186d5e-6eec-4642-ac8a-83937630934d
+02 дек. 2020 21:19:28,675 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - com.opencsv.bean.CsvToBean@2970a5bc
+02 дек. 2020 21:19:28,687 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Attempt to find presentation: 51186d5e-6eec-4642-ac8a-83937630934d
+02 дек. 2020 21:19:28,688 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Optional[Presentation{id=51186d5e-6eec-4642-ac8a-83937630934d, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}]
+02 дек. 2020 21:20:35,560 [main] DEBUG ru.sfedu.course_project.bean.Presentation - Arguments was successfully validated
+02 дек. 2020 21:20:35,564 [main] DEBUG ru.sfedu.course_project.bean.Presentation - Arguments was successfully validated
+02 дек. 2020 21:20:35,672 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - Presentation was successfully created: 1e1e12e7-722c-47b5-9f4e-5d69b00b3fb1
+02 дек. 2020 21:20:35,709 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - com.opencsv.bean.CsvToBean@2970a5bc
+02 дек. 2020 21:20:35,725 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Attempt to find presentation: 1e1e12e7-722c-47b5-9f4e-5d69b00b3fb1
+02 дек. 2020 21:20:35,726 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Optional[Presentation{id=1e1e12e7-722c-47b5-9f4e-5d69b00b3fb1, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}]
+02 дек. 2020 21:23:35,352 [main] DEBUG ru.sfedu.course_project.bean.Presentation - Arguments was successfully validated
+02 дек. 2020 21:23:35,499 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - Presentation was successfully created: b9db44cc-924c-4cdc-b741-1c3d84524b69
+02 дек. 2020 21:23:35,530 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - com.opencsv.bean.CsvToBean@2970a5bc
+02 дек. 2020 21:23:35,547 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Attempt to find presentation: 999b9461-6758-4d26-9621-3d03b27fd68e
+02 дек. 2020 21:23:35,548 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Optional.empty
+02 дек. 2020 21:24:39,064 [main] DEBUG ru.sfedu.course_project.bean.Presentation - Arguments was successfully validated
+02 дек. 2020 21:24:39,180 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - Presentation was successfully created: 6891d41e-0df2-472f-91fc-98ab7cde7d7d
+02 дек. 2020 21:24:39,219 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - com.opencsv.bean.CsvToBean@2970a5bc
+02 дек. 2020 21:24:39,231 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Attempt to find presentation: c5fb8a89-fd1c-493f-abef-c2530a29e976
+02 дек. 2020 21:24:39,231 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Optional.empty
