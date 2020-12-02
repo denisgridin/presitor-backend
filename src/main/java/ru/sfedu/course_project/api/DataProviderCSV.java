@@ -47,7 +47,6 @@ public class DataProviderCSV implements DataProvider {
             Presentation presentation = new Presentation(args);
             List<Presentation> listPresentations = new ArrayList();
             listPresentations.add(presentation);
-
             String path = this.getFilePath("presentation");
             FileWriter filePath = new FileWriter(path);
             CSVWriter writer = new CSVWriter(filePath);
@@ -63,7 +62,8 @@ public class DataProviderCSV implements DataProvider {
         }
     }
 
-    public Presentation getPresentationById (UUID id) throws IOException {
+    public Optional getPresentationById (HashMap arguments) throws IOException {
+        UUID id = UUID.fromString((String) arguments.get("id"));
         FileReader fileReader = new FileReader(this.getFilePath("presentation"));
         CSVReader csvReader = new CSVReader(fileReader);
         CsvToBean<Presentation> csvToBean = new CsvToBeanBuilder<Presentation>(csvReader)
@@ -74,11 +74,16 @@ public class DataProviderCSV implements DataProvider {
         log.debug(csvToBean);
         List<Presentation> listPresentation = csvToBean.parse();
         try {
-            Presentation presentation = listPresentation.stream()
-                    .filter(el -> el.getId() == id).limit(1).findFirst().get();
+            log.debug("Attempt to find presentation: " + id);
+            Optional<Presentation> presentation = listPresentation.stream()
+                    .filter(el -> {
+                        return el.getId().equals(id);
+                    }).findFirst();
+            log.debug(presentation.toString());
             return presentation;
         } catch (NoSuchElementException e) {
             log.error(e);
+            log.error("Unable to get presentation");
             return null;
         }
     }

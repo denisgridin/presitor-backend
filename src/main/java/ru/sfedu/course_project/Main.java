@@ -70,45 +70,40 @@ public class Main {
         }
     }
 
-    public static Presentation getPresentation (DataProvider provider, UUID id) throws IOException {
-        Presentation presentation = provider.getPresentationById(id);
-        return presentation;
-    }
-
-    public static void createPresentation (DataProvider provider) throws IOException {
-        Layout layout = new Layout(10, 20, 200, 100, 0);
-        Style style = new Style("#808080", "none", 100, "transparent", "0px", "0px", BorderStyle.none);
-        Font font = new Font("Roboto", "1.2rem", "none", "none", FontCase.uppercase);
-        Content content = new Content(2, "text content", ElementType.content, layout, font, "Text контента");
-        Element shape = new Shape(1, "Shape", ElementType.shape, layout, style, content, Figure.rectangle);
-        Element shape2 = new Shape(2, "Shape 2", ElementType.shape, layout, style, null, null);
-
-        List<Element> elements = new ArrayList();
-        elements.add(shape);
-        elements.add(shape2);
-        Slide slide = new Slide(1,"First slide", 0, elements);
-        Slide slide2 = new Slide(2,"Second slide", 1, elements);
-
-        List<Slide> slides = new ArrayList();
-        slides.add(slide);
-        slides.add(slide2);
-
-        Feedback feedback = new Comment(UUID.randomUUID(), Role.editor, "Текст комментария");
-        Assessment assessment = new Assessment(UUID.randomUUID(), Role.guest, Mark.good);
-        log.debug(feedback);
-        List<Feedback> feedbacks = new ArrayList();
-        feedbacks.add(feedback);
-        feedbacks.add(assessment);
-
-        HashMap arguments = new HashMap();
-        long id = 1;
-        arguments.put("id", id);
-        arguments.put("name", "Presentation");
-        arguments.put("slides", slides);
-        arguments.put("feedbacks", feedbacks);
-        arguments.put("fillColor", "#333333");
-        arguments.put("fontFamily", "Roboto");
-        log.debug(arguments);
-        provider.createPresentation(arguments);
-    }
+//    public static void createPresentation (DataProvider provider) throws IOException {
+//        Layout layout = new Layout(10, 20, 200, 100, 0);
+//        Style style = new Style("#808080", "none", 100, "transparent", "0px", "0px", BorderStyle.none);
+//        Font font = new Font("Roboto", "1.2rem", "none", "none", FontCase.uppercase);
+//        Content content = new Content(2, "text content", ElementType.content, layout, font, "Text контента");
+//        Element shape = new Shape(1, "Shape", ElementType.shape, layout, style, content, Figure.rectangle);
+//        Element shape2 = new Shape(2, "Shape 2", ElementType.shape, layout, style, null, null);
+//
+//        List<Element> elements = new ArrayList();
+//        elements.add(shape);
+//        elements.add(shape2);
+//        Slide slide = new Slide(1,"First slide", 0, elements);
+//        Slide slide2 = new Slide(2,"Second slide", 1, elements);
+//
+//        List<Slide> slides = new ArrayList();
+//        slides.add(slide);
+//        slides.add(slide2);
+//
+//        Feedback feedback = new Comment(UUID.randomUUID(), Role.editor, "Текст комментария");
+//        Assessment assessment = new Assessment(UUID.randomUUID(), Role.guest, Mark.good);
+//        log.debug(feedback);
+//        List<Feedback> feedbacks = new ArrayList();
+//        feedbacks.add(feedback);
+//        feedbacks.add(assessment);
+//
+//        HashMap arguments = new HashMap();
+//        long id = 1;
+//        arguments.put("id", id);
+//        arguments.put("name", "Presentation");
+//        arguments.put("slides", slides);
+//        arguments.put("feedbacks", feedbacks);
+//        arguments.put("fillColor", "#333333");
+//        arguments.put("fontFamily", "Roboto");
+//        log.debug(arguments);
+//        provider.createPresentation(arguments);
+//    }
 }

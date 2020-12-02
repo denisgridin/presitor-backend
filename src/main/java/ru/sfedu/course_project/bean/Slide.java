@@ -2,7 +2,7 @@ package ru.sfedu.course_project.bean;
 
 import com.opencsv.bean.CsvBindByName;
 import com.opencsv.bean.CsvCustomBindByName;
-import ru.sfedu.course_project.converters.ListConverter;
+import ru.sfedu.course_project.converters.Converter;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -19,7 +19,7 @@ public class Slide implements Serializable {
     @CsvBindByName
     private int index;
 
-    @CsvCustomBindByName(column = "elements", converter = ListConverter.class)
+    @CsvCustomBindByName(column = "elements", converter = Converter.class)
     private List<Element> elements;
 
     public Slide (long id, String name, int index, List<Element> elements) {

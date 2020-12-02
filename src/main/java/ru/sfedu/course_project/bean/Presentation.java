@@ -6,23 +6,20 @@ import com.opencsv.bean.CsvCustomBindByName;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import ru.sfedu.course_project.Constants;
-import ru.sfedu.course_project.converters.FeedbackConverter;
-import ru.sfedu.course_project.converters.FontConverter;
-import ru.sfedu.course_project.converters.ListConverter;
-import ru.sfedu.course_project.tools.ArgsValidator;
-import ru.sfedu.course_project.tools.Runner;
+import ru.sfedu.course_project.converters.ListIdsConverter;
+import ru.sfedu.course_project.converters.UUIDConverter;
 
 import java.io.Serializable;
 import java.util.*;
 
 public class Presentation implements Serializable {
-    @CsvBindByName
+    @CsvCustomBindByName(column = "id", converter = UUIDConverter.class)
     private UUID id;
 
     @CsvBindByName
     private String name;
 
-    @CsvBindByName
+    @CsvBindAndSplitByName(column = "slides", elementType = List.class, splitOn = ",", writeDelimiter = ";", converter = ListIdsConverter.class)
     private List<Slide> slides;
 
     @CsvBindByName
@@ -31,7 +28,7 @@ public class Presentation implements Serializable {
     @CsvBindByName
     private String fontFamily;
 
-    @CsvBindAndSplitByName(column = "feedbacks", elementType = List.class, splitOn = ",", writeDelimiter = ";", converter = FeedbackConverter.class)
+    @CsvBindAndSplitByName(column = "feedbacks", elementType = List.class, splitOn = ",", writeDelimiter = ";", converter = ListIdsConverter.class)
     private List<Feedback> feedbacks;
 
     public String[] requiredArgs = { "id" };
