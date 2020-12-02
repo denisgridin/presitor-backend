@@ -1,0 +1,17 @@
+24 но€б. 2020 21:05:51,780 [main] INFO  ru.sfedu.course_project.Main - [Ljava.lang.String;@53fd0d10
+24 но€б. 2020 21:06:58,161 [main] INFO  ru.sfedu.course_project.Main - [Ljava.lang.String;@53fd0d10
+24 но€б. 2020 21:08:21,078 [main] INFO  ru.sfedu.course_project.Main - jar executed
+24 но€б. 2020 21:31:47,990 [main] INFO  ru.sfedu.course_project.Main - jar executed
+24 но€б. 2020 21:33:41,440 [main] INFO  ru.sfedu.course_project.Main - jar executed
+24 но€б. 2020 21:36:33,070 [main] WARN  ru.sfedu.course_project.Main - jar executed
+24 но€б. 2020 21:38:12,616 [main] WARN  ru.sfedu.course_project.Main - jar executed
+24 но€б. 2020 21:39:23,447 [main] WARN  ru.sfedu.course_project.Main - jar executed
+24 но€б. 2020 21:39:37,234 [main] WARN  ru.sfedu.course_project.Main - jar executed
+24 но€б. 2020 21:42:52,208 [main] WARN  ru.sfedu.course_project.Main - jar executed
+24 но€б. 2020 21:49:02,489 [main] WARN  ru.sfedu.course_project.Main - jar executed
+24 но€б. 2020 22:07:37,636 [main] WARN  ru.sfedu.course_project.Main - jar executed
+24 но€б. 2020 22:08:24,995 [main] WARN  ru.sfedu.course_project.Main - jar executed
+24 но€б. 2020 22:11:24,780 [main] WARN  ru.sfedu.course_project.Main - argument 0 datatype=csv
+24 но€б. 2020 22:12:51,238 [main] WARN  ru.sfedu.course_project.Main - argument 0 datatype=csv
+24 но€б. 2020 22:12:51,246 [main] WARN  ru.sfedu.course_project.Main - argument 1 type=shape
+28 но€б. 2020 19:49:08,521 [main] WARN  ru.sfedu.course_project.Main - arguments {datatype=csv}
