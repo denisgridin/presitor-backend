@@ -8,6 +8,7 @@ import ru.sfedu.course_project.bean.*;
 import ru.sfedu.course_project.enums.DataType;
 import ru.sfedu.course_project.enums.Mark;
 import ru.sfedu.course_project.enums.Role;
+import ru.sfedu.course_project.tools.Runner;
 
 import java.io.IOException;
 import java.util.*;
@@ -19,14 +20,16 @@ public class Main {
 //        getPresentation(provider, 3);
 //        createPresentation(provider);
 //        log.info("jar executed");
-//        List<String> arguments = Arrays.asList(args);
-//        HashMap<String, String> params = parseParameters(arguments);
-//        log.warn("arguments " + params);
-//        String datatype = params.get("datatype");
-
-        DataProvider provider = createDataProvider("csv");
+        List<String> arguments = Arrays.asList(args);
+        HashMap<String, String> params = parseParameters(arguments);
+        log.warn("arguments " + params);
+        String datatype = params.get("datatype");
+        log.info("Command line parameters: " + params.entrySet());
+        DataProvider provider = createDataProvider(datatype);
+        Runner runner = new Runner(provider);
+        runner.run(params.get("method"), params);
 //        Presentation pres = provider.getPresentationById(1);
-        createPresentation(provider);
+//        createPresentation(provider);
     }
 
     public static String getProvider () {
@@ -53,6 +56,7 @@ public class Main {
             switch (dataType) {
                 case csv: {
                     DataProvider provider = new DataProviderCSV();
+                    log.info(String.format("Data provider was created: %s", dataType));
                     return provider;
                 }
                 default: {
@@ -61,11 +65,12 @@ public class Main {
             }
         } catch (IllegalArgumentException e) {
             log.error(e);
+            log.error("Unable to create %s data provider");
             return null;
         }
     }
 
-    public static Presentation getPresentation (DataProvider provider, long id) throws IOException {
+    public static Presentation getPresentation (DataProvider provider, UUID id) throws IOException {
         Presentation presentation = provider.getPresentationById(id);
         return presentation;
     }

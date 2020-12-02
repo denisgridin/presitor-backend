@@ -3,20 +3,21 @@ package ru.sfedu.course_project.bean;
 import com.opencsv.bean.CsvBindAndSplitByName;
 import com.opencsv.bean.CsvBindByName;
 import com.opencsv.bean.CsvCustomBindByName;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import ru.sfedu.course_project.Constants;
 import ru.sfedu.course_project.converters.FeedbackConverter;
 import ru.sfedu.course_project.converters.FontConverter;
 import ru.sfedu.course_project.converters.ListConverter;
 import ru.sfedu.course_project.tools.ArgsValidator;
+import ru.sfedu.course_project.tools.Runner;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 public class Presentation implements Serializable {
     @CsvBindByName
-    private long id;
+    private UUID id;
 
     @CsvBindByName
     private String name;
@@ -38,15 +39,27 @@ public class Presentation implements Serializable {
     public Presentation () {}
 
     public Presentation (HashMap args){
-        this.id = (long) args.get("id");
-        this.name = (String) args.get("name");
-        this.slides = (List<Slide>) args.get("slides");;
-        this.fillColor = (String) args.get("fillColor");;
-        this.fontFamily = (String) args.get("fontFamily");;
-        this.feedbacks = (List<Feedback>) args.get("feedbacks");;
+        this.validateArguments(args);
     }
 
-    public Presentation (long id, String name, List<Slide> slides, String fillColor, String fontFamily, List<Feedback> feedbacks) {
+    public static Logger log = LogManager.getLogger(Presentation.class);
+
+    private void validateArguments(HashMap args) {
+        Map defaults = Constants.DEFAULT_PRESENTATION;
+        try {
+            this.setId((UUID) args.getOrDefault("id", defaults.get("id")));
+            this.setName((String) args.getOrDefault("name", defaults.get("name")));
+            this.setSlides((List) defaults.get("slides"));
+            this.setFillColor((String) args.getOrDefault("fillColor", defaults.get("fillColor")));
+            this.setFontFamily((String) args.getOrDefault("fontFamily", defaults.get("fontFamily")));
+            this.setFeedbacks((List) defaults.get("feedbacks"));
+            log.debug("Arguments was successfully validated");
+        } catch (RuntimeException e) {
+            log.error("Unable to validate Presentation fields");
+        }
+    }
+
+    public Presentation (UUID id, String name, List<Slide> slides, String fillColor, String fontFamily, List<Feedback> feedbacks) {
         this.id = id;
         this.name = name;
         this.slides = slides;
@@ -55,11 +68,11 @@ public class Presentation implements Serializable {
         this.feedbacks = feedbacks;
     }
 
-    public long getId() {
+    public UUID getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 
@@ -126,10 +139,10 @@ public class Presentation implements Serializable {
         return "Presentation{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", slides=[" + slides +
-                "], fillColor='" + fillColor + '\'' +
-                ", fontFamily=" + fontFamily +
-                ", feedbacks=[" + feedbacks +
-                "]}";
+                ", slides=" + slides +
+                ", fillColor='" + fillColor + '\'' +
+                ", fontFamily='" + fontFamily + '\'' +
+                ", feedbacks=" + feedbacks +
+                '}';
     }
 }
