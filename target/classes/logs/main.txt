@@ -484,3 +484,178 @@
 03 дек. 2020 12:58:29,994 [main] WARN  ru.sfedu.course_project.api.DataProviderCSV - [createPresentation] Provided presentation id is already in use: b84ad9c4-f610-436f-b6ff-83170a8a9a2f
 03 дек. 2020 13:00:21,212 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getAllPresentations] Result: [Presentation{id=b84ad9c4-f610-436f-b6ff-83170a8a9a2f, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}, Presentation{id=b84ad9c4-f610-436f-b6ff-83170a8a9a2f, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}]
 03 дек. 2020 13:00:21,219 [main] WARN  ru.sfedu.course_project.api.DataProviderCSV - [createPresentation] Provided presentation id is already in use: b84ad9c4-f610-436f-b6ff-83170a8a9a2f
+03 дек. 2020 13:02:21,260 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getAllPresentations] Result: [Presentation{id=b84ad9c4-f610-436f-b6ff-83170a8a9a2f, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}, Presentation{id=b84ad9c4-f610-436f-b6ff-83170a8a9a2f, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}]
+03 дек. 2020 13:20:19,865 [main] WARN  ru.sfedu.course_project.Main - arguments {}
+03 дек. 2020 13:20:19,871 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: []
+03 дек. 2020 13:20:19,873 [main] ERROR ru.sfedu.course_project.Main - java.lang.NullPointerException: Name is null
+03 дек. 2020 13:20:19,873 [main] ERROR ru.sfedu.course_project.Main - Error in main function
+03 дек. 2020 13:20:34,990 [main] WARN  ru.sfedu.course_project.Main - arguments {}
+03 дек. 2020 13:20:34,995 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: []
+03 дек. 2020 13:20:34,999 [main] ERROR ru.sfedu.course_project.Main - java.lang.NullPointerException: Name is null
+03 дек. 2020 13:20:35,000 [main] ERROR ru.sfedu.course_project.Main - Error in main function
+03 дек. 2020 13:21:14,190 [main] WARN  ru.sfedu.course_project.Main - arguments {}
+03 дек. 2020 13:21:14,195 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: []
+03 дек. 2020 13:21:14,199 [main] ERROR ru.sfedu.course_project.Main - java.lang.NullPointerException: Name is null
+03 дек. 2020 13:21:14,200 [main] ERROR ru.sfedu.course_project.Main - Error in main function
+03 дек. 2020 13:21:38,581 [main] WARN  ru.sfedu.course_project.Main - arguments {method=createPresentation, datatype=csv, id=b84ad9c4-f610-436f-b6ff-83170a8a9a2f}
+03 дек. 2020 13:21:38,587 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [method=createPresentation, datatype=csv, id=b84ad9c4-f610-436f-b6ff-83170a8a9a2f]
+03 дек. 2020 13:21:38,589 [main] INFO  ru.sfedu.course_project.Main - Attempt to create csv data provider
+03 дек. 2020 13:21:38,595 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: csv
+03 дек. 2020 13:21:38,597 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: createPresentation
+03 дек. 2020 13:21:38,758 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getAllPresentations] Result: [Presentation{id=b84ad9c4-f610-436f-b6ff-83170a8a9a2f, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}]
+03 дек. 2020 13:21:38,759 [main] WARN  ru.sfedu.course_project.api.DataProviderCSV - [createPresentation] Provided presentation id is already in use: b84ad9c4-f610-436f-b6ff-83170a8a9a2f
+03 дек. 2020 13:21:51,351 [main] WARN  ru.sfedu.course_project.Main - arguments {method=createPresentation, datatype=csv, id=b84ad9c4-f610-436f-b6ff-83170a8a9a2f}
+03 дек. 2020 13:21:51,355 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [method=createPresentation, datatype=csv, id=b84ad9c4-f610-436f-b6ff-83170a8a9a2f]
+03 дек. 2020 13:21:51,357 [main] INFO  ru.sfedu.course_project.Main - Attempt to create csv data provider
+03 дек. 2020 13:21:51,364 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: csv
+03 дек. 2020 13:21:51,365 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: createPresentation
+03 дек. 2020 13:21:51,514 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getAllPresentations] Result: [Presentation{id=b84ad9c4-f610-436f-b6ff-83170a8a9a2f, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}]
+03 дек. 2020 13:21:51,515 [main] WARN  ru.sfedu.course_project.api.DataProviderCSV - [createPresentation] Provided presentation id is already in use: b84ad9c4-f610-436f-b6ff-83170a8a9a2f
+03 дек. 2020 13:22:24,811 [main] WARN  ru.sfedu.course_project.Main - arguments {method=getPresentationById, datatype=csv, id=b84ad9c4-f610-436f-b6ff-83170a8a9a2f}
+03 дек. 2020 13:22:24,817 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [method=getPresentationById, datatype=csv, id=b84ad9c4-f610-436f-b6ff-83170a8a9a2f]
+03 дек. 2020 13:22:24,819 [main] INFO  ru.sfedu.course_project.Main - Attempt to create csv data provider
+03 дек. 2020 13:22:24,824 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: csv
+03 дек. 2020 13:22:24,826 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: getPresentationById
+03 дек. 2020 13:22:24,977 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getAllPresentations] Result: [Presentation{id=b84ad9c4-f610-436f-b6ff-83170a8a9a2f, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}]
+03 дек. 2020 13:22:24,978 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Attempt to find presentation: b84ad9c4-f610-436f-b6ff-83170a8a9a2f
+03 дек. 2020 13:22:24,979 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getPresentationById] Result: Presentation{id=b84ad9c4-f610-436f-b6ff-83170a8a9a2f, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}
+03 дек. 2020 13:23:10,701 [main] WARN  ru.sfedu.course_project.Main - arguments {method=getPresentationById, datatype=csv, id=b84ad9c4-f610-436f-b6ff-83170a8a9a2f}
+03 дек. 2020 13:23:10,709 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [method=getPresentationById, datatype=csv, id=b84ad9c4-f610-436f-b6ff-83170a8a9a2f]
+03 дек. 2020 13:23:10,711 [main] INFO  ru.sfedu.course_project.Main - Attempt to create csv data provider
+03 дек. 2020 13:23:10,718 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: csv
+03 дек. 2020 13:23:10,720 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: getPresentationById
+03 дек. 2020 13:23:10,875 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getAllPresentations] Result: [Presentation{id=b84ad9c4-f610-436f-b6ff-83170a8a9a2f, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}]
+03 дек. 2020 13:23:10,875 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Attempt to find presentation: b84ad9c4-f610-436f-b6ff-83170a8a9a2f
+03 дек. 2020 13:23:10,876 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getPresentationById] Result: Presentation{id=b84ad9c4-f610-436f-b6ff-83170a8a9a2f, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}
+03 дек. 2020 13:23:27,911 [main] WARN  ru.sfedu.course_project.Main - arguments {method=getPresentationById, datatype=csv, id=b84ad9c4-f610-436f-b6ff-83170a8a9a2f}
+03 дек. 2020 13:23:27,916 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [method=getPresentationById, datatype=csv, id=b84ad9c4-f610-436f-b6ff-83170a8a9a2f]
+03 дек. 2020 13:23:27,918 [main] INFO  ru.sfedu.course_project.Main - Attempt to create csv data provider
+03 дек. 2020 13:23:27,925 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: csv
+03 дек. 2020 13:23:27,927 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: getPresentationById
+03 дек. 2020 13:23:28,083 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getAllPresentations] Result: [Presentation{id=b84ad9c4-f610-436f-b6ff-83170a8a9a2f, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}]
+03 дек. 2020 13:23:28,083 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Attempt to find presentation: b84ad9c4-f610-436f-b6ff-83170a8a9a2f
+03 дек. 2020 13:23:28,084 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getPresentationById] Result: Presentation{id=b84ad9c4-f610-436f-b6ff-83170a8a9a2f, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}
+03 дек. 2020 15:03:05,456 [main] ERROR ru.sfedu.course_project.tools.Runner - [validateRole] You have no access for this method: createPresentation
+03 дек. 2020 15:05:58,694 [main] ERROR ru.sfedu.course_project.tools.Runner - [validateRole] You have no access for this method: createPresentation
+03 дек. 2020 15:06:15,356 [main] ERROR ru.sfedu.course_project.tools.Runner - [validateRole] You have no access for this method: createPresentation
+03 дек. 2020 15:06:24,329 [main] ERROR ru.sfedu.course_project.tools.Runner - [validateRole] Unexpected role: admin
+03 дек. 2020 15:06:24,335 [main] ERROR ru.sfedu.course_project.tools.Runner - [validateRole] You have no access for this method: createPresentation
+03 дек. 2020 15:07:06,437 [main] ERROR ru.sfedu.course_project.tools.Runner - [validateRole] Role is not provided
+03 дек. 2020 15:08:50,845 [main] ERROR ru.sfedu.course_project.tools.Runner - [validateRole] Role is not provided
+03 дек. 2020 15:09:10,074 [main] WARN  ru.sfedu.course_project.Main - arguments {}
+03 дек. 2020 15:09:10,082 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: []
+03 дек. 2020 15:09:10,089 [main] ERROR ru.sfedu.course_project.Main - java.lang.NullPointerException: Name is null
+03 дек. 2020 15:09:10,089 [main] ERROR ru.sfedu.course_project.Main - Error in main function
+03 дек. 2020 15:16:02,649 [main] WARN  ru.sfedu.course_project.Main - arguments {}
+03 дек. 2020 15:16:02,656 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: []
+03 дек. 2020 15:16:02,660 [main] ERROR ru.sfedu.course_project.Main - java.lang.NullPointerException: Name is null
+03 дек. 2020 15:16:02,660 [main] ERROR ru.sfedu.course_project.Main - Error in main function
+03 дек. 2020 15:17:45,574 [main] WARN  ru.sfedu.course_project.Main - arguments {}
+03 дек. 2020 15:17:45,582 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: []
+03 дек. 2020 15:17:45,586 [main] ERROR ru.sfedu.course_project.Main - java.lang.NullPointerException: Name is null
+03 дек. 2020 15:17:45,587 [main] ERROR ru.sfedu.course_project.Main - Error in main function
+03 дек. 2020 15:20:52,060 [main] ERROR ru.sfedu.course_project.Main - One or more command line parameters was not provided: role, method, datatype!
+03 дек. 2020 15:20:52,065 [main] WARN  ru.sfedu.course_project.Main - arguments null
+03 дек. 2020 15:20:52,066 [main] ERROR ru.sfedu.course_project.Main - java.lang.NullPointerException
+03 дек. 2020 15:20:52,067 [main] ERROR ru.sfedu.course_project.Main - Error in main function
+03 дек. 2020 15:21:56,103 [main] ERROR ru.sfedu.course_project.Main - One or more command line parameters was not provided: role, method, datatype!
+03 дек. 2020 15:22:27,111 [main] ERROR ru.sfedu.course_project.tools.Runner - [validateRole] Unexpected role: admin
+03 дек. 2020 15:22:27,117 [main] ERROR ru.sfedu.course_project.tools.Runner - [validateRole] You have no access for this method: createPresentation
+03 дек. 2020 15:22:27,119 [main] ERROR ru.sfedu.course_project.tools.Runner - [validateRole] Role is not provided
+03 дек. 2020 15:22:27,123 [main] ERROR ru.sfedu.course_project.tools.Runner - [validateRole] Role is not provided
+03 дек. 2020 15:22:42,284 [main] ERROR ru.sfedu.course_project.Main - One or more command line parameters was not provided: role, method, datatype!
+03 дек. 2020 15:23:35,386 [main] ERROR ru.sfedu.course_project.Main - One or more command line parameters was not provided: role, method, datatype!
+03 дек. 2020 15:23:59,413 [main] WARN  ru.sfedu.course_project.Main - arguments {role=guest, method=createPresentation, datatype=csv}
+03 дек. 2020 15:23:59,423 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [role=guest, method=createPresentation, datatype=csv]
+03 дек. 2020 15:23:59,424 [main] INFO  ru.sfedu.course_project.Main - Attempt to create csv data provider
+03 дек. 2020 15:23:59,430 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: csv
+03 дек. 2020 15:23:59,433 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: createPresentation
+03 дек. 2020 15:23:59,433 [main] ERROR ru.sfedu.course_project.tools.Runner - [validateRole] Unexpected role: guest
+03 дек. 2020 15:23:59,600 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getAllPresentations] Result: [Presentation{id=b84ad9c4-f610-436f-b6ff-83170a8a9a2f, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}]
+03 дек. 2020 15:23:59,942 [main] DEBUG ru.sfedu.course_project.bean.Presentation - Arguments was successfully validated
+03 дек. 2020 15:23:59,960 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - Presentation was successfully created: 877b23fd-9a18-415a-be10-6fc14f70a3fd
+03 дек. 2020 15:32:48,479 [main] WARN  ru.sfedu.course_project.Main - arguments {role=guest, method=createPresentation, datatype=csv}
+03 дек. 2020 15:32:48,487 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [role=guest, method=createPresentation, datatype=csv]
+03 дек. 2020 15:32:48,489 [main] INFO  ru.sfedu.course_project.Main - Attempt to create csv data provider
+03 дек. 2020 15:32:48,495 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: csv
+03 дек. 2020 15:32:48,496 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: createPresentation
+03 дек. 2020 15:32:48,497 [main] ERROR ru.sfedu.course_project.tools.Runner - [validateRole] Unexpected role: guest
+03 дек. 2020 15:33:47,210 [main] WARN  ru.sfedu.course_project.Main - arguments {role=guest, method=createPresentation, datatype=csv}
+03 дек. 2020 15:33:47,216 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [role=guest, method=createPresentation, datatype=csv]
+03 дек. 2020 15:33:47,217 [main] INFO  ru.sfedu.course_project.Main - Attempt to create csv data provider
+03 дек. 2020 15:33:47,222 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: csv
+03 дек. 2020 15:33:47,224 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: createPresentation
+03 дек. 2020 15:33:47,224 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: guest
+03 дек. 2020 15:33:47,224 [main] ERROR ru.sfedu.course_project.tools.Runner - [validateRole] Unexpected role: guest
+03 дек. 2020 15:35:08,693 [main] WARN  ru.sfedu.course_project.Main - arguments {role=guest, method=createPresentation, datatype=csv}
+03 дек. 2020 15:35:08,698 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [role=guest, method=createPresentation, datatype=csv]
+03 дек. 2020 15:35:08,699 [main] INFO  ru.sfedu.course_project.Main - Attempt to create csv data provider
+03 дек. 2020 15:35:08,705 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: csv
+03 дек. 2020 15:35:08,707 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: createPresentation
+03 дек. 2020 15:35:08,707 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: guest
+03 дек. 2020 15:35:08,707 [main] ERROR ru.sfedu.course_project.tools.Runner - [validateRole] Unexpected role: guest
+03 дек. 2020 15:36:51,797 [main] WARN  ru.sfedu.course_project.Main - arguments {role=guest, method=createPresentation, datatype=csv}
+03 дек. 2020 15:36:51,804 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [role=guest, method=createPresentation, datatype=csv]
+03 дек. 2020 15:36:51,806 [main] INFO  ru.sfedu.course_project.Main - Attempt to create csv data provider
+03 дек. 2020 15:36:51,813 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: csv
+03 дек. 2020 15:36:51,815 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: createPresentation
+03 дек. 2020 15:36:51,815 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: guest
+03 дек. 2020 15:36:51,816 [main] ERROR ru.sfedu.course_project.tools.Runner - [validateRole] Unexpected role: guest
+03 дек. 2020 15:37:31,585 [main] WARN  ru.sfedu.course_project.Main - arguments {role=guest, method=createPresentation, datatype=csv}
+03 дек. 2020 15:37:31,593 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [role=guest, method=createPresentation, datatype=csv]
+03 дек. 2020 15:37:31,596 [main] INFO  ru.sfedu.course_project.Main - Attempt to create csv data provider
+03 дек. 2020 15:37:31,603 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: csv
+03 дек. 2020 15:37:31,605 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: createPresentation
+03 дек. 2020 15:37:31,606 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: guest
+03 дек. 2020 15:37:31,607 [main] DEBUG ru.sfedu.course_project.tools.Runner - false
+03 дек. 2020 15:37:31,608 [main] DEBUG ru.sfedu.course_project.tools.Runner - true
+03 дек. 2020 15:37:31,608 [main] ERROR ru.sfedu.course_project.tools.Runner - [validateRole] Unexpected role: guest
+03 дек. 2020 15:38:05,790 [main] WARN  ru.sfedu.course_project.Main - arguments {role=guest, method=createPresentation, datatype=csv}
+03 дек. 2020 15:38:05,795 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [role=guest, method=createPresentation, datatype=csv]
+03 дек. 2020 15:38:05,797 [main] INFO  ru.sfedu.course_project.Main - Attempt to create csv data provider
+03 дек. 2020 15:38:05,803 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: csv
+03 дек. 2020 15:38:05,805 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: createPresentation
+03 дек. 2020 15:38:05,806 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: guest
+03 дек. 2020 15:38:06,116 [main] ERROR ru.sfedu.course_project.tools.Runner - [validateRole] You have no access for this method: createPresentation
+03 дек. 2020 15:38:38,971 [main] WARN  ru.sfedu.course_project.Main - arguments {role=guest, method=getPresentationById, datatype=csv, id=877b23fd-9a18-415a-be10-6fc14f70a3fd}
+03 дек. 2020 15:38:38,978 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [role=guest, method=getPresentationById, datatype=csv, id=877b23fd-9a18-415a-be10-6fc14f70a3fd]
+03 дек. 2020 15:38:38,982 [main] INFO  ru.sfedu.course_project.Main - Attempt to create csv data provider
+03 дек. 2020 15:38:38,988 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: csv
+03 дек. 2020 15:38:38,990 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: getPresentationById
+03 дек. 2020 15:38:38,990 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: guest
+03 дек. 2020 15:38:39,418 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getAllPresentations] Result: [Presentation{id=b84ad9c4-f610-436f-b6ff-83170a8a9a2f, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}, Presentation{id=877b23fd-9a18-415a-be10-6fc14f70a3fd, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}]
+03 дек. 2020 15:38:39,419 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Attempt to find presentation: 877b23fd-9a18-415a-be10-6fc14f70a3fd
+03 дек. 2020 15:38:39,419 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getPresentationById] Result: Presentation{id=877b23fd-9a18-415a-be10-6fc14f70a3fd, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}
+03 дек. 2020 15:39:02,862 [main] WARN  ru.sfedu.course_project.Main - arguments {role=admin, method=getPresentationById, datatype=csv, id=877b23fd-9a18-415a-be10-6fc14f70a3fd}
+03 дек. 2020 15:39:02,870 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [role=admin, method=getPresentationById, datatype=csv, id=877b23fd-9a18-415a-be10-6fc14f70a3fd]
+03 дек. 2020 15:39:02,870 [main] INFO  ru.sfedu.course_project.Main - Attempt to create csv data provider
+03 дек. 2020 15:39:02,878 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: csv
+03 дек. 2020 15:39:02,881 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: getPresentationById
+03 дек. 2020 15:39:02,881 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: admin
+03 дек. 2020 15:39:02,881 [main] ERROR ru.sfedu.course_project.tools.Runner - [validateRole] Unexpected role: admin
+03 дек. 2020 15:39:17,886 [main] WARN  ru.sfedu.course_project.Main - arguments {role=editor, method=getPresentationById, datatype=csv, id=877b23fd-9a18-415a-be10-6fc14f70a3fd}
+03 дек. 2020 15:39:17,890 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [role=editor, method=getPresentationById, datatype=csv, id=877b23fd-9a18-415a-be10-6fc14f70a3fd]
+03 дек. 2020 15:39:17,891 [main] INFO  ru.sfedu.course_project.Main - Attempt to create csv data provider
+03 дек. 2020 15:39:17,896 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: csv
+03 дек. 2020 15:39:17,898 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: getPresentationById
+03 дек. 2020 15:39:17,898 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+03 дек. 2020 15:39:18,035 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getAllPresentations] Result: [Presentation{id=b84ad9c4-f610-436f-b6ff-83170a8a9a2f, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}, Presentation{id=877b23fd-9a18-415a-be10-6fc14f70a3fd, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}]
+03 дек. 2020 15:39:18,035 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Attempt to find presentation: 877b23fd-9a18-415a-be10-6fc14f70a3fd
+03 дек. 2020 15:39:18,036 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getPresentationById] Result: Presentation{id=877b23fd-9a18-415a-be10-6fc14f70a3fd, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}
+03 дек. 2020 15:39:35,934 [main] WARN  ru.sfedu.course_project.Main - arguments {role=editor, method=createPresentation, datatype=csv, id=877b23fd-9a18-415a-be10-6fc14f70a3fd}
+03 дек. 2020 15:39:35,941 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [role=editor, method=createPresentation, datatype=csv, id=877b23fd-9a18-415a-be10-6fc14f70a3fd]
+03 дек. 2020 15:39:35,942 [main] INFO  ru.sfedu.course_project.Main - Attempt to create csv data provider
+03 дек. 2020 15:39:35,949 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: csv
+03 дек. 2020 15:39:35,951 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: createPresentation
+03 дек. 2020 15:39:35,951 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+03 дек. 2020 15:39:36,111 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getAllPresentations] Result: [Presentation{id=b84ad9c4-f610-436f-b6ff-83170a8a9a2f, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}, Presentation{id=877b23fd-9a18-415a-be10-6fc14f70a3fd, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}]
+03 дек. 2020 15:39:36,112 [main] WARN  ru.sfedu.course_project.api.DataProviderCSV - [createPresentation] Provided presentation id is already in use: 877b23fd-9a18-415a-be10-6fc14f70a3fd
+03 дек. 2020 15:39:54,215 [main] WARN  ru.sfedu.course_project.Main - arguments {role=editor, method=createPresentation, datatype=csv}
+03 дек. 2020 15:39:54,223 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [role=editor, method=createPresentation, datatype=csv]
+03 дек. 2020 15:39:54,225 [main] INFO  ru.sfedu.course_project.Main - Attempt to create csv data provider
+03 дек. 2020 15:39:54,232 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: csv
+03 дек. 2020 15:39:54,234 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: createPresentation
+03 дек. 2020 15:39:54,234 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+03 дек. 2020 15:39:54,376 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getAllPresentations] Result: [Presentation{id=b84ad9c4-f610-436f-b6ff-83170a8a9a2f, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}, Presentation{id=877b23fd-9a18-415a-be10-6fc14f70a3fd, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}]
+03 дек. 2020 15:39:54,701 [main] DEBUG ru.sfedu.course_project.bean.Presentation - Arguments was successfully validated
+03 дек. 2020 15:39:54,717 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - Presentation was successfully created: ce186c9a-16e4-47ff-8b1e-a274899c9444

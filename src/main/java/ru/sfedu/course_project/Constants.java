@@ -1,8 +1,6 @@
 package ru.sfedu.course_project;
 
-import java.util.ArrayList;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -18,4 +16,5 @@ public class Constants {
             { "fillColor", "#ffffff" },
             { "fontFamily", "Roboto" }
     }).collect(Collectors.toMap(data -> (String) data[0], data -> (Object) data[1]));;
+    public final static List<String> PUBLIC_METHODS = Arrays.asList(new String[]{ "getPresentationById" });
 }

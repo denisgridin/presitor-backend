@@ -16,6 +16,9 @@ public class Main {
         try {
             List<String> arguments = Arrays.asList(args);
             HashMap<String, String> params = parseParameters(arguments);
+            if (params == null) {
+                return;
+            }
             log.warn("arguments " + params);
             String datatype = params.get("datatype");
             log.info("Command line parameters: " + params.entrySet());
@@ -30,12 +33,23 @@ public class Main {
     }
 
     private static HashMap<String, String> parseParameters (List args) {
-        HashMap<String, String> params = new HashMap<>();
-        args.stream().forEach(el -> {
-            List <String> items = Arrays.asList(el.toString().split("="));
-            params.put(items.get(0), items.get(1));
-        });
-        return params;
+        try {
+            HashMap params = new HashMap();
+            args.stream().forEach(el -> {
+                List <String> items = Arrays.asList(el.toString().split("="));
+                params.put(items.get(0), items.get(1));
+            });
+            if (params.get("role") != null && params.get("method") != null && params.get("datatype") != null) {
+                return params;
+            } else {
+                log.error("One or more command line parameters was not provided: role, method, datatype!"); // TODO return error exception
+                return null;
+            }
+        } catch (RuntimeException e) {
+            e.printStackTrace();
+            log.error("Unable to get command line parameters"); // TODO return error exception
+            return null;
+        }
     }
 
     private static DataProvider createDataProvider (String type) {
