@@ -48,8 +48,13 @@ public class DataProviderCSV implements DataProvider {
     @Override
     public UUID createPresentation(HashMap args) {
         try {
+            List<Presentation> listPresentations = getAllPresentations();
+            if (args.get("id") != null) {
+                String id = (String) args.get("id");
+                if (!validatePresentationId(id, listPresentations)) return null;
+                // TODO return Error;
+            }
             Presentation presentation = new Presentation(args);
-            List<Presentation> listPresentations = new ArrayList();
             listPresentations.add(presentation);
             String path = getFilePath("presentation");
             FileWriter filePath = new FileWriter(path);
@@ -63,6 +68,22 @@ public class DataProviderCSV implements DataProvider {
             log.error(e);
             log.error("Unable to create presentation");
             return null;
+        }
+    }
+
+    public Boolean validatePresentationId (String id, List<Presentation> presentations) {
+        try {
+            UUID uuid = UUID.fromString(id);
+            Optional presentation = presentations.stream().filter(el -> el.getId().equals(uuid)).findFirst();
+            if (presentation.isPresent()) {
+                log.warn("[createPresentation] Provided presentation id is already in use: " + id);
+                return false;
+            }
+            return true;
+        } catch (RuntimeException e) {
+            e.printStackTrace();
+            log.error(e);
+            return false;
         }
     }
 

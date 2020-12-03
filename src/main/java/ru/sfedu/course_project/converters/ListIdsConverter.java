@@ -21,14 +21,12 @@ public class ListIdsConverter extends AbstractCsvConverter {
     public String convertToWrite(Object value) throws CsvDataTypeMismatchException {
         Pattern pattern = null;
         try {
-            log.debug(ConfigurationUtil.getConfigurationEntry("uuid_regexp"));
             pattern = Pattern.compile(ConfigurationUtil.getConfigurationEntry("uuid_regexp"));
         } catch (IOException e) {
             e.printStackTrace();
         }
         String idString = value.toString();
         Matcher matcher = pattern.matcher(idString);
-        log.debug(idString);
         String id = null;
         while (matcher.find()) {
             log.debug("FIND");

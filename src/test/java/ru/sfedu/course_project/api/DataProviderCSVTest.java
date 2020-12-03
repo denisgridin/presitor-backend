@@ -6,6 +6,7 @@ import ru.sfedu.course_project.bean.Presentation;
 
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -39,6 +40,17 @@ public class DataProviderCSVTest extends TestBase {
     }
 
     @Test
-    void getPresentationById() {
+    void getPresentationByIdSuccess() {
+    }
+
+    @Test
+    void getAllPresentationsSuccess() {
+        DataProviderCSV provider = new DataProviderCSV();
+        List<Presentation> presentationList = provider.getAllPresentations();
+        assertNotNull(presentationList);
+    }
+
+    @Test
+    void getAllPresentationsFail() {
     }
 }

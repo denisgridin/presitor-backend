@@ -260,3 +260,207 @@
 03 дек. 2020 12:18:18,873 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getAllPresentations] Result: []
 03 дек. 2020 12:18:18,874 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Attempt to find presentation: 4989c027-3a73-4af2-b12f-cec4a6a0462a
 03 дек. 2020 12:18:18,875 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - [getPresentationById] Unable to get presentation: 4989c027-3a73-4af2-b12f-cec4a6a0462a
+03 дек. 2020 12:18:46,655 [main] DEBUG ru.sfedu.course_project.bean.Presentation - Arguments was successfully validated
+03 дек. 2020 12:18:46,665 [main] DEBUG ru.sfedu.course_project.bean.Presentation - Arguments was successfully validated
+03 дек. 2020 12:18:46,860 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - Presentation was successfully created: 23b6e63f-8082-476a-9d5c-49db54257d43
+03 дек. 2020 12:18:46,915 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getAllPresentations] Result: [Presentation{id=23b6e63f-8082-476a-9d5c-49db54257d43, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}]
+03 дек. 2020 12:18:46,915 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Attempt to find presentation: 23b6e63f-8082-476a-9d5c-49db54257d43
+03 дек. 2020 12:18:46,916 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getPresentationById] Result: Presentation{id=23b6e63f-8082-476a-9d5c-49db54257d43, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}
+03 дек. 2020 12:18:46,930 [main] DEBUG ru.sfedu.course_project.bean.Presentation - Arguments was successfully validated
+03 дек. 2020 12:18:46,942 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - Presentation was successfully created: 23b6e63f-8082-476a-9d5c-49db54257d43
+03 дек. 2020 12:18:46,958 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getAllPresentations] Result: [Presentation{id=23b6e63f-8082-476a-9d5c-49db54257d43, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}]
+03 дек. 2020 12:18:46,958 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Attempt to find presentation: 6d85d1f9-04ae-4e0d-8c3b-2218165b81d1
+03 дек. 2020 12:18:46,959 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - [getPresentationById] Unable to get presentation: 6d85d1f9-04ae-4e0d-8c3b-2218165b81d1
+03 дек. 2020 12:30:41,586 [main] DEBUG ru.sfedu.course_project.bean.Presentation - Arguments was successfully validated
+03 дек. 2020 12:30:41,722 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getAllPresentations] Result: [Presentation{id=23b6e63f-8082-476a-9d5c-49db54257d43, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}]
+03 дек. 2020 12:30:41,722 [main] DEBUG ru.sfedu.course_project.bean.Presentation - Arguments was successfully validated
+03 дек. 2020 12:30:41,744 [pool-3-thread-1] DEBUG ru.sfedu.course_project.converters.ListIdsConverter - \b[0-9a-f]{8}\b-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-\b[0-9a-f]{12}\b
+03 дек. 2020 12:30:41,746 [pool-3-thread-1] DEBUG ru.sfedu.course_project.converters.ListIdsConverter - 
+03 дек. 2020 12:30:41,747 [pool-3-thread-1] DEBUG ru.sfedu.course_project.converters.ListIdsConverter - \b[0-9a-f]{8}\b-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-\b[0-9a-f]{12}\b
+03 дек. 2020 12:30:41,748 [pool-3-thread-1] DEBUG ru.sfedu.course_project.converters.ListIdsConverter - 
+03 дек. 2020 12:30:41,750 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - Presentation was successfully created: 2bf18f24-8e35-49d9-877f-d1d5decf6804
+03 дек. 2020 12:30:41,783 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getAllPresentations] Result: [Presentation{id=23b6e63f-8082-476a-9d5c-49db54257d43, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}, Presentation{id=2bf18f24-8e35-49d9-877f-d1d5decf6804, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}]
+03 дек. 2020 12:30:41,783 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Attempt to find presentation: 2bf18f24-8e35-49d9-877f-d1d5decf6804
+03 дек. 2020 12:30:41,784 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getPresentationById] Result: Presentation{id=2bf18f24-8e35-49d9-877f-d1d5decf6804, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}
+03 дек. 2020 12:30:41,809 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getAllPresentations] Result: [Presentation{id=23b6e63f-8082-476a-9d5c-49db54257d43, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}, Presentation{id=2bf18f24-8e35-49d9-877f-d1d5decf6804, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}]
+03 дек. 2020 12:30:41,810 [main] DEBUG ru.sfedu.course_project.bean.Presentation - Arguments was successfully validated
+03 дек. 2020 12:30:41,814 [pool-6-thread-7] DEBUG ru.sfedu.course_project.converters.ListIdsConverter - \b[0-9a-f]{8}\b-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-\b[0-9a-f]{12}\b
+03 дек. 2020 12:30:41,814 [pool-6-thread-3] DEBUG ru.sfedu.course_project.converters.ListIdsConverter - \b[0-9a-f]{8}\b-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-\b[0-9a-f]{12}\b
+03 дек. 2020 12:30:41,816 [pool-6-thread-7] DEBUG ru.sfedu.course_project.converters.ListIdsConverter - 
+03 дек. 2020 12:30:41,816 [pool-6-thread-3] DEBUG ru.sfedu.course_project.converters.ListIdsConverter - 
+03 дек. 2020 12:30:41,817 [pool-6-thread-3] DEBUG ru.sfedu.course_project.converters.ListIdsConverter - \b[0-9a-f]{8}\b-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-\b[0-9a-f]{12}\b
+03 дек. 2020 12:30:41,817 [pool-6-thread-7] DEBUG ru.sfedu.course_project.converters.ListIdsConverter - \b[0-9a-f]{8}\b-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-\b[0-9a-f]{12}\b
+03 дек. 2020 12:30:41,817 [pool-6-thread-3] DEBUG ru.sfedu.course_project.converters.ListIdsConverter - 
+03 дек. 2020 12:30:41,817 [pool-6-thread-7] DEBUG ru.sfedu.course_project.converters.ListIdsConverter - 
+03 дек. 2020 12:30:41,818 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - Presentation was successfully created: 2bf18f24-8e35-49d9-877f-d1d5decf6804
+03 дек. 2020 12:30:41,835 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getAllPresentations] Result: [Presentation{id=23b6e63f-8082-476a-9d5c-49db54257d43, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}, Presentation{id=2bf18f24-8e35-49d9-877f-d1d5decf6804, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}, Presentation{id=2bf18f24-8e35-49d9-877f-d1d5decf6804, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}]
+03 дек. 2020 12:30:41,835 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Attempt to find presentation: dcac1b23-137b-410c-b7b8-d74e01ac6dbe
+03 дек. 2020 12:30:41,835 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - [getPresentationById] Unable to get presentation: dcac1b23-137b-410c-b7b8-d74e01ac6dbe
+03 дек. 2020 12:31:46,765 [main] WARN  ru.sfedu.course_project.Main - arguments {method=createPresentation, datatype=csv}
+03 дек. 2020 12:31:46,773 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [method=createPresentation, datatype=csv]
+03 дек. 2020 12:31:46,775 [main] INFO  ru.sfedu.course_project.Main - Attempt to create csv data provider
+03 дек. 2020 12:31:46,780 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: csv
+03 дек. 2020 12:31:46,781 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: createPresentation
+03 дек. 2020 12:31:46,923 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getAllPresentations] Result: []
+03 дек. 2020 12:31:47,227 [main] DEBUG ru.sfedu.course_project.bean.Presentation - Arguments was successfully validated
+03 дек. 2020 12:31:47,244 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - Presentation was successfully created: 4c4773cb-a81a-4f4d-8819-f9a112419f68
+03 дек. 2020 12:32:00,451 [main] WARN  ru.sfedu.course_project.Main - arguments {method=createPresentation, datatype=csv}
+03 дек. 2020 12:32:00,456 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [method=createPresentation, datatype=csv]
+03 дек. 2020 12:32:00,459 [main] INFO  ru.sfedu.course_project.Main - Attempt to create csv data provider
+03 дек. 2020 12:32:00,465 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: csv
+03 дек. 2020 12:32:00,466 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: createPresentation
+03 дек. 2020 12:32:00,627 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getAllPresentations] Result: [Presentation{id=4c4773cb-a81a-4f4d-8819-f9a112419f68, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}]
+03 дек. 2020 12:32:00,979 [main] DEBUG ru.sfedu.course_project.bean.Presentation - Arguments was successfully validated
+03 дек. 2020 12:32:00,993 [pool-3-thread-1] DEBUG ru.sfedu.course_project.converters.ListIdsConverter - \b[0-9a-f]{8}\b-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-\b[0-9a-f]{12}\b
+03 дек. 2020 12:32:00,995 [pool-3-thread-1] DEBUG ru.sfedu.course_project.converters.ListIdsConverter - 
+03 дек. 2020 12:32:00,996 [pool-3-thread-1] DEBUG ru.sfedu.course_project.converters.ListIdsConverter - \b[0-9a-f]{8}\b-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-\b[0-9a-f]{12}\b
+03 дек. 2020 12:32:00,996 [pool-3-thread-1] DEBUG ru.sfedu.course_project.converters.ListIdsConverter - 
+03 дек. 2020 12:32:00,998 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - Presentation was successfully created: 10b4d70f-f039-4504-b9c2-c6c5e8792e01
+03 дек. 2020 12:32:07,560 [main] WARN  ru.sfedu.course_project.Main - arguments {method=createPresentation, datatype=csv}
+03 дек. 2020 12:32:07,567 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [method=createPresentation, datatype=csv]
+03 дек. 2020 12:32:07,569 [main] INFO  ru.sfedu.course_project.Main - Attempt to create csv data provider
+03 дек. 2020 12:32:07,575 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: csv
+03 дек. 2020 12:32:07,577 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: createPresentation
+03 дек. 2020 12:32:07,760 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getAllPresentations] Result: [Presentation{id=4c4773cb-a81a-4f4d-8819-f9a112419f68, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}, Presentation{id=10b4d70f-f039-4504-b9c2-c6c5e8792e01, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}]
+03 дек. 2020 12:32:08,130 [main] DEBUG ru.sfedu.course_project.bean.Presentation - Arguments was successfully validated
+03 дек. 2020 12:32:08,144 [pool-3-thread-1] DEBUG ru.sfedu.course_project.converters.ListIdsConverter - \b[0-9a-f]{8}\b-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-\b[0-9a-f]{12}\b
+03 дек. 2020 12:32:08,144 [pool-3-thread-2] DEBUG ru.sfedu.course_project.converters.ListIdsConverter - \b[0-9a-f]{8}\b-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-\b[0-9a-f]{12}\b
+03 дек. 2020 12:32:08,146 [pool-3-thread-1] DEBUG ru.sfedu.course_project.converters.ListIdsConverter - 
+03 дек. 2020 12:32:08,146 [pool-3-thread-2] DEBUG ru.sfedu.course_project.converters.ListIdsConverter - 
+03 дек. 2020 12:32:08,146 [pool-3-thread-1] DEBUG ru.sfedu.course_project.converters.ListIdsConverter - \b[0-9a-f]{8}\b-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-\b[0-9a-f]{12}\b
+03 дек. 2020 12:32:08,146 [pool-3-thread-2] DEBUG ru.sfedu.course_project.converters.ListIdsConverter - \b[0-9a-f]{8}\b-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-\b[0-9a-f]{12}\b
+03 дек. 2020 12:32:08,146 [pool-3-thread-1] DEBUG ru.sfedu.course_project.converters.ListIdsConverter - 
+03 дек. 2020 12:32:08,146 [pool-3-thread-2] DEBUG ru.sfedu.course_project.converters.ListIdsConverter - 
+03 дек. 2020 12:32:08,148 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - Presentation was successfully created: 719452c1-22a6-43f3-8fc7-995cf4a9f033
+03 дек. 2020 12:32:39,355 [main] WARN  ru.sfedu.course_project.Main - arguments {method=createPresentation, datatype=csv, id=719452c1-22a6-43f3-8fc7-995cf4a9f033}
+03 дек. 2020 12:32:39,364 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [method=createPresentation, datatype=csv, id=719452c1-22a6-43f3-8fc7-995cf4a9f033]
+03 дек. 2020 12:32:39,366 [main] INFO  ru.sfedu.course_project.Main - Attempt to create csv data provider
+03 дек. 2020 12:32:39,372 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: csv
+03 дек. 2020 12:32:39,373 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: createPresentation
+03 дек. 2020 12:32:39,552 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getAllPresentations] Result: [Presentation{id=4c4773cb-a81a-4f4d-8819-f9a112419f68, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}, Presentation{id=10b4d70f-f039-4504-b9c2-c6c5e8792e01, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}, Presentation{id=719452c1-22a6-43f3-8fc7-995cf4a9f033, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}]
+03 дек. 2020 12:32:39,572 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getAllPresentations] Result: [Presentation{id=4c4773cb-a81a-4f4d-8819-f9a112419f68, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}, Presentation{id=10b4d70f-f039-4504-b9c2-c6c5e8792e01, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}, Presentation{id=719452c1-22a6-43f3-8fc7-995cf4a9f033, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}]
+03 дек. 2020 12:32:39,916 [main] ERROR ru.sfedu.course_project.bean.Presentation - Unable to validate Presentation fields
+03 дек. 2020 12:32:39,929 [pool-4-thread-1] DEBUG ru.sfedu.course_project.converters.ListIdsConverter - \b[0-9a-f]{8}\b-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-\b[0-9a-f]{12}\b
+03 дек. 2020 12:32:39,929 [pool-4-thread-3] DEBUG ru.sfedu.course_project.converters.ListIdsConverter - \b[0-9a-f]{8}\b-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-\b[0-9a-f]{12}\b
+03 дек. 2020 12:32:39,929 [pool-4-thread-2] DEBUG ru.sfedu.course_project.converters.ListIdsConverter - \b[0-9a-f]{8}\b-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-\b[0-9a-f]{12}\b
+03 дек. 2020 12:32:39,931 [pool-4-thread-1] DEBUG ru.sfedu.course_project.converters.ListIdsConverter - 
+03 дек. 2020 12:32:39,931 [pool-4-thread-2] DEBUG ru.sfedu.course_project.converters.ListIdsConverter - 
+03 дек. 2020 12:32:39,931 [pool-4-thread-3] DEBUG ru.sfedu.course_project.converters.ListIdsConverter - 
+03 дек. 2020 12:32:39,932 [pool-4-thread-2] DEBUG ru.sfedu.course_project.converters.ListIdsConverter - \b[0-9a-f]{8}\b-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-\b[0-9a-f]{12}\b
+03 дек. 2020 12:32:39,932 [pool-4-thread-1] DEBUG ru.sfedu.course_project.converters.ListIdsConverter - \b[0-9a-f]{8}\b-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-\b[0-9a-f]{12}\b
+03 дек. 2020 12:32:39,932 [pool-4-thread-3] DEBUG ru.sfedu.course_project.converters.ListIdsConverter - \b[0-9a-f]{8}\b-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-\b[0-9a-f]{12}\b
+03 дек. 2020 12:32:39,932 [pool-4-thread-3] DEBUG ru.sfedu.course_project.converters.ListIdsConverter - 
+03 дек. 2020 12:32:39,932 [pool-4-thread-1] DEBUG ru.sfedu.course_project.converters.ListIdsConverter - 
+03 дек. 2020 12:32:39,932 [pool-4-thread-2] DEBUG ru.sfedu.course_project.converters.ListIdsConverter - 
+03 дек. 2020 12:32:39,933 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - Presentation was successfully created: null
+03 дек. 2020 12:33:49,891 [main] WARN  ru.sfedu.course_project.Main - arguments {method=createPresentation, datatype=csv, id=719452c1-22a6-43f3-8fc7-995cf4a9f033}
+03 дек. 2020 12:33:49,895 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [method=createPresentation, datatype=csv, id=719452c1-22a6-43f3-8fc7-995cf4a9f033]
+03 дек. 2020 12:33:49,897 [main] INFO  ru.sfedu.course_project.Main - Attempt to create csv data provider
+03 дек. 2020 12:33:49,902 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: csv
+03 дек. 2020 12:33:49,903 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: createPresentation
+03 дек. 2020 12:33:50,065 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getAllPresentations] Result: [Presentation{id=4c4773cb-a81a-4f4d-8819-f9a112419f68, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}, Presentation{id=10b4d70f-f039-4504-b9c2-c6c5e8792e01, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}, Presentation{id=719452c1-22a6-43f3-8fc7-995cf4a9f033, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}]
+03 дек. 2020 12:33:50,085 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getAllPresentations] Result: [Presentation{id=4c4773cb-a81a-4f4d-8819-f9a112419f68, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}, Presentation{id=10b4d70f-f039-4504-b9c2-c6c5e8792e01, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}, Presentation{id=719452c1-22a6-43f3-8fc7-995cf4a9f033, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}]
+03 дек. 2020 12:33:50,087 [main] WARN  ru.sfedu.course_project.api.DataProviderCSV - [createPresentation] Provided presentation id is already in use: 719452c1-22a6-43f3-8fc7-995cf4a9f033
+03 дек. 2020 12:34:55,103 [main] WARN  ru.sfedu.course_project.Main - arguments {method=createPresentation, datatype=csv, id=719452c1-22a6-43f3-8fc7-995cf4a9f033}
+03 дек. 2020 12:34:55,111 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [method=createPresentation, datatype=csv, id=719452c1-22a6-43f3-8fc7-995cf4a9f033]
+03 дек. 2020 12:34:55,113 [main] INFO  ru.sfedu.course_project.Main - Attempt to create csv data provider
+03 дек. 2020 12:34:55,120 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: csv
+03 дек. 2020 12:34:55,122 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: createPresentation
+03 дек. 2020 12:34:55,279 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getAllPresentations] Result: [Presentation{id=4c4773cb-a81a-4f4d-8819-f9a112419f68, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}, Presentation{id=10b4d70f-f039-4504-b9c2-c6c5e8792e01, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}, Presentation{id=719452c1-22a6-43f3-8fc7-995cf4a9f033, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}]
+03 дек. 2020 12:34:55,280 [main] WARN  ru.sfedu.course_project.api.DataProviderCSV - [createPresentation] Provided presentation id is already in use: 719452c1-22a6-43f3-8fc7-995cf4a9f033
+03 дек. 2020 12:35:31,030 [main] WARN  ru.sfedu.course_project.Main - arguments {method=createPresentation, datatype=csv}
+03 дек. 2020 12:35:31,035 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [method=createPresentation, datatype=csv]
+03 дек. 2020 12:35:31,037 [main] INFO  ru.sfedu.course_project.Main - Attempt to create csv data provider
+03 дек. 2020 12:35:31,041 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: csv
+03 дек. 2020 12:35:31,043 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: createPresentation
+03 дек. 2020 12:35:31,192 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getAllPresentations] Result: [Presentation{id=4c4773cb-a81a-4f4d-8819-f9a112419f68, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}, Presentation{id=10b4d70f-f039-4504-b9c2-c6c5e8792e01, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}, Presentation{id=719452c1-22a6-43f3-8fc7-995cf4a9f033, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}]
+03 дек. 2020 12:35:31,514 [main] DEBUG ru.sfedu.course_project.bean.Presentation - Arguments was successfully validated
+03 дек. 2020 12:35:31,530 [pool-3-thread-1] DEBUG ru.sfedu.course_project.converters.ListIdsConverter - \b[0-9a-f]{8}\b-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-\b[0-9a-f]{12}\b
+03 дек. 2020 12:35:31,531 [pool-3-thread-3] DEBUG ru.sfedu.course_project.converters.ListIdsConverter - \b[0-9a-f]{8}\b-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-\b[0-9a-f]{12}\b
+03 дек. 2020 12:35:31,530 [pool-3-thread-2] DEBUG ru.sfedu.course_project.converters.ListIdsConverter - \b[0-9a-f]{8}\b-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-\b[0-9a-f]{12}\b
+03 дек. 2020 12:35:31,533 [pool-3-thread-2] DEBUG ru.sfedu.course_project.converters.ListIdsConverter - 
+03 дек. 2020 12:35:31,533 [pool-3-thread-1] DEBUG ru.sfedu.course_project.converters.ListIdsConverter - 
+03 дек. 2020 12:35:31,533 [pool-3-thread-3] DEBUG ru.sfedu.course_project.converters.ListIdsConverter - 
+03 дек. 2020 12:35:31,534 [pool-3-thread-1] DEBUG ru.sfedu.course_project.converters.ListIdsConverter - \b[0-9a-f]{8}\b-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-\b[0-9a-f]{12}\b
+03 дек. 2020 12:35:31,534 [pool-3-thread-3] DEBUG ru.sfedu.course_project.converters.ListIdsConverter - \b[0-9a-f]{8}\b-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-\b[0-9a-f]{12}\b
+03 дек. 2020 12:35:31,534 [pool-3-thread-1] DEBUG ru.sfedu.course_project.converters.ListIdsConverter - 
+03 дек. 2020 12:35:31,534 [pool-3-thread-2] DEBUG ru.sfedu.course_project.converters.ListIdsConverter - \b[0-9a-f]{8}\b-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-\b[0-9a-f]{12}\b
+03 дек. 2020 12:35:31,534 [pool-3-thread-3] DEBUG ru.sfedu.course_project.converters.ListIdsConverter - 
+03 дек. 2020 12:35:31,535 [pool-3-thread-2] DEBUG ru.sfedu.course_project.converters.ListIdsConverter - 
+03 дек. 2020 12:35:31,537 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - Presentation was successfully created: 3c44c53e-26a0-4720-b474-d14b02be636f
+03 дек. 2020 12:36:06,563 [main] WARN  ru.sfedu.course_project.Main - arguments {method=createPresentation, datatype=csv}
+03 дек. 2020 12:36:06,568 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [method=createPresentation, datatype=csv]
+03 дек. 2020 12:36:06,571 [main] INFO  ru.sfedu.course_project.Main - Attempt to create csv data provider
+03 дек. 2020 12:36:06,576 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: csv
+03 дек. 2020 12:36:06,578 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: createPresentation
+03 дек. 2020 12:36:06,744 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getAllPresentations] Result: [Presentation{id=4c4773cb-a81a-4f4d-8819-f9a112419f68, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}, Presentation{id=10b4d70f-f039-4504-b9c2-c6c5e8792e01, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}, Presentation{id=719452c1-22a6-43f3-8fc7-995cf4a9f033, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}, Presentation{id=3c44c53e-26a0-4720-b474-d14b02be636f, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}]
+03 дек. 2020 12:36:07,074 [main] DEBUG ru.sfedu.course_project.bean.Presentation - Arguments was successfully validated
+03 дек. 2020 12:36:07,088 [pool-3-thread-2] DEBUG ru.sfedu.course_project.converters.ListIdsConverter - \b[0-9a-f]{8}\b-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-\b[0-9a-f]{12}\b
+03 дек. 2020 12:36:07,088 [pool-3-thread-5] DEBUG ru.sfedu.course_project.converters.ListIdsConverter - \b[0-9a-f]{8}\b-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-\b[0-9a-f]{12}\b
+03 дек. 2020 12:36:07,088 [pool-3-thread-3] DEBUG ru.sfedu.course_project.converters.ListIdsConverter - \b[0-9a-f]{8}\b-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-\b[0-9a-f]{12}\b
+03 дек. 2020 12:36:07,088 [pool-3-thread-1] DEBUG ru.sfedu.course_project.converters.ListIdsConverter - \b[0-9a-f]{8}\b-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-\b[0-9a-f]{12}\b
+03 дек. 2020 12:36:07,089 [pool-3-thread-2] DEBUG ru.sfedu.course_project.converters.ListIdsConverter - 
+03 дек. 2020 12:36:07,089 [pool-3-thread-1] DEBUG ru.sfedu.course_project.converters.ListIdsConverter - 
+03 дек. 2020 12:36:07,089 [pool-3-thread-3] DEBUG ru.sfedu.course_project.converters.ListIdsConverter - 
+03 дек. 2020 12:36:07,089 [pool-3-thread-5] DEBUG ru.sfedu.course_project.converters.ListIdsConverter - 
+03 дек. 2020 12:36:07,090 [pool-3-thread-3] DEBUG ru.sfedu.course_project.converters.ListIdsConverter - \b[0-9a-f]{8}\b-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-\b[0-9a-f]{12}\b
+03 дек. 2020 12:36:07,090 [pool-3-thread-5] DEBUG ru.sfedu.course_project.converters.ListIdsConverter - \b[0-9a-f]{8}\b-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-\b[0-9a-f]{12}\b
+03 дек. 2020 12:36:07,090 [pool-3-thread-2] DEBUG ru.sfedu.course_project.converters.ListIdsConverter - \b[0-9a-f]{8}\b-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-\b[0-9a-f]{12}\b
+03 дек. 2020 12:36:07,090 [pool-3-thread-1] DEBUG ru.sfedu.course_project.converters.ListIdsConverter - \b[0-9a-f]{8}\b-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-\b[0-9a-f]{12}\b
+03 дек. 2020 12:36:07,091 [pool-3-thread-3] DEBUG ru.sfedu.course_project.converters.ListIdsConverter - 
+03 дек. 2020 12:36:07,091 [pool-3-thread-5] DEBUG ru.sfedu.course_project.converters.ListIdsConverter - 
+03 дек. 2020 12:36:07,091 [pool-3-thread-1] DEBUG ru.sfedu.course_project.converters.ListIdsConverter - 
+03 дек. 2020 12:36:07,091 [pool-3-thread-2] DEBUG ru.sfedu.course_project.converters.ListIdsConverter - 
+03 дек. 2020 12:36:07,092 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - Presentation was successfully created: abce3817-9690-43cd-a6d3-718001e08db0
+03 дек. 2020 12:37:03,450 [main] WARN  ru.sfedu.course_project.Main - arguments {method=createPresentation, datatype=csv}
+03 дек. 2020 12:37:03,458 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [method=createPresentation, datatype=csv]
+03 дек. 2020 12:37:03,460 [main] INFO  ru.sfedu.course_project.Main - Attempt to create csv data provider
+03 дек. 2020 12:37:03,465 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: csv
+03 дек. 2020 12:37:03,467 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: createPresentation
+03 дек. 2020 12:37:03,643 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getAllPresentations] Result: [Presentation{id=4c4773cb-a81a-4f4d-8819-f9a112419f68, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}, Presentation{id=10b4d70f-f039-4504-b9c2-c6c5e8792e01, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}, Presentation{id=719452c1-22a6-43f3-8fc7-995cf4a9f033, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}, Presentation{id=3c44c53e-26a0-4720-b474-d14b02be636f, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}, Presentation{id=abce3817-9690-43cd-a6d3-718001e08db0, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}]
+03 дек. 2020 12:37:03,968 [main] DEBUG ru.sfedu.course_project.bean.Presentation - Arguments was successfully validated
+03 дек. 2020 12:37:03,992 [pool-3-thread-1] DEBUG ru.sfedu.course_project.converters.ListIdsConverter - 
+03 дек. 2020 12:37:03,994 [pool-3-thread-2] DEBUG ru.sfedu.course_project.converters.ListIdsConverter - 
+03 дек. 2020 12:37:03,994 [pool-3-thread-3] DEBUG ru.sfedu.course_project.converters.ListIdsConverter - 
+03 дек. 2020 12:37:03,995 [pool-3-thread-6] DEBUG ru.sfedu.course_project.converters.ListIdsConverter - 
+03 дек. 2020 12:37:03,996 [pool-3-thread-4] DEBUG ru.sfedu.course_project.converters.ListIdsConverter - 
+03 дек. 2020 12:37:03,998 [pool-3-thread-6] DEBUG ru.sfedu.course_project.converters.ListIdsConverter - 
+03 дек. 2020 12:37:03,998 [pool-3-thread-2] DEBUG ru.sfedu.course_project.converters.ListIdsConverter - 
+03 дек. 2020 12:37:03,999 [pool-3-thread-4] DEBUG ru.sfedu.course_project.converters.ListIdsConverter - 
+03 дек. 2020 12:37:03,999 [pool-3-thread-3] DEBUG ru.sfedu.course_project.converters.ListIdsConverter - 
+03 дек. 2020 12:37:04,000 [pool-3-thread-1] DEBUG ru.sfedu.course_project.converters.ListIdsConverter - 
+03 дек. 2020 12:37:04,002 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - Presentation was successfully created: d5fc28ae-a8b1-4c4a-b960-4c9cdb6a1d3f
+03 дек. 2020 12:37:53,100 [main] WARN  ru.sfedu.course_project.Main - arguments {method=createPresentation, datatype=csv}
+03 дек. 2020 12:37:53,108 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [method=createPresentation, datatype=csv]
+03 дек. 2020 12:37:53,111 [main] INFO  ru.sfedu.course_project.Main - Attempt to create csv data provider
+03 дек. 2020 12:37:53,118 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: csv
+03 дек. 2020 12:37:53,120 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: createPresentation
+03 дек. 2020 12:37:53,284 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getAllPresentations] Result: [Presentation{id=4c4773cb-a81a-4f4d-8819-f9a112419f68, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}, Presentation{id=10b4d70f-f039-4504-b9c2-c6c5e8792e01, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}, Presentation{id=719452c1-22a6-43f3-8fc7-995cf4a9f033, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}, Presentation{id=3c44c53e-26a0-4720-b474-d14b02be636f, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}, Presentation{id=abce3817-9690-43cd-a6d3-718001e08db0, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}, Presentation{id=d5fc28ae-a8b1-4c4a-b960-4c9cdb6a1d3f, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}]
+03 дек. 2020 12:37:53,622 [main] DEBUG ru.sfedu.course_project.bean.Presentation - Arguments was successfully validated
+03 дек. 2020 12:37:53,649 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - Presentation was successfully created: 41bdb6f1-f7de-42fd-8fca-1ce0319e2c15
+03 дек. 2020 12:38:38,096 [main] WARN  ru.sfedu.course_project.Main - arguments {method=createPresentation, datatype=csv}
+03 дек. 2020 12:38:38,102 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [method=createPresentation, datatype=csv]
+03 дек. 2020 12:38:38,105 [main] INFO  ru.sfedu.course_project.Main - Attempt to create csv data provider
+03 дек. 2020 12:38:38,111 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: csv
+03 дек. 2020 12:38:38,112 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: createPresentation
+03 дек. 2020 12:38:38,276 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getAllPresentations] Result: [Presentation{id=4c4773cb-a81a-4f4d-8819-f9a112419f68, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}, Presentation{id=10b4d70f-f039-4504-b9c2-c6c5e8792e01, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}, Presentation{id=719452c1-22a6-43f3-8fc7-995cf4a9f033, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}, Presentation{id=3c44c53e-26a0-4720-b474-d14b02be636f, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}, Presentation{id=abce3817-9690-43cd-a6d3-718001e08db0, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}, Presentation{id=d5fc28ae-a8b1-4c4a-b960-4c9cdb6a1d3f, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}, Presentation{id=41bdb6f1-f7de-42fd-8fca-1ce0319e2c15, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}]
+03 дек. 2020 12:38:38,642 [main] DEBUG ru.sfedu.course_project.bean.Presentation - Arguments was successfully validated
+03 дек. 2020 12:38:38,656 [pool-3-thread-5] DEBUG ru.sfedu.course_project.converters.ListIdsConverter - [convertToWrite] Current convert string ids: 
+03 дек. 2020 12:38:38,657 [pool-3-thread-1] DEBUG ru.sfedu.course_project.converters.ListIdsConverter - [convertToWrite] Current convert string ids: 
+03 дек. 2020 12:38:38,657 [pool-3-thread-3] DEBUG ru.sfedu.course_project.converters.ListIdsConverter - [convertToWrite] Current convert string ids: 
+03 дек. 2020 12:38:38,656 [pool-3-thread-6] DEBUG ru.sfedu.course_project.converters.ListIdsConverter - [convertToWrite] Current convert string ids: 
+03 дек. 2020 12:38:38,656 [pool-3-thread-2] DEBUG ru.sfedu.course_project.converters.ListIdsConverter - [convertToWrite] Current convert string ids: 
+03 дек. 2020 12:38:38,657 [pool-3-thread-4] DEBUG ru.sfedu.course_project.converters.ListIdsConverter - [convertToWrite] Current convert string ids: 
+03 дек. 2020 12:38:38,657 [pool-3-thread-8] DEBUG ru.sfedu.course_project.converters.ListIdsConverter - [convertToWrite] Current convert string ids: 
+03 дек. 2020 12:38:38,658 [pool-3-thread-1] DEBUG ru.sfedu.course_project.converters.ListIdsConverter - [convertToWrite] Current convert string ids: 
+03 дек. 2020 12:38:38,658 [pool-3-thread-3] DEBUG ru.sfedu.course_project.converters.ListIdsConverter - [convertToWrite] Current convert string ids: 
+03 дек. 2020 12:38:38,658 [pool-3-thread-2] DEBUG ru.sfedu.course_project.converters.ListIdsConverter - [convertToWrite] Current convert string ids: 
+03 дек. 2020 12:38:38,658 [pool-3-thread-4] DEBUG ru.sfedu.course_project.converters.ListIdsConverter - [convertToWrite] Current convert string ids: 
+03 дек. 2020 12:38:38,658 [pool-3-thread-5] DEBUG ru.sfedu.course_project.converters.ListIdsConverter - [convertToWrite] Current convert string ids: 
+03 дек. 2020 12:38:38,659 [pool-3-thread-6] DEBUG ru.sfedu.course_project.converters.ListIdsConverter - [convertToWrite] Current convert string ids: 
+03 дек. 2020 12:38:38,660 [pool-3-thread-8] DEBUG ru.sfedu.course_project.converters.ListIdsConverter - [convertToWrite] Current convert string ids: 
+03 дек. 2020 12:38:38,662 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - Presentation was successfully created: 0e5226b0-2d8c-46ed-a027-b36f1bfe7ea7
+03 дек. 2020 12:43:05,517 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getAllPresentations] Result: [Presentation{id=4c4773cb-a81a-4f4d-8819-f9a112419f68, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}, Presentation{id=10b4d70f-f039-4504-b9c2-c6c5e8792e01, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}, Presentation{id=719452c1-22a6-43f3-8fc7-995cf4a9f033, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}, Presentation{id=3c44c53e-26a0-4720-b474-d14b02be636f, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}, Presentation{id=abce3817-9690-43cd-a6d3-718001e08db0, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}, Presentation{id=d5fc28ae-a8b1-4c4a-b960-4c9cdb6a1d3f, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}, Presentation{id=41bdb6f1-f7de-42fd-8fca-1ce0319e2c15, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}, Presentation{id=0e5226b0-2d8c-46ed-a027-b36f1bfe7ea7, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}]
+03 дек. 2020 12:44:38,728 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getAllPresentations] Result: [Presentation{id=4c4773cb-a81a-4f4d-8819-f9a112419f68, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}, Presentation{id=10b4d70f-f039-4504-b9c2-c6c5e8792e01, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}, Presentation{id=719452c1-22a6-43f3-8fc7-995cf4a9f033, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}, Presentation{id=3c44c53e-26a0-4720-b474-d14b02be636f, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}, Presentation{id=abce3817-9690-43cd-a6d3-718001e08db0, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}, Presentation{id=d5fc28ae-a8b1-4c4a-b960-4c9cdb6a1d3f, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}, Presentation{id=41bdb6f1-f7de-42fd-8fca-1ce0319e2c15, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}, Presentation{id=0e5226b0-2d8c-46ed-a027-b36f1bfe7ea7, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}]
+03 дек. 2020 12:44:49,417 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getAllPresentations] Result: [Presentation{id=4c4773cb-a81a-4f4d-8819-f9a112419f68, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}, Presentation{id=10b4d70f-f039-4504-b9c2-c6c5e8792e01, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}, Presentation{id=719452c1-22a6-43f3-8fc7-995cf4a9f033, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}, Presentation{id=3c44c53e-26a0-4720-b474-d14b02be636f, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}, Presentation{id=abce3817-9690-43cd-a6d3-718001e08db0, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}, Presentation{id=d5fc28ae-a8b1-4c4a-b960-4c9cdb6a1d3f, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}, Presentation{id=41bdb6f1-f7de-42fd-8fca-1ce0319e2c15, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}, Presentation{id=0e5226b0-2d8c-46ed-a027-b36f1bfe7ea7, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}]
+03 дек. 2020 12:45:17,159 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getAllPresentations] Result: []
