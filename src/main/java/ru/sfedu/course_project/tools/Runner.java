@@ -1,5 +1,7 @@
 package ru.sfedu.course_project.tools;
 
+import com.opencsv.exceptions.CsvDataTypeMismatchException;
+import com.opencsv.exceptions.CsvRequiredFieldEmptyException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import ru.sfedu.course_project.Constants;
@@ -30,7 +32,13 @@ public class Runner {
                         return this.provider.createPresentation(arguments);
                     }
                     case "getPresentationById": {
-                        return  this.provider.getPresentationById(arguments);
+                        return this.provider.getPresentationById(arguments);
+                    }
+                    case "removePresentationById": {
+                        return this.provider.removePresentationById(arguments);
+                    }
+                    case "editPresentationOptions": {
+                        return this.provider.editPresentationOptions(arguments);
                     }
                     default:
                         throw new IllegalStateException("Unexpected method: " + method);
@@ -38,7 +46,7 @@ public class Runner {
             } else {
                 return null; // TODO return error exception
             }
-        } catch (RuntimeException | IOException e) {
+        } catch (RuntimeException | IOException | CsvDataTypeMismatchException | CsvRequiredFieldEmptyException e) {
             e.printStackTrace();
             log.error("Runner Exception: unable to run method: " + method);
         }

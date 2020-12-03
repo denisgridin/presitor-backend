@@ -1,8 +1,11 @@
 package ru.sfedu.course_project.api;
 
+import com.opencsv.exceptions.CsvDataTypeMismatchException;
+import com.opencsv.exceptions.CsvRequiredFieldEmptyException;
 import org.junit.jupiter.api.Test;
 import ru.sfedu.course_project.TestBase;
 import ru.sfedu.course_project.bean.Presentation;
+import ru.sfedu.course_project.enums.Status;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -84,5 +87,54 @@ public class DataProviderCSVTest extends TestBase {
         DataProviderCSV provider = new DataProviderCSV();
         List<Presentation> presentationList = provider.getAllPresentations();
         assertFalse(provider.isPresentationIdInUse(String.valueOf(UUID.randomUUID()), presentationList));
+    }
+
+    @Test
+    void removePresentationByIdSuccess() throws CsvRequiredFieldEmptyException, IOException, CsvDataTypeMismatchException {
+        System.out.println("removePresentationByIdSuccess");
+        DataProviderCSV provider = new DataProviderCSV();
+        List<Presentation> presentationList = provider.getAllPresentations();
+        Presentation removingPresentation = presentationList.get(0);
+
+        String id = String.valueOf(removingPresentation.getId());
+        HashMap args = new HashMap();
+        args.put("id", id);
+        assertEquals(provider.removePresentationById(args), Status.success);
+    }
+
+    @Test
+    void removePresentationByIdFail() throws CsvRequiredFieldEmptyException, IOException, CsvDataTypeMismatchException {
+        System.out.println("removePresentationByIdFail");
+        DataProviderCSV provider = new DataProviderCSV();
+        HashMap args = new HashMap();
+        String id = String.valueOf(UUID.randomUUID());
+        args.put("id", id);
+//        assertNotEquals(provider.removePresentationById(args), Status.success);
+        assertEquals(provider.removePresentationById(args), Status.error);
+    }
+
+    @Test
+    void editPresentationOptionsSuccess() throws CsvRequiredFieldEmptyException, IOException, CsvDataTypeMismatchException {
+        System.out.println("editPresentationOptionsSuccess");
+        DataProviderCSV provider = new DataProviderCSV();
+        Presentation presentation = provider.getAllPresentations().get(0);
+        HashMap arguments = new HashMap();
+        arguments.put("name", "My presentation");
+        arguments.put("fillColor", "#403add");
+        arguments.put("fontFamily", "Times New Roman");
+        arguments.put("id", String.valueOf(presentation.getId()));
+        assertEquals(provider.editPresentationOptions(arguments), Status.success);
+    }
+
+    @Test
+    void editPresentationOptionsFail() throws CsvRequiredFieldEmptyException, IOException, CsvDataTypeMismatchException {
+        System.out.println("editPresentationOptionsSuccess");
+        HashMap arguments = new HashMap();
+        arguments.put("name", "My presentation");
+        arguments.put("fillColor", "#403add");
+        arguments.put("fontFamily", "Times New Roman");
+        arguments.put("id", String.valueOf(UUID.randomUUID()));
+        DataProviderCSV provider = new DataProviderCSV();
+        assertEquals(provider.editPresentationOptions(arguments), Status.error);
     }
 }

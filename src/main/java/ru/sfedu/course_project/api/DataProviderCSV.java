@@ -11,14 +11,15 @@ import com.opencsv.exceptions.CsvRequiredFieldEmptyException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import ru.sfedu.course_project.bean.Presentation;
+import ru.sfedu.course_project.enums.Status;
 import ru.sfedu.course_project.utils.ConfigurationUtil;
-import ru.sfedu.course_project.api.DataProvider;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class DataProviderCSV implements DataProvider {
     private final String PATH="csv_path";
@@ -56,18 +57,28 @@ public class DataProviderCSV implements DataProvider {
             }
             Presentation presentation = new Presentation(args);
             listPresentations.add(presentation);
-            String path = getFilePath("presentation");
-            FileWriter filePath = new FileWriter(path);
-            CSVWriter writer = new CSVWriter(filePath);
-            StatefulBeanToCsv<Presentation> beanToCsv = new StatefulBeanToCsvBuilder<Presentation>(writer).withSeparator(',').withApplyQuotesToAll(false).build();
-            beanToCsv.write(listPresentations);
+            writePresentationList(listPresentations);
             log.info("Presentation was successfully created: " + presentation.getId());
-            writer.close();
             return presentation.getId();
         } catch (IndexOutOfBoundsException | CsvRequiredFieldEmptyException | CsvDataTypeMismatchException | IOException e) {
             log.error(e);
             log.error("Unable to create presentation");
             return null;
+        }
+    }
+
+    private void writePresentationList (List list) throws IOException, CsvDataTypeMismatchException, CsvRequiredFieldEmptyException {
+        try {
+            String path = getFilePath("presentation");
+            FileWriter filePath = new FileWriter(path);
+            CSVWriter writer = new CSVWriter(filePath);
+            StatefulBeanToCsv<Presentation> beanToCsv = new StatefulBeanToCsvBuilder<Presentation>(writer).withSeparator(',').withApplyQuotesToAll(false).build();
+            beanToCsv.write(list);
+            writer.close();
+            log.info("[writePresentationList] Presentation list was wrote");
+        } catch (IOException | CsvDataTypeMismatchException | CsvRequiredFieldEmptyException e) {
+            e.printStackTrace();
+            log.error("[writePresentationList] Unable to write presentation list");
         }
     }
 
@@ -129,6 +140,61 @@ public class DataProviderCSV implements DataProvider {
             e.printStackTrace();
             log.error(e);
             return null;
+        }
+    }
+
+    public Status removePresentationById (HashMap arguments) throws CsvRequiredFieldEmptyException, IOException, CsvDataTypeMismatchException {
+        try {
+            if (arguments.get("id") == null) {
+                log.error("[removePresentationById] Presentation id is not provide");
+                return Status.error;
+            } else {
+                List<Presentation> presentationList = getAllPresentations();
+                UUID id = UUID.fromString((String) arguments.get("id"));
+                List<Presentation> updatedList = presentationList.stream().filter(el -> !el.getId().equals(id)).collect(Collectors.toList());
+                if (updatedList.size() == presentationList.size()) {
+                    log.error("[removePresentationById] Unable to find presentation with provided id: " + id);
+                    return Status.error;
+                }
+                writePresentationList(updatedList);
+                log.info("[removePresentationById] Presentation was successfully removed: " + id);
+                return Status.success;
+            }
+        } catch ( CsvRequiredFieldEmptyException | IOException | CsvDataTypeMismatchException e) {
+            e.printStackTrace();
+            log.error(e);
+            return Status.error;
+        }
+    }
+
+    public Status editPresentationOptions (HashMap arguments) throws CsvDataTypeMismatchException, IOException, CsvRequiredFieldEmptyException {
+        try {
+            UUID id = UUID.fromString((String) arguments.getOrDefault("id", null));
+            if (id == null) {
+                log.error("[editPresentationOptions] Presentation id is not provided");
+                return Status.error;
+            }
+            List<Presentation> list = getAllPresentations();
+            Boolean validId = Optional.of(getPresentationById(arguments)).isPresent();
+            if (validId) {
+                List<Presentation> updatedList = list.stream().map(el -> {
+                    if (el.getId().equals(id)) {
+                        el.setFillColor((String) arguments.getOrDefault("fillColor", el.getFillColor()));
+                        el.setFontFamily((String) arguments.getOrDefault("fontFamily", el.getFontFamily()));
+                        el.setName((String) arguments.getOrDefault("name", el.getName()));
+                    } return el;
+                }).collect(Collectors.toList());
+                writePresentationList(updatedList);
+                log.info("[editPresentationOptions] Presentation options was successfully updated: " + id);
+                return Status.success;
+            } else {
+                log.info("[editPresentationOptions] Unable to find presentation: " + id);
+                return Status.error;
+            }
+        } catch (RuntimeException e) {
+            e.printStackTrace();
+            log.error("Unable to edit presentation options");
+            return Status.error;
         }
     }
 }
