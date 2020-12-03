@@ -12,7 +12,9 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import ru.sfedu.course_project.bean.Presentation;
 import ru.sfedu.course_project.utils.ConfigurationUtil;
+import ru.sfedu.course_project.api.DataProvider;
 
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -24,6 +26,8 @@ public class DataProviderCSV implements DataProvider {
     private final String FILE_EXTENTION="csv";
 
     private static Logger log = LogManager.getLogger(DataProviderCSV.class);
+
+    public DataProviderCSV () {}
 
     @Override
     public String getName () {
@@ -47,7 +51,7 @@ public class DataProviderCSV implements DataProvider {
             Presentation presentation = new Presentation(args);
             List<Presentation> listPresentations = new ArrayList();
             listPresentations.add(presentation);
-            String path = this.getFilePath("presentation");
+            String path = getFilePath("presentation");
             FileWriter filePath = new FileWriter(path);
             CSVWriter writer = new CSVWriter(filePath);
             StatefulBeanToCsv<Presentation> beanToCsv = new StatefulBeanToCsvBuilder<Presentation>(writer).withSeparator(',').withApplyQuotesToAll(false).build();
@@ -62,28 +66,47 @@ public class DataProviderCSV implements DataProvider {
         }
     }
 
-    public Optional getPresentationById (HashMap arguments) throws IOException {
+    public Presentation getPresentationById (HashMap arguments) throws IOException {
         UUID id = UUID.fromString((String) arguments.get("id"));
-        FileReader fileReader = new FileReader(this.getFilePath("presentation"));
-        CSVReader csvReader = new CSVReader(fileReader);
-        CsvToBean<Presentation> csvToBean = new CsvToBeanBuilder<Presentation>(csvReader)
-                .withType(Presentation.class)
-                .withSeparator(',')
-                .withIgnoreLeadingWhiteSpace(true)
-                .build();
-        log.debug(csvToBean);
-        List<Presentation> listPresentation = csvToBean.parse();
         try {
+            List<Presentation> listPresentations = getAllPresentations();
             log.debug("Attempt to find presentation: " + id);
-            Optional<Presentation> presentation = listPresentation.stream()
-                    .filter(el -> {
-                        return el.getId().equals(id);
-                    }).findFirst();
-            log.debug(presentation.toString());
-            return presentation;
+            Optional<Presentation> presentation = listPresentations.stream()
+                    .filter(el -> el.getId().equals(id)).findFirst();
+            Presentation result = presentation.isPresent() ? presentation.get() : null;
+            if (presentation.isPresent()) {
+                log.info("[getPresentationById] Result: " + result.toString());
+            } else {
+                log.error("[getPresentationById] Unable to get presentation: " + id);
+            }
+            return result;
         } catch (NoSuchElementException e) {
             log.error(e);
             log.error("Unable to get presentation");
+            return null;
+        }
+    }
+
+    public List<Presentation> getAllPresentations () {
+        try {
+            FileReader fileReader = new FileReader(getFilePath("presentation"));
+            CSVReader csvReader = new CSVReader(fileReader);
+            CsvToBean<Presentation> csvToBean = new CsvToBeanBuilder<Presentation>(csvReader)
+                    .withType(Presentation.class)
+                    .withSeparator(',')
+                    .withIgnoreLeadingWhiteSpace(true)
+                    .build();
+            Optional<List> listPresentation = Optional.ofNullable(csvToBean.parse());
+            List<Presentation> result = listPresentation.isPresent() ? listPresentation.get() : new ArrayList<>();
+            if (listPresentation.isPresent()) {
+                log.info("[getAllPresentations] Result: " + result.toString());
+            } else {
+                log.error("[getAllPresentations] Unable to get presentations");
+            }
+            return result;
+        } catch (RuntimeException | FileNotFoundException e) {
+            e.printStackTrace();
+            log.error(e);
             return null;
         }
     }

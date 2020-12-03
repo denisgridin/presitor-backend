@@ -4,10 +4,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import ru.sfedu.course_project.api.DataProvider;
 import ru.sfedu.course_project.api.DataProviderCSV;
-import ru.sfedu.course_project.bean.*;
 import ru.sfedu.course_project.enums.DataType;
-import ru.sfedu.course_project.enums.Mark;
-import ru.sfedu.course_project.enums.Role;
 import ru.sfedu.course_project.tools.Runner;
 
 import java.io.IOException;
@@ -15,28 +12,21 @@ import java.util.*;
 
 public class Main {
     public static Logger log = LogManager.getLogger(Main.class);
-    public static void main(String[] args) throws IOException {
-//        DataProviderCSV provider = new DataProviderCSV();
-//        getPresentation(provider, 3);
-//        createPresentation(provider);
-//        log.info("jar executed");
-        List<String> arguments = Arrays.asList(args);
-        HashMap<String, String> params = parseParameters(arguments);
-        log.warn("arguments " + params);
-        String datatype = params.get("datatype");
-        log.info("Command line parameters: " + params.entrySet());
-        DataProvider provider = createDataProvider(datatype);
-        Runner runner = new Runner(provider);
-        runner.run(params.get("method"), params);
-//        Presentation pres = provider.getPresentationById(1);
-//        createPresentation(provider);
-    }
-
-    public static String getProvider () {
-        DataProvider provider = createDataProvider("csv");
-        String name = provider.getName();
-        log.debug(name);
-        return name;
+    public static void main(String[] args) throws RuntimeException {
+        try {
+            List<String> arguments = Arrays.asList(args);
+            HashMap<String, String> params = parseParameters(arguments);
+            log.warn("arguments " + params);
+            String datatype = params.get("datatype");
+            log.info("Command line parameters: " + params.entrySet());
+            DataProvider provider = createDataProvider(datatype);
+            Runner runner = new Runner(provider);
+            runner.run(params.get("method"), params);
+        } catch (RuntimeException e) {
+            e.printStackTrace();
+            log.error(e);
+            log.error("Error in main function");
+        }
     }
 
     private static HashMap<String, String> parseParameters (List args) {
@@ -45,7 +35,6 @@ public class Main {
             List <String> items = Arrays.asList(el.toString().split("="));
             params.put(items.get(0), items.get(1));
         });
-
         return params;
     }
 

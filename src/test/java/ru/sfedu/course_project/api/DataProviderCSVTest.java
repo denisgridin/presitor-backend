@@ -10,7 +10,7 @@ import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class DataProviderCSVTest extends TestBase {
+public class DataProviderCSVTest extends TestBase {
 
     @Test
     void createPresentationSuccess() throws IOException {
@@ -23,7 +23,7 @@ class DataProviderCSVTest extends TestBase {
         HashMap params = new HashMap();
         params.put("id", presId);
         assertEquals(presentation.toString(),
-                provider.getPresentationById(params).get().toString());
+                provider.getPresentationById(params).toString());
     }
 
     @Test
@@ -35,7 +35,7 @@ class DataProviderCSVTest extends TestBase {
         String presId = String.valueOf(UUID.randomUUID()); // set random id for fail check
         HashMap params = new HashMap();
         params.put("id", presId);
-        assertNull(provider.getPresentationById(params).orElse(null));
+        assertNull(provider.getPresentationById(params));
     }
 
     @Test

@@ -174,3 +174,89 @@
 02 дек. 2020 21:24:39,219 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - com.opencsv.bean.CsvToBean@2970a5bc
 02 дек. 2020 21:24:39,231 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Attempt to find presentation: c5fb8a89-fd1c-493f-abef-c2530a29e976
 02 дек. 2020 21:24:39,231 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Optional.empty
+02 дек. 2020 21:25:33,196 [main] DEBUG ru.sfedu.course_project.bean.Presentation - Arguments was successfully validated
+02 дек. 2020 21:25:33,350 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - Presentation was successfully created: 4989c027-3a73-4af2-b12f-cec4a6a0462a
+02 дек. 2020 21:25:33,376 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - com.opencsv.bean.CsvToBean@72efb5c1
+02 дек. 2020 21:25:33,392 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Attempt to find presentation: 3c6ceab8-aebc-45b4-920a-23b202ab7450
+02 дек. 2020 21:25:33,393 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Optional.empty
+03 дек. 2020 11:51:40,446 [main] WARN  ru.sfedu.course_project.Main - arguments {method=getPresentationById, datatype=csv, id=fcca8e22-e755-43f2-a36e-799113dccc57}
+03 дек. 2020 11:51:40,452 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [method=getPresentationById, datatype=csv, id=fcca8e22-e755-43f2-a36e-799113dccc57]
+03 дек. 2020 11:51:40,454 [main] INFO  ru.sfedu.course_project.Main - Attempt to create csv data provider
+03 дек. 2020 11:51:40,463 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: csv
+03 дек. 2020 11:51:40,464 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: getPresentationById
+03 дек. 2020 11:51:40,611 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - com.opencsv.bean.CsvToBean@710b18a6
+03 дек. 2020 11:51:40,643 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Attempt to find presentation: fcca8e22-e755-43f2-a36e-799113dccc57
+03 дек. 2020 11:51:40,644 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Optional.empty
+03 дек. 2020 11:53:16,704 [main] WARN  ru.sfedu.course_project.Main - arguments {method=getPresentationById, datatype=csv, id=4989c027-3a73-4af2-b12f-cec4a6a0462a}
+03 дек. 2020 11:53:16,710 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [method=getPresentationById, datatype=csv, id=4989c027-3a73-4af2-b12f-cec4a6a0462a]
+03 дек. 2020 11:53:16,712 [main] INFO  ru.sfedu.course_project.Main - Attempt to create csv data provider
+03 дек. 2020 11:53:16,718 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: csv
+03 дек. 2020 11:53:16,719 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: getPresentationById
+03 дек. 2020 11:53:16,864 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - com.opencsv.bean.CsvToBean@315f43d5
+03 дек. 2020 11:53:16,921 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Attempt to find presentation: 4989c027-3a73-4af2-b12f-cec4a6a0462a
+03 дек. 2020 11:53:16,923 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Optional[Presentation{id=4989c027-3a73-4af2-b12f-cec4a6a0462a, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}]
+03 дек. 2020 12:09:51,554 [main] WARN  ru.sfedu.course_project.Main - arguments {method=getPresentationById, datatype=csv, id=4989c027-3a73-4af2-b12f-cec4a6a0462a}
+03 дек. 2020 12:09:51,559 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [method=getPresentationById, datatype=csv, id=4989c027-3a73-4af2-b12f-cec4a6a0462a]
+03 дек. 2020 12:09:51,562 [main] INFO  ru.sfedu.course_project.Main - Attempt to create csv data provider
+03 дек. 2020 12:09:51,567 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: csv
+03 дек. 2020 12:09:51,569 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: getPresentationById
+03 дек. 2020 12:09:51,752 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - com.opencsv.bean.CsvToBean@68fa0ba8
+03 дек. 2020 12:09:51,835 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Attempt to find presentation: 4989c027-3a73-4af2-b12f-cec4a6a0462a
+03 дек. 2020 12:09:51,836 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Optional[Presentation{id=4989c027-3a73-4af2-b12f-cec4a6a0462a, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}]
+03 дек. 2020 12:11:39,793 [main] WARN  ru.sfedu.course_project.Main - arguments {method=getPresentationById, datatype=csv, id=4989c027-3a73-4af2-b12f-cec4a6a0462a}
+03 дек. 2020 12:11:39,801 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [method=getPresentationById, datatype=csv, id=4989c027-3a73-4af2-b12f-cec4a6a0462a]
+03 дек. 2020 12:11:39,804 [main] INFO  ru.sfedu.course_project.Main - Attempt to create csv data provider
+03 дек. 2020 12:11:39,809 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: csv
+03 дек. 2020 12:11:39,811 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: getPresentationById
+03 дек. 2020 12:11:39,925 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - com.opencsv.bean.CsvToBean@315f43d5
+03 дек. 2020 12:11:39,955 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Attempt to find presentation: 4989c027-3a73-4af2-b12f-cec4a6a0462a
+03 дек. 2020 12:11:39,956 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Optional[Presentation{id=4989c027-3a73-4af2-b12f-cec4a6a0462a, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}]
+03 дек. 2020 12:12:14,120 [main] WARN  ru.sfedu.course_project.Main - arguments {method=getPresentationById, datatype=csv, id=4989c027-3a73-4af2-b12f-cec4a6a0462a}
+03 дек. 2020 12:12:14,125 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [method=getPresentationById, datatype=csv, id=4989c027-3a73-4af2-b12f-cec4a6a0462a]
+03 дек. 2020 12:12:14,127 [main] INFO  ru.sfedu.course_project.Main - Attempt to create csv data provider
+03 дек. 2020 12:12:14,131 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: csv
+03 дек. 2020 12:12:14,133 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: getPresentationById
+03 дек. 2020 12:12:14,253 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - com.opencsv.bean.CsvToBean@315f43d5
+03 дек. 2020 12:12:14,278 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Attempt to find presentation: 4989c027-3a73-4af2-b12f-cec4a6a0462a
+03 дек. 2020 12:12:14,279 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Optional[Presentation{id=4989c027-3a73-4af2-b12f-cec4a6a0462a, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}]
+03 дек. 2020 12:13:55,140 [main] WARN  ru.sfedu.course_project.Main - arguments {method=getPresentationById, datatype=csv, id=4989c027-3a73-4af2-b12f-cec4a6a0462a}
+03 дек. 2020 12:13:55,147 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [method=getPresentationById, datatype=csv, id=4989c027-3a73-4af2-b12f-cec4a6a0462a]
+03 дек. 2020 12:13:55,149 [main] INFO  ru.sfedu.course_project.Main - Attempt to create csv data provider
+03 дек. 2020 12:13:55,153 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: csv
+03 дек. 2020 12:13:55,155 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: getPresentationById
+03 дек. 2020 12:13:55,279 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - com.opencsv.bean.CsvToBean@315f43d5
+03 дек. 2020 12:13:55,306 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getAllPresentations] Result: [Presentation{id=4989c027-3a73-4af2-b12f-cec4a6a0462a, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}]
+03 дек. 2020 12:13:55,307 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Attempt to find presentation: 4989c027-3a73-4af2-b12f-cec4a6a0462a
+03 дек. 2020 12:13:55,308 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getPresentationById] Result: Presentation{id=4989c027-3a73-4af2-b12f-cec4a6a0462a, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}
+03 дек. 2020 12:14:17,834 [main] WARN  ru.sfedu.course_project.Main - arguments {method=getPresentationById, datatype=csv, id=4989c027-3a73-4af2-b12f-cec4a6a0462a}
+03 дек. 2020 12:14:17,843 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [method=getPresentationById, datatype=csv, id=4989c027-3a73-4af2-b12f-cec4a6a0462a]
+03 дек. 2020 12:14:17,845 [main] INFO  ru.sfedu.course_project.Main - Attempt to create csv data provider
+03 дек. 2020 12:14:17,851 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: csv
+03 дек. 2020 12:14:17,854 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: getPresentationById
+03 дек. 2020 12:14:17,970 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - com.opencsv.bean.CsvToBean@315f43d5
+03 дек. 2020 12:14:18,023 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - java.lang.RuntimeException: Error parsing CSV line: 2. []
+03 дек. 2020 12:14:18,024 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Attempt to find presentation: 4989c027-3a73-4af2-b12f-cec4a6a0462a
+03 дек. 2020 12:14:18,024 [main] ERROR ru.sfedu.course_project.tools.Runner - Runner Exception: unable to run method: getPresentationById
+03 дек. 2020 12:14:45,000 [main] WARN  ru.sfedu.course_project.Main - arguments {method=getPresentationById, datatype=csv, id=4989c027-3a73-4af2-b12f-cec4a6a0462a}
+03 дек. 2020 12:14:45,006 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [method=getPresentationById, datatype=csv, id=4989c027-3a73-4af2-b12f-cec4a6a0462a]
+03 дек. 2020 12:14:45,009 [main] INFO  ru.sfedu.course_project.Main - Attempt to create csv data provider
+03 дек. 2020 12:14:45,015 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: csv
+03 дек. 2020 12:14:45,017 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: getPresentationById
+03 дек. 2020 12:14:45,146 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - com.opencsv.bean.CsvToBean@315f43d5
+03 дек. 2020 12:14:45,164 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getAllPresentations] Result: []
+03 дек. 2020 12:14:45,165 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Attempt to find presentation: 4989c027-3a73-4af2-b12f-cec4a6a0462a
+03 дек. 2020 12:14:45,166 [main] ERROR ru.sfedu.course_project.tools.Runner - Runner Exception: unable to run method: getPresentationById
+03 дек. 2020 12:15:53,298 [main] WARN  ru.sfedu.course_project.Main - arguments {method=getPresentationById, datatype=csv, id=4989c027-3a73-4af2-b12f-cec4a6a0462a}
+03 дек. 2020 12:15:53,302 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [method=getPresentationById, datatype=csv, id=4989c027-3a73-4af2-b12f-cec4a6a0462a]
+03 дек. 2020 12:15:53,303 [main] INFO  ru.sfedu.course_project.Main - Attempt to create csv data provider
+03 дек. 2020 12:15:53,309 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: csv
+03 дек. 2020 12:15:53,310 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: getPresentationById
+03 дек. 2020 12:15:53,458 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Attempt to find presentation: 4989c027-3a73-4af2-b12f-cec4a6a0462a
+03 дек. 2020 12:18:18,697 [main] WARN  ru.sfedu.course_project.Main - arguments {method=getPresentationById, datatype=csv, id=4989c027-3a73-4af2-b12f-cec4a6a0462a}
+03 дек. 2020 12:18:18,704 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [method=getPresentationById, datatype=csv, id=4989c027-3a73-4af2-b12f-cec4a6a0462a]
+03 дек. 2020 12:18:18,707 [main] INFO  ru.sfedu.course_project.Main - Attempt to create csv data provider
+03 дек. 2020 12:18:18,713 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: csv
+03 дек. 2020 12:18:18,714 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: getPresentationById
+03 дек. 2020 12:18:18,873 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getAllPresentations] Result: []
+03 дек. 2020 12:18:18,874 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Attempt to find presentation: 4989c027-3a73-4af2-b12f-cec4a6a0462a
+03 дек. 2020 12:18:18,875 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - [getPresentationById] Unable to get presentation: 4989c027-3a73-4af2-b12f-cec4a6a0462a
