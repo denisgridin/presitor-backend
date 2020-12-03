@@ -51,7 +51,7 @@ public class DataProviderCSV implements DataProvider {
             List<Presentation> listPresentations = getAllPresentations();
             if (args.get("id") != null) {
                 String id = (String) args.get("id");
-                if (!validatePresentationId(id, listPresentations)) return null;
+                if (isPresentationIdInUse(id, listPresentations)) return null;
                 // TODO return Error;
             }
             Presentation presentation = new Presentation(args);
@@ -71,19 +71,19 @@ public class DataProviderCSV implements DataProvider {
         }
     }
 
-    public Boolean validatePresentationId (String id, List<Presentation> presentations) {
+    public Boolean isPresentationIdInUse (String id, List<Presentation> presentations) {
         try {
             UUID uuid = UUID.fromString(id);
             Optional presentation = presentations.stream().filter(el -> el.getId().equals(uuid)).findFirst();
             if (presentation.isPresent()) {
                 log.warn("[createPresentation] Provided presentation id is already in use: " + id);
-                return false;
+                return true;
             }
-            return true;
+            return false;
         } catch (RuntimeException e) {
             e.printStackTrace();
             log.error(e);
-            return false;
+            return null;
         }
     }
 

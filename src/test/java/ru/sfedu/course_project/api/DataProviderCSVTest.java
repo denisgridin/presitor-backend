@@ -45,6 +45,7 @@ public class DataProviderCSVTest extends TestBase {
 
     @Test
     void getAllPresentationsSuccess() {
+        System.out.println("getAllPresentationsSuccess");
         DataProviderCSV provider = new DataProviderCSV();
         List<Presentation> presentationList = provider.getAllPresentations();
         assertNotNull(presentationList);
@@ -52,5 +53,36 @@ public class DataProviderCSVTest extends TestBase {
 
     @Test
     void getAllPresentationsFail() {
+        System.out.println("getAllPresentationsFail");
+    }
+
+    @Test
+    void isPresentationIdInUseSuccess() {
+        System.out.println("isPresentationIdInUseSuccess");
+        DataProviderCSV provider = new DataProviderCSV();
+        List<Presentation> presentationList = provider.getAllPresentations();
+        if (presentationList.size() > 0) {
+            System.out.println("[validatePresentationIdSuccess] presentation data source is NOT empty");
+            Presentation presentation = presentationList.stream().findFirst().get();
+            System.out.println(presentationList.toString());
+            System.out.println(presentation.getId());
+            assertTrue(provider.isPresentationIdInUse(String.valueOf(presentation.getId()), presentationList));
+        } else {
+            HashMap args = new HashMap();
+            System.out.println("[validatePresentationIdSuccess] presentation data source is empty");
+            UUID id = provider.createPresentation(args);
+            List<Presentation> list = provider.getAllPresentations();
+            System.out.println(list);
+            System.out.println(id);
+            assertTrue(provider.isPresentationIdInUse(String.valueOf(id), list));
+        }
+    }
+
+    @Test
+    void isPresentationIdInUseFail() {
+        System.out.println("isPresentationIdInUseFail");
+        DataProviderCSV provider = new DataProviderCSV();
+        List<Presentation> presentationList = provider.getAllPresentations();
+        assertFalse(provider.isPresentationIdInUse(String.valueOf(UUID.randomUUID()), presentationList));
     }
 }
