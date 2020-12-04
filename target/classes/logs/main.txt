@@ -1046,3 +1046,782 @@
 03 дек. 2020 18:53:04,414 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getAllPresentations] Result: [Presentation{id=12209117-4009-45bc-a9bc-380aaa13f8ae, name='My presentation', slides=[], fillColor='#403add', fontFamily='Times New Roman', feedbacks=[]}, Presentation{id=fd127310-b301-49a6-998a-928d7889be53, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}, Presentation{id=fd127310-b301-49a6-998a-928d7889be53, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}, Presentation{id=224419a4-abc1-440f-9290-f5088c438c5c, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}, Presentation{id=224419a4-abc1-440f-9290-f5088c438c5c, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}]
 03 дек. 2020 18:53:04,422 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [writePresentationList] Presentation list was wrote
 03 дек. 2020 18:53:04,422 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [removePresentationById] Presentation was successfully removed: 12209117-4009-45bc-a9bc-380aaa13f8ae
+03 дек. 2020 18:54:31,601 [main] DEBUG ru.sfedu.course_project.bean.Presentation - Arguments was successfully validated
+03 дек. 2020 18:54:31,789 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getAllPresentations] Result: [Presentation{id=fd127310-b301-49a6-998a-928d7889be53, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}, Presentation{id=fd127310-b301-49a6-998a-928d7889be53, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}, Presentation{id=224419a4-abc1-440f-9290-f5088c438c5c, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}, Presentation{id=224419a4-abc1-440f-9290-f5088c438c5c, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}]
+03 дек. 2020 18:54:31,790 [main] DEBUG ru.sfedu.course_project.bean.Presentation - Arguments was successfully validated
+03 дек. 2020 18:54:31,813 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [writePresentationList] Presentation list was wrote
+03 дек. 2020 18:54:31,814 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - Presentation was successfully created: 8a6b54b4-e1ff-4c7d-b96e-68ec8c54781d
+03 дек. 2020 18:54:31,834 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getAllPresentations] Result: [Presentation{id=fd127310-b301-49a6-998a-928d7889be53, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}, Presentation{id=fd127310-b301-49a6-998a-928d7889be53, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}, Presentation{id=224419a4-abc1-440f-9290-f5088c438c5c, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}, Presentation{id=224419a4-abc1-440f-9290-f5088c438c5c, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}, Presentation{id=8a6b54b4-e1ff-4c7d-b96e-68ec8c54781d, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}]
+03 дек. 2020 18:54:31,835 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Attempt to find presentation: 8a6b54b4-e1ff-4c7d-b96e-68ec8c54781d
+03 дек. 2020 18:54:31,835 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getPresentationById] Result: Presentation{id=8a6b54b4-e1ff-4c7d-b96e-68ec8c54781d, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}
+03 дек. 2020 18:54:31,856 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getAllPresentations] Result: [Presentation{id=fd127310-b301-49a6-998a-928d7889be53, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}, Presentation{id=fd127310-b301-49a6-998a-928d7889be53, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}, Presentation{id=224419a4-abc1-440f-9290-f5088c438c5c, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}, Presentation{id=224419a4-abc1-440f-9290-f5088c438c5c, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}, Presentation{id=8a6b54b4-e1ff-4c7d-b96e-68ec8c54781d, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}]
+03 дек. 2020 18:54:31,867 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getAllPresentations] Result: [Presentation{id=fd127310-b301-49a6-998a-928d7889be53, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}, Presentation{id=fd127310-b301-49a6-998a-928d7889be53, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}, Presentation{id=224419a4-abc1-440f-9290-f5088c438c5c, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}, Presentation{id=224419a4-abc1-440f-9290-f5088c438c5c, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}, Presentation{id=8a6b54b4-e1ff-4c7d-b96e-68ec8c54781d, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}]
+03 дек. 2020 18:54:31,868 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Attempt to find presentation: 2c339ab2-8686-4766-993d-327fd5edcb9e
+03 дек. 2020 18:54:31,868 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - [getPresentationById] Unable to get presentation: 2c339ab2-8686-4766-993d-327fd5edcb9e
+03 дек. 2020 18:54:31,871 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - Unable to edit presentation options
+03 дек. 2020 18:54:31,883 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getAllPresentations] Result: [Presentation{id=fd127310-b301-49a6-998a-928d7889be53, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}, Presentation{id=fd127310-b301-49a6-998a-928d7889be53, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}, Presentation{id=224419a4-abc1-440f-9290-f5088c438c5c, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}, Presentation{id=224419a4-abc1-440f-9290-f5088c438c5c, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}, Presentation{id=8a6b54b4-e1ff-4c7d-b96e-68ec8c54781d, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}]
+03 дек. 2020 18:54:31,893 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getAllPresentations] Result: [Presentation{id=fd127310-b301-49a6-998a-928d7889be53, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}, Presentation{id=fd127310-b301-49a6-998a-928d7889be53, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}, Presentation{id=224419a4-abc1-440f-9290-f5088c438c5c, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}, Presentation{id=224419a4-abc1-440f-9290-f5088c438c5c, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}, Presentation{id=8a6b54b4-e1ff-4c7d-b96e-68ec8c54781d, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}]
+03 дек. 2020 18:54:31,895 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - [removePresentationById] Unable to find presentation with provided id: 9a42a898-24dd-421a-b910-77d38aa108b9
+03 дек. 2020 18:54:31,904 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getAllPresentations] Result: [Presentation{id=fd127310-b301-49a6-998a-928d7889be53, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}, Presentation{id=fd127310-b301-49a6-998a-928d7889be53, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}, Presentation{id=224419a4-abc1-440f-9290-f5088c438c5c, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}, Presentation{id=224419a4-abc1-440f-9290-f5088c438c5c, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}, Presentation{id=8a6b54b4-e1ff-4c7d-b96e-68ec8c54781d, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}]
+03 дек. 2020 18:54:31,904 [main] DEBUG ru.sfedu.course_project.bean.Presentation - Arguments was successfully validated
+03 дек. 2020 18:54:31,913 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [writePresentationList] Presentation list was wrote
+03 дек. 2020 18:54:31,913 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - Presentation was successfully created: 8a6b54b4-e1ff-4c7d-b96e-68ec8c54781d
+03 дек. 2020 18:54:31,929 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getAllPresentations] Result: [Presentation{id=fd127310-b301-49a6-998a-928d7889be53, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}, Presentation{id=fd127310-b301-49a6-998a-928d7889be53, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}, Presentation{id=224419a4-abc1-440f-9290-f5088c438c5c, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}, Presentation{id=224419a4-abc1-440f-9290-f5088c438c5c, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}, Presentation{id=8a6b54b4-e1ff-4c7d-b96e-68ec8c54781d, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}, Presentation{id=8a6b54b4-e1ff-4c7d-b96e-68ec8c54781d, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}]
+03 дек. 2020 18:54:31,929 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Attempt to find presentation: 8ea1a2f2-61ed-40a1-8b97-588dde96e7d0
+03 дек. 2020 18:54:31,929 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - [getPresentationById] Unable to get presentation: 8ea1a2f2-61ed-40a1-8b97-588dde96e7d0
+03 дек. 2020 18:54:31,947 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getAllPresentations] Result: [Presentation{id=fd127310-b301-49a6-998a-928d7889be53, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}, Presentation{id=fd127310-b301-49a6-998a-928d7889be53, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}, Presentation{id=224419a4-abc1-440f-9290-f5088c438c5c, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}, Presentation{id=224419a4-abc1-440f-9290-f5088c438c5c, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}, Presentation{id=8a6b54b4-e1ff-4c7d-b96e-68ec8c54781d, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}, Presentation{id=8a6b54b4-e1ff-4c7d-b96e-68ec8c54781d, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}]
+03 дек. 2020 18:54:31,949 [main] WARN  ru.sfedu.course_project.api.DataProviderCSV - [createPresentation] Provided presentation id is already in use: fd127310-b301-49a6-998a-928d7889be53
+03 дек. 2020 18:54:31,958 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getAllPresentations] Result: [Presentation{id=fd127310-b301-49a6-998a-928d7889be53, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}, Presentation{id=fd127310-b301-49a6-998a-928d7889be53, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}, Presentation{id=224419a4-abc1-440f-9290-f5088c438c5c, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}, Presentation{id=224419a4-abc1-440f-9290-f5088c438c5c, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}, Presentation{id=8a6b54b4-e1ff-4c7d-b96e-68ec8c54781d, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}, Presentation{id=8a6b54b4-e1ff-4c7d-b96e-68ec8c54781d, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}]
+03 дек. 2020 18:54:31,964 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getAllPresentations] Result: [Presentation{id=fd127310-b301-49a6-998a-928d7889be53, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}, Presentation{id=fd127310-b301-49a6-998a-928d7889be53, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}, Presentation{id=224419a4-abc1-440f-9290-f5088c438c5c, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}, Presentation{id=224419a4-abc1-440f-9290-f5088c438c5c, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}, Presentation{id=8a6b54b4-e1ff-4c7d-b96e-68ec8c54781d, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}, Presentation{id=8a6b54b4-e1ff-4c7d-b96e-68ec8c54781d, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}]
+03 дек. 2020 18:54:31,970 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getAllPresentations] Result: [Presentation{id=fd127310-b301-49a6-998a-928d7889be53, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}, Presentation{id=fd127310-b301-49a6-998a-928d7889be53, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}, Presentation{id=224419a4-abc1-440f-9290-f5088c438c5c, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}, Presentation{id=224419a4-abc1-440f-9290-f5088c438c5c, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}, Presentation{id=8a6b54b4-e1ff-4c7d-b96e-68ec8c54781d, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}, Presentation{id=8a6b54b4-e1ff-4c7d-b96e-68ec8c54781d, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}]
+03 дек. 2020 18:54:31,971 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Attempt to find presentation: fd127310-b301-49a6-998a-928d7889be53
+03 дек. 2020 18:54:31,971 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getPresentationById] Result: Presentation{id=fd127310-b301-49a6-998a-928d7889be53, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}
+03 дек. 2020 18:54:31,979 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [writePresentationList] Presentation list was wrote
+03 дек. 2020 18:54:31,980 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [editPresentationOptions] Presentation options was successfully updated: fd127310-b301-49a6-998a-928d7889be53
+03 дек. 2020 18:54:31,997 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getAllPresentations] Result: [Presentation{id=fd127310-b301-49a6-998a-928d7889be53, name='My presentation', slides=[], fillColor='#403add', fontFamily='Times New Roman', feedbacks=[]}, Presentation{id=fd127310-b301-49a6-998a-928d7889be53, name='My presentation', slides=[], fillColor='#403add', fontFamily='Times New Roman', feedbacks=[]}, Presentation{id=224419a4-abc1-440f-9290-f5088c438c5c, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}, Presentation{id=224419a4-abc1-440f-9290-f5088c438c5c, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}, Presentation{id=8a6b54b4-e1ff-4c7d-b96e-68ec8c54781d, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}, Presentation{id=8a6b54b4-e1ff-4c7d-b96e-68ec8c54781d, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}]
+03 дек. 2020 18:54:32,006 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getAllPresentations] Result: [Presentation{id=fd127310-b301-49a6-998a-928d7889be53, name='My presentation', slides=[], fillColor='#403add', fontFamily='Times New Roman', feedbacks=[]}, Presentation{id=fd127310-b301-49a6-998a-928d7889be53, name='My presentation', slides=[], fillColor='#403add', fontFamily='Times New Roman', feedbacks=[]}, Presentation{id=224419a4-abc1-440f-9290-f5088c438c5c, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}, Presentation{id=224419a4-abc1-440f-9290-f5088c438c5c, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}, Presentation{id=8a6b54b4-e1ff-4c7d-b96e-68ec8c54781d, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}, Presentation{id=8a6b54b4-e1ff-4c7d-b96e-68ec8c54781d, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}]
+03 дек. 2020 18:54:32,013 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getAllPresentations] Result: [Presentation{id=fd127310-b301-49a6-998a-928d7889be53, name='My presentation', slides=[], fillColor='#403add', fontFamily='Times New Roman', feedbacks=[]}, Presentation{id=fd127310-b301-49a6-998a-928d7889be53, name='My presentation', slides=[], fillColor='#403add', fontFamily='Times New Roman', feedbacks=[]}, Presentation{id=224419a4-abc1-440f-9290-f5088c438c5c, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}, Presentation{id=224419a4-abc1-440f-9290-f5088c438c5c, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}, Presentation{id=8a6b54b4-e1ff-4c7d-b96e-68ec8c54781d, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}, Presentation{id=8a6b54b4-e1ff-4c7d-b96e-68ec8c54781d, name='New presentation', slides=[], fillColor='#ffffff', fontFamily='Roboto', feedbacks=[]}]
+03 дек. 2020 18:54:32,020 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [writePresentationList] Presentation list was wrote
+03 дек. 2020 18:54:32,021 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [removePresentationById] Presentation was successfully removed: fd127310-b301-49a6-998a-928d7889be53
+03 дек. 2020 19:19:32,510 [main] DEBUG ru.sfedu.course_project.bean.Presentation - Arguments was successfully validated
+03 дек. 2020 19:19:32,639 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getAllPresentations] Result: []
+03 дек. 2020 19:19:32,640 [main] DEBUG ru.sfedu.course_project.bean.Presentation - Arguments was successfully validated
+03 дек. 2020 19:19:32,675 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [writePresentationList] Presentation list was wrote
+03 дек. 2020 19:19:32,675 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - Presentation was successfully created: 40cf4920-86e3-4f92-bf64-5919e9f2ff20
+03 дек. 2020 19:19:32,698 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getAllPresentations] Result: [Presentation{id=40cf4920-86e3-4f92-bf64-5919e9f2ff20, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}]
+03 дек. 2020 19:19:32,699 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Attempt to find presentation: 40cf4920-86e3-4f92-bf64-5919e9f2ff20
+03 дек. 2020 19:19:32,699 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getPresentationById] Result: Presentation{id=40cf4920-86e3-4f92-bf64-5919e9f2ff20, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}
+03 дек. 2020 19:19:57,669 [main] DEBUG ru.sfedu.course_project.bean.Presentation - Arguments was successfully validated
+03 дек. 2020 19:19:57,871 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getAllPresentations] Result: [Presentation{id=40cf4920-86e3-4f92-bf64-5919e9f2ff20, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}]
+03 дек. 2020 19:19:57,871 [main] DEBUG ru.sfedu.course_project.bean.Presentation - Arguments was successfully validated
+03 дек. 2020 19:19:57,890 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [writePresentationList] Presentation list was wrote
+03 дек. 2020 19:19:57,891 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - Presentation was successfully created: dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d
+03 дек. 2020 19:19:57,916 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getAllPresentations] Result: [Presentation{id=40cf4920-86e3-4f92-bf64-5919e9f2ff20, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}, Presentation{id=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}]
+03 дек. 2020 19:19:57,916 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Attempt to find presentation: dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d
+03 дек. 2020 19:19:57,917 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getPresentationById] Result: Presentation{id=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}
+03 дек. 2020 19:19:57,937 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getAllPresentations] Result: [Presentation{id=40cf4920-86e3-4f92-bf64-5919e9f2ff20, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}, Presentation{id=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}]
+03 дек. 2020 19:19:57,947 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getAllPresentations] Result: [Presentation{id=40cf4920-86e3-4f92-bf64-5919e9f2ff20, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}, Presentation{id=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}]
+03 дек. 2020 19:19:57,947 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Attempt to find presentation: 60d760b3-42e6-4931-ae5b-cdc2c24f08de
+03 дек. 2020 19:19:57,947 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - [getPresentationById] Unable to get presentation: 60d760b3-42e6-4931-ae5b-cdc2c24f08de
+03 дек. 2020 19:19:57,962 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - Unable to edit presentation options
+03 дек. 2020 19:19:57,978 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getAllPresentations] Result: [Presentation{id=40cf4920-86e3-4f92-bf64-5919e9f2ff20, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}, Presentation{id=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}]
+03 дек. 2020 19:19:57,988 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getAllPresentations] Result: [Presentation{id=40cf4920-86e3-4f92-bf64-5919e9f2ff20, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}, Presentation{id=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}]
+03 дек. 2020 19:19:57,989 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - [removePresentationById] Unable to find presentation with provided id: 38f29608-7122-4299-9df5-eb51d76519b9
+03 дек. 2020 19:19:57,999 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getAllPresentations] Result: [Presentation{id=40cf4920-86e3-4f92-bf64-5919e9f2ff20, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}, Presentation{id=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}]
+03 дек. 2020 19:19:57,999 [main] DEBUG ru.sfedu.course_project.bean.Presentation - Arguments was successfully validated
+03 дек. 2020 19:19:58,007 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [writePresentationList] Presentation list was wrote
+03 дек. 2020 19:19:58,007 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - Presentation was successfully created: dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d
+03 дек. 2020 19:19:58,025 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getAllPresentations] Result: [Presentation{id=40cf4920-86e3-4f92-bf64-5919e9f2ff20, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}, Presentation{id=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}, Presentation{id=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}]
+03 дек. 2020 19:19:58,025 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Attempt to find presentation: 545ff4c9-9e54-49dd-82dd-8793667346eb
+03 дек. 2020 19:19:58,026 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - [getPresentationById] Unable to get presentation: 545ff4c9-9e54-49dd-82dd-8793667346eb
+03 дек. 2020 19:19:58,052 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getAllPresentations] Result: [Presentation{id=40cf4920-86e3-4f92-bf64-5919e9f2ff20, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}, Presentation{id=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}, Presentation{id=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}]
+03 дек. 2020 19:19:58,054 [main] WARN  ru.sfedu.course_project.api.DataProviderCSV - [createPresentation] Provided presentation id is already in use: 40cf4920-86e3-4f92-bf64-5919e9f2ff20
+03 дек. 2020 19:19:58,073 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getAllPresentations] Result: [Presentation{id=40cf4920-86e3-4f92-bf64-5919e9f2ff20, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}, Presentation{id=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}, Presentation{id=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}]
+03 дек. 2020 19:19:58,082 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getAllPresentations] Result: [Presentation{id=40cf4920-86e3-4f92-bf64-5919e9f2ff20, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}, Presentation{id=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}, Presentation{id=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}]
+03 дек. 2020 19:19:58,088 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getAllPresentations] Result: [Presentation{id=40cf4920-86e3-4f92-bf64-5919e9f2ff20, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}, Presentation{id=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}, Presentation{id=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}]
+03 дек. 2020 19:19:58,089 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Attempt to find presentation: 40cf4920-86e3-4f92-bf64-5919e9f2ff20
+03 дек. 2020 19:19:58,089 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getPresentationById] Result: Presentation{id=40cf4920-86e3-4f92-bf64-5919e9f2ff20, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}
+03 дек. 2020 19:19:58,096 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [writePresentationList] Presentation list was wrote
+03 дек. 2020 19:19:58,097 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [editPresentationOptions] Presentation options was successfully updated: 40cf4920-86e3-4f92-bf64-5919e9f2ff20
+03 дек. 2020 19:19:58,118 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getAllPresentations] Result: [Presentation{id=40cf4920-86e3-4f92-bf64-5919e9f2ff20, name='My presentation', fillColor='#403add', fontFamily='Times New Roman'}, Presentation{id=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}, Presentation{id=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}]
+03 дек. 2020 19:19:58,129 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getAllPresentations] Result: [Presentation{id=40cf4920-86e3-4f92-bf64-5919e9f2ff20, name='My presentation', fillColor='#403add', fontFamily='Times New Roman'}, Presentation{id=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}, Presentation{id=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}]
+03 дек. 2020 19:19:58,138 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getAllPresentations] Result: [Presentation{id=40cf4920-86e3-4f92-bf64-5919e9f2ff20, name='My presentation', fillColor='#403add', fontFamily='Times New Roman'}, Presentation{id=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}, Presentation{id=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}]
+03 дек. 2020 19:19:58,145 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [writePresentationList] Presentation list was wrote
+03 дек. 2020 19:19:58,146 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [removePresentationById] Presentation was successfully removed: 40cf4920-86e3-4f92-bf64-5919e9f2ff20
+03 дек. 2020 19:39:26,746 [main] ERROR ru.sfedu.course_project.Main - One or more command line parameters was not provided: role, method, datatype!
+03 дек. 2020 19:40:09,515 [main] WARN  ru.sfedu.course_project.Main - arguments {role=editor, method=initDataSource, datatype=csv}
+03 дек. 2020 19:40:09,523 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [role=editor, method=initDataSource, datatype=csv]
+03 дек. 2020 19:40:09,526 [main] INFO  ru.sfedu.course_project.Main - Attempt to create csv data provider
+03 дек. 2020 19:40:09,532 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: csv
+03 дек. 2020 19:40:09,534 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: initDataSource
+03 дек. 2020 19:40:09,534 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+03 дек. 2020 19:40:09,535 [main] ERROR ru.sfedu.course_project.tools.Runner - Runner Exception: unable to run method: initDataSource
+03 дек. 2020 19:43:05,270 [main] INFO  ru.sfedu.course_project.Main - Attempt to create csv data provider
+03 дек. 2020 19:43:05,282 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: csv
+03 дек. 2020 20:37:51,122 [main] WARN  ru.sfedu.course_project.Main - arguments {presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv}
+03 дек. 2020 20:37:51,130 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv]
+03 дек. 2020 20:37:51,133 [main] INFO  ru.sfedu.course_project.Main - Attempt to create csv data provider
+03 дек. 2020 20:37:51,140 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: csv
+03 дек. 2020 20:37:51,143 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: createPresentationSlide
+03 дек. 2020 20:37:51,144 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+03 дек. 2020 20:37:51,146 [main] ERROR ru.sfedu.course_project.tools.Runner - Runner Exception: unable to run method: createPresentationSlide
+03 дек. 2020 20:38:29,500 [main] WARN  ru.sfedu.course_project.Main - arguments {presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv}
+03 дек. 2020 20:38:29,512 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv]
+03 дек. 2020 20:38:29,515 [main] INFO  ru.sfedu.course_project.Main - Attempt to create csv data provider
+03 дек. 2020 20:38:29,521 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: csv
+03 дек. 2020 20:38:29,524 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: createPresentationSlide
+03 дек. 2020 20:38:29,525 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+03 дек. 2020 20:38:29,529 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - [getPresentationSlides] Unable to get presentation slides
+03 дек. 2020 20:38:29,531 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - [createPresentationSlide] Unable to create slide
+03 дек. 2020 20:44:42,609 [main] WARN  ru.sfedu.course_project.Main - arguments {presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv}
+03 дек. 2020 20:44:42,617 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv]
+03 дек. 2020 20:44:42,619 [main] INFO  ru.sfedu.course_project.Main - Attempt to create csv data provider
+03 дек. 2020 20:44:42,625 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: csv
+03 дек. 2020 20:44:42,627 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: createPresentationSlide
+03 дек. 2020 20:44:42,628 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+03 дек. 2020 20:44:42,631 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - [getPresentationSlides] Unable to get slides data source
+03 дек. 2020 20:44:42,641 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [writeSlidesList] Attempt to write slides list
+03 дек. 2020 20:46:10,359 [main] WARN  ru.sfedu.course_project.Main - arguments {presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv}
+03 дек. 2020 20:46:10,367 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv]
+03 дек. 2020 20:46:10,370 [main] INFO  ru.sfedu.course_project.Main - Attempt to create csv data provider
+03 дек. 2020 20:46:10,377 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: csv
+03 дек. 2020 20:46:10,380 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: createPresentationSlide
+03 дек. 2020 20:46:10,381 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+03 дек. 2020 20:46:10,385 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - [getPresentationSlides] Unable to get slides data source
+03 дек. 2020 20:46:10,388 [main] ERROR ru.sfedu.course_project.bean.Slide - [validateArguments] Some of required arguments are provided: index, presentationId
+03 дек. 2020 20:46:10,508 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [writeSlidesList] Attempt to write slides list
+03 дек. 2020 20:47:52,755 [main] WARN  ru.sfedu.course_project.Main - arguments {presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv}
+03 дек. 2020 20:47:52,761 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv]
+03 дек. 2020 20:47:52,763 [main] INFO  ru.sfedu.course_project.Main - Attempt to create csv data provider
+03 дек. 2020 20:47:52,768 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: csv
+03 дек. 2020 20:47:52,770 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: createPresentationSlide
+03 дек. 2020 20:47:52,771 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+03 дек. 2020 20:47:52,774 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - [getPresentationSlides] Unable to get slides data source
+03 дек. 2020 20:47:53,102 [main] ERROR ru.sfedu.course_project.bean.Slide - [validateArguments] Unable to validate Slide arguments
+03 дек. 2020 20:47:53,114 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [writeSlidesList] Attempt to write slides list
+03 дек. 2020 20:49:10,191 [main] WARN  ru.sfedu.course_project.Main - arguments {presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv}
+03 дек. 2020 20:49:10,201 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv]
+03 дек. 2020 20:49:10,203 [main] INFO  ru.sfedu.course_project.Main - Attempt to create csv data provider
+03 дек. 2020 20:49:10,215 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: csv
+03 дек. 2020 20:49:10,217 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: createPresentationSlide
+03 дек. 2020 20:49:10,218 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+03 дек. 2020 20:49:10,223 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - [getPresentationSlides] Unable to get slides data source
+03 дек. 2020 20:49:10,528 [main] ERROR ru.sfedu.course_project.bean.Slide - [validateArguments] Unable to validate Slide arguments
+03 дек. 2020 20:49:10,542 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [createPresentationSlide] Create slide: Slide{id=null, name='null', index=0, presentationId=null}
+03 дек. 2020 20:49:10,542 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [createPresentationSlide] For presentation: null
+03 дек. 2020 20:49:10,553 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [writeSlidesList] Attempt to write slides list
+03 дек. 2020 20:50:24,527 [main] WARN  ru.sfedu.course_project.Main - arguments {presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv}
+03 дек. 2020 20:50:24,537 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv]
+03 дек. 2020 20:50:24,539 [main] INFO  ru.sfedu.course_project.Main - Attempt to create csv data provider
+03 дек. 2020 20:50:24,545 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: csv
+03 дек. 2020 20:50:24,548 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: createPresentationSlide
+03 дек. 2020 20:50:24,548 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+03 дек. 2020 20:50:24,553 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - [getPresentationSlides] Unable to get slides data source
+03 дек. 2020 20:50:24,896 [main] ERROR ru.sfedu.course_project.bean.Slide - java.lang.NullPointerException
+03 дек. 2020 20:50:24,896 [main] ERROR ru.sfedu.course_project.bean.Slide - [validateArguments] Unable to validate Slide arguments
+03 дек. 2020 20:50:24,907 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [createPresentationSlide] Create slide: Slide{id=null, name='null', index=0, presentationId=null}
+03 дек. 2020 20:50:24,908 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [createPresentationSlide] For presentation: null
+03 дек. 2020 20:50:24,917 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [writeSlidesList] Attempt to write slides list
+03 дек. 2020 20:54:38,863 [main] WARN  ru.sfedu.course_project.Main - arguments {presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv}
+03 дек. 2020 20:54:38,871 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv]
+03 дек. 2020 20:54:38,874 [main] INFO  ru.sfedu.course_project.Main - Attempt to create csv data provider
+03 дек. 2020 20:54:38,882 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: csv
+03 дек. 2020 20:54:38,884 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: createPresentationSlide
+03 дек. 2020 20:54:38,884 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+03 дек. 2020 20:54:38,885 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - [createPresentationSlide] Some of required arguments are provided: index, presentationId
+03 дек. 2020 20:56:58,315 [main] WARN  ru.sfedu.course_project.Main - arguments {presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv}
+03 дек. 2020 20:56:58,321 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv]
+03 дек. 2020 20:56:58,323 [main] INFO  ru.sfedu.course_project.Main - Attempt to create csv data provider
+03 дек. 2020 20:56:58,328 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: csv
+03 дек. 2020 20:56:58,330 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: createPresentationSlide
+03 дек. 2020 20:56:58,331 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+03 дек. 2020 20:56:58,334 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv]
+03 дек. 2020 20:56:58,495 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - [getPresentationSlides] Unable to get presentation slides
+03 дек. 2020 20:56:58,495 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - [createPresentationSlide] Unable to create slide
+03 дек. 2020 20:59:08,527 [main] WARN  ru.sfedu.course_project.Main - arguments {presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv}
+03 дек. 2020 20:59:08,533 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv]
+03 дек. 2020 20:59:08,535 [main] INFO  ru.sfedu.course_project.Main - Attempt to create csv data provider
+03 дек. 2020 20:59:08,541 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: csv
+03 дек. 2020 20:59:08,543 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: createPresentationSlide
+03 дек. 2020 20:59:08,544 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+03 дек. 2020 20:59:08,545 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv]
+03 дек. 2020 20:59:08,695 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - [getPresentationSlides] Unable to get presentation slides
+03 дек. 2020 20:59:08,695 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - [createPresentationSlide] Unable to create slide
+03 дек. 2020 21:00:14,835 [main] WARN  ru.sfedu.course_project.Main - arguments {presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv}
+03 дек. 2020 21:00:14,841 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv]
+03 дек. 2020 21:00:14,843 [main] INFO  ru.sfedu.course_project.Main - Attempt to create csv data provider
+03 дек. 2020 21:00:14,851 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: csv
+03 дек. 2020 21:00:14,854 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: createPresentationSlide
+03 дек. 2020 21:00:14,854 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+03 дек. 2020 21:00:14,856 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv]
+03 дек. 2020 21:00:15,042 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - [getPresentationSlides] Unable to get presentation slides
+03 дек. 2020 21:00:15,042 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - [createPresentationSlide] Unable to create slide
+03 дек. 2020 21:01:15,621 [main] WARN  ru.sfedu.course_project.Main - arguments {presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv}
+03 дек. 2020 21:01:15,626 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv]
+03 дек. 2020 21:01:15,628 [main] INFO  ru.sfedu.course_project.Main - Attempt to create csv data provider
+03 дек. 2020 21:01:15,633 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: csv
+03 дек. 2020 21:01:15,635 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: createPresentationSlide
+03 дек. 2020 21:01:15,635 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+03 дек. 2020 21:01:15,636 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv]
+03 дек. 2020 21:01:15,824 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - java.lang.RuntimeException: Error parsing CSV.
+03 дек. 2020 21:01:15,824 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - [getPresentationSlides] Unable to get presentation slides
+03 дек. 2020 21:01:15,825 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - java.lang.NullPointerException
+03 дек. 2020 21:01:15,825 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - [createPresentationSlide] Unable to create slide
+03 дек. 2020 21:01:41,199 [main] WARN  ru.sfedu.course_project.Main - arguments {presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv}
+03 дек. 2020 21:01:41,205 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv]
+03 дек. 2020 21:01:41,206 [main] INFO  ru.sfedu.course_project.Main - Attempt to create csv data provider
+03 дек. 2020 21:01:41,212 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: csv
+03 дек. 2020 21:01:41,216 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: createPresentationSlide
+03 дек. 2020 21:01:41,217 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+03 дек. 2020 21:01:41,218 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv]
+03 дек. 2020 21:01:41,370 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - java.lang.RuntimeException: Error parsing CSV.
+03 дек. 2020 21:01:41,370 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - [getPresentationSlides] Unable to get presentation slides
+03 дек. 2020 21:01:41,371 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - java.lang.NullPointerException
+03 дек. 2020 21:01:41,372 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - [createPresentationSlide] Unable to create slide
+03 дек. 2020 21:03:44,003 [main] WARN  ru.sfedu.course_project.Main - arguments {presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv}
+03 дек. 2020 21:03:44,012 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv]
+03 дек. 2020 21:03:44,015 [main] INFO  ru.sfedu.course_project.Main - Attempt to create csv data provider
+03 дек. 2020 21:03:44,023 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: csv
+03 дек. 2020 21:03:44,025 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: createPresentationSlide
+03 дек. 2020 21:03:44,026 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+03 дек. 2020 21:03:44,027 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv]
+03 дек. 2020 21:03:44,183 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - java.lang.RuntimeException: Error parsing CSV.
+03 дек. 2020 21:03:44,184 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - [getPresentationSlides] Unable to get presentation slides
+03 дек. 2020 21:03:44,184 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - java.lang.NullPointerException
+03 дек. 2020 21:03:44,184 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - [createPresentationSlide] Unable to create slide
+03 дек. 2020 21:04:47,245 [main] WARN  ru.sfedu.course_project.Main - arguments {presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv}
+03 дек. 2020 21:04:47,256 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv]
+03 дек. 2020 21:04:47,260 [main] INFO  ru.sfedu.course_project.Main - Attempt to create csv data provider
+03 дек. 2020 21:04:47,268 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: csv
+03 дек. 2020 21:04:47,270 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: createPresentationSlide
+03 дек. 2020 21:04:47,272 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+03 дек. 2020 21:04:47,274 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv]
+03 дек. 2020 21:04:47,428 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - java.lang.RuntimeException: Error parsing CSV.
+03 дек. 2020 21:04:47,429 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - [getPresentationSlides] Unable to get presentation slides
+03 дек. 2020 21:04:47,429 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - java.lang.NullPointerException
+03 дек. 2020 21:04:47,429 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - [createPresentationSlide] Unable to create slide
+03 дек. 2020 21:07:22,697 [main] WARN  ru.sfedu.course_project.Main - arguments {presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv}
+03 дек. 2020 21:07:22,707 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv]
+03 дек. 2020 21:07:22,710 [main] INFO  ru.sfedu.course_project.Main - Attempt to create csv data provider
+03 дек. 2020 21:07:22,721 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: csv
+03 дек. 2020 21:07:22,729 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: createPresentationSlide
+03 дек. 2020 21:07:22,730 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+03 дек. 2020 21:07:22,731 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv]
+03 дек. 2020 21:07:22,898 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - java.lang.RuntimeException: Error parsing CSV.
+03 дек. 2020 21:07:22,898 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - [getPresentationSlides] Unable to get presentation slides
+03 дек. 2020 21:07:22,899 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - java.lang.NullPointerException
+03 дек. 2020 21:07:22,899 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - [createPresentationSlide] Unable to create slide
+03 дек. 2020 21:07:48,382 [main] WARN  ru.sfedu.course_project.Main - arguments {presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv}
+03 дек. 2020 21:07:48,389 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv]
+03 дек. 2020 21:07:48,392 [main] INFO  ru.sfedu.course_project.Main - Attempt to create csv data provider
+03 дек. 2020 21:07:48,397 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: csv
+03 дек. 2020 21:07:48,399 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: createPresentationSlide
+03 дек. 2020 21:07:48,400 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+03 дек. 2020 21:07:48,401 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv]
+03 дек. 2020 21:07:48,405 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - [getPresentationSlides] Unable to get slides data source
+03 дек. 2020 21:07:48,742 [main] INFO  ru.sfedu.course_project.bean.Slide - [validateArguments] Default slide options: [name=Slide, id=d271234d-5a34-400a-812c-3662d998448a]
+03 дек. 2020 21:07:48,742 [main] ERROR ru.sfedu.course_project.bean.Slide - java.lang.NullPointerException
+03 дек. 2020 21:07:48,742 [main] ERROR ru.sfedu.course_project.bean.Slide - [validateArguments] Unable to validate Slide arguments
+03 дек. 2020 21:07:48,755 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [createPresentationSlide] Create slide: Slide{id=null, name='null', index=0, presentationId=null}
+03 дек. 2020 21:07:48,755 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [createPresentationSlide] For presentation: null
+03 дек. 2020 21:07:48,766 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [writeSlidesList] Attempt to write slides list
+03 дек. 2020 21:08:12,384 [main] WARN  ru.sfedu.course_project.Main - arguments {presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv}
+03 дек. 2020 21:08:12,391 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv]
+03 дек. 2020 21:08:12,393 [main] INFO  ru.sfedu.course_project.Main - Attempt to create csv data provider
+03 дек. 2020 21:08:12,401 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: csv
+03 дек. 2020 21:08:12,403 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: createPresentationSlide
+03 дек. 2020 21:08:12,403 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+03 дек. 2020 21:08:12,404 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv]
+03 дек. 2020 21:08:12,541 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - java.lang.RuntimeException: Error parsing CSV.
+03 дек. 2020 21:08:12,541 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - [getPresentationSlides] Unable to get presentation slides
+03 дек. 2020 21:08:12,542 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - java.lang.NullPointerException
+03 дек. 2020 21:08:12,542 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - [createPresentationSlide] Unable to create slide
+03 дек. 2020 21:10:39,205 [main] WARN  ru.sfedu.course_project.Main - arguments {presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv}
+03 дек. 2020 21:10:39,211 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv]
+03 дек. 2020 21:10:39,213 [main] INFO  ru.sfedu.course_project.Main - Attempt to create csv data provider
+03 дек. 2020 21:10:39,218 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: csv
+03 дек. 2020 21:10:39,220 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: createPresentationSlide
+03 дек. 2020 21:10:39,221 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+03 дек. 2020 21:10:39,222 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv]
+03 дек. 2020 21:10:39,225 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - [getPresentationSlides] Unable to get slides data source
+03 дек. 2020 21:10:39,228 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - java.lang.NullPointerException
+03 дек. 2020 21:10:39,230 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - [createPresentationSlide] Unable to create slide
+03 дек. 2020 21:11:31,273 [main] WARN  ru.sfedu.course_project.Main - arguments {presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv}
+03 дек. 2020 21:11:31,282 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv]
+03 дек. 2020 21:11:31,283 [main] INFO  ru.sfedu.course_project.Main - Attempt to create csv data provider
+03 дек. 2020 21:11:31,289 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: csv
+03 дек. 2020 21:11:31,291 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: createPresentationSlide
+03 дек. 2020 21:11:31,292 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+03 дек. 2020 21:11:31,293 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv]
+03 дек. 2020 21:11:31,296 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - [getPresentationSlides] Unable to get slides data source
+03 дек. 2020 21:11:31,297 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - java.lang.NullPointerException
+03 дек. 2020 21:11:31,297 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - [createPresentationSlide] Unable to create slide
+03 дек. 2020 21:12:31,860 [main] WARN  ru.sfedu.course_project.Main - arguments {presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv}
+03 дек. 2020 21:12:31,865 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv]
+03 дек. 2020 21:12:31,868 [main] INFO  ru.sfedu.course_project.Main - Attempt to create csv data provider
+03 дек. 2020 21:12:31,874 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: csv
+03 дек. 2020 21:12:31,875 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: createPresentationSlide
+03 дек. 2020 21:12:31,876 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+03 дек. 2020 21:12:31,877 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv]
+03 дек. 2020 21:12:31,880 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - [getPresentationSlides] Unable to get slides data source
+03 дек. 2020 21:12:32,196 [main] INFO  ru.sfedu.course_project.bean.Slide - [validateArguments] Default slide options: [name=Slide, id=2075e581-9f31-4342-a7a8-4ae0be78c6ae]
+03 дек. 2020 21:12:32,196 [main] ERROR ru.sfedu.course_project.bean.Slide - java.lang.NullPointerException
+03 дек. 2020 21:12:32,196 [main] ERROR ru.sfedu.course_project.bean.Slide - [validateArguments] Unable to validate Slide arguments
+03 дек. 2020 21:12:32,210 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [createPresentationSlide] Create slide: Slide{id=null, name='null', index=0, presentationId=null}
+03 дек. 2020 21:12:32,211 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [createPresentationSlide] For presentation: null
+03 дек. 2020 21:12:32,222 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [writeSlidesList] Attempt to write slides list
+03 дек. 2020 21:15:37,408 [main] WARN  ru.sfedu.course_project.Main - arguments {presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv}
+03 дек. 2020 21:15:37,416 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv]
+03 дек. 2020 21:15:37,417 [main] INFO  ru.sfedu.course_project.Main - Attempt to create csv data provider
+03 дек. 2020 21:15:37,423 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: csv
+03 дек. 2020 21:15:37,425 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: createPresentationSlide
+03 дек. 2020 21:15:37,425 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+03 дек. 2020 21:15:37,426 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv]
+03 дек. 2020 21:15:37,570 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - java.lang.RuntimeException: Error parsing CSV.
+03 дек. 2020 21:15:37,571 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - [getPresentationSlides] Unable to get presentation slides
+03 дек. 2020 21:15:37,571 [main] INFO  ru.sfedu.course_project.bean.Slide - [validateArguments] Arguments: [presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv, index=0]
+03 дек. 2020 21:15:37,904 [main] INFO  ru.sfedu.course_project.bean.Slide - [validateArguments] Default slide options: [name=Slide, id=97e81d5d-0a04-428d-91c0-e156cacbbe2f]
+03 дек. 2020 21:15:37,905 [main] ERROR ru.sfedu.course_project.bean.Slide - java.lang.NullPointerException
+03 дек. 2020 21:15:37,905 [main] ERROR ru.sfedu.course_project.bean.Slide - [validateArguments] Unable to validate Slide arguments
+03 дек. 2020 21:15:37,919 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [createPresentationSlide] Create slide: Slide{id=null, name='null', index=0, presentationId=null}
+03 дек. 2020 21:15:37,919 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [createPresentationSlide] For presentation: null
+03 дек. 2020 21:15:37,923 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [writeSlidesList] Attempt to write slides list
+03 дек. 2020 21:18:18,572 [main] WARN  ru.sfedu.course_project.Main - arguments {presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv}
+03 дек. 2020 21:18:18,580 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv]
+03 дек. 2020 21:18:18,582 [main] INFO  ru.sfedu.course_project.Main - Attempt to create csv data provider
+03 дек. 2020 21:18:18,588 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: csv
+03 дек. 2020 21:18:18,590 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: createPresentationSlide
+03 дек. 2020 21:18:18,591 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+03 дек. 2020 21:18:18,592 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv]
+03 дек. 2020 21:18:18,735 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - java.lang.RuntimeException: Error parsing CSV.
+03 дек. 2020 21:18:18,736 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - [getPresentationSlides] Unable to get presentation slides
+03 дек. 2020 21:18:18,736 [main] INFO  ru.sfedu.course_project.bean.Slide - [validateArguments] Arguments: [presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv, index=0]
+03 дек. 2020 21:18:19,077 [main] INFO  ru.sfedu.course_project.bean.Slide - [validateArguments] Default slide options: [name=Slide, id=92a3aebb-eba9-4c2d-89d3-feaece7ff17c]
+03 дек. 2020 21:18:19,077 [main] ERROR ru.sfedu.course_project.bean.Slide - java.lang.ClassCastException: class java.util.UUID cannot be cast to class java.lang.String (java.util.UUID and java.lang.String are in module java.base of loader 'bootstrap')
+03 дек. 2020 21:18:19,077 [main] ERROR ru.sfedu.course_project.bean.Slide - [validateArguments] Unable to validate Slide arguments
+03 дек. 2020 21:18:19,090 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [createPresentationSlide] Create slide: Slide{id=null, name='null', index=0, presentationId=null}
+03 дек. 2020 21:18:19,090 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [createPresentationSlide] For presentation: null
+03 дек. 2020 21:18:19,094 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [writeSlidesList] Attempt to write slides list
+03 дек. 2020 21:19:23,811 [main] WARN  ru.sfedu.course_project.Main - arguments {presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv}
+03 дек. 2020 21:19:23,820 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv]
+03 дек. 2020 21:19:23,823 [main] INFO  ru.sfedu.course_project.Main - Attempt to create csv data provider
+03 дек. 2020 21:19:23,829 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: csv
+03 дек. 2020 21:19:23,832 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: createPresentationSlide
+03 дек. 2020 21:19:23,833 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+03 дек. 2020 21:19:23,834 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv]
+03 дек. 2020 21:19:24,006 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - java.lang.RuntimeException: Error parsing CSV.
+03 дек. 2020 21:19:24,006 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - [getPresentationSlides] Unable to get presentation slides
+03 дек. 2020 21:19:24,007 [main] INFO  ru.sfedu.course_project.bean.Slide - [validateArguments] Arguments: [presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv, index=0]
+03 дек. 2020 21:19:24,399 [main] INFO  ru.sfedu.course_project.bean.Slide - [validateArguments] Default slide options: [name=Slide, id=5366172f-d35c-4508-8ede-d177da50b449]
+03 дек. 2020 21:19:24,399 [main] ERROR ru.sfedu.course_project.bean.Slide - java.lang.ClassCastException: class java.util.UUID cannot be cast to class java.lang.String (java.util.UUID and java.lang.String are in module java.base of loader 'bootstrap')
+03 дек. 2020 21:19:24,399 [main] ERROR ru.sfedu.course_project.bean.Slide - [validateArguments] Unable to validate Slide arguments
+03 дек. 2020 21:19:24,413 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [createPresentationSlide] Create slide: Slide{id=null, name='null', index=0, presentationId=null}
+03 дек. 2020 21:19:24,414 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [createPresentationSlide] For presentation: null
+03 дек. 2020 21:19:24,418 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [writeSlidesList] Attempt to write slides list
+04 дек. 2020 10:59:11,807 [main] WARN  ru.sfedu.course_project.Main - arguments {presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv}
+04 дек. 2020 10:59:11,813 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv]
+04 дек. 2020 10:59:11,815 [main] INFO  ru.sfedu.course_project.Main - Attempt to create csv data provider
+04 дек. 2020 10:59:11,822 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: csv
+04 дек. 2020 10:59:11,824 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: createPresentationSlide
+04 дек. 2020 10:59:11,825 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+04 дек. 2020 10:59:11,825 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv]
+04 дек. 2020 10:59:11,987 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - java.lang.RuntimeException: Error parsing CSV.
+04 дек. 2020 10:59:11,988 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - [getPresentationSlides] Unable to get presentation slides
+04 дек. 2020 10:59:11,988 [main] INFO  ru.sfedu.course_project.bean.Slide - [validateArguments] Arguments: [presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv, index=0]
+04 дек. 2020 10:59:12,299 [main] INFO  ru.sfedu.course_project.bean.Slide - [validateArguments] Default slide options: [name=Slide, id=dc40bf72-06c3-4519-b8cc-ad56839a3147]
+04 дек. 2020 10:59:12,299 [main] ERROR ru.sfedu.course_project.bean.Slide - java.lang.ClassCastException: class java.util.UUID cannot be cast to class java.lang.String (java.util.UUID and java.lang.String are in module java.base of loader 'bootstrap')
+04 дек. 2020 10:59:12,299 [main] ERROR ru.sfedu.course_project.bean.Slide - [validateArguments] Unable to validate Slide arguments
+04 дек. 2020 10:59:12,311 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [createPresentationSlide] Create slide: Slide{id=null, name='null', index=0, presentationId=null}
+04 дек. 2020 10:59:12,311 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [createPresentationSlide] For presentation: null
+04 дек. 2020 10:59:12,314 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [writeSlidesList] Attempt to write slides list
+04 дек. 2020 10:59:48,064 [main] WARN  ru.sfedu.course_project.Main - arguments {presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv}
+04 дек. 2020 10:59:48,071 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv]
+04 дек. 2020 10:59:48,074 [main] INFO  ru.sfedu.course_project.Main - Attempt to create csv data provider
+04 дек. 2020 10:59:48,080 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: csv
+04 дек. 2020 10:59:48,082 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: createPresentationSlide
+04 дек. 2020 10:59:48,083 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+04 дек. 2020 10:59:48,084 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv]
+04 дек. 2020 10:59:48,251 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - java.lang.RuntimeException: Error parsing CSV.
+04 дек. 2020 10:59:48,252 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - [getPresentationSlides] Unable to get presentation slides
+04 дек. 2020 10:59:48,252 [main] INFO  ru.sfedu.course_project.bean.Slide - [validateArguments] Arguments: [presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv, index=0]
+04 дек. 2020 10:59:48,688 [main] INFO  ru.sfedu.course_project.bean.Slide - [validateArguments] Default slide options: [name=Slide, id=4231e418-a4aa-49c2-971d-da8899014ce2]
+04 дек. 2020 10:59:48,688 [main] ERROR ru.sfedu.course_project.bean.Slide - java.lang.ClassCastException: class java.lang.String cannot be cast to class java.util.UUID (java.lang.String and java.util.UUID are in module java.base of loader 'bootstrap')
+04 дек. 2020 10:59:48,689 [main] ERROR ru.sfedu.course_project.bean.Slide - [validateArguments] Unable to validate Slide arguments
+04 дек. 2020 10:59:48,715 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [createPresentationSlide] Create slide: Slide{id=4231e418-a4aa-49c2-971d-da8899014ce2, name='Slide', index=0, presentationId=null}
+04 дек. 2020 10:59:48,715 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [createPresentationSlide] For presentation: null
+04 дек. 2020 10:59:48,721 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [writeSlidesList] Attempt to write slides list
+04 дек. 2020 11:08:32,451 [main] WARN  ru.sfedu.course_project.Main - arguments {presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv}
+04 дек. 2020 11:08:32,461 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv]
+04 дек. 2020 11:08:32,463 [main] INFO  ru.sfedu.course_project.Main - Attempt to create csv data provider
+04 дек. 2020 11:08:32,471 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: csv
+04 дек. 2020 11:08:32,474 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: createPresentationSlide
+04 дек. 2020 11:08:32,475 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+04 дек. 2020 11:08:32,478 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - java.lang.NullPointerException
+04 дек. 2020 11:08:32,478 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - [createPresentationSlide] Unable to create slide
+04 дек. 2020 11:10:12,655 [main] WARN  ru.sfedu.course_project.Main - arguments {presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv}
+04 дек. 2020 11:10:12,664 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv]
+04 дек. 2020 11:10:12,666 [main] INFO  ru.sfedu.course_project.Main - Attempt to create csv data provider
+04 дек. 2020 11:10:12,672 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: csv
+04 дек. 2020 11:10:12,675 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: createPresentationSlide
+04 дек. 2020 11:10:12,675 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+04 дек. 2020 11:10:12,891 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getAllPresentations] Result: [Presentation{id=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}]
+04 дек. 2020 11:10:12,892 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Attempt to find presentation: dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d
+04 дек. 2020 11:10:12,894 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getPresentationById] Result: Presentation{id=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}
+04 дек. 2020 11:10:12,896 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv]
+04 дек. 2020 11:10:12,927 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - java.lang.NullPointerException
+04 дек. 2020 11:10:12,927 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - [getPresentationSlides] Unable to get presentation slides
+04 дек. 2020 11:10:12,928 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - java.lang.NullPointerException
+04 дек. 2020 11:10:12,928 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - [createPresentationSlide] Unable to create slide
+04 дек. 2020 11:11:15,232 [main] WARN  ru.sfedu.course_project.Main - arguments {presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv}
+04 дек. 2020 11:11:15,241 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv]
+04 дек. 2020 11:11:15,242 [main] INFO  ru.sfedu.course_project.Main - Attempt to create csv data provider
+04 дек. 2020 11:11:15,249 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: csv
+04 дек. 2020 11:11:15,251 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: createPresentationSlide
+04 дек. 2020 11:11:15,251 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+04 дек. 2020 11:11:15,504 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getAllPresentations] Result: [Presentation{id=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}]
+04 дек. 2020 11:11:15,504 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Attempt to find presentation: dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d
+04 дек. 2020 11:11:15,505 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getPresentationById] Result: Presentation{id=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}
+04 дек. 2020 11:11:15,509 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv]
+04 дек. 2020 11:11:15,531 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - java.lang.NullPointerException
+04 дек. 2020 11:11:15,532 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - [getPresentationSlides] Unable to get presentation slides
+04 дек. 2020 11:11:15,532 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - java.lang.NullPointerException
+04 дек. 2020 11:11:15,532 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - [createPresentationSlide] Unable to create slide
+04 дек. 2020 11:12:16,128 [main] WARN  ru.sfedu.course_project.Main - arguments {presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv}
+04 дек. 2020 11:12:16,137 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv]
+04 дек. 2020 11:12:16,140 [main] INFO  ru.sfedu.course_project.Main - Attempt to create csv data provider
+04 дек. 2020 11:12:16,145 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: csv
+04 дек. 2020 11:12:16,147 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: createPresentationSlide
+04 дек. 2020 11:12:16,147 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+04 дек. 2020 11:12:16,330 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getAllPresentations] Result: [Presentation{id=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}]
+04 дек. 2020 11:12:16,331 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Attempt to find presentation: dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d
+04 дек. 2020 11:12:16,333 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getPresentationById] Result: Presentation{id=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}
+04 дек. 2020 11:12:16,334 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv]
+04 дек. 2020 11:12:16,335 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - [getPresentationSlides] Unable to get slides data source
+04 дек. 2020 11:12:16,338 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - java.lang.NullPointerException
+04 дек. 2020 11:12:16,339 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - [createPresentationSlide] Unable to create slide
+04 дек. 2020 11:14:57,519 [main] WARN  ru.sfedu.course_project.Main - arguments {presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv}
+04 дек. 2020 11:14:57,532 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv]
+04 дек. 2020 11:14:57,534 [main] INFO  ru.sfedu.course_project.Main - Attempt to create csv data provider
+04 дек. 2020 11:14:57,547 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: csv
+04 дек. 2020 11:14:57,550 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: createPresentationSlide
+04 дек. 2020 11:14:57,552 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+04 дек. 2020 11:14:57,744 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getAllPresentations] Result: [Presentation{id=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}]
+04 дек. 2020 11:14:57,744 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Attempt to find presentation: dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d
+04 дек. 2020 11:14:57,746 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getPresentationById] Result: Presentation{id=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}
+04 дек. 2020 11:14:57,748 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv]
+04 дек. 2020 11:14:57,749 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - [getPresentationSlides] Unable to get slides data source
+04 дек. 2020 11:14:57,751 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - java.lang.NullPointerException
+04 дек. 2020 11:14:57,751 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - [createPresentationSlide] Unable to create slide
+04 дек. 2020 11:17:29,876 [main] WARN  ru.sfedu.course_project.Main - arguments {presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv}
+04 дек. 2020 11:17:29,884 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv]
+04 дек. 2020 11:17:29,887 [main] INFO  ru.sfedu.course_project.Main - Attempt to create csv data provider
+04 дек. 2020 11:17:29,894 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: csv
+04 дек. 2020 11:17:29,896 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: createPresentationSlide
+04 дек. 2020 11:17:29,896 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+04 дек. 2020 11:17:30,072 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getAllPresentations] Result: [Presentation{id=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}]
+04 дек. 2020 11:17:30,072 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Attempt to find presentation: dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d
+04 дек. 2020 11:17:30,073 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getPresentationById] Result: Presentation{id=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}
+04 дек. 2020 11:17:30,074 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv]
+04 дек. 2020 11:17:30,075 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - [getPresentationSlides] Unable to get slides data source
+04 дек. 2020 11:17:30,076 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - java.lang.NullPointerException
+04 дек. 2020 11:17:30,077 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - [createPresentationSlide] Unable to create slide
+04 дек. 2020 11:18:31,832 [main] WARN  ru.sfedu.course_project.Main - arguments {presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv}
+04 дек. 2020 11:18:31,842 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv]
+04 дек. 2020 11:18:31,844 [main] INFO  ru.sfedu.course_project.Main - Attempt to create csv data provider
+04 дек. 2020 11:18:31,850 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: csv
+04 дек. 2020 11:18:31,852 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: createPresentationSlide
+04 дек. 2020 11:18:31,853 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+04 дек. 2020 11:18:32,059 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getAllPresentations] Result: [Presentation{id=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}]
+04 дек. 2020 11:18:32,060 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Attempt to find presentation: dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d
+04 дек. 2020 11:18:32,061 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getPresentationById] Result: Presentation{id=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}
+04 дек. 2020 11:18:32,063 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv]
+04 дек. 2020 11:18:32,064 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - [getPresentationSlides] Unable to get slides data source
+04 дек. 2020 11:18:32,066 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - java.lang.NullPointerException
+04 дек. 2020 11:18:32,066 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - [createPresentationSlide] Unable to create slide
+04 дек. 2020 11:18:43,546 [main] WARN  ru.sfedu.course_project.Main - arguments {presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv}
+04 дек. 2020 11:18:43,552 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv]
+04 дек. 2020 11:18:43,554 [main] INFO  ru.sfedu.course_project.Main - Attempt to create csv data provider
+04 дек. 2020 11:18:43,561 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: csv
+04 дек. 2020 11:18:43,563 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: createPresentationSlide
+04 дек. 2020 11:18:43,564 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+04 дек. 2020 11:18:43,737 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getAllPresentations] Result: [Presentation{id=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}]
+04 дек. 2020 11:18:43,740 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Attempt to find presentation: dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d
+04 дек. 2020 11:18:43,743 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getPresentationById] Result: Presentation{id=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}
+04 дек. 2020 11:18:43,745 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv]
+04 дек. 2020 11:18:43,746 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - [getPresentationSlides] Unable to get slides data source
+04 дек. 2020 11:18:43,747 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - java.lang.NullPointerException
+04 дек. 2020 11:18:43,748 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - [createPresentationSlide] Unable to create slide
+04 дек. 2020 11:19:30,107 [main] WARN  ru.sfedu.course_project.Main - arguments {presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv}
+04 дек. 2020 11:19:30,116 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv]
+04 дек. 2020 11:19:30,117 [main] INFO  ru.sfedu.course_project.Main - Attempt to create csv data provider
+04 дек. 2020 11:19:30,124 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: csv
+04 дек. 2020 11:19:30,128 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: createPresentationSlide
+04 дек. 2020 11:19:30,128 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+04 дек. 2020 11:19:30,302 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getAllPresentations] Result: [Presentation{id=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}]
+04 дек. 2020 11:19:30,302 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Attempt to find presentation: dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d
+04 дек. 2020 11:19:30,304 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getPresentationById] Result: Presentation{id=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}
+04 дек. 2020 11:19:30,305 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv]
+04 дек. 2020 11:19:30,306 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - [getPresentationSlides] Unable to get slides data source
+04 дек. 2020 11:19:30,308 [main] INFO  ru.sfedu.course_project.bean.Slide - [validateArguments] Arguments: [presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv, index=0]
+04 дек. 2020 11:19:30,740 [main] INFO  ru.sfedu.course_project.bean.Slide - [validateArguments] Default slide options: [name=Slide, id=7ee7763d-09b9-4149-bf9d-efe16fe6a4e8]
+04 дек. 2020 11:19:30,740 [main] ERROR ru.sfedu.course_project.bean.Slide - java.lang.ClassCastException: class java.lang.String cannot be cast to class java.util.UUID (java.lang.String and java.util.UUID are in module java.base of loader 'bootstrap')
+04 дек. 2020 11:19:30,741 [main] ERROR ru.sfedu.course_project.bean.Slide - [validateArguments] Unable to validate Slide arguments
+04 дек. 2020 11:19:30,750 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [createPresentationSlide] Create slide: Slide{id=7ee7763d-09b9-4149-bf9d-efe16fe6a4e8, name='Slide', index=0, presentationId=null}
+04 дек. 2020 11:19:30,750 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [createPresentationSlide] For presentation: null
+04 дек. 2020 11:19:30,755 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [writeSlidesList] Attempt to write slides list
+04 дек. 2020 11:20:27,255 [main] WARN  ru.sfedu.course_project.Main - arguments {presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv}
+04 дек. 2020 11:20:27,262 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv]
+04 дек. 2020 11:20:27,264 [main] INFO  ru.sfedu.course_project.Main - Attempt to create csv data provider
+04 дек. 2020 11:20:27,272 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: csv
+04 дек. 2020 11:20:27,275 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: createPresentationSlide
+04 дек. 2020 11:20:27,275 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+04 дек. 2020 11:20:27,454 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getAllPresentations] Result: [Presentation{id=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}]
+04 дек. 2020 11:20:27,455 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Attempt to find presentation: dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d
+04 дек. 2020 11:20:27,457 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getPresentationById] Result: Presentation{id=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}
+04 дек. 2020 11:20:27,459 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv]
+04 дек. 2020 11:20:27,597 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - java.lang.ClassCastException: class java.lang.String cannot be cast to class java.util.UUID (java.lang.String and java.util.UUID are in module java.base of loader 'bootstrap')
+04 дек. 2020 11:20:27,599 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - [getPresentationSlides] Unable to get presentation slides
+04 дек. 2020 11:20:27,600 [main] INFO  ru.sfedu.course_project.bean.Slide - [validateArguments] Arguments: [presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv, index=0]
+04 дек. 2020 11:20:27,985 [main] INFO  ru.sfedu.course_project.bean.Slide - [validateArguments] Default slide options: [name=Slide, id=384e9776-e181-4aca-849f-24e09c5396a8]
+04 дек. 2020 11:20:27,986 [main] ERROR ru.sfedu.course_project.bean.Slide - java.lang.ClassCastException: class java.lang.String cannot be cast to class java.util.UUID (java.lang.String and java.util.UUID are in module java.base of loader 'bootstrap')
+04 дек. 2020 11:20:27,986 [main] ERROR ru.sfedu.course_project.bean.Slide - [validateArguments] Unable to validate Slide arguments
+04 дек. 2020 11:20:27,992 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [createPresentationSlide] Create slide: Slide{id=384e9776-e181-4aca-849f-24e09c5396a8, name='Slide', index=0, presentationId=null}
+04 дек. 2020 11:20:27,993 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [createPresentationSlide] For presentation: null
+04 дек. 2020 11:20:27,996 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [writeSlidesList] Attempt to write slides list
+04 дек. 2020 11:20:37,102 [main] WARN  ru.sfedu.course_project.Main - arguments {presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv}
+04 дек. 2020 11:20:37,113 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv]
+04 дек. 2020 11:20:37,115 [main] INFO  ru.sfedu.course_project.Main - Attempt to create csv data provider
+04 дек. 2020 11:20:37,123 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: csv
+04 дек. 2020 11:20:37,125 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: createPresentationSlide
+04 дек. 2020 11:20:37,125 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+04 дек. 2020 11:20:37,300 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getAllPresentations] Result: [Presentation{id=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}]
+04 дек. 2020 11:20:37,301 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Attempt to find presentation: dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d
+04 дек. 2020 11:20:37,302 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getPresentationById] Result: Presentation{id=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}
+04 дек. 2020 11:20:37,304 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv]
+04 дек. 2020 11:20:37,306 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - [getPresentationSlides] Unable to get slides data source
+04 дек. 2020 11:20:37,309 [main] INFO  ru.sfedu.course_project.bean.Slide - [validateArguments] Arguments: [presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv, index=0]
+04 дек. 2020 11:20:37,730 [main] INFO  ru.sfedu.course_project.bean.Slide - [validateArguments] Default slide options: [name=Slide, id=779d153d-316a-4c42-a22f-c1ebec4e738c]
+04 дек. 2020 11:20:37,731 [main] ERROR ru.sfedu.course_project.bean.Slide - java.lang.ClassCastException: class java.lang.String cannot be cast to class java.util.UUID (java.lang.String and java.util.UUID are in module java.base of loader 'bootstrap')
+04 дек. 2020 11:20:37,731 [main] ERROR ru.sfedu.course_project.bean.Slide - [validateArguments] Unable to validate Slide arguments
+04 дек. 2020 11:20:37,738 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [createPresentationSlide] Create slide: Slide{id=779d153d-316a-4c42-a22f-c1ebec4e738c, name='Slide', index=0, presentationId=null}
+04 дек. 2020 11:20:37,739 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [createPresentationSlide] For presentation: null
+04 дек. 2020 11:20:37,743 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [writeSlidesList] Attempt to write slides list
+04 дек. 2020 11:22:47,535 [main] WARN  ru.sfedu.course_project.Main - arguments {presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv}
+04 дек. 2020 11:22:47,542 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv]
+04 дек. 2020 11:22:47,544 [main] INFO  ru.sfedu.course_project.Main - Attempt to create csv data provider
+04 дек. 2020 11:22:47,550 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: csv
+04 дек. 2020 11:22:47,552 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: createPresentationSlide
+04 дек. 2020 11:22:47,553 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+04 дек. 2020 11:22:47,746 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getAllPresentations] Result: [Presentation{id=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}]
+04 дек. 2020 11:22:47,746 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Attempt to find presentation: dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d
+04 дек. 2020 11:22:47,748 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getPresentationById] Result: Presentation{id=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}
+04 дек. 2020 11:22:47,750 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv]
+04 дек. 2020 11:22:47,751 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - [getPresentationSlides] Unable to get slides data source
+04 дек. 2020 11:22:47,755 [main] INFO  ru.sfedu.course_project.bean.Slide - [validateArguments] Arguments: [presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv, index=0]
+04 дек. 2020 11:22:48,174 [main] INFO  ru.sfedu.course_project.bean.Slide - [validateArguments] Default slide options: [name=Slide, id=8e8c6f4e-b131-42a4-b677-c2f4a82a0b73]
+04 дек. 2020 11:22:48,187 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [createPresentationSlide] Create slide: Slide{id=8e8c6f4e-b131-42a4-b677-c2f4a82a0b73, name='Slide', index=0, presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d}
+04 дек. 2020 11:22:48,188 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [createPresentationSlide] For presentation: dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d
+04 дек. 2020 11:22:48,195 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [writeSlidesList] Attempt to write slides list
+04 дек. 2020 11:23:06,546 [main] WARN  ru.sfedu.course_project.Main - arguments {presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv}
+04 дек. 2020 11:23:06,554 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv]
+04 дек. 2020 11:23:06,556 [main] INFO  ru.sfedu.course_project.Main - Attempt to create csv data provider
+04 дек. 2020 11:23:06,563 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: csv
+04 дек. 2020 11:23:06,567 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: createPresentationSlide
+04 дек. 2020 11:23:06,567 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+04 дек. 2020 11:23:06,756 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getAllPresentations] Result: [Presentation{id=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}]
+04 дек. 2020 11:23:06,757 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Attempt to find presentation: dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d
+04 дек. 2020 11:23:06,759 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getPresentationById] Result: Presentation{id=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}
+04 дек. 2020 11:23:06,761 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv]
+04 дек. 2020 11:23:06,868 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - java.lang.RuntimeException: Error parsing CSV line: 2. [8e8c6f4e-b131-42a4-b677-c2f4a82a0b73,0,Slide,dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d]
+04 дек. 2020 11:23:06,868 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - [getPresentationSlides] Unable to get presentation slides
+04 дек. 2020 11:23:06,869 [main] INFO  ru.sfedu.course_project.bean.Slide - [validateArguments] Arguments: [presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv, index=0]
+04 дек. 2020 11:23:07,245 [main] INFO  ru.sfedu.course_project.bean.Slide - [validateArguments] Default slide options: [name=Slide, id=d024ed95-4a9a-467b-ad04-a100da0b41bc]
+04 дек. 2020 11:23:07,254 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [createPresentationSlide] Create slide: Slide{id=d024ed95-4a9a-467b-ad04-a100da0b41bc, name='Slide', index=0, presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d}
+04 дек. 2020 11:23:07,254 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [createPresentationSlide] For presentation: dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d
+04 дек. 2020 11:23:07,258 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [writeSlidesList] Attempt to write slides list
+04 дек. 2020 11:23:52,927 [main] WARN  ru.sfedu.course_project.Main - arguments {presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv}
+04 дек. 2020 11:23:52,936 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv]
+04 дек. 2020 11:23:52,938 [main] INFO  ru.sfedu.course_project.Main - Attempt to create csv data provider
+04 дек. 2020 11:23:52,945 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: csv
+04 дек. 2020 11:23:52,947 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: createPresentationSlide
+04 дек. 2020 11:23:52,947 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+04 дек. 2020 11:23:53,125 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getAllPresentations] Result: [Presentation{id=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}]
+04 дек. 2020 11:23:53,126 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Attempt to find presentation: dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d
+04 дек. 2020 11:23:53,127 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getPresentationById] Result: Presentation{id=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}
+04 дек. 2020 11:23:53,129 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv]
+04 дек. 2020 11:23:53,148 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - java.lang.ClassCastException: class java.lang.String cannot be cast to class java.util.UUID (java.lang.String and java.util.UUID are in module java.base of loader 'bootstrap')
+04 дек. 2020 11:23:53,148 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - [getPresentationSlides] Unable to get presentation slides
+04 дек. 2020 11:23:53,149 [main] INFO  ru.sfedu.course_project.bean.Slide - [validateArguments] Arguments: [presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv, index=0]
+04 дек. 2020 11:23:53,575 [main] INFO  ru.sfedu.course_project.bean.Slide - [validateArguments] Default slide options: [name=Slide, id=1b8883e7-9cb8-48e2-874c-332c9998f875]
+04 дек. 2020 11:23:53,584 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [createPresentationSlide] Create slide: Slide{id=1b8883e7-9cb8-48e2-874c-332c9998f875, name='Slide', index=0, presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d}
+04 дек. 2020 11:23:53,585 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [createPresentationSlide] For presentation: dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d
+04 дек. 2020 11:23:53,590 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [writeSlidesList] Attempt to write slides list
+04 дек. 2020 11:24:39,524 [main] WARN  ru.sfedu.course_project.Main - arguments {presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv}
+04 дек. 2020 11:24:39,533 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv]
+04 дек. 2020 11:24:39,534 [main] INFO  ru.sfedu.course_project.Main - Attempt to create csv data provider
+04 дек. 2020 11:24:39,542 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: csv
+04 дек. 2020 11:24:39,544 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: createPresentationSlide
+04 дек. 2020 11:24:39,545 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+04 дек. 2020 11:24:39,734 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getAllPresentations] Result: [Presentation{id=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}]
+04 дек. 2020 11:24:39,735 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Attempt to find presentation: dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d
+04 дек. 2020 11:24:39,737 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getPresentationById] Result: Presentation{id=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}
+04 дек. 2020 11:24:39,739 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv]
+04 дек. 2020 11:24:39,740 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - [getPresentationSlides] Unable to get slides data source
+04 дек. 2020 11:24:39,743 [main] INFO  ru.sfedu.course_project.bean.Slide - [validateArguments] Arguments: [presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv, index=0]
+04 дек. 2020 11:24:40,238 [main] INFO  ru.sfedu.course_project.bean.Slide - [validateArguments] Default slide options: [name=Slide, id=fea11c5e-c313-402f-a8df-721135f2f784]
+04 дек. 2020 11:24:40,245 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [createPresentationSlide] Create slide: Slide{id=fea11c5e-c313-402f-a8df-721135f2f784, name='Slide', index=0, presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d}
+04 дек. 2020 11:24:40,246 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [createPresentationSlide] For presentation: dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d
+04 дек. 2020 11:24:40,250 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [writeSlidesList] Attempt to write slides list
+04 дек. 2020 11:24:54,737 [main] WARN  ru.sfedu.course_project.Main - arguments {presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv}
+04 дек. 2020 11:24:54,742 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv]
+04 дек. 2020 11:24:54,745 [main] INFO  ru.sfedu.course_project.Main - Attempt to create csv data provider
+04 дек. 2020 11:24:54,752 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: csv
+04 дек. 2020 11:24:54,754 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: createPresentationSlide
+04 дек. 2020 11:24:54,754 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+04 дек. 2020 11:24:54,934 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getAllPresentations] Result: [Presentation{id=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}]
+04 дек. 2020 11:24:54,934 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Attempt to find presentation: dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d
+04 дек. 2020 11:24:54,938 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getPresentationById] Result: Presentation{id=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}
+04 дек. 2020 11:24:54,943 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv]
+04 дек. 2020 11:24:54,945 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - [getPresentationSlides] Unable to get slides data source
+04 дек. 2020 11:24:54,957 [main] INFO  ru.sfedu.course_project.bean.Slide - [validateArguments] Arguments: [presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv, index=0]
+04 дек. 2020 11:24:55,380 [main] INFO  ru.sfedu.course_project.bean.Slide - [validateArguments] Default slide options: [name=Slide, id=e9f4c26c-8373-4037-a9fd-feff8f204a7b]
+04 дек. 2020 11:24:55,386 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [createPresentationSlide] Create slide: Slide{id=e9f4c26c-8373-4037-a9fd-feff8f204a7b, name='Slide', index=0, presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d}
+04 дек. 2020 11:24:55,387 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [createPresentationSlide] For presentation: dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d
+04 дек. 2020 11:24:55,390 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [writeSlidesList] Attempt to write slides list
+04 дек. 2020 11:25:45,990 [main] WARN  ru.sfedu.course_project.Main - arguments {presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv}
+04 дек. 2020 11:25:45,997 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv]
+04 дек. 2020 11:25:46,001 [main] INFO  ru.sfedu.course_project.Main - Attempt to create csv data provider
+04 дек. 2020 11:25:46,008 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: csv
+04 дек. 2020 11:25:46,011 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: createPresentationSlide
+04 дек. 2020 11:25:46,012 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+04 дек. 2020 11:25:46,244 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getAllPresentations] Result: [Presentation{id=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}]
+04 дек. 2020 11:25:46,244 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Attempt to find presentation: dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d
+04 дек. 2020 11:25:46,246 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getPresentationById] Result: Presentation{id=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}
+04 дек. 2020 11:25:46,247 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv]
+04 дек. 2020 11:25:46,248 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - [getPresentationSlides] Unable to get slides data source
+04 дек. 2020 11:25:46,251 [main] INFO  ru.sfedu.course_project.bean.Slide - [validateArguments] Arguments: [presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv, index=0]
+04 дек. 2020 11:25:46,701 [main] INFO  ru.sfedu.course_project.bean.Slide - [validateArguments] Default slide options: [name=Slide, id=66069d4b-a967-4acf-8205-fb4164f30409]
+04 дек. 2020 11:25:46,707 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [createPresentationSlide] Create slide: Slide{id=66069d4b-a967-4acf-8205-fb4164f30409, name='Slide', index=0, presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d}
+04 дек. 2020 11:25:46,707 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [createPresentationSlide] For presentation: dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d
+04 дек. 2020 11:25:46,711 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [writeSlidesList] Attempt to write slides list
+04 дек. 2020 11:25:46,724 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [writeSlidesList] Slides list was successfully wrote
+04 дек. 2020 11:25:59,929 [main] WARN  ru.sfedu.course_project.Main - arguments {presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv}
+04 дек. 2020 11:25:59,938 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv]
+04 дек. 2020 11:25:59,940 [main] INFO  ru.sfedu.course_project.Main - Attempt to create csv data provider
+04 дек. 2020 11:25:59,947 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: csv
+04 дек. 2020 11:25:59,949 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: createPresentationSlide
+04 дек. 2020 11:25:59,949 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+04 дек. 2020 11:26:00,125 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getAllPresentations] Result: [Presentation{id=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}]
+04 дек. 2020 11:26:00,126 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Attempt to find presentation: dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d
+04 дек. 2020 11:26:00,127 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getPresentationById] Result: Presentation{id=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}
+04 дек. 2020 11:26:00,128 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv]
+04 дек. 2020 11:26:00,144 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getPresentationSlides] Attempt to find presentation slides for: dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d
+04 дек. 2020 11:26:00,161 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getPresentationSlides] Found presentation slides: [Slide{id=66069d4b-a967-4acf-8205-fb4164f30409, name='Slide', index=0, presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d}]
+04 дек. 2020 11:26:00,173 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getPresentationSlides] Found null slides for presentation: dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d
+04 дек. 2020 11:26:00,174 [main] INFO  ru.sfedu.course_project.bean.Slide - [validateArguments] Arguments: [presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv, index=1]
+04 дек. 2020 11:26:00,580 [main] INFO  ru.sfedu.course_project.bean.Slide - [validateArguments] Default slide options: [name=Slide, id=cbae8528-ee46-48d6-8311-f25f5d475cc6]
+04 дек. 2020 11:26:00,580 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [createPresentationSlide] Create slide: Slide{id=cbae8528-ee46-48d6-8311-f25f5d475cc6, name='Slide', index=1, presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d}
+04 дек. 2020 11:26:00,580 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [createPresentationSlide] For presentation: dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d
+04 дек. 2020 11:26:00,584 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [writeSlidesList] Attempt to write slides list
+04 дек. 2020 11:26:00,596 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [writeSlidesList] Slides list was successfully wrote
+04 дек. 2020 11:31:35,185 [main] WARN  ru.sfedu.course_project.Main - arguments {presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv, name=My Slide Name}
+04 дек. 2020 11:31:35,191 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv, name=My Slide Name]
+04 дек. 2020 11:31:35,193 [main] INFO  ru.sfedu.course_project.Main - Attempt to create csv data provider
+04 дек. 2020 11:31:35,201 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: csv
+04 дек. 2020 11:31:35,203 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: createPresentationSlide
+04 дек. 2020 11:31:35,203 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+04 дек. 2020 11:31:35,381 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getAllPresentations] Result: [Presentation{id=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}]
+04 дек. 2020 11:31:35,381 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Attempt to find presentation: dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d
+04 дек. 2020 11:31:35,383 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getPresentationById] Result: Presentation{id=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}
+04 дек. 2020 11:31:35,384 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv, name=My Slide Name]
+04 дек. 2020 11:31:35,401 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getPresentationSlides] Attempt to find presentation slides for: dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d
+04 дек. 2020 11:31:35,428 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getPresentationSlides] Found presentation slides: [Slide{id=66069d4b-a967-4acf-8205-fb4164f30409, name='Slide', index=0, presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d}, Slide{id=cbae8528-ee46-48d6-8311-f25f5d475cc6, name='Slide', index=1, presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d}]
+04 дек. 2020 11:31:35,456 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getPresentationSlides] Found null slides for presentation: dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d
+04 дек. 2020 11:31:35,457 [main] INFO  ru.sfedu.course_project.bean.Slide - [validateArguments] Arguments: [presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv, name=My Slide Name, index=2]
+04 дек. 2020 11:31:35,837 [main] INFO  ru.sfedu.course_project.bean.Slide - [validateArguments] Default slide options: [name=Slide, id=c1d0594c-1195-41ca-a5a2-d622e0d1d43e]
+04 дек. 2020 11:31:35,837 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [createPresentationSlide] Create slide: Slide{id=c1d0594c-1195-41ca-a5a2-d622e0d1d43e, name='My Slide Name', index=2, presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d}
+04 дек. 2020 11:31:35,837 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [createPresentationSlide] For presentation: dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d
+04 дек. 2020 11:31:35,840 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [writeSlidesList] Attempt to write slides list
+04 дек. 2020 11:31:35,851 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [writeSlidesList] Slides list was successfully wrote
+04 дек. 2020 11:31:54,804 [main] WARN  ru.sfedu.course_project.Main - arguments {presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2ackla3c4d, role=editor, method=createPresentationSlide, datatype=csv, name=My Slide Name}
+04 дек. 2020 11:31:54,811 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [presentationId=dad705f5-78ef-4a2d-9b3a-6e6c2ackla3c4d, role=editor, method=createPresentationSlide, datatype=csv, name=My Slide Name]
+04 дек. 2020 11:31:54,814 [main] INFO  ru.sfedu.course_project.Main - Attempt to create csv data provider
+04 дек. 2020 11:31:54,822 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: csv
+04 дек. 2020 11:31:54,824 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: createPresentationSlide
+04 дек. 2020 11:31:54,825 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+04 дек. 2020 11:31:54,827 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - java.lang.IllegalArgumentException: UUID string too large
+04 дек. 2020 11:31:54,827 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - [createPresentationSlide] Unable to create slide
+04 дек. 2020 11:32:32,915 [main] WARN  ru.sfedu.course_project.Main - arguments {presentationId=aad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv, name=My Slide Name}
+04 дек. 2020 11:32:32,924 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [presentationId=aad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, role=editor, method=createPresentationSlide, datatype=csv, name=My Slide Name]
+04 дек. 2020 11:32:32,927 [main] INFO  ru.sfedu.course_project.Main - Attempt to create csv data provider
+04 дек. 2020 11:32:32,935 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: csv
+04 дек. 2020 11:32:32,938 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: createPresentationSlide
+04 дек. 2020 11:32:32,938 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+04 дек. 2020 11:32:33,123 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getAllPresentations] Result: [Presentation{id=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}]
+04 дек. 2020 11:32:33,124 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Attempt to find presentation: aad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d
+04 дек. 2020 11:32:33,125 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - [getPresentationById] Unable to get presentation: aad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d
+04 дек. 2020 11:32:33,130 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - java.lang.NullPointerException
+04 дек. 2020 11:32:33,130 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - [createPresentationSlide] Unable to create slide
+04 дек. 2020 11:51:53,064 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getAllPresentations] Result: [Presentation{id=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}]
+04 дек. 2020 11:53:07,386 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getAllPresentations] Result: [Presentation{id=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}]
+04 дек. 2020 11:54:34,616 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getAllPresentations] Result: [Presentation{id=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}]
+04 дек. 2020 11:54:34,977 [main] DEBUG ru.sfedu.course_project.bean.Presentation - Arguments was successfully validated
+04 дек. 2020 11:54:34,987 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getAllPresentations] Result: [Presentation{id=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}]
+04 дек. 2020 11:54:34,988 [main] DEBUG ru.sfedu.course_project.bean.Presentation - Arguments was successfully validated
+04 дек. 2020 11:54:35,003 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [writePresentationList] Presentation list was wrote
+04 дек. 2020 11:54:35,003 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - Presentation was successfully created: fc78d104-c5f0-4d1e-b63b-df7d6f185b8a
+04 дек. 2020 11:54:35,022 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getAllPresentations] Result: [Presentation{id=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}, Presentation{id=fc78d104-c5f0-4d1e-b63b-df7d6f185b8a, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}]
+04 дек. 2020 11:54:35,023 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Attempt to find presentation: fc78d104-c5f0-4d1e-b63b-df7d6f185b8a
+04 дек. 2020 11:54:35,024 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getPresentationById] Result: Presentation{id=fc78d104-c5f0-4d1e-b63b-df7d6f185b8a, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}
+04 дек. 2020 11:54:35,054 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getAllPresentations] Result: [Presentation{id=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}, Presentation{id=fc78d104-c5f0-4d1e-b63b-df7d6f185b8a, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}]
+04 дек. 2020 11:54:35,054 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Attempt to find presentation: e1b899cc-a323-4727-a445-dca3609b111e
+04 дек. 2020 11:54:35,055 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - [getPresentationById] Unable to get presentation: e1b899cc-a323-4727-a445-dca3609b111e
+04 дек. 2020 11:54:35,055 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [editPresentationOptions] Unable to find presentation: e1b899cc-a323-4727-a445-dca3609b111e
+04 дек. 2020 11:54:35,068 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getAllPresentations] Result: [Presentation{id=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}, Presentation{id=fc78d104-c5f0-4d1e-b63b-df7d6f185b8a, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}]
+04 дек. 2020 11:54:35,082 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getAllPresentations] Result: [Presentation{id=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}, Presentation{id=fc78d104-c5f0-4d1e-b63b-df7d6f185b8a, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}]
+04 дек. 2020 11:54:35,083 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - [removePresentationById] Unable to find presentation with provided id: 107c9a7e-58cd-4e57-86e5-c6bc0ac90270
+04 дек. 2020 11:54:35,095 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getAllPresentations] Result: [Presentation{id=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}, Presentation{id=fc78d104-c5f0-4d1e-b63b-df7d6f185b8a, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}]
+04 дек. 2020 11:54:35,095 [main] DEBUG ru.sfedu.course_project.bean.Presentation - Arguments was successfully validated
+04 дек. 2020 11:54:35,104 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [writePresentationList] Presentation list was wrote
+04 дек. 2020 11:54:35,105 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - Presentation was successfully created: fc78d104-c5f0-4d1e-b63b-df7d6f185b8a
+04 дек. 2020 11:54:35,128 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getAllPresentations] Result: [Presentation{id=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}, Presentation{id=fc78d104-c5f0-4d1e-b63b-df7d6f185b8a, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}, Presentation{id=fc78d104-c5f0-4d1e-b63b-df7d6f185b8a, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}]
+04 дек. 2020 11:54:35,129 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Attempt to find presentation: 5a20e671-df9c-449b-b3d8-bfc56ab7975c
+04 дек. 2020 11:54:35,130 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - [getPresentationById] Unable to get presentation: 5a20e671-df9c-449b-b3d8-bfc56ab7975c
+04 дек. 2020 11:54:35,168 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getAllPresentations] Result: [Presentation{id=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}, Presentation{id=fc78d104-c5f0-4d1e-b63b-df7d6f185b8a, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}, Presentation{id=fc78d104-c5f0-4d1e-b63b-df7d6f185b8a, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}]
+04 дек. 2020 11:54:35,170 [main] WARN  ru.sfedu.course_project.api.DataProviderCSV - [createPresentation] Provided presentation id is already in use: dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d
+04 дек. 2020 11:54:35,183 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getAllPresentations] Result: [Presentation{id=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}, Presentation{id=fc78d104-c5f0-4d1e-b63b-df7d6f185b8a, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}, Presentation{id=fc78d104-c5f0-4d1e-b63b-df7d6f185b8a, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}]
+04 дек. 2020 11:54:35,191 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getAllPresentations] Result: [Presentation{id=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}, Presentation{id=fc78d104-c5f0-4d1e-b63b-df7d6f185b8a, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}, Presentation{id=fc78d104-c5f0-4d1e-b63b-df7d6f185b8a, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}]
+04 дек. 2020 11:54:35,192 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Attempt to find presentation: dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d
+04 дек. 2020 11:54:35,192 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getPresentationById] Result: Presentation{id=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}
+04 дек. 2020 11:54:35,202 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getAllPresentations] Result: [Presentation{id=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}, Presentation{id=fc78d104-c5f0-4d1e-b63b-df7d6f185b8a, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}, Presentation{id=fc78d104-c5f0-4d1e-b63b-df7d6f185b8a, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}]
+04 дек. 2020 11:54:35,211 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [writePresentationList] Presentation list was wrote
+04 дек. 2020 11:54:35,211 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [editPresentationOptions] Presentation options was successfully updated: dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d
+04 дек. 2020 11:54:35,232 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getAllPresentations] Result: [Presentation{id=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, name='My presentation', fillColor='#403add', fontFamily='Times New Roman'}, Presentation{id=fc78d104-c5f0-4d1e-b63b-df7d6f185b8a, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}, Presentation{id=fc78d104-c5f0-4d1e-b63b-df7d6f185b8a, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}]
+04 дек. 2020 11:54:35,242 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getAllPresentations] Result: [Presentation{id=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, name='My presentation', fillColor='#403add', fontFamily='Times New Roman'}, Presentation{id=fc78d104-c5f0-4d1e-b63b-df7d6f185b8a, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}, Presentation{id=fc78d104-c5f0-4d1e-b63b-df7d6f185b8a, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}]
+04 дек. 2020 11:54:35,249 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getAllPresentations] Result: [Presentation{id=dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d, name='My presentation', fillColor='#403add', fontFamily='Times New Roman'}, Presentation{id=fc78d104-c5f0-4d1e-b63b-df7d6f185b8a, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}, Presentation{id=fc78d104-c5f0-4d1e-b63b-df7d6f185b8a, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}]
+04 дек. 2020 11:54:35,257 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [writePresentationList] Presentation list was wrote
+04 дек. 2020 11:54:35,258 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [removePresentationById] Presentation was successfully removed: dad705f5-78ef-4a2d-9b3a-6e6c2aca3c4d
+04 дек. 2020 11:56:00,452 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getAllPresentations] Result: [Presentation{id=fc78d104-c5f0-4d1e-b63b-df7d6f185b8a, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}, Presentation{id=fc78d104-c5f0-4d1e-b63b-df7d6f185b8a, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}]
+04 дек. 2020 11:56:00,819 [main] DEBUG ru.sfedu.course_project.bean.Presentation - Arguments was successfully validated
+04 дек. 2020 11:56:00,829 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getAllPresentations] Result: [Presentation{id=fc78d104-c5f0-4d1e-b63b-df7d6f185b8a, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}, Presentation{id=fc78d104-c5f0-4d1e-b63b-df7d6f185b8a, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}]
+04 дек. 2020 11:56:00,830 [main] DEBUG ru.sfedu.course_project.bean.Presentation - Arguments was successfully validated
+04 дек. 2020 11:56:00,853 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [writePresentationList] Presentation list was wrote
+04 дек. 2020 11:56:00,854 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - Presentation was successfully created: d1eed0d6-329b-4a0f-bc5c-37484b0ba101
+04 дек. 2020 11:56:00,876 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getAllPresentations] Result: [Presentation{id=fc78d104-c5f0-4d1e-b63b-df7d6f185b8a, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}, Presentation{id=fc78d104-c5f0-4d1e-b63b-df7d6f185b8a, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}, Presentation{id=d1eed0d6-329b-4a0f-bc5c-37484b0ba101, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}]
+04 дек. 2020 11:56:00,877 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Attempt to find presentation: d1eed0d6-329b-4a0f-bc5c-37484b0ba101
+04 дек. 2020 11:56:00,878 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getPresentationById] Result: Presentation{id=d1eed0d6-329b-4a0f-bc5c-37484b0ba101, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}
+04 дек. 2020 11:56:00,893 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getAllPresentations] Result: [Presentation{id=fc78d104-c5f0-4d1e-b63b-df7d6f185b8a, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}, Presentation{id=fc78d104-c5f0-4d1e-b63b-df7d6f185b8a, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}, Presentation{id=d1eed0d6-329b-4a0f-bc5c-37484b0ba101, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}]
+04 дек. 2020 11:56:00,893 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Attempt to find presentation: f3fcdd2f-c765-4109-8186-f058f7d07ef9
+04 дек. 2020 11:56:00,894 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - [getPresentationById] Unable to get presentation: f3fcdd2f-c765-4109-8186-f058f7d07ef9
+04 дек. 2020 11:56:00,894 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [editPresentationOptions] Unable to find presentation: f3fcdd2f-c765-4109-8186-f058f7d07ef9
+04 дек. 2020 11:56:00,910 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getAllPresentations] Result: [Presentation{id=fc78d104-c5f0-4d1e-b63b-df7d6f185b8a, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}, Presentation{id=fc78d104-c5f0-4d1e-b63b-df7d6f185b8a, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}, Presentation{id=d1eed0d6-329b-4a0f-bc5c-37484b0ba101, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}]
+04 дек. 2020 11:56:00,923 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getAllPresentations] Result: [Presentation{id=fc78d104-c5f0-4d1e-b63b-df7d6f185b8a, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}, Presentation{id=fc78d104-c5f0-4d1e-b63b-df7d6f185b8a, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}, Presentation{id=d1eed0d6-329b-4a0f-bc5c-37484b0ba101, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}]
+04 дек. 2020 11:56:00,924 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - [removePresentationById] Unable to find presentation with provided id: b235f10b-68a2-4fd7-b120-2f05d62f5af2
+04 дек. 2020 11:56:00,938 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getAllPresentations] Result: [Presentation{id=fc78d104-c5f0-4d1e-b63b-df7d6f185b8a, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}, Presentation{id=fc78d104-c5f0-4d1e-b63b-df7d6f185b8a, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}, Presentation{id=d1eed0d6-329b-4a0f-bc5c-37484b0ba101, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}]
+04 дек. 2020 11:56:00,938 [main] DEBUG ru.sfedu.course_project.bean.Presentation - Arguments was successfully validated
+04 дек. 2020 11:56:00,946 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [writePresentationList] Presentation list was wrote
+04 дек. 2020 11:56:00,946 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - Presentation was successfully created: d1eed0d6-329b-4a0f-bc5c-37484b0ba101
+04 дек. 2020 11:56:00,967 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getAllPresentations] Result: [Presentation{id=fc78d104-c5f0-4d1e-b63b-df7d6f185b8a, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}, Presentation{id=fc78d104-c5f0-4d1e-b63b-df7d6f185b8a, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}, Presentation{id=d1eed0d6-329b-4a0f-bc5c-37484b0ba101, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}, Presentation{id=d1eed0d6-329b-4a0f-bc5c-37484b0ba101, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}]
+04 дек. 2020 11:56:00,968 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Attempt to find presentation: 307ce78e-2c9a-4d28-8b89-7c813c14281e
+04 дек. 2020 11:56:00,968 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - [getPresentationById] Unable to get presentation: 307ce78e-2c9a-4d28-8b89-7c813c14281e
+04 дек. 2020 11:56:01,008 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getAllPresentations] Result: [Presentation{id=fc78d104-c5f0-4d1e-b63b-df7d6f185b8a, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}, Presentation{id=fc78d104-c5f0-4d1e-b63b-df7d6f185b8a, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}, Presentation{id=d1eed0d6-329b-4a0f-bc5c-37484b0ba101, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}, Presentation{id=d1eed0d6-329b-4a0f-bc5c-37484b0ba101, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}]
+04 дек. 2020 11:56:01,011 [main] WARN  ru.sfedu.course_project.api.DataProviderCSV - [createPresentation] Provided presentation id is already in use: fc78d104-c5f0-4d1e-b63b-df7d6f185b8a
+04 дек. 2020 11:56:01,024 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getAllPresentations] Result: [Presentation{id=fc78d104-c5f0-4d1e-b63b-df7d6f185b8a, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}, Presentation{id=fc78d104-c5f0-4d1e-b63b-df7d6f185b8a, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}, Presentation{id=d1eed0d6-329b-4a0f-bc5c-37484b0ba101, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}, Presentation{id=d1eed0d6-329b-4a0f-bc5c-37484b0ba101, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}]
+04 дек. 2020 11:56:01,036 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getAllPresentations] Result: [Presentation{id=fc78d104-c5f0-4d1e-b63b-df7d6f185b8a, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}, Presentation{id=fc78d104-c5f0-4d1e-b63b-df7d6f185b8a, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}, Presentation{id=d1eed0d6-329b-4a0f-bc5c-37484b0ba101, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}, Presentation{id=d1eed0d6-329b-4a0f-bc5c-37484b0ba101, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}]
+04 дек. 2020 11:56:01,036 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Attempt to find presentation: fc78d104-c5f0-4d1e-b63b-df7d6f185b8a
+04 дек. 2020 11:56:01,036 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getPresentationById] Result: Presentation{id=fc78d104-c5f0-4d1e-b63b-df7d6f185b8a, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}
+04 дек. 2020 11:56:01,044 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getAllPresentations] Result: [Presentation{id=fc78d104-c5f0-4d1e-b63b-df7d6f185b8a, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}, Presentation{id=fc78d104-c5f0-4d1e-b63b-df7d6f185b8a, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}, Presentation{id=d1eed0d6-329b-4a0f-bc5c-37484b0ba101, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}, Presentation{id=d1eed0d6-329b-4a0f-bc5c-37484b0ba101, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}]
+04 дек. 2020 11:56:01,053 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [writePresentationList] Presentation list was wrote
+04 дек. 2020 11:56:01,053 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [editPresentationOptions] Presentation options was successfully updated: fc78d104-c5f0-4d1e-b63b-df7d6f185b8a
+04 дек. 2020 11:56:01,079 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getAllPresentations] Result: [Presentation{id=fc78d104-c5f0-4d1e-b63b-df7d6f185b8a, name='My presentation', fillColor='#403add', fontFamily='Times New Roman'}, Presentation{id=fc78d104-c5f0-4d1e-b63b-df7d6f185b8a, name='My presentation', fillColor='#403add', fontFamily='Times New Roman'}, Presentation{id=d1eed0d6-329b-4a0f-bc5c-37484b0ba101, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}, Presentation{id=d1eed0d6-329b-4a0f-bc5c-37484b0ba101, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}]
+04 дек. 2020 11:56:01,095 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getAllPresentations] Result: [Presentation{id=fc78d104-c5f0-4d1e-b63b-df7d6f185b8a, name='My presentation', fillColor='#403add', fontFamily='Times New Roman'}, Presentation{id=fc78d104-c5f0-4d1e-b63b-df7d6f185b8a, name='My presentation', fillColor='#403add', fontFamily='Times New Roman'}, Presentation{id=d1eed0d6-329b-4a0f-bc5c-37484b0ba101, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}, Presentation{id=d1eed0d6-329b-4a0f-bc5c-37484b0ba101, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}]
+04 дек. 2020 11:56:01,111 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getAllPresentations] Result: [Presentation{id=fc78d104-c5f0-4d1e-b63b-df7d6f185b8a, name='My presentation', fillColor='#403add', fontFamily='Times New Roman'}, Presentation{id=fc78d104-c5f0-4d1e-b63b-df7d6f185b8a, name='My presentation', fillColor='#403add', fontFamily='Times New Roman'}, Presentation{id=d1eed0d6-329b-4a0f-bc5c-37484b0ba101, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}, Presentation{id=d1eed0d6-329b-4a0f-bc5c-37484b0ba101, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}]
+04 дек. 2020 11:56:01,120 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [writePresentationList] Presentation list was wrote
+04 дек. 2020 11:56:01,121 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [removePresentationById] Presentation was successfully removed: fc78d104-c5f0-4d1e-b63b-df7d6f185b8a
+04 дек. 2020 12:02:41,632 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getAllPresentations] Result: [Presentation{id=d1eed0d6-329b-4a0f-bc5c-37484b0ba101, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}]
+04 дек. 2020 12:02:41,655 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getAllPresentations] Result: [Presentation{id=d1eed0d6-329b-4a0f-bc5c-37484b0ba101, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}]
+04 дек. 2020 12:03:04,473 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getAllPresentations] Result: [Presentation{id=d1eed0d6-329b-4a0f-bc5c-37484b0ba101, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}]
+04 дек. 2020 12:03:04,498 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getAllPresentations] Result: [Presentation{id=d1eed0d6-329b-4a0f-bc5c-37484b0ba101, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}]
+04 дек. 2020 12:03:04,499 [main] WARN  ru.sfedu.course_project.api.DataProviderCSV - [createPresentation] Provided presentation id is already in use: d1eed0d6-329b-4a0f-bc5c-37484b0ba101
+04 дек. 2020 12:03:04,513 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getAllPresentations] Result: [Presentation{id=d1eed0d6-329b-4a0f-bc5c-37484b0ba101, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}]
+04 дек. 2020 12:03:04,513 [main] WARN  ru.sfedu.course_project.api.DataProviderCSV - [createPresentation] Provided presentation id is already in use: d1eed0d6-329b-4a0f-bc5c-37484b0ba101

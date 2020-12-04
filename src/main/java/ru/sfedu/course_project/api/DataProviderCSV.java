@@ -11,6 +11,7 @@ import com.opencsv.exceptions.CsvRequiredFieldEmptyException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import ru.sfedu.course_project.bean.Presentation;
+import ru.sfedu.course_project.bean.Slide;
 import ru.sfedu.course_project.enums.Status;
 import ru.sfedu.course_project.utils.ConfigurationUtil;
 
@@ -46,10 +47,12 @@ public class DataProviderCSV implements DataProvider {
         }
     }
 
+    ///                      Presentations section                          \\\
+
     @Override
     public UUID createPresentation(HashMap args) {
         try {
-            List<Presentation> listPresentations = getAllPresentations();
+            List<Presentation> listPresentations = getAllPresentations().orElse(new ArrayList());
             if (args.get("id") != null) {
                 String id = (String) args.get("id");
                 if (isPresentationIdInUse(id, listPresentations)) return null;
@@ -67,7 +70,7 @@ public class DataProviderCSV implements DataProvider {
         }
     }
 
-    private void writePresentationList (List list) throws IOException, CsvDataTypeMismatchException, CsvRequiredFieldEmptyException {
+    private void writePresentationList (List<Presentation> list) throws IOException, CsvDataTypeMismatchException, CsvRequiredFieldEmptyException {
         try {
             String path = getFilePath("presentation");
             FileWriter filePath = new FileWriter(path);
@@ -85,7 +88,7 @@ public class DataProviderCSV implements DataProvider {
     public Boolean isPresentationIdInUse (String id, List<Presentation> presentations) {
         try {
             UUID uuid = UUID.fromString(id);
-            Optional presentation = presentations.stream().filter(el -> el.getId().equals(uuid)).findFirst();
+            Optional<Presentation> presentation = presentations.stream().filter(el -> el.getId().equals(uuid)).findFirst();
             if (presentation.isPresent()) {
                 log.warn("[createPresentation] Provided presentation id is already in use: " + id);
                 return true;
@@ -98,28 +101,27 @@ public class DataProviderCSV implements DataProvider {
         }
     }
 
-    public Presentation getPresentationById (HashMap arguments) throws IOException {
+    public Optional<Presentation> getPresentationById (HashMap arguments) throws IOException {
         UUID id = UUID.fromString((String) arguments.get("id"));
         try {
-            List<Presentation> listPresentations = getAllPresentations();
+            List<Presentation> listPresentations = getAllPresentations().orElse(new ArrayList());
             log.debug("Attempt to find presentation: " + id);
             Optional<Presentation> presentation = listPresentations.stream()
                     .filter(el -> el.getId().equals(id)).findFirst();
-            Presentation result = presentation.isPresent() ? presentation.get() : null;
             if (presentation.isPresent()) {
-                log.info("[getPresentationById] Result: " + result.toString());
+                log.info("[getPresentationById] Result: " + presentation.get().toString());
             } else {
                 log.error("[getPresentationById] Unable to get presentation: " + id);
             }
-            return result;
+            return presentation;
         } catch (NoSuchElementException e) {
             log.error(e);
             log.error("Unable to get presentation");
-            return null;
+            return Optional.empty();
         }
     }
 
-    public List<Presentation> getAllPresentations () {
+    public Optional<List> getAllPresentations () {
         try {
             FileReader fileReader = new FileReader(getFilePath("presentation"));
             CSVReader csvReader = new CSVReader(fileReader);
@@ -129,17 +131,16 @@ public class DataProviderCSV implements DataProvider {
                     .withIgnoreLeadingWhiteSpace(true)
                     .build();
             Optional<List> listPresentation = Optional.ofNullable(csvToBean.parse());
-            List<Presentation> result = listPresentation.isPresent() ? listPresentation.get() : new ArrayList<>();
             if (listPresentation.isPresent()) {
-                log.info("[getAllPresentations] Result: " + result.toString());
+                log.info("[getAllPresentations] Result: " + listPresentation.get().toString());
             } else {
                 log.error("[getAllPresentations] Unable to get presentations");
             }
-            return result;
+            return listPresentation;
         } catch (RuntimeException | FileNotFoundException e) {
             e.printStackTrace();
             log.error(e);
-            return null;
+            return Optional.empty();
         }
     }
 
@@ -149,16 +150,21 @@ public class DataProviderCSV implements DataProvider {
                 log.error("[removePresentationById] Presentation id is not provide");
                 return Status.error;
             } else {
-                List<Presentation> presentationList = getAllPresentations();
-                UUID id = UUID.fromString((String) arguments.get("id"));
-                List<Presentation> updatedList = presentationList.stream().filter(el -> !el.getId().equals(id)).collect(Collectors.toList());
-                if (updatedList.size() == presentationList.size()) {
-                    log.error("[removePresentationById] Unable to find presentation with provided id: " + id);
+                List<Presentation> presentationList = getAllPresentations().orElse(new ArrayList());
+                if (presentationList.size() > 0) {
+                    UUID id = UUID.fromString((String) arguments.get("id"));
+                    List<Presentation> updatedList = presentationList.stream().filter(el -> !el.getId().equals(id)).collect(Collectors.toList());
+                    if (updatedList.size() == presentationList.size()) {
+                        log.error("[removePresentationById] Unable to find presentation with provided id: " + id);
+                        return Status.error;
+                    }
+                    writePresentationList(updatedList);
+                    log.info("[removePresentationById] Presentation was successfully removed: " + id);
+                    return Status.success;
+                } else {
+                    log.info("[removePresentationById] Unable to find presentation by provided id");
                     return Status.error;
                 }
-                writePresentationList(updatedList);
-                log.info("[removePresentationById] Presentation was successfully removed: " + id);
-                return Status.success;
             }
         } catch ( CsvRequiredFieldEmptyException | IOException | CsvDataTypeMismatchException e) {
             e.printStackTrace();
@@ -174,9 +180,9 @@ public class DataProviderCSV implements DataProvider {
                 log.error("[editPresentationOptions] Presentation id is not provided");
                 return Status.error;
             }
-            List<Presentation> list = getAllPresentations();
-            Boolean validId = Optional.of(getPresentationById(arguments)).isPresent();
+            Boolean validId = getPresentationById(arguments).isPresent();
             if (validId) {
+                List<Presentation> list = getAllPresentations().orElse(new ArrayList());
                 List<Presentation> updatedList = list.stream().map(el -> {
                     if (el.getId().equals(id)) {
                         el.setFillColor((String) arguments.getOrDefault("fillColor", el.getFillColor()));
@@ -194,6 +200,96 @@ public class DataProviderCSV implements DataProvider {
         } catch (RuntimeException e) {
             e.printStackTrace();
             log.error("Unable to edit presentation options");
+            return Status.error;
+        }
+    }
+
+    ///                         Slides section                          \\\
+
+    public Optional<List> getPresentationSlides (HashMap arguments) {
+        try {
+            FileReader fileReader;
+            try {
+                fileReader = Optional.of(new FileReader(getFilePath("slide"))).orElse(null);
+            } catch (FileNotFoundException e) {
+                log.error("[getPresentationSlides] Unable to get slides data source");;
+                return Optional.empty();
+            }
+            if (fileReader != null) {
+                CSVReader csvReader = new CSVReader(fileReader);
+                CsvToBean<Slide> csvToBean = new CsvToBeanBuilder<Slide>(csvReader)
+                        .withType(Slide.class)
+                        .withSeparator(',')
+                        .withIgnoreLeadingWhiteSpace(true)
+                        .build();
+                Optional<List> listSlides = Optional.ofNullable(csvToBean.parse());
+                Optional<List> presentationSlides = Optional.empty();
+                if (listSlides.isPresent()) {
+                    UUID presentationId = UUID.fromString((String) arguments.get("presentationId"));
+                    log.debug("[getPresentationSlides] Attempt to find presentation slides for: " + presentationId);
+                    List<Slide> list = listSlides.get();
+                    presentationSlides = Optional.of(list.stream().filter(slide -> slide.getPresentationId().equals(presentationId)).collect(Collectors.toList()));
+                }
+                log.debug("[getPresentationSlides] Found presentation slides: " + presentationSlides.orElse(new ArrayList()));
+                log.info("[getPresentationSlides] Found " + arguments.get("id") + " slides for presentation: " + arguments.get("presentationId"));
+                return presentationSlides;
+            } else {
+                return Optional.empty();
+            }
+        } catch (RuntimeException e) {
+            e.printStackTrace();
+            log.error(e);
+            log.error("[getPresentationSlides] Unable to get presentation slides");;
+            return Optional.empty();
+        }
+    }
+
+    public Object createPresentationSlide (HashMap arguments) {
+        try {
+            if (arguments.get("presentationId") == null) {
+                log.error("[createPresentationSlide] Argument is required: presentationId");
+                return null;
+            }
+            HashMap getPresentationByIdParams = new HashMap();
+            getPresentationByIdParams.put("id", arguments.get("presentationId"));
+            Optional<Presentation> optionalPresentation = getPresentationById(getPresentationByIdParams);
+            if (optionalPresentation.isPresent()) {
+                log.info(arguments.entrySet());
+                List<Slide> slides = getPresentationSlides(arguments).orElse(new ArrayList());
+                arguments.put("index", slides.size());
+                Slide slide = new Slide(arguments);
+                log.info("[createPresentationSlide] Create slide: " + slide.toString());
+                log.debug("[createPresentationSlide] For presentation: " + slide.getPresentationId());
+                slides.add(slide);
+                writeSlidesList(slides);
+                return slide.getId();
+            } else {
+                log.error("[createPresentationSlide] Unable to find presentation with provided id");
+                return Status.error;
+            }
+        } catch (RuntimeException | IOException e) {
+            e.printStackTrace();
+            log.error(e);
+            log.error("[createPresentationSlide] Unable to create slide");
+            return Status.error;
+        }
+    }
+
+    public Status writeSlidesList (List list) {
+        try {
+            String path = getFilePath("slide");
+            FileWriter filePath = new FileWriter(path);
+            CSVWriter writer = new CSVWriter(filePath);
+            StatefulBeanToCsv<Presentation> beanToCsv = new StatefulBeanToCsvBuilder<Presentation>(writer).withSeparator(',').withApplyQuotesToAll(false).build();
+            log.debug("[writeSlidesList] Attempt to write slides list");
+            beanToCsv.write(list);
+            writer.close();
+            log.debug("[writeSlidesList] Slides list was successfully wrote");
+            return Status.success;
+        } catch (IOException | CsvRequiredFieldEmptyException | CsvDataTypeMismatchException e) {
+            e.printStackTrace();
+            log.error(e);
+            log.error("[writeSlidesList] Unable to write slides list");
             return Status.error;
         }
     }

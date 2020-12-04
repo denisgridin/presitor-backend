@@ -8,9 +8,7 @@ import ru.sfedu.course_project.bean.Presentation;
 import ru.sfedu.course_project.enums.Status;
 
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -27,19 +25,18 @@ public class DataProviderCSVTest extends TestBase {
         HashMap params = new HashMap();
         params.put("id", presId);
         assertEquals(presentation.toString(),
-                provider.getPresentationById(params).toString());
+                provider.getPresentationById(params).get().toString());
     }
 
     @Test
     void createPresentationFail() throws IOException {
         System.out.println("createPresentationFail");
         DataProviderCSV provider = new DataProviderCSV();
-        HashMap args = new HashMap();
-        provider.createPresentation(args);
-        String presId = String.valueOf(UUID.randomUUID()); // set random id for fail check
         HashMap params = new HashMap();
-        params.put("id", presId);
-        assertNull(provider.getPresentationById(params));
+        Presentation firstPres = (Presentation) provider.getAllPresentations().get().get(0);
+        params.put("id", String.valueOf(firstPres.getId()));
+        provider.createPresentation(params);
+        assertNull(provider.createPresentation(params));
     }
 
     @Test
@@ -50,20 +47,23 @@ public class DataProviderCSVTest extends TestBase {
     void getAllPresentationsSuccess() {
         System.out.println("getAllPresentationsSuccess");
         DataProviderCSV provider = new DataProviderCSV();
-        List<Presentation> presentationList = provider.getAllPresentations();
-        assertNotNull(presentationList);
+        Optional<List> optionalPresentationList = provider.getAllPresentations();
+        assertNotNull(optionalPresentationList.get());
     }
 
     @Test
     void getAllPresentationsFail() {
         System.out.println("getAllPresentationsFail");
+        DataProviderCSV provider = new DataProviderCSV();
+        Optional<List> optionalPresentationList = provider.getAllPresentations();
+        assertNotNull(optionalPresentationList.get());
     }
 
     @Test
     void isPresentationIdInUseSuccess() {
         System.out.println("isPresentationIdInUseSuccess");
         DataProviderCSV provider = new DataProviderCSV();
-        List<Presentation> presentationList = provider.getAllPresentations();
+        List<Presentation> presentationList = provider.getAllPresentations().orElse(new ArrayList());
         if (presentationList.size() > 0) {
             System.out.println("[validatePresentationIdSuccess] presentation data source is NOT empty");
             Presentation presentation = presentationList.stream().findFirst().get();
@@ -74,7 +74,7 @@ public class DataProviderCSVTest extends TestBase {
             HashMap args = new HashMap();
             System.out.println("[validatePresentationIdSuccess] presentation data source is empty");
             UUID id = provider.createPresentation(args);
-            List<Presentation> list = provider.getAllPresentations();
+            List<Presentation> list = provider.getAllPresentations().orElse(new ArrayList());
             System.out.println(list);
             System.out.println(id);
             assertTrue(provider.isPresentationIdInUse(String.valueOf(id), list));
@@ -85,7 +85,7 @@ public class DataProviderCSVTest extends TestBase {
     void isPresentationIdInUseFail() {
         System.out.println("isPresentationIdInUseFail");
         DataProviderCSV provider = new DataProviderCSV();
-        List<Presentation> presentationList = provider.getAllPresentations();
+        List<Presentation> presentationList = provider.getAllPresentations().orElse(new ArrayList());
         assertFalse(provider.isPresentationIdInUse(String.valueOf(UUID.randomUUID()), presentationList));
     }
 
@@ -93,7 +93,7 @@ public class DataProviderCSVTest extends TestBase {
     void removePresentationByIdSuccess() throws CsvRequiredFieldEmptyException, IOException, CsvDataTypeMismatchException {
         System.out.println("removePresentationByIdSuccess");
         DataProviderCSV provider = new DataProviderCSV();
-        List<Presentation> presentationList = provider.getAllPresentations();
+        List<Presentation> presentationList = provider.getAllPresentations().orElse(new ArrayList());
         Presentation removingPresentation = presentationList.get(0);
 
         String id = String.valueOf(removingPresentation.getId());
@@ -117,7 +117,7 @@ public class DataProviderCSVTest extends TestBase {
     void editPresentationOptionsSuccess() throws CsvRequiredFieldEmptyException, IOException, CsvDataTypeMismatchException {
         System.out.println("editPresentationOptionsSuccess");
         DataProviderCSV provider = new DataProviderCSV();
-        Presentation presentation = provider.getAllPresentations().get(0);
+        Presentation presentation = (Presentation) provider.getAllPresentations().orElse(new ArrayList()).get(0);
         HashMap arguments = new HashMap();
         arguments.put("name", "My presentation");
         arguments.put("fillColor", "#403add");

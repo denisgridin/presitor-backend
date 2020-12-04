@@ -3,14 +3,14 @@ package ru.sfedu.course_project.bean;
 import com.opencsv.bean.CsvBindAndSplitByName;
 import com.opencsv.bean.CsvBindByName;
 import com.opencsv.bean.CsvCustomBindByName;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import ru.sfedu.course_project.Constants;
 import ru.sfedu.course_project.converters.ListIdsConverter;
 import ru.sfedu.course_project.converters.UUIDConverter;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-import java.util.UUID;
+import java.util.*;
 
 public class Slide implements Serializable {
     @CsvCustomBindByName(column = "id", converter = UUIDConverter.class)
@@ -22,14 +22,30 @@ public class Slide implements Serializable {
     @CsvBindByName
     private int index;
 
-    @CsvBindAndSplitByName(column = "slides", elementType = List.class, splitOn = ",", writeDelimiter = ";", converter = ListIdsConverter.class)
-    private List<UUID> elements;
+    @CsvCustomBindByName(column = "presentationId", converter = UUIDConverter.class)
+    private UUID presentationId;
 
-    public Slide (UUID id, String name, int index, List<UUID> elements) {
-        this.id = id;
-        this.name = name;
-        this.index = index;
-        this.elements = elements;
+    public Slide () {}
+
+    public Slide (HashMap args) {
+        validateArguments(args);
+    }
+
+    public static Logger log = LogManager.getLogger(Slide.class);
+
+    private void validateArguments (HashMap arguments) {
+        try {
+            log.info("[validateArguments] Arguments: " + arguments.entrySet());
+            Map defaults = Constants.DEFAULT_SLIDE;
+            log.info("[validateArguments] Default slide options: " + defaults.entrySet());
+            this.setId((UUID) arguments.getOrDefault("id", defaults.get("id")));
+            this.setName((String) arguments.getOrDefault("name", defaults.get("name")));
+            this.setIndex((Integer) arguments.get("index"));
+            this.setPresentationId(UUID.fromString((String) arguments.get("presentationId")));
+        } catch (RuntimeException e) {
+            log.error(e);
+            log.error("[validateArguments] Unable to validate Slide arguments");
+        }
     }
 
     public UUID getId() {
@@ -56,12 +72,12 @@ public class Slide implements Serializable {
         this.index = index;
     }
 
-    public List<UUID> getElements() {
-        return elements;
+    public UUID getPresentationId() {
+        return presentationId;
     }
 
-    public void setElements(ArrayList<UUID> elements) {
-        this.elements = elements;
+    public void setPresentationId(UUID presentationId) {
+        this.presentationId = presentationId;
     }
 
     @Override
@@ -69,15 +85,15 @@ public class Slide implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Slide slide = (Slide) o;
-        return id == slide.id &&
-                index == slide.index &&
+        return index == slide.index &&
+                Objects.equals(id, slide.id) &&
                 Objects.equals(name, slide.name) &&
-                Objects.equals(elements, slide.elements);
+                Objects.equals(presentationId, slide.presentationId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, index, elements);
+        return Objects.hash(id, name, index, presentationId);
     }
 
     @Override
@@ -86,7 +102,7 @@ public class Slide implements Serializable {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", index=" + index +
-                ", elements=" + elements +
+                ", presentationId=" + presentationId +
                 '}';
     }
 }

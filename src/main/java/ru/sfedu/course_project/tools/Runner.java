@@ -40,6 +40,9 @@ public class Runner {
                     case "editPresentationOptions": {
                         return this.provider.editPresentationOptions(arguments);
                     }
+                    case "createPresentationSlide": {
+                        return this.provider.createPresentationSlide(arguments);
+                    }
                     default:
                         throw new IllegalStateException("Unexpected method: " + method);
                 }
