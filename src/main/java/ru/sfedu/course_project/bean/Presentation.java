@@ -8,11 +8,12 @@ import org.apache.logging.log4j.Logger;
 import ru.sfedu.course_project.Constants;
 import ru.sfedu.course_project.converters.ListIdsConverter;
 import ru.sfedu.course_project.converters.UUIDConverter;
+import ru.sfedu.course_project.tools.BaseClass;
 
 import java.io.Serializable;
 import java.util.*;
 
-public class Presentation implements Serializable {
+public class Presentation implements Serializable, BaseClass {
     @CsvCustomBindByName(column = "id", converter = UUIDConverter.class)
     private UUID id;
 
