@@ -143,6 +143,52 @@ public class DataProviderCSVTest extends TestBase {
         log.debug("{TEST} removePresentationByIdFail END");
     }
 
+    @Test
+    void editPresentationOptionsSuccess() throws CsvRequiredFieldEmptyException, IOException, CsvDataTypeMismatchException {
+        log.debug("{TEST} editPresentationOptionsSuccess START");
+        DataProviderCSV provider = new DataProviderCSV();
+        UUID id = UUID.randomUUID();
+        Result createResult = makePresentationWithId(provider, id);
+
+        if (createResult.getStatus() == Status.success) {
+            HashMap arguments = new HashMap();
+            arguments.put("name", "My presentation");
+            arguments.put("fillColor", "#403add");
+            arguments.put("fontFamily", "Times New Roman");
+            arguments.put("id", String.valueOf(id));
+
+            assertEquals(provider.editPresentationOptions(arguments).getStatus(), Status.success);
+
+            Optional<Presentation> optionalEditedPresentation = provider.getInstanceById(Presentation.class, arguments);
+
+            assertTrue(optionalEditedPresentation.isPresent());
+
+            if (optionalEditedPresentation.isPresent()) {
+                Presentation editedPresentation = optionalEditedPresentation.get();
+                assertEquals(editedPresentation.getName(), "My presentation");
+                assertEquals(editedPresentation.getFillColor(), "#403add");
+                assertEquals(editedPresentation.getFontFamily(), "Times New Roman");
+            }
+        }
+        log.debug("{TEST} editPresentationOptionsSuccess END");
+    }
+
+    @Test
+    void editPresentationOptionsFail() throws CsvRequiredFieldEmptyException, IOException, CsvDataTypeMismatchException {
+        log.debug("{TEST} editPresentationOptionsFail START");
+        DataProviderCSV provider = new DataProviderCSV();
+        UUID id = UUID.randomUUID();
+
+        HashMap arguments = new HashMap();
+        arguments.put("name", "My presentation");
+        arguments.put("fillColor", "#403add");
+        arguments.put("fontFamily", "Times New Roman");
+        arguments.put("id", String.valueOf(id));
+
+        assertEquals(provider.editPresentationOptions(arguments).getStatus(), Status.error);
+        log.debug("{TEST} editPresentationOptionsFail END");
+    }
+
 
 
     @Test
@@ -161,39 +207,6 @@ public class DataProviderCSVTest extends TestBase {
         DataProviderCSV provider = new DataProviderCSV();
         Optional<List> optionalPresentationList = provider.getCollection(CollectionType.error, Presentation.class);
         assertFalse(optionalPresentationList.isPresent());
-    }
-
-    @Test
-    void editPresentationOptionsSuccess() throws CsvRequiredFieldEmptyException, IOException, CsvDataTypeMismatchException {
-        System.out.println("editPresentationOptionsSuccess");
-        DataProviderCSV provider = new DataProviderCSV();
-        Presentation presentation = (Presentation) provider.getCollection(CollectionType.presentation, Presentation.class).orElse(new ArrayList()).get(0);
-        HashMap arguments = new HashMap();
-        arguments.put("name", "My presentation");
-        arguments.put("fillColor", "#403add");
-        arguments.put("fontFamily", "Times New Roman");
-        arguments.put("id", String.valueOf(presentation.getId()));
-        assertEquals(provider.editPresentationOptions(arguments), Status.success);
-        Optional<Presentation> optionalEditedPresentation = provider.getInstanceById(Presentation.class, arguments);
-        assertTrue(optionalEditedPresentation.isPresent());
-        if (optionalEditedPresentation.isPresent()) {
-            Presentation editedPresentation = optionalEditedPresentation.get();
-            assertEquals(editedPresentation.getName(), "My presentation");
-            assertEquals(editedPresentation.getFillColor(), "#403add");
-            assertEquals(editedPresentation.getFontFamily(), "Times New Roman");
-        }
-    }
-
-    @Test
-    void editPresentationOptionsFail() throws CsvRequiredFieldEmptyException, IOException, CsvDataTypeMismatchException {
-        System.out.println("editPresentationOptionsSuccess");
-        HashMap arguments = new HashMap();
-        arguments.put("name", "My presentation");
-        arguments.put("fillColor", "#403add");
-        arguments.put("fontFamily", "Times New Roman");
-        arguments.put("id", String.valueOf(UUID.randomUUID()));
-        DataProviderCSV provider = new DataProviderCSV();
-        assertEquals(provider.editPresentationOptions(arguments), Status.error);
     }
 
     @Test

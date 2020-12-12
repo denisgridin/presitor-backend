@@ -203,16 +203,16 @@ public class DataProviderCSV implements DataProvider {
             listPresentations.add(presentation);
             Status result = writeCollection(listPresentations, Presentation.class);
             if (result == Status.success) {
-                log.info(SuccessConstants.PRESENTATION_CREATED + presentation.getId());
+                log.info(SuccessConstants.PRESENTATION_CREATE + presentation.getId());
                 return new Result(Status.success, presentation.getId());
             } else {
-                log.error(ErrorConstants.CREATE_PRESENTATION);
-                return new Result(Status.error, ErrorConstants.CREATE_PRESENTATION);
+                log.error(ErrorConstants.PRESENTATION_CREATE);
+                return new Result(Status.error, ErrorConstants.PRESENTATION_CREATE);
             }
         } catch (IndexOutOfBoundsException e) {
             log.error(e);
-            log.error(ErrorConstants.CREATE_PRESENTATION);
-            return new Result(Status.error, ErrorConstants.CREATE_PRESENTATION);
+            log.error(ErrorConstants.PRESENTATION_CREATE);
+            return new Result(Status.error, ErrorConstants.PRESENTATION_CREATE);
         }
     }
 
@@ -220,7 +220,7 @@ public class DataProviderCSV implements DataProvider {
         Optional <Presentation> presentation = getInstanceById(Presentation.class, arguments);
         return presentation.isPresent() ?
                 new Result(Status.success, presentation.get()) :
-                new Result(Status.error, ErrorConstants.GET_PRESENTATION);
+                new Result(Status.error, ErrorConstants.PRESENTATION_GET);
     }
 
     public Result removePresentationById (HashMap arguments) {
@@ -233,22 +233,22 @@ public class DataProviderCSV implements DataProvider {
                 if (status == Status.success) {
                     return new Result(Status.success, "ok");
                 } else {
-                    return new Result(Status.error, ErrorConstants.REMOVE_PRESENTATION);
+                    return new Result(Status.error, ErrorConstants.PRESENTATION_REMOVE);
                 }
             }
         } catch (RuntimeException e) {
             e.printStackTrace();
             log.error(e);
-            return new Result(Status.error, ErrorConstants.REMOVE_PRESENTATION);
+            return new Result(Status.error, ErrorConstants.PRESENTATION_REMOVE);
         }
     }
 
-    public Status editPresentationOptions (HashMap arguments) throws CsvDataTypeMismatchException, IOException, CsvRequiredFieldEmptyException {
+    public Result editPresentationOptions (HashMap arguments) throws CsvDataTypeMismatchException, IOException, CsvRequiredFieldEmptyException {
         try {
             UUID id = UUID.fromString((String) arguments.getOrDefault("id", null));
             if (id == null) {
-                log.error("[editPresentationOptions] Presentation id is not provided");
-                return Status.error;
+                log.error(ErrorConstants.ID_IS_NOT_PROVIDED);
+                return new Result(Status.error, ErrorConstants.ID_IS_NOT_PROVIDED);
             }
             Boolean validId = getInstanceById(Presentation.class, arguments).isPresent();
             if (validId) {
@@ -262,18 +262,18 @@ public class DataProviderCSV implements DataProvider {
                 }).collect(Collectors.toList());
                 Status result = writeCollection(updatedList, Presentation.class);
                 if (result == Status.success) {
-                    log.info("[editPresentationOptions] Presentation options was successfully updated: " + id);
-                    return Status.success;
+                    log.info(SuccessConstants.PRESENTATION_UPDATE + id);
+                    return new Result(Status.success, SuccessConstants.PRESENTATION_UPDATE + id);
                 }
-                return Status.error;
+                return new Result(Status.error, ErrorConstants.PRESENTATION_UPDATE + id);
             } else {
                 log.info("[editPresentationOptions] Unable to find presentation: " + id);
-                return Status.error;
+                return new Result(Status.error, ErrorConstants.PRESENTATION_NOT_FOUND + id);
             }
         } catch (RuntimeException e) {
             e.printStackTrace();
             log.error("Unable to edit presentation options");
-            return Status.error;
+            return new Result(Status.error, ErrorConstants.PRESENTATION_NOT_FOUND);
         }
     }
 

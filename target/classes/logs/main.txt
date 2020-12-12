@@ -3334,3 +3334,61 @@
 12 дек. 2020 17:03:19,586 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [removeRecordById] Element was successfully removed: 155d36d3-2e1c-463a-9b54-649880fa3f61
 12 дек. 2020 17:03:19,587 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value: ok }
 12 дек. 2020 17:03:19,593 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSVTest - {TEST} getPresentationByIdFail END
+12 дек. 2020 17:04:36,609 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSVTest - {TEST} removePresentationByIdFail START
+12 дек. 2020 17:04:36,896 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Attempt to get collection: presentation
+12 дек. 2020 17:04:37,026 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Collection was retrieved: presentation
+12 дек. 2020 17:04:37,035 [main] DEBUG ru.sfedu.course_project.tools.Creator - Arguments was validate 
+12 дек. 2020 17:04:37,035 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [writeCollection] Attempt to write in presentation
+12 дек. 2020 17:04:37,052 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [writeCollection] Collection was wrote
+12 дек. 2020 17:04:37,054 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - Presentation successfully created 88fb776c-e0ab-4b01-a6f8-0002851f9b42
+12 дек. 2020 17:04:37,054 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value: 88fb776c-e0ab-4b01-a6f8-0002851f9b42 }
+12 дек. 2020 17:04:37,055 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [removeRecordById] Removing elements from collection: presentation
+12 дек. 2020 17:04:37,055 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Attempt to get collection: presentation
+12 дек. 2020 17:04:37,086 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Collection was retrieved: presentation
+12 дек. 2020 17:04:37,088 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - [removeRecordById] Unable to find element with provided id: 25c1641d-73e6-4a94-b39e-043e2ec258cb
+12 дек. 2020 17:04:37,089 [main] INFO  ru.sfedu.course_project.tools.Result - { status: error, value: Unable to remove presentation by id }
+12 дек. 2020 17:04:37,095 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSVTest - {TEST} removePresentationByIdFail END
+12 дек. 2020 17:14:17,174 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSVTest - {TEST} editPresentationOptionsSuccess START
+12 дек. 2020 17:14:17,185 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Attempt to get collection: presentation
+12 дек. 2020 17:14:17,329 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Collection was retrieved: presentation
+12 дек. 2020 17:14:17,330 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Attempt to get collection: presentation
+12 дек. 2020 17:14:17,344 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Collection was retrieved: presentation
+12 дек. 2020 17:14:17,345 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Attempt to find presentation: 83c9f774-7a9c-49a2-be9c-48b642e72949
+12 дек. 2020 17:14:17,346 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Attempt to get collection: presentation
+12 дек. 2020 17:14:17,357 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Collection was retrieved: presentation
+12 дек. 2020 17:14:17,358 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [writeCollection] Attempt to write in presentation
+12 дек. 2020 17:14:17,382 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [writeCollection] Collection was wrote
+12 дек. 2020 17:14:17,385 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - Presentation options was successfully updated: 83c9f774-7a9c-49a2-be9c-48b642e72949
+12 дек. 2020 17:14:17,386 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value: Presentation options was successfully updated: 83c9f774-7a9c-49a2-be9c-48b642e72949 }
+12 дек. 2020 17:14:17,392 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Attempt to get collection: presentation
+12 дек. 2020 17:14:17,414 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Collection was retrieved: presentation
+12 дек. 2020 17:14:17,414 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Attempt to find presentation: 83c9f774-7a9c-49a2-be9c-48b642e72949
+12 дек. 2020 17:14:17,416 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSVTest - {TEST} editPresentationOptionsSuccess END
+12 дек. 2020 17:17:10,757 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSVTest - {TEST} editPresentationOptionsSuccess START
+12 дек. 2020 17:17:11,057 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Attempt to get collection: presentation
+12 дек. 2020 17:17:11,183 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Collection was retrieved: presentation
+12 дек. 2020 17:17:11,190 [main] DEBUG ru.sfedu.course_project.tools.Creator - Arguments was validate 
+12 дек. 2020 17:17:11,190 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [writeCollection] Attempt to write in presentation
+12 дек. 2020 17:17:11,209 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [writeCollection] Collection was wrote
+12 дек. 2020 17:17:11,211 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - Presentation successfully created 43d15129-ecf0-46c0-bfac-12b3a22cc60b
+12 дек. 2020 17:17:11,211 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value: 43d15129-ecf0-46c0-bfac-12b3a22cc60b }
+12 дек. 2020 17:17:11,211 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Attempt to get collection: presentation
+12 дек. 2020 17:17:11,232 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Collection was retrieved: presentation
+12 дек. 2020 17:17:11,233 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Attempt to find presentation: 43d15129-ecf0-46c0-bfac-12b3a22cc60b
+12 дек. 2020 17:17:11,234 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Attempt to get collection: presentation
+12 дек. 2020 17:17:11,244 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Collection was retrieved: presentation
+12 дек. 2020 17:17:11,245 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [writeCollection] Attempt to write in presentation
+12 дек. 2020 17:17:11,258 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [writeCollection] Collection was wrote
+12 дек. 2020 17:17:11,259 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - Presentation options was successfully updated: 43d15129-ecf0-46c0-bfac-12b3a22cc60b
+12 дек. 2020 17:17:11,260 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value: Presentation options was successfully updated: 43d15129-ecf0-46c0-bfac-12b3a22cc60b }
+12 дек. 2020 17:17:11,270 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Attempt to get collection: presentation
+12 дек. 2020 17:17:11,288 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Collection was retrieved: presentation
+12 дек. 2020 17:17:11,288 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Attempt to find presentation: 43d15129-ecf0-46c0-bfac-12b3a22cc60b
+12 дек. 2020 17:17:11,289 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSVTest - {TEST} editPresentationOptionsSuccess END
+12 дек. 2020 17:19:40,423 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSVTest - {TEST} editPresentationOptionsFail START
+12 дек. 2020 17:19:40,707 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Attempt to get collection: presentation
+12 дек. 2020 17:19:40,827 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Collection was retrieved: presentation
+12 дек. 2020 17:19:40,828 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Attempt to find presentation: 45d52abd-188b-4f4d-9aa5-7963ab973147
+12 дек. 2020 17:19:40,829 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [editPresentationOptions] Unable to find presentation: 45d52abd-188b-4f4d-9aa5-7963ab973147
+12 дек. 2020 17:19:40,831 [main] INFO  ru.sfedu.course_project.tools.Result - { status: error, value: Unable to update presentation: 45d52abd-188b-4f4d-9aa5-7963ab973147 }
+12 дек. 2020 17:19:40,835 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSVTest - {TEST} editPresentationOptionsFail END
