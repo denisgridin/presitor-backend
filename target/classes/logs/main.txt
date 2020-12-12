@@ -3255,3 +3255,47 @@
 12 дек. 2020 16:12:40,987 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Collection was retrieved: presentation
 12 дек. 2020 16:12:40,988 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Attempt to find presentation: 654a0c47-1b5d-4369-9a4a-5cf5b73cdc20
 12 дек. 2020 16:12:40,989 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getPresentationById] Result: Presentation{id=654a0c47-1b5d-4369-9a4a-5cf5b73cdc20, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}
+12 дек. 2020 16:15:18,776 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSVTest - {TEST} createPresentationSuccess START
+12 дек. 2020 16:15:18,783 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSVTest - ./src/main/resources/data
+12 дек. 2020 16:15:19,077 [main] DEBUG ru.sfedu.course_project.tools.Creator - Arguments was validate 
+12 дек. 2020 16:15:19,080 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Attempt to get collection: presentation
+12 дек. 2020 16:15:19,256 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Collection was retrieved: presentation
+12 дек. 2020 16:15:19,257 [main] DEBUG ru.sfedu.course_project.tools.Creator - Arguments was validate 
+12 дек. 2020 16:15:19,258 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [writeCollection] Attempt to write in presentation
+12 дек. 2020 16:15:19,282 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [writeCollection] Collection was wrote
+12 дек. 2020 16:15:19,283 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - Presentation successfully created 157ec5ec-f0e7-4fac-9289-dc3ebe609b55
+12 дек. 2020 16:15:19,285 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value: 157ec5ec-f0e7-4fac-9289-dc3ebe609b55 }
+12 дек. 2020 16:15:19,302 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Attempt to get collection: presentation
+12 дек. 2020 16:15:19,327 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Collection was retrieved: presentation
+12 дек. 2020 16:15:19,327 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Attempt to find presentation: 157ec5ec-f0e7-4fac-9289-dc3ebe609b55
+12 дек. 2020 16:15:19,329 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getPresentationById] Result: Presentation{id=157ec5ec-f0e7-4fac-9289-dc3ebe609b55, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}
+12 дек. 2020 16:15:19,334 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSVTest - {TEST} createPresentationSuccess END
+12 дек. 2020 16:42:28,089 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Attempt to get collection: presentation
+12 дек. 2020 16:42:28,205 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Collection was retrieved: presentation
+12 дек. 2020 16:42:28,212 [main] DEBUG ru.sfedu.course_project.tools.Creator - Arguments was validate 
+12 дек. 2020 16:42:28,213 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [writeCollection] Attempt to write in presentation
+12 дек. 2020 16:42:28,234 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [writeCollection] Collection was wrote
+12 дек. 2020 16:42:28,236 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - Presentation successfully created f2f5e651-3245-4851-b5e6-4db4c2f7b549
+12 дек. 2020 16:42:28,237 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value: f2f5e651-3245-4851-b5e6-4db4c2f7b549 }
+12 дек. 2020 16:43:05,641 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Attempt to get collection: presentation
+12 дек. 2020 16:43:05,783 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Collection was retrieved: presentation
+12 дек. 2020 16:43:05,789 [main] DEBUG ru.sfedu.course_project.tools.Creator - Arguments was validate 
+12 дек. 2020 16:43:05,789 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [writeCollection] Attempt to write in presentation
+12 дек. 2020 16:43:05,807 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [writeCollection] Collection was wrote
+12 дек. 2020 16:43:05,810 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - Presentation successfully created b20dd155-251a-48bd-8272-2df771cff8fa
+12 дек. 2020 16:43:05,811 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value: b20dd155-251a-48bd-8272-2df771cff8fa }
+12 дек. 2020 16:43:05,812 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Attempt to get collection: presentation
+12 дек. 2020 16:43:05,847 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Collection was retrieved: presentation
+12 дек. 2020 16:43:05,848 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Attempt to find presentation: b20dd155-251a-48bd-8272-2df771cff8fa
+12 дек. 2020 16:43:05,870 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value: Presentation{id=b20dd155-251a-48bd-8272-2df771cff8fa, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'} }
+12 дек. 2020 16:44:57,914 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Attempt to get collection: presentation
+12 дек. 2020 16:44:58,065 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Collection was retrieved: presentation
+12 дек. 2020 16:44:58,073 [main] DEBUG ru.sfedu.course_project.tools.Creator - Arguments was validate 
+12 дек. 2020 16:44:58,073 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [writeCollection] Attempt to write in presentation
+12 дек. 2020 16:44:58,097 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [writeCollection] Collection was wrote
+12 дек. 2020 16:44:58,099 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - Presentation successfully created af67319a-ca4d-4df5-b4a7-ba1141fa8986
+12 дек. 2020 16:44:58,100 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value: af67319a-ca4d-4df5-b4a7-ba1141fa8986 }
+12 дек. 2020 16:44:58,101 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Attempt to get collection: presentation
+12 дек. 2020 16:44:58,122 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Collection was retrieved: presentation
+12 дек. 2020 16:44:58,122 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Attempt to find presentation: af67319a-ca4d-4df5-b4a7-ba1141fa8986
+12 дек. 2020 16:44:58,138 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value: Presentation{id=af67319a-ca4d-4df5-b4a7-ba1141fa8986, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'} }

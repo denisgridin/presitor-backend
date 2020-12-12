@@ -142,7 +142,7 @@ public class DataProviderCSV implements DataProvider {
         } catch (RuntimeException e) {
             e.printStackTrace();
             log.error(e);
-            return null;
+            return false;
         }
     }
 
@@ -202,25 +202,25 @@ public class DataProviderCSV implements DataProvider {
         }
     }
 
-    public Optional<Presentation> getPresentationById (HashMap arguments) throws IOException {
+    public <T> Optional<T> getInstanceById (Class cl, HashMap arguments) {
         UUID id = UUID.fromString((String) arguments.get("id"));
         try {
-            List<Presentation> listPresentations = getCollection(CollectionType.presentation, Presentation.class).orElse(new ArrayList());
+            List<Presentation> listInstance = getCollection(CollectionType.presentation, cl).orElse(new ArrayList());
             log.debug("Attempt to find presentation: " + id);
-            Optional<Presentation> presentation = listPresentations.stream()
+            Optional<T> instance = (Optional<T>) listInstance.stream()
                     .filter(el -> el.getId().equals(id)).findFirst();
-            if (presentation.isPresent()) {
-                log.info("[getPresentationById] Result: " + presentation.get().toString());
-                return presentation;
-            } else {
-                log.error("[getPresentationById] Unable to get presentation: " + id);
-                return Optional.empty();
-            }
+            return instance;
         } catch (NoSuchElementException e) {
             log.error(e);
-            log.error("Unable to get presentation");
             return Optional.empty();
         }
+    }
+
+    public Result getPresentationById (HashMap arguments) {
+        Optional <Presentation> presentation = getInstanceById(Presentation.class, arguments);
+        return presentation.isPresent() ?
+                new Result(Status.success, presentation.get()) :
+                new Result(Status.error, ErrorConstants.GET_PRESENTATION);
     }
 
     public Status removePresentationById (HashMap arguments) throws CsvRequiredFieldEmptyException, IOException, CsvDataTypeMismatchException {
@@ -246,7 +246,7 @@ public class DataProviderCSV implements DataProvider {
                 log.error("[editPresentationOptions] Presentation id is not provided");
                 return Status.error;
             }
-            Boolean validId = getPresentationById(arguments).isPresent();
+            Boolean validId = getInstanceById(Presentation.class, arguments).isPresent();
             if (validId) {
                 List<Presentation> list = getCollection(CollectionType.presentation, Presentation.class).orElse(new ArrayList());
                 List<Presentation> updatedList = list.stream().map(el -> {
@@ -289,7 +289,7 @@ public class DataProviderCSV implements DataProvider {
                 UUID presentationId = UUID.fromString((String) arguments.get("presentationId"));
                 HashMap getPresentationByIdParams = new HashMap();
                 getPresentationByIdParams.put("id", String.valueOf(presentationId));
-                Optional<Presentation> presentation = getPresentationById(getPresentationByIdParams);
+                Optional<Presentation> presentation = getInstanceById(Presentation.class, getPresentationByIdParams);
                 if (presentation.isPresent()) {
                     Optional<List> listSlides = getCollection(CollectionType.slide, Slide.class);
                     Optional<List> presentationSlides = Optional.empty();
@@ -308,7 +308,7 @@ public class DataProviderCSV implements DataProvider {
             } else {
                 return Optional.empty();
             }
-        } catch (RuntimeException | IOException e) {
+        } catch (RuntimeException e) {
             e.printStackTrace();
             log.error(e);
             log.error("[getPresentationSlides] Unable to get presentation slides");;
@@ -324,7 +324,7 @@ public class DataProviderCSV implements DataProvider {
             }
             HashMap getPresentationByIdParams = new HashMap();
             getPresentationByIdParams.put("id", String.valueOf(arguments.get("presentationId")));
-            Optional<Presentation> optionalPresentation = getPresentationById(getPresentationByIdParams);
+            Optional<Presentation> optionalPresentation = getInstanceById(Presentation.class, getPresentationByIdParams);
             if (optionalPresentation.isPresent()) {
                 log.info(arguments.entrySet());
                 List<Slide> slides = getPresentationSlides(arguments).orElse(new ArrayList());
@@ -343,7 +343,7 @@ public class DataProviderCSV implements DataProvider {
                 log.error("[createPresentationSlide] Unable to find presentation with provided id");
                 return Status.error;
             }
-        } catch (RuntimeException | IOException e) {
+        } catch (RuntimeException e) {
             e.printStackTrace();
             log.error(e);
             log.error("[createPresentationSlide] Unable to create slide");

@@ -6,4 +6,6 @@ public class ErrorConstants {
     public static String CREATE_PRESENTATION = "Unable to create presentation";
     public static String ARGUMENTS_VALIDATE = "Unable to validate arguments";
     public static String ARGUMENTS_ERROR = "Some of arguments has errors";
+    public static String GET_PRESENTATION = "Unable to get presentation";
+
 }

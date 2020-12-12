@@ -42,13 +42,13 @@ public class DataProviderCSVTest extends TestBase {
         params.put("id", id);
 
         assertEquals(presentation.toString(),
-                provider.getPresentationById(params).get().toString());
+                provider.getInstanceById(Presentation.class, params).get().toString());
         assertEquals(result.getStatus(), Status.success);
         log.debug("{TEST} createPresentationSuccess END");
     }
 
     @Test
-    void createPresentationFail() throws IOException {
+    void createPresentationFail() {
         log.debug("{TEST} createPresentationFail START");
         DataProviderCSV provider = new DataProviderCSV();
 
@@ -66,7 +66,34 @@ public class DataProviderCSVTest extends TestBase {
     }
 
     @Test
-    void getPresentationByIdSuccess() { // TODO сделать общий метод получения элеменета по айди
+    void getPresentationByIdSuccess() {
+        log.debug("{TEST} getPresentationByIdSuccess START");
+        DataProviderCSV provider = new DataProviderCSV();
+        Result result = makeRandomPresentation(provider);
+        if (result.getStatus() == Status.success) {
+            HashMap args = new HashMap();
+            args.put("id", String.valueOf(result.getReturnValue()));
+            Result getPresResult = provider.getPresentationById(args);
+            Presentation presentation = (Presentation) getPresResult.getReturnValue();
+            assertEquals(presentation.getId(), result.getReturnValue());
+            assertEquals(getPresResult.getStatus(), Status.success);
+        } else {
+            assertFalse(true);
+        }
+        log.debug("{TEST} getPresentationByIdSuccess END");
+    }
+
+    @Test
+    void getPresentationByIdFail() {
+        log.debug("{TEST} getPresentationByIdFail START");
+        DataProviderCSV provider = new DataProviderCSV();
+        HashMap args = new HashMap();
+        args.put("id", String.valueOf(UUID.randomUUID()));
+
+        Result getPresResult = provider.getPresentationById(args);
+
+        assertEquals(getPresResult.getStatus(), Status.error);
+        log.debug("{TEST} getPresentationByIdFail END");
     }
 
     @Test
@@ -124,7 +151,7 @@ public class DataProviderCSVTest extends TestBase {
         arguments.put("fontFamily", "Times New Roman");
         arguments.put("id", String.valueOf(presentation.getId()));
         assertEquals(provider.editPresentationOptions(arguments), Status.success);
-        Optional<Presentation> optionalEditedPresentation = provider.getPresentationById(arguments);
+        Optional<Presentation> optionalEditedPresentation = provider.getInstanceById(Presentation.class, arguments);
         assertTrue(optionalEditedPresentation.isPresent());
         if (optionalEditedPresentation.isPresent()) {
             Presentation editedPresentation = optionalEditedPresentation.get();
