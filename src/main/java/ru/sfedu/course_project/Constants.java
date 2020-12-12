@@ -16,7 +16,7 @@ public class Constants {
             { "fontFamily", "Roboto" }
     }).collect(Collectors.toMap(data -> (String) data[0], data -> (Object) data[1]));
     public final static Map DEFAULT_SLIDE = Stream.of(new Object[][] {
-            { "id", UUID.randomUUID() },
+            { "id", String.valueOf(UUID.randomUUID()) },
             { "name", "Slide" }
     }).collect(Collectors.toMap(data -> (String) data[0], data -> (Object) data[1]));
     public final static List<String> PUBLIC_METHODS = Arrays.asList(new String[]{ "getPresentationById" });

@@ -19,6 +19,7 @@ public interface DataProvider {
     public <T> Status writeCollection (List collection, Class cl);
     public <T extends BaseClass> Boolean isIdInUse (String id, List<T> list);
     public <T extends BaseClass> Status removeRecordById (CollectionType collectionType, Class cl, UUID id);
+    public <T extends BaseClass> Optional<T> getInstanceById (Class cl, CollectionType collectionType, HashMap arguments);
 
     public Result createPresentation (HashMap arguments);
     public Result getPresentationById (HashMap arguments) throws IOException;
@@ -26,6 +27,6 @@ public interface DataProvider {
     public Result editPresentationOptions (HashMap arguments) throws CsvDataTypeMismatchException, IOException, CsvRequiredFieldEmptyException;
 
     public Result getPresentationSlides (HashMap arguments);
-    public Object createPresentationSlide (HashMap arguments);
+    public Result createPresentationSlide (HashMap arguments);
 //    public <T> Status addCollectionRecord (T record, UUID id);
 }

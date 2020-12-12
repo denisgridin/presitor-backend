@@ -135,12 +135,12 @@ public class DataProviderCSV implements DataProvider {
         }
     }
 
-    public <T> Optional<T> getInstanceById (Class cl, HashMap arguments) {
+    public <T extends BaseClass> Optional<T> getInstanceById (Class cl, CollectionType collectionType, HashMap arguments) {
         UUID id = UUID.fromString((String) arguments.get("id"));
         try {
-            List<Presentation> listInstance = getCollection(CollectionType.presentation, cl).orElse(new ArrayList());
+            List<T> listInstance = getCollection(collectionType, cl).orElse(new ArrayList());
             log.debug("Attempt to find presentation: " + id);
-            Optional<T> instance = (Optional<T>) listInstance.stream()
+            Optional<T> instance = listInstance.stream()
                     .filter(el -> el.getId().equals(id)).findFirst();
             return instance;
         } catch (NoSuchElementException e) {
@@ -223,7 +223,7 @@ public class DataProviderCSV implements DataProvider {
     }
 
     public Result getPresentationById (HashMap arguments) {
-        Optional <Presentation> presentation = getInstanceById(Presentation.class, arguments);
+        Optional <Presentation> presentation = getInstanceById(Presentation.class, CollectionType.presentation, arguments);
         return presentation.isPresent() ?
                 new Result(Status.success, presentation.get()) :
                 new Result(Status.error, ErrorConstants.PRESENTATION_GET);
@@ -256,7 +256,7 @@ public class DataProviderCSV implements DataProvider {
                 log.error(ErrorConstants.ARGUMENT_IS_NOT_PROVIDED + "id");
                 return new Result(Status.error, ErrorConstants.ARGUMENT_IS_NOT_PROVIDED + "id");
             }
-            Boolean validId = getInstanceById(Presentation.class, arguments).isPresent();
+            Boolean validId = getInstanceById(Presentation.class, CollectionType.presentation, arguments).isPresent();
             if (validId) {
                 List<Presentation> list = getCollection(CollectionType.presentation, Presentation.class).orElse(new ArrayList());
                 List<Presentation> updatedList = list.stream().map(el -> {
@@ -295,7 +295,7 @@ public class DataProviderCSV implements DataProvider {
             UUID presentationId = UUID.fromString((String) arguments.get("presentationId"));
             HashMap getPresentationByIdParams = new HashMap();
             getPresentationByIdParams.put("id", String.valueOf(presentationId));
-            Optional<Presentation> presentation = getInstanceById(Presentation.class, getPresentationByIdParams);
+            Optional<Presentation> presentation = getInstanceById(Presentation.class, CollectionType.presentation, getPresentationByIdParams);
             if (presentation.isPresent()) {
                 Optional<List> listSlides = getCollection(CollectionType.slide, Slide.class);
                 Optional<List> presentationSlides = Optional.empty();
@@ -318,39 +318,39 @@ public class DataProviderCSV implements DataProvider {
         }
     }
 
-    public Object createPresentationSlide (HashMap arguments) {
+    public Result createPresentationSlide (HashMap arguments) {
         try {
             if (arguments.get("presentationId") == null) {
                 log.error(ErrorConstants.ARGUMENT_IS_NOT_PROVIDED + "presentationId");
-                return null;
+                return new Result(Status.error, ErrorConstants.ARGUMENT_IS_NOT_PROVIDED + "presentationId");
             }
             HashMap getPresentationByIdParams = new HashMap();
             getPresentationByIdParams.put("id", String.valueOf(arguments.get("presentationId")));
-            Optional<Presentation> optionalPresentation = getInstanceById(Presentation.class, getPresentationByIdParams);
+            Optional<Presentation> optionalPresentation = getInstanceById(Presentation.class, CollectionType.presentation, getPresentationByIdParams);
             if (optionalPresentation.isPresent()) {
                 log.info(arguments.entrySet());
-//                List<Slide> slides = getPresentationSlides(arguments).getReturnValue();
-                List slides = new ArrayList<>();
+                List<Slide> slides = (List<Slide>) getPresentationSlides(arguments).getReturnValue();
                 arguments.put("index", slides.size());
-                Slide slide = new Slide(arguments);
+                Optional<Slide> optionalSlide = (Optional<Slide>) new Creator().create(Slide.class, arguments);
+                Slide slide = optionalSlide.orElse(new Slide());
                 log.info("[createPresentationSlide] Create slide: " + slide.toString());
                 log.debug("[createPresentationSlide] For presentation: " + slide.getPresentationId());
                 slides.add(slide);
-                Status result = writeCollection(slides, Slide.class);
-                if (result == Status.success) {
-                    return slide.getId();
+                Status status = writeCollection(slides, Slide.class);
+                if (status == Status.success) {
+                    log.info(SuccessConstants.SLIDE_CREATE + arguments.get("presentationId"));
+                    return new Result(Status.success, slide.getId());
                 } else {
-                    return Status.error;
+                    log.error(ErrorConstants.SLIDE_CREATE + arguments.get("presentationId"));
+                    return new Result(Status.error, ErrorConstants.SLIDE_CREATE + arguments.get("presentationId"));
                 }
             } else {
-                log.error("[createPresentationSlide] Unable to find presentation with provided id");
-                return Status.error;
+                return new Result(Status.error, ErrorConstants.PRESENTATION_NOT_FOUND + arguments.get("presentationId"));
             }
         } catch (RuntimeException e) {
             e.printStackTrace();
             log.error(e);
-            log.error("[createPresentationSlide] Unable to create slide");
-            return Status.error;
+            return new Result(Status.error, ErrorConstants.SLIDE_CREATE);
         }
     }
 }

@@ -42,7 +42,7 @@ public class DataProviderCSVTest extends TestBase {
         params.put("id", id);
 
         assertEquals(presentation.toString(),
-                provider.getInstanceById(Presentation.class, params).get().toString());
+                provider.getInstanceById(Presentation.class, CollectionType.presentation, params).get().toString());
         assertEquals(result.getStatus(), Status.success);
         log.debug("{TEST} createPresentationSuccess END");
     }
@@ -159,7 +159,7 @@ public class DataProviderCSVTest extends TestBase {
 
             assertEquals(provider.editPresentationOptions(arguments).getStatus(), Status.success);
 
-            Optional<Presentation> optionalEditedPresentation = provider.getInstanceById(Presentation.class, arguments);
+            Optional<Presentation> optionalEditedPresentation = provider.getInstanceById(Presentation.class, CollectionType.presentation, arguments);
 
             assertTrue(optionalEditedPresentation.isPresent());
 
@@ -209,57 +209,70 @@ public class DataProviderCSVTest extends TestBase {
 
     @Test
     void getPresentationSlidesFail() {
+        log.debug("{TEST} getPresentationSlidesFail START");
         DataProvider provider = new DataProviderCSV();
         UUID presId = UUID.randomUUID();
         HashMap args = new HashMap();
         args.put("presentationId", String.valueOf(presId));
         Result getSlidesResult = provider.getPresentationSlides(args);
         assertEquals(getSlidesResult.getStatus(), Status.error);
+        log.debug("{TEST} getPresentationSlidesFail END");
     }
-
-
-    @Test
-    void getCollectionsListSuccess() {
-        log.debug("getCollectionSuccess");
-        DataProviderCSV provider = new DataProviderCSV();
-        HashMap args = new HashMap();
-        provider.createPresentation(args);
-        Optional<List> optionalPresentationList = provider.getCollection(CollectionType.presentation, Presentation.class);
-        assertNotNull(optionalPresentationList.get());
-    }
-
-    @Test
-    void getCollectionsListFail() {
-        System.out.println("getCollection(CollectionType.presentation)Fail");
-        DataProviderCSV provider = new DataProviderCSV();
-        Optional<List> optionalPresentationList = provider.getCollection(CollectionType.error, Presentation.class);
-        assertFalse(optionalPresentationList.isPresent());
-    }
-
 
     @Test
     void createPresentationSlideSuccess() {
+        log.debug("{TEST} createPresentationSlideSuccess START");
         DataProvider provider = new DataProviderCSV();
         HashMap args = new HashMap();
-        Presentation presentation = (Presentation) provider.getCollection(CollectionType.presentation, Presentation.class).get().get(0);
-        UUID id = presentation.getId();
-        args.put("presentationId", String.valueOf(id));
-        provider.createPresentationSlide(args);
-        assertNotEquals(provider.createPresentationSlide(args), Status.error);
-//        assertTrue(provider.createPresentationSlide(args) instanceof UUID);
+        String presId = String.valueOf(UUID.randomUUID());
+        String slideId = String.valueOf(UUID.randomUUID());
+        args.put("id", presId);
+
+        Result createPresResult = makePresentationWithId(provider, UUID.fromString(presId));
+        if (createPresResult.getStatus() == Status.success) {
+            args.put("id", slideId);
+            args.put("presentationId", presId);
+            Result createSlideResult = provider.createPresentationSlide(args);
+            assertEquals(createSlideResult.getStatus(), Status.success);
+            Optional<Slide> optionalSlide = provider.getInstanceById(Slide.class, CollectionType.slide, args);
+            assertTrue(optionalSlide.isPresent());
+        }
+        log.debug("{TEST} createPresentationSlideSuccess END");
     }
 
-    @Test
-    void getCollectionSuccess() {
-        DataProvider provider = new DataProviderCSV();
-        assertNotEquals(provider.getCollection(CollectionType.presentation, Presentation.class), Status.error);
-        assertNotEquals(provider.getCollection(CollectionType.slide, Slide.class), Status.error);
-    }
-
-    @Test
-    void getCollectionError() {
-        DataProvider provider = new DataProviderCSV();
-        assertEquals(provider.getCollection(CollectionType.error, Presentation.class), Status.error);
-        assertEquals(provider.getCollection(CollectionType.error, Slide.class), Status.error);
-    }
+//
+//    @Test
+//    void getCollectionsListSuccess() {
+//        log.debug("getCollectionSuccess");
+//        DataProviderCSV provider = new DataProviderCSV();
+//        HashMap args = new HashMap();
+//        provider.createPresentation(args);
+//        Optional<List> optionalPresentationList = provider.getCollection(CollectionType.presentation, Presentation.class);
+//        assertNotNull(optionalPresentationList.get());
+//    }
+//
+//    @Test
+//    void getCollectionsListFail() {
+//        System.out.println("getCollection(CollectionType.presentation)Fail");
+//        DataProviderCSV provider = new DataProviderCSV();
+//        Optional<List> optionalPresentationList = provider.getCollection(CollectionType.error, Presentation.class);
+//        assertFalse(optionalPresentationList.isPresent());
+//    }
+//
+//
+//
+//
+//    @Test
+//    void getCollectionSuccess() {
+//        DataProvider provider = new DataProviderCSV();
+//        assertNotEquals(provider.getCollection(CollectionType.presentation, Presentation.class), Status.error);
+//        assertNotEquals(provider.getCollection(CollectionType.slide, Slide.class), Status.error);
+//    }
+//
+//    @Test
+//    void getCollectionError() {
+//        DataProvider provider = new DataProviderCSV();
+//        assertEquals(provider.getCollection(CollectionType.error, Presentation.class), Status.error);
+//        assertEquals(provider.getCollection(CollectionType.error, Slide.class), Status.error);
+//    }
 }

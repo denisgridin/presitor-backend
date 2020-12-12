@@ -3516,3 +3516,195 @@
 12 дек. 2020 18:08:44,632 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getPresentationSlides] Found presentation slides: []
 12 дек. 2020 18:08:44,633 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value: [] }
 12 дек. 2020 18:08:44,641 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSVTest - {TEST} getPresentationSlidesSuccess END
+12 дек. 2020 18:08:56,689 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Attempt to get collection: presentation
+12 дек. 2020 18:08:56,829 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Collection was retrieved: presentation
+12 дек. 2020 18:08:56,829 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Attempt to find presentation: 8b8c216f-6576-4964-a46a-6a2c41d2f816
+12 дек. 2020 18:08:56,832 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - Unable to find presentation: 8b8c216f-6576-4964-a46a-6a2c41d2f816
+12 дек. 2020 18:08:56,834 [main] INFO  ru.sfedu.course_project.tools.Result - { status: error, value: Unable to find presentation: 8b8c216f-6576-4964-a46a-6a2c41d2f816 }
+12 дек. 2020 18:24:50,349 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSVTest - {TEST} createPresentationSlideSuccess START
+12 дек. 2020 18:24:50,665 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Attempt to get collection: presentation
+12 дек. 2020 18:24:50,773 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Collection was retrieved: presentation
+12 дек. 2020 18:24:50,778 [main] DEBUG ru.sfedu.course_project.tools.Creator - Arguments was validate 
+12 дек. 2020 18:24:50,779 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [writeCollection] Attempt to write in presentation
+12 дек. 2020 18:24:50,797 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [writeCollection] Collection was wrote
+12 дек. 2020 18:24:50,799 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - Presentation successfully created d5148611-4110-4ec5-bf28-decc4f56ffee
+12 дек. 2020 18:24:50,799 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value: d5148611-4110-4ec5-bf28-decc4f56ffee }
+12 дек. 2020 18:24:50,800 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Attempt to get collection: presentation
+12 дек. 2020 18:24:50,817 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Collection was retrieved: presentation
+12 дек. 2020 18:24:50,817 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Attempt to find presentation: d5148611-4110-4ec5-bf28-decc4f56ffee
+12 дек. 2020 18:24:50,819 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [presentationId=d5148611-4110-4ec5-bf28-decc4f56ffee, id=835171f7-7459-4594-b812-14cab4b6f1ab]
+12 дек. 2020 18:24:50,819 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Attempt to get collection: presentation
+12 дек. 2020 18:24:50,827 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Collection was retrieved: presentation
+12 дек. 2020 18:24:50,828 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Attempt to find presentation: d5148611-4110-4ec5-bf28-decc4f56ffee
+12 дек. 2020 18:24:50,829 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Attempt to get collection: slide
+12 дек. 2020 18:24:50,830 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - java.io.FileNotFoundException: .\src\main\resources\data\csv\slide.csv (Не удается найти указанный файл)
+12 дек. 2020 18:24:50,831 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - Unable to get slide data source
+12 дек. 2020 18:24:50,831 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getPresentationSlides] Found presentation slides: []
+12 дек. 2020 18:24:50,831 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value: [] }
+12 дек. 2020 18:24:50,832 [main] INFO  ru.sfedu.course_project.bean.Slide - [validateArguments] Arguments: [presentationId=d5148611-4110-4ec5-bf28-decc4f56ffee, index=0, id=835171f7-7459-4594-b812-14cab4b6f1ab]
+12 дек. 2020 18:24:50,833 [main] INFO  ru.sfedu.course_project.bean.Slide - [validateArguments] Default slide options: [name=Slide, id=44af9d2d-9746-453c-ab37-f5f4edf8b363]
+12 дек. 2020 18:24:50,833 [main] ERROR ru.sfedu.course_project.bean.Slide - java.lang.ClassCastException: class java.lang.String cannot be cast to class java.util.UUID (java.lang.String and java.util.UUID are in module java.base of loader 'bootstrap')
+12 дек. 2020 18:24:50,833 [main] ERROR ru.sfedu.course_project.bean.Slide - [validateArguments] Unable to validate Slide arguments
+12 дек. 2020 18:24:50,845 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [createPresentationSlide] Create slide: Slide{id=null, name='null', index=0, presentationId=null}
+12 дек. 2020 18:24:50,845 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [createPresentationSlide] For presentation: null
+12 дек. 2020 18:24:50,846 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [writeCollection] Attempt to write in slide
+12 дек. 2020 18:24:50,854 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [writeCollection] Collection was wrote
+12 дек. 2020 18:24:50,854 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - Slide options was successfully created for presentation: d5148611-4110-4ec5-bf28-decc4f56ffee
+12 дек. 2020 18:24:50,857 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - java.lang.NullPointerException
+12 дек. 2020 18:24:50,858 [main] INFO  ru.sfedu.course_project.tools.Result - { status: error, value: Unable to create slide for presentation:  }
+12 дек. 2020 18:26:48,502 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSVTest - {TEST} createPresentationSlideSuccess START
+12 дек. 2020 18:26:48,823 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Attempt to get collection: presentation
+12 дек. 2020 18:26:48,966 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Collection was retrieved: presentation
+12 дек. 2020 18:26:48,974 [main] DEBUG ru.sfedu.course_project.tools.Creator - Arguments was validate 
+12 дек. 2020 18:26:48,975 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [writeCollection] Attempt to write in presentation
+12 дек. 2020 18:26:48,998 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [writeCollection] Collection was wrote
+12 дек. 2020 18:26:49,000 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - Presentation successfully created c17b968e-c6d5-4b5d-8110-7458e5b849e9
+12 дек. 2020 18:26:49,000 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value: c17b968e-c6d5-4b5d-8110-7458e5b849e9 }
+12 дек. 2020 18:26:49,000 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Attempt to get collection: presentation
+12 дек. 2020 18:26:49,020 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Collection was retrieved: presentation
+12 дек. 2020 18:26:49,021 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Attempt to find presentation: c17b968e-c6d5-4b5d-8110-7458e5b849e9
+12 дек. 2020 18:26:49,023 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [presentationId=c17b968e-c6d5-4b5d-8110-7458e5b849e9, id=87143934-3e52-4835-915a-e1a96bc17ee5]
+12 дек. 2020 18:26:49,023 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Attempt to get collection: presentation
+12 дек. 2020 18:26:49,036 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Collection was retrieved: presentation
+12 дек. 2020 18:26:49,037 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Attempt to find presentation: c17b968e-c6d5-4b5d-8110-7458e5b849e9
+12 дек. 2020 18:26:49,038 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Attempt to get collection: slide
+12 дек. 2020 18:26:49,052 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - java.lang.RuntimeException: Error parsing CSV.
+12 дек. 2020 18:26:49,054 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getPresentationSlides] Found presentation slides: []
+12 дек. 2020 18:26:49,054 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value: [] }
+12 дек. 2020 18:26:49,055 [main] INFO  ru.sfedu.course_project.bean.Slide - [validateArguments] Arguments: [presentationId=c17b968e-c6d5-4b5d-8110-7458e5b849e9, index=0, id=87143934-3e52-4835-915a-e1a96bc17ee5]
+12 дек. 2020 18:26:49,055 [main] INFO  ru.sfedu.course_project.bean.Slide - [validateArguments] Default slide options: [name=Slide, id=f0f84c47-7a8c-404b-948c-c4850fa3493d]
+12 дек. 2020 18:26:49,073 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [createPresentationSlide] Create slide: Slide{id=87143934-3e52-4835-915a-e1a96bc17ee5, name='Slide', index=0, presentationId=c17b968e-c6d5-4b5d-8110-7458e5b849e9}
+12 дек. 2020 18:26:49,073 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [createPresentationSlide] For presentation: c17b968e-c6d5-4b5d-8110-7458e5b849e9
+12 дек. 2020 18:26:49,074 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [writeCollection] Attempt to write in slide
+12 дек. 2020 18:26:49,082 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [writeCollection] Collection was wrote
+12 дек. 2020 18:26:49,082 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - Slide options was successfully created for presentation: c17b968e-c6d5-4b5d-8110-7458e5b849e9
+12 дек. 2020 18:26:49,083 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value: 87143934-3e52-4835-915a-e1a96bc17ee5 }
+12 дек. 2020 18:54:57,160 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSVTest - {TEST} createPresentationSuccess START
+12 дек. 2020 18:54:57,447 [main] DEBUG ru.sfedu.course_project.tools.Creator - Arguments was validate 
+12 дек. 2020 18:54:57,448 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Attempt to get collection: presentation
+12 дек. 2020 18:54:57,580 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Collection was retrieved: presentation
+12 дек. 2020 18:54:57,581 [main] DEBUG ru.sfedu.course_project.tools.Creator - Arguments was validate 
+12 дек. 2020 18:54:57,581 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [writeCollection] Attempt to write in presentation
+12 дек. 2020 18:54:57,596 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [writeCollection] Collection was wrote
+12 дек. 2020 18:54:57,598 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - Presentation successfully created 2cf7f860-ad41-4e58-8f33-274c72c18e99
+12 дек. 2020 18:54:57,598 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value: 2cf7f860-ad41-4e58-8f33-274c72c18e99 }
+12 дек. 2020 18:54:57,614 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Attempt to get collection: presentation
+12 дек. 2020 18:54:57,641 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Collection was retrieved: presentation
+12 дек. 2020 18:54:57,642 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Attempt to find presentation: 2cf7f860-ad41-4e58-8f33-274c72c18e99
+12 дек. 2020 18:54:57,647 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSVTest - {TEST} createPresentationSuccess END
+12 дек. 2020 18:55:14,911 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSVTest - {TEST} createPresentationSuccess START
+12 дек. 2020 18:55:15,200 [main] DEBUG ru.sfedu.course_project.tools.Creator - Arguments was validate 
+12 дек. 2020 18:55:15,202 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Attempt to get collection: presentation
+12 дек. 2020 18:55:15,316 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Collection was retrieved: presentation
+12 дек. 2020 18:55:15,317 [main] DEBUG ru.sfedu.course_project.tools.Creator - Arguments was validate 
+12 дек. 2020 18:55:15,317 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [writeCollection] Attempt to write in presentation
+12 дек. 2020 18:55:15,337 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [writeCollection] Collection was wrote
+12 дек. 2020 18:55:15,338 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - Presentation successfully created 29eda3ab-6fc8-45a4-bf38-b545e8a108db
+12 дек. 2020 18:55:15,339 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value: 29eda3ab-6fc8-45a4-bf38-b545e8a108db }
+12 дек. 2020 18:55:15,354 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Attempt to get collection: presentation
+12 дек. 2020 18:55:15,375 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Collection was retrieved: presentation
+12 дек. 2020 18:55:15,376 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Attempt to find presentation: 29eda3ab-6fc8-45a4-bf38-b545e8a108db
+12 дек. 2020 18:55:15,383 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSVTest - {TEST} createPresentationSuccess END
+12 дек. 2020 18:55:49,374 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSVTest - {TEST} createPresentationSlideSuccess START
+12 дек. 2020 18:55:49,646 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Attempt to get collection: presentation
+12 дек. 2020 18:55:49,768 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Collection was retrieved: presentation
+12 дек. 2020 18:55:49,775 [main] DEBUG ru.sfedu.course_project.tools.Creator - Arguments was validate 
+12 дек. 2020 18:55:49,776 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [writeCollection] Attempt to write in presentation
+12 дек. 2020 18:55:49,801 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [writeCollection] Collection was wrote
+12 дек. 2020 18:55:49,803 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - Presentation successfully created 20f1268b-da24-46f9-9fa5-893fd2542e03
+12 дек. 2020 18:55:49,804 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value: 20f1268b-da24-46f9-9fa5-893fd2542e03 }
+12 дек. 2020 18:55:49,804 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Attempt to get collection: presentation
+12 дек. 2020 18:55:49,827 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Collection was retrieved: presentation
+12 дек. 2020 18:55:49,828 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Attempt to find presentation: 20f1268b-da24-46f9-9fa5-893fd2542e03
+12 дек. 2020 18:55:49,831 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [presentationId=20f1268b-da24-46f9-9fa5-893fd2542e03, id=178d49d4-aba1-4c55-a429-29025e9ad7ef]
+12 дек. 2020 18:55:49,831 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Attempt to get collection: presentation
+12 дек. 2020 18:55:49,844 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Collection was retrieved: presentation
+12 дек. 2020 18:55:49,845 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Attempt to find presentation: 20f1268b-da24-46f9-9fa5-893fd2542e03
+12 дек. 2020 18:55:49,846 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Attempt to get collection: slide
+12 дек. 2020 18:55:49,857 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Collection was retrieved: slide
+12 дек. 2020 18:55:49,857 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getPresentationSlides] Attempt to find presentation slides for: 20f1268b-da24-46f9-9fa5-893fd2542e03
+12 дек. 2020 18:55:49,858 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getPresentationSlides] Found presentation slides: []
+12 дек. 2020 18:55:49,858 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value: [] }
+12 дек. 2020 18:55:49,859 [main] INFO  ru.sfedu.course_project.tools.Creator - [createSlide] Arguments: [presentationId=20f1268b-da24-46f9-9fa5-893fd2542e03, index=0, id=178d49d4-aba1-4c55-a429-29025e9ad7ef]
+12 дек. 2020 18:55:49,859 [main] INFO  ru.sfedu.course_project.tools.Creator - [createSlide] Default slide options: [name=Slide, id=ece85fea-702f-4fd9-ae4a-c0f764b7aa78]
+12 дек. 2020 18:55:49,860 [main] ERROR ru.sfedu.course_project.tools.Creator - java.lang.ClassCastException: class java.lang.String cannot be cast to class java.util.UUID (java.lang.String and java.util.UUID are in module java.base of loader 'bootstrap')
+12 дек. 2020 18:55:49,861 [main] ERROR ru.sfedu.course_project.tools.Creator - Unable to validate arguments
+12 дек. 2020 18:55:49,873 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [createPresentationSlide] Create slide: Slide{id=null, name='null', index=0, presentationId=null}
+12 дек. 2020 18:55:49,874 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [createPresentationSlide] For presentation: null
+12 дек. 2020 18:55:49,874 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [writeCollection] Attempt to write in slide
+12 дек. 2020 18:55:49,884 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [writeCollection] Collection was wrote
+12 дек. 2020 18:55:49,885 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - Slide options was successfully created for presentation: 20f1268b-da24-46f9-9fa5-893fd2542e03
+12 дек. 2020 18:55:49,888 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - java.lang.NullPointerException
+12 дек. 2020 18:55:49,889 [main] INFO  ru.sfedu.course_project.tools.Result - { status: error, value: Unable to create slide for presentation:  }
+12 дек. 2020 18:57:12,311 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSVTest - {TEST} createPresentationSlideSuccess START
+12 дек. 2020 18:57:12,599 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Attempt to get collection: presentation
+12 дек. 2020 18:57:12,737 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Collection was retrieved: presentation
+12 дек. 2020 18:57:12,742 [main] DEBUG ru.sfedu.course_project.tools.Creator - Arguments was validate 
+12 дек. 2020 18:57:12,742 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [writeCollection] Attempt to write in presentation
+12 дек. 2020 18:57:12,760 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [writeCollection] Collection was wrote
+12 дек. 2020 18:57:12,762 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - Presentation successfully created 6131dd63-3a40-47f2-9fd5-2cbcc5285efe
+12 дек. 2020 18:57:12,762 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value: 6131dd63-3a40-47f2-9fd5-2cbcc5285efe }
+12 дек. 2020 18:57:12,762 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Attempt to get collection: presentation
+12 дек. 2020 18:57:12,784 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Collection was retrieved: presentation
+12 дек. 2020 18:57:12,785 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Attempt to find presentation: 6131dd63-3a40-47f2-9fd5-2cbcc5285efe
+12 дек. 2020 18:57:12,788 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [presentationId=6131dd63-3a40-47f2-9fd5-2cbcc5285efe, id=0931a8b9-7610-4d8a-851f-5830dbf8adf7]
+12 дек. 2020 18:57:12,794 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - java.lang.ClassCastException: class java.util.UUID cannot be cast to class java.lang.String (java.util.UUID and java.lang.String are in module java.base of loader 'bootstrap')
+12 дек. 2020 18:57:12,797 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - Unable to get presentation slides
+12 дек. 2020 18:57:12,797 [main] INFO  ru.sfedu.course_project.tools.Result - { status: error, value: Unable to get presentation slides }
+12 дек. 2020 18:57:12,801 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - java.lang.ClassCastException: class java.lang.String cannot be cast to class java.util.List (java.lang.String and java.util.List are in module java.base of loader 'bootstrap')
+12 дек. 2020 18:57:12,802 [main] INFO  ru.sfedu.course_project.tools.Result - { status: error, value: Unable to create slide for presentation:  }
+12 дек. 2020 19:00:31,446 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSVTest - {TEST} createPresentationSlideSuccess START
+12 дек. 2020 19:00:31,742 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Attempt to get collection: presentation
+12 дек. 2020 19:00:31,920 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Collection was retrieved: presentation
+12 дек. 2020 19:00:31,928 [main] DEBUG ru.sfedu.course_project.tools.Creator - Arguments was validate 
+12 дек. 2020 19:00:31,928 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [writeCollection] Attempt to write in presentation
+12 дек. 2020 19:00:31,949 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [writeCollection] Collection was wrote
+12 дек. 2020 19:00:31,951 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - Presentation successfully created 8ef8bbf9-2b8b-4ec4-a30b-bff8c2a5f49c
+12 дек. 2020 19:00:31,951 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value: 8ef8bbf9-2b8b-4ec4-a30b-bff8c2a5f49c }
+12 дек. 2020 19:00:31,953 [main] INFO  ru.sfedu.course_project.tools.Creator - [createSlide] Arguments: [presentationId=8ef8bbf9-2b8b-4ec4-a30b-bff8c2a5f49c, id=c70e5e7e-e07e-4853-aa51-9fab1e501d5c]
+12 дек. 2020 19:00:31,954 [main] INFO  ru.sfedu.course_project.tools.Creator - [createSlide] Default slide options: [name=Slide, id=cdd59cc1-44df-4e5e-96c2-75953c9618fb]
+12 дек. 2020 19:00:31,955 [main] ERROR ru.sfedu.course_project.tools.Creator - java.lang.ClassCastException: class java.lang.String cannot be cast to class java.util.UUID (java.lang.String and java.util.UUID are in module java.base of loader 'bootstrap')
+12 дек. 2020 19:00:31,956 [main] ERROR ru.sfedu.course_project.tools.Creator - Unable to validate arguments
+12 дек. 2020 19:01:51,351 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSVTest - {TEST} createPresentationSlideSuccess START
+12 дек. 2020 19:01:51,620 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Attempt to get collection: presentation
+12 дек. 2020 19:01:51,788 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Collection was retrieved: presentation
+12 дек. 2020 19:01:51,794 [main] DEBUG ru.sfedu.course_project.tools.Creator - Arguments was validate 
+12 дек. 2020 19:01:51,795 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [writeCollection] Attempt to write in presentation
+12 дек. 2020 19:01:51,811 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [writeCollection] Collection was wrote
+12 дек. 2020 19:01:51,812 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - Presentation successfully created 07fe78a0-2ca9-4752-b651-9ac2f3983aef
+12 дек. 2020 19:01:51,813 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value: 07fe78a0-2ca9-4752-b651-9ac2f3983aef }
+12 дек. 2020 19:01:51,815 [main] INFO  ru.sfedu.course_project.tools.Creator - [createSlide] Arguments: [presentationId=07fe78a0-2ca9-4752-b651-9ac2f3983aef, id=7d1fbf41-4a45-4e8d-9225-ffb346312bd9]
+12 дек. 2020 19:01:51,815 [main] INFO  ru.sfedu.course_project.tools.Creator - [createSlide] Default slide options: [name=Slide, id=9c992b52-5fc7-4020-8597-dc984cd7161e]
+12 дек. 2020 19:01:51,816 [main] ERROR ru.sfedu.course_project.tools.Creator - java.lang.NullPointerException
+12 дек. 2020 19:01:51,817 [main] ERROR ru.sfedu.course_project.tools.Creator - Unable to validate arguments
+12 дек. 2020 19:06:21,045 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSVTest - {TEST} createPresentationSlideSuccess START
+12 дек. 2020 19:06:21,335 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Attempt to get collection: presentation
+12 дек. 2020 19:06:21,478 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Collection was retrieved: presentation
+12 дек. 2020 19:06:21,486 [main] DEBUG ru.sfedu.course_project.tools.Creator - Arguments was validate 
+12 дек. 2020 19:06:21,487 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [writeCollection] Attempt to write in presentation
+12 дек. 2020 19:06:21,507 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [writeCollection] Collection was wrote
+12 дек. 2020 19:06:21,509 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - Presentation successfully created 7d6e9b46-f8e0-4670-8bfc-2ea8996fcd4c
+12 дек. 2020 19:06:21,509 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value: 7d6e9b46-f8e0-4670-8bfc-2ea8996fcd4c }
+12 дек. 2020 19:06:21,510 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Attempt to get collection: presentation
+12 дек. 2020 19:06:21,532 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Collection was retrieved: presentation
+12 дек. 2020 19:06:21,533 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Attempt to find presentation: 7d6e9b46-f8e0-4670-8bfc-2ea8996fcd4c
+12 дек. 2020 19:06:21,535 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [presentationId=7d6e9b46-f8e0-4670-8bfc-2ea8996fcd4c, id=67894859-0ad5-4f43-81dc-561cff9fab63]
+12 дек. 2020 19:06:21,535 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Attempt to get collection: presentation
+12 дек. 2020 19:06:21,549 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Collection was retrieved: presentation
+12 дек. 2020 19:06:21,550 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Attempt to find presentation: 7d6e9b46-f8e0-4670-8bfc-2ea8996fcd4c
+12 дек. 2020 19:06:21,552 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Attempt to get collection: slide
+12 дек. 2020 19:06:21,577 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - java.lang.RuntimeException: Error parsing CSV.
+12 дек. 2020 19:06:21,577 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getPresentationSlides] Found presentation slides: []
+12 дек. 2020 19:06:21,578 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value: [] }
+12 дек. 2020 19:06:21,579 [main] INFO  ru.sfedu.course_project.tools.Creator - [createSlide] Arguments: [presentationId=7d6e9b46-f8e0-4670-8bfc-2ea8996fcd4c, index=0, id=67894859-0ad5-4f43-81dc-561cff9fab63]
+12 дек. 2020 19:06:21,580 [main] INFO  ru.sfedu.course_project.tools.Creator - [createSlide] Default slide options: [name=Slide, id=e5f20ec9-43c3-4bd5-b545-9db3c8e27b28]
+12 дек. 2020 19:06:21,580 [main] DEBUG ru.sfedu.course_project.tools.Creator - Arguments was validate 
+12 дек. 2020 19:06:21,603 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [createPresentationSlide] Create slide: Slide{id=67894859-0ad5-4f43-81dc-561cff9fab63, name='Slide', index=0, presentationId=7d6e9b46-f8e0-4670-8bfc-2ea8996fcd4c}
+12 дек. 2020 19:06:21,604 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [createPresentationSlide] For presentation: 7d6e9b46-f8e0-4670-8bfc-2ea8996fcd4c
+12 дек. 2020 19:06:21,604 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [writeCollection] Attempt to write in slide
+12 дек. 2020 19:06:21,614 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [writeCollection] Collection was wrote
+12 дек. 2020 19:06:21,615 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - Slide options was successfully created for presentation: 7d6e9b46-f8e0-4670-8bfc-2ea8996fcd4c
+12 дек. 2020 19:06:21,615 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value: 67894859-0ad5-4f43-81dc-561cff9fab63 }
+12 дек. 2020 19:06:21,622 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Attempt to get collection: presentation
+12 дек. 2020 19:06:21,631 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Collection was retrieved: presentation
+12 дек. 2020 19:06:21,632 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Attempt to find presentation: 67894859-0ad5-4f43-81dc-561cff9fab63

@@ -6,6 +6,7 @@ import ru.sfedu.course_project.Constants;
 import ru.sfedu.course_project.ErrorConstants;
 import ru.sfedu.course_project.SuccessConstants;
 import ru.sfedu.course_project.bean.Presentation;
+import ru.sfedu.course_project.bean.Slide;
 import ru.sfedu.course_project.enums.Status;
 
 import java.util.HashMap;
@@ -24,6 +25,9 @@ public class Creator {
             case "presentation": {
                 return createPresentation(args);
             }
+            case "slide": {
+                return createSlide(args);
+            }
             default: {
                 return Optional.empty();
             }
@@ -40,6 +44,25 @@ public class Creator {
             presentation.setFontFamily((String) args.getOrDefault("fontFamily", defaults.get("fontFamily")));
             log.debug(SuccessConstants.ARGUMENTS_VALIDATE);
             return Optional.of(presentation);
+        } catch (RuntimeException e) {
+            log.error(e);
+            log.error(ErrorConstants.ARGUMENTS_VALIDATE);
+            return Optional.empty();
+        }
+    }
+
+    private Optional<Slide> createSlide (HashMap args) {
+        Map defaults = Constants.DEFAULT_SLIDE;
+        Slide slide = new Slide();
+        try {
+            log.info("[createSlide] Arguments: " + args.entrySet());
+            log.info("[createSlide] Default slide options: " + defaults.entrySet());
+            slide.setId(UUID.fromString((String) args.getOrDefault("id", defaults.get("id"))));
+            slide.setName((String) args.getOrDefault("name", defaults.get("name")));
+            slide.setIndex((Integer) args.get("index"));
+            slide.setPresentationId(UUID.fromString((String) args.get("presentationId")));
+            log.debug(SuccessConstants.ARGUMENTS_VALIDATE);
+            return Optional.of(slide);
         } catch (RuntimeException e) {
             log.error(e);
             log.error(ErrorConstants.ARGUMENTS_VALIDATE);

@@ -14,4 +14,5 @@ public class ErrorConstants {
     public static String PRESENTATION_NOT_FOUND = "Unable to find presentation: ";
 
     public static String SLIDES_GET = "Unable to get presentation slides";
+    public static String SLIDE_CREATE = "Unable to create slide for presentation: ";
 }
