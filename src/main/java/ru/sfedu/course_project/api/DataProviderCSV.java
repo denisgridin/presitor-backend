@@ -11,11 +11,15 @@ import com.opencsv.exceptions.CsvRequiredFieldEmptyException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import ru.sfedu.course_project.Constants;
+import ru.sfedu.course_project.ErrorConstants;
+import ru.sfedu.course_project.SuccessConstants;
 import ru.sfedu.course_project.bean.Presentation;
 import ru.sfedu.course_project.bean.Slide;
 import ru.sfedu.course_project.enums.CollectionType;
 import ru.sfedu.course_project.enums.Status;
 import ru.sfedu.course_project.tools.BaseClass;
+import ru.sfedu.course_project.tools.Creator;
+import ru.sfedu.course_project.tools.Result;
 import ru.sfedu.course_project.utils.ConfigurationUtil;
 
 import java.io.FileNotFoundException;
@@ -27,6 +31,7 @@ import java.util.stream.Collectors;
 
 public class DataProviderCSV implements DataProvider {
     private final String PATH="csv_path";
+    private final String DATA_PATH="dataPath";
 
     private final String FILE_EXTENTION="csv";
 
@@ -41,9 +46,11 @@ public class DataProviderCSV implements DataProvider {
 
     private String getFilePath (CollectionType collectionType) {
         try {
-            return ConfigurationUtil.getConfigurationEntry(PATH) +
-            collectionType +
-            ConfigurationUtil.getConfigurationEntry(FILE_EXTENTION);
+            return String.format("%s/%s/%s.%s",
+                    ConfigurationUtil.getConfigurationEntry(DATA_PATH),
+                    ConfigurationUtil.getConfigurationEntry(FILE_EXTENTION),
+                    collectionType,
+                    ConfigurationUtil.getConfigurationEntry(FILE_EXTENTION));
         } catch (IOException e) {
             e.printStackTrace();
             return null;
@@ -58,9 +65,7 @@ public class DataProviderCSV implements DataProvider {
         try {
             FileReader fileReader;
             try {
-                StackTraceElement[] stackTrace = Thread.currentThread()
-                        .getStackTrace();
-                String methodName = stackTrace[1].getMethodName();
+                log.debug("[getCollection] Attempt to get collection: " + collectionType);
                 fileReader = new FileReader(getFilePath(collectionType));
                 CSVReader csvReader = new CSVReader(fileReader);
                 CsvToBean<T> csvToBean = new CsvToBeanBuilder<T>(csvReader)
@@ -69,11 +74,7 @@ public class DataProviderCSV implements DataProvider {
                         .withIgnoreLeadingWhiteSpace(true)
                         .build();
                 Optional<List> optionalCollection = Optional.ofNullable(csvToBean.parse());
-                if (optionalCollection.isPresent()) {
-                    log.info(String.format(Constants.MSG_SUCCESS_RESULT, methodName, optionalCollection.get().toString()));
-                } else {
-                    log.error(String.format("[%s] Unable to get collections", methodName));
-                }
+                log.info("[getCollection] Collection was retrieved: " + collectionType);
                 return optionalCollection;
             } catch (FileNotFoundException e) {
                 log.error(e);
@@ -90,7 +91,9 @@ public class DataProviderCSV implements DataProvider {
     @Override
     public <T> Status writeCollection(List list, Class cl) {
         try {
-            String path = getFilePath(CollectionType.presentation);
+            log.debug(String.format("[writeCollection] Attempt to write in %s", cl.getSimpleName().toLowerCase()));
+            CollectionType collectionType = CollectionType.valueOf(cl.getSimpleName().toLowerCase());
+            String path = getFilePath(collectionType);
             FileWriter filePath = new FileWriter(path);
             CSVWriter writer = new CSVWriter(filePath);
             StatefulBeanToCsv<T> beanToCsv = new StatefulBeanToCsvBuilder<T>(writer).withSeparator(',').withApplyQuotesToAll(false).build();
@@ -106,12 +109,33 @@ public class DataProviderCSV implements DataProvider {
     }
 
     @Override
+    public <T extends BaseClass> Status removeRecordById (CollectionType collectionType, Class cl, UUID id) {
+        try {
+            log.debug(String.format("[removeRecordById] Removing elements from collection: %s", collectionType));
+            List <T> collection = getCollection(collectionType, cl).orElseThrow(() -> new RuntimeException(String.format("[removeRecordById] Unable to get collection: %s", collectionType)));
+            List <T> updatedCollection = collection.stream().filter(el -> !el.getId().equals(id)).collect(Collectors.toList());
+            if (updatedCollection.size() == collection.size()) {
+                log.error("[removeRecordById] Unable to find element with provided id: " + id);
+                return Status.error;
+            }
+            writeCollection(updatedCollection, cl);
+            log.info("[removeRecordById] Element was successfully removed: " + id);
+            return Status.success;
+        } catch (RuntimeException e) {
+            e.printStackTrace();
+            log.error(e);
+            log.error("[removeRecordById] Unable to remove element from collection");
+            return Status.error;
+        }
+    }
+
+
+    @Override
     public <T extends BaseClass> Boolean isIdInUse (String id, List<T> list) {
         try {
             UUID uuid = UUID.fromString(id);
             Optional<T> item = list.stream().filter(el -> el.getId().equals(uuid)).findFirst();
             if (item.isPresent()) {
-                log.warn("[isIdInUse] Provided id is already in use: " + id);
                 return true;
             }
             return false;
@@ -148,28 +172,33 @@ public class DataProviderCSV implements DataProvider {
     ///                      Presentations section                          \\\
 
     @Override
-    public UUID createPresentation(HashMap args) {
+    public Result createPresentation(HashMap args) {
         try {
-            List<Presentation> listPresentations = getCollection(CollectionType.presentation, Presentation.class).orElse(new ArrayList());
+            List<Presentation> listPresentations = getCollection(CollectionType.presentation, Presentation.class)
+                    .orElse(new ArrayList());
             if (args.get("id") != null) {
                 String id = (String) args.get("id");
-                if (isIdInUse(id, listPresentations)) return null;
-                // TODO return Error;
+                if (isIdInUse(id, listPresentations)) return new Result(Status.error, ErrorConstants.ID_IN_USE);
             }
-            Presentation presentation = new Presentation(args);
+            Optional<Presentation> optionalPresentation = (Optional<Presentation>) new Creator().create(Presentation.class, args);
+            if (!optionalPresentation.isPresent()) {
+                log.error(ErrorConstants.ARGUMENTS_ERROR);
+                return new Result(Status.error, ErrorConstants.ARGUMENTS_ERROR);
+            }
+            Presentation presentation = optionalPresentation.get();
             listPresentations.add(presentation);
             Status result = writeCollection(listPresentations, Presentation.class);
             if (result == Status.success) {
-                log.info("Presentation was successfully created: " + presentation.getId());
-                return presentation.getId();
+                log.info(SuccessConstants.PRESENTATION_CREATED + presentation.getId());
+                return new Result(Status.success, presentation.getId());
             } else {
-                log.error("Unable to create presentation");
-                return null;
+                log.error(ErrorConstants.CREATE_PRESENTATION);
+                return new Result(Status.error, ErrorConstants.CREATE_PRESENTATION);
             }
         } catch (IndexOutOfBoundsException e) {
             log.error(e);
-            log.error("Unable to create presentation");
-            return null;
+            log.error(ErrorConstants.CREATE_PRESENTATION);
+            return new Result(Status.error, ErrorConstants.CREATE_PRESENTATION);
         }
     }
 
@@ -200,24 +229,8 @@ public class DataProviderCSV implements DataProvider {
                 log.error("[removePresentationById] Presentation id is not provide");
                 return Status.error;
             } else {
-                List<Presentation> presentationList = getCollection(CollectionType.presentation, Presentation.class).orElse(new ArrayList());
-                if (presentationList.size() > 0) {
-                    UUID id = UUID.fromString((String) arguments.get("id"));
-                    List<Presentation> updatedList = presentationList.stream().filter(el -> !el.getId().equals(id)).collect(Collectors.toList());
-                    if (updatedList.size() == presentationList.size()) {
-                        log.error("[removePresentationById] Unable to find presentation with provided id: " + id);
-                        return Status.error;
-                    }
-                    Status result = writeCollection(updatedList, Presentation.class);
-                    if (result == Status.success) {
-                        log.info("[removePresentationById] Presentation was successfully removed: " + id);
-                        return Status.success;
-                    }
-                    return Status.error;
-                } else {
-                    log.info("[removePresentationById] Unable to find presentation by provided id");
-                    return Status.error;
-                }
+                UUID id = UUID.fromString((String) arguments.get("id"));
+                return removeRecordById(CollectionType.presentation, Presentation.class, id);
             }
         } catch (RuntimeException e) {
             e.printStackTrace();

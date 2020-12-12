@@ -2,12 +2,17 @@ package ru.sfedu.course_project.api;
 
 import com.opencsv.exceptions.CsvDataTypeMismatchException;
 import com.opencsv.exceptions.CsvRequiredFieldEmptyException;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.Test;
 import ru.sfedu.course_project.TestBase;
 import ru.sfedu.course_project.bean.Presentation;
 import ru.sfedu.course_project.bean.Slide;
 import ru.sfedu.course_project.enums.CollectionType;
 import ru.sfedu.course_project.enums.Status;
+import ru.sfedu.course_project.tools.Creator;
+import ru.sfedu.course_project.tools.Result;
+import ru.sfedu.course_project.utils.ConfigurationUtil;
 
 import javax.xml.crypto.Data;
 import java.io.IOException;
@@ -17,32 +22,47 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class DataProviderCSVTest extends TestBase {
 
+    private static Logger log = LogManager.getLogger(DataProviderCSVTest.class);
+
     @Test
     void createPresentationSuccess() throws IOException {
-        System.out.println("createPresentationSuccess");
+        log.debug("{TEST} createPresentationSuccess START");
+
         DataProviderCSV provider = new DataProviderCSV();
+
         HashMap args = new HashMap();
-        Presentation presentation = makePresentation();
-        provider.createPresentation(args);
-        String presId = String.valueOf(presentation.getId());
+        args.put("id", String.valueOf(UUID.randomUUID()));
+
+        Presentation presentation = (Presentation) new Creator().create(Presentation.class, args).get();
+
+        Result result = provider.createPresentation(args);
+        String id = result.getReturnValue().toString();
+
         HashMap params = new HashMap();
-        params.put("id", presId);
+        params.put("id", id);
+
         assertEquals(presentation.toString(),
                 provider.getPresentationById(params).get().toString());
+        assertEquals(result.getStatus(), Status.success);
+        log.debug("{TEST} createPresentationSuccess END");
     }
 
     @Test
     void createPresentationFail() throws IOException {
-        System.out.println("createPresentationFail");
+        log.debug("{TEST} createPresentationFail START");
         DataProviderCSV provider = new DataProviderCSV();
-        HashMap params = new HashMap();
-        Optional<List> presentationList = (Optional) provider.getCollection(CollectionType.presentation, Presentation.class);
-        if (presentationList.isPresent()) {
-            Presentation firstPres = (Presentation) presentationList.get().get(0);
-            params.put("id", String.valueOf(firstPres.getId()));
-            provider.createPresentation(params);
-            assertNull(provider.createPresentation(params));
-        }
+
+        String id = String.valueOf(UUID.randomUUID());
+
+        HashMap args = new HashMap();
+        args.put("id", id);
+
+        provider.createPresentation(args);
+        Result result = provider.createPresentation(args);
+
+        assertNotEquals(result.getStatus(), Status.success);
+        assertEquals(result.getStatus(), Status.error);
+        log.debug("{TEST} createPresentationFail END");
     }
 
     @Test
@@ -51,8 +71,10 @@ public class DataProviderCSVTest extends TestBase {
 
     @Test
     void getCollectionsListSuccess() {
-        System.out.println("getCollection(CollectionType.presentation)Success");
+        log.debug("getCollectionSuccess");
         DataProviderCSV provider = new DataProviderCSV();
+        HashMap args = new HashMap();
+        provider.createPresentation(args);
         Optional<List> optionalPresentationList = provider.getCollection(CollectionType.presentation, Presentation.class);
         assertNotNull(optionalPresentationList.get());
     }
@@ -63,36 +85,6 @@ public class DataProviderCSVTest extends TestBase {
         DataProviderCSV provider = new DataProviderCSV();
         Optional<List> optionalPresentationList = provider.getCollection(CollectionType.error, Presentation.class);
         assertFalse(optionalPresentationList.isPresent());
-    }
-
-    @Test
-    void isPresentationIdInUseSuccess() {
-        System.out.println("isPresentationIdInUseSuccess");
-        DataProviderCSV provider = new DataProviderCSV();
-        List<Presentation> presentationList = provider.getCollection(CollectionType.presentation, Presentation.class).orElse(new ArrayList());
-        if (presentationList.size() > 0) {
-            System.out.println("[validatePresentationIdSuccess] presentation data source is NOT empty");
-            Presentation presentation = presentationList.stream().findFirst().get();
-            System.out.println(presentationList.toString());
-            System.out.println(presentation.getId());
-            assertTrue(provider.isIdInUse(String.valueOf(presentation.getId()), presentationList));
-        } else {
-            HashMap args = new HashMap();
-            System.out.println("[validatePresentationIdSuccess] presentation data source is empty");
-            UUID id = provider.createPresentation(args);
-            List<Presentation> list = provider.getCollection(CollectionType.presentation, Presentation.class).orElse(new ArrayList());
-            System.out.println(list);
-            System.out.println(id);
-            assertTrue(provider.isIdInUse(String.valueOf(id), list));
-        }
-    }
-
-    @Test
-    void isPresentationIdInUseFail() {
-        System.out.println("isPresentationIdInUseFail");
-        DataProviderCSV provider = new DataProviderCSV();
-        List<Presentation> presentationList = provider.getCollection(CollectionType.presentation, Presentation.class).orElse(new ArrayList());
-        assertFalse(provider.isIdInUse(String.valueOf(UUID.randomUUID()), presentationList));
     }
 
     @Test
@@ -140,7 +132,6 @@ public class DataProviderCSVTest extends TestBase {
             assertEquals(editedPresentation.getFillColor(), "#403add");
             assertEquals(editedPresentation.getFontFamily(), "Times New Roman");
         }
-        // Todo проверить поля в датасорсе
     }
 
     @Test
@@ -153,8 +144,6 @@ public class DataProviderCSVTest extends TestBase {
         arguments.put("id", String.valueOf(UUID.randomUUID()));
         DataProviderCSV provider = new DataProviderCSV();
         assertEquals(provider.editPresentationOptions(arguments), Status.error);
-        // Todo проверить поля в датасорсе
-        //
     }
 
     @Test
@@ -183,6 +172,25 @@ public class DataProviderCSVTest extends TestBase {
     void createPresentationSlideSuccess() {
         DataProvider provider = new DataProviderCSV();
         HashMap args = new HashMap();
-        args.put("presentationId", String.valueOf(UUID.randomUUID()));
+        Presentation presentation = (Presentation) provider.getCollection(CollectionType.presentation, Presentation.class).get().get(0);
+        UUID id = presentation.getId();
+        args.put("presentationId", String.valueOf(id));
+        provider.createPresentationSlide(args);
+        assertNotEquals(provider.createPresentationSlide(args), Status.error);
+//        assertTrue(provider.createPresentationSlide(args) instanceof UUID);
+    }
+
+    @Test
+    void getCollectionSuccess() {
+        DataProvider provider = new DataProviderCSV();
+        assertNotEquals(provider.getCollection(CollectionType.presentation, Presentation.class), Status.error);
+        assertNotEquals(provider.getCollection(CollectionType.slide, Slide.class), Status.error);
+    }
+
+    @Test
+    void getCollectionError() {
+        DataProvider provider = new DataProviderCSV();
+        assertEquals(provider.getCollection(CollectionType.error, Presentation.class), Status.error);
+        assertEquals(provider.getCollection(CollectionType.error, Slide.class), Status.error);
     }
 }

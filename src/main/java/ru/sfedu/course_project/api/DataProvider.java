@@ -6,6 +6,7 @@ import ru.sfedu.course_project.bean.Presentation;
 import ru.sfedu.course_project.enums.CollectionType;
 import ru.sfedu.course_project.enums.Status;
 import ru.sfedu.course_project.tools.BaseClass;
+import ru.sfedu.course_project.tools.Result;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -18,8 +19,9 @@ public interface DataProvider {
     public <T> Optional<List> getCollection (CollectionType collectionType, Class cl);
     public <T> Status writeCollection (List collection, Class cl);
     public <T extends BaseClass> Boolean isIdInUse (String id, List<T> list);
+    public <T extends BaseClass> Status removeRecordById (CollectionType collectionType, Class cl, UUID id);
 
-    public UUID createPresentation (HashMap arguments);
+    public Result createPresentation (HashMap arguments);
     public Optional<Presentation> getPresentationById (HashMap arguments) throws IOException;
     public Status removePresentationById (HashMap arguments) throws CsvRequiredFieldEmptyException, IOException, CsvDataTypeMismatchException;
     public Status editPresentationOptions (HashMap arguments) throws CsvDataTypeMismatchException, IOException, CsvRequiredFieldEmptyException;

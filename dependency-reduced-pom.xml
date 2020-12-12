@@ -45,6 +45,7 @@
             <configuration>
               <tasks>
                 <copy />
+                <copy />
               </tasks>
             </configuration>
           </execution>
@@ -65,6 +66,13 @@
             </configuration>
           </execution>
         </executions>
+      </plugin>
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <source>9</source>
+          <target>9</target>
+        </configuration>
       </plugin>
     </plugins>
   </build>

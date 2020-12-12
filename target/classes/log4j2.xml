@@ -2,9 +2,9 @@
 <Configuration status="DEBUG">
 
     <Appenders>
-<!--        <Console name="Console" target="SYSTEM_OUT">-->
-<!--            <PatternLayout pattern="%d{dd MMM yyyy HH:mm:ss,SSS} [%t] %-5level %logger{36} - %msg%n"/>-->
-<!--        </Console>-->
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{dd MMM yyyy HH:mm:ss,SSS} [%t] %-5level %logger{36} - %msg%n"/>
+        </Console>
         <File name="File" fileName="./src/main/resources/logs/main.txt">
             <PatternLayout pattern="%d{dd MMM yyyy HH:mm:ss,SSS} [%t] %-5level %logger{36} - %msg%n"/>
         </File>
@@ -13,7 +13,7 @@
     <Loggers>
         <Root level="debug">
             <AppenderRef ref="File"/>
-<!--            <AppenderRef ref="Console"/>-->
+            <AppenderRef ref="Console"/>
         </Root>
     </Loggers>
 

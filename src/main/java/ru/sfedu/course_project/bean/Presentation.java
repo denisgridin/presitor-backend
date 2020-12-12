@@ -32,28 +32,9 @@ public class Presentation implements Serializable, BaseClass {
 //    @CsvBindAndSplitByName(column = "feedbacks", elementType = List.class, splitOn = ",", writeDelimiter = ";", converter = ListIdsConverter.class)
 //    private List<Feedback> feedbacks;
 
-    public String[] requiredArgs = { "id" };
-
     public Presentation () {}
 
-    public Presentation (HashMap args){
-        this.validateArguments(args);
-    }
-
     public static Logger log = LogManager.getLogger(Presentation.class);
-
-    private void validateArguments(HashMap args) {
-        Map defaults = Constants.DEFAULT_PRESENTATION;
-        try {
-            this.setId((UUID) args.getOrDefault("id", defaults.get("id")));
-            this.setName((String) args.getOrDefault("name", defaults.get("name")));
-            this.setFillColor((String) args.getOrDefault("fillColor", defaults.get("fillColor")));
-            this.setFontFamily((String) args.getOrDefault("fontFamily", defaults.get("fontFamily")));
-            log.debug("Arguments was successfully validated");
-        } catch (RuntimeException e) {
-            log.error("Unable to validate Presentation fields");
-        }
-    }
 
     public UUID getId() {
         return id;

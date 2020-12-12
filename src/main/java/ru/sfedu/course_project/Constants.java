@@ -8,11 +8,10 @@ public class Constants {
     public static String SOURCE = "NAME";
     public static String CSV_PATH="csv_path";
     public static String UUID_REGEXP="uuid_regexp";
+    public static String DATA_PATH="dataPath";
     public final static Map DEFAULT_PRESENTATION = Stream.of(new Object[][] {
-            { "id", UUID.randomUUID() },
+            { "id", String.valueOf(UUID.randomUUID()) },
             { "name", "New presentation" },
-            { "slides", new ArrayList() },
-            { "feedbacks", new ArrayList() },
             { "fillColor", "#ffffff" },
             { "fontFamily", "Roboto" }
     }).collect(Collectors.toMap(data -> (String) data[0], data -> (Object) data[1]));

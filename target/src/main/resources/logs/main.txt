@@ -37,3 +37,16 @@
 02 дек. 2020 19:17:51,513 [main] DEBUG ru.sfedu.course_project.Main - [fillColor=#304add, method=createPresentation, datatype=csv, name=MyPresentation]
 02 дек. 2020 19:17:51,513 [main] INFO  ru.sfedu.course_project.Main - Attempt to create csv data provider
 02 дек. 2020 19:17:51,796 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - java.io.FileNotFoundException: .\src\main\resources\data\csv\presentation.csv (Системе не удается найти указанный путь)
+07 дек. 2020 08:33:49,989 [main] ERROR ru.sfedu.course_project.Main - One or more command line parameters was not provided: role, method, datatype!
+07 дек. 2020 08:34:47,962 [main] WARN  ru.sfedu.course_project.Main - arguments {role=editor, method=createPresentation, datatype=csv}
+07 дек. 2020 08:34:47,968 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [role=editor, method=createPresentation, datatype=csv]
+07 дек. 2020 08:34:47,969 [main] INFO  ru.sfedu.course_project.Main - Attempt to create csv data provider
+07 дек. 2020 08:34:47,973 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: csv
+07 дек. 2020 08:34:47,975 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: createPresentation
+07 дек. 2020 08:34:47,976 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+07 дек. 2020 08:34:47,981 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - java.io.FileNotFoundException: .\src\main\resources\data\csv\presentation.csv (Системе не удается найти указанный путь)
+07 дек. 2020 08:34:47,982 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - Unable to get presentation data source
+07 дек. 2020 08:34:48,321 [main] DEBUG ru.sfedu.course_project.bean.Presentation - Arguments was successfully validated
+07 дек. 2020 08:34:48,321 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [writeCollection] Attempt to write in presentation
+07 дек. 2020 08:34:48,330 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - [writeCollection] Unable to write collection
+07 дек. 2020 08:34:48,331 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - Unable to create presentation
