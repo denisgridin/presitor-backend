@@ -66,16 +66,22 @@ public class DataProviderCSV implements DataProvider {
             FileReader fileReader;
             try {
                 log.debug("[getCollection] Attempt to get collection: " + collectionType);
-                fileReader = new FileReader(getFilePath(collectionType));
-                CSVReader csvReader = new CSVReader(fileReader);
-                CsvToBean<T> csvToBean = new CsvToBeanBuilder<T>(csvReader)
-                        .withType(cl)
-                        .withSeparator(',')
-                        .withIgnoreLeadingWhiteSpace(true)
-                        .build();
-                Optional<List> optionalCollection = Optional.ofNullable(csvToBean.parse());
-                log.info("[getCollection] Collection was retrieved: " + collectionType);
-                return optionalCollection;
+                Optional optionalFileReader = Optional.ofNullable(new FileReader(getFilePath(collectionType)));
+                if (optionalFileReader.isPresent()) {
+                    fileReader = (FileReader) optionalFileReader.get();
+                    CSVReader csvReader = new CSVReader(fileReader);
+                    CsvToBean<T> csvToBean = new CsvToBeanBuilder<T>(csvReader)
+                            .withType(cl)
+                            .withSeparator(',')
+                            .withIgnoreLeadingWhiteSpace(true)
+                            .build();
+                    Optional<List> optionalCollection = Optional.ofNullable(csvToBean.parse());
+                    log.info("[getCollection] Collection was retrieved: " + collectionType);
+                    return optionalCollection;
+                } else {
+                    log.info("[getCollection] Unable to get data source: " + collectionType);
+                    return Optional.empty();
+                }
             } catch (FileNotFoundException e) {
                 log.error(e);
                 log.error(String.format(Constants.MSG_ERROR_DATA_SOURCE, collectionType));
@@ -226,7 +232,7 @@ public class DataProviderCSV implements DataProvider {
     public Result removePresentationById (HashMap arguments) {
         try {
             if (arguments.get("id") == null) {
-                return new Result(Status.error, ErrorConstants.ID_IS_NOT_PROVIDED);
+                return new Result(Status.error, ErrorConstants.ARGUMENT_IS_NOT_PROVIDED + "id");
             } else {
                 UUID id = UUID.fromString((String) arguments.get("id"));
                 Status status = removeRecordById(CollectionType.presentation, Presentation.class, id);
@@ -247,8 +253,8 @@ public class DataProviderCSV implements DataProvider {
         try {
             UUID id = UUID.fromString((String) arguments.getOrDefault("id", null));
             if (id == null) {
-                log.error(ErrorConstants.ID_IS_NOT_PROVIDED);
-                return new Result(Status.error, ErrorConstants.ID_IS_NOT_PROVIDED);
+                log.error(ErrorConstants.ARGUMENT_IS_NOT_PROVIDED + "id");
+                return new Result(Status.error, ErrorConstants.ARGUMENT_IS_NOT_PROVIDED + "id");
             }
             Boolean validId = getInstanceById(Presentation.class, arguments).isPresent();
             if (validId) {
@@ -280,50 +286,42 @@ public class DataProviderCSV implements DataProvider {
 
     ///                         Slides section                          \\\
 
-    public Optional<List> getPresentationSlides (HashMap arguments) {
+    public Result getPresentationSlides (HashMap arguments) {
         try {
-            FileReader fileReader;
-            try {
-                fileReader = Optional.of(new FileReader(getFilePath(CollectionType.slide))).orElse(null);
-            } catch (FileNotFoundException e) {
-                log.error("[getPresentationSlides] Unable to get slides data source");;
-                return Optional.empty();
+            if (arguments.get("presentationId") == null) {
+                log.error(ErrorConstants.ARGUMENT_IS_NOT_PROVIDED + "presentationId");
+                return new Result(Status.error, ErrorConstants.ARGUMENT_IS_NOT_PROVIDED + "presentationId");
             }
-            if (fileReader != null) {
-                UUID presentationId = UUID.fromString((String) arguments.get("presentationId"));
-                HashMap getPresentationByIdParams = new HashMap();
-                getPresentationByIdParams.put("id", String.valueOf(presentationId));
-                Optional<Presentation> presentation = getInstanceById(Presentation.class, getPresentationByIdParams);
-                if (presentation.isPresent()) {
-                    Optional<List> listSlides = getCollection(CollectionType.slide, Slide.class);
-                    Optional<List> presentationSlides = Optional.empty();
-                    if (listSlides.isPresent()) {
-                        log.debug("[getPresentationSlides] Attempt to find presentation slides for: " + presentationId);
-                        List<Slide> list = listSlides.get();
-                        presentationSlides = Optional.of(list.stream().filter(slide -> slide.getPresentationId().equals(presentationId)).collect(Collectors.toList()));
-                    }
-                    log.debug("[getPresentationSlides] Found presentation slides: " + presentationSlides.orElse(new ArrayList()));
-                    log.info("[getPresentationSlides] Found " + arguments.get("id") + " slides for presentation: " + arguments.get("presentationId"));
-                    return presentationSlides;
-                } else {
-                    log.error("[getPresentationSlides] Unable to find presentation with provided id");
-                    return Optional.empty();
+            UUID presentationId = UUID.fromString((String) arguments.get("presentationId"));
+            HashMap getPresentationByIdParams = new HashMap();
+            getPresentationByIdParams.put("id", String.valueOf(presentationId));
+            Optional<Presentation> presentation = getInstanceById(Presentation.class, getPresentationByIdParams);
+            if (presentation.isPresent()) {
+                Optional<List> listSlides = getCollection(CollectionType.slide, Slide.class);
+                Optional<List> presentationSlides = Optional.empty();
+                if (listSlides.isPresent()) {
+                    log.debug("[getPresentationSlides] Attempt to find presentation slides for: " + presentationId);
+                    List<Slide> list = listSlides.get();
+                    presentationSlides = Optional.of(list.stream().filter(slide -> slide.getPresentationId().equals(presentationId)).collect(Collectors.toList()));
                 }
+                log.debug("[getPresentationSlides] Found presentation slides: " + presentationSlides.orElse(new ArrayList()));
+                return new Result(Status.success, presentationSlides.orElse(new ArrayList()));
             } else {
-                return Optional.empty();
+                log.error(ErrorConstants.PRESENTATION_NOT_FOUND + presentationId);
+                return new Result(Status.error, ErrorConstants.PRESENTATION_NOT_FOUND + presentationId);
             }
         } catch (RuntimeException e) {
             e.printStackTrace();
             log.error(e);
-            log.error("[getPresentationSlides] Unable to get presentation slides");;
-            return Optional.empty();
+            log.error(ErrorConstants.SLIDES_GET);;
+            return new Result(Status.error, ErrorConstants.SLIDES_GET);
         }
     }
 
     public Object createPresentationSlide (HashMap arguments) {
         try {
             if (arguments.get("presentationId") == null) {
-                log.error("[createPresentationSlide] Argument is required: presentationId");
+                log.error(ErrorConstants.ARGUMENT_IS_NOT_PROVIDED + "presentationId");
                 return null;
             }
             HashMap getPresentationByIdParams = new HashMap();
@@ -331,7 +329,8 @@ public class DataProviderCSV implements DataProvider {
             Optional<Presentation> optionalPresentation = getInstanceById(Presentation.class, getPresentationByIdParams);
             if (optionalPresentation.isPresent()) {
                 log.info(arguments.entrySet());
-                List<Slide> slides = getPresentationSlides(arguments).orElse(new ArrayList());
+//                List<Slide> slides = getPresentationSlides(arguments).getReturnValue();
+                List slides = new ArrayList<>();
                 arguments.put("index", slides.size());
                 Slide slide = new Slide(arguments);
                 log.info("[createPresentationSlide] Create slide: " + slide.toString());

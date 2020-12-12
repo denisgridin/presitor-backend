@@ -190,6 +190,33 @@ public class DataProviderCSVTest extends TestBase {
     }
 
 
+    @Test
+    void getPresentationSlidesSuccess() {
+        log.debug("{TEST} getPresentationSlidesSuccess START");
+        DataProvider provider = new DataProviderCSV();
+        UUID presId = UUID.randomUUID();
+        HashMap args = new HashMap();
+        args.put("presentationId", String.valueOf(presId));
+        args.put("id", String.valueOf(presId));
+        Result createResult = makePresentationWithId(provider, presId);
+
+        if (createResult.getStatus() == Status.success) {
+            Result getSlidesResult = provider.getPresentationSlides(args);
+            assertEquals(getSlidesResult.getStatus(), Status.success);
+        }
+        log.debug("{TEST} getPresentationSlidesSuccess END");
+    }
+
+    @Test
+    void getPresentationSlidesFail() {
+        DataProvider provider = new DataProviderCSV();
+        UUID presId = UUID.randomUUID();
+        HashMap args = new HashMap();
+        args.put("presentationId", String.valueOf(presId));
+        Result getSlidesResult = provider.getPresentationSlides(args);
+        assertEquals(getSlidesResult.getStatus(), Status.error);
+    }
+
 
     @Test
     void getCollectionsListSuccess() {
@@ -209,27 +236,6 @@ public class DataProviderCSVTest extends TestBase {
         assertFalse(optionalPresentationList.isPresent());
     }
 
-    @Test
-    void getPresentationSlidesSuccess() {
-        DataProvider provider = new DataProviderCSV();
-        Optional<List> presentations = provider.getCollection(CollectionType.presentation, Presentation.class);
-        if (presentations.isPresent()) {
-            HashMap args = new HashMap();
-            Presentation presentation = (Presentation) presentations.get().get(0);
-            args.put("presentationId", String.valueOf(presentation.getId()));
-            Optional<List> list = provider.getPresentationSlides(args);
-            assertTrue(list.isPresent());
-        }
-    }
-
-    @Test
-    void getPresentationSlidesFail() {
-        DataProvider provider = new DataProviderCSV();
-        HashMap args = new HashMap();
-        args.put("presentationId", String.valueOf(UUID.randomUUID()));
-        Optional<List> list = provider.getPresentationSlides(args);
-        assertFalse(list.isPresent());
-    }
 
     @Test
     void createPresentationSlideSuccess() {

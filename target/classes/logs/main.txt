@@ -3392,3 +3392,127 @@
 12 дек. 2020 17:19:40,829 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [editPresentationOptions] Unable to find presentation: 45d52abd-188b-4f4d-9aa5-7963ab973147
 12 дек. 2020 17:19:40,831 [main] INFO  ru.sfedu.course_project.tools.Result - { status: error, value: Unable to update presentation: 45d52abd-188b-4f4d-9aa5-7963ab973147 }
 12 дек. 2020 17:19:40,835 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSVTest - {TEST} editPresentationOptionsFail END
+12 дек. 2020 17:20:25,587 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSVTest - {TEST} editPresentationOptionsFail START
+12 дек. 2020 17:20:25,856 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Attempt to get collection: presentation
+12 дек. 2020 17:20:26,014 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Collection was retrieved: presentation
+12 дек. 2020 17:20:26,015 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Attempt to find presentation: ee4bbb12-a7f8-49e8-976a-382641f937bf
+12 дек. 2020 17:20:26,017 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [editPresentationOptions] Unable to find presentation: ee4bbb12-a7f8-49e8-976a-382641f937bf
+12 дек. 2020 17:20:26,019 [main] INFO  ru.sfedu.course_project.tools.Result - { status: error, value: Unable to find presentation: ee4bbb12-a7f8-49e8-976a-382641f937bf }
+12 дек. 2020 17:20:26,026 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSVTest - {TEST} editPresentationOptionsFail END
+12 дек. 2020 18:00:16,028 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSVTest - {TEST} getPresentationSlidesSuccess START
+12 дек. 2020 18:00:16,346 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Attempt to get collection: presentation
+12 дек. 2020 18:00:16,348 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - java.io.FileNotFoundException: .\src\main\resources\data\csv\slide.csv (Не удается найти указанный файл)
+12 дек. 2020 18:00:16,349 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - Unable to get presentation data source
+12 дек. 2020 18:00:16,349 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Attempt to find presentation: cdfff599-cf31-4fcb-8c25-82eb8e72f5ef
+12 дек. 2020 18:00:16,351 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - Unable to find presentation: cdfff599-cf31-4fcb-8c25-82eb8e72f5ef
+12 дек. 2020 18:00:16,352 [main] INFO  ru.sfedu.course_project.tools.Result - { status: error, value: Unable to find presentation:  }
+12 дек. 2020 18:00:16,352 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSVTest - {TEST} getPresentationSlidesSuccess END
+12 дек. 2020 18:01:00,474 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSVTest - {TEST} getPresentationSlidesSuccess START
+12 дек. 2020 18:01:00,776 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Attempt to get collection: presentation
+12 дек. 2020 18:01:00,780 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - java.io.FileNotFoundException: .\src\main\resources\data\csv\slide.csv (Не удается найти указанный файл)
+12 дек. 2020 18:01:00,781 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - Unable to get presentation data source
+12 дек. 2020 18:01:00,782 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Attempt to find presentation: 0f3a6133-3e0d-47fd-a642-54fe6d7c8f37
+12 дек. 2020 18:01:00,784 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - Unable to find presentation: 0f3a6133-3e0d-47fd-a642-54fe6d7c8f37
+12 дек. 2020 18:01:00,787 [main] INFO  ru.sfedu.course_project.tools.Result - { status: error, value: Unable to find presentation: 0f3a6133-3e0d-47fd-a642-54fe6d7c8f37 }
+12 дек. 2020 18:01:00,788 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSVTest - {TEST} getPresentationSlidesSuccess END
+12 дек. 2020 18:01:16,037 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSVTest - {TEST} editPresentationOptionsFail START
+12 дек. 2020 18:01:16,331 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Attempt to get collection: presentation
+12 дек. 2020 18:01:16,334 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - java.io.FileNotFoundException: .\src\main\resources\data\csv\slide.csv (Не удается найти указанный файл)
+12 дек. 2020 18:01:16,335 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - Unable to get presentation data source
+12 дек. 2020 18:01:16,335 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Attempt to find presentation: f71b4454-6ef7-4599-912f-ed1fc8f850b3
+12 дек. 2020 18:01:16,337 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [editPresentationOptions] Unable to find presentation: f71b4454-6ef7-4599-912f-ed1fc8f850b3
+12 дек. 2020 18:01:16,340 [main] INFO  ru.sfedu.course_project.tools.Result - { status: error, value: Unable to find presentation: f71b4454-6ef7-4599-912f-ed1fc8f850b3 }
+12 дек. 2020 18:01:16,345 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSVTest - {TEST} editPresentationOptionsFail END
+12 дек. 2020 18:02:02,274 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSVTest - {TEST} editPresentationOptionsSuccess START
+12 дек. 2020 18:02:02,570 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Attempt to get collection: presentation
+12 дек. 2020 18:02:02,573 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - java.io.FileNotFoundException: .\src\main\resources\data\csv\slide.csv (Не удается найти указанный файл)
+12 дек. 2020 18:02:02,573 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - Unable to get presentation data source
+12 дек. 2020 18:02:02,579 [main] DEBUG ru.sfedu.course_project.tools.Creator - Arguments was validate 
+12 дек. 2020 18:02:02,579 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [writeCollection] Attempt to write in presentation
+12 дек. 2020 18:02:02,690 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [writeCollection] Collection was wrote
+12 дек. 2020 18:02:02,692 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - Presentation successfully created e6b09de6-9a0d-4e25-ba19-17699661138d
+12 дек. 2020 18:02:02,693 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value: e6b09de6-9a0d-4e25-ba19-17699661138d }
+12 дек. 2020 18:02:02,694 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Attempt to get collection: presentation
+12 дек. 2020 18:02:02,695 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - java.io.FileNotFoundException: .\src\main\resources\data\csv\slide.csv (Не удается найти указанный файл)
+12 дек. 2020 18:02:02,695 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - Unable to get presentation data source
+12 дек. 2020 18:02:02,696 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Attempt to find presentation: e6b09de6-9a0d-4e25-ba19-17699661138d
+12 дек. 2020 18:02:02,697 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [editPresentationOptions] Unable to find presentation: e6b09de6-9a0d-4e25-ba19-17699661138d
+12 дек. 2020 18:02:02,699 [main] INFO  ru.sfedu.course_project.tools.Result - { status: error, value: Unable to find presentation: e6b09de6-9a0d-4e25-ba19-17699661138d }
+12 дек. 2020 18:03:47,682 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSVTest - {TEST} editPresentationOptionsSuccess START
+12 дек. 2020 18:03:47,971 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Attempt to get collection: presentation
+12 дек. 2020 18:03:47,974 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - java.io.FileNotFoundException: .\src\main\resources\data\csv\slide.csv (Не удается найти указанный файл)
+12 дек. 2020 18:03:47,974 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - Unable to get presentation data source
+12 дек. 2020 18:03:47,981 [main] DEBUG ru.sfedu.course_project.tools.Creator - Arguments was validate 
+12 дек. 2020 18:03:47,981 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [writeCollection] Attempt to write in presentation
+12 дек. 2020 18:03:48,090 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [writeCollection] Collection was wrote
+12 дек. 2020 18:03:48,091 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - Presentation successfully created aa3551ac-a7f5-492e-a8c5-59febcf4d2b4
+12 дек. 2020 18:03:48,092 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value: aa3551ac-a7f5-492e-a8c5-59febcf4d2b4 }
+12 дек. 2020 18:03:48,092 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Attempt to get collection: presentation
+12 дек. 2020 18:03:48,093 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - java.io.FileNotFoundException: .\src\main\resources\data\csv\slide.csv (Не удается найти указанный файл)
+12 дек. 2020 18:03:48,093 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - Unable to get presentation data source
+12 дек. 2020 18:03:48,094 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Attempt to find presentation: aa3551ac-a7f5-492e-a8c5-59febcf4d2b4
+12 дек. 2020 18:03:48,095 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [editPresentationOptions] Unable to find presentation: aa3551ac-a7f5-492e-a8c5-59febcf4d2b4
+12 дек. 2020 18:03:48,096 [main] INFO  ru.sfedu.course_project.tools.Result - { status: error, value: Unable to find presentation: aa3551ac-a7f5-492e-a8c5-59febcf4d2b4 }
+12 дек. 2020 18:05:45,067 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSVTest - {TEST} editPresentationOptionsSuccess START
+12 дек. 2020 18:05:45,359 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Attempt to get collection: presentation
+12 дек. 2020 18:05:45,472 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Collection was retrieved: presentation
+12 дек. 2020 18:05:45,481 [main] DEBUG ru.sfedu.course_project.tools.Creator - Arguments was validate 
+12 дек. 2020 18:05:45,482 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [writeCollection] Attempt to write in presentation
+12 дек. 2020 18:05:45,502 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [writeCollection] Collection was wrote
+12 дек. 2020 18:05:45,504 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - Presentation successfully created f3d3b45e-270c-460e-889b-c82754ed4942
+12 дек. 2020 18:05:45,505 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value: f3d3b45e-270c-460e-889b-c82754ed4942 }
+12 дек. 2020 18:05:45,505 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Attempt to get collection: presentation
+12 дек. 2020 18:05:45,525 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Collection was retrieved: presentation
+12 дек. 2020 18:05:45,526 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Attempt to find presentation: f3d3b45e-270c-460e-889b-c82754ed4942
+12 дек. 2020 18:05:45,527 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Attempt to get collection: presentation
+12 дек. 2020 18:05:45,537 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Collection was retrieved: presentation
+12 дек. 2020 18:05:45,538 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [writeCollection] Attempt to write in presentation
+12 дек. 2020 18:05:45,548 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [writeCollection] Collection was wrote
+12 дек. 2020 18:05:45,548 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - Presentation options was successfully updated: f3d3b45e-270c-460e-889b-c82754ed4942
+12 дек. 2020 18:05:45,549 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value: Presentation options was successfully updated: f3d3b45e-270c-460e-889b-c82754ed4942 }
+12 дек. 2020 18:05:45,555 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Attempt to get collection: presentation
+12 дек. 2020 18:05:45,573 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Collection was retrieved: presentation
+12 дек. 2020 18:05:45,573 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Attempt to find presentation: f3d3b45e-270c-460e-889b-c82754ed4942
+12 дек. 2020 18:05:45,574 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSVTest - {TEST} editPresentationOptionsSuccess END
+12 дек. 2020 18:06:09,983 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSVTest - {TEST} getPresentationSlidesSuccess START
+12 дек. 2020 18:06:10,277 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Attempt to get collection: presentation
+12 дек. 2020 18:06:10,449 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Collection was retrieved: presentation
+12 дек. 2020 18:06:10,450 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Attempt to find presentation: f6c0690d-7d38-4f82-8a81-678ea7968e87
+12 дек. 2020 18:06:10,452 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - Unable to find presentation: f6c0690d-7d38-4f82-8a81-678ea7968e87
+12 дек. 2020 18:06:10,455 [main] INFO  ru.sfedu.course_project.tools.Result - { status: error, value: Unable to find presentation: f6c0690d-7d38-4f82-8a81-678ea7968e87 }
+12 дек. 2020 18:06:10,456 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSVTest - {TEST} getPresentationSlidesSuccess END
+12 дек. 2020 18:07:45,238 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSVTest - {TEST} getPresentationSlidesSuccess START
+12 дек. 2020 18:07:45,525 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Attempt to get collection: presentation
+12 дек. 2020 18:07:45,638 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Collection was retrieved: presentation
+12 дек. 2020 18:07:45,647 [main] DEBUG ru.sfedu.course_project.tools.Creator - Arguments was validate 
+12 дек. 2020 18:07:45,647 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [writeCollection] Attempt to write in presentation
+12 дек. 2020 18:07:45,668 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [writeCollection] Collection was wrote
+12 дек. 2020 18:07:45,670 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - Presentation successfully created c71451db-0bff-488f-b9fe-9b724bf56838
+12 дек. 2020 18:07:45,671 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value: c71451db-0bff-488f-b9fe-9b724bf56838 }
+12 дек. 2020 18:07:45,672 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Attempt to get collection: presentation
+12 дек. 2020 18:07:45,703 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Collection was retrieved: presentation
+12 дек. 2020 18:07:45,704 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Attempt to find presentation: c71451db-0bff-488f-b9fe-9b724bf56838
+12 дек. 2020 18:07:45,707 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Attempt to get collection: slide
+12 дек. 2020 18:07:45,709 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - java.io.FileNotFoundException: .\src\main\resources\data\csv\slide.csv (Не удается найти указанный файл)
+12 дек. 2020 18:07:45,709 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - Unable to get slide data source
+12 дек. 2020 18:07:45,710 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getPresentationSlides] Found presentation slides: []
+12 дек. 2020 18:07:45,720 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getPresentationSlides] Found c71451db-0bff-488f-b9fe-9b724bf56838 slides for presentation: c71451db-0bff-488f-b9fe-9b724bf56838
+12 дек. 2020 18:07:45,721 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value: [] }
+12 дек. 2020 18:07:45,729 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSVTest - {TEST} getPresentationSlidesSuccess END
+12 дек. 2020 18:08:44,080 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSVTest - {TEST} getPresentationSlidesSuccess START
+12 дек. 2020 18:08:44,418 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Attempt to get collection: presentation
+12 дек. 2020 18:08:44,569 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Collection was retrieved: presentation
+12 дек. 2020 18:08:44,578 [main] DEBUG ru.sfedu.course_project.tools.Creator - Arguments was validate 
+12 дек. 2020 18:08:44,579 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [writeCollection] Attempt to write in presentation
+12 дек. 2020 18:08:44,600 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [writeCollection] Collection was wrote
+12 дек. 2020 18:08:44,602 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - Presentation successfully created 0ce98546-e064-4a1d-a1df-cc5fa5aa95b2
+12 дек. 2020 18:08:44,602 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value: 0ce98546-e064-4a1d-a1df-cc5fa5aa95b2 }
+12 дек. 2020 18:08:44,602 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Attempt to get collection: presentation
+12 дек. 2020 18:08:44,624 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Collection was retrieved: presentation
+12 дек. 2020 18:08:44,624 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Attempt to find presentation: 0ce98546-e064-4a1d-a1df-cc5fa5aa95b2
+12 дек. 2020 18:08:44,627 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Attempt to get collection: slide
+12 дек. 2020 18:08:44,630 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - java.io.FileNotFoundException: .\src\main\resources\data\csv\slide.csv (Не удается найти указанный файл)
+12 дек. 2020 18:08:44,632 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - Unable to get slide data source
+12 дек. 2020 18:08:44,632 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getPresentationSlides] Found presentation slides: []
+12 дек. 2020 18:08:44,633 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value: [] }
+12 дек. 2020 18:08:44,641 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSVTest - {TEST} getPresentationSlidesSuccess END
