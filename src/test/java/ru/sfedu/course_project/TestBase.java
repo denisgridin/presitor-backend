@@ -17,4 +17,10 @@ public class TestBase {
         Result result = provider.createPresentation(args);
         return result;
     }
+    public Result makePresentationWithId (DataProvider provider, UUID id) {
+        HashMap args = new HashMap();
+        args.put("id", String.valueOf(id));
+        Result result = provider.createPresentation(args);
+        return result;
+    }
 }

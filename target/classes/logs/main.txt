@@ -3299,3 +3299,38 @@
 12 дек. 2020 16:44:58,122 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Collection was retrieved: presentation
 12 дек. 2020 16:44:58,122 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Attempt to find presentation: af67319a-ca4d-4df5-b4a7-ba1141fa8986
 12 дек. 2020 16:44:58,138 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value: Presentation{id=af67319a-ca4d-4df5-b4a7-ba1141fa8986, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'} }
+12 дек. 2020 16:47:18,781 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSVTest - {TEST} getPresentationByIdFail START
+12 дек. 2020 16:47:19,067 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Attempt to get collection: presentation
+12 дек. 2020 16:47:19,185 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Collection was retrieved: presentation
+12 дек. 2020 16:47:19,186 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Attempt to find presentation: d6908d04-4627-4225-857e-9d7e82173da5
+12 дек. 2020 16:47:19,190 [main] INFO  ru.sfedu.course_project.tools.Result - { status: error, value: Unable to get presentation }
+12 дек. 2020 16:47:19,195 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSVTest - {TEST} getPresentationByIdFail END
+12 дек. 2020 17:02:11,442 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSVTest - {TEST} getPresentationByIdFail START
+12 дек. 2020 17:02:11,760 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Attempt to get collection: presentation
+12 дек. 2020 17:02:11,893 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Collection was retrieved: presentation
+12 дек. 2020 17:02:49,083 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSVTest - {TEST} getPresentationByIdFail START
+12 дек. 2020 17:02:49,385 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Attempt to get collection: presentation
+12 дек. 2020 17:02:49,519 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Collection was retrieved: presentation
+12 дек. 2020 17:02:49,526 [main] DEBUG ru.sfedu.course_project.tools.Creator - Arguments was validate 
+12 дек. 2020 17:02:49,526 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [writeCollection] Attempt to write in presentation
+12 дек. 2020 17:02:49,542 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [writeCollection] Collection was wrote
+12 дек. 2020 17:02:49,543 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - Presentation successfully created 1f1eae0d-39f9-439d-9e80-5089db7a2cb6
+12 дек. 2020 17:02:49,544 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value: 1f1eae0d-39f9-439d-9e80-5089db7a2cb6 }
+12 дек. 2020 17:02:49,547 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - java.lang.ClassCastException: class java.util.UUID cannot be cast to class java.lang.String (java.util.UUID and java.lang.String are in module java.base of loader 'bootstrap')
+12 дек. 2020 17:02:49,549 [main] INFO  ru.sfedu.course_project.tools.Result - { status: error, value: Unable to remove presentation by id }
+12 дек. 2020 17:03:19,083 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSVTest - {TEST} getPresentationByIdFail START
+12 дек. 2020 17:03:19,370 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Attempt to get collection: presentation
+12 дек. 2020 17:03:19,509 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Collection was retrieved: presentation
+12 дек. 2020 17:03:19,516 [main] DEBUG ru.sfedu.course_project.tools.Creator - Arguments was validate 
+12 дек. 2020 17:03:19,517 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [writeCollection] Attempt to write in presentation
+12 дек. 2020 17:03:19,538 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [writeCollection] Collection was wrote
+12 дек. 2020 17:03:19,540 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - Presentation successfully created 155d36d3-2e1c-463a-9b54-649880fa3f61
+12 дек. 2020 17:03:19,541 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value: 155d36d3-2e1c-463a-9b54-649880fa3f61 }
+12 дек. 2020 17:03:19,541 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [removeRecordById] Removing elements from collection: presentation
+12 дек. 2020 17:03:19,542 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Attempt to get collection: presentation
+12 дек. 2020 17:03:19,567 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Collection was retrieved: presentation
+12 дек. 2020 17:03:19,568 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [writeCollection] Attempt to write in presentation
+12 дек. 2020 17:03:19,585 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [writeCollection] Collection was wrote
+12 дек. 2020 17:03:19,586 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [removeRecordById] Element was successfully removed: 155d36d3-2e1c-463a-9b54-649880fa3f61
+12 дек. 2020 17:03:19,587 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value: ok }
+12 дек. 2020 17:03:19,593 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSVTest - {TEST} getPresentationByIdFail END

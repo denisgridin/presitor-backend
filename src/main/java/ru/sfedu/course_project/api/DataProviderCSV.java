@@ -129,6 +129,20 @@ public class DataProviderCSV implements DataProvider {
         }
     }
 
+    public <T> Optional<T> getInstanceById (Class cl, HashMap arguments) {
+        UUID id = UUID.fromString((String) arguments.get("id"));
+        try {
+            List<Presentation> listInstance = getCollection(CollectionType.presentation, cl).orElse(new ArrayList());
+            log.debug("Attempt to find presentation: " + id);
+            Optional<T> instance = (Optional<T>) listInstance.stream()
+                    .filter(el -> el.getId().equals(id)).findFirst();
+            return instance;
+        } catch (NoSuchElementException e) {
+            log.error(e);
+            return Optional.empty();
+        }
+    }
+
 
     @Override
     public <T extends BaseClass> Boolean isIdInUse (String id, List<T> list) {
@@ -202,20 +216,6 @@ public class DataProviderCSV implements DataProvider {
         }
     }
 
-    public <T> Optional<T> getInstanceById (Class cl, HashMap arguments) {
-        UUID id = UUID.fromString((String) arguments.get("id"));
-        try {
-            List<Presentation> listInstance = getCollection(CollectionType.presentation, cl).orElse(new ArrayList());
-            log.debug("Attempt to find presentation: " + id);
-            Optional<T> instance = (Optional<T>) listInstance.stream()
-                    .filter(el -> el.getId().equals(id)).findFirst();
-            return instance;
-        } catch (NoSuchElementException e) {
-            log.error(e);
-            return Optional.empty();
-        }
-    }
-
     public Result getPresentationById (HashMap arguments) {
         Optional <Presentation> presentation = getInstanceById(Presentation.class, arguments);
         return presentation.isPresent() ?
@@ -223,19 +223,23 @@ public class DataProviderCSV implements DataProvider {
                 new Result(Status.error, ErrorConstants.GET_PRESENTATION);
     }
 
-    public Status removePresentationById (HashMap arguments) throws CsvRequiredFieldEmptyException, IOException, CsvDataTypeMismatchException {
+    public Result removePresentationById (HashMap arguments) {
         try {
             if (arguments.get("id") == null) {
-                log.error("[removePresentationById] Presentation id is not provide");
-                return Status.error;
+                return new Result(Status.error, ErrorConstants.ID_IS_NOT_PROVIDED);
             } else {
                 UUID id = UUID.fromString((String) arguments.get("id"));
-                return removeRecordById(CollectionType.presentation, Presentation.class, id);
+                Status status = removeRecordById(CollectionType.presentation, Presentation.class, id);
+                if (status == Status.success) {
+                    return new Result(Status.success, "ok");
+                } else {
+                    return new Result(Status.error, ErrorConstants.REMOVE_PRESENTATION);
+                }
             }
         } catch (RuntimeException e) {
             e.printStackTrace();
             log.error(e);
-            return Status.error;
+            return new Result(Status.error, ErrorConstants.REMOVE_PRESENTATION);
         }
     }
 
