@@ -28,5 +28,7 @@ public interface DataProvider {
 
     public Result getPresentationSlides (HashMap arguments);
     public Result createPresentationSlide (HashMap arguments);
+    public Result removePresentationSlideById (HashMap arguments);
+//    public Result editPresentationSlideOptionsById (HashMap arguments);
 //    public <T> Status addCollectionRecord (T record, UUID id);
 }

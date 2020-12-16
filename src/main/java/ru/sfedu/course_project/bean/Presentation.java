@@ -20,17 +20,14 @@ public class Presentation implements Serializable, BaseClass {
     @CsvBindByName
     private String name;
 
-//    @CsvBindAndSplitByName(column = "slides", elementType = List.class, splitOn = ",", writeDelimiter = ";", converter = ListIdsConverter.class)
-//    private List<Slide> slides;
-
     @CsvBindByName
     private String fillColor;
 
     @CsvBindByName
     private String fontFamily;
 
-//    @CsvBindAndSplitByName(column = "feedbacks", elementType = List.class, splitOn = ",", writeDelimiter = ";", converter = ListIdsConverter.class)
-//    private List<Feedback> feedbacks;
+    @CsvBindAndSplitByName(column = "slides", elementType = List.class, converter = ListIdsConverter.class)
+    private ArrayList<UUID> slides;
 
     public Presentation () {}
 
@@ -66,6 +63,14 @@ public class Presentation implements Serializable, BaseClass {
 
     public void setFontFamily(String fontFamily) {
         this.fontFamily = fontFamily;
+    }
+
+    public ArrayList<UUID> getSlides() {
+        return slides;
+    }
+
+    public void setSlides(ArrayList slides) {
+        this.slides = slides;
     }
 
     @Override

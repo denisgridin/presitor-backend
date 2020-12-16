@@ -1,11 +1,15 @@
 package ru.sfedu.course_project.bean;
 
 import com.opencsv.bean.CsvBindByName;
+import com.opencsv.bean.CsvCustomBindByName;
+import ru.sfedu.course_project.converters.UUIDConverter;
+
 import java.util.Objects;
+import java.util.UUID;
 
 public abstract class Element {
-    @CsvBindByName
-    private long id;
+    @CsvCustomBindByName(column = "id", converter = UUIDConverter.class)
+    private UUID id;
 
     @CsvBindByName
     private String name;
@@ -16,18 +20,13 @@ public abstract class Element {
     @CsvBindByName
     private Layout layout;
 
-    public Element(long id, String name, ElementType elementType, Layout layout) {
-        this.id = id;
-        this.name = name;
-        this.elementType = elementType;
-        this.layout = layout;
-    }
+    public Element() { }
 
-    public long getId() {
+    public UUID getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 

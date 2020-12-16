@@ -240,7 +240,33 @@ public class DataProviderCSVTest extends TestBase {
         log.debug("{TEST} createPresentationSlideSuccess END");
     }
 
-//
+    @Test
+    void removePresentationSlideByIdSuccess() {
+        log.debug("{TEST} removePresentationSlideByIdSuccess START");
+        DataProvider provider = new DataProviderCSV();
+        Presentation presentation = (Presentation) new Creator().create(Presentation.class, new HashMap()).get();
+        log.debug(presentation.toString());
+        HashMap args = new HashMap();
+        args.put("id", String.valueOf(presentation.getId()));
+
+        Result createResult = provider.createPresentation(args);
+
+        args.put("presentationId", String.valueOf(presentation.getId()));
+        args.put("id", String.valueOf(UUID.randomUUID()));
+        args.put("index", 0);
+        Slide slide = (Slide) new Creator().create(Slide.class, args).get();
+
+        if (createResult.getStatus() == Status.success) {
+            args.put("id", String.valueOf(slide.getId()));
+            args.put("presentationId", String.valueOf(presentation.getId()));
+            Result createSlideResult = provider.createPresentationSlide(args);
+            assertEquals(createSlideResult.getStatus(), Status.success);
+            assertEquals(createSlideResult.getReturnValue().toString(), String.valueOf(slide.getId()));
+        }
+        log.debug("{TEST} removePresentationSlideByIdSuccess END");
+    }
+
+
 //    @Test
 //    void getCollectionsListSuccess() {
 //        log.debug("getCollectionSuccess");
@@ -258,7 +284,7 @@ public class DataProviderCSVTest extends TestBase {
 //        Optional<List> optionalPresentationList = provider.getCollection(CollectionType.error, Presentation.class);
 //        assertFalse(optionalPresentationList.isPresent());
 //    }
-//
+
 //
 //
 //

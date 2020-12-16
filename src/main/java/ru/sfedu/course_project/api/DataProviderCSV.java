@@ -135,6 +135,7 @@ public class DataProviderCSV implements DataProvider {
         }
     }
 
+    @Override
     public <T extends BaseClass> Optional<T> getInstanceById (Class cl, CollectionType collectionType, HashMap arguments) {
         UUID id = UUID.fromString((String) arguments.get("id"));
         try {
@@ -149,6 +150,7 @@ public class DataProviderCSV implements DataProvider {
         }
     }
 
+// TODO убрать BaseClass
 
     @Override
     public <T extends BaseClass> Boolean isIdInUse (String id, List<T> list) {
@@ -222,6 +224,7 @@ public class DataProviderCSV implements DataProvider {
         }
     }
 
+    @Override
     public Result getPresentationById (HashMap arguments) {
         Optional <Presentation> presentation = getInstanceById(Presentation.class, CollectionType.presentation, arguments);
         return presentation.isPresent() ?
@@ -229,7 +232,9 @@ public class DataProviderCSV implements DataProvider {
                 new Result(Status.error, ErrorConstants.PRESENTATION_GET);
     }
 
+    @Override
     public Result removePresentationById (HashMap arguments) {
+        // TODO add removing child slides
         try {
             if (arguments.get("id") == null) {
                 return new Result(Status.error, ErrorConstants.ARGUMENT_IS_NOT_PROVIDED + "id");
@@ -249,6 +254,7 @@ public class DataProviderCSV implements DataProvider {
         }
     }
 
+    @Override
     public Result editPresentationOptions (HashMap arguments) throws CsvDataTypeMismatchException, IOException, CsvRequiredFieldEmptyException {
         try {
             UUID id = UUID.fromString((String) arguments.getOrDefault("id", null));
@@ -261,9 +267,10 @@ public class DataProviderCSV implements DataProvider {
                 List<Presentation> list = getCollection(CollectionType.presentation, Presentation.class).orElse(new ArrayList());
                 List<Presentation> updatedList = list.stream().map(el -> {
                     if (el.getId().equals(id)) {
-                        el.setFillColor((String) arguments.getOrDefault("fillColor", el.getFillColor()));
+                        el.setFillColor((String) arguments.getOrDefault("fillColor", el.getFillColor())); // TODO вынести названия полей в cont
                         el.setFontFamily((String) arguments.getOrDefault("fontFamily", el.getFontFamily()));
                         el.setName((String) arguments.getOrDefault("name", el.getName()));
+                        el.setSlides((ArrayList) arguments.getOrDefault("slides", el.getSlides()));
                     } return el;
                 }).collect(Collectors.toList());
                 Status result = writeCollection(updatedList, Presentation.class);
@@ -286,6 +293,69 @@ public class DataProviderCSV implements DataProvider {
 
     ///                         Slides section                          \\\
 
+    @Override
+    public Result createPresentationSlide (HashMap arguments) {
+        try {
+            if (arguments.get("presentationId") == null) {
+                log.error(ErrorConstants.ARGUMENT_IS_NOT_PROVIDED + "presentationId");
+                return new Result(Status.error, ErrorConstants.ARGUMENT_IS_NOT_PROVIDED + "presentationId");
+            }
+            HashMap getPresentationByIdParams = new HashMap();
+            getPresentationByIdParams.put("id", String.valueOf(arguments.get("presentationId")));
+            Optional<Presentation> optionalPresentation = getInstanceById(Presentation.class, CollectionType.presentation, getPresentationByIdParams);
+            if (optionalPresentation.isPresent()) {
+                log.info(arguments.entrySet());
+
+                List<Slide> slides = (List<Slide>) getPresentationSlides(arguments).getReturnValue();
+                arguments.put("index", slides.size());
+                Optional<Slide> optionalSlide = (Optional<Slide>) new Creator().create(Slide.class, arguments);
+                Slide slide = optionalSlide.orElse(new Slide());
+
+                log.info("[createPresentationSlide] Create slide: " + slide.toString());
+                log.debug("[createPresentationSlide] For presentation: " + slide.getPresentationId());
+
+                slides.add(slide);
+                Status statusCreateSlide = writeCollection(slides, Slide.class);
+                Status statusAddSlideInPresentation = addPresentationSlide(slide, optionalPresentation.get());
+
+                if (statusCreateSlide == Status.success && statusAddSlideInPresentation == Status.success) {
+                    log.info(SuccessConstants.SLIDE_CREATE + arguments.get("presentationId"));
+                    return new Result(Status.success, slide.getId());
+                } else {
+                    log.error(ErrorConstants.SLIDE_CREATE + arguments.get("presentationId"));
+                    return new Result(Status.error, ErrorConstants.SLIDE_CREATE + arguments.get("presentationId"));
+                }
+            } else {
+                return new Result(Status.error, ErrorConstants.PRESENTATION_NOT_FOUND + arguments.get("presentationId"));
+            }
+        } catch (RuntimeException | CsvRequiredFieldEmptyException | IOException | CsvDataTypeMismatchException e) {
+            e.printStackTrace();
+            log.error(e);
+            return new Result(Status.error, ErrorConstants.SLIDE_CREATE);
+        }
+    }
+
+    public Status addPresentationSlide (Slide slide, Presentation presentation ) throws CsvRequiredFieldEmptyException, IOException, CsvDataTypeMismatchException {
+        try {
+            String id = String.valueOf(presentation.getId());
+            ArrayList<UUID> slides = presentation.getSlides();
+            ArrayList<UUID> updatedSlides = slides;
+            updatedSlides.add(slide.getId());
+            HashMap args = new HashMap();
+            args.put("id", id);
+            args.put("slides", updatedSlides);
+            log.info("[addPresentationSlide] Attempt to add slide " + slide.toString());
+            log.info("[addPresentationSlide] To presentation " + presentation.toString());
+            log.debug("[addPresentationSlide] Add slides: " + updatedSlides);
+            Result result = editPresentationOptions(args);
+            return result.getStatus();
+        } catch (CsvRequiredFieldEmptyException | IOException | CsvDataTypeMismatchException e) {
+            log.error("[addPresentationSlide] Unable to add slide in presentation");
+            return Status.error;
+        }
+    }
+
+    @Override
     public Result getPresentationSlides (HashMap arguments) {
         try {
             if (arguments.get("presentationId") == null) {
@@ -318,39 +388,30 @@ public class DataProviderCSV implements DataProvider {
         }
     }
 
-    public Result createPresentationSlide (HashMap arguments) {
+
+    @Override
+    public Result removePresentationSlideById (HashMap arguments) {
         try {
-            if (arguments.get("presentationId") == null) {
-                log.error(ErrorConstants.ARGUMENT_IS_NOT_PROVIDED + "presentationId");
-                return new Result(Status.error, ErrorConstants.ARGUMENT_IS_NOT_PROVIDED + "presentationId");
+            if (arguments.get("id") == null) {
+                return new Result(Status.error, ErrorConstants.ARGUMENT_IS_NOT_PROVIDED + "id");
             }
-            HashMap getPresentationByIdParams = new HashMap();
-            getPresentationByIdParams.put("id", String.valueOf(arguments.get("presentationId")));
-            Optional<Presentation> optionalPresentation = getInstanceById(Presentation.class, CollectionType.presentation, getPresentationByIdParams);
-            if (optionalPresentation.isPresent()) {
-                log.info(arguments.entrySet());
-                List<Slide> slides = (List<Slide>) getPresentationSlides(arguments).getReturnValue();
-                arguments.put("index", slides.size());
-                Optional<Slide> optionalSlide = (Optional<Slide>) new Creator().create(Slide.class, arguments);
-                Slide slide = optionalSlide.orElse(new Slide());
-                log.info("[createPresentationSlide] Create slide: " + slide.toString());
-                log.debug("[createPresentationSlide] For presentation: " + slide.getPresentationId());
-                slides.add(slide);
-                Status status = writeCollection(slides, Slide.class);
-                if (status == Status.success) {
-                    log.info(SuccessConstants.SLIDE_CREATE + arguments.get("presentationId"));
-                    return new Result(Status.success, slide.getId());
-                } else {
-                    log.error(ErrorConstants.SLIDE_CREATE + arguments.get("presentationId"));
-                    return new Result(Status.error, ErrorConstants.SLIDE_CREATE + arguments.get("presentationId"));
-                }
+            UUID id = UUID.fromString((String) arguments.get("id"));
+            log.debug("[removePresentationSlideById] Attempt to remove slide: " + id);
+            Status status = removeRecordById(CollectionType.slide, Slide.class, id);
+            if (status == Status.success) {
+                return new Result(Status.success, "ok");
             } else {
-                return new Result(Status.error, ErrorConstants.PRESENTATION_NOT_FOUND + arguments.get("presentationId"));
+                return new Result(Status.error, ErrorConstants.SLIDE_REMOVE + id);
             }
         } catch (RuntimeException e) {
             e.printStackTrace();
             log.error(e);
-            return new Result(Status.error, ErrorConstants.SLIDE_CREATE);
+            return new Result(Status.error, ErrorConstants.SLIDE_REMOVE);
         }
     }
+
+//    @Override
+//    public Result editPresentationSlideOptionsById (HashMap arguments) {
+//
+//    }
 }

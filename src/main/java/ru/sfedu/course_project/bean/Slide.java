@@ -26,6 +26,9 @@ public class Slide implements Serializable, BaseClass {
     @CsvCustomBindByName(column = "presentationId", converter = UUIDConverter.class)
     private UUID presentationId;
 
+    @CsvBindAndSplitByName(column = "elements", elementType = List.class, converter = ListIdsConverter.class)
+    private ArrayList<UUID> elements;
+
     public Slide () {}
 
     public static Logger log = LogManager.getLogger(Slide.class);
@@ -60,6 +63,14 @@ public class Slide implements Serializable, BaseClass {
 
     public void setPresentationId(UUID presentationId) {
         this.presentationId = presentationId;
+    }
+
+    public ArrayList<UUID> getElements() {
+        return elements;
+    }
+
+    public void setElements(ArrayList<UUID> elements) {
+        this.elements = elements;
     }
 
     @Override

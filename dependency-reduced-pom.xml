@@ -45,7 +45,6 @@
             <configuration>
               <tasks>
                 <copy />
-                <copy />
               </tasks>
             </configuration>
           </execution>

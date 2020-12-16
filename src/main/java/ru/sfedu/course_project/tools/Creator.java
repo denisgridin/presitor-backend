@@ -9,10 +9,7 @@ import ru.sfedu.course_project.bean.Presentation;
 import ru.sfedu.course_project.bean.Slide;
 import ru.sfedu.course_project.enums.Status;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
-import java.util.UUID;
+import java.util.*;
 
 public class Creator {
     public Creator () {}
@@ -42,6 +39,7 @@ public class Creator {
             presentation.setName((String) args.getOrDefault("name", defaults.get("name")));
             presentation.setFillColor((String) args.getOrDefault("fillColor", defaults.get("fillColor")));
             presentation.setFontFamily((String) args.getOrDefault("fontFamily", defaults.get("fontFamily")));
+            presentation.setSlides(new ArrayList());
             log.debug(SuccessConstants.ARGUMENTS_VALIDATE);
             return Optional.of(presentation);
         } catch (RuntimeException e) {
@@ -58,9 +56,16 @@ public class Creator {
             log.info("[createSlide] Arguments: " + args.entrySet());
             log.info("[createSlide] Default slide options: " + defaults.entrySet());
             slide.setId(UUID.fromString((String) args.getOrDefault("id", defaults.get("id"))));
+            log.debug("[createSlide] Set id");
             slide.setName((String) args.getOrDefault("name", defaults.get("name")));
+            log.debug("[createSlide] Set name");
             slide.setIndex((Integer) args.get("index"));
+            log.debug("[createSlide] Set index");
             slide.setPresentationId(UUID.fromString((String) args.get("presentationId")));
+            log.debug("[createSlide] Set presentation id");
+            slide.setElements(new ArrayList<UUID>());
+            log.debug("[createSlide] Set elements");
+            log.debug(slide.toString());
             log.debug(SuccessConstants.ARGUMENTS_VALIDATE);
             return Optional.of(slide);
         } catch (RuntimeException e) {
