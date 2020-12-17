@@ -19,7 +19,10 @@ public class Constants {
             { "id", String.valueOf(UUID.randomUUID()) },
             { "name", "Slide" }
     }).collect(Collectors.toMap(data -> (String) data[0], data -> (Object) data[1]));
-    public final static List<String> PUBLIC_METHODS = Arrays.asList(new String[]{ "getPresentationById" });
+    public final static List<String> PUBLIC_METHODS = Arrays.asList(new String[]{
+            "getPresentationById",
+            "getPresentations"
+    });
 
     public final static String MSG_SUCCESS_RESULT = "[%s] Result: %s";
     public final static String MSG_ERROR_DATA_SOURCE = "Unable to get %s data source";

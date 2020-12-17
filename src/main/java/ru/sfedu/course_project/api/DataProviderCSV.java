@@ -8,9 +8,11 @@ import com.opencsv.bean.StatefulBeanToCsv;
 import com.opencsv.bean.StatefulBeanToCsvBuilder;
 import com.opencsv.exceptions.CsvDataTypeMismatchException;
 import com.opencsv.exceptions.CsvRequiredFieldEmptyException;
+import org.apache.commons.collections.set.PredicatedSet;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import ru.sfedu.course_project.Constants;
+import ru.sfedu.course_project.ConstantsInfo;
 import ru.sfedu.course_project.ErrorConstants;
 import ru.sfedu.course_project.SuccessConstants;
 import ru.sfedu.course_project.bean.Presentation;
@@ -22,12 +24,16 @@ import ru.sfedu.course_project.tools.Creator;
 import ru.sfedu.course_project.tools.Result;
 import ru.sfedu.course_project.utils.ConfigurationUtil;
 
+import javax.lang.model.type.ArrayType;
+import javax.swing.text.html.Option;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class DataProviderCSV implements DataProvider {
     private final String PATH="csv_path";
@@ -225,23 +231,46 @@ public class DataProviderCSV implements DataProvider {
     }
 
     @Override
+    public Result getPresentations () {
+        try {
+            Optional<List> optionalPresentations = getCollection(CollectionType.presentation, Presentation.class);
+            log.debug(ConstantsInfo.PRESENTATIONS_GET);
+            if (optionalPresentations.isPresent()) {
+                return new Result(Status.success, optionalPresentations.get());
+            } else {
+                return new Result(Status.success, new ArrayList());
+            }
+        } catch (RuntimeException e) {
+            log.error(e);
+            log.error(ErrorConstants.PRESENTATIONS_GET);
+            return new Result(Status.error, ErrorConstants.PRESENTATIONS_GET);
+        }
+    }
+
+    @Override
     public Result getPresentationById (HashMap arguments) {
-        Optional <Presentation> presentation = getInstanceById(Presentation.class, CollectionType.presentation, arguments);
-        return presentation.isPresent() ?
-                new Result(Status.success, presentation.get()) :
-                new Result(Status.error, ErrorConstants.PRESENTATION_GET);
+        try {
+            Optional <Presentation> presentation = getInstanceById(Presentation.class, CollectionType.presentation, arguments);
+            return presentation.isPresent() ?
+                    new Result(Status.success, presentation.get()) :
+                    new Result(Status.error, ErrorConstants.PRESENTATION_GET);
+        } catch (RuntimeException e) {
+            log.error(e);
+            log.error(ErrorConstants.PRESENTATION_GET);
+            return new Result(Status.error, ErrorConstants.PRESENTATION_GET);
+        }
     }
 
     @Override
     public Result removePresentationById (HashMap arguments) {
-        // TODO add removing child slides
         try {
             if (arguments.get("id") == null) {
                 return new Result(Status.error, ErrorConstants.ARGUMENT_IS_NOT_PROVIDED + "id");
             } else {
                 UUID id = UUID.fromString((String) arguments.get("id"));
                 Status status = removeRecordById(CollectionType.presentation, Presentation.class, id);
-                if (status == Status.success) {
+                Status statusRemoveSlides = removePresentationSlides(id);
+                if (status == Status.success && statusRemoveSlides == Status.success) {
                     return new Result(Status.success, "ok");
                 } else {
                     return new Result(Status.error, ErrorConstants.PRESENTATION_REMOVE);
@@ -251,6 +280,28 @@ public class DataProviderCSV implements DataProvider {
             e.printStackTrace();
             log.error(e);
             return new Result(Status.error, ErrorConstants.PRESENTATION_REMOVE);
+        }
+    }
+
+    public Status removePresentationSlides (UUID presentationId) {
+        try {
+            ArrayList slidesList = (ArrayList) getCollection(CollectionType.slide, Slide.class).orElse(new ArrayList());
+            ArrayList updatedList = (ArrayList) slidesList.stream().filter(el -> {
+                Slide slide = (Slide) el;
+                return !slide.getPresentationId().equals(presentationId);
+            }).collect(Collectors.toList());
+            log.debug(ConstantsInfo.SLIDES_REMOVE);
+            Status status = writeCollection(updatedList, Slide.class);
+            if (status == Status.success) {
+                log.info(SuccessConstants.SLIDES_REMOVE);
+            } else {
+                log.info(ErrorConstants.SLIDES_REMOVE);
+            }
+            return status;
+        } catch (RuntimeException e) {
+            log.error(e);
+            log.error(ErrorConstants.SLIDES_REMOVE);
+            return Status.error;
         }
     }
 
@@ -267,10 +318,18 @@ public class DataProviderCSV implements DataProvider {
                 List<Presentation> list = getCollection(CollectionType.presentation, Presentation.class).orElse(new ArrayList());
                 List<Presentation> updatedList = list.stream().map(el -> {
                     if (el.getId().equals(id)) {
-                        el.setFillColor((String) arguments.getOrDefault("fillColor", el.getFillColor())); // TODO вынести названия полей в cont
-                        el.setFontFamily((String) arguments.getOrDefault("fontFamily", el.getFontFamily()));
-                        el.setName((String) arguments.getOrDefault("name", el.getName()));
-                        el.setSlides((ArrayList) arguments.getOrDefault("slides", el.getSlides()));
+                        String fillColor = (String) arguments.getOrDefault("fillColor", el.getFillColor());
+                        String fontFamily = (String) arguments.getOrDefault("fontFamily", el.getFontFamily());
+                        String name = (String) arguments.getOrDefault("name", el.getName());
+                        ArrayList slides = (ArrayList) arguments.getOrDefault("slides", el.getSlides());
+                        log.debug(ConstantsInfo.FIELD_EDIT + "fillColor " + fillColor);
+                        el.setFillColor(fillColor); // TODO вынести названия полей в const
+                        log.debug(ConstantsInfo.FIELD_EDIT + "fontFamily " + fontFamily);
+                        el.setFontFamily(fontFamily);
+                        log.debug(ConstantsInfo.FIELD_EDIT + "name " + name);
+                        el.setName(name);
+                        log.debug(ConstantsInfo.FIELD_EDIT + "slides " + slides);
+                        el.setSlides(slides);
                     } return el;
                 }).collect(Collectors.toList());
                 Status result = writeCollection(updatedList, Presentation.class);
@@ -314,8 +373,10 @@ public class DataProviderCSV implements DataProvider {
                 log.info("[createPresentationSlide] Create slide: " + slide.toString());
                 log.debug("[createPresentationSlide] For presentation: " + slide.getPresentationId());
 
-                slides.add(slide);
-                Status statusCreateSlide = writeCollection(slides, Slide.class);
+
+                ArrayList allSlides = (ArrayList) getCollection(CollectionType.slide, Slide.class).orElse(new ArrayList());
+                allSlides.add(slide);
+                Status statusCreateSlide = writeCollection(allSlides, Slide.class);
                 Status statusAddSlideInPresentation = addPresentationSlide(slide, optionalPresentation.get());
 
                 if (statusCreateSlide == Status.success && statusAddSlideInPresentation == Status.success) {
@@ -388,6 +449,94 @@ public class DataProviderCSV implements DataProvider {
         }
     }
 
+    @Override
+    public Result getSlideById (HashMap args) {
+        try {
+            if (args.get("presentationId") == null) {
+                log.error("[getSlideById] Presentation id is not provided");
+                return new Result(Status.error, "Presentation id is not provided");
+            }
+            if (args.get("id") == null) {
+                log.error("[getSlideById] Slide id is not provided");
+                return new Result(Status.error, "Slide id is not provided");
+            }
+            UUID presentationId = UUID.fromString((String) args.get("presentationId"));
+            UUID slideId = UUID.fromString((String) args.get("id"));
+            Optional<List> optionalSlides = getCollection(CollectionType.slide, Slide.class);
+            if (optionalSlides.isPresent()) {
+                Optional<Slide> slide = optionalSlides.get().stream().filter(el -> {
+                    Slide item = (Slide) el;
+                    return item.getPresentationId().equals(presentationId) && item.getId().equals(slideId);
+                }).limit(1).findFirst();
+                if (optionalSlides.isPresent()) {
+                    return new Result(Status.success, slide.get());
+                } else {
+                    return new Result(Status.error, ErrorConstants.SLIDE_GET);
+                }
+            } else {
+                log.error("[getSlideById] Unable to find slide for presentation: " + args.get("presentationId"));
+                return new Result(Status.success, ErrorConstants.SLIDE_NOT_FOUND_IN_PRESENTATION + args.get("presentationId"));
+            }
+        } catch (RuntimeException e) {
+            log.error("[getSlideById] " + ErrorConstants.SLIDE_GET);
+            return new Result(Status.error, ErrorConstants.SLIDE_GET);
+        }
+    }
+
+    @Override
+    public Result editPresentationSlideById (HashMap args) {
+        try {
+            if (args.get("presentationId") == null) {
+                log.error(ErrorConstants.ARGUMENT_IS_NOT_PROVIDED + "id");
+                return new Result(Status.error, ErrorConstants.ARGUMENT_IS_NOT_PROVIDED + "presentationId");
+            }
+            if (args.get("id") == null) {
+                log.error(ErrorConstants.ARGUMENT_IS_NOT_PROVIDED + "id");
+                return new Result(Status.error, ErrorConstants.ARGUMENT_IS_NOT_PROVIDED + "id");
+            }
+            UUID presentationId = UUID.fromString((String) args.get("presentationId"));
+            UUID slideId = UUID.fromString((String) args.get("id"));
+            Optional<Slide> optionalSlide = getInstanceById(Slide.class, CollectionType.slide, args);
+            if (optionalSlide.isPresent()) {
+                Optional<List> slides = getCollection(CollectionType.slide, Slide.class);
+                if (slides.isPresent()) {
+                    ArrayList updatedSlides = (ArrayList) slides.get().stream().map(el -> {
+                        Slide slide = (Slide) el;
+                        if (slide.getPresentationId().equals(presentationId) && slide.getId().equals(slideId)) {
+                            String name = (String) args.getOrDefault("name", slide.getName());
+                            String index = (String) args.getOrDefault("index", String.valueOf(slide.getIndex()));
+                            ArrayList elements = (ArrayList) args.getOrDefault("elements", slide.getElements());
+                            slide.setName(name);
+                            log.debug(ConstantsInfo.FIELD_EDIT + "name " + name);
+                            slide.setIndex(Integer.valueOf(index));
+                            log.debug(ConstantsInfo.FIELD_EDIT + "index " + index);
+                            slide.setElements(elements);
+                            log.debug(ConstantsInfo.FIELD_EDIT + "elements " + elements);
+                        }
+                        return slide;
+                    }).collect(Collectors.toList());
+                    Status status = writeCollection(updatedSlides, Slide.class);
+                    if (status == Status.success) {
+                        log.debug(SuccessConstants.SLIDE_EDIT + slideId);
+                        return new Result(status, SuccessConstants.SLIDE_EDIT + slideId);
+                    } else {
+                        log.debug(ErrorConstants.SLIDE_EDIT + slideId);
+                        return new Result(status, ErrorConstants.SLIDE_EDIT + slideId);
+                    }
+                } else {
+                    log.error(ErrorConstants.SLIDES_GET);
+                    return new Result(Status.error, ErrorConstants.SLIDES_GET);
+                }
+            } else {
+                log.error(ErrorConstants.SLIDE_NOT_FOUND_IN_PRESENTATION);
+                return new Result(Status.error, ErrorConstants.SLIDE_NOT_FOUND_IN_PRESENTATION);
+            }
+        } catch (RuntimeException e) {
+            log.error(e);
+            log.error(ErrorConstants.SLIDE_EDIT);
+            return new Result(Status.error, ErrorConstants.SLIDE_EDIT);
+        }
+    }
 
     @Override
     public Result removePresentationSlideById (HashMap arguments) {
@@ -395,10 +544,17 @@ public class DataProviderCSV implements DataProvider {
             if (arguments.get("id") == null) {
                 return new Result(Status.error, ErrorConstants.ARGUMENT_IS_NOT_PROVIDED + "id");
             }
+            if (arguments.get("presentationId") == null) {
+                return new Result(Status.error, ErrorConstants.ARGUMENT_IS_NOT_PROVIDED + "presentationId");
+            }
             UUID id = UUID.fromString((String) arguments.get("id"));
+            String presentationId = (String) arguments.get("presentationId");
             log.debug("[removePresentationSlideById] Attempt to remove slide: " + id);
+            Status statusRemoveFromPresentation = removeSlideFromPresentation(id, presentationId);
             Status status = removeRecordById(CollectionType.slide, Slide.class, id);
-            if (status == Status.success) {
+            log.debug("[removePresentationSlideById] Removed from data source: " + status);
+            log.debug("[removePresentationSlideById] Remove from presentation: " + statusRemoveFromPresentation);
+            if (status == Status.success && statusRemoveFromPresentation == Status.success) {
                 return new Result(Status.success, "ok");
             } else {
                 return new Result(Status.error, ErrorConstants.SLIDE_REMOVE + id);
@@ -407,6 +563,51 @@ public class DataProviderCSV implements DataProvider {
             e.printStackTrace();
             log.error(e);
             return new Result(Status.error, ErrorConstants.SLIDE_REMOVE);
+        }
+    }
+
+    public Status removeSlideFromPresentation (UUID id, String presentationId) {
+        try {
+            HashMap args = new HashMap();
+            args.put("id", presentationId);
+            Optional<Presentation> presentation = getInstanceById(Presentation.class, CollectionType.presentation, args);
+            if (presentation.isPresent()) {
+                log.debug("[removeSlideFromPresentation] Remove slide: " + id);
+                log.debug("[removeSlideFromPresentation] From presentation: " + presentationId);
+                ArrayList slides = presentation.get().getSlides();
+                log.debug("[removeSlideFromPresentation] Presentation slides: " + slides);
+                log.debug("[removeSlideFromPresentation] Remove slide: " + id);
+                ArrayList updatedSlides = (ArrayList) slides.stream().filter(el -> el.equals(id)).collect(Collectors.toList());
+                log.debug("[removeSlideFromPresentation] Updated list: " + updatedSlides);
+                HashMap updateOptionsParams = new HashMap();
+                updateOptionsParams.put("id", presentationId);
+                updateOptionsParams.put("slides", updatedSlides);
+                Result result = editPresentationOptions(updateOptionsParams);
+                return result.getStatus();
+            } else {
+                log.error(ErrorConstants.PRESENTATION_NOT_FOUND + presentationId);
+                return Status.error;
+            }
+        } catch (RuntimeException | CsvRequiredFieldEmptyException | IOException | CsvDataTypeMismatchException e) {
+            log.error(e);
+            log.error("[removeSlideFromPresentation] Unable to remove slide from presentation");
+            return Status.error;
+        }
+    }
+    public Status updatePresentationCollection (Presentation presentation) {
+        Optional<List> optionalList = getCollection(CollectionType.presentation, Presentation.class);
+        if (optionalList.isPresent()) {
+            ArrayList updatedCollection = (ArrayList) optionalList.get().stream().map(el -> {
+                Presentation item = (Presentation) el;
+                if (item.getId().equals(presentation.getId())) {
+                    item.setSlides(presentation.getSlides());
+                }
+                return item;
+            }).collect(Collectors.toList());
+            return Status.success;
+        } else {
+            log.error("[updatePresentationCollection] Unable to get presentations collection");
+            return Status.error;
         }
     }
 

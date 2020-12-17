@@ -31,6 +31,9 @@ public class Runner {
                     case "createPresentation": {
                         return this.provider.createPresentation(arguments);
                     }
+                    case "getPresentations": {
+                        return this.provider.getPresentations();
+                    }
                     case "getPresentationById": {
                         return this.provider.getPresentationById(arguments);
                     }
@@ -40,8 +43,22 @@ public class Runner {
                     case "editPresentationOptions": {
                         return this.provider.editPresentationOptions(arguments);
                     }
+
+
                     case "createPresentationSlide": {
                         return this.provider.createPresentationSlide(arguments);
+                    }
+                    case "getPresentationSlides": {
+                        return this.provider.getPresentationSlides(arguments);
+                    }
+                    case "getSlideById": {
+                        return this.provider.getSlideById(arguments);
+                    }
+                    case "editPresentationSlideById": {
+                        return this.provider.editPresentationSlideById(arguments);
+                    }
+                    case "removePresentationSlideById": {
+                        return this.provider.removePresentationSlideById(arguments);
                     }
                     default:
                         throw new IllegalStateException("Unexpected method: " + method);

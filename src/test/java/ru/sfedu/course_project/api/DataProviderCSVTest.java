@@ -243,27 +243,53 @@ public class DataProviderCSVTest extends TestBase {
     @Test
     void removePresentationSlideByIdSuccess() {
         log.debug("{TEST} removePresentationSlideByIdSuccess START");
+
         DataProvider provider = new DataProviderCSV();
-        Presentation presentation = (Presentation) new Creator().create(Presentation.class, new HashMap()).get();
-        log.debug(presentation.toString());
-        HashMap args = new HashMap();
-        args.put("id", String.valueOf(presentation.getId()));
 
-        Result createResult = provider.createPresentation(args);
+        UUID presentationId = UUID.randomUUID();
+        UUID slideId = UUID.randomUUID();
 
-        args.put("presentationId", String.valueOf(presentation.getId()));
-        args.put("id", String.valueOf(UUID.randomUUID()));
-        args.put("index", 0);
-        Slide slide = (Slide) new Creator().create(Slide.class, args).get();
+        Result resultCreatePresentation = makePresentationWithId(provider, presentationId);
+        Result resultCreateSlide = makeSlideWithId(provider, slideId, presentationId);
 
-        if (createResult.getStatus() == Status.success) {
-            args.put("id", String.valueOf(slide.getId()));
-            args.put("presentationId", String.valueOf(presentation.getId()));
-            Result createSlideResult = provider.createPresentationSlide(args);
-            assertEquals(createSlideResult.getStatus(), Status.success);
-            assertEquals(createSlideResult.getReturnValue().toString(), String.valueOf(slide.getId()));
+        assertEquals(resultCreatePresentation.getStatus(), Status.success);
+        assertEquals(resultCreateSlide.getStatus(), Status.success);
+        if (resultCreatePresentation.getStatus() == Status.success && resultCreateSlide.getStatus() == Status.success) {
+            HashMap args = new HashMap();
+            args.put("presentationId", String.valueOf(presentationId));
+            args.put("id", String.valueOf(slideId));
+            Result resultGetSlide = provider.getSlideById(args);
+            assertEquals(resultGetSlide.getStatus(), Status.success);
+
+            Result resultRemoveSlide = provider.removePresentationSlideById(args);
+            assertEquals(resultRemoveSlide.getStatus(), Status.success);
         }
         log.debug("{TEST} removePresentationSlideByIdSuccess END");
+    }
+
+    @Test
+    void editPresentationSlideByIdSuccess() {
+        UUID presentationId = UUID.randomUUID();
+        UUID slideId = UUID.randomUUID();
+        String name = "Test name";
+        DataProvider provider = new DataProviderCSV();
+        makePresentationWithId(provider, presentationId);
+        Result resultCreateSlide = makeSlideWithId(provider, slideId, presentationId);
+        if (resultCreateSlide.getStatus() == Status.success) {
+            HashMap args = new HashMap();
+            args.put("presentationId", String.valueOf(presentationId));
+            args.put("id", String.valueOf(slideId));
+            args.put("name", name);
+            Result resultEditSlide = provider.editPresentationSlideById(args);
+            assertEquals(resultEditSlide.getStatus(), Status.success);
+            if (resultEditSlide.getStatus() == Status.success) {
+                Result resultGetSlide = provider.getSlideById(args);
+                if (resultGetSlide.getStatus() == Status.success) {
+                    Slide slide = (Slide) resultGetSlide.getReturnValue();
+                    assertEquals(slide.getName(),  name);
+                }
+            }
+        }
     }
 
 

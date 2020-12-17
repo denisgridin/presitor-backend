@@ -29,6 +29,12 @@ public class Presentation implements Serializable, BaseClass {
     @CsvBindAndSplitByName(column = "slides", elementType = List.class, converter = ListIdsConverter.class)
     private ArrayList<UUID> slides;
 
+    @CsvBindAndSplitByName(column = "comments", elementType = List.class, converter = ListIdsConverter.class)
+    private ArrayList<UUID> comments;
+
+    @CsvBindAndSplitByName(column = "marks", elementType = List.class, converter = ListIdsConverter.class)
+    private ArrayList<UUID> marks;
+
     public Presentation () {}
 
     public static Logger log = LogManager.getLogger(Presentation.class);
@@ -71,6 +77,22 @@ public class Presentation implements Serializable, BaseClass {
 
     public void setSlides(ArrayList slides) {
         this.slides = slides;
+    }
+
+    public ArrayList<UUID> getComments() {
+        return comments;
+    }
+
+    public void setComments(ArrayList comments) {
+        this.comments = comments;
+    }
+
+    public ArrayList<UUID> getMarks() {
+        return marks;
+    }
+
+    public void setMarks(ArrayList marks) {
+        this.marks = marks;
     }
 
     @Override
