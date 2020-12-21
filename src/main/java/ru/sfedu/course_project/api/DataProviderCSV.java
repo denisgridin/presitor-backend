@@ -410,9 +410,49 @@ public class DataProviderCSV implements DataProvider {
     @Override
     public Result getPresentationById (HashMap arguments) {
         try {
-            Optional <Presentation> presentation = getInstanceById(Presentation.class, CollectionType.presentation, arguments);
-            return presentation.isPresent() ?
-                    new Result(Status.success, presentation.get()) :
+            Optional<Presentation> optionalPresentation = getInstanceExistenceByField(presentation, Presentation.class, "id", (String) arguments.get("id"));
+            if (!optionalPresentation.isPresent()) {
+                return new Result(Status.error, ErrorConstants.INSTANCE_NOT_FOUND);
+            }
+
+//            Optional<Object> slideId = Optional.of(arguments.get("slideId"));
+            Boolean withSlides = Boolean.valueOf((String) arguments.getOrDefault("withSlides", "false"));
+            Boolean withComments = Boolean.valueOf((String) arguments.getOrDefault("withComments", "false"));
+            Boolean withMarks = Boolean.valueOf((String) arguments.getOrDefault("withMarks", "false"));
+            Boolean withElements = Boolean.valueOf((String) arguments.getOrDefault("withElements", "false"));
+            log.info("Get presentation: withSlides: " + withSlides);
+            log.info("Get presentation: withComments: " + withComments);
+            log.info("Get presentation: withMarks: " + withMarks);
+            log.info("Get presentation: withElements: " + withElements);
+
+            Presentation presentation = optionalPresentation.get();
+
+            if (withSlides) {
+                HashMap paramsGetSlides = new HashMap();
+                paramsGetSlides.put("presentationId", arguments.get("id"));
+                Result resultGetSlides = this.getPresentationSlides(paramsGetSlides);
+                log.debug("[getPresentationById] get presentation slides: " + paramsGetSlides.get("presentationId"));
+                if (resultGetSlides.getStatus() == Status.success) {
+                    presentation.setSlides((ArrayList) resultGetSlides.getReturnValue());
+                } else {
+                    return resultGetSlides;
+                }
+            }
+
+            if (withComments) {
+                HashMap paramsGetComments = new HashMap();
+                paramsGetComments.put("presentationId", arguments.get("id"));
+                Result resultGetComments = this.getPresentationComments(paramsGetComments);
+                log.debug("[getPresentationById] get presentation comments: " + paramsGetComments.get("presentationId"));
+                if (resultGetComments.getStatus() == Status.success) {
+                    presentation.setComments((ArrayList) resultGetComments.getReturnValue());
+                } else {
+                    return resultGetComments;
+                }
+            }
+
+            return optionalPresentation.isPresent() ?
+                    new Result(Status.success, presentation) :
                     new Result(Status.error, ErrorConstants.PRESENTATION_GET);
         } catch (RuntimeException e) {
             log.error(e);

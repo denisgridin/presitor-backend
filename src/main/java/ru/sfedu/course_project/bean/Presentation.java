@@ -39,6 +39,15 @@ public class Presentation implements Serializable, BaseClass {
     @CsvIgnore
     private ArrayList<Assessment> marks;
 
+    private Boolean slidesConnected = false;
+    private Boolean commentsConnected = false;
+
+    private Boolean getSlidesConnected () { return slidesConnected; }
+    private Boolean getCommentsConnected () { return commentsConnected; }
+
+    private void setSlidesConnected (Boolean flag) { this.slidesConnected = flag; }
+    private void setCommentsConnected (Boolean flag) { this.commentsConnected = flag; }
+
     public Presentation () {}
 
     public static Logger log = LogManager.getLogger(Presentation.class);
@@ -80,6 +89,7 @@ public class Presentation implements Serializable, BaseClass {
     }
 
     public void setSlides(ArrayList slides) {
+        this.setSlidesConnected(true);
         this.slides = slides;
     }
 
@@ -88,6 +98,7 @@ public class Presentation implements Serializable, BaseClass {
     }
 
     public void setComments(ArrayList comments) {
+        this.setCommentsConnected(true);
         this.comments = comments;
     }
 
@@ -117,11 +128,14 @@ public class Presentation implements Serializable, BaseClass {
 
     @Override
     public String toString() {
-        return "Presentation{" +
+        String formatReturn = "Presentation{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", fillColor='" + fillColor + '\'' +
                 ", fontFamily='" + fontFamily + '\'' +
+                ( slidesConnected ? ", slides=" + getSlides() : "" ) +
+                ( commentsConnected ? ", comments=" + getComments() : "" ) +
                 '}';
+        return formatReturn;
     }
 }
