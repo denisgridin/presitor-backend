@@ -6,10 +6,14 @@ import ru.sfedu.course_project.Constants;
 import ru.sfedu.course_project.ConstantsInfo;
 import ru.sfedu.course_project.ErrorConstants;
 import ru.sfedu.course_project.SuccessConstants;
+import ru.sfedu.course_project.bean.Comment;
 import ru.sfedu.course_project.bean.Presentation;
 import ru.sfedu.course_project.bean.Slide;
+import ru.sfedu.course_project.enums.Role;
 import ru.sfedu.course_project.enums.Status;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 public class Creator {
@@ -17,17 +21,24 @@ public class Creator {
 
     private static Logger log = LogManager.getLogger(Creator.class);
 
-    public Optional create (Class cl, HashMap args) {
+    public Result create (Class cl, HashMap args) {
         String className = cl.getSimpleName().toLowerCase();
         switch (className) {
             case "presentation": {
-                return createPresentation(args);
+                Optional presentation = createPresentation(args);
+                Status status = presentation.isPresent() ? Status.success : Status.error;
+                return new Result(status, presentation);
             }
             case "slide": {
-                return createSlide(args);
+                Optional slide = createSlide(args);
+                Status status = slide.isPresent() ? Status.success : Status.error;
+                return new Result(status, slide);
+            }
+            case "comment": {
+                return createComment(args);
             }
             default: {
-                return Optional.empty();
+                return new Result(Status.error, Optional.empty());
             }
         }
     }
@@ -89,6 +100,43 @@ public class Creator {
             log.error(e);
             log.error(ErrorConstants.ARGUMENTS_VALIDATE);
             return Optional.empty();
+        }
+    }
+
+    private Result createComment (HashMap args) {
+        try {
+            Comment comment = new Comment();
+
+            UUID presentationId = UUID.fromString((String) args.get("presentationId"));
+            UUID id = UUID.randomUUID();
+            String text = (String) args.get("text");
+            Role role = Role.valueOf((String)args.get("role"));
+
+            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+            LocalDateTime now = LocalDateTime.now();
+            String datetime = dtf.format(now);
+
+            comment.setPresentationId(presentationId);
+            log.debug(String.format(ConstantsInfo.FIELD_FORMAT_SET, "presentationId", presentationId));
+
+            comment.setId(id);
+            log.debug(String.format(ConstantsInfo.FIELD_FORMAT_SET, "id", id));
+
+            comment.setText(text);
+            log.debug(String.format(ConstantsInfo.FIELD_FORMAT_SET, "text", text));
+
+            comment.setRole(role);
+            log.debug(String.format(ConstantsInfo.FIELD_FORMAT_SET, "role", role));
+
+            comment.setDatetime(datetime);
+            log.debug(String.format(ConstantsInfo.FIELD_FORMAT_SET, "datetime", datetime));
+
+            return new Result(Status.success, comment);
+
+        } catch (RuntimeException e) {
+            log.error(e);
+            log.error(ErrorConstants.COMMENT_CREATE);
+            return new Result(Status.error, ErrorConstants.COMMENT_CREATE);
         }
     }
 }

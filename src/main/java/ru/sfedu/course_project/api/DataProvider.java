@@ -2,6 +2,7 @@ package ru.sfedu.course_project.api;
 
 import com.opencsv.exceptions.CsvDataTypeMismatchException;
 import com.opencsv.exceptions.CsvRequiredFieldEmptyException;
+import ru.sfedu.course_project.bean.Presentation;
 import ru.sfedu.course_project.bean.Slide;
 import ru.sfedu.course_project.enums.CollectionType;
 import ru.sfedu.course_project.enums.Status;
@@ -17,12 +18,13 @@ import java.util.UUID;
 public interface DataProvider {
     public String getName();
     public <T> Optional<List> getCollection (CollectionType collectionType, Class cl);
-    public <T> Status writeCollection (List collection, Class cl);
+    public <T> Status writeCollection(List list, Class cl, CollectionType collectionType);
     public <T extends BaseClass> Boolean isIdInUse (String id, List<T> list);
     public <T extends BaseClass> Status removeRecordById (CollectionType collectionType, Class cl, UUID id);
     public <T extends BaseClass> Optional<T> getInstanceById (Class cl, CollectionType collectionType, HashMap arguments);
 
     public Result createPresentation (HashMap arguments);
+    public Result addPresentationInTemplate (Presentation presentation);
     public Result getPresentations ();
     public Result getPresentationById (HashMap arguments) throws IOException;
     public Result removePresentationById (HashMap arguments) throws CsvRequiredFieldEmptyException, IOException, CsvDataTypeMismatchException;
@@ -32,7 +34,12 @@ public interface DataProvider {
     public Result createPresentationSlide (HashMap arguments);
     public Result removePresentationSlideById (HashMap arguments);
     public Result editPresentationSlideById (HashMap arguments);
-    public Result getSlideById (HashMap args);
+    public Result getSlideById (HashMap arguments);
+
+    public Result getPresentationComments (HashMap arguments);
+    public Result commentPresentation (HashMap arguments);
+    public Result editPresentationComment (HashMap arguments);
+//    public Result removePresentationComment (HashMap arguments);
 //    public Result editPresentationSlideOptionsById (HashMap arguments);
 //    public <T> Status addCollectionRecord (T record, UUID id);
 }

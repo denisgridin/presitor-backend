@@ -4,5 +4,7 @@ public enum CollectionType {
     presentation,
     slide,
     element,
+    template,
+    comment,
     error
 }

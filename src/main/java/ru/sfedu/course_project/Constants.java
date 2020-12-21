@@ -21,7 +21,8 @@ public class Constants {
     }).collect(Collectors.toMap(data -> (String) data[0], data -> (Object) data[1]));
     public final static List<String> PUBLIC_METHODS = Arrays.asList(new String[]{
             "getPresentationById",
-            "getPresentations"
+            "getPresentations",
+            "commentPresentation"
     });
 
     public final static String MSG_SUCCESS_RESULT = "[%s] Result: %s";

@@ -60,6 +60,15 @@ public class Runner {
                     case "removePresentationSlideById": {
                         return this.provider.removePresentationSlideById(arguments);
                     }
+                    case "commentPresentation": {
+                        return this.provider.commentPresentation(arguments);
+                    }
+                    case "getPresentationComments": {
+                        return this.provider.getPresentationComments(arguments);
+                    }
+                    case "editPresentationComment": {
+                        return this.provider.editPresentationComment(arguments);
+                    }
                     default:
                         throw new IllegalStateException("Unexpected method: " + method);
                 }

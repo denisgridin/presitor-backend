@@ -1,25 +1,27 @@
 package ru.sfedu.course_project.bean;
 
 import com.opencsv.bean.CsvBindByName;
+import com.opencsv.bean.CsvCustomBindByName;
+import ru.sfedu.course_project.converters.RoleConverter;
+import ru.sfedu.course_project.converters.UUIDConverter;
 import ru.sfedu.course_project.enums.Role;
 
 import java.io.Serializable;
 import java.util.Objects;
 import java.util.UUID;
 
-public abstract class Feedback implements Serializable {
-    @CsvBindByName
+public abstract class Feedback {
+    @CsvCustomBindByName(column = "id", converter = RoleConverter.class)
     private Role role;
 
-    @CsvBindByName
+    @CsvCustomBindByName(column = "id", converter = UUIDConverter.class)
     private UUID id;
 
-    public Feedback() {}
+    @CsvCustomBindByName(column = "presentationId", converter = UUIDConverter.class)
+    private UUID presentationId;
 
-    public Feedback (UUID id, Role role) {
-        this.id = id;
-        this.role = role;
-    }
+
+    public Feedback() {}
 
     public Role getRole() {
         return role;
@@ -37,25 +39,11 @@ public abstract class Feedback implements Serializable {
         this.id = id;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Feedback feedback = (Feedback) o;
-        return role == feedback.role &&
-                id == feedback.id;
+    public UUID getPresentationId() {
+        return presentationId;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(role, id);
-    }
-
-    @Override
-    public String toString() {
-        return "Feedback{" +
-                "role=" + role +
-                ", id=" + id +
-                '}';
+    public void setPresentationId(UUID presentationId) {
+        this.presentationId = presentationId;
     }
 }

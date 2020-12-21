@@ -12,9 +12,7 @@ public class Assessment extends Feedback implements Serializable {
     @CsvBindByName
     private Mark mark;
 
-    public Assessment (UUID id, Role role, Mark mark) {
-        super(id, role);
-        this.mark = mark;
+    public Assessment () {
     }
 
     public Mark getMark() {

@@ -72,3 +72,17 @@ presentationId=<presentationId>
 id=<id>
 name=<name>
 index=<index>
+
+///////                    Comments                         \\\\\\\\\\\\
+
+	Comment Presentation
+datatype=<datatype>
+method=commentPresentation
+role=<guest, editor>
+text=<text>
+presentationId=<presentationId>
+
+datatype=csv
+method=getPresentationComments
+role=editor
+presentationId=1085b983-0f16-44ca-8aff-346a2b86bd12
