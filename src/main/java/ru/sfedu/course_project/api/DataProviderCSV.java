@@ -229,13 +229,16 @@ public class DataProviderCSV implements DataProvider {
     @Override
     public Optional getInstanceById (Class cl, CollectionType collectionType, HashMap arguments) {
         UUID id = UUID.fromString((String) arguments.get("id"));
+        log.debug("id: " + id);
         try {
             switch (collectionType) {
                 case presentation: {
                     ArrayList<Presentation> listInstance = (ArrayList<Presentation>) getCollection(collectionType, cl).orElse(new ArrayList());
                     log.debug("Attempt to find: " + id);
+                    log.debug("list instance: " + listInstance);
                     Optional instance = listInstance.stream()
                             .filter(el -> el.getId().equals(id)).findFirst();
+                    log.debug(instance);
                     return instance;
                 }
                 case slide: {
@@ -271,10 +274,11 @@ public class DataProviderCSV implements DataProvider {
 
     public Optional getInstanceExistenceByField (CollectionType collectionType, Class cls, String idField, String id) {
         try {
-            log.debug("[getInstanceExistenceByField] Get: " + cls.getSimpleName() + "; id: " + id);
+            log.debug("[getInstanceExistenceByField] Get: " + cls.getSimpleName() + "; " + idField + ": " + id);
             HashMap args = new HashMap();
             args.put(idField, id);
             Optional optionalInstance = getInstanceById(cls, collectionType, args);
+            log.debug(optionalInstance);
             return optionalInstance;
         } catch (RuntimeException e) {
             log.error(e);
@@ -410,16 +414,24 @@ public class DataProviderCSV implements DataProvider {
     @Override
     public Result getPresentationById (HashMap arguments) {
         try {
+            ArrayList fields = new ArrayList();
+            fields.add("id");
+            Result isArgsValid = new ArgsValidator().validate(arguments, fields);
+            if (isArgsValid.getStatus() == Status.error) {
+                return isArgsValid;
+            }
+
             Optional<Presentation> optionalPresentation = getInstanceExistenceByField(presentation, Presentation.class, "id", (String) arguments.get("id"));
             if (!optionalPresentation.isPresent()) {
                 return new Result(Status.error, ErrorConstants.INSTANCE_NOT_FOUND);
             }
 
-//            Optional<Object> slideId = Optional.of(arguments.get("slideId"));
+            Optional<Object> slideId = Optional.ofNullable(arguments.get("slideId"));
             Boolean withSlides = Boolean.valueOf((String) arguments.getOrDefault("withSlides", "false"));
             Boolean withComments = Boolean.valueOf((String) arguments.getOrDefault("withComments", "false"));
             Boolean withMarks = Boolean.valueOf((String) arguments.getOrDefault("withMarks", "false"));
             Boolean withElements = Boolean.valueOf((String) arguments.getOrDefault("withElements", "false"));
+            log.info("Get presentation: with slide id: " + slideId.isPresent());
             log.info("Get presentation: withSlides: " + withSlides);
             log.info("Get presentation: withComments: " + withComments);
             log.info("Get presentation: withMarks: " + withMarks);
@@ -427,7 +439,21 @@ public class DataProviderCSV implements DataProvider {
 
             Presentation presentation = optionalPresentation.get();
 
-            if (withSlides) {
+
+            if (slideId.isPresent()) {
+                HashMap paramsGetSlide = new HashMap();
+                paramsGetSlide.put("presentationId", arguments.get("id"));
+                paramsGetSlide.put("id", slideId.get());
+                Result resultGetSlide = this.getSlideById(paramsGetSlide);
+                if (resultGetSlide.getStatus() == Status.success) {
+                    ArrayList slides = new ArrayList();
+                    slides.add(resultGetSlide.getReturnValue());
+                    presentation.setSlides(slides);
+
+                } else {
+                    return resultGetSlide;
+                }
+            } else if (withSlides) {
                 HashMap paramsGetSlides = new HashMap();
                 paramsGetSlides.put("presentationId", arguments.get("id"));
                 Result resultGetSlides = this.getPresentationSlides(paramsGetSlides);

@@ -104,3 +104,358 @@
 21 дек. 2020 12:42:00,746 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value: [Comment{text='Оболденная презентация', datetime='2020/12/21 12:09:14', id=c7c6e24f-d140-4be5-b3d2-b31476eeb2a0, presentationId=7aff8196-8f1b-4bad-95b4-7aeae7e1645d}] }
 21 дек. 2020 12:42:00,747 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getPresentationById] get presentation comments: 7aff8196-8f1b-4bad-95b4-7aeae7e1645d
 21 дек. 2020 12:42:00,747 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value: Presentation{id=7aff8196-8f1b-4bad-95b4-7aeae7e1645d, name='New presentation', fillColor='#ffffff', fontFamily='Roboto', slides=[Comment{text='Оболденная презентация', datetime='2020/12/21 12:09:14', id=c7c6e24f-d140-4be5-b3d2-b31476eeb2a0, presentationId=7aff8196-8f1b-4bad-95b4-7aeae7e1645d}]} }
+21 дек. 2020 12:42:32,788 [main] WARN  ru.sfedu.course_project.Main - arguments {withSlides=true, role=editor, method=getPresentationById, datatype=csv, id=7aff8196-8f1b-4bad-95b4-7aeae7e1645d, withComments=true}
+21 дек. 2020 12:42:32,795 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [withSlides=true, role=editor, method=getPresentationById, datatype=csv, id=7aff8196-8f1b-4bad-95b4-7aeae7e1645d, withComments=true]
+21 дек. 2020 12:42:32,797 [main] INFO  ru.sfedu.course_project.Main - Attempt to create csv data provider
+21 дек. 2020 12:42:32,804 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: csv
+21 дек. 2020 12:42:32,806 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: getPresentationById
+21 дек. 2020 12:42:32,807 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+21 дек. 2020 12:42:32,826 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getInstanceExistenceByField] Get: Presentation; id: 7aff8196-8f1b-4bad-95b4-7aeae7e1645d
+21 дек. 2020 12:42:32,828 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Attempt to get collection: presentation
+21 дек. 2020 12:42:33,000 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Collection was retrieved: presentation
+21 дек. 2020 12:42:33,002 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Attempt to find: 7aff8196-8f1b-4bad-95b4-7aeae7e1645d
+21 дек. 2020 12:42:33,003 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - Get presentation: withSlides: true
+21 дек. 2020 12:42:33,004 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - Get presentation: withComments: true
+21 дек. 2020 12:42:33,004 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - Get presentation: withMarks: false
+21 дек. 2020 12:42:33,005 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - Get presentation: withElements: false
+21 дек. 2020 12:42:33,005 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Attempt to get collection: presentation
+21 дек. 2020 12:42:33,019 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Collection was retrieved: presentation
+21 дек. 2020 12:42:33,020 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Attempt to find: 7aff8196-8f1b-4bad-95b4-7aeae7e1645d
+21 дек. 2020 12:42:33,022 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Attempt to get collection: slide
+21 дек. 2020 12:42:33,034 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Collection was retrieved: slide
+21 дек. 2020 12:42:33,035 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getPresentationSlides] Attempt to find presentation slides for: 7aff8196-8f1b-4bad-95b4-7aeae7e1645d
+21 дек. 2020 12:42:33,053 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getPresentationSlides] Found presentation slides: [Slide{id=fc6af4d0-61e9-443b-8aa5-3309690ca480, name='Slide', index=0, presentationId=7aff8196-8f1b-4bad-95b4-7aeae7e1645d}]
+21 дек. 2020 12:42:33,056 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value: [Slide{id=fc6af4d0-61e9-443b-8aa5-3309690ca480, name='Slide', index=0, presentationId=7aff8196-8f1b-4bad-95b4-7aeae7e1645d}] }
+21 дек. 2020 12:42:33,057 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getPresentationById] get presentation slides: 7aff8196-8f1b-4bad-95b4-7aeae7e1645d
+21 дек. 2020 12:42:33,059 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - Attempt to get comments for presentation
+21 дек. 2020 12:42:33,059 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getInstanceExistenceByField] Get: Presentation; id: 7aff8196-8f1b-4bad-95b4-7aeae7e1645d
+21 дек. 2020 12:42:33,060 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Attempt to get collection: presentation
+21 дек. 2020 12:42:33,067 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Collection was retrieved: presentation
+21 дек. 2020 12:42:33,068 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Attempt to find: 7aff8196-8f1b-4bad-95b4-7aeae7e1645d
+21 дек. 2020 12:42:33,068 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - Get presentation: withSlides: false
+21 дек. 2020 12:42:33,068 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - Get presentation: withComments: false
+21 дек. 2020 12:42:33,068 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - Get presentation: withMarks: false
+21 дек. 2020 12:42:33,068 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - Get presentation: withElements: false
+21 дек. 2020 12:42:33,094 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value: Presentation{id=7aff8196-8f1b-4bad-95b4-7aeae7e1645d, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'} }
+21 дек. 2020 12:42:33,096 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Attempt to get collection: comment
+21 дек. 2020 12:42:33,106 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Collection was retrieved: comment
+21 дек. 2020 12:42:33,121 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - Comments retrieved [Comment{text='Оболденная презентация', datetime='2020/12/21 12:09:14', id=c7c6e24f-d140-4be5-b3d2-b31476eeb2a0, presentationId=7aff8196-8f1b-4bad-95b4-7aeae7e1645d}]
+21 дек. 2020 12:42:33,121 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value: [Comment{text='Оболденная презентация', datetime='2020/12/21 12:09:14', id=c7c6e24f-d140-4be5-b3d2-b31476eeb2a0, presentationId=7aff8196-8f1b-4bad-95b4-7aeae7e1645d}] }
+21 дек. 2020 12:42:33,122 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getPresentationById] get presentation comments: 7aff8196-8f1b-4bad-95b4-7aeae7e1645d
+21 дек. 2020 12:42:33,123 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value: Presentation{id=7aff8196-8f1b-4bad-95b4-7aeae7e1645d, name='New presentation', fillColor='#ffffff', fontFamily='Roboto', slides=[Slide{id=fc6af4d0-61e9-443b-8aa5-3309690ca480, name='Slide', index=0, presentationId=7aff8196-8f1b-4bad-95b4-7aeae7e1645d}], comments=[Comment{text='Оболденная презентация', datetime='2020/12/21 12:09:14', id=c7c6e24f-d140-4be5-b3d2-b31476eeb2a0, presentationId=7aff8196-8f1b-4bad-95b4-7aeae7e1645d}]} }
+21 дек. 2020 12:49:59,750 [main] WARN  ru.sfedu.course_project.Main - arguments {slideId=fc6af4d0-61e9-443b-8aa5-3309690ca480, withSlides=true, role=editor, method=getPresentationById, datatype=csv, id=7aff8196-8f1b-4bad-95b4-7aeae7e1645d, withComments=true}
+21 дек. 2020 12:49:59,757 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [slideId=fc6af4d0-61e9-443b-8aa5-3309690ca480, withSlides=true, role=editor, method=getPresentationById, datatype=csv, id=7aff8196-8f1b-4bad-95b4-7aeae7e1645d, withComments=true]
+21 дек. 2020 12:49:59,760 [main] INFO  ru.sfedu.course_project.Main - Attempt to create csv data provider
+21 дек. 2020 12:49:59,767 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: csv
+21 дек. 2020 12:49:59,769 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: getPresentationById
+21 дек. 2020 12:49:59,770 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+21 дек. 2020 12:49:59,792 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getInstanceExistenceByField] Get: Presentation; id: 7aff8196-8f1b-4bad-95b4-7aeae7e1645d
+21 дек. 2020 12:49:59,795 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Attempt to get collection: presentation
+21 дек. 2020 12:49:59,957 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Collection was retrieved: presentation
+21 дек. 2020 12:49:59,958 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Attempt to find: 7aff8196-8f1b-4bad-95b4-7aeae7e1645d
+21 дек. 2020 12:49:59,960 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - Get presentation: withSlides: true
+21 дек. 2020 12:49:59,960 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - Get presentation: withComments: true
+21 дек. 2020 12:49:59,961 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - Get presentation: withMarks: false
+21 дек. 2020 12:49:59,961 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - Get presentation: withElements: false
+21 дек. 2020 12:49:59,964 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Attempt to get collection: slide
+21 дек. 2020 12:49:59,979 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Collection was retrieved: slide
+21 дек. 2020 12:50:00,017 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value: Slide{id=fc6af4d0-61e9-443b-8aa5-3309690ca480, name='Slide', index=0, presentationId=7aff8196-8f1b-4bad-95b4-7aeae7e1645d} }
+21 дек. 2020 12:50:00,018 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - java.lang.ClassCastException: class ru.sfedu.course_project.bean.Slide cannot be cast to class java.util.ArrayList (ru.sfedu.course_project.bean.Slide is in unnamed module of loader 'app'; java.util.ArrayList is in module java.base of loader 'bootstrap')
+21 дек. 2020 12:50:00,024 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - Unable to get presentation
+21 дек. 2020 12:50:00,025 [main] INFO  ru.sfedu.course_project.tools.Result - { status: error, value: Unable to get presentation }
+21 дек. 2020 12:51:23,552 [main] WARN  ru.sfedu.course_project.Main - arguments {slideId=fc6af4d0-61e9-443b-8aa5-3309690ca480, withSlides=true, role=editor, method=getPresentationById, datatype=csv, id=7aff8196-8f1b-4bad-95b4-7aeae7e1645d, withComments=true}
+21 дек. 2020 12:51:23,560 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [slideId=fc6af4d0-61e9-443b-8aa5-3309690ca480, withSlides=true, role=editor, method=getPresentationById, datatype=csv, id=7aff8196-8f1b-4bad-95b4-7aeae7e1645d, withComments=true]
+21 дек. 2020 12:51:23,563 [main] INFO  ru.sfedu.course_project.Main - Attempt to create csv data provider
+21 дек. 2020 12:51:23,570 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: csv
+21 дек. 2020 12:51:23,572 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: getPresentationById
+21 дек. 2020 12:51:23,573 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+21 дек. 2020 12:51:23,643 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getInstanceExistenceByField] Get: Presentation; id: 7aff8196-8f1b-4bad-95b4-7aeae7e1645d
+21 дек. 2020 12:51:23,646 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Attempt to get collection: presentation
+21 дек. 2020 12:51:23,854 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Collection was retrieved: presentation
+21 дек. 2020 12:51:23,855 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Attempt to find: 7aff8196-8f1b-4bad-95b4-7aeae7e1645d
+21 дек. 2020 12:51:23,856 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - Get presentation: withSlides: true
+21 дек. 2020 12:51:23,857 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - Get presentation: withComments: true
+21 дек. 2020 12:51:23,858 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - Get presentation: withMarks: false
+21 дек. 2020 12:51:23,859 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - Get presentation: withElements: false
+21 дек. 2020 12:51:23,861 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Attempt to get collection: slide
+21 дек. 2020 12:51:23,873 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Collection was retrieved: slide
+21 дек. 2020 12:51:23,933 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value: Slide{id=fc6af4d0-61e9-443b-8aa5-3309690ca480, name='Slide', index=0, presentationId=7aff8196-8f1b-4bad-95b4-7aeae7e1645d} }
+21 дек. 2020 12:51:23,936 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - Attempt to get comments for presentation
+21 дек. 2020 12:51:23,936 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getInstanceExistenceByField] Get: Presentation; id: 7aff8196-8f1b-4bad-95b4-7aeae7e1645d
+21 дек. 2020 12:51:23,937 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Attempt to get collection: presentation
+21 дек. 2020 12:51:23,950 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Collection was retrieved: presentation
+21 дек. 2020 12:51:23,950 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Attempt to find: 7aff8196-8f1b-4bad-95b4-7aeae7e1645d
+21 дек. 2020 12:51:23,951 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - java.lang.NullPointerException
+21 дек. 2020 12:51:23,953 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - Unable to get presentation
+21 дек. 2020 12:51:23,953 [main] INFO  ru.sfedu.course_project.tools.Result - { status: error, value: Unable to get presentation }
+21 дек. 2020 12:51:23,954 [main] INFO  ru.sfedu.course_project.tools.Result - { status: error, value: Unable to find presentation 7aff8196-8f1b-4bad-95b4-7aeae7e1645d }
+21 дек. 2020 12:51:23,954 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getPresentationById] get presentation comments: 7aff8196-8f1b-4bad-95b4-7aeae7e1645d
+21 дек. 2020 12:52:30,925 [main] WARN  ru.sfedu.course_project.Main - arguments {slideId=fc6af4d0-61e9-443b-8aa5-3309690ca480, withSlides=true, role=editor, method=getPresentationById, datatype=csv, id=7aff8196-8f1b-4bad-95b4-7aeae7e1645d, withComments=true}
+21 дек. 2020 12:52:30,932 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [slideId=fc6af4d0-61e9-443b-8aa5-3309690ca480, withSlides=true, role=editor, method=getPresentationById, datatype=csv, id=7aff8196-8f1b-4bad-95b4-7aeae7e1645d, withComments=true]
+21 дек. 2020 12:52:30,935 [main] INFO  ru.sfedu.course_project.Main - Attempt to create csv data provider
+21 дек. 2020 12:52:30,945 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: csv
+21 дек. 2020 12:52:30,947 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: getPresentationById
+21 дек. 2020 12:52:30,948 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+21 дек. 2020 12:52:30,965 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getInstanceExistenceByField] Get: Presentation; id: 7aff8196-8f1b-4bad-95b4-7aeae7e1645d
+21 дек. 2020 12:52:30,967 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Attempt to get collection: presentation
+21 дек. 2020 12:52:31,155 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Collection was retrieved: presentation
+21 дек. 2020 12:52:31,156 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Attempt to find: 7aff8196-8f1b-4bad-95b4-7aeae7e1645d
+21 дек. 2020 12:52:31,160 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - java.lang.ClassCastException: class java.lang.String cannot be cast to class java.util.Optional (java.lang.String and java.util.Optional are in module java.base of loader 'bootstrap')
+21 дек. 2020 12:52:31,163 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - Unable to get presentation
+21 дек. 2020 12:52:31,166 [main] INFO  ru.sfedu.course_project.tools.Result - { status: error, value: Unable to get presentation }
+21 дек. 2020 12:53:28,415 [main] WARN  ru.sfedu.course_project.Main - arguments {slideId=fc6af4d0-61e9-443b-8aa5-3309690ca480, withSlides=true, role=editor, method=getPresentationById, datatype=csv, id=7aff8196-8f1b-4bad-95b4-7aeae7e1645d, withComments=true}
+21 дек. 2020 12:53:28,423 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [slideId=fc6af4d0-61e9-443b-8aa5-3309690ca480, withSlides=true, role=editor, method=getPresentationById, datatype=csv, id=7aff8196-8f1b-4bad-95b4-7aeae7e1645d, withComments=true]
+21 дек. 2020 12:53:28,425 [main] INFO  ru.sfedu.course_project.Main - Attempt to create csv data provider
+21 дек. 2020 12:53:28,432 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: csv
+21 дек. 2020 12:53:28,435 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: getPresentationById
+21 дек. 2020 12:53:28,436 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+21 дек. 2020 12:53:28,452 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getInstanceExistenceByField] Get: Presentation; id: 7aff8196-8f1b-4bad-95b4-7aeae7e1645d
+21 дек. 2020 12:53:28,454 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Attempt to get collection: presentation
+21 дек. 2020 12:53:28,625 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Collection was retrieved: presentation
+21 дек. 2020 12:53:28,627 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Attempt to find: 7aff8196-8f1b-4bad-95b4-7aeae7e1645d
+21 дек. 2020 12:53:28,629 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - Get presentation: withSlides: true
+21 дек. 2020 12:53:28,629 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - Get presentation: withComments: true
+21 дек. 2020 12:53:28,630 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - Get presentation: withMarks: false
+21 дек. 2020 12:53:28,630 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - Get presentation: withElements: false
+21 дек. 2020 12:53:28,633 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Attempt to get collection: slide
+21 дек. 2020 12:53:28,653 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Collection was retrieved: slide
+21 дек. 2020 12:53:28,676 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value: Slide{id=fc6af4d0-61e9-443b-8aa5-3309690ca480, name='Slide', index=0, presentationId=7aff8196-8f1b-4bad-95b4-7aeae7e1645d} }
+21 дек. 2020 12:53:28,678 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - Attempt to get comments for presentation
+21 дек. 2020 12:53:28,678 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getInstanceExistenceByField] Get: Presentation; id: 7aff8196-8f1b-4bad-95b4-7aeae7e1645d
+21 дек. 2020 12:53:28,679 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Attempt to get collection: presentation
+21 дек. 2020 12:53:28,693 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Collection was retrieved: presentation
+21 дек. 2020 12:53:28,694 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Attempt to find: 7aff8196-8f1b-4bad-95b4-7aeae7e1645d
+21 дек. 2020 12:53:28,695 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - java.lang.NullPointerException
+21 дек. 2020 12:53:28,696 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - Unable to get presentation
+21 дек. 2020 12:53:28,697 [main] INFO  ru.sfedu.course_project.tools.Result - { status: error, value: Unable to get presentation }
+21 дек. 2020 12:53:28,698 [main] INFO  ru.sfedu.course_project.tools.Result - { status: error, value: Unable to find presentation 7aff8196-8f1b-4bad-95b4-7aeae7e1645d }
+21 дек. 2020 12:53:28,699 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getPresentationById] get presentation comments: 7aff8196-8f1b-4bad-95b4-7aeae7e1645d
+21 дек. 2020 12:54:55,751 [main] WARN  ru.sfedu.course_project.Main - arguments {slideId=fc6af4d0-61e9-443b-8aa5-3309690ca480, withSlides=true, role=editor, method=getPresentationById, datatype=csv, id=7aff8196-8f1b-4bad-95b4-7aeae7e1645d, withComments=true}
+21 дек. 2020 12:54:55,757 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [slideId=fc6af4d0-61e9-443b-8aa5-3309690ca480, withSlides=true, role=editor, method=getPresentationById, datatype=csv, id=7aff8196-8f1b-4bad-95b4-7aeae7e1645d, withComments=true]
+21 дек. 2020 12:54:55,760 [main] INFO  ru.sfedu.course_project.Main - Attempt to create csv data provider
+21 дек. 2020 12:54:55,770 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: csv
+21 дек. 2020 12:54:55,773 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: getPresentationById
+21 дек. 2020 12:54:55,773 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+21 дек. 2020 12:54:55,797 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getInstanceExistenceByField] Get: Presentation; id: 7aff8196-8f1b-4bad-95b4-7aeae7e1645d
+21 дек. 2020 12:54:55,800 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Attempt to get collection: presentation
+21 дек. 2020 12:54:55,963 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Collection was retrieved: presentation
+21 дек. 2020 12:54:55,967 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Attempt to find: 7aff8196-8f1b-4bad-95b4-7aeae7e1645d
+21 дек. 2020 12:54:55,969 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - Get presentation: withSlides: true
+21 дек. 2020 12:54:55,970 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - Get presentation: withComments: true
+21 дек. 2020 12:54:55,976 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - Get presentation: withMarks: false
+21 дек. 2020 12:54:55,977 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - Get presentation: withElements: false
+21 дек. 2020 12:54:55,982 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Attempt to get collection: slide
+21 дек. 2020 12:54:56,002 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Collection was retrieved: slide
+21 дек. 2020 12:54:56,024 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value: Slide{id=fc6af4d0-61e9-443b-8aa5-3309690ca480, name='Slide', index=0, presentationId=7aff8196-8f1b-4bad-95b4-7aeae7e1645d} }
+21 дек. 2020 12:54:56,026 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - Attempt to get comments for presentation
+21 дек. 2020 12:54:56,026 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getInstanceExistenceByField] Get: Presentation; id: 7aff8196-8f1b-4bad-95b4-7aeae7e1645d
+21 дек. 2020 12:54:56,027 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Attempt to get collection: presentation
+21 дек. 2020 12:54:56,042 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Collection was retrieved: presentation
+21 дек. 2020 12:54:56,043 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Attempt to find: 7aff8196-8f1b-4bad-95b4-7aeae7e1645d
+21 дек. 2020 12:54:56,044 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - java.lang.NullPointerException
+21 дек. 2020 12:54:56,046 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - Unable to get presentation
+21 дек. 2020 12:54:56,047 [main] INFO  ru.sfedu.course_project.tools.Result - { status: error, value: Unable to get presentation }
+21 дек. 2020 12:54:56,047 [main] INFO  ru.sfedu.course_project.tools.Result - { status: error, value: Unable to find presentation 7aff8196-8f1b-4bad-95b4-7aeae7e1645d }
+21 дек. 2020 12:54:56,049 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getPresentationById] get presentation comments: 7aff8196-8f1b-4bad-95b4-7aeae7e1645d
+21 дек. 2020 12:55:13,875 [main] WARN  ru.sfedu.course_project.Main - arguments {withSlides=true, role=editor, method=getPresentationById, datatype=csv, id=7aff8196-8f1b-4bad-95b4-7aeae7e1645d, withComments=true}
+21 дек. 2020 12:55:13,880 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [withSlides=true, role=editor, method=getPresentationById, datatype=csv, id=7aff8196-8f1b-4bad-95b4-7aeae7e1645d, withComments=true]
+21 дек. 2020 12:55:13,882 [main] INFO  ru.sfedu.course_project.Main - Attempt to create csv data provider
+21 дек. 2020 12:55:13,890 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: csv
+21 дек. 2020 12:55:13,892 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: getPresentationById
+21 дек. 2020 12:55:13,892 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+21 дек. 2020 12:55:13,906 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getInstanceExistenceByField] Get: Presentation; id: 7aff8196-8f1b-4bad-95b4-7aeae7e1645d
+21 дек. 2020 12:55:13,909 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Attempt to get collection: presentation
+21 дек. 2020 12:55:14,059 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Collection was retrieved: presentation
+21 дек. 2020 12:55:14,060 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Attempt to find: 7aff8196-8f1b-4bad-95b4-7aeae7e1645d
+21 дек. 2020 12:55:14,063 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - java.lang.NullPointerException
+21 дек. 2020 12:55:14,065 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - Unable to get presentation
+21 дек. 2020 12:55:14,068 [main] INFO  ru.sfedu.course_project.tools.Result - { status: error, value: Unable to get presentation }
+21 дек. 2020 12:56:14,985 [main] WARN  ru.sfedu.course_project.Main - arguments {withSlides=true, role=editor, method=getPresentationById, datatype=csv, id=7aff8196-8f1b-4bad-95b4-7aeae7e1645d, withComments=true}
+21 дек. 2020 12:56:14,992 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [withSlides=true, role=editor, method=getPresentationById, datatype=csv, id=7aff8196-8f1b-4bad-95b4-7aeae7e1645d, withComments=true]
+21 дек. 2020 12:56:14,995 [main] INFO  ru.sfedu.course_project.Main - Attempt to create csv data provider
+21 дек. 2020 12:56:15,005 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: csv
+21 дек. 2020 12:56:15,008 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: getPresentationById
+21 дек. 2020 12:56:15,009 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+21 дек. 2020 12:56:15,025 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getInstanceExistenceByField] Get: Presentation; id: 7aff8196-8f1b-4bad-95b4-7aeae7e1645d
+21 дек. 2020 12:56:15,028 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Attempt to get collection: presentation
+21 дек. 2020 12:56:15,192 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Collection was retrieved: presentation
+21 дек. 2020 12:56:15,196 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Attempt to find: 7aff8196-8f1b-4bad-95b4-7aeae7e1645d
+21 дек. 2020 12:56:15,198 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - java.lang.NullPointerException
+21 дек. 2020 12:56:15,200 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - Unable to get presentation
+21 дек. 2020 12:56:15,206 [main] INFO  ru.sfedu.course_project.tools.Result - { status: error, value: Unable to get presentation }
+21 дек. 2020 12:57:31,673 [main] WARN  ru.sfedu.course_project.Main - arguments {withSlides=true, role=editor, method=getPresentationById, datatype=csv, id=7aff8196-8f1b-4bad-95b4-7aeae7e1645d, withComments=true}
+21 дек. 2020 12:57:31,682 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [withSlides=true, role=editor, method=getPresentationById, datatype=csv, id=7aff8196-8f1b-4bad-95b4-7aeae7e1645d, withComments=true]
+21 дек. 2020 12:57:31,684 [main] INFO  ru.sfedu.course_project.Main - Attempt to create csv data provider
+21 дек. 2020 12:57:31,693 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: csv
+21 дек. 2020 12:57:31,696 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: getPresentationById
+21 дек. 2020 12:57:31,696 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+21 дек. 2020 12:57:31,718 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getInstanceExistenceByField] Get: Presentation; id: 7aff8196-8f1b-4bad-95b4-7aeae7e1645d
+21 дек. 2020 12:57:31,720 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Attempt to get collection: presentation
+21 дек. 2020 12:57:31,888 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Collection was retrieved: presentation
+21 дек. 2020 12:57:31,890 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Attempt to find: 7aff8196-8f1b-4bad-95b4-7aeae7e1645d
+21 дек. 2020 12:57:31,893 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - java.lang.NullPointerException
+21 дек. 2020 12:57:31,895 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - Unable to get presentation
+21 дек. 2020 12:57:31,898 [main] INFO  ru.sfedu.course_project.tools.Result - { status: error, value: Unable to get presentation }
+21 дек. 2020 12:58:48,184 [main] WARN  ru.sfedu.course_project.Main - arguments {withSlides=true, role=editor, method=getPresentationById, datatype=csv, id=7aff8196-8f1b-4bad-95b4-7aeae7e1645d, withComments=true}
+21 дек. 2020 12:58:48,189 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [withSlides=true, role=editor, method=getPresentationById, datatype=csv, id=7aff8196-8f1b-4bad-95b4-7aeae7e1645d, withComments=true]
+21 дек. 2020 12:58:48,192 [main] INFO  ru.sfedu.course_project.Main - Attempt to create csv data provider
+21 дек. 2020 12:58:48,200 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: csv
+21 дек. 2020 12:58:48,202 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: getPresentationById
+21 дек. 2020 12:58:48,203 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+21 дек. 2020 12:58:48,227 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getInstanceExistenceByField] Get: Presentation; id: 7aff8196-8f1b-4bad-95b4-7aeae7e1645d
+21 дек. 2020 12:58:48,228 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - id: 7aff8196-8f1b-4bad-95b4-7aeae7e1645d
+21 дек. 2020 12:58:48,230 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Attempt to get collection: presentation
+21 дек. 2020 12:58:48,449 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Collection was retrieved: presentation
+21 дек. 2020 12:58:48,449 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Attempt to find: 7aff8196-8f1b-4bad-95b4-7aeae7e1645d
+21 дек. 2020 12:58:48,451 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - java.lang.NullPointerException
+21 дек. 2020 12:58:48,453 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - Unable to get presentation
+21 дек. 2020 12:58:48,455 [main] INFO  ru.sfedu.course_project.tools.Result - { status: error, value: Unable to get presentation }
+21 дек. 2020 12:59:32,518 [main] WARN  ru.sfedu.course_project.Main - arguments {withSlides=true, role=editor, method=getPresentationById, datatype=csv, id=7aff8196-8f1b-4bad-95b4-7aeae7e1645d, withComments=true}
+21 дек. 2020 12:59:32,524 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [withSlides=true, role=editor, method=getPresentationById, datatype=csv, id=7aff8196-8f1b-4bad-95b4-7aeae7e1645d, withComments=true]
+21 дек. 2020 12:59:32,526 [main] INFO  ru.sfedu.course_project.Main - Attempt to create csv data provider
+21 дек. 2020 12:59:32,533 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: csv
+21 дек. 2020 12:59:32,534 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: getPresentationById
+21 дек. 2020 12:59:32,535 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+21 дек. 2020 12:59:32,561 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getInstanceExistenceByField] Get: Presentation; id: 7aff8196-8f1b-4bad-95b4-7aeae7e1645d
+21 дек. 2020 12:59:32,562 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - id: 7aff8196-8f1b-4bad-95b4-7aeae7e1645d
+21 дек. 2020 12:59:32,564 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Attempt to get collection: presentation
+21 дек. 2020 12:59:32,730 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Collection was retrieved: presentation
+21 дек. 2020 12:59:32,731 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Attempt to find: 7aff8196-8f1b-4bad-95b4-7aeae7e1645d
+21 дек. 2020 12:59:32,758 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - list instance: [Presentation{id=7aff8196-8f1b-4bad-95b4-7aeae7e1645d, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}]
+21 дек. 2020 12:59:32,760 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - java.lang.NullPointerException
+21 дек. 2020 12:59:32,762 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - Unable to get presentation
+21 дек. 2020 12:59:32,765 [main] INFO  ru.sfedu.course_project.tools.Result - { status: error, value: Unable to get presentation }
+21 дек. 2020 13:00:20,070 [main] WARN  ru.sfedu.course_project.Main - arguments {withSlides=true, role=editor, method=getPresentationById, datatype=csv, id=7aff8196-8f1b-4bad-95b4-7aeae7e1645d, withComments=true}
+21 дек. 2020 13:00:20,076 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [withSlides=true, role=editor, method=getPresentationById, datatype=csv, id=7aff8196-8f1b-4bad-95b4-7aeae7e1645d, withComments=true]
+21 дек. 2020 13:00:20,078 [main] INFO  ru.sfedu.course_project.Main - Attempt to create csv data provider
+21 дек. 2020 13:00:20,087 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: csv
+21 дек. 2020 13:00:20,090 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: getPresentationById
+21 дек. 2020 13:00:20,091 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+21 дек. 2020 13:00:20,120 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getInstanceExistenceByField] Get: Presentation; id: 7aff8196-8f1b-4bad-95b4-7aeae7e1645d
+21 дек. 2020 13:00:20,121 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - id: 7aff8196-8f1b-4bad-95b4-7aeae7e1645d
+21 дек. 2020 13:00:20,123 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Attempt to get collection: presentation
+21 дек. 2020 13:00:20,333 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Collection was retrieved: presentation
+21 дек. 2020 13:00:20,334 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Attempt to find: 7aff8196-8f1b-4bad-95b4-7aeae7e1645d
+21 дек. 2020 13:00:20,357 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - list instance: [Presentation{id=7aff8196-8f1b-4bad-95b4-7aeae7e1645d, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}]
+21 дек. 2020 13:00:20,360 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Optional[Presentation{id=7aff8196-8f1b-4bad-95b4-7aeae7e1645d, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}]
+21 дек. 2020 13:00:20,361 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - java.lang.NullPointerException
+21 дек. 2020 13:00:20,363 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - Unable to get presentation
+21 дек. 2020 13:00:20,366 [main] INFO  ru.sfedu.course_project.tools.Result - { status: error, value: Unable to get presentation }
+21 дек. 2020 13:02:25,909 [main] WARN  ru.sfedu.course_project.Main - arguments {withSlides=true, role=editor, method=getPresentationById, datatype=csv, id=7aff8196-8f1b-4bad-95b4-7aeae7e1645d, withComments=true}
+21 дек. 2020 13:02:25,918 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [withSlides=true, role=editor, method=getPresentationById, datatype=csv, id=7aff8196-8f1b-4bad-95b4-7aeae7e1645d, withComments=true]
+21 дек. 2020 13:02:25,920 [main] INFO  ru.sfedu.course_project.Main - Attempt to create csv data provider
+21 дек. 2020 13:02:25,926 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: csv
+21 дек. 2020 13:02:25,929 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: getPresentationById
+21 дек. 2020 13:02:25,930 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+21 дек. 2020 13:02:25,952 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getInstanceExistenceByField] Get: Presentation; id: 7aff8196-8f1b-4bad-95b4-7aeae7e1645d
+21 дек. 2020 13:02:25,953 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - id: 7aff8196-8f1b-4bad-95b4-7aeae7e1645d
+21 дек. 2020 13:02:25,954 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Attempt to get collection: presentation
+21 дек. 2020 13:02:26,163 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Collection was retrieved: presentation
+21 дек. 2020 13:02:26,164 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Attempt to find: 7aff8196-8f1b-4bad-95b4-7aeae7e1645d
+21 дек. 2020 13:02:26,195 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - list instance: [Presentation{id=7aff8196-8f1b-4bad-95b4-7aeae7e1645d, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}]
+21 дек. 2020 13:02:26,200 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Optional[Presentation{id=7aff8196-8f1b-4bad-95b4-7aeae7e1645d, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}]
+21 дек. 2020 13:02:26,201 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Optional[Presentation{id=7aff8196-8f1b-4bad-95b4-7aeae7e1645d, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}]
+21 дек. 2020 13:02:26,201 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - java.lang.NullPointerException
+21 дек. 2020 13:02:26,203 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - Unable to get presentation
+21 дек. 2020 13:02:26,210 [main] INFO  ru.sfedu.course_project.tools.Result - { status: error, value: Unable to get presentation }
+21 дек. 2020 13:03:50,734 [main] WARN  ru.sfedu.course_project.Main - arguments {withSlides=true, role=editor, method=getPresentationById, datatype=csv, id=7aff8196-8f1b-4bad-95b4-7aeae7e1645d, withComments=true}
+21 дек. 2020 13:03:50,739 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [withSlides=true, role=editor, method=getPresentationById, datatype=csv, id=7aff8196-8f1b-4bad-95b4-7aeae7e1645d, withComments=true]
+21 дек. 2020 13:03:50,741 [main] INFO  ru.sfedu.course_project.Main - Attempt to create csv data provider
+21 дек. 2020 13:03:50,748 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: csv
+21 дек. 2020 13:03:50,751 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: getPresentationById
+21 дек. 2020 13:03:50,751 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+21 дек. 2020 13:03:50,781 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getInstanceExistenceByField] Get: Presentation; id: 7aff8196-8f1b-4bad-95b4-7aeae7e1645d
+21 дек. 2020 13:03:50,782 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - id: 7aff8196-8f1b-4bad-95b4-7aeae7e1645d
+21 дек. 2020 13:03:50,785 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Attempt to get collection: presentation
+21 дек. 2020 13:03:50,958 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Collection was retrieved: presentation
+21 дек. 2020 13:03:50,958 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Attempt to find: 7aff8196-8f1b-4bad-95b4-7aeae7e1645d
+21 дек. 2020 13:03:51,008 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - list instance: [Presentation{id=7aff8196-8f1b-4bad-95b4-7aeae7e1645d, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}]
+21 дек. 2020 13:03:51,011 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Optional[Presentation{id=7aff8196-8f1b-4bad-95b4-7aeae7e1645d, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}]
+21 дек. 2020 13:03:51,012 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Optional[Presentation{id=7aff8196-8f1b-4bad-95b4-7aeae7e1645d, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}]
+21 дек. 2020 13:03:51,015 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - Get presentation: withSlides: true
+21 дек. 2020 13:03:51,016 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - Get presentation: withComments: true
+21 дек. 2020 13:03:51,017 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - Get presentation: withMarks: false
+21 дек. 2020 13:03:51,018 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - Get presentation: withElements: false
+21 дек. 2020 13:03:51,020 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - [getSlideById] Unable to get slide 
+21 дек. 2020 13:03:51,023 [main] INFO  ru.sfedu.course_project.tools.Result - { status: error, value: Unable to get slide  }
+21 дек. 2020 13:04:38,079 [main] WARN  ru.sfedu.course_project.Main - arguments {withSlides=true, role=editor, method=getPresentationById, datatype=csv, id=7aff8196-8f1b-4bad-95b4-7aeae7e1645d, withComments=true}
+21 дек. 2020 13:04:38,085 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [withSlides=true, role=editor, method=getPresentationById, datatype=csv, id=7aff8196-8f1b-4bad-95b4-7aeae7e1645d, withComments=true]
+21 дек. 2020 13:04:38,087 [main] INFO  ru.sfedu.course_project.Main - Attempt to create csv data provider
+21 дек. 2020 13:04:38,096 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: csv
+21 дек. 2020 13:04:38,099 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: getPresentationById
+21 дек. 2020 13:04:38,100 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+21 дек. 2020 13:04:38,133 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getInstanceExistenceByField] Get: Presentation; id: 7aff8196-8f1b-4bad-95b4-7aeae7e1645d
+21 дек. 2020 13:04:38,135 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - id: 7aff8196-8f1b-4bad-95b4-7aeae7e1645d
+21 дек. 2020 13:04:38,137 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Attempt to get collection: presentation
+21 дек. 2020 13:04:38,305 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Collection was retrieved: presentation
+21 дек. 2020 13:04:38,306 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Attempt to find: 7aff8196-8f1b-4bad-95b4-7aeae7e1645d
+21 дек. 2020 13:04:38,346 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - list instance: [Presentation{id=7aff8196-8f1b-4bad-95b4-7aeae7e1645d, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}]
+21 дек. 2020 13:04:38,355 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Optional[Presentation{id=7aff8196-8f1b-4bad-95b4-7aeae7e1645d, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}]
+21 дек. 2020 13:04:38,357 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Optional[Presentation{id=7aff8196-8f1b-4bad-95b4-7aeae7e1645d, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}]
+21 дек. 2020 13:04:38,358 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - Get presentation: with slide id: Optional[Optional.empty]
+21 дек. 2020 13:04:38,359 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - Get presentation: withSlides: true
+21 дек. 2020 13:04:38,360 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - Get presentation: withComments: true
+21 дек. 2020 13:04:38,361 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - Get presentation: withMarks: false
+21 дек. 2020 13:04:38,361 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - Get presentation: withElements: false
+21 дек. 2020 13:04:38,364 [main] ERROR ru.sfedu.course_project.api.DataProviderCSV - [getSlideById] Unable to get slide 
+21 дек. 2020 13:04:38,369 [main] INFO  ru.sfedu.course_project.tools.Result - { status: error, value: Unable to get slide  }
+21 дек. 2020 13:06:56,200 [main] WARN  ru.sfedu.course_project.Main - arguments {withSlides=true, role=editor, method=getPresentationById, datatype=csv, id=7aff8196-8f1b-4bad-95b4-7aeae7e1645d, withComments=true}
+21 дек. 2020 13:06:56,206 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [withSlides=true, role=editor, method=getPresentationById, datatype=csv, id=7aff8196-8f1b-4bad-95b4-7aeae7e1645d, withComments=true]
+21 дек. 2020 13:06:56,208 [main] INFO  ru.sfedu.course_project.Main - Attempt to create csv data provider
+21 дек. 2020 13:06:56,215 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: csv
+21 дек. 2020 13:06:56,217 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: getPresentationById
+21 дек. 2020 13:06:56,217 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+21 дек. 2020 13:06:56,219 [main] DEBUG ru.sfedu.course_project.tools.ArgsValidator - [validate] Validate: [id]
+21 дек. 2020 13:06:56,221 [main] DEBUG ru.sfedu.course_project.tools.ArgsValidator - [validate] Null fields: []
+21 дек. 2020 13:06:56,221 [main] DEBUG ru.sfedu.course_project.tools.ArgsValidator - [validate] Null fields: []
+21 дек. 2020 13:06:56,225 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value:  }
+21 дек. 2020 13:06:56,255 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getInstanceExistenceByField] Get: Presentation; id: 7aff8196-8f1b-4bad-95b4-7aeae7e1645d
+21 дек. 2020 13:06:56,255 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - id: 7aff8196-8f1b-4bad-95b4-7aeae7e1645d
+21 дек. 2020 13:06:56,258 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Attempt to get collection: presentation
+21 дек. 2020 13:06:56,406 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Collection was retrieved: presentation
+21 дек. 2020 13:06:56,409 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Attempt to find: 7aff8196-8f1b-4bad-95b4-7aeae7e1645d
+21 дек. 2020 13:06:56,444 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - list instance: [Presentation{id=7aff8196-8f1b-4bad-95b4-7aeae7e1645d, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}]
+21 дек. 2020 13:06:56,446 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Optional[Presentation{id=7aff8196-8f1b-4bad-95b4-7aeae7e1645d, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}]
+21 дек. 2020 13:06:56,447 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Optional[Presentation{id=7aff8196-8f1b-4bad-95b4-7aeae7e1645d, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}]
+21 дек. 2020 13:06:56,447 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - Get presentation: with slide id: Optional.empty
+21 дек. 2020 13:06:56,448 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - Get presentation: withSlides: true
+21 дек. 2020 13:06:56,448 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - Get presentation: withComments: true
+21 дек. 2020 13:06:56,449 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - Get presentation: withMarks: false
+21 дек. 2020 13:06:56,450 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - Get presentation: withElements: false
+21 дек. 2020 13:06:56,450 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - id: 7aff8196-8f1b-4bad-95b4-7aeae7e1645d
+21 дек. 2020 13:06:56,450 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Attempt to get collection: presentation
+21 дек. 2020 13:06:56,485 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Collection was retrieved: presentation
+21 дек. 2020 13:06:56,486 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Attempt to find: 7aff8196-8f1b-4bad-95b4-7aeae7e1645d
+21 дек. 2020 13:06:56,486 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - list instance: [Presentation{id=7aff8196-8f1b-4bad-95b4-7aeae7e1645d, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}]
+21 дек. 2020 13:06:56,487 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Optional[Presentation{id=7aff8196-8f1b-4bad-95b4-7aeae7e1645d, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}]
+21 дек. 2020 13:06:56,489 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Attempt to get collection: slide
+21 дек. 2020 13:06:56,515 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Collection was retrieved: slide
+21 дек. 2020 13:06:56,518 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getPresentationSlides] Attempt to find presentation slides for: 7aff8196-8f1b-4bad-95b4-7aeae7e1645d
+21 дек. 2020 13:06:56,538 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getPresentationSlides] Found presentation slides: [Slide{id=fc6af4d0-61e9-443b-8aa5-3309690ca480, name='Slide', index=0, presentationId=7aff8196-8f1b-4bad-95b4-7aeae7e1645d}]
+21 дек. 2020 13:06:56,538 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value: [Slide{id=fc6af4d0-61e9-443b-8aa5-3309690ca480, name='Slide', index=0, presentationId=7aff8196-8f1b-4bad-95b4-7aeae7e1645d}] }
+21 дек. 2020 13:06:56,539 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getPresentationById] get presentation slides: 7aff8196-8f1b-4bad-95b4-7aeae7e1645d
+21 дек. 2020 13:06:56,540 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - Attempt to get comments for presentation
+21 дек. 2020 13:06:56,541 [main] DEBUG ru.sfedu.course_project.tools.ArgsValidator - [validate] Validate: [id]
+21 дек. 2020 13:06:56,541 [main] DEBUG ru.sfedu.course_project.tools.ArgsValidator - [validate] Null fields: []
+21 дек. 2020 13:06:56,541 [main] DEBUG ru.sfedu.course_project.tools.ArgsValidator - [validate] Null fields: []
+21 дек. 2020 13:06:56,541 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value:  }
+21 дек. 2020 13:06:56,541 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getInstanceExistenceByField] Get: Presentation; id: 7aff8196-8f1b-4bad-95b4-7aeae7e1645d
+21 дек. 2020 13:06:56,542 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - id: 7aff8196-8f1b-4bad-95b4-7aeae7e1645d
+21 дек. 2020 13:06:56,542 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Attempt to get collection: presentation
+21 дек. 2020 13:06:56,550 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Collection was retrieved: presentation
+21 дек. 2020 13:06:56,550 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Attempt to find: 7aff8196-8f1b-4bad-95b4-7aeae7e1645d
+21 дек. 2020 13:06:56,551 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - list instance: [Presentation{id=7aff8196-8f1b-4bad-95b4-7aeae7e1645d, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}]
+21 дек. 2020 13:06:56,551 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Optional[Presentation{id=7aff8196-8f1b-4bad-95b4-7aeae7e1645d, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}]
+21 дек. 2020 13:06:56,551 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Optional[Presentation{id=7aff8196-8f1b-4bad-95b4-7aeae7e1645d, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}]
+21 дек. 2020 13:06:56,552 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - Get presentation: with slide id: Optional.empty
+21 дек. 2020 13:06:56,552 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - Get presentation: withSlides: false
+21 дек. 2020 13:06:56,552 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - Get presentation: withComments: false
+21 дек. 2020 13:06:56,552 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - Get presentation: withMarks: false
+21 дек. 2020 13:06:56,552 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - Get presentation: withElements: false
+21 дек. 2020 13:06:56,552 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value: Presentation{id=7aff8196-8f1b-4bad-95b4-7aeae7e1645d, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'} }
+21 дек. 2020 13:06:56,555 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Attempt to get collection: comment
+21 дек. 2020 13:06:56,568 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Collection was retrieved: comment
+21 дек. 2020 13:06:56,583 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - Comments retrieved [Comment{text='Оболденная презентация', datetime='2020/12/21 12:09:14', id=c7c6e24f-d140-4be5-b3d2-b31476eeb2a0, presentationId=7aff8196-8f1b-4bad-95b4-7aeae7e1645d}]
+21 дек. 2020 13:06:56,584 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value: [Comment{text='Оболденная презентация', datetime='2020/12/21 12:09:14', id=c7c6e24f-d140-4be5-b3d2-b31476eeb2a0, presentationId=7aff8196-8f1b-4bad-95b4-7aeae7e1645d}] }
+21 дек. 2020 13:06:56,584 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getPresentationById] get presentation comments: 7aff8196-8f1b-4bad-95b4-7aeae7e1645d
+21 дек. 2020 13:06:56,585 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value: Presentation{id=7aff8196-8f1b-4bad-95b4-7aeae7e1645d, name='New presentation', fillColor='#ffffff', fontFamily='Roboto', slides=[Slide{id=fc6af4d0-61e9-443b-8aa5-3309690ca480, name='Slide', index=0, presentationId=7aff8196-8f1b-4bad-95b4-7aeae7e1645d}], comments=[Comment{text='Оболденная презентация', datetime='2020/12/21 12:09:14', id=c7c6e24f-d140-4be5-b3d2-b31476eeb2a0, presentationId=7aff8196-8f1b-4bad-95b4-7aeae7e1645d}]} }
