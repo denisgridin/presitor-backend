@@ -33,5 +33,6 @@ public class ErrorConstants {
     public static String COMMENT_CREATE = "Unable to create comment";
     public static String COMMENTS_GET = "Unable to get comments ";
     public static String COMMENT_EDIT = "Unable to edit comment ";
+    public static String COMMENT_REMOVE = "Unable to remove comment ";
 
 }

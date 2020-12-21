@@ -3,6 +3,7 @@ package ru.sfedu.course_project.bean;
 import com.opencsv.bean.CsvBindAndSplitByName;
 import com.opencsv.bean.CsvBindByName;
 import com.opencsv.bean.CsvCustomBindByName;
+import com.opencsv.bean.CsvIgnore;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import ru.sfedu.course_project.Constants;
@@ -26,14 +27,17 @@ public class Presentation implements Serializable, BaseClass {
     @CsvBindByName
     private String fontFamily;
 
-    @CsvBindAndSplitByName(column = "slides", elementType = List.class, converter = ListIdsConverter.class)
-    private ArrayList<UUID> slides;
+//    @CsvBindAndSplitByName(column = "slides", elementType = List.class, converter = ListIdsConverter.class)
+    @CsvIgnore
+    private ArrayList<Slide> slides;
 
-    @CsvBindAndSplitByName(column = "comments", elementType = List.class, converter = ListIdsConverter.class)
-    private ArrayList<UUID> comments;
+//    @CsvBindAndSplitByName(column = "comments", elementType = List.class, converter = ListIdsConverter.class)
+    @CsvIgnore
+    private ArrayList<Comment> comments;
 
-    @CsvBindAndSplitByName(column = "marks", elementType = List.class, converter = ListIdsConverter.class)
-    private ArrayList<UUID> marks;
+//    @CsvBindAndSplitByName(column = "marks", elementType = List.class, converter = ListIdsConverter.class)
+    @CsvIgnore
+    private ArrayList<Assessment> marks;
 
     public Presentation () {}
 
@@ -71,7 +75,7 @@ public class Presentation implements Serializable, BaseClass {
         this.fontFamily = fontFamily;
     }
 
-    public ArrayList<UUID> getSlides() {
+    public ArrayList<Slide> getSlides() {
         return slides;
     }
 
@@ -79,7 +83,7 @@ public class Presentation implements Serializable, BaseClass {
         this.slides = slides;
     }
 
-    public ArrayList<UUID> getComments() {
+    public ArrayList<Comment> getComments() {
         return comments;
     }
 
@@ -87,7 +91,7 @@ public class Presentation implements Serializable, BaseClass {
         this.comments = comments;
     }
 
-    public ArrayList<UUID> getMarks() {
+    public ArrayList<Assessment> getMarks() {
         return marks;
     }
 

@@ -20,8 +20,8 @@ public interface DataProvider {
     public <T> Optional<List> getCollection (CollectionType collectionType, Class cl);
     public <T> Status writeCollection(List list, Class cl, CollectionType collectionType);
     public <T extends BaseClass> Boolean isIdInUse (String id, List<T> list);
-    public <T extends BaseClass> Status removeRecordById (CollectionType collectionType, Class cl, UUID id);
-    public <T extends BaseClass> Optional<T> getInstanceById (Class cl, CollectionType collectionType, HashMap arguments);
+    public Status removeRecordById (CollectionType collectionType, Class cl, UUID id);
+    public Optional getInstanceById (Class cl, CollectionType collectionType, HashMap arguments);
 
     public Result createPresentation (HashMap arguments);
     public Result addPresentationInTemplate (Presentation presentation);
@@ -39,7 +39,7 @@ public interface DataProvider {
     public Result getPresentationComments (HashMap arguments);
     public Result commentPresentation (HashMap arguments);
     public Result editPresentationComment (HashMap arguments);
-//    public Result removePresentationComment (HashMap arguments);
+    public Result removePresentationComment (HashMap arguments);
 //    public Result editPresentationSlideOptionsById (HashMap arguments);
 //    public <T> Status addCollectionRecord (T record, UUID id);
 }

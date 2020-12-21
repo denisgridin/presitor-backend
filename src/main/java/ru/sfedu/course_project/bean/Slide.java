@@ -3,17 +3,18 @@ package ru.sfedu.course_project.bean;
 import com.opencsv.bean.CsvBindAndSplitByName;
 import com.opencsv.bean.CsvBindByName;
 import com.opencsv.bean.CsvCustomBindByName;
+import com.opencsv.bean.CsvIgnore;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import ru.sfedu.course_project.Constants;
 import ru.sfedu.course_project.converters.ListIdsConverter;
 import ru.sfedu.course_project.converters.UUIDConverter;
-import ru.sfedu.course_project.tools.BaseClass;
+
 
 import java.io.Serializable;
 import java.util.*;
 
-public class Slide implements Serializable, BaseClass {
+public class Slide implements Serializable {
     @CsvCustomBindByName(column = "id", converter = UUIDConverter.class)
     private UUID id;
 
@@ -26,8 +27,9 @@ public class Slide implements Serializable, BaseClass {
     @CsvCustomBindByName(column = "presentationId", converter = UUIDConverter.class)
     private UUID presentationId;
 
-    @CsvBindAndSplitByName(column = "elements", elementType = List.class, converter = ListIdsConverter.class)
-    private ArrayList<UUID> elements;
+//    @CsvBindAndSplitByName(column = "elements", elementType = List.class, converter = ListIdsConverter.class)
+    @CsvIgnore
+    private ArrayList<Element> elements;
 
     public Slide () {}
 
@@ -65,11 +67,11 @@ public class Slide implements Serializable, BaseClass {
         this.presentationId = presentationId;
     }
 
-    public ArrayList<UUID> getElements() {
+    public ArrayList<Element> getElements() {
         return elements;
     }
 
-    public void setElements(ArrayList<UUID> elements) {
+    public void setElements(ArrayList<Element> elements) {
         this.elements = elements;
     }
 

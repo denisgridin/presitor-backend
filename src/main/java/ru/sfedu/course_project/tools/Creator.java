@@ -7,6 +7,7 @@ import ru.sfedu.course_project.ConstantsInfo;
 import ru.sfedu.course_project.ErrorConstants;
 import ru.sfedu.course_project.SuccessConstants;
 import ru.sfedu.course_project.bean.Comment;
+import ru.sfedu.course_project.bean.Element;
 import ru.sfedu.course_project.bean.Presentation;
 import ru.sfedu.course_project.bean.Slide;
 import ru.sfedu.course_project.enums.Role;
@@ -91,7 +92,7 @@ public class Creator {
             log.debug("[createSlide] Set index");
             slide.setPresentationId(UUID.fromString((String) args.get("presentationId")));
             log.debug("[createSlide] Set presentation id");
-            slide.setElements(new ArrayList<UUID>());
+            slide.setElements(new ArrayList<Element>());
             log.debug("[createSlide] Set elements");
             log.debug(slide.toString());
             log.debug(SuccessConstants.ARGUMENTS_VALIDATE);

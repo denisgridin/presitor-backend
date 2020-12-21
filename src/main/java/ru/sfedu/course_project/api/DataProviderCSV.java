@@ -125,12 +125,37 @@ public class DataProviderCSV implements DataProvider {
     }
 
     @Override
-    public <T extends BaseClass> Status removeRecordById (CollectionType collectionType, Class cl, UUID id) {
+    public Status removeRecordById (CollectionType collectionType, Class cl, UUID id) {
         try {
             log.debug(String.format("[removeRecordById] Removing elements from collection: %s", collectionType));
-            List <T> collection = getCollection(collectionType, cl).orElseThrow(() -> new RuntimeException(String.format("[removeRecordById] Unable to get collection: %s", collectionType)));
-            List <T> updatedCollection = collection.stream().filter(el -> !el.getId().equals(id)).collect(Collectors.toList());
-            if (updatedCollection.size() == collection.size()) {
+            List updatedCollection = new ArrayList();
+            Integer collectionSize = 0;
+            switch (collectionType) {
+                case presentation: {
+                    List<Presentation> collection = (ArrayList<Presentation>) getCollection(collectionType, cl).orElseThrow(() -> new RuntimeException(String.format("[removeRecordById] Unable to get collection: %s", collectionType)));
+                    collectionSize = collection.size();
+                    updatedCollection = collection.stream().filter(el -> !el.getId().equals(id)).collect(Collectors.toList());
+                    break;
+                }
+                case slide: {
+                    List<Slide> collection = (ArrayList<Slide>) getCollection(collectionType, cl).orElseThrow(() -> new RuntimeException(String.format("[removeRecordById] Unable to get collection: %s", collectionType)));
+                    collectionSize = collection.size();
+                    updatedCollection = collection.stream().filter(el -> !el.getId().equals(id)).collect(Collectors.toList());
+                    break;
+                }
+                case comment: {
+                    List<Comment> collection = (ArrayList<Comment>) getCollection(collectionType, cl).orElseThrow(() -> new RuntimeException(String.format("[removeRecordById] Unable to get collection: %s", collectionType)));
+                    collectionSize = collection.size();
+                    updatedCollection = collection.stream().filter(el -> !el.getId().equals(id)).collect(Collectors.toList());
+                    break;
+                }
+                case element:
+                    // TODO
+                    break;
+                case error:
+                    break;
+            }
+            if (updatedCollection.size() == collectionSize) {
                 log.error("[removeRecordById] Unable to find element with provided id: " + id);
                 return Status.error;
             }
@@ -142,6 +167,62 @@ public class DataProviderCSV implements DataProvider {
             log.error(e);
             log.error("[removeRecordById] Unable to remove element from collection");
             return Status.error;
+        }
+    }
+
+    public Result updateRecordInCollection (Class cls, CollectionType collectionType, Object instance, UUID instanceId) {
+        try {
+            log.debug("[updateRecordInCollection] Update: " + instance.toString());
+            ArrayList updatedCollection = new ArrayList();
+            switch (collectionType) {
+                case presentation: {
+                    ArrayList<Presentation> listInstance = (ArrayList<Presentation>) getCollection(collectionType, cls).orElse(new ArrayList());
+                    updatedCollection = (ArrayList) listInstance
+                            .stream()
+                            .map(el -> {
+                                if (el.getId().equals(instanceId)) {
+                                    el = (Presentation) instance;
+                                }
+                                return el;
+                            }).collect(Collectors.toList());
+                    break;
+                }
+                case slide: {
+                    ArrayList<Slide> listInstance = (ArrayList<Slide>) getCollection(collectionType, cls).orElse(new ArrayList());
+                    updatedCollection = (ArrayList) listInstance
+                            .stream()
+                            .map(el -> {
+                                if (el.getId().equals(instanceId)) {
+                                    el = (Slide) instance;
+                                }
+                                return el;
+                            }).collect(Collectors.toList());
+                    break;
+                }
+                case comment: {
+                    ArrayList<Comment> listInstance = (ArrayList<Comment>) getCollection(collectionType, cls).orElse(new ArrayList());
+                    updatedCollection = (ArrayList) listInstance
+                            .stream()
+                            .map(el -> {
+                                if (el.getId().equals(instanceId)) {
+                                    el = (Comment) instance;
+                                }
+                                return el;
+                            }).collect(Collectors.toList());
+                    break;
+                }
+                case element:
+                    // TODO
+                    break;
+                case error:
+                    break;
+            }
+            Status status = writeCollection(updatedCollection, cls, collectionType);
+            log.debug("[updateRecordInCollection] Update status: " + status);
+            return new Result(status, "");
+        } catch (RuntimeException e) {
+            log.error(e);
+            return new Result(Status.error, ErrorConstants.INSTANCE_UPDATE);
         }
     }
 
@@ -464,9 +545,10 @@ public class DataProviderCSV implements DataProvider {
                 ArrayList allSlides = (ArrayList) getCollection(CollectionType.slide, Slide.class).orElse(new ArrayList());
                 allSlides.add(slide);
                 Status statusCreateSlide = writeCollection(allSlides, Slide.class, CollectionType.slide);
-                Status statusAddSlideInPresentation = addPresentationSlide(slide, optionalPresentation.get());
+//                Status statusAddSlideInPresentation = addPresentationSlide(slide, optionalPresentation.get());
 
-                if (statusCreateSlide == Status.success && statusAddSlideInPresentation == Status.success) {
+//                if (statusCreateSlide == Status.success && statusAddSlideInPresentation == Status.success) {
+                if (statusCreateSlide == Status.success) {
                     log.info(SuccessConstants.SLIDE_CREATE + arguments.get("presentationId"));
                     return new Result(Status.success, slide.getId());
                 } else {
@@ -476,32 +558,32 @@ public class DataProviderCSV implements DataProvider {
             } else {
                 return new Result(Status.error, ErrorConstants.PRESENTATION_NOT_FOUND + arguments.get("presentationId"));
             }
-        } catch (RuntimeException | CsvRequiredFieldEmptyException | IOException | CsvDataTypeMismatchException e) {
+        } catch (RuntimeException e) {
             e.printStackTrace();
             log.error(e);
             return new Result(Status.error, ErrorConstants.SLIDE_CREATE);
         }
     }
 
-    public Status addPresentationSlide (Slide slide, Presentation presentation ) throws CsvRequiredFieldEmptyException, IOException, CsvDataTypeMismatchException {
-        try {
-            String id = String.valueOf(presentation.getId());
-            ArrayList<UUID> slides = presentation.getSlides();
-            ArrayList<UUID> updatedSlides = slides;
-            updatedSlides.add(slide.getId());
-            HashMap args = new HashMap();
-            args.put("id", id);
-            args.put("slides", updatedSlides);
-            log.info("[addPresentationSlide] Attempt to add slide " + slide.toString());
-            log.info("[addPresentationSlide] To presentation " + presentation.toString());
-            log.debug("[addPresentationSlide] Add slides: " + updatedSlides);
-            Result result = editPresentationOptions(args);
-            return result.getStatus();
-        } catch (CsvRequiredFieldEmptyException | IOException | CsvDataTypeMismatchException e) {
-            log.error("[addPresentationSlide] Unable to add slide in presentation");
-            return Status.error;
-        }
-    }
+//    public Status addPresentationSlide (Slide slide, Presentation presentation ) throws CsvRequiredFieldEmptyException, IOException, CsvDataTypeMismatchException {
+//        try {
+//            String id = String.valueOf(presentation.getId());
+//            ArrayList<UUID> slides = presentation.getSlides();
+//            ArrayList<UUID> updatedSlides = slides;
+//            updatedSlides.add(slide.getId());
+//            HashMap args = new HashMap();
+//            args.put("id", id);
+//            args.put("slides", updatedSlides);
+//            log.info("[addPresentationSlide] Attempt to add slide " + slide.toString());
+//            log.info("[addPresentationSlide] To presentation " + presentation.toString());
+//            log.debug("[addPresentationSlide] Add slides: " + updatedSlides);
+//            Result result = editPresentationOptions(args);
+//            return result.getStatus();
+//        } catch (CsvRequiredFieldEmptyException | IOException | CsvDataTypeMismatchException e) {
+//            log.error("[addPresentationSlide] Unable to add slide in presentation");
+//            return Status.error;
+//        }
+//    }
 
     @Override
     public Result getPresentationSlides (HashMap arguments) {
@@ -716,9 +798,10 @@ public class DataProviderCSV implements DataProvider {
                     Comment comment = (Comment) result.getReturnValue();
                     if (optionalPresentation.isPresent()) {
                         log.info(ConstantsInfo.PRESENTATIONS_GET + optionalPresentation.get().toString());
-                        Status resultAddComment = addPresentationComment(comment, optionalPresentation.get());
+//                        Status resultAddComment = addPresentationComment(comment, optionalPresentation.get());
                         Status resultWrite = writeCommentsCollection(comment);
-                        if (resultWrite == Status.success && resultAddComment == Status.success) {
+//                        if (resultWrite == Status.success && resultAddComment == Status.success) {
+                        if (resultWrite == Status.success) {
                             return new Result(Status.success, comment.getId());
                         } else {
                             return new Result(Status.success, ErrorConstants.UNEXPECTED_ERROR);
@@ -734,7 +817,7 @@ public class DataProviderCSV implements DataProvider {
                 log.error(ErrorConstants.PRESENTATION_NOT_FOUND + arguments.get("presentationId"));
                 return new Result(Status.error, ErrorConstants.PRESENTATION_NOT_FOUND + arguments.get("presentationId"));
             }
-        } catch (RuntimeException | CsvRequiredFieldEmptyException | IOException | CsvDataTypeMismatchException e) {
+        } catch (RuntimeException e) {
             log.error(e);
             log.error(ErrorConstants.COMMENT_CREATE);
             return new Result(Status.error, ErrorConstants.COMMENT_CREATE);
@@ -787,24 +870,24 @@ public class DataProviderCSV implements DataProvider {
         }
     }
 
-    public Status addPresentationComment (Comment comment, Presentation presentation) throws CsvRequiredFieldEmptyException, IOException, CsvDataTypeMismatchException {
-        try {
-            String id = String.valueOf(presentation.getId());
-            ArrayList<UUID> comments = presentation.getComments();
-            comments.add(comment.getId());
-            HashMap args = new HashMap();
-            args.put("id", id);
-            args.put("comments", comments);
-            log.info("[addPresentationComment] Attempt to add comment " + comment.toString());
-            log.info("[addPresentationComment] To presentation " + presentation.toString());
-            log.debug("[addPresentationComment] Add comments: " + comments);
-            Result result = editPresentationOptions(args);
-            return result.getStatus();
-        } catch (CsvRequiredFieldEmptyException | IOException | CsvDataTypeMismatchException e) {
-            log.error("[addPresentationComment] Unable to add comment in presentation");
-            return Status.error;
-        }
-    }
+//    public Status addPresentationComment (Comment comment, Presentation presentation) throws CsvRequiredFieldEmptyException, IOException, CsvDataTypeMismatchException {
+//        try {
+//            String id = String.valueOf(presentation.getId());
+//            ArrayList<UUID> comments = presentation.getComments();
+//            comments.add(comment.getId());
+//            HashMap args = new HashMap();
+//            args.put("id", id);
+//            args.put("comments", comments);
+//            log.info("[addPresentationComment] Attempt to add comment " + comment.toString());
+//            log.info("[addPresentationComment] To presentation " + presentation.toString());
+//            log.debug("[addPresentationComment] Add comments: " + comments);
+//            Result result = editPresentationOptions(args);
+//            return result.getStatus();
+//        } catch (CsvRequiredFieldEmptyException | IOException | CsvDataTypeMismatchException e) {
+//            log.error("[addPresentationComment] Unable to add comment in presentation");
+//            return Status.error;
+//        }
+//    }
 
     @Override
     public Result editPresentationComment (HashMap arguments) {
@@ -840,61 +923,44 @@ public class DataProviderCSV implements DataProvider {
         }
     }
 
-    public Result updateRecordInCollection (Class cls, CollectionType collectionType, Object instance, UUID instanceId) {
+
+    @Override
+    public Result removePresentationComment (HashMap arguments) {
         try {
-            log.debug("[updateRecordInCollection] Update: " + instance.toString());
-            ArrayList updatedCollection = new ArrayList();
-            switch (collectionType) {
-                case presentation: {
-                    ArrayList<Presentation> listInstance = (ArrayList<Presentation>) getCollection(collectionType, cls).orElse(new ArrayList());
-                    updatedCollection = (ArrayList) listInstance
-                            .stream()
-                            .map(el -> {
-                                if (el.getId().equals(instanceId)) {
-                                    el = (Presentation) instance;
-                                }
-                                return el;
-                            }).collect(Collectors.toList());
-                    break;
-                }
-                case slide: {
-                    ArrayList<Slide> listInstance = (ArrayList<Slide>) getCollection(collectionType, cls).orElse(new ArrayList());
-                    updatedCollection = (ArrayList) listInstance
-                            .stream()
-                            .map(el -> {
-                                if (el.getId().equals(instanceId)) {
-                                    el = (Slide) instance;
-                                }
-                                return el;
-                            }).collect(Collectors.toList());
-                    break;
-                }
-                case comment: {
-                    ArrayList<Comment> listInstance = (ArrayList<Comment>) getCollection(collectionType, cls).orElse(new ArrayList());
-                    updatedCollection = (ArrayList) listInstance
-                            .stream()
-                            .map(el -> {
-                                if (el.getId().equals(instanceId)) {
-                                    el = (Comment) instance;
-                                }
-                                return el;
-                            }).collect(Collectors.toList());
-                    break;
-                }
-                case element:
-                    // TODO
-                    break;
-                case error:
-                    break;
+            ArrayList fields = new ArrayList();
+            fields.add("presentationId");
+            fields.add("id");
+            Result isArgsValid = new ArgsValidator().validate(arguments, fields);
+            if (isArgsValid.getStatus() == Status.error) {
+                return isArgsValid;
             }
-            Status status = writeCollection(updatedCollection, cls, collectionType);
-            log.debug("[updateRecordInCollection] Update status: " + status);
-            return new Result(status, "");
+
+            Optional<Presentation> optionalPresentation = getInstanceExistenceByField(presentation, Presentation.class, "id", (String) arguments.get("presentationId"));
+            if (!optionalPresentation.isPresent()) {
+                return new Result(Status.error, ErrorConstants.INSTANCE_NOT_FOUND);
+            }
+
+            Optional<Comment> optionalComment = getInstanceExistenceByField(comment, Comment.class, "id", (String) arguments.get("id"));
+            if (!optionalComment.isPresent()) {
+                return new Result(Status.error, ErrorConstants.INSTANCE_NOT_FOUND);
+            }
+
+            Comment comment = optionalComment.get();
+            Status status = removeRecordById(CollectionType.comment, Comment.class, comment.getId());
+            if (status == Status.success) {
+                log.info(SuccessConstants.COMMENT_REMOVE);
+                return new Result(Status.success, SuccessConstants.COMMENT_REMOVE + comment.getId());
+            } else {
+                log.error(ErrorConstants.COMMENT_REMOVE);
+                return new Result(Status.error, ErrorConstants.COMMENT_REMOVE + comment.getId());
+            }
         } catch (RuntimeException e) {
-            log.error(e);
-            return new Result(Status.error, ErrorConstants.INSTANCE_UPDATE);
+            e.printStackTrace();
+            log.error(ErrorConstants.COMMENT_REMOVE);
+            return new Result(Status.error, ErrorConstants.COMMENT_REMOVE);
         }
     }
+
 
 //    @Override
 //    public Result removePresentationComment (HashMap arguments) {

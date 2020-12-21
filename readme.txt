@@ -82,7 +82,25 @@ role=<guest, editor>
 text=<text>
 presentationId=<presentationId>
 
+
+	getPresentationComments
 datatype=csv
 method=getPresentationComments
 role=editor
 presentationId=1085b983-0f16-44ca-8aff-346a2b86bd12
+
+	editPresentationComment
+datatype=csv
+method=editPresentationComment
+role=editor
+id=5bb8caa6-e3b3-4780-8606-19e5dc052b78
+presentationId=5ed29ceb-ccd8-4fdc-8c63-f3c60fb27cb0
+text="Хорошая презентация"
+
+
+	removePresentationComment
+datatype=csv
+method=removePresentationComment
+role=editor
+id=ba780cb0-1d35-4ccc-b411-59fa15ab42e1
+presentationId=8f6314d8-acc3-4d58-98dc-19346081d97b

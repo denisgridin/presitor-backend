@@ -14,5 +14,6 @@ public class SuccessConstants {
     public static String SLIDE_EDIT = "Presentation slide successfully updated ";
 
     public static String COMMENTS_GET = "Comments retrieved ";
+    public static String COMMENT_REMOVE = "Comment successfully removed ";
 
 }
