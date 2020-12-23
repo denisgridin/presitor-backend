@@ -15,9 +15,7 @@ import ru.sfedu.course_project.Constants;
 import ru.sfedu.course_project.ConstantsInfo;
 import ru.sfedu.course_project.ErrorConstants;
 import ru.sfedu.course_project.SuccessConstants;
-import ru.sfedu.course_project.bean.Comment;
-import ru.sfedu.course_project.bean.Presentation;
-import ru.sfedu.course_project.bean.Slide;
+import ru.sfedu.course_project.bean.*;
 import ru.sfedu.course_project.enums.CollectionType;
 import ru.sfedu.course_project.enums.Status;
 import ru.sfedu.course_project.tools.ArgsValidator;
@@ -229,12 +227,12 @@ public class DataProviderCSV implements DataProvider {
     @Override
     public Optional getInstanceById (Class cl, CollectionType collectionType, HashMap arguments) {
         UUID id = UUID.fromString((String) arguments.get("id"));
-        log.debug("id: " + id);
+        log.debug(collectionType + " id: " + id);
         try {
             switch (collectionType) {
                 case presentation: {
                     ArrayList<Presentation> listInstance = (ArrayList<Presentation>) getCollection(collectionType, cl).orElse(new ArrayList());
-                    log.debug("Attempt to find: " + id);
+                    log.debug("Attempt to find presentation: " + id);
                     log.debug("list instance: " + listInstance);
                     Optional instance = listInstance.stream()
                             .filter(el -> el.getId().equals(id)).findFirst();
@@ -243,21 +241,21 @@ public class DataProviderCSV implements DataProvider {
                 }
                 case slide: {
                     ArrayList<Slide> listInstance = (ArrayList<Slide>) getCollection(collectionType, cl).orElse(new ArrayList());
-                    log.debug("Attempt to find: " + id);
+                    log.debug("Attempt to find slide: " + id);
                     Optional instance = listInstance.stream()
                             .filter(el -> el.getId().equals(id)).findFirst();
                     return instance;
                 }
                 case comment: {
                     ArrayList<Comment> listInstance = (ArrayList<Comment>) getCollection(collectionType, cl).orElse(new ArrayList());
-                    log.debug("Attempt to find: " + id);
+                    log.debug("Attempt to find comment: " + id);
                     Optional instance = listInstance.stream()
                             .filter(el -> el.getId().equals(id)).findFirst();
                     return instance;
                 }
                 case template: {
                     ArrayList<Presentation> listInstance = (ArrayList<Presentation>) getCollection(collectionType, cl).orElse(new ArrayList());
-                    log.debug("Attempt to find: " + id);
+                    log.debug("Attempt to find template: " + id);
                     Optional instance = listInstance.stream()
                             .filter(el -> el.getId().equals(id)).findFirst();
                     return instance;
@@ -1024,6 +1022,73 @@ public class DataProviderCSV implements DataProvider {
             e.printStackTrace();
             log.error(ErrorConstants.COMMENT_REMOVE);
             return new Result(Status.error, ErrorConstants.COMMENT_REMOVE);
+        }
+    }
+
+
+    @Override
+    public Result addElementInSlide (HashMap args) {
+        try {
+            ArrayList fields = new ArrayList();
+            fields.add("presentationId");
+            fields.add("slideId");
+            fields.add("elementType");
+            fields.add("figure");
+            Result isArgsValid = new ArgsValidator().validate(args, fields);
+            if (isArgsValid.getStatus() == Status.error) {
+                return isArgsValid;
+            }
+
+            Optional<Presentation> optionalPresentation = getInstanceExistenceByField(presentation, Presentation.class, "id", (String) args.get("presentationId"));
+            if (!optionalPresentation.isPresent()) {
+                return new Result(Status.error, ErrorConstants.INSTANCE_NOT_FOUND + " presentationId");
+            }
+            Optional<Presentation> optionalSlide = getInstanceExistenceByField(slide, Slide.class, "id", (String) args.get("slideId"));
+            if (!optionalSlide.isPresent()) {
+                return new Result(Status.error, ErrorConstants.INSTANCE_NOT_FOUND + " slideId");
+            }
+
+            ElementType elementType = ElementType.valueOf((String) args.get("elementType"));
+            log.debug("Attempt to add: " + elementType);
+
+            switch (elementType) {
+                case shape: {
+                    return createShape(args);
+                }
+                default: {
+                    return new Result(Status.error, ErrorConstants.FIGURE_UNDEFINED);
+                }
+            }
+
+
+        } catch (RuntimeException e) {
+            return new Result(Status.error, ErrorConstants.FIGURE_CREATE);
+        }
+    }
+
+    public Result createShape (HashMap args) {
+        try {
+            Result resultCreateShape = new Creator().create(Shape.class, args);
+            if (resultCreateShape.getStatus() == Status.error) {
+                return resultCreateShape;
+            }
+
+            Shape shape = (Shape) resultCreateShape.getReturnValue();
+            log.info("Create new shape: " + shape);
+            ArrayList<Shape> shapes = (ArrayList<Shape>) getCollection(CollectionType.shape, Shape.class).orElse(new ArrayList());
+            shapes.add(shape);
+            Status status = writeCollection(shapes, Shape.class, CollectionType.shape);
+            log.debug("Shape added in collection: " + status);
+            if (status == Status.success) {
+                return new Result(Status.success, shape);
+            } else {
+                return new Result(Status.error, ErrorConstants.SHAPE_CREATE);
+            }
+
+        } catch (RuntimeException e) {
+            log.error(e);
+            log.error(ErrorConstants.SHAPE_CREATE);
+            return new Result(Status.error, ErrorConstants.SHAPE_CREATE);
         }
     }
 

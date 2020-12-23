@@ -6,5 +6,6 @@ public enum CollectionType {
     element,
     template,
     comment,
+    shape,
     error
 }

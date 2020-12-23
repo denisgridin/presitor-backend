@@ -40,6 +40,8 @@ public interface DataProvider {
     public Result commentPresentation (HashMap arguments);
     public Result editPresentationComment (HashMap arguments);
     public Result removePresentationComment (HashMap arguments);
+
+    public Result addElementInSlide (HashMap arguments);
 //    public Result editPresentationSlideOptionsById (HashMap arguments);
 //    public <T> Status addCollectionRecord (T record, UUID id);
 }

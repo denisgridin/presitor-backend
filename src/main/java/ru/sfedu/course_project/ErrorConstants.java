@@ -35,4 +35,9 @@ public class ErrorConstants {
     public static String COMMENT_EDIT = "Unable to edit comment ";
     public static String COMMENT_REMOVE = "Unable to remove comment ";
 
+    public static String SHAPE_CREATE = "Unable to create shape ";
+    public static String FIGURE_UNDEFINED = "Undefined figure provided ";
+    public static String FIGURE_CREATE = "Unable to create figure ";
+
+
 }

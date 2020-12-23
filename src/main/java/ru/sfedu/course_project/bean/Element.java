@@ -2,22 +2,30 @@ package ru.sfedu.course_project.bean;
 
 import com.opencsv.bean.CsvBindByName;
 import com.opencsv.bean.CsvCustomBindByName;
+import ru.sfedu.course_project.converters.ElementTypeConverter;
+import ru.sfedu.course_project.converters.LayoutConverter;
 import ru.sfedu.course_project.converters.UUIDConverter;
 
 import java.util.Objects;
 import java.util.UUID;
 
 public abstract class Element {
+    @CsvCustomBindByName(column = "slideId", converter = UUIDConverter.class)
+    private UUID slideId;
+
+    @CsvCustomBindByName(column = "presentationId", converter = UUIDConverter.class)
+    private UUID presentationId;
+
     @CsvCustomBindByName(column = "id", converter = UUIDConverter.class)
     private UUID id;
 
     @CsvBindByName
     private String name;
 
-    @CsvBindByName
+    @CsvCustomBindByName(column = "elementType", converter = ElementTypeConverter.class)
     private ElementType elementType;
 
-    @CsvBindByName
+    @CsvCustomBindByName(column = "layout", converter = LayoutConverter.class)
     private Layout layout;
 
     public Element() { }
@@ -32,6 +40,22 @@ public abstract class Element {
 
     public String getName() {
         return name;
+    }
+
+    public UUID getSlideId() {
+        return slideId;
+    }
+
+    public void setSlideId(UUID slideId) {
+        this.slideId = slideId;
+    }
+
+    public UUID getPresentationId() {
+        return presentationId;
+    }
+
+    public void setPresentationId(UUID presentationId) {
+        this.presentationId = presentationId;
     }
 
     public void setName(String name) {

@@ -104,3 +104,26 @@ method=removePresentationComment
 role=editor
 id=ba780cb0-1d35-4ccc-b411-59fa15ab42e1
 presentationId=8f6314d8-acc3-4d58-98dc-19346081d97b
+
+
+////////              Elements               \\\\\\\\\\\\\\
+
+
+	addElementInSlide
+datatype=csv
+method=addElementInSlide
+role=editor
+presentationId=fc6af4d0-61e9-443b-8aa5-3309690ca480
+slideId=7aff8196-8f1b-4bad-95b4-7aeae7e1645d
+elementType=shape
+name="Мой любимый прямоугольник"
+fillColor="green"
+text="Мой любимый прямоугольник"
+x=100
+y=132
+width=230
+height=412
+figure=rectangle
+opacity=0.3
+borderRadius="3px"
+rotation=31

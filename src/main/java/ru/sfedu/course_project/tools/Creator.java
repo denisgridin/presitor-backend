@@ -6,10 +6,7 @@ import ru.sfedu.course_project.Constants;
 import ru.sfedu.course_project.ConstantsInfo;
 import ru.sfedu.course_project.ErrorConstants;
 import ru.sfedu.course_project.SuccessConstants;
-import ru.sfedu.course_project.bean.Comment;
-import ru.sfedu.course_project.bean.Element;
-import ru.sfedu.course_project.bean.Presentation;
-import ru.sfedu.course_project.bean.Slide;
+import ru.sfedu.course_project.bean.*;
 import ru.sfedu.course_project.enums.Role;
 import ru.sfedu.course_project.enums.Status;
 
@@ -38,8 +35,12 @@ public class Creator {
             case "comment": {
                 return createComment(args);
             }
+            case "shape": {
+                return createShape(args);
+            }
             default: {
-                return new Result(Status.error, Optional.empty());
+                log.error("Unable to create instance");
+                return new Result(Status.error, "Unable to create instance");
             }
         }
     }
@@ -138,6 +139,56 @@ public class Creator {
             log.error(e);
             log.error(ErrorConstants.COMMENT_CREATE);
             return new Result(Status.error, ErrorConstants.COMMENT_CREATE);
+        }
+    }
+
+    private Result createShape (HashMap args) {
+        try {
+
+            HashMap defaultsElement = (HashMap) Constants.DEFAULT_ELEMENT;
+            HashMap defaultsShape = (HashMap) Constants.DEFAULT_SHAPE;
+
+            Shape shape = new Shape();
+
+            shape.setSlideId(UUID.fromString((String) args.get("slideId")));
+            log.debug(String.format(ConstantsInfo.FIELD_FORMAT_SET, "slideId", args.get("slideId")));
+
+            shape.setPresentationId(UUID.fromString((String) args.get("presentationId")));
+            log.debug(String.format(ConstantsInfo.FIELD_FORMAT_SET, "presentationId", args.get("presentationId")));
+
+            ElementType elementType = ElementType.valueOf((String) args.get("elementType"));
+            shape.setElementType(elementType);
+            log.debug(String.format(ConstantsInfo.FIELD_FORMAT_SET, "elementType", elementType));
+
+            Figure figure = Figure.valueOf((String) args.get("figure"));
+            shape.setFigure(figure);
+            log.debug(String.format(ConstantsInfo.FIELD_FORMAT_SET, "figure", figure));
+
+            Style style = Constants.DEFAULT_STYLE(args);
+            shape.setStyle(style);
+            log.debug(String.format(ConstantsInfo.FIELD_FORMAT_SET, "style", style));
+
+            Layout layout = Constants.DEFAULT_LAYOUT(args);
+            log.debug(String.format(ConstantsInfo.FIELD_FORMAT_SET, "style", style));
+            shape.setLayout(layout);
+
+            UUID id = UUID.fromString((String) args.getOrDefault("id", String.valueOf(defaultsElement.get("id"))));
+            log.debug(String.format(ConstantsInfo.FIELD_FORMAT_SET, "layout", layout));
+            shape.setId(id);
+
+            String name = (String) args.getOrDefault("name", defaultsShape.get("name"));
+            log.debug(String.format(ConstantsInfo.FIELD_FORMAT_SET, "id", id));
+            shape.setName(name);
+            log.debug(String.format(ConstantsInfo.FIELD_FORMAT_SET, "name", name));
+
+            log.info("Created: " + shape);
+            return new Result(Status.success, shape);
+
+        } catch (RuntimeException e) {
+            e.printStackTrace();
+            log.error(e);
+            log.error("Unable to create shape");
+            return new Result(Status.error, "Unable to create shape");
         }
     }
 }

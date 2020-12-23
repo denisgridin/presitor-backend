@@ -13,7 +13,7 @@ public class Style implements Serializable {
     private String boxShadow;
 
     @CsvBindByName
-    private int opacity;
+    private String opacity;
 
     @CsvBindByName
     private String borderColor;
@@ -27,15 +27,7 @@ public class Style implements Serializable {
     @CsvBindByName
     private BorderStyle borderStyle;
 
-    public Style(String fillColor, String boxShadow, int opacity, String borderColor, String borderRadius, String borderWidth, BorderStyle borderStyle) {
-        this.fillColor = fillColor;
-        this.boxShadow = boxShadow;
-        this.opacity = opacity;
-        this.borderColor = borderColor;
-        this.borderRadius = borderRadius;
-        this.borderWidth = borderWidth;
-        this.borderStyle = borderStyle;
-    }
+    public Style() { }
 
     public String getFillColor() {
         return fillColor;
@@ -53,11 +45,11 @@ public class Style implements Serializable {
         this.boxShadow = boxShadow;
     }
 
-    public int getOpacity() {
+    public String getOpacity() {
         return opacity;
     }
 
-    public void setOpacity(int opacity) {
+    public void setOpacity(String opacity) {
         this.opacity = opacity;
     }
 

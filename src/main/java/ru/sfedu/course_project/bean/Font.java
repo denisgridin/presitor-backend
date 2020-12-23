@@ -21,13 +21,7 @@ public class Font implements Serializable {
     @CsvBindByName
     private FontCase fontCase;
 
-    public Font (String family, String size, String letterSpacing, String lineSpacing, FontCase fontCase) {
-        this.family = family;
-        this.size = size;
-        this.letterSpacing = letterSpacing;
-        this.lineSpacing = lineSpacing;
-        this.fontCase = fontCase;
-    }
+    public Font () { }
 
 
     public String getFamily() {

@@ -21,13 +21,7 @@ public class Layout implements Serializable {
     @CsvBindByName
     private int rotation;
 
-    public Layout (int x, int y, int width, int height, int rotation) {
-        this.x = x;
-        this.y = y;
-        this.width = width;
-        this.height = height;
-        this.rotation = rotation;
-    }
+    public Layout () { }
 
     public int getX() {
         return x;

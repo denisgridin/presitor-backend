@@ -8,5 +8,5 @@ public enum BorderStyle {
     ridge,
     inset,
     outset,
-    none
+    none,
 }
