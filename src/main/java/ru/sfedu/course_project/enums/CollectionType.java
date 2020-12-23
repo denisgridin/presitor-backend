@@ -7,5 +7,6 @@ public enum CollectionType {
     template,
     comment,
     shape,
+    content,
     error
 }

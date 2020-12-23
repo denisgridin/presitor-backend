@@ -26,7 +26,13 @@ public class Constants {
             { "borderColor", "borderColor=\\d*" },
             { "borderRadius", "borderRadius=\\d*" },
             { "borderWidth", "borderWidth=\\d*" },
-            { "borderStyle", "borderStyle=\\d*" }
+            { "borderStyle", "borderStyle=\\d*" },
+
+            { "family", "family=\\d*" },
+            { "size", "size=\\d*" },
+            { "letterSpacing", "letterSpacing=\\d*" },
+            { "lineSpacing", "lineSpacing=\\d*" },
+            { "case", "case=\\d*" }
     }).collect(Collectors.toMap(data -> (String) data[0], data -> (Object) data[1]));
 
 
@@ -53,6 +59,11 @@ public class Constants {
     public final static Map DEFAULT_SHAPE = Stream.of(new Object[][] {
             { "name", "Shape" },
             { "text", "" }
+    }).collect(Collectors.toMap(data -> (String) data[0], data -> (Object) data[1]));
+
+    public final static Map DEFAULT_CONTENT = Stream.of(new Object[][] {
+            { "name", "Content" },
+            { "text", "Content" }
     }).collect(Collectors.toMap(data -> (String) data[0], data -> (Object) data[1]));
 
 

@@ -1033,7 +1033,6 @@ public class DataProviderCSV implements DataProvider {
             fields.add("presentationId");
             fields.add("slideId");
             fields.add("elementType");
-            fields.add("figure");
             Result isArgsValid = new ArgsValidator().validate(args, fields);
             if (isArgsValid.getStatus() == Status.error) {
                 return isArgsValid;
@@ -1053,7 +1052,24 @@ public class DataProviderCSV implements DataProvider {
 
             switch (elementType) {
                 case shape: {
+                    log.info("Shape creating");
+                    ArrayList shapeFields = new ArrayList();
+                    shapeFields.add("figure");
+                    Result isShapeArgsValid = new ArgsValidator().validate(args, fields);
+                    if (isShapeArgsValid.getStatus() == Status.error) {
+                        return isShapeArgsValid;
+                    }
                     return createShape(args);
+                }
+                case content: {
+                    log.info("Content creating");
+                    ArrayList contentFields = new ArrayList();
+                    contentFields.add("text");
+                    Result isContentArgsValid = new ArgsValidator().validate(args, fields);
+                    if (isContentArgsValid.getStatus() == Status.error) {
+                        return isContentArgsValid;
+                    }
+                    return createContent(args);
                 }
                 default: {
                     return new Result(Status.error, ErrorConstants.FIGURE_UNDEFINED);
@@ -1063,6 +1079,32 @@ public class DataProviderCSV implements DataProvider {
 
         } catch (RuntimeException e) {
             return new Result(Status.error, ErrorConstants.FIGURE_CREATE);
+        }
+    }
+
+    public Result createContent (HashMap args) {
+        try {
+            Result resultCreateContent= new Creator().create(Content.class, args);
+            if (resultCreateContent.getStatus() == Status.error) {
+                return resultCreateContent;
+            }
+
+            Content content = (Content) resultCreateContent.getReturnValue();
+            log.info("Create new content: " + content);
+            ArrayList<Content> contents = (ArrayList<Content>) getCollection(CollectionType.content, Content.class).orElse(new ArrayList());
+            contents.add(content);
+            Status status = writeCollection(contents, Content.class, CollectionType.content);
+            log.debug("Content added in collection: " + status);
+            if (status == Status.success) {
+                return new Result(Status.success, content);
+            } else {
+                return new Result(Status.error, ErrorConstants.CONTENT_CREATE);
+            }
+        } catch (RuntimeException e) {
+            e.printStackTrace();
+            log.error(e);
+            log.error(ErrorConstants.CONTENT_CREATE);
+            return new Result(Status.error, ErrorConstants.CONTENT_CREATE);
         }
     }
 

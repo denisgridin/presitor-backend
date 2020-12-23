@@ -38,6 +38,9 @@ public class Creator {
             case "shape": {
                 return createShape(args);
             }
+            case "content": {
+                return createContent(args);
+            }
             default: {
                 log.error("Unable to create instance");
                 return new Result(Status.error, "Unable to create instance");
@@ -169,11 +172,11 @@ public class Creator {
             log.debug(String.format(ConstantsInfo.FIELD_FORMAT_SET, "style", style));
 
             Layout layout = Constants.DEFAULT_LAYOUT(args);
-            log.debug(String.format(ConstantsInfo.FIELD_FORMAT_SET, "style", style));
+            log.debug(String.format(ConstantsInfo.FIELD_FORMAT_SET, "layout", layout));
             shape.setLayout(layout);
 
             UUID id = UUID.fromString((String) args.getOrDefault("id", String.valueOf(defaultsElement.get("id"))));
-            log.debug(String.format(ConstantsInfo.FIELD_FORMAT_SET, "layout", layout));
+            log.debug(String.format(ConstantsInfo.FIELD_FORMAT_SET, "id", id));
             shape.setId(id);
 
             String name = (String) args.getOrDefault("name", defaultsShape.get("name"));
@@ -189,6 +192,53 @@ public class Creator {
             log.error(e);
             log.error("Unable to create shape");
             return new Result(Status.error, "Unable to create shape");
+        }
+    }
+
+    public Result createContent (HashMap args) {
+        try {
+            HashMap defaultsElement = (HashMap) Constants.DEFAULT_ELEMENT;
+            HashMap defaultsContent = (HashMap) Constants.DEFAULT_CONTENT;
+
+            Content content = new Content();
+
+            Font font = Constants.DEFAULT_FONT(args);
+            content.setFont(font);
+            log.debug(String.format(ConstantsInfo.FIELD_FORMAT_SET, "font", font));
+
+            String name = (String) defaultsContent.get("name");
+            content.setName(name);
+            log.debug(String.format(ConstantsInfo.FIELD_FORMAT_SET, "name", name));
+
+            String text = (String) defaultsContent.get("text");
+            content.setText(text);
+            log.debug(String.format(ConstantsInfo.FIELD_FORMAT_SET, "text", text));
+
+            Layout layout = Constants.DEFAULT_LAYOUT(args);
+            log.debug(String.format(ConstantsInfo.FIELD_FORMAT_SET, "layout", layout));
+            content.setLayout(layout);
+
+            content.setSlideId(UUID.fromString((String) args.get("slideId")));
+            log.debug(String.format(ConstantsInfo.FIELD_FORMAT_SET, "slideId", content.getSlideId()));
+
+            content.setPresentationId(UUID.fromString((String) args.get("presentationId")));
+            log.debug(String.format(ConstantsInfo.FIELD_FORMAT_SET, "presentationId", args.get("presentationId")));
+
+            ElementType elementType = ElementType.valueOf((String) args.get("elementType"));
+            content.setElementType(elementType);
+            log.debug(String.format(ConstantsInfo.FIELD_FORMAT_SET, "elementType", elementType));
+
+            UUID id = UUID.fromString((String) args.getOrDefault("id", String.valueOf(defaultsElement.get("id"))));
+            content.setId(id);
+            log.debug(String.format(ConstantsInfo.FIELD_FORMAT_SET, "id", id));
+
+            log.info("[Creator] Content created: " + content);
+
+            return new Result(Status.success, content);
+        } catch (RuntimeException e) {
+            e.printStackTrace();
+            log.error(e);
+            return new Result(Status.success, ErrorConstants.CONTENT_CREATE);
         }
     }
 }
