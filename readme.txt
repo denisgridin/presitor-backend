@@ -138,3 +138,24 @@ slideId=fc6af4d0-61e9-443b-8aa5-3309690ca480
 elementType=content
 name="Мой любимый текст"
 figure=rectangle
+
+
+	editSlideElement
+datatype=csv
+method=editSlideElement
+role=editor
+presentationId=7aff8196-8f1b-4bad-95b4-7aeae7e1645d
+slideId=fc6af4d0-61e9-443b-8aa5-3309690ca480
+id=1b1cc523-a2f9-41b2-9397-cc369032482f
+elementType=shape
+fillColor=red
+size=12px
+case=upperCase
+text="Мой не любимый прямоугольник"
+opacity=23
+borderColor=#40311d
+x=14
+y=423
+rotation=41
+borderStyle=ridge
+borderWidth=13

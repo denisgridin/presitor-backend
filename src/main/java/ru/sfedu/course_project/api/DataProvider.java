@@ -43,6 +43,7 @@ public interface DataProvider {
 
     public Result addElementInSlide (HashMap arguments);
     public Result removeSlideElement (HashMap arguments);
+    public Result editSlideElement (HashMap arguments);
 //    public Result editPresentationSlideOptionsById (HashMap arguments);
 //    public <T> Status addCollectionRecord (T record, UUID id);
 }

@@ -500,7 +500,6 @@ public class DataProviderCSVTest extends TestBase {
         }
     }
 
-
 //    @Test
 //    void getCollectionsListSuccess() {
 //        log.debug("getCollectionSuccess");

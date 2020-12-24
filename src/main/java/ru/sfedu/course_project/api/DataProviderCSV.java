@@ -18,10 +18,7 @@ import ru.sfedu.course_project.SuccessConstants;
 import ru.sfedu.course_project.bean.*;
 import ru.sfedu.course_project.enums.CollectionType;
 import ru.sfedu.course_project.enums.Status;
-import ru.sfedu.course_project.tools.ArgsValidator;
-import ru.sfedu.course_project.tools.BaseClass;
-import ru.sfedu.course_project.tools.Creator;
-import ru.sfedu.course_project.tools.Result;
+import ru.sfedu.course_project.tools.*;
 import ru.sfedu.course_project.utils.ConfigurationUtil;
 
 import javax.lang.model.type.ArrayType;
@@ -1204,6 +1201,78 @@ public class DataProviderCSV implements DataProvider {
             log.error(e);
             log.error(ErrorConstants.SHAPE_REMOVE);
             return new Result(Status.error, ErrorConstants.SHAPE_REMOVE);
+        }
+    }
+
+    @Override
+    public Result editSlideElement (HashMap args) {
+        try {
+            ArrayList fields = new ArrayList();
+            fields.add("presentationId");
+            fields.add("slideId");
+            fields.add("elementType");
+            fields.add("id");
+            Result isArgsValid = new ArgsValidator().validate(args, fields);
+            if (isArgsValid.getStatus() == Status.error) {
+                return isArgsValid;
+            }
+
+            Optional<Presentation> optionalPresentation = getInstanceExistenceByField(presentation, Presentation.class, "id", (String) args.get("presentationId"));
+            if (!optionalPresentation.isPresent()) {
+                return new Result(Status.error, ErrorConstants.INSTANCE_NOT_FOUND + " presentationId");
+            }
+            Optional<Presentation> optionalSlide = getInstanceExistenceByField(slide, Slide.class, "id", (String) args.get("slideId"));
+            if (!optionalSlide.isPresent()) {
+                return new Result(Status.error, ErrorConstants.INSTANCE_NOT_FOUND + " slideId");
+            }
+
+            ElementType elementType = ElementType.valueOf((String) args.get("elementType"));
+
+            switch (elementType) {
+                case shape: {
+                    return editShape(args);
+                }
+                default: {
+                    return new Result(Status.error, ErrorConstants.ELEMENT_NOT_FOUND + elementType);
+                }
+            }
+        } catch (RuntimeException e) {
+            log.error(e);
+            log.error(ErrorConstants.ELEMENT_EDIT);
+            return new Result(Status.error, ErrorConstants.ELEMENT_EDIT);
+        }
+    }
+
+    public Result editShape (HashMap args) {
+        try {
+            Optional<Shape> optionalShape = getInstanceExistenceByField(shape, Shape.class, "id", (String) args.get("id"));
+            if (!optionalShape.isPresent()) {
+                return new Result(Status.error, ErrorConstants.INSTANCE_NOT_FOUND + " shape " + args.get("id"));
+            }
+
+            UUID id = UUID.fromString((String) args.get("id"));
+
+            List<Shape> collection = getCollection(CollectionType.shape, Shape.class).orElse(new ArrayList());
+            List<Shape> updatedCollection = collection.stream().map(el -> {
+                if (el.getId().equals(id)) {
+                    Result result = Helpers.editShapeBean(args, el);
+                    if (result.getStatus() == Status.success) {
+                        el = (Shape) result.getReturnValue();
+                    } else {
+                        log.error(ErrorConstants.SHAPE_EDIT);
+                    }
+                }
+                return el;
+            }).collect(Collectors.toList());
+            Status writeStatus = writeCollection(updatedCollection, Shape.class, CollectionType.shape);
+            if (writeStatus == Status.success) {
+                return new Result(Status.success, SuccessConstants.SHAPE_EDIT);
+            } else {
+                return new Result(Status.error, ErrorConstants.SHAPE_EDIT);
+            }
+        } catch (RuntimeException e) {
+            log.error(ErrorConstants.SHAPE_EDIT);
+            return new Result(Status.error, ErrorConstants.SHAPE_EDIT);
         }
     }
 

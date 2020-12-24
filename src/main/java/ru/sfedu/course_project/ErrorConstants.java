@@ -42,10 +42,8 @@ public class ErrorConstants {
     public static String FIGURE_CREATE = "Unable to create figure ";
 
     public static String ELEMENT_REMOVE = "Unable to remove element ";
+    public static String ELEMENT_EDIT = "Unable to edit shape ";
 
     public static String SHAPE_REMOVE = "Unable to remove shape ";
-
-
-
-
+    public static String SHAPE_EDIT = "Unable to edit shape ";
 }
