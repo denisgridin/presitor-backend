@@ -16,4 +16,6 @@ public class SuccessConstants {
     public static String COMMENTS_GET = "Comments retrieved ";
     public static String COMMENT_REMOVE = "Comment successfully removed ";
 
+    public static String SHAPE_REMOVE = "Shape successfully removed ";
+
 }

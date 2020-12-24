@@ -260,6 +260,13 @@ public class DataProviderCSV implements DataProvider {
                             .filter(el -> el.getId().equals(id)).findFirst();
                     return instance;
                 }
+                case shape: {
+                    ArrayList<Shape> listInstance = (ArrayList<Shape>) getCollection(collectionType, cl).orElse(new ArrayList());
+                    log.debug("Attempt to find Shape: " + id);
+                    Optional instance = listInstance.stream()
+                            .filter(el -> el.getId().equals(id)).findFirst();
+                    return instance;
+                }
                 default: {
                     return Optional.empty();
                 }
@@ -1131,6 +1138,72 @@ public class DataProviderCSV implements DataProvider {
             log.error(e);
             log.error(ErrorConstants.SHAPE_CREATE);
             return new Result(Status.error, ErrorConstants.SHAPE_CREATE);
+        }
+    }
+
+    @Override
+    public Result removeSlideElement (HashMap args) {
+        try {
+            ArrayList fields = new ArrayList();
+            fields.add("presentationId");
+            fields.add("slideId");
+            fields.add("elementType");
+            fields.add("id");
+            Result isArgsValid = new ArgsValidator().validate(args, fields);
+            if (isArgsValid.getStatus() == Status.error) {
+                return isArgsValid;
+            }
+
+            Optional<Presentation> optionalPresentation = getInstanceExistenceByField(presentation, Presentation.class, "id", (String) args.get("presentationId"));
+            if (!optionalPresentation.isPresent()) {
+                return new Result(Status.error, ErrorConstants.INSTANCE_NOT_FOUND + " presentationId");
+            }
+            Optional<Presentation> optionalSlide = getInstanceExistenceByField(slide, Slide.class, "id", (String) args.get("slideId"));
+            if (!optionalSlide.isPresent()) {
+                return new Result(Status.error, ErrorConstants.INSTANCE_NOT_FOUND + " slideId");
+            }
+
+            ElementType elementType = ElementType.valueOf((String) args.get("elementType"));
+
+            switch (elementType) {
+                case shape: {
+                    return removeShape(args);
+                }
+                default: {
+                    return new Result(Status.error, ErrorConstants.ELEMENT_NOT_FOUND + elementType);
+                }
+            }
+        } catch (RuntimeException e) {
+            e.printStackTrace();
+            log.error(e);
+            log.error(ErrorConstants.ELEMENT_REMOVE);
+            return new Result(Status.error, ErrorConstants.ELEMENT_REMOVE);
+        }
+    }
+
+    public Result removeShape (HashMap args) {
+        try {
+            Optional<Shape> optionalShape = getInstanceExistenceByField(shape, Shape.class, "id", (String) args.get("id"));
+            if (!optionalShape.isPresent()) {
+                return new Result(Status.error, ErrorConstants.INSTANCE_NOT_FOUND + " shape " + args.get("id"));
+            }
+
+            UUID id = UUID.fromString((String) args.get("id"));
+
+            List<Shape> collection = getCollection(CollectionType.shape, Shape.class).orElse(new ArrayList());
+            List<Shape> updatedCollection = collection.stream().filter(el -> !el.getId().equals(id)).collect(Collectors.toList());
+            Status writeStatus = writeCollection(updatedCollection, Shape.class, CollectionType.shape);
+            if (writeStatus == Status.success) {
+                return new Result(Status.success, SuccessConstants.SHAPE_REMOVE);
+            } else {
+                return new Result(Status.error, ErrorConstants.SHAPE_REMOVE);
+            }
+
+        } catch (RuntimeException e) {
+            e.printStackTrace();
+            log.error(e);
+            log.error(ErrorConstants.SHAPE_REMOVE);
+            return new Result(Status.error, ErrorConstants.SHAPE_REMOVE);
         }
     }
 

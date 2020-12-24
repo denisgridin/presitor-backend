@@ -3,9 +3,9 @@ package ru.sfedu.course_project;
 public class ErrorConstants {
     public static String ID_IN_USE = "Identifier is already in use";
     public static String UNEXPECTED_ERROR = "Unexpected error";
-    public static String INSTANCE_NOT_FOUND = "Instance not found";
+    public static String INSTANCE_NOT_FOUND = "Instance not found ";
     public static String INSTANCE_UPDATE = "Unable to update instance";
-
+    public static String ELEMENT_NOT_FOUND = "Undefined element type ";
 
     public static String ARGUMENTS_VALIDATE = "Unable to validate arguments";
     public static String ARGUMENTS_ERROR = "Some of arguments has errors";
@@ -40,6 +40,12 @@ public class ErrorConstants {
 
     public static String FIGURE_UNDEFINED = "Undefined figure provided ";
     public static String FIGURE_CREATE = "Unable to create figure ";
+
+    public static String ELEMENT_REMOVE = "Unable to remove element ";
+
+    public static String SHAPE_REMOVE = "Unable to remove shape ";
+
+
 
 
 }

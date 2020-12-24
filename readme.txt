@@ -109,7 +109,7 @@ presentationId=8f6314d8-acc3-4d58-98dc-19346081d97b
 ////////              Elements               \\\\\\\\\\\\\\
 
 
-	addElementInSlide
+	addElementInSlide (Shape)
 datatype=csv
 method=addElementInSlide
 role=editor
@@ -127,3 +127,14 @@ figure=rectangle
 opacity=0.3
 borderRadius="3px"
 rotation=31
+
+
+	addElementInSlide (Content)
+datatype=csv
+method=addElementInSlide
+role=editor
+presentationId=7aff8196-8f1b-4bad-95b4-7aeae7e1645d
+slideId=fc6af4d0-61e9-443b-8aa5-3309690ca480
+elementType=content
+name="Мой любимый текст"
+figure=rectangle

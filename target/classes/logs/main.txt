@@ -2747,3 +2747,641 @@
 23 дек. 2020 21:02:54,961 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [writeCollection] Collection was wrote
 23 дек. 2020 21:02:54,961 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Content added in collection: success
 23 дек. 2020 21:02:54,961 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value: shape }
+23 дек. 2020 21:04:08,707 [main] WARN  ru.sfedu.course_project.Main - arguments {presentationId=7aff8196-8f1b-4bad-95b4-7aeae7e1645d, slideId=fc6af4d0-61e9-443b-8aa5-3309690ca480, figure=rectangle, role=editor, method=addElementInSlide, datatype=csv, name=Мой любимый текст, elementType=content}
+23 дек. 2020 21:04:08,715 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [presentationId=7aff8196-8f1b-4bad-95b4-7aeae7e1645d, slideId=fc6af4d0-61e9-443b-8aa5-3309690ca480, figure=rectangle, role=editor, method=addElementInSlide, datatype=csv, name=Мой любимый текст, elementType=content]
+23 дек. 2020 21:04:08,717 [main] INFO  ru.sfedu.course_project.Main - Attempt to create csv data provider
+23 дек. 2020 21:04:08,727 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: csv
+23 дек. 2020 21:04:08,730 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: addElementInSlide
+23 дек. 2020 21:04:08,731 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+23 дек. 2020 21:04:08,734 [main] DEBUG ru.sfedu.course_project.tools.ArgsValidator - [validate] Validate: [presentationId, slideId, elementType]
+23 дек. 2020 21:04:08,735 [main] DEBUG ru.sfedu.course_project.tools.ArgsValidator - [validate] Null fields: []
+23 дек. 2020 21:04:08,736 [main] DEBUG ru.sfedu.course_project.tools.ArgsValidator - [validate] Null fields: []
+23 дек. 2020 21:04:08,740 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value:  }
+23 дек. 2020 21:04:08,763 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getInstanceExistenceByField] Get: Presentation; id: 7aff8196-8f1b-4bad-95b4-7aeae7e1645d
+23 дек. 2020 21:04:08,764 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - presentation id: 7aff8196-8f1b-4bad-95b4-7aeae7e1645d
+23 дек. 2020 21:04:08,767 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Attempt to get collection: presentation
+23 дек. 2020 21:04:08,974 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Collection was retrieved: presentation
+23 дек. 2020 21:04:08,975 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Attempt to find presentation: 7aff8196-8f1b-4bad-95b4-7aeae7e1645d
+23 дек. 2020 21:04:09,025 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - list instance: [Presentation{id=7aff8196-8f1b-4bad-95b4-7aeae7e1645d, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}]
+23 дек. 2020 21:04:09,028 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Optional[Presentation{id=7aff8196-8f1b-4bad-95b4-7aeae7e1645d, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}]
+23 дек. 2020 21:04:09,028 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Optional[Presentation{id=7aff8196-8f1b-4bad-95b4-7aeae7e1645d, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}]
+23 дек. 2020 21:04:09,030 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getInstanceExistenceByField] Get: Slide; id: fc6af4d0-61e9-443b-8aa5-3309690ca480
+23 дек. 2020 21:04:09,030 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - slide id: fc6af4d0-61e9-443b-8aa5-3309690ca480
+23 дек. 2020 21:04:09,030 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Attempt to get collection: slide
+23 дек. 2020 21:04:09,042 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Collection was retrieved: slide
+23 дек. 2020 21:04:09,043 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Attempt to find slide: fc6af4d0-61e9-443b-8aa5-3309690ca480
+23 дек. 2020 21:04:09,059 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Optional[Slide{id=fc6af4d0-61e9-443b-8aa5-3309690ca480, name='Slide', index=0, presentationId=7aff8196-8f1b-4bad-95b4-7aeae7e1645d}]
+23 дек. 2020 21:04:09,059 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Attempt to add: content
+23 дек. 2020 21:04:09,060 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - Content creating
+23 дек. 2020 21:04:09,060 [main] DEBUG ru.sfedu.course_project.tools.ArgsValidator - [validate] Validate: [presentationId, slideId, elementType]
+23 дек. 2020 21:04:09,060 [main] DEBUG ru.sfedu.course_project.tools.ArgsValidator - [validate] Null fields: []
+23 дек. 2020 21:04:09,060 [main] DEBUG ru.sfedu.course_project.tools.ArgsValidator - [validate] Null fields: []
+23 дек. 2020 21:04:09,060 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value:  }
+23 дек. 2020 21:04:09,385 [main] DEBUG ru.sfedu.course_project.tools.Creator - Set field: font; Value: Font{family='Roboto', size='14px', letterSpacing='', lineSpacing='', fontCase=normal}
+23 дек. 2020 21:04:09,386 [main] DEBUG ru.sfedu.course_project.tools.Creator - Set field: name; Value: Content
+23 дек. 2020 21:04:09,386 [main] DEBUG ru.sfedu.course_project.tools.Creator - Set field: text; Value: Content
+23 дек. 2020 21:04:09,395 [main] DEBUG ru.sfedu.course_project.tools.Creator - Set field: layout; Value: Layout{x=0, y=0, width=100, height=100, rotation=0}
+23 дек. 2020 21:04:09,396 [main] DEBUG ru.sfedu.course_project.tools.Creator - Set field: slideId; Value: fc6af4d0-61e9-443b-8aa5-3309690ca480
+23 дек. 2020 21:04:09,396 [main] DEBUG ru.sfedu.course_project.tools.Creator - Set field: presentationId; Value: 7aff8196-8f1b-4bad-95b4-7aeae7e1645d
+23 дек. 2020 21:04:09,396 [main] DEBUG ru.sfedu.course_project.tools.Creator - Set field: elementType; Value: content
+23 дек. 2020 21:04:09,396 [main] DEBUG ru.sfedu.course_project.tools.Creator - Set field: id; Value: 13b2da26-bb49-4b82-b11c-3a4b4f9d29dd
+23 дек. 2020 21:04:09,399 [main] INFO  ru.sfedu.course_project.tools.Creator - [Creator] Content created: Content{font=Font{family='Roboto', size='14px', letterSpacing='', lineSpacing='', fontCase=normal}, text='Content'}
+23 дек. 2020 21:04:09,400 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value: Content{font=Font{family='Roboto', size='14px', letterSpacing='', lineSpacing='', fontCase=normal}, text='Content'} }
+23 дек. 2020 21:04:09,400 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - Create new content: Content{font=Font{family='Roboto', size='14px', letterSpacing='', lineSpacing='', fontCase=normal}, text='Content'}
+23 дек. 2020 21:04:09,400 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Attempt to get collection: content
+23 дек. 2020 21:04:09,413 [pool-4-thread-2] DEBUG ru.sfedu.course_project.tools.Helpers - FIND
+23 дек. 2020 21:04:09,413 [pool-4-thread-1] ERROR ru.sfedu.course_project.converters.FontConverter - java.lang.IllegalArgumentException: No enum constant ru.sfedu.course_project.bean.FontCase.
+23 дек. 2020 21:04:09,414 [pool-4-thread-2] DEBUG ru.sfedu.course_project.tools.Helpers - family=
+23 дек. 2020 21:04:09,415 [pool-4-thread-2] DEBUG ru.sfedu.course_project.tools.Helpers - family: 
+23 дек. 2020 21:04:09,415 [pool-4-thread-2] DEBUG ru.sfedu.course_project.tools.Helpers - FIND
+23 дек. 2020 21:04:09,415 [pool-4-thread-2] DEBUG ru.sfedu.course_project.tools.Helpers - size=
+23 дек. 2020 21:04:09,416 [pool-4-thread-2] DEBUG ru.sfedu.course_project.tools.Helpers - size: 
+23 дек. 2020 21:04:09,416 [pool-4-thread-1] DEBUG ru.sfedu.course_project.tools.Helpers - FIND
+23 дек. 2020 21:04:09,416 [pool-4-thread-1] DEBUG ru.sfedu.course_project.tools.Helpers - width=100
+23 дек. 2020 21:04:09,416 [pool-4-thread-2] DEBUG ru.sfedu.course_project.tools.Helpers - FIND
+23 дек. 2020 21:04:09,416 [pool-4-thread-2] DEBUG ru.sfedu.course_project.tools.Helpers - letterSpacing=
+23 дек. 2020 21:04:09,416 [pool-4-thread-1] DEBUG ru.sfedu.course_project.tools.Helpers - width: 100
+23 дек. 2020 21:04:09,416 [pool-4-thread-2] DEBUG ru.sfedu.course_project.tools.Helpers - letterSpacing: 
+23 дек. 2020 21:04:09,416 [pool-4-thread-1] DEBUG ru.sfedu.course_project.tools.Helpers - FIND
+23 дек. 2020 21:04:09,416 [pool-4-thread-2] DEBUG ru.sfedu.course_project.tools.Helpers - FIND
+23 дек. 2020 21:04:09,416 [pool-4-thread-1] DEBUG ru.sfedu.course_project.tools.Helpers - height=100
+23 дек. 2020 21:04:09,416 [pool-4-thread-2] DEBUG ru.sfedu.course_project.tools.Helpers - lineSpacing=
+23 дек. 2020 21:04:09,417 [pool-4-thread-1] DEBUG ru.sfedu.course_project.tools.Helpers - height: 100
+23 дек. 2020 21:04:09,417 [pool-4-thread-2] DEBUG ru.sfedu.course_project.tools.Helpers - lineSpacing: 
+23 дек. 2020 21:04:09,417 [pool-4-thread-1] DEBUG ru.sfedu.course_project.tools.Helpers - FIND
+23 дек. 2020 21:04:09,417 [pool-4-thread-2] ERROR ru.sfedu.course_project.converters.FontConverter - java.lang.IllegalArgumentException: No enum constant ru.sfedu.course_project.bean.FontCase.
+23 дек. 2020 21:04:09,417 [pool-4-thread-1] DEBUG ru.sfedu.course_project.tools.Helpers - x=0
+23 дек. 2020 21:04:09,417 [pool-4-thread-1] DEBUG ru.sfedu.course_project.tools.Helpers - x: 0
+23 дек. 2020 21:04:09,417 [pool-4-thread-1] DEBUG ru.sfedu.course_project.tools.Helpers - FIND
+23 дек. 2020 21:04:09,418 [pool-4-thread-1] DEBUG ru.sfedu.course_project.tools.Helpers - y=0
+23 дек. 2020 21:04:09,418 [pool-4-thread-2] DEBUG ru.sfedu.course_project.tools.Helpers - FIND
+23 дек. 2020 21:04:09,418 [pool-4-thread-2] DEBUG ru.sfedu.course_project.tools.Helpers - width=100
+23 дек. 2020 21:04:09,418 [pool-4-thread-1] DEBUG ru.sfedu.course_project.tools.Helpers - y: 0
+23 дек. 2020 21:04:09,418 [pool-4-thread-2] DEBUG ru.sfedu.course_project.tools.Helpers - width: 100
+23 дек. 2020 21:04:09,418 [pool-4-thread-1] DEBUG ru.sfedu.course_project.tools.Helpers - FIND
+23 дек. 2020 21:04:09,418 [pool-4-thread-2] DEBUG ru.sfedu.course_project.tools.Helpers - FIND
+23 дек. 2020 21:04:09,418 [pool-4-thread-1] DEBUG ru.sfedu.course_project.tools.Helpers - rotation=0
+23 дек. 2020 21:04:09,418 [pool-4-thread-2] DEBUG ru.sfedu.course_project.tools.Helpers - height=100
+23 дек. 2020 21:04:09,418 [pool-4-thread-2] DEBUG ru.sfedu.course_project.tools.Helpers - height: 100
+23 дек. 2020 21:04:09,419 [pool-4-thread-1] DEBUG ru.sfedu.course_project.tools.Helpers - rotation: 0
+23 дек. 2020 21:04:09,419 [pool-4-thread-2] DEBUG ru.sfedu.course_project.tools.Helpers - FIND
+23 дек. 2020 21:04:09,419 [pool-4-thread-2] DEBUG ru.sfedu.course_project.tools.Helpers - x=0
+23 дек. 2020 21:04:09,419 [pool-4-thread-1] DEBUG ru.sfedu.course_project.converters.LayoutConverter - [LayoutConverter] layout converted
+23 дек. 2020 21:04:09,419 [pool-4-thread-2] DEBUG ru.sfedu.course_project.tools.Helpers - x: 0
+23 дек. 2020 21:04:09,419 [pool-4-thread-2] DEBUG ru.sfedu.course_project.tools.Helpers - FIND
+23 дек. 2020 21:04:09,419 [pool-4-thread-2] DEBUG ru.sfedu.course_project.tools.Helpers - y=0
+23 дек. 2020 21:04:09,419 [pool-4-thread-2] DEBUG ru.sfedu.course_project.tools.Helpers - y: 0
+23 дек. 2020 21:04:09,420 [pool-4-thread-2] DEBUG ru.sfedu.course_project.tools.Helpers - FIND
+23 дек. 2020 21:04:09,420 [pool-4-thread-2] DEBUG ru.sfedu.course_project.tools.Helpers - rotation=0
+23 дек. 2020 21:04:09,420 [pool-4-thread-2] DEBUG ru.sfedu.course_project.tools.Helpers - rotation: 0
+23 дек. 2020 21:04:09,420 [pool-4-thread-2] DEBUG ru.sfedu.course_project.converters.LayoutConverter - [LayoutConverter] layout converted
+23 дек. 2020 21:04:09,421 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Collection was retrieved: content
+23 дек. 2020 21:04:09,421 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [writeCollection] Attempt to write in content
+23 дек. 2020 21:04:09,435 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [writeCollection] Collection was wrote
+23 дек. 2020 21:04:09,436 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Content added in collection: success
+23 дек. 2020 21:04:09,436 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value: Content{font=Font{family='Roboto', size='14px', letterSpacing='', lineSpacing='', fontCase=normal}, text='Content'} }
+23 дек. 2020 21:41:39,094 [main] WARN  ru.sfedu.course_project.Main - arguments {presentationId=7aff8196-8f1b-4bad-95b4-7aeae7e1645d, slideId=fc6af4d0-61e9-443b-8aa5-3309690ca480, role=editor, method=addElementInSlide, datatype=csv, id=1b1cc523-a2f9-41b2-9397-cc369032482f}
+23 дек. 2020 21:41:39,102 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [presentationId=7aff8196-8f1b-4bad-95b4-7aeae7e1645d, slideId=fc6af4d0-61e9-443b-8aa5-3309690ca480, role=editor, method=addElementInSlide, datatype=csv, id=1b1cc523-a2f9-41b2-9397-cc369032482f]
+23 дек. 2020 21:41:39,105 [main] INFO  ru.sfedu.course_project.Main - Attempt to create csv data provider
+23 дек. 2020 21:41:39,115 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: csv
+23 дек. 2020 21:41:39,118 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: addElementInSlide
+23 дек. 2020 21:41:39,119 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+23 дек. 2020 21:41:39,122 [main] DEBUG ru.sfedu.course_project.tools.ArgsValidator - [validate] Validate: [presentationId, slideId, elementType]
+23 дек. 2020 21:41:39,123 [main] DEBUG ru.sfedu.course_project.tools.ArgsValidator - [validate] Null fields: [elementType]
+23 дек. 2020 21:41:39,124 [main] DEBUG ru.sfedu.course_project.tools.ArgsValidator - [validate] Null fields: [elementType]
+23 дек. 2020 21:41:39,127 [main] INFO  ru.sfedu.course_project.tools.Result - { status: error, value: Some of fields is not provided: [elementType] }
+23 дек. 2020 21:42:11,475 [main] WARN  ru.sfedu.course_project.Main - arguments {presentationId=7aff8196-8f1b-4bad-95b4-7aeae7e1645d, slideId=fc6af4d0-61e9-443b-8aa5-3309690ca480, role=editor, method=addElementInSlide, datatype=csv, id=1b1cc523-a2f9-41b2-9397-cc369032482f, elementType=shape}
+23 дек. 2020 21:42:11,481 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [presentationId=7aff8196-8f1b-4bad-95b4-7aeae7e1645d, slideId=fc6af4d0-61e9-443b-8aa5-3309690ca480, role=editor, method=addElementInSlide, datatype=csv, id=1b1cc523-a2f9-41b2-9397-cc369032482f, elementType=shape]
+23 дек. 2020 21:42:11,483 [main] INFO  ru.sfedu.course_project.Main - Attempt to create csv data provider
+23 дек. 2020 21:42:11,492 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: csv
+23 дек. 2020 21:42:11,494 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: addElementInSlide
+23 дек. 2020 21:42:11,495 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+23 дек. 2020 21:42:11,498 [main] DEBUG ru.sfedu.course_project.tools.ArgsValidator - [validate] Validate: [presentationId, slideId, elementType]
+23 дек. 2020 21:42:11,499 [main] DEBUG ru.sfedu.course_project.tools.ArgsValidator - [validate] Null fields: []
+23 дек. 2020 21:42:11,500 [main] DEBUG ru.sfedu.course_project.tools.ArgsValidator - [validate] Null fields: []
+23 дек. 2020 21:42:11,503 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value:  }
+23 дек. 2020 21:42:11,532 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getInstanceExistenceByField] Get: Presentation; id: 7aff8196-8f1b-4bad-95b4-7aeae7e1645d
+23 дек. 2020 21:42:11,533 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - presentation id: 7aff8196-8f1b-4bad-95b4-7aeae7e1645d
+23 дек. 2020 21:42:11,536 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Attempt to get collection: presentation
+23 дек. 2020 21:42:11,763 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Collection was retrieved: presentation
+23 дек. 2020 21:42:11,763 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Attempt to find presentation: 7aff8196-8f1b-4bad-95b4-7aeae7e1645d
+23 дек. 2020 21:42:11,789 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - list instance: [Presentation{id=7aff8196-8f1b-4bad-95b4-7aeae7e1645d, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}]
+23 дек. 2020 21:42:11,792 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Optional[Presentation{id=7aff8196-8f1b-4bad-95b4-7aeae7e1645d, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}]
+23 дек. 2020 21:42:11,792 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Optional[Presentation{id=7aff8196-8f1b-4bad-95b4-7aeae7e1645d, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}]
+23 дек. 2020 21:42:11,794 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getInstanceExistenceByField] Get: Slide; id: fc6af4d0-61e9-443b-8aa5-3309690ca480
+23 дек. 2020 21:42:11,794 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - slide id: fc6af4d0-61e9-443b-8aa5-3309690ca480
+23 дек. 2020 21:42:11,794 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Attempt to get collection: slide
+23 дек. 2020 21:42:11,810 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Collection was retrieved: slide
+23 дек. 2020 21:42:11,811 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Attempt to find slide: fc6af4d0-61e9-443b-8aa5-3309690ca480
+23 дек. 2020 21:42:11,827 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Optional[Slide{id=fc6af4d0-61e9-443b-8aa5-3309690ca480, name='Slide', index=0, presentationId=7aff8196-8f1b-4bad-95b4-7aeae7e1645d}]
+23 дек. 2020 21:42:11,828 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Attempt to add: shape
+23 дек. 2020 21:42:11,828 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - Shape creating
+23 дек. 2020 21:42:11,829 [main] DEBUG ru.sfedu.course_project.tools.ArgsValidator - [validate] Validate: [presentationId, slideId, elementType]
+23 дек. 2020 21:42:11,829 [main] DEBUG ru.sfedu.course_project.tools.ArgsValidator - [validate] Null fields: []
+23 дек. 2020 21:42:11,829 [main] DEBUG ru.sfedu.course_project.tools.ArgsValidator - [validate] Null fields: []
+23 дек. 2020 21:42:11,829 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value:  }
+23 дек. 2020 21:42:12,141 [main] DEBUG ru.sfedu.course_project.tools.Creator - Set field: slideId; Value: fc6af4d0-61e9-443b-8aa5-3309690ca480
+23 дек. 2020 21:42:12,142 [main] DEBUG ru.sfedu.course_project.tools.Creator - Set field: presentationId; Value: 7aff8196-8f1b-4bad-95b4-7aeae7e1645d
+23 дек. 2020 21:42:12,142 [main] DEBUG ru.sfedu.course_project.tools.Creator - Set field: elementType; Value: shape
+23 дек. 2020 21:42:12,144 [main] ERROR ru.sfedu.course_project.tools.Creator - java.lang.NullPointerException: Name is null
+23 дек. 2020 21:42:12,144 [main] ERROR ru.sfedu.course_project.tools.Creator - Unable to create shape
+23 дек. 2020 21:42:12,145 [main] INFO  ru.sfedu.course_project.tools.Result - { status: error, value: Unable to create shape }
+23 дек. 2020 21:43:33,725 [main] WARN  ru.sfedu.course_project.Main - arguments {presentationId=7aff8196-8f1b-4bad-95b4-7aeae7e1645d, slideId=fc6af4d0-61e9-443b-8aa5-3309690ca480, role=editor, method=removeSlideElement, datatype=csv, id=1b1cc523-a2f9-41b2-9397-cc369032482f, elementType=shape}
+23 дек. 2020 21:43:33,731 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [presentationId=7aff8196-8f1b-4bad-95b4-7aeae7e1645d, slideId=fc6af4d0-61e9-443b-8aa5-3309690ca480, role=editor, method=removeSlideElement, datatype=csv, id=1b1cc523-a2f9-41b2-9397-cc369032482f, elementType=shape]
+23 дек. 2020 21:43:33,733 [main] INFO  ru.sfedu.course_project.Main - Attempt to create csv data provider
+23 дек. 2020 21:43:33,742 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: csv
+23 дек. 2020 21:43:33,746 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: removeSlideElement
+23 дек. 2020 21:43:33,746 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+23 дек. 2020 21:43:33,748 [main] DEBUG ru.sfedu.course_project.tools.ArgsValidator - [validate] Validate: [presentationId, slideId, elementType, id]
+23 дек. 2020 21:43:33,750 [main] DEBUG ru.sfedu.course_project.tools.ArgsValidator - [validate] Null fields: []
+23 дек. 2020 21:43:33,750 [main] DEBUG ru.sfedu.course_project.tools.ArgsValidator - [validate] Null fields: []
+23 дек. 2020 21:43:33,752 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value:  }
+23 дек. 2020 21:43:33,773 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getInstanceExistenceByField] Get: Presentation; id: 7aff8196-8f1b-4bad-95b4-7aeae7e1645d
+23 дек. 2020 21:43:33,775 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - presentation id: 7aff8196-8f1b-4bad-95b4-7aeae7e1645d
+23 дек. 2020 21:43:33,779 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Attempt to get collection: presentation
+23 дек. 2020 21:43:33,942 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Collection was retrieved: presentation
+23 дек. 2020 21:43:33,942 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Attempt to find presentation: 7aff8196-8f1b-4bad-95b4-7aeae7e1645d
+23 дек. 2020 21:43:33,985 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - list instance: [Presentation{id=7aff8196-8f1b-4bad-95b4-7aeae7e1645d, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}]
+23 дек. 2020 21:43:33,988 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Optional[Presentation{id=7aff8196-8f1b-4bad-95b4-7aeae7e1645d, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}]
+23 дек. 2020 21:43:33,989 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Optional[Presentation{id=7aff8196-8f1b-4bad-95b4-7aeae7e1645d, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}]
+23 дек. 2020 21:43:33,990 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getInstanceExistenceByField] Get: Slide; id: fc6af4d0-61e9-443b-8aa5-3309690ca480
+23 дек. 2020 21:43:33,992 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - slide id: fc6af4d0-61e9-443b-8aa5-3309690ca480
+23 дек. 2020 21:43:33,992 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Attempt to get collection: slide
+23 дек. 2020 21:43:34,005 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Collection was retrieved: slide
+23 дек. 2020 21:43:34,005 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Attempt to find slide: fc6af4d0-61e9-443b-8aa5-3309690ca480
+23 дек. 2020 21:43:34,053 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Optional[Slide{id=fc6af4d0-61e9-443b-8aa5-3309690ca480, name='Slide', index=0, presentationId=7aff8196-8f1b-4bad-95b4-7aeae7e1645d}]
+23 дек. 2020 21:43:34,056 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getInstanceExistenceByField] Get: Shape; id: 1b1cc523-a2f9-41b2-9397-cc369032482f
+23 дек. 2020 21:43:34,057 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - shape id: 1b1cc523-a2f9-41b2-9397-cc369032482f
+23 дек. 2020 21:43:34,058 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Optional.empty
+23 дек. 2020 21:43:34,060 [main] INFO  ru.sfedu.course_project.tools.Result - { status: error, value: Instance not found id }
+23 дек. 2020 21:44:19,077 [main] WARN  ru.sfedu.course_project.Main - arguments {presentationId=7aff8196-8f1b-4bad-95b4-7aeae7e1645d, slideId=fc6af4d0-61e9-443b-8aa5-3309690ca480, role=editor, method=removeSlideElement, datatype=csv, id=1b1cc523-a2f9-41b2-9397-cc369032482f, elementType=shape}
+23 дек. 2020 21:44:19,083 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [presentationId=7aff8196-8f1b-4bad-95b4-7aeae7e1645d, slideId=fc6af4d0-61e9-443b-8aa5-3309690ca480, role=editor, method=removeSlideElement, datatype=csv, id=1b1cc523-a2f9-41b2-9397-cc369032482f, elementType=shape]
+23 дек. 2020 21:44:19,084 [main] INFO  ru.sfedu.course_project.Main - Attempt to create csv data provider
+23 дек. 2020 21:44:19,091 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: csv
+23 дек. 2020 21:44:19,094 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: removeSlideElement
+23 дек. 2020 21:44:19,094 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+23 дек. 2020 21:44:19,097 [main] DEBUG ru.sfedu.course_project.tools.ArgsValidator - [validate] Validate: [presentationId, slideId, elementType, id]
+23 дек. 2020 21:44:19,098 [main] DEBUG ru.sfedu.course_project.tools.ArgsValidator - [validate] Null fields: []
+23 дек. 2020 21:44:19,099 [main] DEBUG ru.sfedu.course_project.tools.ArgsValidator - [validate] Null fields: []
+23 дек. 2020 21:44:19,102 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value:  }
+23 дек. 2020 21:44:19,126 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getInstanceExistenceByField] Get: Presentation; id: 7aff8196-8f1b-4bad-95b4-7aeae7e1645d
+23 дек. 2020 21:44:19,127 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - presentation id: 7aff8196-8f1b-4bad-95b4-7aeae7e1645d
+23 дек. 2020 21:44:19,131 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Attempt to get collection: presentation
+23 дек. 2020 21:44:19,300 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Collection was retrieved: presentation
+23 дек. 2020 21:44:19,301 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Attempt to find presentation: 7aff8196-8f1b-4bad-95b4-7aeae7e1645d
+23 дек. 2020 21:44:19,336 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - list instance: [Presentation{id=7aff8196-8f1b-4bad-95b4-7aeae7e1645d, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}]
+23 дек. 2020 21:44:19,338 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Optional[Presentation{id=7aff8196-8f1b-4bad-95b4-7aeae7e1645d, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}]
+23 дек. 2020 21:44:19,338 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Optional[Presentation{id=7aff8196-8f1b-4bad-95b4-7aeae7e1645d, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}]
+23 дек. 2020 21:44:19,341 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getInstanceExistenceByField] Get: Slide; id: fc6af4d0-61e9-443b-8aa5-3309690ca480
+23 дек. 2020 21:44:19,341 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - slide id: fc6af4d0-61e9-443b-8aa5-3309690ca480
+23 дек. 2020 21:44:19,341 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Attempt to get collection: slide
+23 дек. 2020 21:44:19,371 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Collection was retrieved: slide
+23 дек. 2020 21:44:19,372 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Attempt to find slide: fc6af4d0-61e9-443b-8aa5-3309690ca480
+23 дек. 2020 21:44:19,405 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Optional[Slide{id=fc6af4d0-61e9-443b-8aa5-3309690ca480, name='Slide', index=0, presentationId=7aff8196-8f1b-4bad-95b4-7aeae7e1645d}]
+23 дек. 2020 21:44:19,408 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getInstanceExistenceByField] Get: Shape; id: 1b1cc523-a2f9-41b2-9397-cc369032482f
+23 дек. 2020 21:44:19,408 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - shape id: 1b1cc523-a2f9-41b2-9397-cc369032482f
+23 дек. 2020 21:44:19,408 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Optional.empty
+23 дек. 2020 21:44:19,411 [main] INFO  ru.sfedu.course_project.tools.Result - { status: error, value: Instance not found id }
+23 дек. 2020 21:45:32,942 [main] WARN  ru.sfedu.course_project.Main - arguments {presentationId=7aff8196-8f1b-4bad-95b4-7aeae7e1645d, slideId=fc6af4d0-61e9-443b-8aa5-3309690ca480, role=editor, method=removeSlideElement, datatype=csv, id=1b1cc523-a2f9-41b2-9397-cc369032482f, elementType=shape}
+23 дек. 2020 21:45:32,951 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [presentationId=7aff8196-8f1b-4bad-95b4-7aeae7e1645d, slideId=fc6af4d0-61e9-443b-8aa5-3309690ca480, role=editor, method=removeSlideElement, datatype=csv, id=1b1cc523-a2f9-41b2-9397-cc369032482f, elementType=shape]
+23 дек. 2020 21:45:32,953 [main] INFO  ru.sfedu.course_project.Main - Attempt to create csv data provider
+23 дек. 2020 21:45:32,961 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: csv
+23 дек. 2020 21:45:32,964 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: removeSlideElement
+23 дек. 2020 21:45:32,964 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+23 дек. 2020 21:45:32,966 [main] DEBUG ru.sfedu.course_project.tools.ArgsValidator - [validate] Validate: [presentationId, slideId, elementType, id]
+23 дек. 2020 21:45:32,968 [main] DEBUG ru.sfedu.course_project.tools.ArgsValidator - [validate] Null fields: []
+23 дек. 2020 21:45:32,968 [main] DEBUG ru.sfedu.course_project.tools.ArgsValidator - [validate] Null fields: []
+23 дек. 2020 21:45:32,971 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value:  }
+23 дек. 2020 21:45:32,992 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getInstanceExistenceByField] Get: Presentation; id: 7aff8196-8f1b-4bad-95b4-7aeae7e1645d
+23 дек. 2020 21:45:32,992 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - presentation id: 7aff8196-8f1b-4bad-95b4-7aeae7e1645d
+23 дек. 2020 21:45:32,995 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Attempt to get collection: presentation
+23 дек. 2020 21:45:33,167 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Collection was retrieved: presentation
+23 дек. 2020 21:45:33,167 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Attempt to find presentation: 7aff8196-8f1b-4bad-95b4-7aeae7e1645d
+23 дек. 2020 21:45:33,191 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - list instance: [Presentation{id=7aff8196-8f1b-4bad-95b4-7aeae7e1645d, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}]
+23 дек. 2020 21:45:33,194 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Optional[Presentation{id=7aff8196-8f1b-4bad-95b4-7aeae7e1645d, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}]
+23 дек. 2020 21:45:33,194 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Optional[Presentation{id=7aff8196-8f1b-4bad-95b4-7aeae7e1645d, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}]
+23 дек. 2020 21:45:33,196 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getInstanceExistenceByField] Get: Slide; id: fc6af4d0-61e9-443b-8aa5-3309690ca480
+23 дек. 2020 21:45:33,197 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - slide id: fc6af4d0-61e9-443b-8aa5-3309690ca480
+23 дек. 2020 21:45:33,197 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Attempt to get collection: slide
+23 дек. 2020 21:45:33,208 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Collection was retrieved: slide
+23 дек. 2020 21:45:33,209 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Attempt to find slide: fc6af4d0-61e9-443b-8aa5-3309690ca480
+23 дек. 2020 21:45:33,224 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Optional[Slide{id=fc6af4d0-61e9-443b-8aa5-3309690ca480, name='Slide', index=0, presentationId=7aff8196-8f1b-4bad-95b4-7aeae7e1645d}]
+23 дек. 2020 21:45:33,226 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getInstanceExistenceByField] Get: Shape; id: 1b1cc523-a2f9-41b2-9397-cc369032482f
+23 дек. 2020 21:45:33,227 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - shape id: 1b1cc523-a2f9-41b2-9397-cc369032482f
+23 дек. 2020 21:45:33,227 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Optional.empty
+23 дек. 2020 21:45:33,229 [main] INFO  ru.sfedu.course_project.tools.Result - { status: error, value: Instance not found1b1cc523-a2f9-41b2-9397-cc369032482f }
+23 дек. 2020 21:46:42,727 [main] WARN  ru.sfedu.course_project.Main - arguments {presentationId=7aff8196-8f1b-4bad-95b4-7aeae7e1645d, slideId=fc6af4d0-61e9-443b-8aa5-3309690ca480, role=editor, method=removeSlideElement, datatype=csv, id=1b1cc523-a2f9-41b2-9397-cc369032482f, elementType=shape}
+23 дек. 2020 21:46:42,733 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [presentationId=7aff8196-8f1b-4bad-95b4-7aeae7e1645d, slideId=fc6af4d0-61e9-443b-8aa5-3309690ca480, role=editor, method=removeSlideElement, datatype=csv, id=1b1cc523-a2f9-41b2-9397-cc369032482f, elementType=shape]
+23 дек. 2020 21:46:42,735 [main] INFO  ru.sfedu.course_project.Main - Attempt to create csv data provider
+23 дек. 2020 21:46:42,744 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: csv
+23 дек. 2020 21:46:42,747 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: removeSlideElement
+23 дек. 2020 21:46:42,747 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+23 дек. 2020 21:46:42,749 [main] DEBUG ru.sfedu.course_project.tools.ArgsValidator - [validate] Validate: [presentationId, slideId, elementType, id]
+23 дек. 2020 21:46:42,750 [main] DEBUG ru.sfedu.course_project.tools.ArgsValidator - [validate] Null fields: []
+23 дек. 2020 21:46:42,751 [main] DEBUG ru.sfedu.course_project.tools.ArgsValidator - [validate] Null fields: []
+23 дек. 2020 21:46:42,754 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value:  }
+23 дек. 2020 21:46:42,779 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getInstanceExistenceByField] Get: Presentation; id: 7aff8196-8f1b-4bad-95b4-7aeae7e1645d
+23 дек. 2020 21:46:42,780 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - presentation id: 7aff8196-8f1b-4bad-95b4-7aeae7e1645d
+23 дек. 2020 21:46:42,784 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Attempt to get collection: presentation
+23 дек. 2020 21:46:42,993 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Collection was retrieved: presentation
+23 дек. 2020 21:46:42,994 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Attempt to find presentation: 7aff8196-8f1b-4bad-95b4-7aeae7e1645d
+23 дек. 2020 21:46:43,028 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - list instance: [Presentation{id=7aff8196-8f1b-4bad-95b4-7aeae7e1645d, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}]
+23 дек. 2020 21:46:43,030 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Optional[Presentation{id=7aff8196-8f1b-4bad-95b4-7aeae7e1645d, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}]
+23 дек. 2020 21:46:43,031 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Optional[Presentation{id=7aff8196-8f1b-4bad-95b4-7aeae7e1645d, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}]
+23 дек. 2020 21:46:43,032 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getInstanceExistenceByField] Get: Slide; id: fc6af4d0-61e9-443b-8aa5-3309690ca480
+23 дек. 2020 21:46:43,032 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - slide id: fc6af4d0-61e9-443b-8aa5-3309690ca480
+23 дек. 2020 21:46:43,032 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Attempt to get collection: slide
+23 дек. 2020 21:46:43,055 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Collection was retrieved: slide
+23 дек. 2020 21:46:43,056 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Attempt to find slide: fc6af4d0-61e9-443b-8aa5-3309690ca480
+23 дек. 2020 21:46:43,073 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Optional[Slide{id=fc6af4d0-61e9-443b-8aa5-3309690ca480, name='Slide', index=0, presentationId=7aff8196-8f1b-4bad-95b4-7aeae7e1645d}]
+23 дек. 2020 21:46:43,076 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getInstanceExistenceByField] Get: Shape; id: 1b1cc523-a2f9-41b2-9397-cc369032482f
+23 дек. 2020 21:46:43,077 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - shape id: 1b1cc523-a2f9-41b2-9397-cc369032482f
+23 дек. 2020 21:46:43,078 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Attempt to get collection: shape
+23 дек. 2020 21:46:43,502 [pool-4-thread-8] DEBUG ru.sfedu.course_project.tools.Helpers - FIND
+23 дек. 2020 21:46:43,502 [pool-4-thread-6] DEBUG ru.sfedu.course_project.tools.Helpers - FIND
+23 дек. 2020 21:46:43,502 [pool-4-thread-2] DEBUG ru.sfedu.course_project.tools.Helpers - FIND
+23 дек. 2020 21:46:43,502 [pool-4-thread-7] DEBUG ru.sfedu.course_project.tools.Helpers - FIND
+23 дек. 2020 21:46:43,502 [pool-4-thread-3] DEBUG ru.sfedu.course_project.tools.Helpers - FIND
+23 дек. 2020 21:46:43,503 [pool-4-thread-8] DEBUG ru.sfedu.course_project.tools.Helpers - width=100
+23 дек. 2020 21:46:43,503 [pool-4-thread-6] DEBUG ru.sfedu.course_project.tools.Helpers - width=230
+23 дек. 2020 21:46:43,503 [pool-4-thread-7] DEBUG ru.sfedu.course_project.tools.Helpers - width=230
+23 дек. 2020 21:46:43,503 [pool-4-thread-8] DEBUG ru.sfedu.course_project.tools.Helpers - width: 100
+23 дек. 2020 21:46:43,503 [pool-4-thread-6] DEBUG ru.sfedu.course_project.tools.Helpers - width: 230
+23 дек. 2020 21:46:43,503 [pool-4-thread-2] DEBUG ru.sfedu.course_project.tools.Helpers - width=230
+23 дек. 2020 21:46:43,503 [pool-4-thread-8] DEBUG ru.sfedu.course_project.tools.Helpers - FIND
+23 дек. 2020 21:46:43,503 [pool-4-thread-7] DEBUG ru.sfedu.course_project.tools.Helpers - width: 230
+23 дек. 2020 21:46:43,503 [pool-4-thread-6] DEBUG ru.sfedu.course_project.tools.Helpers - FIND
+23 дек. 2020 21:46:43,503 [pool-4-thread-7] DEBUG ru.sfedu.course_project.tools.Helpers - FIND
+23 дек. 2020 21:46:43,503 [pool-4-thread-2] DEBUG ru.sfedu.course_project.tools.Helpers - width: 230
+23 дек. 2020 21:46:43,503 [pool-4-thread-6] DEBUG ru.sfedu.course_project.tools.Helpers - height=412
+23 дек. 2020 21:46:43,503 [pool-4-thread-7] DEBUG ru.sfedu.course_project.tools.Helpers - height=412
+23 дек. 2020 21:46:43,503 [pool-4-thread-8] DEBUG ru.sfedu.course_project.tools.Helpers - height=100
+23 дек. 2020 21:46:43,503 [pool-4-thread-3] DEBUG ru.sfedu.course_project.tools.Helpers - width=230
+23 дек. 2020 21:46:43,503 [pool-4-thread-2] DEBUG ru.sfedu.course_project.tools.Helpers - FIND
+23 дек. 2020 21:46:43,504 [pool-4-thread-6] DEBUG ru.sfedu.course_project.tools.Helpers - height: 412
+23 дек. 2020 21:46:43,504 [pool-4-thread-7] DEBUG ru.sfedu.course_project.tools.Helpers - height: 412
+23 дек. 2020 21:46:43,504 [pool-4-thread-8] DEBUG ru.sfedu.course_project.tools.Helpers - height: 100
+23 дек. 2020 21:46:43,504 [pool-4-thread-2] DEBUG ru.sfedu.course_project.tools.Helpers - height=412
+23 дек. 2020 21:46:43,504 [pool-4-thread-7] DEBUG ru.sfedu.course_project.tools.Helpers - FIND
+23 дек. 2020 21:46:43,504 [pool-4-thread-3] DEBUG ru.sfedu.course_project.tools.Helpers - width: 230
+23 дек. 2020 21:46:43,504 [pool-4-thread-6] DEBUG ru.sfedu.course_project.tools.Helpers - FIND
+23 дек. 2020 21:46:43,504 [pool-4-thread-8] DEBUG ru.sfedu.course_project.tools.Helpers - FIND
+23 дек. 2020 21:46:43,504 [pool-4-thread-7] DEBUG ru.sfedu.course_project.tools.Helpers - x=100
+23 дек. 2020 21:46:43,504 [pool-4-thread-6] DEBUG ru.sfedu.course_project.tools.Helpers - x=100
+23 дек. 2020 21:46:43,504 [pool-4-thread-2] DEBUG ru.sfedu.course_project.tools.Helpers - height: 412
+23 дек. 2020 21:46:43,504 [pool-4-thread-7] DEBUG ru.sfedu.course_project.tools.Helpers - x: 100
+23 дек. 2020 21:46:43,504 [pool-4-thread-8] DEBUG ru.sfedu.course_project.tools.Helpers - x=0
+23 дек. 2020 21:46:43,504 [pool-4-thread-3] DEBUG ru.sfedu.course_project.tools.Helpers - FIND
+23 дек. 2020 21:46:43,504 [pool-4-thread-2] DEBUG ru.sfedu.course_project.tools.Helpers - FIND
+23 дек. 2020 21:46:43,504 [pool-4-thread-6] DEBUG ru.sfedu.course_project.tools.Helpers - x: 100
+23 дек. 2020 21:46:43,504 [pool-4-thread-7] DEBUG ru.sfedu.course_project.tools.Helpers - FIND
+23 дек. 2020 21:46:43,504 [pool-4-thread-3] DEBUG ru.sfedu.course_project.tools.Helpers - height=412
+23 дек. 2020 21:46:43,504 [pool-4-thread-7] DEBUG ru.sfedu.course_project.tools.Helpers - y=132
+23 дек. 2020 21:46:43,505 [pool-4-thread-8] DEBUG ru.sfedu.course_project.tools.Helpers - x: 0
+23 дек. 2020 21:46:43,505 [pool-4-thread-2] DEBUG ru.sfedu.course_project.tools.Helpers - x=100
+23 дек. 2020 21:46:43,505 [pool-4-thread-3] DEBUG ru.sfedu.course_project.tools.Helpers - height: 412
+23 дек. 2020 21:46:43,505 [pool-4-thread-7] DEBUG ru.sfedu.course_project.tools.Helpers - y: 132
+23 дек. 2020 21:46:43,505 [pool-4-thread-8] DEBUG ru.sfedu.course_project.tools.Helpers - FIND
+23 дек. 2020 21:46:43,505 [pool-4-thread-3] DEBUG ru.sfedu.course_project.tools.Helpers - FIND
+23 дек. 2020 21:46:43,505 [pool-4-thread-7] DEBUG ru.sfedu.course_project.tools.Helpers - FIND
+23 дек. 2020 21:46:43,505 [pool-4-thread-8] DEBUG ru.sfedu.course_project.tools.Helpers - y=0
+23 дек. 2020 21:46:43,505 [pool-4-thread-6] DEBUG ru.sfedu.course_project.tools.Helpers - FIND
+23 дек. 2020 21:46:43,505 [pool-4-thread-7] DEBUG ru.sfedu.course_project.tools.Helpers - rotation=31
+23 дек. 2020 21:46:43,505 [pool-4-thread-2] DEBUG ru.sfedu.course_project.tools.Helpers - x: 100
+23 дек. 2020 21:46:43,505 [pool-4-thread-3] DEBUG ru.sfedu.course_project.tools.Helpers - x=100
+23 дек. 2020 21:46:43,505 [pool-4-thread-2] DEBUG ru.sfedu.course_project.tools.Helpers - FIND
+23 дек. 2020 21:46:43,505 [pool-4-thread-6] DEBUG ru.sfedu.course_project.tools.Helpers - y=132
+23 дек. 2020 21:46:43,505 [pool-4-thread-8] DEBUG ru.sfedu.course_project.tools.Helpers - y: 0
+23 дек. 2020 21:46:43,505 [pool-4-thread-3] DEBUG ru.sfedu.course_project.tools.Helpers - x: 100
+23 дек. 2020 21:46:43,505 [pool-4-thread-2] DEBUG ru.sfedu.course_project.tools.Helpers - y=132
+23 дек. 2020 21:46:43,505 [pool-4-thread-7] DEBUG ru.sfedu.course_project.tools.Helpers - rotation: 31
+23 дек. 2020 21:46:43,505 [pool-4-thread-8] DEBUG ru.sfedu.course_project.tools.Helpers - FIND
+23 дек. 2020 21:46:43,505 [pool-4-thread-3] DEBUG ru.sfedu.course_project.tools.Helpers - FIND
+23 дек. 2020 21:46:43,505 [pool-4-thread-6] DEBUG ru.sfedu.course_project.tools.Helpers - y: 132
+23 дек. 2020 21:46:43,506 [pool-4-thread-2] DEBUG ru.sfedu.course_project.tools.Helpers - y: 132
+23 дек. 2020 21:46:43,506 [pool-4-thread-3] DEBUG ru.sfedu.course_project.tools.Helpers - y=132
+23 дек. 2020 21:46:43,506 [pool-4-thread-8] DEBUG ru.sfedu.course_project.tools.Helpers - rotation=0
+23 дек. 2020 21:46:43,506 [pool-4-thread-6] DEBUG ru.sfedu.course_project.tools.Helpers - FIND
+23 дек. 2020 21:46:43,506 [pool-4-thread-7] DEBUG ru.sfedu.course_project.converters.LayoutConverter - [LayoutConverter] layout converted
+23 дек. 2020 21:46:43,506 [pool-4-thread-6] DEBUG ru.sfedu.course_project.tools.Helpers - rotation=31
+23 дек. 2020 21:46:43,506 [pool-4-thread-2] DEBUG ru.sfedu.course_project.tools.Helpers - FIND
+23 дек. 2020 21:46:43,506 [pool-4-thread-3] DEBUG ru.sfedu.course_project.tools.Helpers - y: 132
+23 дек. 2020 21:46:43,506 [pool-4-thread-2] DEBUG ru.sfedu.course_project.tools.Helpers - rotation=31
+23 дек. 2020 21:46:43,506 [pool-4-thread-3] DEBUG ru.sfedu.course_project.tools.Helpers - FIND
+23 дек. 2020 21:46:43,506 [pool-4-thread-6] DEBUG ru.sfedu.course_project.tools.Helpers - rotation: 31
+23 дек. 2020 21:46:43,506 [pool-4-thread-8] DEBUG ru.sfedu.course_project.tools.Helpers - rotation: 0
+23 дек. 2020 21:46:43,506 [pool-4-thread-3] DEBUG ru.sfedu.course_project.tools.Helpers - rotation=31
+23 дек. 2020 21:46:43,506 [pool-4-thread-2] DEBUG ru.sfedu.course_project.tools.Helpers - rotation: 31
+23 дек. 2020 21:46:43,506 [pool-4-thread-8] DEBUG ru.sfedu.course_project.converters.LayoutConverter - [LayoutConverter] layout converted
+23 дек. 2020 21:46:43,506 [pool-4-thread-3] DEBUG ru.sfedu.course_project.tools.Helpers - rotation: 31
+23 дек. 2020 21:46:43,506 [pool-4-thread-2] DEBUG ru.sfedu.course_project.converters.LayoutConverter - [LayoutConverter] layout converted
+23 дек. 2020 21:46:43,506 [pool-4-thread-6] DEBUG ru.sfedu.course_project.converters.LayoutConverter - [LayoutConverter] layout converted
+23 дек. 2020 21:46:43,506 [pool-4-thread-7] DEBUG ru.sfedu.course_project.tools.Helpers - FIND
+23 дек. 2020 21:46:43,507 [pool-4-thread-8] DEBUG ru.sfedu.course_project.tools.Helpers - FIND
+23 дек. 2020 21:46:43,507 [pool-4-thread-3] DEBUG ru.sfedu.course_project.converters.LayoutConverter - [LayoutConverter] layout converted
+23 дек. 2020 21:46:43,507 [pool-4-thread-6] DEBUG ru.sfedu.course_project.tools.Helpers - FIND
+23 дек. 2020 21:46:43,507 [pool-4-thread-8] DEBUG ru.sfedu.course_project.tools.Helpers - fillColor=
+23 дек. 2020 21:46:43,507 [pool-4-thread-7] DEBUG ru.sfedu.course_project.tools.Helpers - fillColor=
+23 дек. 2020 21:46:43,507 [pool-4-thread-2] DEBUG ru.sfedu.course_project.tools.Helpers - FIND
+23 дек. 2020 21:46:43,508 [pool-4-thread-2] DEBUG ru.sfedu.course_project.tools.Helpers - fillColor=
+23 дек. 2020 21:46:43,508 [pool-4-thread-8] DEBUG ru.sfedu.course_project.tools.Helpers - fillColor: 
+23 дек. 2020 21:46:43,508 [pool-4-thread-3] DEBUG ru.sfedu.course_project.tools.Helpers - FIND
+23 дек. 2020 21:46:43,508 [pool-4-thread-6] DEBUG ru.sfedu.course_project.tools.Helpers - fillColor=
+23 дек. 2020 21:46:43,508 [pool-4-thread-3] DEBUG ru.sfedu.course_project.tools.Helpers - fillColor=
+23 дек. 2020 21:46:43,508 [pool-4-thread-8] DEBUG ru.sfedu.course_project.tools.Helpers - FIND
+23 дек. 2020 21:46:43,508 [pool-4-thread-2] DEBUG ru.sfedu.course_project.tools.Helpers - fillColor: 
+23 дек. 2020 21:46:43,508 [pool-4-thread-6] DEBUG ru.sfedu.course_project.tools.Helpers - fillColor: 
+23 дек. 2020 21:46:43,508 [pool-4-thread-7] DEBUG ru.sfedu.course_project.tools.Helpers - fillColor: 
+23 дек. 2020 21:46:43,508 [pool-4-thread-3] DEBUG ru.sfedu.course_project.tools.Helpers - fillColor: 
+23 дек. 2020 21:46:43,508 [pool-4-thread-6] DEBUG ru.sfedu.course_project.tools.Helpers - FIND
+23 дек. 2020 21:46:43,508 [pool-4-thread-2] DEBUG ru.sfedu.course_project.tools.Helpers - FIND
+23 дек. 2020 21:46:43,508 [pool-4-thread-7] DEBUG ru.sfedu.course_project.tools.Helpers - FIND
+23 дек. 2020 21:46:43,508 [pool-4-thread-3] DEBUG ru.sfedu.course_project.tools.Helpers - FIND
+23 дек. 2020 21:46:43,508 [pool-4-thread-2] DEBUG ru.sfedu.course_project.tools.Helpers - boxShadow=
+23 дек. 2020 21:46:43,508 [pool-4-thread-6] DEBUG ru.sfedu.course_project.tools.Helpers - boxShadow=
+23 дек. 2020 21:46:43,508 [pool-4-thread-8] DEBUG ru.sfedu.course_project.tools.Helpers - boxShadow=
+23 дек. 2020 21:46:43,508 [pool-4-thread-3] DEBUG ru.sfedu.course_project.tools.Helpers - boxShadow=
+23 дек. 2020 21:46:43,508 [pool-4-thread-7] DEBUG ru.sfedu.course_project.tools.Helpers - boxShadow=
+23 дек. 2020 21:46:43,508 [pool-4-thread-2] DEBUG ru.sfedu.course_project.tools.Helpers - boxShadow: 
+23 дек. 2020 21:46:43,509 [pool-4-thread-6] DEBUG ru.sfedu.course_project.tools.Helpers - boxShadow: 
+23 дек. 2020 21:46:43,509 [pool-4-thread-8] DEBUG ru.sfedu.course_project.tools.Helpers - boxShadow: 
+23 дек. 2020 21:46:43,509 [pool-4-thread-2] DEBUG ru.sfedu.course_project.tools.Helpers - FIND
+23 дек. 2020 21:46:43,509 [pool-4-thread-7] DEBUG ru.sfedu.course_project.tools.Helpers - boxShadow: 
+23 дек. 2020 21:46:43,509 [pool-4-thread-6] DEBUG ru.sfedu.course_project.tools.Helpers - FIND
+23 дек. 2020 21:46:43,509 [pool-4-thread-7] DEBUG ru.sfedu.course_project.tools.Helpers - FIND
+23 дек. 2020 21:46:43,509 [pool-4-thread-2] DEBUG ru.sfedu.course_project.tools.Helpers - opacity=
+23 дек. 2020 21:46:43,509 [pool-4-thread-6] DEBUG ru.sfedu.course_project.tools.Helpers - opacity=0
+23 дек. 2020 21:46:43,509 [pool-4-thread-7] DEBUG ru.sfedu.course_project.tools.Helpers - opacity=0
+23 дек. 2020 21:46:43,509 [pool-4-thread-2] DEBUG ru.sfedu.course_project.tools.Helpers - opacity: 
+23 дек. 2020 21:46:43,509 [pool-4-thread-3] DEBUG ru.sfedu.course_project.tools.Helpers - boxShadow: 
+23 дек. 2020 21:46:43,509 [pool-4-thread-6] DEBUG ru.sfedu.course_project.tools.Helpers - opacity: 0
+23 дек. 2020 21:46:43,509 [pool-4-thread-8] DEBUG ru.sfedu.course_project.tools.Helpers - FIND
+23 дек. 2020 21:46:43,509 [pool-4-thread-2] DEBUG ru.sfedu.course_project.tools.Helpers - FIND
+23 дек. 2020 21:46:43,509 [pool-4-thread-6] DEBUG ru.sfedu.course_project.tools.Helpers - FIND
+23 дек. 2020 21:46:43,509 [pool-4-thread-3] DEBUG ru.sfedu.course_project.tools.Helpers - FIND
+23 дек. 2020 21:46:43,509 [pool-4-thread-8] DEBUG ru.sfedu.course_project.tools.Helpers - opacity=1
+23 дек. 2020 21:46:43,509 [pool-4-thread-7] DEBUG ru.sfedu.course_project.tools.Helpers - opacity: 0
+23 дек. 2020 21:46:43,510 [pool-4-thread-2] DEBUG ru.sfedu.course_project.tools.Helpers - borderColor=
+23 дек. 2020 21:46:43,510 [pool-4-thread-3] DEBUG ru.sfedu.course_project.tools.Helpers - opacity=
+23 дек. 2020 21:46:43,510 [pool-4-thread-7] DEBUG ru.sfedu.course_project.tools.Helpers - FIND
+23 дек. 2020 21:46:43,510 [pool-4-thread-8] DEBUG ru.sfedu.course_project.tools.Helpers - opacity: 1
+23 дек. 2020 21:46:43,510 [pool-4-thread-6] DEBUG ru.sfedu.course_project.tools.Helpers - borderColor=
+23 дек. 2020 21:46:43,510 [pool-4-thread-7] DEBUG ru.sfedu.course_project.tools.Helpers - borderColor=
+23 дек. 2020 21:46:43,510 [pool-4-thread-3] DEBUG ru.sfedu.course_project.tools.Helpers - opacity: 
+23 дек. 2020 21:46:43,510 [pool-4-thread-2] DEBUG ru.sfedu.course_project.tools.Helpers - borderColor: 
+23 дек. 2020 21:46:43,510 [pool-4-thread-8] DEBUG ru.sfedu.course_project.tools.Helpers - FIND
+23 дек. 2020 21:46:43,510 [pool-4-thread-6] DEBUG ru.sfedu.course_project.tools.Helpers - borderColor: 
+23 дек. 2020 21:46:43,510 [pool-4-thread-8] DEBUG ru.sfedu.course_project.tools.Helpers - borderColor=
+23 дек. 2020 21:46:43,510 [pool-4-thread-3] DEBUG ru.sfedu.course_project.tools.Helpers - FIND
+23 дек. 2020 21:46:43,510 [pool-4-thread-2] DEBUG ru.sfedu.course_project.tools.Helpers - FIND
+23 дек. 2020 21:46:43,510 [pool-4-thread-7] DEBUG ru.sfedu.course_project.tools.Helpers - borderColor: 
+23 дек. 2020 21:46:43,510 [pool-4-thread-6] DEBUG ru.sfedu.course_project.tools.Helpers - FIND
+23 дек. 2020 21:46:43,510 [pool-4-thread-3] DEBUG ru.sfedu.course_project.tools.Helpers - borderColor=
+23 дек. 2020 21:46:43,510 [pool-4-thread-2] DEBUG ru.sfedu.course_project.tools.Helpers - borderRadius=
+23 дек. 2020 21:46:43,510 [pool-4-thread-7] DEBUG ru.sfedu.course_project.tools.Helpers - FIND
+23 дек. 2020 21:46:43,510 [pool-4-thread-8] DEBUG ru.sfedu.course_project.tools.Helpers - borderColor: 
+23 дек. 2020 21:46:43,510 [pool-4-thread-6] DEBUG ru.sfedu.course_project.tools.Helpers - borderRadius=
+23 дек. 2020 21:46:43,511 [pool-4-thread-8] DEBUG ru.sfedu.course_project.tools.Helpers - FIND
+23 дек. 2020 21:46:43,511 [pool-4-thread-3] DEBUG ru.sfedu.course_project.tools.Helpers - borderColor: 
+23 дек. 2020 21:46:43,511 [pool-4-thread-2] DEBUG ru.sfedu.course_project.tools.Helpers - borderRadius: 
+23 дек. 2020 21:46:43,511 [pool-4-thread-7] DEBUG ru.sfedu.course_project.tools.Helpers - borderRadius=
+23 дек. 2020 21:46:43,511 [pool-4-thread-8] DEBUG ru.sfedu.course_project.tools.Helpers - borderRadius=
+23 дек. 2020 21:46:43,511 [pool-4-thread-6] DEBUG ru.sfedu.course_project.tools.Helpers - borderRadius: 
+23 дек. 2020 21:46:43,511 [pool-4-thread-3] DEBUG ru.sfedu.course_project.tools.Helpers - FIND
+23 дек. 2020 21:46:43,511 [pool-4-thread-2] DEBUG ru.sfedu.course_project.tools.Helpers - FIND
+23 дек. 2020 21:46:43,511 [pool-4-thread-6] DEBUG ru.sfedu.course_project.tools.Helpers - FIND
+23 дек. 2020 21:46:43,511 [pool-4-thread-7] DEBUG ru.sfedu.course_project.tools.Helpers - borderRadius: 
+23 дек. 2020 21:46:43,511 [pool-4-thread-3] DEBUG ru.sfedu.course_project.tools.Helpers - borderRadius=
+23 дек. 2020 21:46:43,511 [pool-4-thread-2] DEBUG ru.sfedu.course_project.tools.Helpers - borderWidth=
+23 дек. 2020 21:46:43,511 [pool-4-thread-6] DEBUG ru.sfedu.course_project.tools.Helpers - borderWidth=
+23 дек. 2020 21:46:43,511 [pool-4-thread-7] DEBUG ru.sfedu.course_project.tools.Helpers - FIND
+23 дек. 2020 21:46:43,511 [pool-4-thread-7] DEBUG ru.sfedu.course_project.tools.Helpers - borderWidth=
+23 дек. 2020 21:46:43,511 [pool-4-thread-2] DEBUG ru.sfedu.course_project.tools.Helpers - borderWidth: 
+23 дек. 2020 21:46:43,511 [pool-4-thread-3] DEBUG ru.sfedu.course_project.tools.Helpers - borderRadius: 
+23 дек. 2020 21:46:43,511 [pool-4-thread-6] DEBUG ru.sfedu.course_project.tools.Helpers - borderWidth: 
+23 дек. 2020 21:46:43,511 [pool-4-thread-2] DEBUG ru.sfedu.course_project.tools.Helpers - FIND
+23 дек. 2020 21:46:43,511 [pool-4-thread-7] DEBUG ru.sfedu.course_project.tools.Helpers - borderWidth: 
+23 дек. 2020 21:46:43,511 [pool-4-thread-6] DEBUG ru.sfedu.course_project.tools.Helpers - FIND
+23 дек. 2020 21:46:43,511 [pool-4-thread-3] DEBUG ru.sfedu.course_project.tools.Helpers - FIND
+23 дек. 2020 21:46:43,511 [pool-4-thread-2] DEBUG ru.sfedu.course_project.tools.Helpers - borderStyle=
+23 дек. 2020 21:46:43,511 [pool-4-thread-6] DEBUG ru.sfedu.course_project.tools.Helpers - borderStyle=
+23 дек. 2020 21:46:43,512 [pool-4-thread-7] DEBUG ru.sfedu.course_project.tools.Helpers - FIND
+23 дек. 2020 21:46:43,512 [pool-4-thread-3] DEBUG ru.sfedu.course_project.tools.Helpers - borderWidth=
+23 дек. 2020 21:46:43,511 [pool-4-thread-8] DEBUG ru.sfedu.course_project.tools.Helpers - borderRadius: 
+23 дек. 2020 21:46:43,512 [pool-4-thread-2] DEBUG ru.sfedu.course_project.tools.Helpers - borderStyle: 
+23 дек. 2020 21:46:43,512 [pool-4-thread-7] DEBUG ru.sfedu.course_project.tools.Helpers - borderStyle=
+23 дек. 2020 21:46:43,512 [pool-4-thread-6] DEBUG ru.sfedu.course_project.tools.Helpers - borderStyle: 
+23 дек. 2020 21:46:43,512 [pool-4-thread-8] DEBUG ru.sfedu.course_project.tools.Helpers - FIND
+23 дек. 2020 21:46:43,512 [pool-4-thread-3] DEBUG ru.sfedu.course_project.tools.Helpers - borderWidth: 
+23 дек. 2020 21:46:43,512 [pool-4-thread-8] DEBUG ru.sfedu.course_project.tools.Helpers - borderWidth=
+23 дек. 2020 21:46:43,512 [pool-4-thread-7] DEBUG ru.sfedu.course_project.tools.Helpers - borderStyle: 
+23 дек. 2020 21:46:43,512 [pool-4-thread-3] DEBUG ru.sfedu.course_project.tools.Helpers - FIND
+23 дек. 2020 21:46:43,512 [pool-4-thread-8] DEBUG ru.sfedu.course_project.tools.Helpers - borderWidth: 
+23 дек. 2020 21:46:43,512 [pool-4-thread-3] DEBUG ru.sfedu.course_project.tools.Helpers - borderStyle=
+23 дек. 2020 21:46:43,513 [pool-4-thread-8] DEBUG ru.sfedu.course_project.tools.Helpers - FIND
+23 дек. 2020 21:46:43,513 [pool-4-thread-3] DEBUG ru.sfedu.course_project.tools.Helpers - borderStyle: 
+23 дек. 2020 21:46:43,513 [pool-4-thread-8] DEBUG ru.sfedu.course_project.tools.Helpers - borderStyle=
+23 дек. 2020 21:46:43,513 [pool-4-thread-8] DEBUG ru.sfedu.course_project.tools.Helpers - borderStyle: 
+23 дек. 2020 21:46:43,514 [pool-4-thread-6] DEBUG ru.sfedu.course_project.converters.StyleConverter - [StyleConverter] style converted
+23 дек. 2020 21:46:43,514 [pool-4-thread-8] DEBUG ru.sfedu.course_project.converters.StyleConverter - [StyleConverter] style converted
+23 дек. 2020 21:46:43,514 [pool-4-thread-2] DEBUG ru.sfedu.course_project.converters.StyleConverter - [StyleConverter] style converted
+23 дек. 2020 21:46:43,514 [pool-4-thread-7] DEBUG ru.sfedu.course_project.converters.StyleConverter - [StyleConverter] style converted
+23 дек. 2020 21:46:43,514 [pool-4-thread-3] DEBUG ru.sfedu.course_project.converters.StyleConverter - [StyleConverter] style converted
+23 дек. 2020 21:46:43,515 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Collection was retrieved: shape
+23 дек. 2020 21:46:43,516 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Attempt to find Shape: 1b1cc523-a2f9-41b2-9397-cc369032482f
+23 дек. 2020 21:46:43,533 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - Optional[Shape{style=Style{fillColor='', boxShadow='', opacity=0, borderColor='', borderRadius='', borderWidth='', borderStyle=none}, text='', figure=rectangle}]
+23 дек. 2020 21:46:43,534 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Attempt to get collection: shape
+23 дек. 2020 21:46:43,539 [pool-5-thread-2] DEBUG ru.sfedu.course_project.tools.Helpers - FIND
+23 дек. 2020 21:46:43,539 [pool-5-thread-1] DEBUG ru.sfedu.course_project.tools.Helpers - FIND
+23 дек. 2020 21:46:43,540 [pool-5-thread-3] DEBUG ru.sfedu.course_project.tools.Helpers - FIND
+23 дек. 2020 21:46:43,540 [pool-5-thread-1] DEBUG ru.sfedu.course_project.tools.Helpers - width=230
+23 дек. 2020 21:46:43,540 [pool-5-thread-2] DEBUG ru.sfedu.course_project.tools.Helpers - width=230
+23 дек. 2020 21:46:43,540 [pool-5-thread-3] DEBUG ru.sfedu.course_project.tools.Helpers - width=230
+23 дек. 2020 21:46:43,540 [pool-5-thread-1] DEBUG ru.sfedu.course_project.tools.Helpers - width: 230
+23 дек. 2020 21:46:43,540 [pool-5-thread-2] DEBUG ru.sfedu.course_project.tools.Helpers - width: 230
+23 дек. 2020 21:46:43,541 [pool-5-thread-3] DEBUG ru.sfedu.course_project.tools.Helpers - width: 230
+23 дек. 2020 21:46:43,541 [pool-5-thread-4] DEBUG ru.sfedu.course_project.tools.Helpers - FIND
+23 дек. 2020 21:46:43,541 [pool-5-thread-2] DEBUG ru.sfedu.course_project.tools.Helpers - FIND
+23 дек. 2020 21:46:43,541 [pool-5-thread-1] DEBUG ru.sfedu.course_project.tools.Helpers - FIND
+23 дек. 2020 21:46:43,541 [pool-5-thread-3] DEBUG ru.sfedu.course_project.tools.Helpers - FIND
+23 дек. 2020 21:46:43,542 [pool-5-thread-1] DEBUG ru.sfedu.course_project.tools.Helpers - height=412
+23 дек. 2020 21:46:43,542 [pool-5-thread-3] DEBUG ru.sfedu.course_project.tools.Helpers - height=412
+23 дек. 2020 21:46:43,542 [pool-5-thread-4] DEBUG ru.sfedu.course_project.tools.Helpers - width=230
+23 дек. 2020 21:46:43,542 [pool-5-thread-1] DEBUG ru.sfedu.course_project.tools.Helpers - height: 412
+23 дек. 2020 21:46:43,542 [pool-5-thread-2] DEBUG ru.sfedu.course_project.tools.Helpers - height=412
+23 дек. 2020 21:46:43,542 [pool-5-thread-3] DEBUG ru.sfedu.course_project.tools.Helpers - height: 412
+23 дек. 2020 21:46:43,542 [pool-5-thread-4] DEBUG ru.sfedu.course_project.tools.Helpers - width: 230
+23 дек. 2020 21:46:43,542 [pool-5-thread-3] DEBUG ru.sfedu.course_project.tools.Helpers - FIND
+23 дек. 2020 21:46:43,543 [pool-5-thread-3] DEBUG ru.sfedu.course_project.tools.Helpers - x=100
+23 дек. 2020 21:46:43,543 [pool-5-thread-2] DEBUG ru.sfedu.course_project.tools.Helpers - height: 412
+23 дек. 2020 21:46:43,543 [pool-5-thread-1] DEBUG ru.sfedu.course_project.tools.Helpers - FIND
+23 дек. 2020 21:46:43,542 [pool-5-thread-5] DEBUG ru.sfedu.course_project.tools.Helpers - FIND
+23 дек. 2020 21:46:43,543 [pool-5-thread-3] DEBUG ru.sfedu.course_project.tools.Helpers - x: 100
+23 дек. 2020 21:46:43,543 [pool-5-thread-1] DEBUG ru.sfedu.course_project.tools.Helpers - x=100
+23 дек. 2020 21:46:43,543 [pool-5-thread-3] DEBUG ru.sfedu.course_project.tools.Helpers - FIND
+23 дек. 2020 21:46:43,543 [pool-5-thread-1] DEBUG ru.sfedu.course_project.tools.Helpers - x: 100
+23 дек. 2020 21:46:43,543 [pool-5-thread-3] DEBUG ru.sfedu.course_project.tools.Helpers - y=132
+23 дек. 2020 21:46:43,543 [pool-5-thread-4] DEBUG ru.sfedu.course_project.tools.Helpers - FIND
+23 дек. 2020 21:46:43,543 [pool-5-thread-5] DEBUG ru.sfedu.course_project.tools.Helpers - width=100
+23 дек. 2020 21:46:43,543 [pool-5-thread-1] DEBUG ru.sfedu.course_project.tools.Helpers - FIND
+23 дек. 2020 21:46:43,543 [pool-5-thread-1] DEBUG ru.sfedu.course_project.tools.Helpers - y=132
+23 дек. 2020 21:46:43,543 [pool-5-thread-2] DEBUG ru.sfedu.course_project.tools.Helpers - FIND
+23 дек. 2020 21:46:43,543 [pool-5-thread-5] DEBUG ru.sfedu.course_project.tools.Helpers - width: 100
+23 дек. 2020 21:46:43,544 [pool-5-thread-2] DEBUG ru.sfedu.course_project.tools.Helpers - x=100
+23 дек. 2020 21:46:43,544 [pool-5-thread-1] DEBUG ru.sfedu.course_project.tools.Helpers - y: 132
+23 дек. 2020 21:46:43,544 [pool-5-thread-3] DEBUG ru.sfedu.course_project.tools.Helpers - y: 132
+23 дек. 2020 21:46:43,543 [pool-5-thread-4] DEBUG ru.sfedu.course_project.tools.Helpers - height=412
+23 дек. 2020 21:46:43,544 [pool-5-thread-5] DEBUG ru.sfedu.course_project.tools.Helpers - FIND
+23 дек. 2020 21:46:43,544 [pool-5-thread-1] DEBUG ru.sfedu.course_project.tools.Helpers - FIND
+23 дек. 2020 21:46:43,544 [pool-5-thread-4] DEBUG ru.sfedu.course_project.tools.Helpers - height: 412
+23 дек. 2020 21:46:43,544 [pool-5-thread-1] DEBUG ru.sfedu.course_project.tools.Helpers - rotation=31
+23 дек. 2020 21:46:43,544 [pool-5-thread-2] DEBUG ru.sfedu.course_project.tools.Helpers - x: 100
+23 дек. 2020 21:46:43,544 [pool-5-thread-3] DEBUG ru.sfedu.course_project.tools.Helpers - FIND
+23 дек. 2020 21:46:43,544 [pool-5-thread-2] DEBUG ru.sfedu.course_project.tools.Helpers - FIND
+23 дек. 2020 21:46:43,544 [pool-5-thread-3] DEBUG ru.sfedu.course_project.tools.Helpers - rotation=31
+23 дек. 2020 21:46:43,545 [pool-5-thread-2] DEBUG ru.sfedu.course_project.tools.Helpers - y=132
+23 дек. 2020 21:46:43,544 [pool-5-thread-5] DEBUG ru.sfedu.course_project.tools.Helpers - height=100
+23 дек. 2020 21:46:43,545 [pool-5-thread-3] DEBUG ru.sfedu.course_project.tools.Helpers - rotation: 31
+23 дек. 2020 21:46:43,545 [pool-5-thread-2] DEBUG ru.sfedu.course_project.tools.Helpers - y: 132
+23 дек. 2020 21:46:43,544 [pool-5-thread-4] DEBUG ru.sfedu.course_project.tools.Helpers - FIND
+23 дек. 2020 21:46:43,545 [pool-5-thread-3] DEBUG ru.sfedu.course_project.converters.LayoutConverter - [LayoutConverter] layout converted
+23 дек. 2020 21:46:43,545 [pool-5-thread-5] DEBUG ru.sfedu.course_project.tools.Helpers - height: 100
+23 дек. 2020 21:46:43,545 [pool-5-thread-4] DEBUG ru.sfedu.course_project.tools.Helpers - x=100
+23 дек. 2020 21:46:43,545 [pool-5-thread-2] DEBUG ru.sfedu.course_project.tools.Helpers - FIND
+23 дек. 2020 21:46:43,545 [pool-5-thread-5] DEBUG ru.sfedu.course_project.tools.Helpers - FIND
+23 дек. 2020 21:46:43,545 [pool-5-thread-2] DEBUG ru.sfedu.course_project.tools.Helpers - rotation=31
+23 дек. 2020 21:46:43,545 [pool-5-thread-1] DEBUG ru.sfedu.course_project.tools.Helpers - rotation: 31
+23 дек. 2020 21:46:43,545 [pool-5-thread-2] DEBUG ru.sfedu.course_project.tools.Helpers - rotation: 31
+23 дек. 2020 21:46:43,545 [pool-5-thread-1] DEBUG ru.sfedu.course_project.converters.LayoutConverter - [LayoutConverter] layout converted
+23 дек. 2020 21:46:43,545 [pool-5-thread-4] DEBUG ru.sfedu.course_project.tools.Helpers - x: 100
+23 дек. 2020 21:46:43,545 [pool-5-thread-5] DEBUG ru.sfedu.course_project.tools.Helpers - x=0
+23 дек. 2020 21:46:43,545 [pool-5-thread-3] DEBUG ru.sfedu.course_project.tools.Helpers - FIND
+23 дек. 2020 21:46:43,546 [pool-5-thread-4] DEBUG ru.sfedu.course_project.tools.Helpers - FIND
+23 дек. 2020 21:46:43,546 [pool-5-thread-3] DEBUG ru.sfedu.course_project.tools.Helpers - fillColor=
+23 дек. 2020 21:46:43,546 [pool-5-thread-2] DEBUG ru.sfedu.course_project.converters.LayoutConverter - [LayoutConverter] layout converted
+23 дек. 2020 21:46:43,546 [pool-5-thread-4] DEBUG ru.sfedu.course_project.tools.Helpers - y=132
+23 дек. 2020 21:46:43,546 [pool-5-thread-1] DEBUG ru.sfedu.course_project.tools.Helpers - FIND
+23 дек. 2020 21:46:43,546 [pool-5-thread-1] DEBUG ru.sfedu.course_project.tools.Helpers - fillColor=
+23 дек. 2020 21:46:43,546 [pool-5-thread-3] DEBUG ru.sfedu.course_project.tools.Helpers - fillColor: 
+23 дек. 2020 21:46:43,546 [pool-5-thread-4] DEBUG ru.sfedu.course_project.tools.Helpers - y: 132
+23 дек. 2020 21:46:43,546 [pool-5-thread-3] DEBUG ru.sfedu.course_project.tools.Helpers - FIND
+23 дек. 2020 21:46:43,546 [pool-5-thread-1] DEBUG ru.sfedu.course_project.tools.Helpers - fillColor: 
+23 дек. 2020 21:46:43,546 [pool-5-thread-3] DEBUG ru.sfedu.course_project.tools.Helpers - boxShadow=
+23 дек. 2020 21:46:43,546 [pool-5-thread-4] DEBUG ru.sfedu.course_project.tools.Helpers - FIND
+23 дек. 2020 21:46:43,546 [pool-5-thread-1] DEBUG ru.sfedu.course_project.tools.Helpers - FIND
+23 дек. 2020 21:46:43,546 [pool-5-thread-4] DEBUG ru.sfedu.course_project.tools.Helpers - rotation=31
+23 дек. 2020 21:46:43,546 [pool-5-thread-1] DEBUG ru.sfedu.course_project.tools.Helpers - boxShadow=
+23 дек. 2020 21:46:43,546 [pool-5-thread-3] DEBUG ru.sfedu.course_project.tools.Helpers - boxShadow: 
+23 дек. 2020 21:46:43,547 [pool-5-thread-4] DEBUG ru.sfedu.course_project.tools.Helpers - rotation: 31
+23 дек. 2020 21:46:43,547 [pool-5-thread-3] DEBUG ru.sfedu.course_project.tools.Helpers - FIND
+23 дек. 2020 21:46:43,546 [pool-5-thread-5] DEBUG ru.sfedu.course_project.tools.Helpers - x: 0
+23 дек. 2020 21:46:43,547 [pool-5-thread-1] DEBUG ru.sfedu.course_project.tools.Helpers - boxShadow: 
+23 дек. 2020 21:46:43,547 [pool-5-thread-2] DEBUG ru.sfedu.course_project.tools.Helpers - FIND
+23 дек. 2020 21:46:43,547 [pool-5-thread-3] DEBUG ru.sfedu.course_project.tools.Helpers - opacity=0
+23 дек. 2020 21:46:43,547 [pool-5-thread-4] DEBUG ru.sfedu.course_project.converters.LayoutConverter - [LayoutConverter] layout converted
+23 дек. 2020 21:46:43,547 [pool-5-thread-2] DEBUG ru.sfedu.course_project.tools.Helpers - fillColor=
+23 дек. 2020 21:46:43,547 [pool-5-thread-5] DEBUG ru.sfedu.course_project.tools.Helpers - FIND
+23 дек. 2020 21:46:43,547 [pool-5-thread-1] DEBUG ru.sfedu.course_project.tools.Helpers - FIND
+23 дек. 2020 21:46:43,547 [pool-5-thread-3] DEBUG ru.sfedu.course_project.tools.Helpers - opacity: 0
+23 дек. 2020 21:46:43,547 [pool-5-thread-5] DEBUG ru.sfedu.course_project.tools.Helpers - y=0
+23 дек. 2020 21:46:43,547 [pool-5-thread-3] DEBUG ru.sfedu.course_project.tools.Helpers - FIND
+23 дек. 2020 21:46:43,547 [pool-5-thread-2] DEBUG ru.sfedu.course_project.tools.Helpers - fillColor: 
+23 дек. 2020 21:46:43,547 [pool-5-thread-1] DEBUG ru.sfedu.course_project.tools.Helpers - opacity=
+23 дек. 2020 21:46:43,547 [pool-5-thread-3] DEBUG ru.sfedu.course_project.tools.Helpers - borderColor=
+23 дек. 2020 21:46:43,547 [pool-5-thread-4] DEBUG ru.sfedu.course_project.tools.Helpers - FIND
+23 дек. 2020 21:46:43,547 [pool-5-thread-2] DEBUG ru.sfedu.course_project.tools.Helpers - FIND
+23 дек. 2020 21:46:43,547 [pool-5-thread-4] DEBUG ru.sfedu.course_project.tools.Helpers - fillColor=
+23 дек. 2020 21:46:43,547 [pool-5-thread-5] DEBUG ru.sfedu.course_project.tools.Helpers - y: 0
+23 дек. 2020 21:46:43,547 [pool-5-thread-3] DEBUG ru.sfedu.course_project.tools.Helpers - borderColor: 
+23 дек. 2020 21:46:43,547 [pool-5-thread-2] DEBUG ru.sfedu.course_project.tools.Helpers - boxShadow=
+23 дек. 2020 21:46:43,547 [pool-5-thread-1] DEBUG ru.sfedu.course_project.tools.Helpers - opacity: 
+23 дек. 2020 21:46:43,547 [pool-5-thread-3] DEBUG ru.sfedu.course_project.tools.Helpers - FIND
+23 дек. 2020 21:46:43,547 [pool-5-thread-4] DEBUG ru.sfedu.course_project.tools.Helpers - fillColor: 
+23 дек. 2020 21:46:43,548 [pool-5-thread-1] DEBUG ru.sfedu.course_project.tools.Helpers - FIND
+23 дек. 2020 21:46:43,548 [pool-5-thread-3] DEBUG ru.sfedu.course_project.tools.Helpers - borderRadius=
+23 дек. 2020 21:46:43,548 [pool-5-thread-4] DEBUG ru.sfedu.course_project.tools.Helpers - FIND
+23 дек. 2020 21:46:43,547 [pool-5-thread-5] DEBUG ru.sfedu.course_project.tools.Helpers - FIND
+23 дек. 2020 21:46:43,548 [pool-5-thread-2] DEBUG ru.sfedu.course_project.tools.Helpers - boxShadow: 
+23 дек. 2020 21:46:43,548 [pool-5-thread-1] DEBUG ru.sfedu.course_project.tools.Helpers - borderColor=
+23 дек. 2020 21:46:43,548 [pool-5-thread-4] DEBUG ru.sfedu.course_project.tools.Helpers - boxShadow=
+23 дек. 2020 21:46:43,548 [pool-5-thread-2] DEBUG ru.sfedu.course_project.tools.Helpers - FIND
+23 дек. 2020 21:46:43,548 [pool-5-thread-3] DEBUG ru.sfedu.course_project.tools.Helpers - borderRadius: 
+23 дек. 2020 21:46:43,548 [pool-5-thread-1] DEBUG ru.sfedu.course_project.tools.Helpers - borderColor: 
+23 дек. 2020 21:46:43,548 [pool-5-thread-2] DEBUG ru.sfedu.course_project.tools.Helpers - opacity=
+23 дек. 2020 21:46:43,548 [pool-5-thread-4] DEBUG ru.sfedu.course_project.tools.Helpers - boxShadow: 
+23 дек. 2020 21:46:43,548 [pool-5-thread-1] DEBUG ru.sfedu.course_project.tools.Helpers - FIND
+23 дек. 2020 21:46:43,548 [pool-5-thread-5] DEBUG ru.sfedu.course_project.tools.Helpers - rotation=0
+23 дек. 2020 21:46:43,548 [pool-5-thread-4] DEBUG ru.sfedu.course_project.tools.Helpers - FIND
+23 дек. 2020 21:46:43,548 [pool-5-thread-1] DEBUG ru.sfedu.course_project.tools.Helpers - borderRadius=
+23 дек. 2020 21:46:43,548 [pool-5-thread-2] DEBUG ru.sfedu.course_project.tools.Helpers - opacity: 
+23 дек. 2020 21:46:43,548 [pool-5-thread-4] DEBUG ru.sfedu.course_project.tools.Helpers - opacity=0
+23 дек. 2020 21:46:43,548 [pool-5-thread-3] DEBUG ru.sfedu.course_project.tools.Helpers - FIND
+23 дек. 2020 21:46:43,548 [pool-5-thread-5] DEBUG ru.sfedu.course_project.tools.Helpers - rotation: 0
+23 дек. 2020 21:46:43,548 [pool-5-thread-2] DEBUG ru.sfedu.course_project.tools.Helpers - FIND
+23 дек. 2020 21:46:43,548 [pool-5-thread-2] DEBUG ru.sfedu.course_project.tools.Helpers - borderColor=
+23 дек. 2020 21:46:43,548 [pool-5-thread-1] DEBUG ru.sfedu.course_project.tools.Helpers - borderRadius: 
+23 дек. 2020 21:46:43,548 [pool-5-thread-4] DEBUG ru.sfedu.course_project.tools.Helpers - opacity: 0
+23 дек. 2020 21:46:43,548 [pool-5-thread-3] DEBUG ru.sfedu.course_project.tools.Helpers - borderWidth=
+23 дек. 2020 21:46:43,549 [pool-5-thread-5] DEBUG ru.sfedu.course_project.converters.LayoutConverter - [LayoutConverter] layout converted
+23 дек. 2020 21:46:43,549 [pool-5-thread-2] DEBUG ru.sfedu.course_project.tools.Helpers - borderColor: 
+23 дек. 2020 21:46:43,549 [pool-5-thread-3] DEBUG ru.sfedu.course_project.tools.Helpers - borderWidth: 
+23 дек. 2020 21:46:43,549 [pool-5-thread-2] DEBUG ru.sfedu.course_project.tools.Helpers - FIND
+23 дек. 2020 21:46:43,549 [pool-5-thread-1] DEBUG ru.sfedu.course_project.tools.Helpers - FIND
+23 дек. 2020 21:46:43,549 [pool-5-thread-3] DEBUG ru.sfedu.course_project.tools.Helpers - FIND
+23 дек. 2020 21:46:43,549 [pool-5-thread-4] DEBUG ru.sfedu.course_project.tools.Helpers - FIND
+23 дек. 2020 21:46:43,549 [pool-5-thread-2] DEBUG ru.sfedu.course_project.tools.Helpers - borderRadius=
+23 дек. 2020 21:46:43,549 [pool-5-thread-1] DEBUG ru.sfedu.course_project.tools.Helpers - borderWidth=
+23 дек. 2020 21:46:43,549 [pool-5-thread-5] DEBUG ru.sfedu.course_project.tools.Helpers - FIND
+23 дек. 2020 21:46:43,549 [pool-5-thread-3] DEBUG ru.sfedu.course_project.tools.Helpers - borderStyle=
+23 дек. 2020 21:46:43,549 [pool-5-thread-5] DEBUG ru.sfedu.course_project.tools.Helpers - fillColor=
+23 дек. 2020 21:46:43,549 [pool-5-thread-2] DEBUG ru.sfedu.course_project.tools.Helpers - borderRadius: 
+23 дек. 2020 21:46:43,549 [pool-5-thread-5] DEBUG ru.sfedu.course_project.tools.Helpers - fillColor: 
+23 дек. 2020 21:46:43,549 [pool-5-thread-3] DEBUG ru.sfedu.course_project.tools.Helpers - borderStyle: 
+23 дек. 2020 21:46:43,549 [pool-5-thread-2] DEBUG ru.sfedu.course_project.tools.Helpers - FIND
+23 дек. 2020 21:46:43,549 [pool-5-thread-5] DEBUG ru.sfedu.course_project.tools.Helpers - FIND
+23 дек. 2020 21:46:43,549 [pool-5-thread-3] DEBUG ru.sfedu.course_project.converters.StyleConverter - [StyleConverter] style converted
+23 дек. 2020 21:46:43,549 [pool-5-thread-2] DEBUG ru.sfedu.course_project.tools.Helpers - borderWidth=
+23 дек. 2020 21:46:43,549 [pool-5-thread-5] DEBUG ru.sfedu.course_project.tools.Helpers - boxShadow=
+23 дек. 2020 21:46:43,550 [pool-5-thread-4] DEBUG ru.sfedu.course_project.tools.Helpers - borderColor=
+23 дек. 2020 21:46:43,550 [pool-5-thread-2] DEBUG ru.sfedu.course_project.tools.Helpers - borderWidth: 
+23 дек. 2020 21:46:43,550 [pool-5-thread-4] DEBUG ru.sfedu.course_project.tools.Helpers - borderColor: 
+23 дек. 2020 21:46:43,550 [pool-5-thread-2] DEBUG ru.sfedu.course_project.tools.Helpers - FIND
+23 дек. 2020 21:46:43,550 [pool-5-thread-4] DEBUG ru.sfedu.course_project.tools.Helpers - FIND
+23 дек. 2020 21:46:43,550 [pool-5-thread-1] DEBUG ru.sfedu.course_project.tools.Helpers - borderWidth: 
+23 дек. 2020 21:46:43,550 [pool-5-thread-5] DEBUG ru.sfedu.course_project.tools.Helpers - boxShadow: 
+23 дек. 2020 21:46:43,550 [pool-5-thread-2] DEBUG ru.sfedu.course_project.tools.Helpers - borderStyle=
+23 дек. 2020 21:46:43,551 [pool-5-thread-4] DEBUG ru.sfedu.course_project.tools.Helpers - borderRadius=
+23 дек. 2020 21:46:43,551 [pool-5-thread-5] DEBUG ru.sfedu.course_project.tools.Helpers - FIND
+23 дек. 2020 21:46:43,551 [pool-5-thread-1] DEBUG ru.sfedu.course_project.tools.Helpers - FIND
+23 дек. 2020 21:46:43,551 [pool-5-thread-5] DEBUG ru.sfedu.course_project.tools.Helpers - opacity=1
+23 дек. 2020 21:46:43,551 [pool-5-thread-2] DEBUG ru.sfedu.course_project.tools.Helpers - borderStyle: 
+23 дек. 2020 21:46:43,551 [pool-5-thread-4] DEBUG ru.sfedu.course_project.tools.Helpers - borderRadius: 
+23 дек. 2020 21:46:43,551 [pool-5-thread-1] DEBUG ru.sfedu.course_project.tools.Helpers - borderStyle=
+23 дек. 2020 21:46:43,551 [pool-5-thread-5] DEBUG ru.sfedu.course_project.tools.Helpers - opacity: 1
+23 дек. 2020 21:46:43,551 [pool-5-thread-2] DEBUG ru.sfedu.course_project.converters.StyleConverter - [StyleConverter] style converted
+23 дек. 2020 21:46:43,551 [pool-5-thread-1] DEBUG ru.sfedu.course_project.tools.Helpers - borderStyle: 
+23 дек. 2020 21:46:43,551 [pool-5-thread-4] DEBUG ru.sfedu.course_project.tools.Helpers - FIND
+23 дек. 2020 21:46:43,551 [pool-5-thread-5] DEBUG ru.sfedu.course_project.tools.Helpers - FIND
+23 дек. 2020 21:46:43,551 [pool-5-thread-4] DEBUG ru.sfedu.course_project.tools.Helpers - borderWidth=
+23 дек. 2020 21:46:43,551 [pool-5-thread-1] DEBUG ru.sfedu.course_project.converters.StyleConverter - [StyleConverter] style converted
+23 дек. 2020 21:46:43,552 [pool-5-thread-5] DEBUG ru.sfedu.course_project.tools.Helpers - borderColor=
+23 дек. 2020 21:46:43,552 [pool-5-thread-4] DEBUG ru.sfedu.course_project.tools.Helpers - borderWidth: 
+23 дек. 2020 21:46:43,553 [pool-5-thread-5] DEBUG ru.sfedu.course_project.tools.Helpers - borderColor: 
+23 дек. 2020 21:46:43,553 [pool-5-thread-4] DEBUG ru.sfedu.course_project.tools.Helpers - FIND
+23 дек. 2020 21:46:43,553 [pool-5-thread-5] DEBUG ru.sfedu.course_project.tools.Helpers - FIND
+23 дек. 2020 21:46:43,553 [pool-5-thread-4] DEBUG ru.sfedu.course_project.tools.Helpers - borderStyle=
+23 дек. 2020 21:46:43,553 [pool-5-thread-5] DEBUG ru.sfedu.course_project.tools.Helpers - borderRadius=
+23 дек. 2020 21:46:43,553 [pool-5-thread-5] DEBUG ru.sfedu.course_project.tools.Helpers - borderRadius: 
+23 дек. 2020 21:46:43,554 [pool-5-thread-4] DEBUG ru.sfedu.course_project.tools.Helpers - borderStyle: 
+23 дек. 2020 21:46:43,554 [pool-5-thread-5] DEBUG ru.sfedu.course_project.tools.Helpers - FIND
+23 дек. 2020 21:46:43,554 [pool-5-thread-4] DEBUG ru.sfedu.course_project.converters.StyleConverter - [StyleConverter] style converted
+23 дек. 2020 21:46:43,554 [pool-5-thread-5] DEBUG ru.sfedu.course_project.tools.Helpers - borderWidth=
+23 дек. 2020 21:46:43,554 [pool-5-thread-5] DEBUG ru.sfedu.course_project.tools.Helpers - borderWidth: 
+23 дек. 2020 21:46:43,554 [pool-5-thread-5] DEBUG ru.sfedu.course_project.tools.Helpers - FIND
+23 дек. 2020 21:46:43,554 [pool-5-thread-5] DEBUG ru.sfedu.course_project.tools.Helpers - borderStyle=
+23 дек. 2020 21:46:43,555 [pool-5-thread-5] DEBUG ru.sfedu.course_project.tools.Helpers - borderStyle: 
+23 дек. 2020 21:46:43,555 [pool-5-thread-5] DEBUG ru.sfedu.course_project.converters.StyleConverter - [StyleConverter] style converted
+23 дек. 2020 21:46:43,555 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [getCollection] Collection was retrieved: shape
+23 дек. 2020 21:46:43,556 [main] DEBUG ru.sfedu.course_project.api.DataProviderCSV - [writeCollection] Attempt to write in shape
+23 дек. 2020 21:46:43,578 [main] INFO  ru.sfedu.course_project.api.DataProviderCSV - [writeCollection] Collection was wrote
+23 дек. 2020 21:46:43,580 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value: Shape successfully removed  }

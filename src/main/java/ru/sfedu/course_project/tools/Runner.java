@@ -76,6 +76,9 @@ public class Runner {
                     case "addElementInSlide": {
                         return this.provider.addElementInSlide(arguments);
                     }
+                    case "removeSlideElement": {
+                        return this.provider.removeSlideElement(arguments);
+                    }
                     default:
                         throw new IllegalStateException("Unexpected method: " + method);
                 }
