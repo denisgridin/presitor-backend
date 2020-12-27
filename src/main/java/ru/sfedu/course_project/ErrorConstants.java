@@ -6,6 +6,7 @@ public class ErrorConstants {
     public static String INSTANCE_NOT_FOUND = "Instance not found ";
     public static String INSTANCE_UPDATE = "Unable to update instance";
     public static String ELEMENT_NOT_FOUND = "Undefined element type ";
+    public static String COLLECTION_WRITE = "Unable to write collection ";
 
     public static String ARGUMENTS_VALIDATE = "Unable to validate arguments";
     public static String ARGUMENTS_ERROR = "Some of arguments has errors";
@@ -46,4 +47,6 @@ public class ErrorConstants {
 
     public static String SHAPE_REMOVE = "Unable to remove shape ";
     public static String SHAPE_EDIT = "Unable to edit shape ";
+
+    public static String CONTENT_EDIT = "Unable to update content element ";
 }

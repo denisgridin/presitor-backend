@@ -206,11 +206,11 @@ public class Creator {
             content.setFont(font);
             log.debug(String.format(ConstantsInfo.FIELD_FORMAT_SET, "font", font));
 
-            String name = (String) defaultsContent.get("name");
+            String name = (String) args.getOrDefault("name", defaultsContent.get("name"));
             content.setName(name);
             log.debug(String.format(ConstantsInfo.FIELD_FORMAT_SET, "name", name));
 
-            String text = (String) defaultsContent.get("text");
+            String text = (String) args.getOrDefault("text", defaultsContent.get("text"));
             content.setText(text);
             log.debug(String.format(ConstantsInfo.FIELD_FORMAT_SET, "text", text));
 

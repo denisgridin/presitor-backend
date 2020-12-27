@@ -4,6 +4,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import ru.sfedu.course_project.api.DataProvider;
 import ru.sfedu.course_project.api.DataProviderCSV;
+import ru.sfedu.course_project.api.DataProviderXML;
 import ru.sfedu.course_project.enums.DataType;
 import ru.sfedu.course_project.tools.Runner;
 
@@ -59,6 +60,11 @@ public class Main {
             switch (dataType) {
                 case csv: {
                     DataProvider provider = new DataProviderCSV();
+                    log.info(String.format("Data provider was created: %s", dataType));
+                    return provider;
+                }
+                case xml: {
+                    DataProvider provider = new DataProviderXML();
                     log.info(String.format("Data provider was created: %s", dataType));
                     return provider;
                 }

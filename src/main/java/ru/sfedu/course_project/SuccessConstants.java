@@ -5,7 +5,8 @@ public class SuccessConstants {
 
     public static String ARGUMENTS_VALIDATE = "Arguments was validate ";
 
-    public static String PRESENTATION_UPDATE = "Presentation options was successfully updated: ";
+    public static String PRESENTATION_UPDATE = "Presentation options was successfully updated ";
+    public static String PRESENTATION_REMOVE = "Unable to remove presentation ";
 
     public static String TEMPLATE_ADD = "Presentation was successfully added in templates ";
 
@@ -18,5 +19,7 @@ public class SuccessConstants {
 
     public static String SHAPE_REMOVE = "Shape successfully removed ";
     public static String SHAPE_EDIT = "Shape successfully updated ";
+
+    public static String CONTENT_EDIT = "Content successfully updated ";
 
 }

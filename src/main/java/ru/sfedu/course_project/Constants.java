@@ -91,11 +91,11 @@ public class Constants {
     public final static Font DEFAULT_FONT (HashMap args) {
         Font font = new Font();
 
-        font.setFamily((String) args.getOrDefault("fontFamily","Roboto"));
+        font.setFamily((String) args.getOrDefault("family","Roboto"));
         font.setFontCase(FontCase.normal);
         font.setLetterSpacing((String) args.getOrDefault("letterSpacing",""));
         font.setLineSpacing((String) args.getOrDefault("lineSpacing",""));
-        font.setSize((String) args.getOrDefault("fontSize","14px"));
+        font.setSize((String) args.getOrDefault("size","14px"));
 
         return font;
     }

@@ -16,12 +16,12 @@ import java.util.Optional;
 import java.util.UUID;
 
 public interface DataProvider {
-    public String getName();
-    public <T> Optional<List> getCollection (CollectionType collectionType, Class cl);
-    public <T> Status writeCollection(List list, Class cl, CollectionType collectionType);
-    public <T extends BaseClass> Boolean isIdInUse (String id, List<T> list);
-    public Status removeRecordById (CollectionType collectionType, Class cl, UUID id);
-    public Optional getInstanceById (Class cl, CollectionType collectionType, HashMap arguments);
+//    public String getName();
+//    public <T> Optional<List> getCollection (CollectionType collectionType, Class cl);
+//    public <T> Status writeCollection(List list, Class cl, CollectionType collectionType);
+//    public <T> Boolean isIdInUse (String id, List<T> list, CollectionType collectionType);
+//    public Status removeRecordById (CollectionType collectionType, Class cl, UUID id);
+//    public Optional getInstanceById (Class cl, CollectionType collectionType, HashMap arguments);
 
     public Result createPresentation (HashMap arguments);
     public Result addPresentationInTemplate (Presentation presentation);

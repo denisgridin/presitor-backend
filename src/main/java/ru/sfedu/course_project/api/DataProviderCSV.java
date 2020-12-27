@@ -15,6 +15,7 @@ import ru.sfedu.course_project.Constants;
 import ru.sfedu.course_project.ConstantsInfo;
 import ru.sfedu.course_project.ErrorConstants;
 import ru.sfedu.course_project.SuccessConstants;
+import ru.sfedu.course_project.api.csv.CSVCommonMethods;
 import ru.sfedu.course_project.bean.*;
 import ru.sfedu.course_project.enums.CollectionType;
 import ru.sfedu.course_project.enums.Status;
@@ -35,277 +36,14 @@ import java.util.stream.IntStream;
 import static ru.sfedu.course_project.enums.CollectionType.*;
 
 public class DataProviderCSV implements DataProvider {
-    private final String PATH="csv_path";
-    private final String DATA_PATH="dataPath";
-
-    private final String FILE_EXTENTION="csv";
-
     private static Logger log = LogManager.getLogger(DataProviderCSV.class);
 
     public DataProviderCSV () {}
 
-    @Override
     public String getName () {
         return "CSV";
     }
 
-    private String getFilePath (CollectionType collectionType) {
-        try {
-            return String.format("%s/%s/%s.%s",
-                    ConfigurationUtil.getConfigurationEntry(DATA_PATH),
-                    ConfigurationUtil.getConfigurationEntry(FILE_EXTENTION),
-                    collectionType,
-                    ConfigurationUtil.getConfigurationEntry(FILE_EXTENTION));
-        } catch (IOException e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
-
-
-    ///                      Common section                                 \\\
-
-    @Override
-    public <T> Optional<List> getCollection (CollectionType collectionType, Class cl) {
-        try {
-            FileReader fileReader;
-            try {
-                log.debug("[getCollection] Attempt to get collection: " + collectionType);
-                Optional optionalFileReader = Optional.ofNullable(new FileReader(getFilePath(collectionType)));
-                if (optionalFileReader.isPresent()) {
-                    fileReader = (FileReader) optionalFileReader.get();
-                    CSVReader csvReader = new CSVReader(fileReader);
-                    CsvToBean<T> csvToBean = new CsvToBeanBuilder<T>(csvReader)
-                            .withType(cl)
-                            .withSeparator(',')
-                            .withIgnoreLeadingWhiteSpace(true)
-                            .build();
-                    Optional<List> optionalCollection = Optional.ofNullable(csvToBean.parse());
-                    log.info("[getCollection] Collection was retrieved: " + collectionType);
-                    return optionalCollection;
-                } else {
-                    log.info("[getCollection] Unable to get data source: " + collectionType);
-                    return Optional.empty();
-                }
-            } catch (FileNotFoundException e) {
-                log.error(e);
-                log.error(String.format(Constants.MSG_ERROR_DATA_SOURCE, collectionType));
-                return Optional.empty();
-            }
-        } catch (RuntimeException e) {
-            e.printStackTrace();
-            log.error(e);
-            return Optional.empty();
-        }
-    }
-
-    @Override
-    public <T> Status writeCollection(List list, Class cl, CollectionType collectionType) {
-        try {
-            log.debug(String.format("[writeCollection] Attempt to write in %s", cl.getSimpleName().toLowerCase()));
-
-            String path = getFilePath(collectionType);
-            FileWriter filePath = new FileWriter(path);
-            CSVWriter writer = new CSVWriter(filePath);
-            StatefulBeanToCsv<T> beanToCsv = new StatefulBeanToCsvBuilder<T>(writer).withSeparator(',').withApplyQuotesToAll(false).build();
-            beanToCsv.write(list);
-            writer.close();
-            log.info("[writeCollection] Collection was wrote");
-            return Status.success;
-        } catch (IOException | CsvDataTypeMismatchException | CsvRequiredFieldEmptyException e) {
-            e.printStackTrace();
-            log.error("[writeCollection] Unable to write collection");
-            return Status.error;
-        }
-    }
-
-    @Override
-    public Status removeRecordById (CollectionType collectionType, Class cl, UUID id) {
-        try {
-            log.debug(String.format("[removeRecordById] Removing elements from collection: %s", collectionType));
-            List updatedCollection = new ArrayList();
-            Integer collectionSize = 0;
-            switch (collectionType) {
-                case presentation: {
-                    List<Presentation> collection = (ArrayList<Presentation>) getCollection(collectionType, cl).orElseThrow(() -> new RuntimeException(String.format("[removeRecordById] Unable to get collection: %s", collectionType)));
-                    collectionSize = collection.size();
-                    updatedCollection = collection.stream().filter(el -> !el.getId().equals(id)).collect(Collectors.toList());
-                    break;
-                }
-                case slide: {
-                    List<Slide> collection = (ArrayList<Slide>) getCollection(collectionType, cl).orElseThrow(() -> new RuntimeException(String.format("[removeRecordById] Unable to get collection: %s", collectionType)));
-                    collectionSize = collection.size();
-                    updatedCollection = collection.stream().filter(el -> !el.getId().equals(id)).collect(Collectors.toList());
-                    break;
-                }
-                case comment: {
-                    List<Comment> collection = (ArrayList<Comment>) getCollection(collectionType, cl).orElseThrow(() -> new RuntimeException(String.format("[removeRecordById] Unable to get collection: %s", collectionType)));
-                    collectionSize = collection.size();
-                    updatedCollection = collection.stream().filter(el -> !el.getId().equals(id)).collect(Collectors.toList());
-                    break;
-                }
-                case element:
-                    // TODO
-                    break;
-                case error:
-                    break;
-            }
-            if (updatedCollection.size() == collectionSize) {
-                log.error("[removeRecordById] Unable to find element with provided id: " + id);
-                return Status.error;
-            }
-            writeCollection(updatedCollection, cl, collectionType);
-            log.info("[removeRecordById] Element was successfully removed: " + id);
-            return Status.success;
-        } catch (RuntimeException e) {
-            e.printStackTrace();
-            log.error(e);
-            log.error("[removeRecordById] Unable to remove element from collection");
-            return Status.error;
-        }
-    }
-
-    public Result updateRecordInCollection (Class cls, CollectionType collectionType, Object instance, UUID instanceId) {
-        try {
-            log.debug("[updateRecordInCollection] Update: " + instance.toString());
-            ArrayList updatedCollection = new ArrayList();
-            switch (collectionType) {
-                case presentation: {
-                    ArrayList<Presentation> listInstance = (ArrayList<Presentation>) getCollection(collectionType, cls).orElse(new ArrayList());
-                    updatedCollection = (ArrayList) listInstance
-                            .stream()
-                            .map(el -> {
-                                if (el.getId().equals(instanceId)) {
-                                    el = (Presentation) instance;
-                                }
-                                return el;
-                            }).collect(Collectors.toList());
-                    break;
-                }
-                case slide: {
-                    ArrayList<Slide> listInstance = (ArrayList<Slide>) getCollection(collectionType, cls).orElse(new ArrayList());
-                    updatedCollection = (ArrayList) listInstance
-                            .stream()
-                            .map(el -> {
-                                if (el.getId().equals(instanceId)) {
-                                    el = (Slide) instance;
-                                }
-                                return el;
-                            }).collect(Collectors.toList());
-                    break;
-                }
-                case comment: {
-                    ArrayList<Comment> listInstance = (ArrayList<Comment>) getCollection(collectionType, cls).orElse(new ArrayList());
-                    updatedCollection = (ArrayList) listInstance
-                            .stream()
-                            .map(el -> {
-                                if (el.getId().equals(instanceId)) {
-                                    el = (Comment) instance;
-                                }
-                                return el;
-                            }).collect(Collectors.toList());
-                    break;
-                }
-                case element:
-                    // TODO
-                    break;
-                case error:
-                    break;
-            }
-            Status status = writeCollection(updatedCollection, cls, collectionType);
-            log.debug("[updateRecordInCollection] Update status: " + status);
-            return new Result(status, "");
-        } catch (RuntimeException e) {
-            log.error(e);
-            return new Result(Status.error, ErrorConstants.INSTANCE_UPDATE);
-        }
-    }
-
-    @Override
-    public Optional getInstanceById (Class cl, CollectionType collectionType, HashMap arguments) {
-        UUID id = UUID.fromString((String) arguments.get("id"));
-        log.debug(collectionType + " id: " + id);
-        try {
-            switch (collectionType) {
-                case presentation: {
-                    ArrayList<Presentation> listInstance = (ArrayList<Presentation>) getCollection(collectionType, cl).orElse(new ArrayList());
-                    log.debug("Attempt to find presentation: " + id);
-                    log.debug("list instance: " + listInstance);
-                    Optional instance = listInstance.stream()
-                            .filter(el -> el.getId().equals(id)).findFirst();
-                    log.debug(instance);
-                    return instance;
-                }
-                case slide: {
-                    ArrayList<Slide> listInstance = (ArrayList<Slide>) getCollection(collectionType, cl).orElse(new ArrayList());
-                    log.debug("Attempt to find slide: " + id);
-                    Optional instance = listInstance.stream()
-                            .filter(el -> el.getId().equals(id)).findFirst();
-                    return instance;
-                }
-                case comment: {
-                    ArrayList<Comment> listInstance = (ArrayList<Comment>) getCollection(collectionType, cl).orElse(new ArrayList());
-                    log.debug("Attempt to find comment: " + id);
-                    Optional instance = listInstance.stream()
-                            .filter(el -> el.getId().equals(id)).findFirst();
-                    return instance;
-                }
-                case template: {
-                    ArrayList<Presentation> listInstance = (ArrayList<Presentation>) getCollection(collectionType, cl).orElse(new ArrayList());
-                    log.debug("Attempt to find template: " + id);
-                    Optional instance = listInstance.stream()
-                            .filter(el -> el.getId().equals(id)).findFirst();
-                    return instance;
-                }
-                case shape: {
-                    ArrayList<Shape> listInstance = (ArrayList<Shape>) getCollection(collectionType, cl).orElse(new ArrayList());
-                    log.debug("Attempt to find Shape: " + id);
-                    Optional instance = listInstance.stream()
-                            .filter(el -> el.getId().equals(id)).findFirst();
-                    return instance;
-                }
-                default: {
-                    return Optional.empty();
-                }
-            }
-        } catch (NoSuchElementException e) {
-            log.error(e);
-            return Optional.empty();
-        }
-    }
-
-    public Optional getInstanceExistenceByField (CollectionType collectionType, Class cls, String idField, String id) {
-        try {
-            log.debug("[getInstanceExistenceByField] Get: " + cls.getSimpleName() + "; " + idField + ": " + id);
-            HashMap args = new HashMap();
-            args.put(idField, id);
-            Optional optionalInstance = getInstanceById(cls, collectionType, args);
-            log.debug(optionalInstance);
-            return optionalInstance;
-        } catch (RuntimeException e) {
-            log.error(e);
-            log.error(ErrorConstants.INSTANCE_NOT_FOUND);
-            return Optional.empty();
-        }
-    }
-
-// TODO убрать BaseClass
-
-    @Override
-    public <T extends BaseClass> Boolean isIdInUse (String id, List<T> list) {
-        try {
-            UUID uuid = UUID.fromString(id);
-            Optional<T> item = list.stream().filter(el -> el.getId().equals(uuid)).findFirst();
-            if (item.isPresent()) {
-                return true;
-            }
-            return false;
-        } catch (RuntimeException e) {
-            e.printStackTrace();
-            log.error(e);
-            return false;
-        }
-    }
 
 //    @Override
 //    public <T> Status addCollectionRecord (T record, UUID id) {
@@ -335,11 +73,10 @@ public class DataProviderCSV implements DataProvider {
     @Override
     public Result createPresentation(HashMap args) {
         try {
-            List<Presentation> listPresentations = getCollection(presentation, Presentation.class)
-                    .orElse(new ArrayList());
+            List<Presentation> listPresentations = CSVCommonMethods.getCollection(presentation, Presentation.class).orElse(new ArrayList<Presentation>());
             if (args.get("id") != null) {
                 String id = (String) args.get("id");
-                if (isIdInUse(id, listPresentations)) return new Result(Status.error, ErrorConstants.ID_IN_USE);
+                if (CSVCommonMethods.isIdInUse(id, listPresentations, presentation)) return new Result(Status.error, ErrorConstants.ID_IN_USE);
             }
             Optional<Presentation> optionalPresentation = (Optional<Presentation>) new Creator().create(Presentation.class, args).getReturnValue();
             if (!optionalPresentation.isPresent()) {
@@ -348,7 +85,7 @@ public class DataProviderCSV implements DataProvider {
             }
             Presentation presentation = optionalPresentation.get();
             listPresentations.add(presentation);
-            Status result = writeCollection(listPresentations, Presentation.class, CollectionType.presentation);
+            Status result = CSVCommonMethods.writeCollection(listPresentations, Presentation.class, CollectionType.presentation);
 
             Boolean asTemplate = Boolean.valueOf( (String) args.getOrDefault("asTemplate", "false"));
             if (asTemplate) {
@@ -374,14 +111,14 @@ public class DataProviderCSV implements DataProvider {
         try {
             HashMap args = new HashMap();
             args.put("id", String.valueOf(presentation.getId()));
-            Optional<Presentation> optionalTemplate = getInstanceById(Presentation.class, template, args);
+            Optional<Presentation> optionalTemplate = CSVCommonMethods.getInstanceById(Presentation.class, template, args);
             if (optionalTemplate.isPresent()) {
                 log.error(ErrorConstants.TEMPLATE_EXISTS + presentation.getId());
                 return new Result(Status.error, ErrorConstants.TEMPLATE_EXISTS + presentation.getId());
             }
-            ArrayList templates = (ArrayList) getCollection(template, Presentation.class).orElse(new ArrayList());
+            ArrayList templates = (ArrayList) CSVCommonMethods.getCollection(template, Presentation.class).orElse(new ArrayList());
             templates.add(presentation);
-            Status statusWrite = writeCollection(templates, Presentation.class, template);
+            Status statusWrite = CSVCommonMethods.writeCollection(templates, Presentation.class, template);
             if (statusWrite == Status.success) {
                 log.info(SuccessConstants.TEMPLATE_ADD + presentation.getId());
                 return new Result(Status.success, SuccessConstants.TEMPLATE_ADD + presentation.getId());
@@ -399,7 +136,7 @@ public class DataProviderCSV implements DataProvider {
     @Override
     public Result getPresentations () {
         try {
-            Optional<List> optionalPresentations = getCollection(presentation, Presentation.class);
+            Optional<List> optionalPresentations = CSVCommonMethods.getCollection(presentation, Presentation.class);
             log.debug(ConstantsInfo.PRESENTATIONS_GET);
             if (optionalPresentations.isPresent()) {
                 return new Result(Status.success, optionalPresentations.get());
@@ -423,7 +160,7 @@ public class DataProviderCSV implements DataProvider {
                 return isArgsValid;
             }
 
-            Optional<Presentation> optionalPresentation = getInstanceExistenceByField(presentation, Presentation.class, "id", (String) arguments.get("id"));
+            Optional<Presentation> optionalPresentation = CSVCommonMethods.getInstanceExistenceByField(presentation, Presentation.class, "id", (String) arguments.get("id"));
             if (!optionalPresentation.isPresent()) {
                 return new Result(Status.error, ErrorConstants.INSTANCE_NOT_FOUND);
             }
@@ -496,7 +233,7 @@ public class DataProviderCSV implements DataProvider {
                 return new Result(Status.error, ErrorConstants.ARGUMENT_IS_NOT_PROVIDED + "id");
             } else {
                 UUID id = UUID.fromString((String) arguments.get("id"));
-                Status status = removeRecordById(presentation, Presentation.class, id);
+                Status status = CSVCommonMethods.removeRecordById(presentation, Presentation.class, id);
                 Status statusRemoveSlides = removePresentationSlides(id);
                 if (status == Status.success && statusRemoveSlides == Status.success) {
                     return new Result(Status.success, "ok");
@@ -513,13 +250,13 @@ public class DataProviderCSV implements DataProvider {
 
     public Status removePresentationSlides (UUID presentationId) {
         try {
-            ArrayList slidesList = (ArrayList) getCollection(slide, Slide.class).orElse(new ArrayList());
+            ArrayList slidesList = (ArrayList) CSVCommonMethods.getCollection(slide, Slide.class).orElse(new ArrayList());
             ArrayList updatedList = (ArrayList) slidesList.stream().filter(el -> {
                 Slide slide = (Slide) el;
                 return !slide.getPresentationId().equals(presentationId);
             }).collect(Collectors.toList());
             log.debug(ConstantsInfo.SLIDES_REMOVE);
-            Status status = writeCollection(updatedList, Slide.class, slide);
+            Status status = CSVCommonMethods.writeCollection(updatedList, Slide.class, slide);
             if (status == Status.success) {
                 log.info(SuccessConstants.SLIDES_REMOVE);
             } else {
@@ -541,9 +278,9 @@ public class DataProviderCSV implements DataProvider {
                 log.error(ErrorConstants.ARGUMENT_IS_NOT_PROVIDED + "id");
                 return new Result(Status.error, ErrorConstants.ARGUMENT_IS_NOT_PROVIDED + "id");
             }
-            Boolean validId = getInstanceById(Presentation.class, presentation, arguments).isPresent();
+            Boolean validId = CSVCommonMethods.getInstanceById(Presentation.class, presentation, arguments).isPresent();
             if (validId) {
-                List<Presentation> list = getCollection(presentation, Presentation.class).orElse(new ArrayList());
+                List<Presentation> list = CSVCommonMethods.getCollection(presentation, Presentation.class).orElse(new ArrayList());
                 List<Presentation> updatedList = list.stream().map(el -> {
                     if (el.getId().equals(id)) {
                         String fillColor = (String) arguments.getOrDefault("fillColor", el.getFillColor());
@@ -568,7 +305,7 @@ public class DataProviderCSV implements DataProvider {
                         }
                     } return el;
                 }).collect(Collectors.toList());
-                Status result = writeCollection(updatedList, Presentation.class, presentation);
+                Status result = CSVCommonMethods.writeCollection(updatedList, Presentation.class, presentation);
                 if (result == Status.success) {
                     log.info(SuccessConstants.PRESENTATION_UPDATE + id);
                     return new Result(Status.success, SuccessConstants.PRESENTATION_UPDATE + id);
@@ -597,7 +334,7 @@ public class DataProviderCSV implements DataProvider {
             }
             HashMap getPresentationByIdParams = new HashMap();
             getPresentationByIdParams.put("id", String.valueOf(arguments.get("presentationId")));
-            Optional<Presentation> optionalPresentation = getInstanceById(Presentation.class, presentation, getPresentationByIdParams);
+            Optional<Presentation> optionalPresentation = CSVCommonMethods.getInstanceById(Presentation.class, presentation, getPresentationByIdParams);
             if (optionalPresentation.isPresent()) {
                 log.info(arguments.entrySet());
 
@@ -610,9 +347,9 @@ public class DataProviderCSV implements DataProvider {
                 log.debug("[createPresentationSlide] For presentation: " + slide.getPresentationId());
 
 
-                ArrayList allSlides = (ArrayList) getCollection(CollectionType.slide, Slide.class).orElse(new ArrayList());
+                ArrayList allSlides = (ArrayList) CSVCommonMethods.getCollection(CollectionType.slide, Slide.class).orElse(new ArrayList());
                 allSlides.add(slide);
-                Status statusCreateSlide = writeCollection(allSlides, Slide.class, CollectionType.slide);
+                Status statusCreateSlide = CSVCommonMethods.writeCollection(allSlides, Slide.class, CollectionType.slide);
 //                Status statusAddSlideInPresentation = addPresentationSlide(slide, optionalPresentation.get());
 
 //                if (statusCreateSlide == Status.success && statusAddSlideInPresentation == Status.success) {
@@ -663,9 +400,9 @@ public class DataProviderCSV implements DataProvider {
             UUID presentationId = UUID.fromString((String) arguments.get("presentationId"));
             HashMap getPresentationByIdParams = new HashMap();
             getPresentationByIdParams.put("id", String.valueOf(presentationId));
-            Optional<Presentation> presentation = getInstanceById(Presentation.class, CollectionType.presentation, getPresentationByIdParams);
+            Optional<Presentation> presentation = CSVCommonMethods.getInstanceById(Presentation.class, CollectionType.presentation, getPresentationByIdParams);
             if (presentation.isPresent()) {
-                Optional<List> listSlides = getCollection(slide, Slide.class);
+                Optional<List> listSlides = CSVCommonMethods.getCollection(slide, Slide.class);
                 Optional<List> presentationSlides = Optional.empty();
                 if (listSlides.isPresent()) {
                     log.debug("[getPresentationSlides] Attempt to find presentation slides for: " + presentationId);
@@ -699,7 +436,7 @@ public class DataProviderCSV implements DataProvider {
             }
             UUID presentationId = UUID.fromString((String) args.get("presentationId"));
             UUID slideId = UUID.fromString((String) args.get("id"));
-            Optional<List> optionalSlides = getCollection(slide, Slide.class);
+            Optional<List> optionalSlides = CSVCommonMethods.getCollection(slide, Slide.class);
             if (optionalSlides.isPresent()) {
                 Optional<Slide> slide = optionalSlides.get().stream().filter(el -> {
                     Slide item = (Slide) el;
@@ -733,9 +470,9 @@ public class DataProviderCSV implements DataProvider {
             }
             UUID presentationId = UUID.fromString((String) args.get("presentationId"));
             UUID slideId = UUID.fromString((String) args.get("id"));
-            Optional<Slide> optionalSlide = getInstanceById(Slide.class, slide, args);
+            Optional<Slide> optionalSlide = CSVCommonMethods.getInstanceById(Slide.class, slide, args);
             if (optionalSlide.isPresent()) {
-                Optional<List> slides = getCollection(slide, Slide.class);
+                Optional<List> slides = CSVCommonMethods.getCollection(slide, Slide.class);
                 if (slides.isPresent()) {
                     ArrayList updatedSlides = (ArrayList) slides.get().stream().map(el -> {
                         Slide slide = (Slide) el;
@@ -752,7 +489,7 @@ public class DataProviderCSV implements DataProvider {
                         }
                         return slide;
                     }).collect(Collectors.toList());
-                    Status status = writeCollection(updatedSlides, Slide.class, slide);
+                    Status status = CSVCommonMethods.writeCollection(updatedSlides, Slide.class, slide);
                     if (status == Status.success) {
                         log.debug(SuccessConstants.SLIDE_EDIT + slideId);
                         return new Result(status, SuccessConstants.SLIDE_EDIT + slideId);
@@ -788,7 +525,7 @@ public class DataProviderCSV implements DataProvider {
             String presentationId = (String) arguments.get("presentationId");
             log.debug("[removePresentationSlideById] Attempt to remove slide: " + id);
             Status statusRemoveFromPresentation = removeSlideFromPresentation(id, presentationId);
-            Status status = removeRecordById(slide, Slide.class, id);
+            Status status = CSVCommonMethods.removeRecordById(slide, Slide.class, id);
             log.debug("[removePresentationSlideById] Removed from data source: " + status);
             log.debug("[removePresentationSlideById] Remove from presentation: " + statusRemoveFromPresentation);
             if (status == Status.success && statusRemoveFromPresentation == Status.success) {
@@ -807,7 +544,7 @@ public class DataProviderCSV implements DataProvider {
         try {
             HashMap args = new HashMap();
             args.put("id", presentationId);
-            Optional<Presentation> presentation = getInstanceById(Presentation.class, CollectionType.presentation, args);
+            Optional<Presentation> presentation = CSVCommonMethods.getInstanceById(Presentation.class, CollectionType.presentation, args);
             if (presentation.isPresent()) {
                 log.debug("[removeSlideFromPresentation] Remove slide: " + id);
                 log.debug("[removeSlideFromPresentation] From presentation: " + presentationId);
@@ -832,7 +569,7 @@ public class DataProviderCSV implements DataProvider {
         }
     }
     public Status updatePresentationCollection (Presentation presentation) {
-        Optional<List> optionalList = getCollection(CollectionType.presentation, Presentation.class);
+        Optional<List> optionalList = CSVCommonMethods.getCollection(CollectionType.presentation, Presentation.class);
         if (optionalList.isPresent()) {
             ArrayList updatedCollection = (ArrayList) optionalList.get().stream().map(el -> {
                 Presentation item = (Presentation) el;
@@ -859,7 +596,7 @@ public class DataProviderCSV implements DataProvider {
             }
             HashMap params = new HashMap();
             params.put("id", arguments.get("presentationId"));
-            Optional<Presentation> optionalPresentation = getInstanceById(Presentation.class, presentation, params);
+            Optional<Presentation> optionalPresentation = CSVCommonMethods.getInstanceById(Presentation.class, presentation, params);
             if (optionalPresentation.isPresent()) {
                 Result result = new Creator().create(Comment.class, arguments);
                 if (result.getStatus() == Status.success) {
@@ -912,7 +649,7 @@ public class DataProviderCSV implements DataProvider {
 
             UUID presentationId = UUID.fromString((String) args.get("presentationId"));
 
-            ArrayList<Comment> comments = (ArrayList<Comment>) getCollection(comment, Comment.class).orElse(new ArrayList());
+            ArrayList<Comment> comments = (ArrayList<Comment>) CSVCommonMethods.getCollection(comment, Comment.class).orElse(new ArrayList());
             ArrayList<Comment> presentationComments = (ArrayList<Comment>) comments.stream().filter(el -> {
                 Comment item = el;
                 return item.getPresentationId().equals(presentationId);
@@ -928,9 +665,9 @@ public class DataProviderCSV implements DataProvider {
 
     public Status writeCommentsCollection (Comment comment) {
         try {
-            ArrayList comments = (ArrayList) getCollection(CollectionType.comment, Comment.class).orElse(new ArrayList());
+            ArrayList comments = (ArrayList) CSVCommonMethods.getCollection(CollectionType.comment, Comment.class).orElse(new ArrayList());
             comments.add(comment);
-            Status status = writeCollection(comments, Comment.class, CollectionType.comment);
+            Status status = CSVCommonMethods.writeCollection(comments, Comment.class, CollectionType.comment);
             return status;
         } catch (RuntimeException e) {
             log.error(e);
@@ -969,12 +706,12 @@ public class DataProviderCSV implements DataProvider {
                 return isArgsValid;
             }
 
-            Optional<Presentation> optionalPresentation = getInstanceExistenceByField(presentation, Presentation.class, "id", (String) arguments.get("presentationId"));
+            Optional<Presentation> optionalPresentation = CSVCommonMethods.getInstanceExistenceByField(presentation, Presentation.class, "id", (String) arguments.get("presentationId"));
             if (!optionalPresentation.isPresent()) {
                 return new Result(Status.error, ErrorConstants.INSTANCE_NOT_FOUND);
             }
 
-            Optional<Comment> optionalComment = getInstanceExistenceByField(comment, Comment.class, "id", (String) arguments.get("id"));
+            Optional<Comment> optionalComment = CSVCommonMethods.getInstanceExistenceByField(comment, Comment.class, "id", (String) arguments.get("id"));
             if (!optionalComment.isPresent()) {
                 return new Result(Status.error, ErrorConstants.INSTANCE_NOT_FOUND);
             }
@@ -982,7 +719,7 @@ public class DataProviderCSV implements DataProvider {
 
             Comment comment = optionalComment.get();
             comment.setText((String) arguments.get("text"));
-            Result resultUpdate = updateRecordInCollection(Comment.class, CollectionType.comment, comment, comment.getId());
+            Result resultUpdate = CSVCommonMethods.updateRecordInCollection(Comment.class, CollectionType.comment, comment, comment.getId());
             return resultUpdate;
         } catch (RuntimeException e) {
             log.error(e);
@@ -1003,18 +740,18 @@ public class DataProviderCSV implements DataProvider {
                 return isArgsValid;
             }
 
-            Optional<Presentation> optionalPresentation = getInstanceExistenceByField(presentation, Presentation.class, "id", (String) arguments.get("presentationId"));
+            Optional<Presentation> optionalPresentation = CSVCommonMethods.getInstanceExistenceByField(presentation, Presentation.class, "id", (String) arguments.get("presentationId"));
             if (!optionalPresentation.isPresent()) {
                 return new Result(Status.error, ErrorConstants.INSTANCE_NOT_FOUND);
             }
 
-            Optional<Comment> optionalComment = getInstanceExistenceByField(comment, Comment.class, "id", (String) arguments.get("id"));
+            Optional<Comment> optionalComment = CSVCommonMethods.getInstanceExistenceByField(comment, Comment.class, "id", (String) arguments.get("id"));
             if (!optionalComment.isPresent()) {
                 return new Result(Status.error, ErrorConstants.INSTANCE_NOT_FOUND);
             }
 
             Comment comment = optionalComment.get();
-            Status status = removeRecordById(CollectionType.comment, Comment.class, comment.getId());
+            Status status = CSVCommonMethods.removeRecordById(CollectionType.comment, Comment.class, comment.getId());
             if (status == Status.success) {
                 log.info(SuccessConstants.COMMENT_REMOVE);
                 return new Result(Status.success, SuccessConstants.COMMENT_REMOVE + comment.getId());
@@ -1042,11 +779,11 @@ public class DataProviderCSV implements DataProvider {
                 return isArgsValid;
             }
 
-            Optional<Presentation> optionalPresentation = getInstanceExistenceByField(presentation, Presentation.class, "id", (String) args.get("presentationId"));
+            Optional<Presentation> optionalPresentation = CSVCommonMethods.getInstanceExistenceByField(presentation, Presentation.class, "id", (String) args.get("presentationId"));
             if (!optionalPresentation.isPresent()) {
                 return new Result(Status.error, ErrorConstants.INSTANCE_NOT_FOUND + " presentationId");
             }
-            Optional<Presentation> optionalSlide = getInstanceExistenceByField(slide, Slide.class, "id", (String) args.get("slideId"));
+            Optional<Presentation> optionalSlide = CSVCommonMethods.getInstanceExistenceByField(slide, Slide.class, "id", (String) args.get("slideId"));
             if (!optionalSlide.isPresent()) {
                 return new Result(Status.error, ErrorConstants.INSTANCE_NOT_FOUND + " slideId");
             }
@@ -1095,9 +832,9 @@ public class DataProviderCSV implements DataProvider {
 
             Content content = (Content) resultCreateContent.getReturnValue();
             log.info("Create new content: " + content);
-            ArrayList<Content> contents = (ArrayList<Content>) getCollection(CollectionType.content, Content.class).orElse(new ArrayList());
+            ArrayList<Content> contents = (ArrayList<Content>) CSVCommonMethods.getCollection(CollectionType.content, Content.class).orElse(new ArrayList());
             contents.add(content);
-            Status status = writeCollection(contents, Content.class, CollectionType.content);
+            Status status = CSVCommonMethods.writeCollection(contents, Content.class, CollectionType.content);
             log.debug("Content added in collection: " + status);
             if (status == Status.success) {
                 return new Result(Status.success, content);
@@ -1121,9 +858,9 @@ public class DataProviderCSV implements DataProvider {
 
             Shape shape = (Shape) resultCreateShape.getReturnValue();
             log.info("Create new shape: " + shape);
-            ArrayList<Shape> shapes = (ArrayList<Shape>) getCollection(CollectionType.shape, Shape.class).orElse(new ArrayList());
+            ArrayList<Shape> shapes = (ArrayList<Shape>) CSVCommonMethods.getCollection(CollectionType.shape, Shape.class).orElse(new ArrayList());
             shapes.add(shape);
-            Status status = writeCollection(shapes, Shape.class, CollectionType.shape);
+            Status status = CSVCommonMethods.writeCollection(shapes, Shape.class, CollectionType.shape);
             log.debug("Shape added in collection: " + status);
             if (status == Status.success) {
                 return new Result(Status.success, shape);
@@ -1151,11 +888,11 @@ public class DataProviderCSV implements DataProvider {
                 return isArgsValid;
             }
 
-            Optional<Presentation> optionalPresentation = getInstanceExistenceByField(presentation, Presentation.class, "id", (String) args.get("presentationId"));
+            Optional<Presentation> optionalPresentation = CSVCommonMethods.getInstanceExistenceByField(presentation, Presentation.class, "id", (String) args.get("presentationId"));
             if (!optionalPresentation.isPresent()) {
                 return new Result(Status.error, ErrorConstants.INSTANCE_NOT_FOUND + " presentationId");
             }
-            Optional<Presentation> optionalSlide = getInstanceExistenceByField(slide, Slide.class, "id", (String) args.get("slideId"));
+            Optional<Presentation> optionalSlide = CSVCommonMethods.getInstanceExistenceByField(slide, Slide.class, "id", (String) args.get("slideId"));
             if (!optionalSlide.isPresent()) {
                 return new Result(Status.error, ErrorConstants.INSTANCE_NOT_FOUND + " slideId");
             }
@@ -1180,16 +917,16 @@ public class DataProviderCSV implements DataProvider {
 
     public Result removeShape (HashMap args) {
         try {
-            Optional<Shape> optionalShape = getInstanceExistenceByField(shape, Shape.class, "id", (String) args.get("id"));
+            Optional<Shape> optionalShape = CSVCommonMethods.getInstanceExistenceByField(shape, Shape.class, "id", (String) args.get("id"));
             if (!optionalShape.isPresent()) {
                 return new Result(Status.error, ErrorConstants.INSTANCE_NOT_FOUND + " shape " + args.get("id"));
             }
 
             UUID id = UUID.fromString((String) args.get("id"));
 
-            List<Shape> collection = getCollection(CollectionType.shape, Shape.class).orElse(new ArrayList());
+            List<Shape> collection = CSVCommonMethods.getCollection(CollectionType.shape, Shape.class).orElse(new ArrayList());
             List<Shape> updatedCollection = collection.stream().filter(el -> !el.getId().equals(id)).collect(Collectors.toList());
-            Status writeStatus = writeCollection(updatedCollection, Shape.class, CollectionType.shape);
+            Status writeStatus = CSVCommonMethods.writeCollection(updatedCollection, Shape.class, CollectionType.shape);
             if (writeStatus == Status.success) {
                 return new Result(Status.success, SuccessConstants.SHAPE_REMOVE);
             } else {
@@ -1217,11 +954,11 @@ public class DataProviderCSV implements DataProvider {
                 return isArgsValid;
             }
 
-            Optional<Presentation> optionalPresentation = getInstanceExistenceByField(presentation, Presentation.class, "id", (String) args.get("presentationId"));
+            Optional<Presentation> optionalPresentation = CSVCommonMethods.getInstanceExistenceByField(presentation, Presentation.class, "id", (String) args.get("presentationId"));
             if (!optionalPresentation.isPresent()) {
                 return new Result(Status.error, ErrorConstants.INSTANCE_NOT_FOUND + " presentationId");
             }
-            Optional<Presentation> optionalSlide = getInstanceExistenceByField(slide, Slide.class, "id", (String) args.get("slideId"));
+            Optional<Presentation> optionalSlide = CSVCommonMethods.getInstanceExistenceByField(slide, Slide.class, "id", (String) args.get("slideId"));
             if (!optionalSlide.isPresent()) {
                 return new Result(Status.error, ErrorConstants.INSTANCE_NOT_FOUND + " slideId");
             }
@@ -1231,6 +968,9 @@ public class DataProviderCSV implements DataProvider {
             switch (elementType) {
                 case shape: {
                     return editShape(args);
+                }
+                case content: {
+                    return editContent(args);
                 }
                 default: {
                     return new Result(Status.error, ErrorConstants.ELEMENT_NOT_FOUND + elementType);
@@ -1245,14 +985,14 @@ public class DataProviderCSV implements DataProvider {
 
     public Result editShape (HashMap args) {
         try {
-            Optional<Shape> optionalShape = getInstanceExistenceByField(shape, Shape.class, "id", (String) args.get("id"));
+            Optional<Shape> optionalShape = CSVCommonMethods.getInstanceExistenceByField(shape, Shape.class, "id", (String) args.get("id"));
             if (!optionalShape.isPresent()) {
                 return new Result(Status.error, ErrorConstants.INSTANCE_NOT_FOUND + " shape " + args.get("id"));
             }
 
             UUID id = UUID.fromString((String) args.get("id"));
 
-            List<Shape> collection = getCollection(CollectionType.shape, Shape.class).orElse(new ArrayList());
+            List<Shape> collection = CSVCommonMethods.getCollection(CollectionType.shape, Shape.class).orElse(new ArrayList());
             List<Shape> updatedCollection = collection.stream().map(el -> {
                 if (el.getId().equals(id)) {
                     Result result = Helpers.editShapeBean(args, el);
@@ -1264,7 +1004,7 @@ public class DataProviderCSV implements DataProvider {
                 }
                 return el;
             }).collect(Collectors.toList());
-            Status writeStatus = writeCollection(updatedCollection, Shape.class, CollectionType.shape);
+            Status writeStatus = CSVCommonMethods.writeCollection(updatedCollection, Shape.class, CollectionType.shape);
             if (writeStatus == Status.success) {
                 return new Result(Status.success, SuccessConstants.SHAPE_EDIT);
             } else {
@@ -1275,7 +1015,39 @@ public class DataProviderCSV implements DataProvider {
             return new Result(Status.error, ErrorConstants.SHAPE_EDIT);
         }
     }
+    public Result editContent (HashMap args) {
+        log.debug("{editContent}");
+        try {
+            Optional<Shape> optionalContent = CSVCommonMethods.getInstanceExistenceByField(content, Content.class, "id", (String) args.get("id"));
+            if (!optionalContent.isPresent()) {
+                return new Result(Status.error, ErrorConstants.INSTANCE_NOT_FOUND + " content " + args.get("id"));
+            }
 
+            UUID id = UUID.fromString((String) args.get("id"));
+
+            List<Content> collection = CSVCommonMethods.getCollection(CollectionType.content, Content.class).orElse(new ArrayList());
+            List<Content> updatedCollection = collection.stream().map(el -> {
+                if (el.getId().equals(id)) {
+                    Result result = Helpers.editContentBean(args, el);
+                    if (result.getStatus() == Status.success) {
+                        el = (Content) result.getReturnValue();
+                    } else {
+                        log.error(ErrorConstants.CONTENT_EDIT);
+                    }
+                }
+                return el;
+            }).collect(Collectors.toList());
+            Status writeStatus = CSVCommonMethods.writeCollection(updatedCollection, Content.class, CollectionType.content);
+            if (writeStatus == Status.success) {
+                return new Result(Status.success, SuccessConstants.CONTENT_EDIT);
+            } else {
+                return new Result(Status.error, ErrorConstants.CONTENT_EDIT);
+            }
+        } catch (RuntimeException e) {
+            log.error(ErrorConstants.SHAPE_EDIT);
+            return new Result(Status.error, ErrorConstants.SHAPE_EDIT);
+        }
+    }
 
 //    @Override
 //    public Result removePresentationComment (HashMap arguments) {

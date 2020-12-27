@@ -6,6 +6,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.Test;
 import ru.sfedu.course_project.TestBase;
+import ru.sfedu.course_project.api.csv.CSVCommonMethods;
 import ru.sfedu.course_project.bean.Presentation;
 import ru.sfedu.course_project.bean.Slide;
 import ru.sfedu.course_project.enums.CollectionType;
@@ -43,7 +44,7 @@ public class DataProviderCSVTest extends TestBase {
         params.put("id", id);
 
         assertEquals(presentation.toString(),
-                provider.getInstanceById(Presentation.class, CollectionType.presentation, params).get().toString());
+                CSVCommonMethods.getInstanceById(Presentation.class, CollectionType.presentation, params).get().toString());
         assertEquals(result.getStatus(), Status.success);
         log.debug("{TEST} createPresentationSuccess END");
     }
@@ -160,7 +161,7 @@ public class DataProviderCSVTest extends TestBase {
 
             assertEquals(provider.editPresentationOptions(arguments).getStatus(), Status.success);
 
-            Optional<Presentation> optionalEditedPresentation = provider.getInstanceById(Presentation.class, CollectionType.presentation, arguments);
+            Optional<Presentation> optionalEditedPresentation = CSVCommonMethods.getInstanceById(Presentation.class, CollectionType.presentation, arguments);
 
             assertTrue(optionalEditedPresentation.isPresent());
 
@@ -235,7 +236,7 @@ public class DataProviderCSVTest extends TestBase {
             args.put("presentationId", presId);
             Result createSlideResult = provider.createPresentationSlide(args);
             assertEquals(createSlideResult.getStatus(), Status.success);
-            Optional<Slide> optionalSlide = provider.getInstanceById(Slide.class, CollectionType.slide, args);
+            Optional<Slide> optionalSlide = CSVCommonMethods.getInstanceById(Slide.class, CollectionType.slide, args);
             assertTrue(optionalSlide.isPresent());
         }
         log.debug("{TEST} createPresentationSlideSuccess END");
@@ -334,7 +335,7 @@ public class DataProviderCSVTest extends TestBase {
 
                 String commentId = String.valueOf(resultCommentPresentation.getReturnValue());
 
-                Optional resultGetPresentation = provider.getInstanceById(Presentation.class, CollectionType.presentation, params);
+                Optional resultGetPresentation = CSVCommonMethods.getInstanceById(Presentation.class, CollectionType.presentation, params);
                 assertTrue(resultGetPresentation.isPresent());
                 Presentation presentation = (Presentation) resultGetPresentation.get();
                 log.debug(presentation);

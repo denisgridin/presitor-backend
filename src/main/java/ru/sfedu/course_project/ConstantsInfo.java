@@ -11,4 +11,8 @@ public class ConstantsInfo {
 
     public static String COMMENTS_GET = "Attempt to get comments for presentation";
 
+    public static String COLLECTION_GET = "Attempt to get collection";
+    public static String COLLECTION_CHECK_ID = "Check for unique id ";
+    public static String COLLECTION_FOUND_ID = "Id is on use ";
+
 }
