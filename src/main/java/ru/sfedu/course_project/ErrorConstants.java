@@ -8,6 +8,8 @@ public class ErrorConstants {
     public static String ELEMENT_NOT_FOUND = "Undefined element type ";
     public static String COLLECTION_WRITE = "Unable to write collection ";
 
+    public static String CONNECTION_ERROR = "Connection error ";
+
     public static String ARGUMENTS_VALIDATE = "Unable to validate arguments";
     public static String ARGUMENTS_ERROR = "Some of arguments has errors";
     public static String ARGUMENT_IS_NOT_PROVIDED = "Parameter is not provided: ";

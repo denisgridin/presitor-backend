@@ -1,0 +1,176 @@
+2020-12-28 14:09:15 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Таблица "PRESENTATION" не найдена
+Table "PRESENTATION" not found; SQL statement:
+INSERT INTO presentation ((id, name, fillColor, fontColor)) VALUES ((ae12b691-dd9b-4d46-acec-79ec4a270852, Моя презентация, blue, Comic Sans)) [42102-200]
+2020-12-28 14:09:54 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Таблица "PRESENTATION" не найдена
+Table "PRESENTATION" not found; SQL statement:
+INSERT INTO presentation (id, name, fillColor, fontColor) VALUES (ae12b691-dd9b-4d46-acec-79ec4a270852, Моя презентация, blue, Comic Sans) [42102-200]
+2020-12-28 14:14:21 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Таблица "PRESENTATION" не найдена
+Table "PRESENTATION" not found; SQL statement:
+INSERT INTO PRESENTATION (id, name, fillColor, fontColor) VALUES (ae12b691-dd9b-4d46-acec-79ec4a270852, Моя презентация, blue, Comic Sans) [42102-200]
+2020-12-28 14:15:18 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Схема "PRESITOR" не найдена
+Schema "PRESITOR" not found; SQL statement:
+INSERT INTO PRESITOR.PRESENTATION (id, name, fillColor, fontColor) VALUES (ae12b691-dd9b-4d46-acec-79ec4a270852, Моя презентация, blue, Comic Sans) [90079-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:576)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.command.Parser.getSchema(Parser.java:1194)
+	at org.h2.command.Parser.getSchema(Parser.java:1200)
+	at org.h2.command.Parser.readTableOrView(Parser.java:7604)
+	at org.h2.command.Parser.readTableOrView(Parser.java:7599)
+	at org.h2.command.Parser.parseInsert(Parser.java:1747)
+	at org.h2.command.Parser.parsePrepared(Parser.java:954)
+	at org.h2.command.Parser.parse(Parser.java:843)
+	at org.h2.command.Parser.parse(Parser.java:815)
+	at org.h2.command.Parser.prepareCommand(Parser.java:738)
+	at org.h2.engine.Session.prepareLocal(Session.java:657)
+	at org.h2.engine.Session.prepareCommand(Session.java:595)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1235)
+	at org.h2.jdbc.JdbcStatement.executeQuery(JdbcStatement.java:78)
+	at ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods.createPresentation(JDBCPresentationMethods.java:45)
+	at ru.sfedu.course_project.api.DataProviderJDBC.createPresentation(DataProviderJDBC.java:26)
+	at ru.sfedu.course_project.tools.Runner.run(Runner.java:32)
+	at ru.sfedu.course_project.Main.main(Main.java:29)
+2020-12-28 14:16:36 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Таблица "PRESENTATION" не найдена
+Table "PRESENTATION" not found; SQL statement:
+INSERT INTO PUBLIC.PRESENTATION (id, name, fillColor, fontColor) VALUES (ae12b691-dd9b-4d46-acec-79ec4a270852, Моя презентация, blue, Comic Sans) [42102-200]
+2020-12-28 14:17:46 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Таблица "PRESENTATION" не найдена
+Table "PRESENTATION" not found; SQL statement:
+INSERT INTO PRESITOR.PUBLIC.PRESENTATION (id, name, fillColor, fontColor) VALUES (ae12b691-dd9b-4d46-acec-79ec4a270852, Моя презентация, blue, Comic Sans) [42102-200]
+2020-12-28 14:19:14 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Таблица "PRESENTATION" не найдена
+Table "PRESENTATION" not found; SQL statement:
+INSERT INTO PRESITOR.PUBLIC.PRESENTATION (id, name, fillColor, fontColor) VALUES (ae12b691-dd9b-4d46-acec-79ec4a270852, Моя презентация, blue, Comic Sans) [42102-200]
+2020-12-28 14:22:27 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: Метод разрешен только для запросов. Используйте execute или executeUpdate вместо executeQuery
+Method is only allowed for a query. Use execute or executeUpdate instead of executeQuery; SQL statement:
+CREATE TABLE PRESENTATION (id UUID, name varchar(200), fillColor varchar(200), fontFamily varchar(200)) [90002-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:505)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.message.DbException.get(DbException.java:170)
+	at org.h2.command.Prepared.query(Prepared.java:231)
+	at org.h2.command.CommandContainer.query(CommandContainer.java:285)
+	at org.h2.command.Command.executeQuery(Command.java:195)
+	at org.h2.jdbc.JdbcStatement.executeQuery(JdbcStatement.java:85)
+	at ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods.createPresentation(JDBCPresentationMethods.java:45)
+	at ru.sfedu.course_project.api.DataProviderJDBC.createPresentation(DataProviderJDBC.java:26)
+	at ru.sfedu.course_project.tools.Runner.run(Runner.java:32)
+	at ru.sfedu.course_project.Main.main(Main.java:29)
+2020-12-28 14:22:57 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Столбец "FONTCOLOR" не найден
+Column "FONTCOLOR" not found; SQL statement:
+INSERT INTO PRESITOR.PUBLIC.PRESENTATION (id, name, fillColor, fontColor) VALUES (ae12b691-dd9b-4d46-acec-79ec4a270852, Моя презентация, blue, Comic Sans) [42122-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:453)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.table.Table.getColumn(Table.java:703)
+	at org.h2.command.Parser.parseColumn(Parser.java:1450)
+	at org.h2.command.Parser.parseColumnList(Parser.java:1435)
+	at org.h2.command.Parser.parseInsertGivenTable(Parser.java:1804)
+	at org.h2.command.Parser.parseInsert(Parser.java:1749)
+	at org.h2.command.Parser.parsePrepared(Parser.java:954)
+	at org.h2.command.Parser.parse(Parser.java:843)
+	at org.h2.command.Parser.parse(Parser.java:815)
+	at org.h2.command.Parser.prepareCommand(Parser.java:738)
+	at org.h2.engine.Session.prepareLocal(Session.java:657)
+	at org.h2.engine.Session.prepareCommand(Session.java:595)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1235)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:212)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:201)
+	at ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods.createPresentation(JDBCPresentationMethods.java:46)
+	at ru.sfedu.course_project.api.DataProviderJDBC.createPresentation(DataProviderJDBC.java:26)
+	at ru.sfedu.course_project.tools.Runner.run(Runner.java:32)
+	at ru.sfedu.course_project.Main.main(Main.java:29)
+2020-12-28 14:23:40 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Таблица "PRESENTATION" уже существует
+Table "PRESENTATION" already exists; SQL statement:
+CREATE TABLE PRESENTATION (id UUID, name varchar(200), fillColor varchar(200), fontFamily varchar(200)) [42101-200]
+2020-12-28 14:24:20 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "INSERT INTO PRESITOR.PUBLIC.PRESENTATION (ID, NAME, FILLCOLOR, FONTFAMILY) VALUES (AE12B691-DD9B-4D46[*]-ACEC-79EC4A270852, МОЯ ПРЕЗЕНТАЦИЯ, BLUE, COMIC SANS)"; ожидалось "[, ::, AT, FORMAT, *, /, %, +, -, ||, ~, !~, NOT, LIKE, ILIKE, REGEXP, IS, IN, BETWEEN, AND, OR, ,, )"
+Syntax error in SQL statement "INSERT INTO PRESITOR.PUBLIC.PRESENTATION (ID, NAME, FILLCOLOR, FONTFAMILY) VALUES (AE12B691-DD9B-4D46[*]-ACEC-79EC4A270852, МОЯ ПРЕЗЕНТАЦИЯ, BLUE, COMIC SANS)"; expected "[, ::, AT, FORMAT, *, /, %, +, -, ||, ~, !~, NOT, LIKE, ILIKE, REGEXP, IS, IN, BETWEEN, AND, OR, ,, )"; SQL statement:
+INSERT INTO PRESITOR.PUBLIC.PRESENTATION (id, name, fillColor, fontFamily) VALUES (ae12b691-dd9b-4d46-acec-79ec4a270852, Моя презентация, blue, Comic Sans) [42001-200]
+2020-12-28 14:27:36 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "INSERT INTO PRESITOR.PUBLIC.PRESENTATION (ID, NAME, FILLCOLOR, FONTFAMILY) VALUES (AE12B691-DD9B-4D46[*]-ACEC-79EC4A270852, МОЯ ПРЕЗЕНТАЦИЯ, BLUE, COMIC SANS)"; ожидалось "[, ::, AT, FORMAT, *, /, %, +, -, ||, ~, !~, NOT, LIKE, ILIKE, REGEXP, IS, IN, BETWEEN, AND, OR, ,, )"
+Syntax error in SQL statement "INSERT INTO PRESITOR.PUBLIC.PRESENTATION (ID, NAME, FILLCOLOR, FONTFAMILY) VALUES (AE12B691-DD9B-4D46[*]-ACEC-79EC4A270852, МОЯ ПРЕЗЕНТАЦИЯ, BLUE, COMIC SANS)"; expected "[, ::, AT, FORMAT, *, /, %, +, -, ||, ~, !~, NOT, LIKE, ILIKE, REGEXP, IS, IN, BETWEEN, AND, OR, ,, )"; SQL statement:
+INSERT INTO PRESITOR.PUBLIC.PRESENTATION (id, name, fillColor, fontFamily) VALUES (ae12b691-dd9b-4d46-acec-79ec4a270852, Моя презентация, blue, Comic Sans) [42001-200]
+2020-12-28 14:30:40 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "INSERT INTO PRESITOR.PUBLIC.PRESENTATION (ID, NAME, FILLCOLOR, FONTFAMILY) VALUES (AE12B691-DD9B-4D46[*]-ACEC-79EC4A270852, МОЯ ПРЕЗЕНТАЦИЯ, BLUE, COMIC SANS)"; ожидалось "[, ::, AT, FORMAT, *, /, %, +, -, ||, ~, !~, NOT, LIKE, ILIKE, REGEXP, IS, IN, BETWEEN, AND, OR, ,, )"
+Syntax error in SQL statement "INSERT INTO PRESITOR.PUBLIC.PRESENTATION (ID, NAME, FILLCOLOR, FONTFAMILY) VALUES (AE12B691-DD9B-4D46[*]-ACEC-79EC4A270852, МОЯ ПРЕЗЕНТАЦИЯ, BLUE, COMIC SANS)"; expected "[, ::, AT, FORMAT, *, /, %, +, -, ||, ~, !~, NOT, LIKE, ILIKE, REGEXP, IS, IN, BETWEEN, AND, OR, ,, )"; SQL statement:
+INSERT INTO PRESITOR.PUBLIC.PRESENTATION (id, name, fillColor, fontFamily) VALUES (ae12b691-dd9b-4d46-acec-79ec4a270852, Моя презентация, blue, Comic Sans) [42001-200]
+2020-12-28 14:32:54 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Функция "UNHEX" не найдена
+Function "UNHEX" not found; SQL statement:
+INSERT INTO PRESITOR.PUBLIC.PRESENTATION (id, name, fillColor, fontFamily) VALUES (unhex(replace(ae12b691-dd9b-4d46-acec-79ec4a270852,'-','')), Моя презентация, blue, Comic Sans) [90022-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:576)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.command.Parser.readJavaFunction(Parser.java:3565)
+	at org.h2.command.Parser.readFunction(Parser.java:3770)
+	at org.h2.command.Parser.readTerm(Parser.java:4305)
+	at org.h2.command.Parser.readFactor(Parser.java:3343)
+	at org.h2.command.Parser.readSum(Parser.java:3330)
+	at org.h2.command.Parser.readConcat(Parser.java:3305)
+	at org.h2.command.Parser.readCondition(Parser.java:3108)
+	at org.h2.command.Parser.readExpression(Parser.java:3059)
+	at org.h2.command.Parser.parseValuesForCommand(Parser.java:1877)
+	at org.h2.command.Parser.parseInsertGivenTable(Parser.java:1817)
+	at org.h2.command.Parser.parseInsert(Parser.java:1749)
+	at org.h2.command.Parser.parsePrepared(Parser.java:954)
+	at org.h2.command.Parser.parse(Parser.java:843)
+	at org.h2.command.Parser.parse(Parser.java:815)
+	at org.h2.command.Parser.prepareCommand(Parser.java:738)
+	at org.h2.engine.Session.prepareLocal(Session.java:657)
+	at org.h2.engine.Session.prepareCommand(Session.java:595)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1235)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:212)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:201)
+	at ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods.createPresentation(JDBCPresentationMethods.java:48)
+	at ru.sfedu.course_project.api.DataProviderJDBC.createPresentation(DataProviderJDBC.java:26)
+	at ru.sfedu.course_project.tools.Runner.run(Runner.java:32)
+	at ru.sfedu.course_project.Main.main(Main.java:29)
+2020-12-28 14:33:27 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "INSERT INTO PRESITOR.PUBLIC.PRESENTATION (ID, NAME, FILLCOLOR, FONTFAMILY) VALUES REPLACE(AE12B691-DD9B-4D46[*]-ACEC-79EC4A270852,'-',''), МОЯ ПРЕЗЕНТАЦИЯ, BLUE, COMIC SANS)"; ожидалось "[, ::, AT, FORMAT, *, /, %, +, -, ||, ~, !~, NOT, LIKE, ILIKE, REGEXP, IS, IN, BETWEEN, AND, OR, ,, )"
+Syntax error in SQL statement "INSERT INTO PRESITOR.PUBLIC.PRESENTATION (ID, NAME, FILLCOLOR, FONTFAMILY) VALUES REPLACE(AE12B691-DD9B-4D46[*]-ACEC-79EC4A270852,'-',''), МОЯ ПРЕЗЕНТАЦИЯ, BLUE, COMIC SANS)"; expected "[, ::, AT, FORMAT, *, /, %, +, -, ||, ~, !~, NOT, LIKE, ILIKE, REGEXP, IS, IN, BETWEEN, AND, OR, ,, )"; SQL statement:
+INSERT INTO PRESITOR.PUBLIC.PRESENTATION (id, name, fillColor, fontFamily) VALUES replace(ae12b691-dd9b-4d46-acec-79ec4a270852,'-',''), Моя презентация, blue, Comic Sans) [42001-200]
+2020-12-28 14:34:29 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "INSERT INTO PRESITOR.PUBLIC.PRESENTATION (ID, NAME, FILLCOLOR, FONTFAMILY) VALUES AE12B691DD9B4D46ACEC79EC4A270852, МОЯ ПРЕЗЕНТАЦИЯ[*], BLUE, COMIC SANS)"
+Syntax error in SQL statement "INSERT INTO PRESITOR.PUBLIC.PRESENTATION (ID, NAME, FILLCOLOR, FONTFAMILY) VALUES AE12B691DD9B4D46ACEC79EC4A270852, МОЯ ПРЕЗЕНТАЦИЯ[*], BLUE, COMIC SANS)"; SQL statement:
+INSERT INTO PRESITOR.PUBLIC.PRESENTATION (id, name, fillColor, fontFamily) VALUES ae12b691dd9b4d46acec79ec4a270852, Моя презентация, blue, Comic Sans) [42000-200]
+2020-12-28 14:35:38 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "INSERT INTO PRESITOR.PUBLIC.PRESENTATION (ID, NAME, FILLCOLOR, FONTFAMILY) VALUES AE12B691DD9B4D46ACEC79EC4A270852, 'Моя презентация', BLUE, COMIC SANS[*])"
+Syntax error in SQL statement "INSERT INTO PRESITOR.PUBLIC.PRESENTATION (ID, NAME, FILLCOLOR, FONTFAMILY) VALUES AE12B691DD9B4D46ACEC79EC4A270852, 'Моя презентация', BLUE, COMIC SANS[*])"; SQL statement:
+INSERT INTO PRESITOR.PUBLIC.PRESENTATION (id, name, fillColor, fontFamily) VALUES ae12b691dd9b4d46acec79ec4a270852, 'Моя презентация', blue, Comic Sans) [42000-200]
+2020-12-28 14:36:20 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "INSERT INTO PRESITOR.PUBLIC.PRESENTATION (ID, NAME, FILLCOLOR, FONTFAMILY) VALUES 'ae12b691-dd9b-4d46-acec-79ec4a270852', 'Моя презентация', 'blue', 'Comic Sans')[*]"
+Syntax error in SQL statement "INSERT INTO PRESITOR.PUBLIC.PRESENTATION (ID, NAME, FILLCOLOR, FONTFAMILY) VALUES 'ae12b691-dd9b-4d46-acec-79ec4a270852', 'Моя презентация', 'blue', 'Comic Sans')[*]"; SQL statement:
+INSERT INTO PRESITOR.PUBLIC.PRESENTATION (id, name, fillColor, fontFamily) VALUES 'ae12b691-dd9b-4d46-acec-79ec4a270852', 'Моя презентация', 'blue', 'Comic Sans') [42000-200]
+2020-12-28 15:08:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Таблица "PRESENTATION" уже существует
+Table "PRESENTATION" already exists; SQL statement:
+CREATE TABLE PRESENTATION (id varchar(36), name varchar(200), fillColor varchar(200), fontFamily varchar(200)) [42101-200]
+2020-12-28 15:38:41 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLDataException: Недопустимое значение "0" для параметра "columnIndex"
+Invalid value "0" for parameter "columnIndex" [90008-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:590)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.getInvalidValueException(DbException.java:280)
+	at org.h2.jdbc.JdbcResultSet.checkColumnIndex(JdbcResultSet.java:3212)
+	at org.h2.jdbc.JdbcResultSet.get(JdbcResultSet.java:3251)
+	at org.h2.jdbc.JdbcResultSet.getString(JdbcResultSet.java:298)
+	at ru.sfedu.course_project.api.jdbc.JDBCCommonMethods.getListFromResultSet(JDBCCommonMethods.java:85)
+	at ru.sfedu.course_project.api.jdbc.JDBCCommonMethods.getCollection(JDBCCommonMethods.java:73)
+	at ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods.getPresentations(JDBCPresentationMethods.java:67)
+	at ru.sfedu.course_project.api.DataProviderJDBC.getPresentations(DataProviderJDBC.java:37)
+	at ru.sfedu.course_project.tools.Runner.run(Runner.java:35)
+	at ru.sfedu.course_project.Main.main(Main.java:29)

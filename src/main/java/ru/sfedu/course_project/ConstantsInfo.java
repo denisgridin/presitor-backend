@@ -6,6 +6,7 @@ public class ConstantsInfo {
     public static String FIELD_FORMAT_SET = "Set field: %s; Value: %s";
 
     public static String PRESENTATIONS_GET = "Attempt to get presentations";
+    public static String PRESENTATIONS_CREATE = "Attempt to create presentations";
 
     public static String SLIDES_REMOVE = "Attempt to remove slides";
 

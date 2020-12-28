@@ -6998,3 +6998,1192 @@ Message: Premature end of file.
 27 дек. 2020 21:23:27,206 [main] DEBUG ru.sfedu.course_project.api.xml.XMLCommonMethods - Optional.empty
 27 дек. 2020 21:23:27,208 [main] INFO  ru.sfedu.course_project.api.xml.XMLPresentationMethods - [editPresentationOptions] Unable to find presentation: ae12b691-dd9b-4d46-acec-79ec4a270852
 27 дек. 2020 21:23:27,216 [main] INFO  ru.sfedu.course_project.tools.Result - { status: error, value: Unable to find presentation ae12b691-dd9b-4d46-acec-79ec4a270852 }
+27 дек. 2020 21:32:03,678 [main] WARN  ru.sfedu.course_project.Main - arguments {fillColor=blue, role=editor, fontFamily=Comic Sans, method=editPresentationOptions, datatype=xml, name=Моя презентация, id=ae12b691-dd9b-4d46-acec-79ec4a270852}
+27 дек. 2020 21:32:03,684 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [fillColor=blue, role=editor, fontFamily=Comic Sans, method=editPresentationOptions, datatype=xml, name=Моя презентация, id=ae12b691-dd9b-4d46-acec-79ec4a270852]
+27 дек. 2020 21:32:03,686 [main] INFO  ru.sfedu.course_project.Main - Attempt to create xml data provider
+27 дек. 2020 21:32:03,688 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: xml
+27 дек. 2020 21:32:03,692 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: editPresentationOptions
+27 дек. 2020 21:32:03,693 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+27 дек. 2020 21:32:03,702 [main] DEBUG ru.sfedu.course_project.api.xml.XMLCommonMethods - presentation id: ae12b691-dd9b-4d46-acec-79ec4a270852
+27 дек. 2020 21:32:03,705 [main] DEBUG ru.sfedu.course_project.api.xml.XMLCommonMethods - Attempt to get collection
+27 дек. 2020 21:32:03,709 [main] DEBUG ru.sfedu.course_project.api.xml.XMLCommonMethods - Optional[./src/main/resources/data/xml/presentation.xml]
+27 дек. 2020 21:32:03,852 [main] DEBUG ru.sfedu.course_project.api.xml.XMLCommonMethods - Attempt to find presentation: ae12b691-dd9b-4d46-acec-79ec4a270852
+27 дек. 2020 21:32:03,888 [main] DEBUG ru.sfedu.course_project.api.xml.XMLCommonMethods - list instance: [Presentation{id=2f77ec2b-b2c4-476a-8653-c98451204fda, name='My presentation XML', fillColor='#ffffff', fontFamily='Roboto'}, Presentation{id=ae12b691-dd9b-4d46-acec-79ec4a270852, name='My presentation XML', fillColor='#ffffff', fontFamily='Roboto'}]
+27 дек. 2020 21:32:03,889 [main] DEBUG ru.sfedu.course_project.api.xml.XMLCommonMethods - Attempt to get collection
+27 дек. 2020 21:32:03,890 [main] DEBUG ru.sfedu.course_project.api.xml.XMLCommonMethods - Optional[./src/main/resources/data/xml/presentation.xml]
+27 дек. 2020 21:32:03,895 [main] DEBUG ru.sfedu.course_project.api.xml.XMLPresentationMethods - Edit field fillColor blue
+27 дек. 2020 21:32:03,896 [main] DEBUG ru.sfedu.course_project.api.xml.XMLPresentationMethods - Edit field fontFamily Comic Sans
+27 дек. 2020 21:32:03,896 [main] DEBUG ru.sfedu.course_project.api.xml.XMLPresentationMethods - Edit field name Моя презентация
+27 дек. 2020 21:32:03,897 [main] DEBUG ru.sfedu.course_project.api.xml.XMLCommonMethods - [writeCollection] Attempt to write in presentation
+27 дек. 2020 21:32:03,897 [main] DEBUG ru.sfedu.course_project.api.xml.XMLCommonMethods - Optional[./src/main/resources/data/xml/presentation.xml]
+27 дек. 2020 21:32:03,898 [main] DEBUG ru.sfedu.course_project.api.xml.XMLCommonMethods - File path: ./src/main/resources/data/xml/presentation.xml
+27 дек. 2020 21:32:03,931 [main] INFO  ru.sfedu.course_project.api.xml.XMLCommonMethods - [writeCollection] Collection was wrote
+27 дек. 2020 21:32:03,935 [main] INFO  ru.sfedu.course_project.api.xml.XMLPresentationMethods - Presentation options was successfully updated ae12b691-dd9b-4d46-acec-79ec4a270852
+27 дек. 2020 21:32:03,940 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value: Presentation options was successfully updated ae12b691-dd9b-4d46-acec-79ec4a270852 }
+28 дек. 2020 11:17:54,889 [main] WARN  ru.sfedu.course_project.Main - arguments {fillColor=blue, role=editor, fontFamily=Comic Sans, method=editPresentationOptions, datatype=xml, name=Моя презентация, id=ae12b691-dd9b-4d46-acec-79ec4a270852}
+28 дек. 2020 11:17:54,897 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [fillColor=blue, role=editor, fontFamily=Comic Sans, method=editPresentationOptions, datatype=xml, name=Моя презентация, id=ae12b691-dd9b-4d46-acec-79ec4a270852]
+28 дек. 2020 11:17:54,905 [main] INFO  ru.sfedu.course_project.Main - Attempt to create xml data provider
+28 дек. 2020 11:17:54,929 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: xml
+28 дек. 2020 11:17:54,945 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: editPresentationOptions
+28 дек. 2020 11:17:54,953 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+28 дек. 2020 11:17:55,027 [main] DEBUG ru.sfedu.course_project.api.xml.XMLCommonMethods - presentation id: ae12b691-dd9b-4d46-acec-79ec4a270852
+28 дек. 2020 11:17:55,051 [main] DEBUG ru.sfedu.course_project.api.xml.XMLCommonMethods - Attempt to get collection
+28 дек. 2020 11:17:55,083 [main] DEBUG ru.sfedu.course_project.api.xml.XMLCommonMethods - Optional[./src/main/resources/data/xml/presentation.xml]
+28 дек. 2020 11:17:55,350 [main] DEBUG ru.sfedu.course_project.api.xml.XMLCommonMethods - Attempt to find presentation: ae12b691-dd9b-4d46-acec-79ec4a270852
+28 дек. 2020 11:17:55,366 [main] DEBUG ru.sfedu.course_project.api.xml.XMLCommonMethods - list instance: [Presentation{id=2f77ec2b-b2c4-476a-8653-c98451204fda, name='My presentation XML', fillColor='#ffffff', fontFamily='Roboto'}, Presentation{id=ae12b691-dd9b-4d46-acec-79ec4a270852, name='Моя презентация', fillColor='blue', fontFamily='Comic Sans'}]
+28 дек. 2020 11:17:55,366 [main] DEBUG ru.sfedu.course_project.api.xml.XMLCommonMethods - Attempt to get collection
+28 дек. 2020 11:17:55,366 [main] DEBUG ru.sfedu.course_project.api.xml.XMLCommonMethods - Optional[./src/main/resources/data/xml/presentation.xml]
+28 дек. 2020 11:17:55,382 [main] DEBUG ru.sfedu.course_project.api.xml.XMLPresentationMethods - Edit field fillColor blue
+28 дек. 2020 11:17:55,382 [main] DEBUG ru.sfedu.course_project.api.xml.XMLPresentationMethods - Edit field fontFamily Comic Sans
+28 дек. 2020 11:17:55,382 [main] DEBUG ru.sfedu.course_project.api.xml.XMLPresentationMethods - Edit field name Моя презентация
+28 дек. 2020 11:17:55,382 [main] DEBUG ru.sfedu.course_project.api.xml.XMLCommonMethods - [writeCollection] Attempt to write in presentation
+28 дек. 2020 11:17:55,388 [main] DEBUG ru.sfedu.course_project.api.xml.XMLCommonMethods - Optional[./src/main/resources/data/xml/presentation.xml]
+28 дек. 2020 11:17:55,388 [main] DEBUG ru.sfedu.course_project.api.xml.XMLCommonMethods - File path: ./src/main/resources/data/xml/presentation.xml
+28 дек. 2020 11:17:55,404 [main] INFO  ru.sfedu.course_project.api.xml.XMLCommonMethods - [writeCollection] Collection was wrote
+28 дек. 2020 11:17:55,435 [main] INFO  ru.sfedu.course_project.api.xml.XMLPresentationMethods - Presentation options was successfully updated ae12b691-dd9b-4d46-acec-79ec4a270852
+28 дек. 2020 11:17:55,451 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value: Presentation options was successfully updated ae12b691-dd9b-4d46-acec-79ec4a270852 }
+28 дек. 2020 13:57:05,664 [main] WARN  ru.sfedu.course_project.Main - arguments {fillColor=blue, role=editor, fontFamily=Comic Sans, method=createPresentation, datatype=db, name=Моя презентация, id=ae12b691-dd9b-4d46-acec-79ec4a270852}
+28 дек. 2020 13:57:05,671 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [fillColor=blue, role=editor, fontFamily=Comic Sans, method=createPresentation, datatype=db, name=Моя презентация, id=ae12b691-dd9b-4d46-acec-79ec4a270852]
+28 дек. 2020 13:57:05,674 [main] INFO  ru.sfedu.course_project.Main - Attempt to create db data provider
+28 дек. 2020 13:57:05,718 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: db
+28 дек. 2020 13:57:05,731 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: createPresentation
+28 дек. 2020 13:57:05,731 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+28 дек. 2020 13:58:04,884 [main] WARN  ru.sfedu.course_project.Main - arguments {fillColor=blue, role=editor, fontFamily=Comic Sans, method=createPresentation, datatype=db, name=Моя презентация, id=ae12b691-dd9b-4d46-acec-79ec4a270852}
+28 дек. 2020 13:58:04,889 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [fillColor=blue, role=editor, fontFamily=Comic Sans, method=createPresentation, datatype=db, name=Моя презентация, id=ae12b691-dd9b-4d46-acec-79ec4a270852]
+28 дек. 2020 13:58:04,892 [main] INFO  ru.sfedu.course_project.Main - Attempt to create db data provider
+28 дек. 2020 13:58:04,906 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: db
+28 дек. 2020 13:58:04,910 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: createPresentation
+28 дек. 2020 13:58:04,910 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+28 дек. 2020 13:58:04,938 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Attempt to create presentations
+28 дек. 2020 13:58:05,074 [main] ERROR ru.sfedu.course_project.api.jdbc.JDBCCommonMethods - org.h2.jdbc.JdbcSQLNonTransientException: Ошибка ввода/вывода: "java.io.IOException: Синтаксическая ошибка в имени файла, имени папки или метке тома"; ":./src/main/resources/data/jdbc/presitor.mv.db.mv.db"
+IO Exception: "java.io.IOException: Синтаксическая ошибка в имени файла, имени папки или метке тома"; ":./src/main/resources/data/jdbc/presitor.mv.db.mv.db" [90031-200]
+28 дек. 2020 13:58:05,086 [main] ERROR ru.sfedu.course_project.api.jdbc.JDBCCommonMethods - Connection error 
+28 дек. 2020 13:58:05,091 [main] INFO  ru.sfedu.course_project.tools.Result - { status: error, value: Connection error  }
+28 дек. 2020 14:00:15,149 [main] WARN  ru.sfedu.course_project.Main - arguments {fillColor=blue, role=editor, fontFamily=Comic Sans, method=createPresentation, datatype=db, name=Моя презентация, id=ae12b691-dd9b-4d46-acec-79ec4a270852}
+28 дек. 2020 14:00:15,153 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [fillColor=blue, role=editor, fontFamily=Comic Sans, method=createPresentation, datatype=db, name=Моя презентация, id=ae12b691-dd9b-4d46-acec-79ec4a270852]
+28 дек. 2020 14:00:15,155 [main] INFO  ru.sfedu.course_project.Main - Attempt to create db data provider
+28 дек. 2020 14:00:15,158 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: db
+28 дек. 2020 14:00:15,162 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: createPresentation
+28 дек. 2020 14:00:15,163 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+28 дек. 2020 14:00:15,165 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Attempt to create presentations
+28 дек. 2020 14:00:15,259 [main] ERROR ru.sfedu.course_project.api.jdbc.JDBCCommonMethods - org.h2.jdbc.JdbcSQLNonTransientException: Ошибка ввода/вывода: "java.io.IOException: Синтаксическая ошибка в имени файла, имени папки или метке тома"; ":/src/main/resources/data/jdbc/presitor.mv.db"
+IO Exception: "java.io.IOException: Синтаксическая ошибка в имени файла, имени папки или метке тома"; ":/src/main/resources/data/jdbc/presitor.mv.db" [90031-200]
+28 дек. 2020 14:00:15,260 [main] ERROR ru.sfedu.course_project.api.jdbc.JDBCCommonMethods - Connection error 
+28 дек. 2020 14:00:15,262 [main] INFO  ru.sfedu.course_project.tools.Result - { status: error, value: Connection error  }
+28 дек. 2020 14:00:35,448 [main] WARN  ru.sfedu.course_project.Main - arguments {fillColor=blue, role=editor, fontFamily=Comic Sans, method=createPresentation, datatype=db, name=Моя презентация, id=ae12b691-dd9b-4d46-acec-79ec4a270852}
+28 дек. 2020 14:00:35,456 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [fillColor=blue, role=editor, fontFamily=Comic Sans, method=createPresentation, datatype=db, name=Моя презентация, id=ae12b691-dd9b-4d46-acec-79ec4a270852]
+28 дек. 2020 14:00:35,458 [main] INFO  ru.sfedu.course_project.Main - Attempt to create db data provider
+28 дек. 2020 14:00:35,462 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: db
+28 дек. 2020 14:00:35,466 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: createPresentation
+28 дек. 2020 14:00:35,466 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+28 дек. 2020 14:00:35,468 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Attempt to create presentations
+28 дек. 2020 14:00:35,569 [main] ERROR ru.sfedu.course_project.api.jdbc.JDBCCommonMethods - org.h2.jdbc.JdbcSQLNonTransientException: Ошибка ввода/вывода: "java.io.IOException: Синтаксическая ошибка в имени файла, имени папки или метке тома"; ":jdbc:h2:/src/main/resources/data/jdbc/presitor.mv.db"
+IO Exception: "java.io.IOException: Синтаксическая ошибка в имени файла, имени папки или метке тома"; ":jdbc:h2:/src/main/resources/data/jdbc/presitor.mv.db" [90031-200]
+28 дек. 2020 14:00:35,570 [main] ERROR ru.sfedu.course_project.api.jdbc.JDBCCommonMethods - Connection error 
+28 дек. 2020 14:00:35,572 [main] INFO  ru.sfedu.course_project.tools.Result - { status: error, value: Connection error  }
+28 дек. 2020 14:01:19,258 [main] WARN  ru.sfedu.course_project.Main - arguments {fillColor=blue, role=editor, fontFamily=Comic Sans, method=createPresentation, datatype=db, name=Моя презентация, id=ae12b691-dd9b-4d46-acec-79ec4a270852}
+28 дек. 2020 14:01:19,264 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [fillColor=blue, role=editor, fontFamily=Comic Sans, method=createPresentation, datatype=db, name=Моя презентация, id=ae12b691-dd9b-4d46-acec-79ec4a270852]
+28 дек. 2020 14:01:19,265 [main] INFO  ru.sfedu.course_project.Main - Attempt to create db data provider
+28 дек. 2020 14:01:19,269 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: db
+28 дек. 2020 14:01:19,273 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: createPresentation
+28 дек. 2020 14:01:19,274 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+28 дек. 2020 14:01:19,276 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Attempt to create presentations
+28 дек. 2020 14:01:19,376 [main] ERROR ru.sfedu.course_project.api.jdbc.JDBCCommonMethods - org.h2.jdbc.JdbcSQLNonTransientConnectionException: Путь неявно является относительным для текущего рабочего каталога и не допустим в URL базы данных "jdbc:h2:/src/main/resources/data/jdbc/presitor". Используйте абсолютный путь, ~/name, ./name, или настройку baseDir.
+A file path that is implicitly relative to the current working directory is not allowed in the database URL "jdbc:h2:/src/main/resources/data/jdbc/presitor". Use an absolute path, ~/name, ./name, or the baseDir setting instead. [90011-200]
+28 дек. 2020 14:01:19,377 [main] ERROR ru.sfedu.course_project.api.jdbc.JDBCCommonMethods - Connection error 
+28 дек. 2020 14:01:19,379 [main] INFO  ru.sfedu.course_project.tools.Result - { status: error, value: Connection error  }
+28 дек. 2020 14:03:26,892 [main] WARN  ru.sfedu.course_project.Main - arguments {fillColor=blue, role=editor, fontFamily=Comic Sans, method=createPresentation, datatype=db, name=Моя презентация, id=ae12b691-dd9b-4d46-acec-79ec4a270852}
+28 дек. 2020 14:03:26,898 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [fillColor=blue, role=editor, fontFamily=Comic Sans, method=createPresentation, datatype=db, name=Моя презентация, id=ae12b691-dd9b-4d46-acec-79ec4a270852]
+28 дек. 2020 14:03:26,900 [main] INFO  ru.sfedu.course_project.Main - Attempt to create db data provider
+28 дек. 2020 14:03:26,902 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: db
+28 дек. 2020 14:03:26,906 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: createPresentation
+28 дек. 2020 14:03:26,907 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+28 дек. 2020 14:03:26,909 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Attempt to create presentations
+28 дек. 2020 14:03:34,229 [main] ERROR ru.sfedu.course_project.api.jdbc.JDBCCommonMethods - org.h2.jdbc.JdbcSQLNonTransientException: Ошибка при создании файла "//"
+Error while creating file "//" [90062-200]
+28 дек. 2020 14:03:34,230 [main] ERROR ru.sfedu.course_project.api.jdbc.JDBCCommonMethods - Connection error 
+28 дек. 2020 14:03:34,231 [main] INFO  ru.sfedu.course_project.tools.Result - { status: error, value: Connection error  }
+28 дек. 2020 14:05:35,415 [main] WARN  ru.sfedu.course_project.Main - arguments {fillColor=blue, role=editor, fontFamily=Comic Sans, method=createPresentation, datatype=db, name=Моя презентация, id=ae12b691-dd9b-4d46-acec-79ec4a270852}
+28 дек. 2020 14:05:35,422 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [fillColor=blue, role=editor, fontFamily=Comic Sans, method=createPresentation, datatype=db, name=Моя презентация, id=ae12b691-dd9b-4d46-acec-79ec4a270852]
+28 дек. 2020 14:05:35,423 [main] INFO  ru.sfedu.course_project.Main - Attempt to create db data provider
+28 дек. 2020 14:05:35,427 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: db
+28 дек. 2020 14:05:35,430 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: createPresentation
+28 дек. 2020 14:05:35,431 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+28 дек. 2020 14:05:35,433 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Attempt to create presentations
+28 дек. 2020 14:05:35,523 [main] ERROR ru.sfedu.course_project.api.jdbc.JDBCCommonMethods - org.h2.jdbc.JdbcSQLNonTransientConnectionException: Путь неявно является относительным для текущего рабочего каталога и не допустим в URL базы данных "jdbc:h2:ru.sfedu.course_project.main.data.jdbc.presitor". Используйте абсолютный путь, ~/name, ./name, или настройку baseDir.
+A file path that is implicitly relative to the current working directory is not allowed in the database URL "jdbc:h2:ru.sfedu.course_project.main.data.jdbc.presitor". Use an absolute path, ~/name, ./name, or the baseDir setting instead. [90011-200]
+28 дек. 2020 14:05:35,524 [main] ERROR ru.sfedu.course_project.api.jdbc.JDBCCommonMethods - Connection error 
+28 дек. 2020 14:05:35,526 [main] INFO  ru.sfedu.course_project.tools.Result - { status: error, value: Connection error  }
+28 дек. 2020 14:06:34,299 [main] WARN  ru.sfedu.course_project.Main - arguments {fillColor=blue, role=editor, fontFamily=Comic Sans, method=createPresentation, datatype=db, name=Моя презентация, id=ae12b691-dd9b-4d46-acec-79ec4a270852}
+28 дек. 2020 14:06:34,314 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [fillColor=blue, role=editor, fontFamily=Comic Sans, method=createPresentation, datatype=db, name=Моя презентация, id=ae12b691-dd9b-4d46-acec-79ec4a270852]
+28 дек. 2020 14:06:34,314 [main] INFO  ru.sfedu.course_project.Main - Attempt to create db data provider
+28 дек. 2020 14:06:34,314 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: db
+28 дек. 2020 14:06:34,314 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: createPresentation
+28 дек. 2020 14:06:34,314 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+28 дек. 2020 14:06:34,314 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Attempt to create presentations
+28 дек. 2020 14:06:34,814 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  id ae12b691-dd9b-4d46-acec-79ec4a270852
+28 дек. 2020 14:06:34,814 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  name Моя презентация
+28 дек. 2020 14:06:34,814 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  fillColor blue
+28 дек. 2020 14:06:34,814 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  fontFamily Comic Sans
+28 дек. 2020 14:06:34,814 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  slides []
+28 дек. 2020 14:06:34,814 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  comments []
+28 дек. 2020 14:06:34,814 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  marks []
+28 дек. 2020 14:06:34,814 [main] DEBUG ru.sfedu.course_project.tools.Creator - Arguments was validate 
+28 дек. 2020 14:06:34,829 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value: Optional[Presentation{id=ae12b691-dd9b-4d46-acec-79ec4a270852, name='Моя презентация', fillColor='blue', fontFamily='Comic Sans', slides=[], comments=[]}] }
+28 дек. 2020 14:06:34,852 [main] ERROR ru.sfedu.course_project.tools.jdbc.QueryBuilder - java.lang.ClassCastException: class java.util.HashMap cannot be cast to class ru.sfedu.course_project.bean.Presentation (java.util.HashMap is in module java.base of loader 'bootstrap'; ru.sfedu.course_project.bean.Presentation is in unnamed module of loader 'app')
+28 дек. 2020 14:06:34,852 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Query string: 
+28 дек. 2020 14:06:34,852 [main] ERROR ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Query string is empty
+28 дек. 2020 14:06:34,852 [main] INFO  ru.sfedu.course_project.tools.Result - { status: error, value: Unable to create presentation }
+28 дек. 2020 14:07:48,465 [main] WARN  ru.sfedu.course_project.Main - arguments {fillColor=blue, role=editor, fontFamily=Comic Sans, method=createPresentation, datatype=db, name=Моя презентация, id=ae12b691-dd9b-4d46-acec-79ec4a270852}
+28 дек. 2020 14:07:48,470 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [fillColor=blue, role=editor, fontFamily=Comic Sans, method=createPresentation, datatype=db, name=Моя презентация, id=ae12b691-dd9b-4d46-acec-79ec4a270852]
+28 дек. 2020 14:07:48,472 [main] INFO  ru.sfedu.course_project.Main - Attempt to create db data provider
+28 дек. 2020 14:07:48,475 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: db
+28 дек. 2020 14:07:48,479 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: createPresentation
+28 дек. 2020 14:07:48,479 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+28 дек. 2020 14:07:48,496 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Attempt to create presentations
+28 дек. 2020 14:07:48,910 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  id ae12b691-dd9b-4d46-acec-79ec4a270852
+28 дек. 2020 14:07:48,910 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  name Моя презентация
+28 дек. 2020 14:07:48,911 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  fillColor blue
+28 дек. 2020 14:07:48,912 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  fontFamily Comic Sans
+28 дек. 2020 14:07:48,913 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  slides []
+28 дек. 2020 14:07:48,913 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  comments []
+28 дек. 2020 14:07:48,914 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  marks []
+28 дек. 2020 14:07:48,915 [main] DEBUG ru.sfedu.course_project.tools.Creator - Arguments was validate 
+28 дек. 2020 14:07:48,939 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value: Optional[Presentation{id=ae12b691-dd9b-4d46-acec-79ec4a270852, name='Моя презентация', fillColor='blue', fontFamily='Comic Sans', slides=[], comments=[]}] }
+28 дек. 2020 14:07:48,952 [main] ERROR ru.sfedu.course_project.tools.jdbc.QueryBuilder - java.util.MissingFormatArgumentException: Format specifier '%s'
+28 дек. 2020 14:07:48,953 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Query string: 
+28 дек. 2020 14:07:48,953 [main] ERROR ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Query string is empty
+28 дек. 2020 14:07:48,954 [main] INFO  ru.sfedu.course_project.tools.Result - { status: error, value: Unable to create presentation }
+28 дек. 2020 14:08:45,261 [main] WARN  ru.sfedu.course_project.Main - arguments {fillColor=blue, role=editor, fontFamily=Comic Sans, method=createPresentation, datatype=db, name=Моя презентация, id=ae12b691-dd9b-4d46-acec-79ec4a270852}
+28 дек. 2020 14:08:45,267 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [fillColor=blue, role=editor, fontFamily=Comic Sans, method=createPresentation, datatype=db, name=Моя презентация, id=ae12b691-dd9b-4d46-acec-79ec4a270852]
+28 дек. 2020 14:08:45,268 [main] INFO  ru.sfedu.course_project.Main - Attempt to create db data provider
+28 дек. 2020 14:08:45,271 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: db
+28 дек. 2020 14:08:45,274 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: createPresentation
+28 дек. 2020 14:08:45,275 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+28 дек. 2020 14:08:45,277 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Attempt to create presentations
+28 дек. 2020 14:08:45,681 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  id ae12b691-dd9b-4d46-acec-79ec4a270852
+28 дек. 2020 14:08:45,682 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  name Моя презентация
+28 дек. 2020 14:08:45,682 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  fillColor blue
+28 дек. 2020 14:08:45,683 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  fontFamily Comic Sans
+28 дек. 2020 14:08:45,683 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  slides []
+28 дек. 2020 14:08:45,684 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  comments []
+28 дек. 2020 14:08:45,685 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  marks []
+28 дек. 2020 14:08:45,686 [main] DEBUG ru.sfedu.course_project.tools.Creator - Arguments was validate 
+28 дек. 2020 14:08:45,703 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value: Optional[Presentation{id=ae12b691-dd9b-4d46-acec-79ec4a270852, name='Моя презентация', fillColor='blue', fontFamily='Comic Sans', slides=[], comments=[]}] }
+28 дек. 2020 14:08:45,723 [main] DEBUG ru.sfedu.course_project.tools.jdbc.QueryBuilder - Query body: INSERT INTO %s (%s) VALUES (%s)
+28 дек. 2020 14:08:45,726 [main] ERROR ru.sfedu.course_project.tools.jdbc.QueryBuilder - java.util.MissingFormatArgumentException: Format specifier '%s'
+28 дек. 2020 14:08:45,726 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Query string: 
+28 дек. 2020 14:08:45,727 [main] ERROR ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Query string is empty
+28 дек. 2020 14:08:45,728 [main] INFO  ru.sfedu.course_project.tools.Result - { status: error, value: Unable to create presentation }
+28 дек. 2020 14:09:14,792 [main] WARN  ru.sfedu.course_project.Main - arguments {fillColor=blue, role=editor, fontFamily=Comic Sans, method=createPresentation, datatype=db, name=Моя презентация, id=ae12b691-dd9b-4d46-acec-79ec4a270852}
+28 дек. 2020 14:09:14,800 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [fillColor=blue, role=editor, fontFamily=Comic Sans, method=createPresentation, datatype=db, name=Моя презентация, id=ae12b691-dd9b-4d46-acec-79ec4a270852]
+28 дек. 2020 14:09:14,802 [main] INFO  ru.sfedu.course_project.Main - Attempt to create db data provider
+28 дек. 2020 14:09:14,806 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: db
+28 дек. 2020 14:09:14,809 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: createPresentation
+28 дек. 2020 14:09:14,809 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+28 дек. 2020 14:09:14,812 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Attempt to create presentations
+28 дек. 2020 14:09:15,235 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  id ae12b691-dd9b-4d46-acec-79ec4a270852
+28 дек. 2020 14:09:15,236 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  name Моя презентация
+28 дек. 2020 14:09:15,237 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  fillColor blue
+28 дек. 2020 14:09:15,237 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  fontFamily Comic Sans
+28 дек. 2020 14:09:15,238 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  slides []
+28 дек. 2020 14:09:15,239 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  comments []
+28 дек. 2020 14:09:15,239 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  marks []
+28 дек. 2020 14:09:15,240 [main] DEBUG ru.sfedu.course_project.tools.Creator - Arguments was validate 
+28 дек. 2020 14:09:15,257 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value: Optional[Presentation{id=ae12b691-dd9b-4d46-acec-79ec4a270852, name='Моя презентация', fillColor='blue', fontFamily='Comic Sans', slides=[], comments=[]}] }
+28 дек. 2020 14:09:15,276 [main] DEBUG ru.sfedu.course_project.tools.jdbc.QueryBuilder - Query body: INSERT INTO %s (%s) VALUES (%s)
+28 дек. 2020 14:09:15,276 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Query string: INSERT INTO presentation ((id, name, fillColor, fontColor)) VALUES ((ae12b691-dd9b-4d46-acec-79ec4a270852, Моя презентация, blue, Comic Sans))
+28 дек. 2020 14:09:15,281 [main] ERROR ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - org.h2.jdbc.JdbcSQLSyntaxErrorException: Таблица "PRESENTATION" не найдена
+Table "PRESENTATION" not found; SQL statement:
+INSERT INTO presentation ((id, name, fillColor, fontColor)) VALUES ((ae12b691-dd9b-4d46-acec-79ec4a270852, Моя презентация, blue, Comic Sans)) [42102-200]
+28 дек. 2020 14:09:15,282 [main] ERROR ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Unable to create presentation
+28 дек. 2020 14:09:15,283 [main] INFO  ru.sfedu.course_project.tools.Result - { status: error, value: Unable to create presentation }
+28 дек. 2020 14:09:53,687 [main] WARN  ru.sfedu.course_project.Main - arguments {fillColor=blue, role=editor, fontFamily=Comic Sans, method=createPresentation, datatype=db, name=Моя презентация, id=ae12b691-dd9b-4d46-acec-79ec4a270852}
+28 дек. 2020 14:09:53,692 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [fillColor=blue, role=editor, fontFamily=Comic Sans, method=createPresentation, datatype=db, name=Моя презентация, id=ae12b691-dd9b-4d46-acec-79ec4a270852]
+28 дек. 2020 14:09:53,694 [main] INFO  ru.sfedu.course_project.Main - Attempt to create db data provider
+28 дек. 2020 14:09:53,697 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: db
+28 дек. 2020 14:09:53,701 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: createPresentation
+28 дек. 2020 14:09:53,701 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+28 дек. 2020 14:09:53,703 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Attempt to create presentations
+28 дек. 2020 14:09:54,179 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  id ae12b691-dd9b-4d46-acec-79ec4a270852
+28 дек. 2020 14:09:54,180 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  name Моя презентация
+28 дек. 2020 14:09:54,181 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  fillColor blue
+28 дек. 2020 14:09:54,181 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  fontFamily Comic Sans
+28 дек. 2020 14:09:54,182 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  slides []
+28 дек. 2020 14:09:54,183 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  comments []
+28 дек. 2020 14:09:54,184 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  marks []
+28 дек. 2020 14:09:54,185 [main] DEBUG ru.sfedu.course_project.tools.Creator - Arguments was validate 
+28 дек. 2020 14:09:54,207 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value: Optional[Presentation{id=ae12b691-dd9b-4d46-acec-79ec4a270852, name='Моя презентация', fillColor='blue', fontFamily='Comic Sans', slides=[], comments=[]}] }
+28 дек. 2020 14:09:54,225 [main] DEBUG ru.sfedu.course_project.tools.jdbc.QueryBuilder - Query body: INSERT INTO %s %s VALUES %s
+28 дек. 2020 14:09:54,226 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Query string: INSERT INTO presentation (id, name, fillColor, fontColor) VALUES (ae12b691-dd9b-4d46-acec-79ec4a270852, Моя презентация, blue, Comic Sans)
+28 дек. 2020 14:09:54,241 [main] ERROR ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - org.h2.jdbc.JdbcSQLSyntaxErrorException: Таблица "PRESENTATION" не найдена
+Table "PRESENTATION" not found; SQL statement:
+INSERT INTO presentation (id, name, fillColor, fontColor) VALUES (ae12b691-dd9b-4d46-acec-79ec4a270852, Моя презентация, blue, Comic Sans) [42102-200]
+28 дек. 2020 14:09:54,242 [main] ERROR ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Unable to create presentation
+28 дек. 2020 14:09:54,242 [main] INFO  ru.sfedu.course_project.tools.Result - { status: error, value: Unable to create presentation }
+28 дек. 2020 14:14:21,312 [main] WARN  ru.sfedu.course_project.Main - arguments {fillColor=blue, role=editor, fontFamily=Comic Sans, method=createPresentation, datatype=db, name=Моя презентация, id=ae12b691-dd9b-4d46-acec-79ec4a270852}
+28 дек. 2020 14:14:21,320 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [fillColor=blue, role=editor, fontFamily=Comic Sans, method=createPresentation, datatype=db, name=Моя презентация, id=ae12b691-dd9b-4d46-acec-79ec4a270852]
+28 дек. 2020 14:14:21,322 [main] INFO  ru.sfedu.course_project.Main - Attempt to create db data provider
+28 дек. 2020 14:14:21,328 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: db
+28 дек. 2020 14:14:21,332 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: createPresentation
+28 дек. 2020 14:14:21,333 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+28 дек. 2020 14:14:21,336 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Attempt to create presentations
+28 дек. 2020 14:14:21,743 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  id ae12b691-dd9b-4d46-acec-79ec4a270852
+28 дек. 2020 14:14:21,744 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  name Моя презентация
+28 дек. 2020 14:14:21,744 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  fillColor blue
+28 дек. 2020 14:14:21,745 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  fontFamily Comic Sans
+28 дек. 2020 14:14:21,745 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  slides []
+28 дек. 2020 14:14:21,746 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  comments []
+28 дек. 2020 14:14:21,747 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  marks []
+28 дек. 2020 14:14:21,747 [main] DEBUG ru.sfedu.course_project.tools.Creator - Arguments was validate 
+28 дек. 2020 14:14:21,763 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value: Optional[Presentation{id=ae12b691-dd9b-4d46-acec-79ec4a270852, name='Моя презентация', fillColor='blue', fontFamily='Comic Sans', slides=[], comments=[]}] }
+28 дек. 2020 14:14:21,788 [main] DEBUG ru.sfedu.course_project.tools.jdbc.QueryBuilder - Query body: INSERT INTO %s %s VALUES %s
+28 дек. 2020 14:14:21,789 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Query string: INSERT INTO PRESENTATION (id, name, fillColor, fontColor) VALUES (ae12b691-dd9b-4d46-acec-79ec4a270852, Моя презентация, blue, Comic Sans)
+28 дек. 2020 14:14:21,815 [main] ERROR ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - org.h2.jdbc.JdbcSQLSyntaxErrorException: Таблица "PRESENTATION" не найдена
+Table "PRESENTATION" not found; SQL statement:
+INSERT INTO PRESENTATION (id, name, fillColor, fontColor) VALUES (ae12b691-dd9b-4d46-acec-79ec4a270852, Моя презентация, blue, Comic Sans) [42102-200]
+28 дек. 2020 14:14:21,817 [main] ERROR ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Unable to create presentation
+28 дек. 2020 14:14:21,817 [main] INFO  ru.sfedu.course_project.tools.Result - { status: error, value: Unable to create presentation }
+28 дек. 2020 14:15:18,365 [main] WARN  ru.sfedu.course_project.Main - arguments {fillColor=blue, role=editor, fontFamily=Comic Sans, method=createPresentation, datatype=db, name=Моя презентация, id=ae12b691-dd9b-4d46-acec-79ec4a270852}
+28 дек. 2020 14:15:18,373 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [fillColor=blue, role=editor, fontFamily=Comic Sans, method=createPresentation, datatype=db, name=Моя презентация, id=ae12b691-dd9b-4d46-acec-79ec4a270852]
+28 дек. 2020 14:15:18,375 [main] INFO  ru.sfedu.course_project.Main - Attempt to create db data provider
+28 дек. 2020 14:15:18,379 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: db
+28 дек. 2020 14:15:18,384 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: createPresentation
+28 дек. 2020 14:15:18,384 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+28 дек. 2020 14:15:18,386 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Attempt to create presentations
+28 дек. 2020 14:15:18,795 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  id ae12b691-dd9b-4d46-acec-79ec4a270852
+28 дек. 2020 14:15:18,796 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  name Моя презентация
+28 дек. 2020 14:15:18,797 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  fillColor blue
+28 дек. 2020 14:15:18,797 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  fontFamily Comic Sans
+28 дек. 2020 14:15:18,798 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  slides []
+28 дек. 2020 14:15:18,798 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  comments []
+28 дек. 2020 14:15:18,799 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  marks []
+28 дек. 2020 14:15:18,800 [main] DEBUG ru.sfedu.course_project.tools.Creator - Arguments was validate 
+28 дек. 2020 14:15:18,817 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value: Optional[Presentation{id=ae12b691-dd9b-4d46-acec-79ec4a270852, name='Моя презентация', fillColor='blue', fontFamily='Comic Sans', slides=[], comments=[]}] }
+28 дек. 2020 14:15:18,837 [main] DEBUG ru.sfedu.course_project.tools.jdbc.QueryBuilder - Query body: INSERT INTO PRESITOR.%s %s VALUES %s
+28 дек. 2020 14:15:18,839 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Query string: INSERT INTO PRESITOR.PRESENTATION (id, name, fillColor, fontColor) VALUES (ae12b691-dd9b-4d46-acec-79ec4a270852, Моя презентация, blue, Comic Sans)
+28 дек. 2020 14:15:18,856 [main] ERROR ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - org.h2.jdbc.JdbcSQLSyntaxErrorException: Схема "PRESITOR" не найдена
+Schema "PRESITOR" not found; SQL statement:
+INSERT INTO PRESITOR.PRESENTATION (id, name, fillColor, fontColor) VALUES (ae12b691-dd9b-4d46-acec-79ec4a270852, Моя презентация, blue, Comic Sans) [90079-200]
+28 дек. 2020 14:15:18,858 [main] ERROR ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Unable to create presentation
+28 дек. 2020 14:15:18,859 [main] INFO  ru.sfedu.course_project.tools.Result - { status: error, value: Unable to create presentation }
+28 дек. 2020 14:16:35,685 [main] WARN  ru.sfedu.course_project.Main - arguments {fillColor=blue, role=editor, fontFamily=Comic Sans, method=createPresentation, datatype=db, name=Моя презентация, id=ae12b691-dd9b-4d46-acec-79ec4a270852}
+28 дек. 2020 14:16:35,690 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [fillColor=blue, role=editor, fontFamily=Comic Sans, method=createPresentation, datatype=db, name=Моя презентация, id=ae12b691-dd9b-4d46-acec-79ec4a270852]
+28 дек. 2020 14:16:35,691 [main] INFO  ru.sfedu.course_project.Main - Attempt to create db data provider
+28 дек. 2020 14:16:35,693 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: db
+28 дек. 2020 14:16:35,697 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: createPresentation
+28 дек. 2020 14:16:35,698 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+28 дек. 2020 14:16:35,701 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Attempt to create presentations
+28 дек. 2020 14:16:36,093 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  id ae12b691-dd9b-4d46-acec-79ec4a270852
+28 дек. 2020 14:16:36,094 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  name Моя презентация
+28 дек. 2020 14:16:36,094 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  fillColor blue
+28 дек. 2020 14:16:36,095 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  fontFamily Comic Sans
+28 дек. 2020 14:16:36,096 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  slides []
+28 дек. 2020 14:16:36,096 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  comments []
+28 дек. 2020 14:16:36,097 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  marks []
+28 дек. 2020 14:16:36,099 [main] DEBUG ru.sfedu.course_project.tools.Creator - Arguments was validate 
+28 дек. 2020 14:16:36,116 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value: Optional[Presentation{id=ae12b691-dd9b-4d46-acec-79ec4a270852, name='Моя презентация', fillColor='blue', fontFamily='Comic Sans', slides=[], comments=[]}] }
+28 дек. 2020 14:16:36,137 [main] DEBUG ru.sfedu.course_project.tools.jdbc.QueryBuilder - Query body: INSERT INTO PUBLIC.%s %s VALUES %s
+28 дек. 2020 14:16:36,137 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Query string: INSERT INTO PUBLIC.PRESENTATION (id, name, fillColor, fontColor) VALUES (ae12b691-dd9b-4d46-acec-79ec4a270852, Моя презентация, blue, Comic Sans)
+28 дек. 2020 14:16:36,155 [main] ERROR ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - org.h2.jdbc.JdbcSQLSyntaxErrorException: Таблица "PRESENTATION" не найдена
+Table "PRESENTATION" not found; SQL statement:
+INSERT INTO PUBLIC.PRESENTATION (id, name, fillColor, fontColor) VALUES (ae12b691-dd9b-4d46-acec-79ec4a270852, Моя презентация, blue, Comic Sans) [42102-200]
+28 дек. 2020 14:16:36,157 [main] ERROR ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Unable to create presentation
+28 дек. 2020 14:16:36,157 [main] INFO  ru.sfedu.course_project.tools.Result - { status: error, value: Unable to create presentation }
+28 дек. 2020 14:17:45,608 [main] WARN  ru.sfedu.course_project.Main - arguments {fillColor=blue, role=editor, fontFamily=Comic Sans, method=createPresentation, datatype=db, name=Моя презентация, id=ae12b691-dd9b-4d46-acec-79ec4a270852}
+28 дек. 2020 14:17:45,614 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [fillColor=blue, role=editor, fontFamily=Comic Sans, method=createPresentation, datatype=db, name=Моя презентация, id=ae12b691-dd9b-4d46-acec-79ec4a270852]
+28 дек. 2020 14:17:45,615 [main] INFO  ru.sfedu.course_project.Main - Attempt to create db data provider
+28 дек. 2020 14:17:45,618 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: db
+28 дек. 2020 14:17:45,621 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: createPresentation
+28 дек. 2020 14:17:45,621 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+28 дек. 2020 14:17:45,623 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Attempt to create presentations
+28 дек. 2020 14:17:46,029 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  id ae12b691-dd9b-4d46-acec-79ec4a270852
+28 дек. 2020 14:17:46,029 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  name Моя презентация
+28 дек. 2020 14:17:46,030 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  fillColor blue
+28 дек. 2020 14:17:46,031 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  fontFamily Comic Sans
+28 дек. 2020 14:17:46,031 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  slides []
+28 дек. 2020 14:17:46,032 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  comments []
+28 дек. 2020 14:17:46,033 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  marks []
+28 дек. 2020 14:17:46,034 [main] DEBUG ru.sfedu.course_project.tools.Creator - Arguments was validate 
+28 дек. 2020 14:17:46,047 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value: Optional[Presentation{id=ae12b691-dd9b-4d46-acec-79ec4a270852, name='Моя презентация', fillColor='blue', fontFamily='Comic Sans', slides=[], comments=[]}] }
+28 дек. 2020 14:17:46,062 [main] DEBUG ru.sfedu.course_project.tools.jdbc.QueryBuilder - Query body: INSERT INTO PRESITOR.PUBLIC.%s %s VALUES %s
+28 дек. 2020 14:17:46,063 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Query string: INSERT INTO PRESITOR.PUBLIC.PRESENTATION (id, name, fillColor, fontColor) VALUES (ae12b691-dd9b-4d46-acec-79ec4a270852, Моя презентация, blue, Comic Sans)
+28 дек. 2020 14:17:46,080 [main] ERROR ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - org.h2.jdbc.JdbcSQLSyntaxErrorException: Таблица "PRESENTATION" не найдена
+Table "PRESENTATION" not found; SQL statement:
+INSERT INTO PRESITOR.PUBLIC.PRESENTATION (id, name, fillColor, fontColor) VALUES (ae12b691-dd9b-4d46-acec-79ec4a270852, Моя презентация, blue, Comic Sans) [42102-200]
+28 дек. 2020 14:17:46,081 [main] ERROR ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Unable to create presentation
+28 дек. 2020 14:17:46,081 [main] INFO  ru.sfedu.course_project.tools.Result - { status: error, value: Unable to create presentation }
+28 дек. 2020 14:19:13,659 [main] WARN  ru.sfedu.course_project.Main - arguments {fillColor=blue, role=editor, fontFamily=Comic Sans, method=createPresentation, datatype=db, name=Моя презентация, id=ae12b691-dd9b-4d46-acec-79ec4a270852}
+28 дек. 2020 14:19:13,659 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [fillColor=blue, role=editor, fontFamily=Comic Sans, method=createPresentation, datatype=db, name=Моя презентация, id=ae12b691-dd9b-4d46-acec-79ec4a270852]
+28 дек. 2020 14:19:13,671 [main] INFO  ru.sfedu.course_project.Main - Attempt to create db data provider
+28 дек. 2020 14:19:13,671 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: db
+28 дек. 2020 14:19:13,671 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: createPresentation
+28 дек. 2020 14:19:13,671 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+28 дек. 2020 14:19:13,671 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Attempt to create presentations
+28 дек. 2020 14:19:14,050 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  id ae12b691-dd9b-4d46-acec-79ec4a270852
+28 дек. 2020 14:19:14,050 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  name Моя презентация
+28 дек. 2020 14:19:14,050 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  fillColor blue
+28 дек. 2020 14:19:14,050 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  fontFamily Comic Sans
+28 дек. 2020 14:19:14,050 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  slides []
+28 дек. 2020 14:19:14,050 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  comments []
+28 дек. 2020 14:19:14,050 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  marks []
+28 дек. 2020 14:19:14,050 [main] DEBUG ru.sfedu.course_project.tools.Creator - Arguments was validate 
+28 дек. 2020 14:19:14,072 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value: Optional[Presentation{id=ae12b691-dd9b-4d46-acec-79ec4a270852, name='Моя презентация', fillColor='blue', fontFamily='Comic Sans', slides=[], comments=[]}] }
+28 дек. 2020 14:19:14,072 [main] DEBUG ru.sfedu.course_project.tools.jdbc.QueryBuilder - Query body: INSERT INTO PRESITOR.PUBLIC.%s %s VALUES %s
+28 дек. 2020 14:19:14,072 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Query string: INSERT INTO PRESITOR.PUBLIC.PRESENTATION (id, name, fillColor, fontColor) VALUES (ae12b691-dd9b-4d46-acec-79ec4a270852, Моя презентация, blue, Comic Sans)
+28 дек. 2020 14:19:14,088 [main] ERROR ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - org.h2.jdbc.JdbcSQLSyntaxErrorException: Таблица "PRESENTATION" не найдена
+Table "PRESENTATION" not found; SQL statement:
+INSERT INTO PRESITOR.PUBLIC.PRESENTATION (id, name, fillColor, fontColor) VALUES (ae12b691-dd9b-4d46-acec-79ec4a270852, Моя презентация, blue, Comic Sans) [42102-200]
+28 дек. 2020 14:19:14,088 [main] ERROR ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Unable to create presentation
+28 дек. 2020 14:19:14,088 [main] INFO  ru.sfedu.course_project.tools.Result - { status: error, value: Unable to create presentation }
+28 дек. 2020 14:22:27,408 [main] WARN  ru.sfedu.course_project.Main - arguments {fillColor=blue, role=editor, fontFamily=Comic Sans, method=createPresentation, datatype=db, name=Моя презентация, id=ae12b691-dd9b-4d46-acec-79ec4a270852}
+28 дек. 2020 14:22:27,414 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [fillColor=blue, role=editor, fontFamily=Comic Sans, method=createPresentation, datatype=db, name=Моя презентация, id=ae12b691-dd9b-4d46-acec-79ec4a270852]
+28 дек. 2020 14:22:27,415 [main] INFO  ru.sfedu.course_project.Main - Attempt to create db data provider
+28 дек. 2020 14:22:27,418 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: db
+28 дек. 2020 14:22:27,421 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: createPresentation
+28 дек. 2020 14:22:27,422 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+28 дек. 2020 14:22:27,437 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Attempt to create presentations
+28 дек. 2020 14:22:27,852 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  id ae12b691-dd9b-4d46-acec-79ec4a270852
+28 дек. 2020 14:22:27,852 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  name Моя презентация
+28 дек. 2020 14:22:27,853 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  fillColor blue
+28 дек. 2020 14:22:27,853 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  fontFamily Comic Sans
+28 дек. 2020 14:22:27,854 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  slides []
+28 дек. 2020 14:22:27,855 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  comments []
+28 дек. 2020 14:22:27,855 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  marks []
+28 дек. 2020 14:22:27,856 [main] DEBUG ru.sfedu.course_project.tools.Creator - Arguments was validate 
+28 дек. 2020 14:22:27,872 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value: Optional[Presentation{id=ae12b691-dd9b-4d46-acec-79ec4a270852, name='Моя презентация', fillColor='blue', fontFamily='Comic Sans', slides=[], comments=[]}] }
+28 дек. 2020 14:22:27,877 [main] DEBUG ru.sfedu.course_project.tools.jdbc.QueryBuilder - Query body: INSERT INTO PRESITOR.PUBLIC.%s %s VALUES %s
+28 дек. 2020 14:22:27,878 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Query string: INSERT INTO PRESITOR.PUBLIC.PRESENTATION (id, name, fillColor, fontColor) VALUES (ae12b691-dd9b-4d46-acec-79ec4a270852, Моя презентация, blue, Comic Sans)
+28 дек. 2020 14:22:27,904 [main] ERROR ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - org.h2.jdbc.JdbcSQLNonTransientException: Метод разрешен только для запросов. Используйте execute или executeUpdate вместо executeQuery
+Method is only allowed for a query. Use execute or executeUpdate instead of executeQuery; SQL statement:
+CREATE TABLE PRESENTATION (id UUID, name varchar(200), fillColor varchar(200), fontFamily varchar(200)) [90002-200]
+28 дек. 2020 14:22:27,906 [main] ERROR ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Unable to create presentation
+28 дек. 2020 14:22:27,906 [main] INFO  ru.sfedu.course_project.tools.Result - { status: error, value: Unable to create presentation }
+28 дек. 2020 14:22:57,305 [main] WARN  ru.sfedu.course_project.Main - arguments {fillColor=blue, role=editor, fontFamily=Comic Sans, method=createPresentation, datatype=db, name=Моя презентация, id=ae12b691-dd9b-4d46-acec-79ec4a270852}
+28 дек. 2020 14:22:57,311 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [fillColor=blue, role=editor, fontFamily=Comic Sans, method=createPresentation, datatype=db, name=Моя презентация, id=ae12b691-dd9b-4d46-acec-79ec4a270852]
+28 дек. 2020 14:22:57,313 [main] INFO  ru.sfedu.course_project.Main - Attempt to create db data provider
+28 дек. 2020 14:22:57,315 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: db
+28 дек. 2020 14:22:57,318 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: createPresentation
+28 дек. 2020 14:22:57,318 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+28 дек. 2020 14:22:57,332 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Attempt to create presentations
+28 дек. 2020 14:22:57,731 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  id ae12b691-dd9b-4d46-acec-79ec4a270852
+28 дек. 2020 14:22:57,732 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  name Моя презентация
+28 дек. 2020 14:22:57,733 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  fillColor blue
+28 дек. 2020 14:22:57,734 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  fontFamily Comic Sans
+28 дек. 2020 14:22:57,735 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  slides []
+28 дек. 2020 14:22:57,735 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  comments []
+28 дек. 2020 14:22:57,736 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  marks []
+28 дек. 2020 14:22:57,737 [main] DEBUG ru.sfedu.course_project.tools.Creator - Arguments was validate 
+28 дек. 2020 14:22:57,752 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value: Optional[Presentation{id=ae12b691-dd9b-4d46-acec-79ec4a270852, name='Моя презентация', fillColor='blue', fontFamily='Comic Sans', slides=[], comments=[]}] }
+28 дек. 2020 14:22:57,756 [main] DEBUG ru.sfedu.course_project.tools.jdbc.QueryBuilder - Query body: INSERT INTO PRESITOR.PUBLIC.%s %s VALUES %s
+28 дек. 2020 14:22:57,757 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Query string: INSERT INTO PRESITOR.PUBLIC.PRESENTATION (id, name, fillColor, fontColor) VALUES (ae12b691-dd9b-4d46-acec-79ec4a270852, Моя презентация, blue, Comic Sans)
+28 дек. 2020 14:22:57,785 [main] ERROR ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - org.h2.jdbc.JdbcSQLSyntaxErrorException: Столбец "FONTCOLOR" не найден
+Column "FONTCOLOR" not found; SQL statement:
+INSERT INTO PRESITOR.PUBLIC.PRESENTATION (id, name, fillColor, fontColor) VALUES (ae12b691-dd9b-4d46-acec-79ec4a270852, Моя презентация, blue, Comic Sans) [42122-200]
+28 дек. 2020 14:22:57,786 [main] ERROR ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Unable to create presentation
+28 дек. 2020 14:22:57,787 [main] INFO  ru.sfedu.course_project.tools.Result - { status: error, value: Unable to create presentation }
+28 дек. 2020 14:23:39,788 [main] WARN  ru.sfedu.course_project.Main - arguments {fillColor=blue, role=editor, fontFamily=Comic Sans, method=createPresentation, datatype=db, name=Моя презентация, id=ae12b691-dd9b-4d46-acec-79ec4a270852}
+28 дек. 2020 14:23:39,794 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [fillColor=blue, role=editor, fontFamily=Comic Sans, method=createPresentation, datatype=db, name=Моя презентация, id=ae12b691-dd9b-4d46-acec-79ec4a270852]
+28 дек. 2020 14:23:39,796 [main] INFO  ru.sfedu.course_project.Main - Attempt to create db data provider
+28 дек. 2020 14:23:39,799 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: db
+28 дек. 2020 14:23:39,802 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: createPresentation
+28 дек. 2020 14:23:39,803 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+28 дек. 2020 14:23:39,805 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Attempt to create presentations
+28 дек. 2020 14:23:40,208 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  id ae12b691-dd9b-4d46-acec-79ec4a270852
+28 дек. 2020 14:23:40,208 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  name Моя презентация
+28 дек. 2020 14:23:40,209 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  fillColor blue
+28 дек. 2020 14:23:40,209 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  fontFamily Comic Sans
+28 дек. 2020 14:23:40,210 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  slides []
+28 дек. 2020 14:23:40,210 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  comments []
+28 дек. 2020 14:23:40,211 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  marks []
+28 дек. 2020 14:23:40,212 [main] DEBUG ru.sfedu.course_project.tools.Creator - Arguments was validate 
+28 дек. 2020 14:23:40,226 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value: Optional[Presentation{id=ae12b691-dd9b-4d46-acec-79ec4a270852, name='Моя презентация', fillColor='blue', fontFamily='Comic Sans', slides=[], comments=[]}] }
+28 дек. 2020 14:23:40,246 [main] DEBUG ru.sfedu.course_project.tools.jdbc.QueryBuilder - Query body: INSERT INTO PRESITOR.PUBLIC.%s %s VALUES %s
+28 дек. 2020 14:23:40,246 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Query string: INSERT INTO PRESITOR.PUBLIC.PRESENTATION (id, name, fillColor, fontFamily) VALUES (ae12b691-dd9b-4d46-acec-79ec4a270852, Моя презентация, blue, Comic Sans)
+28 дек. 2020 14:23:40,271 [main] ERROR ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - org.h2.jdbc.JdbcSQLSyntaxErrorException: Таблица "PRESENTATION" уже существует
+Table "PRESENTATION" already exists; SQL statement:
+CREATE TABLE PRESENTATION (id UUID, name varchar(200), fillColor varchar(200), fontFamily varchar(200)) [42101-200]
+28 дек. 2020 14:23:40,273 [main] ERROR ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Unable to create presentation
+28 дек. 2020 14:23:40,273 [main] INFO  ru.sfedu.course_project.tools.Result - { status: error, value: Unable to create presentation }
+28 дек. 2020 14:24:20,003 [main] WARN  ru.sfedu.course_project.Main - arguments {fillColor=blue, role=editor, fontFamily=Comic Sans, method=createPresentation, datatype=db, name=Моя презентация, id=ae12b691-dd9b-4d46-acec-79ec4a270852}
+28 дек. 2020 14:24:20,008 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [fillColor=blue, role=editor, fontFamily=Comic Sans, method=createPresentation, datatype=db, name=Моя презентация, id=ae12b691-dd9b-4d46-acec-79ec4a270852]
+28 дек. 2020 14:24:20,010 [main] INFO  ru.sfedu.course_project.Main - Attempt to create db data provider
+28 дек. 2020 14:24:20,013 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: db
+28 дек. 2020 14:24:20,016 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: createPresentation
+28 дек. 2020 14:24:20,017 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+28 дек. 2020 14:24:20,030 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Attempt to create presentations
+28 дек. 2020 14:24:20,446 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  id ae12b691-dd9b-4d46-acec-79ec4a270852
+28 дек. 2020 14:24:20,447 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  name Моя презентация
+28 дек. 2020 14:24:20,448 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  fillColor blue
+28 дек. 2020 14:24:20,448 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  fontFamily Comic Sans
+28 дек. 2020 14:24:20,449 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  slides []
+28 дек. 2020 14:24:20,450 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  comments []
+28 дек. 2020 14:24:20,450 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  marks []
+28 дек. 2020 14:24:20,451 [main] DEBUG ru.sfedu.course_project.tools.Creator - Arguments was validate 
+28 дек. 2020 14:24:20,468 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value: Optional[Presentation{id=ae12b691-dd9b-4d46-acec-79ec4a270852, name='Моя презентация', fillColor='blue', fontFamily='Comic Sans', slides=[], comments=[]}] }
+28 дек. 2020 14:24:20,473 [main] DEBUG ru.sfedu.course_project.tools.jdbc.QueryBuilder - Query body: INSERT INTO PRESITOR.PUBLIC.%s %s VALUES %s
+28 дек. 2020 14:24:20,474 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Query string: INSERT INTO PRESITOR.PUBLIC.PRESENTATION (id, name, fillColor, fontFamily) VALUES (ae12b691-dd9b-4d46-acec-79ec4a270852, Моя презентация, blue, Comic Sans)
+28 дек. 2020 14:24:20,502 [main] ERROR ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "INSERT INTO PRESITOR.PUBLIC.PRESENTATION (ID, NAME, FILLCOLOR, FONTFAMILY) VALUES (AE12B691-DD9B-4D46[*]-ACEC-79EC4A270852, МОЯ ПРЕЗЕНТАЦИЯ, BLUE, COMIC SANS)"; ожидалось "[, ::, AT, FORMAT, *, /, %, +, -, ||, ~, !~, NOT, LIKE, ILIKE, REGEXP, IS, IN, BETWEEN, AND, OR, ,, )"
+Syntax error in SQL statement "INSERT INTO PRESITOR.PUBLIC.PRESENTATION (ID, NAME, FILLCOLOR, FONTFAMILY) VALUES (AE12B691-DD9B-4D46[*]-ACEC-79EC4A270852, МОЯ ПРЕЗЕНТАЦИЯ, BLUE, COMIC SANS)"; expected "[, ::, AT, FORMAT, *, /, %, +, -, ||, ~, !~, NOT, LIKE, ILIKE, REGEXP, IS, IN, BETWEEN, AND, OR, ,, )"; SQL statement:
+INSERT INTO PRESITOR.PUBLIC.PRESENTATION (id, name, fillColor, fontFamily) VALUES (ae12b691-dd9b-4d46-acec-79ec4a270852, Моя презентация, blue, Comic Sans) [42001-200]
+28 дек. 2020 14:24:20,504 [main] ERROR ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Unable to create presentation
+28 дек. 2020 14:24:20,504 [main] INFO  ru.sfedu.course_project.tools.Result - { status: error, value: Unable to create presentation }
+28 дек. 2020 14:26:07,399 [main] WARN  ru.sfedu.course_project.Main - arguments {fillColor=blue, role=editor, fontFamily=Comic Sans, method=createPresentation, datatype=db, name=Моя презентация, id=ae12b691-dd9b-4d46-acec-79ec4a270852}
+28 дек. 2020 14:26:07,406 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [fillColor=blue, role=editor, fontFamily=Comic Sans, method=createPresentation, datatype=db, name=Моя презентация, id=ae12b691-dd9b-4d46-acec-79ec4a270852]
+28 дек. 2020 14:26:07,407 [main] INFO  ru.sfedu.course_project.Main - Attempt to create db data provider
+28 дек. 2020 14:26:07,409 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: db
+28 дек. 2020 14:26:07,412 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: createPresentation
+28 дек. 2020 14:26:07,413 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+28 дек. 2020 14:26:07,427 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Attempt to create presentations
+28 дек. 2020 14:26:07,839 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  id ae12b691-dd9b-4d46-acec-79ec4a270852
+28 дек. 2020 14:26:07,840 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  name Моя презентация
+28 дек. 2020 14:26:07,840 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  fillColor blue
+28 дек. 2020 14:26:07,841 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  fontFamily Comic Sans
+28 дек. 2020 14:26:07,842 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  slides []
+28 дек. 2020 14:26:07,842 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  comments []
+28 дек. 2020 14:26:07,843 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  marks []
+28 дек. 2020 14:26:07,844 [main] DEBUG ru.sfedu.course_project.tools.Creator - Arguments was validate 
+28 дек. 2020 14:26:07,859 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value: Optional[Presentation{id=ae12b691-dd9b-4d46-acec-79ec4a270852, name='Моя презентация', fillColor='blue', fontFamily='Comic Sans', slides=[], comments=[]}] }
+28 дек. 2020 14:26:07,863 [main] DEBUG ru.sfedu.course_project.tools.jdbc.QueryBuilder - Query body: INSERT INTO PRESITOR.PUBLIC.%s %s VALUES %s
+28 дек. 2020 14:26:07,864 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Query string: INSERT INTO PRESITOR.PUBLIC.PRESENTATION (id, name, fillColor, fontFamily) VALUES (ae12b691-dd9b-4d46-acec-79ec4a270852, Моя презентация, blue, Comic Sans)
+28 дек. 2020 14:26:08,322 [main] INFO  ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Attempt to create presentations
+28 дек. 2020 14:26:08,322 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value: Attempt to create presentations }
+28 дек. 2020 14:27:10,907 [main] WARN  ru.sfedu.course_project.Main - arguments {fillColor=blue, role=editor, fontFamily=Comic Sans, method=createPresentation, datatype=db, name=Моя презентация, id=ae12b691-dd9b-4d46-acec-79ec4a270852}
+28 дек. 2020 14:27:10,916 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [fillColor=blue, role=editor, fontFamily=Comic Sans, method=createPresentation, datatype=db, name=Моя презентация, id=ae12b691-dd9b-4d46-acec-79ec4a270852]
+28 дек. 2020 14:27:10,918 [main] INFO  ru.sfedu.course_project.Main - Attempt to create db data provider
+28 дек. 2020 14:27:10,923 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: db
+28 дек. 2020 14:27:10,930 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: createPresentation
+28 дек. 2020 14:27:10,930 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+28 дек. 2020 14:27:10,948 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Attempt to create presentations
+28 дек. 2020 14:27:11,458 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  id ae12b691-dd9b-4d46-acec-79ec4a270852
+28 дек. 2020 14:27:11,458 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  name Моя презентация
+28 дек. 2020 14:27:11,458 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  fillColor blue
+28 дек. 2020 14:27:11,458 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  fontFamily Comic Sans
+28 дек. 2020 14:27:11,458 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  slides []
+28 дек. 2020 14:27:11,458 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  comments []
+28 дек. 2020 14:27:11,458 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  marks []
+28 дек. 2020 14:27:11,458 [main] DEBUG ru.sfedu.course_project.tools.Creator - Arguments was validate 
+28 дек. 2020 14:27:11,474 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value: Optional[Presentation{id=ae12b691-dd9b-4d46-acec-79ec4a270852, name='Моя презентация', fillColor='blue', fontFamily='Comic Sans', slides=[], comments=[]}] }
+28 дек. 2020 14:27:11,489 [main] DEBUG ru.sfedu.course_project.tools.jdbc.QueryBuilder - Query body: INSERT INTO PRESITOR.PUBLIC.%s %s VALUES %s
+28 дек. 2020 14:27:11,489 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Query string: INSERT INTO PRESITOR.PUBLIC.PRESENTATION (id, name, fillColor, fontFamily) VALUES (ae12b691-dd9b-4d46-acec-79ec4a270852, Моя презентация, blue, Comic Sans)
+28 дек. 2020 14:27:11,627 [main] INFO  ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Attempt to create presentations
+28 дек. 2020 14:27:11,627 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value: Attempt to create presentations }
+28 дек. 2020 14:27:22,632 [main] WARN  ru.sfedu.course_project.Main - arguments {fillColor=blue, role=editor, fontFamily=Comic Sans, method=createPresentation, datatype=db, name=Моя презентация, id=ae12b691-dd9b-4d46-acec-79ec4a270852}
+28 дек. 2020 14:27:22,638 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [fillColor=blue, role=editor, fontFamily=Comic Sans, method=createPresentation, datatype=db, name=Моя презентация, id=ae12b691-dd9b-4d46-acec-79ec4a270852]
+28 дек. 2020 14:27:22,640 [main] INFO  ru.sfedu.course_project.Main - Attempt to create db data provider
+28 дек. 2020 14:27:22,643 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: db
+28 дек. 2020 14:27:22,647 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: createPresentation
+28 дек. 2020 14:27:22,648 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+28 дек. 2020 14:27:22,665 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Attempt to create presentations
+28 дек. 2020 14:27:23,066 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  id ae12b691-dd9b-4d46-acec-79ec4a270852
+28 дек. 2020 14:27:23,066 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  name Моя презентация
+28 дек. 2020 14:27:23,067 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  fillColor blue
+28 дек. 2020 14:27:23,067 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  fontFamily Comic Sans
+28 дек. 2020 14:27:23,068 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  slides []
+28 дек. 2020 14:27:23,068 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  comments []
+28 дек. 2020 14:27:23,069 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  marks []
+28 дек. 2020 14:27:23,070 [main] DEBUG ru.sfedu.course_project.tools.Creator - Arguments was validate 
+28 дек. 2020 14:27:23,082 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value: Optional[Presentation{id=ae12b691-dd9b-4d46-acec-79ec4a270852, name='Моя презентация', fillColor='blue', fontFamily='Comic Sans', slides=[], comments=[]}] }
+28 дек. 2020 14:27:23,085 [main] DEBUG ru.sfedu.course_project.tools.jdbc.QueryBuilder - Query body: INSERT INTO PRESITOR.PUBLIC.%s %s VALUES %s
+28 дек. 2020 14:27:23,086 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Query string: INSERT INTO PRESITOR.PUBLIC.PRESENTATION (id, name, fillColor, fontFamily) VALUES (ae12b691-dd9b-4d46-acec-79ec4a270852, Моя презентация, blue, Comic Sans)
+28 дек. 2020 14:27:23,245 [main] INFO  ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Attempt to create presentations
+28 дек. 2020 14:27:23,245 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value: Attempt to create presentations }
+28 дек. 2020 14:27:35,913 [main] WARN  ru.sfedu.course_project.Main - arguments {fillColor=blue, role=editor, fontFamily=Comic Sans, method=createPresentation, datatype=db, name=Моя презентация, id=ae12b691-dd9b-4d46-acec-79ec4a270852}
+28 дек. 2020 14:27:35,918 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [fillColor=blue, role=editor, fontFamily=Comic Sans, method=createPresentation, datatype=db, name=Моя презентация, id=ae12b691-dd9b-4d46-acec-79ec4a270852]
+28 дек. 2020 14:27:35,921 [main] INFO  ru.sfedu.course_project.Main - Attempt to create db data provider
+28 дек. 2020 14:27:35,925 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: db
+28 дек. 2020 14:27:35,928 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: createPresentation
+28 дек. 2020 14:27:35,929 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+28 дек. 2020 14:27:35,943 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Attempt to create presentations
+28 дек. 2020 14:27:36,339 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  id ae12b691-dd9b-4d46-acec-79ec4a270852
+28 дек. 2020 14:27:36,340 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  name Моя презентация
+28 дек. 2020 14:27:36,341 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  fillColor blue
+28 дек. 2020 14:27:36,342 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  fontFamily Comic Sans
+28 дек. 2020 14:27:36,343 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  slides []
+28 дек. 2020 14:27:36,343 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  comments []
+28 дек. 2020 14:27:36,344 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  marks []
+28 дек. 2020 14:27:36,345 [main] DEBUG ru.sfedu.course_project.tools.Creator - Arguments was validate 
+28 дек. 2020 14:27:36,363 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value: Optional[Presentation{id=ae12b691-dd9b-4d46-acec-79ec4a270852, name='Моя презентация', fillColor='blue', fontFamily='Comic Sans', slides=[], comments=[]}] }
+28 дек. 2020 14:27:36,369 [main] DEBUG ru.sfedu.course_project.tools.jdbc.QueryBuilder - Query body: INSERT INTO PRESITOR.PUBLIC.%s %s VALUES %s
+28 дек. 2020 14:27:36,370 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Query string: INSERT INTO PRESITOR.PUBLIC.PRESENTATION (id, name, fillColor, fontFamily) VALUES (ae12b691-dd9b-4d46-acec-79ec4a270852, Моя презентация, blue, Comic Sans)
+28 дек. 2020 14:27:36,401 [main] ERROR ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "INSERT INTO PRESITOR.PUBLIC.PRESENTATION (ID, NAME, FILLCOLOR, FONTFAMILY) VALUES (AE12B691-DD9B-4D46[*]-ACEC-79EC4A270852, МОЯ ПРЕЗЕНТАЦИЯ, BLUE, COMIC SANS)"; ожидалось "[, ::, AT, FORMAT, *, /, %, +, -, ||, ~, !~, NOT, LIKE, ILIKE, REGEXP, IS, IN, BETWEEN, AND, OR, ,, )"
+Syntax error in SQL statement "INSERT INTO PRESITOR.PUBLIC.PRESENTATION (ID, NAME, FILLCOLOR, FONTFAMILY) VALUES (AE12B691-DD9B-4D46[*]-ACEC-79EC4A270852, МОЯ ПРЕЗЕНТАЦИЯ, BLUE, COMIC SANS)"; expected "[, ::, AT, FORMAT, *, /, %, +, -, ||, ~, !~, NOT, LIKE, ILIKE, REGEXP, IS, IN, BETWEEN, AND, OR, ,, )"; SQL statement:
+INSERT INTO PRESITOR.PUBLIC.PRESENTATION (id, name, fillColor, fontFamily) VALUES (ae12b691-dd9b-4d46-acec-79ec4a270852, Моя презентация, blue, Comic Sans) [42001-200]
+28 дек. 2020 14:27:36,402 [main] ERROR ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Unable to create presentation
+28 дек. 2020 14:27:36,404 [main] INFO  ru.sfedu.course_project.tools.Result - { status: error, value: Unable to create presentation }
+28 дек. 2020 14:29:45,415 [main] WARN  ru.sfedu.course_project.Main - arguments {fillColor=blue, role=editor, fontFamily=Comic Sans, method=createPresentation, datatype=db, name=Моя презентация, id=ae12b691-dd9b-4d46-acec-79ec4a270852}
+28 дек. 2020 14:29:45,420 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [fillColor=blue, role=editor, fontFamily=Comic Sans, method=createPresentation, datatype=db, name=Моя презентация, id=ae12b691-dd9b-4d46-acec-79ec4a270852]
+28 дек. 2020 14:29:45,422 [main] INFO  ru.sfedu.course_project.Main - Attempt to create db data provider
+28 дек. 2020 14:29:45,425 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: db
+28 дек. 2020 14:29:45,428 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: createPresentation
+28 дек. 2020 14:29:45,428 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+28 дек. 2020 14:29:45,432 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Attempt to create presentations
+28 дек. 2020 14:29:45,811 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  id ae12b691-dd9b-4d46-acec-79ec4a270852
+28 дек. 2020 14:29:45,812 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  name Моя презентация
+28 дек. 2020 14:29:45,813 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  fillColor blue
+28 дек. 2020 14:29:45,813 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  fontFamily Comic Sans
+28 дек. 2020 14:29:45,814 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  slides []
+28 дек. 2020 14:29:45,814 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  comments []
+28 дек. 2020 14:29:45,815 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  marks []
+28 дек. 2020 14:29:45,816 [main] DEBUG ru.sfedu.course_project.tools.Creator - Arguments was validate 
+28 дек. 2020 14:29:45,831 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value: Optional[Presentation{id=ae12b691-dd9b-4d46-acec-79ec4a270852, name='Моя презентация', fillColor='blue', fontFamily='Comic Sans', slides=[], comments=[]}] }
+28 дек. 2020 14:29:45,835 [main] DEBUG ru.sfedu.course_project.tools.jdbc.QueryBuilder - Query body: INSERT INTO PRESITOR.PUBLIC.%s %s VALUES %s
+28 дек. 2020 14:29:45,836 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Query string: INSERT INTO PRESITOR.PUBLIC.PRESENTATION (id, name, fillColor, fontFamily) VALUES (ae12b691-dd9b-4d46-acec-79ec4a270852, Моя презентация, blue, Comic Sans)
+28 дек. 2020 14:29:45,991 [main] INFO  ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Attempt to create presentations
+28 дек. 2020 14:29:45,991 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value: Attempt to create presentations }
+28 дек. 2020 14:30:00,548 [main] WARN  ru.sfedu.course_project.Main - arguments {fillColor=blue, role=editor, fontFamily=Comic Sans, method=createPresentation, datatype=db, name=Моя презентация, id=ae12b691-dd9b-4d46-acec-79ec4a270852}
+28 дек. 2020 14:30:00,553 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [fillColor=blue, role=editor, fontFamily=Comic Sans, method=createPresentation, datatype=db, name=Моя презентация, id=ae12b691-dd9b-4d46-acec-79ec4a270852]
+28 дек. 2020 14:30:00,555 [main] INFO  ru.sfedu.course_project.Main - Attempt to create db data provider
+28 дек. 2020 14:30:00,557 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: db
+28 дек. 2020 14:30:00,560 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: createPresentation
+28 дек. 2020 14:30:00,560 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+28 дек. 2020 14:30:00,574 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Attempt to create presentations
+28 дек. 2020 14:30:00,988 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  id ae12b691-dd9b-4d46-acec-79ec4a270852
+28 дек. 2020 14:30:00,988 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  name Моя презентация
+28 дек. 2020 14:30:00,988 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  fillColor blue
+28 дек. 2020 14:30:00,988 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  fontFamily Comic Sans
+28 дек. 2020 14:30:00,988 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  slides []
+28 дек. 2020 14:30:00,988 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  comments []
+28 дек. 2020 14:30:00,988 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  marks []
+28 дек. 2020 14:30:00,988 [main] DEBUG ru.sfedu.course_project.tools.Creator - Arguments was validate 
+28 дек. 2020 14:30:01,004 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value: Optional[Presentation{id=ae12b691-dd9b-4d46-acec-79ec4a270852, name='Моя презентация', fillColor='blue', fontFamily='Comic Sans', slides=[], comments=[]}] }
+28 дек. 2020 14:30:01,019 [main] DEBUG ru.sfedu.course_project.tools.jdbc.QueryBuilder - Query body: INSERT INTO PRESITOR.PUBLIC.%s %s VALUES %s
+28 дек. 2020 14:30:01,019 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Query string: INSERT INTO PRESITOR.PUBLIC.PRESENTATION (id, name, fillColor, fontFamily) VALUES (ae12b691-dd9b-4d46-acec-79ec4a270852, Моя презентация, blue, Comic Sans)
+28 дек. 2020 14:30:01,184 [main] INFO  ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Attempt to create presentations
+28 дек. 2020 14:30:01,185 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value: Attempt to create presentations }
+28 дек. 2020 14:30:40,258 [main] WARN  ru.sfedu.course_project.Main - arguments {fillColor=blue, role=editor, fontFamily=Comic Sans, method=createPresentation, datatype=db, name=Моя презентация, id=ae12b691-dd9b-4d46-acec-79ec4a270852}
+28 дек. 2020 14:30:40,265 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [fillColor=blue, role=editor, fontFamily=Comic Sans, method=createPresentation, datatype=db, name=Моя презентация, id=ae12b691-dd9b-4d46-acec-79ec4a270852]
+28 дек. 2020 14:30:40,266 [main] INFO  ru.sfedu.course_project.Main - Attempt to create db data provider
+28 дек. 2020 14:30:40,269 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: db
+28 дек. 2020 14:30:40,272 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: createPresentation
+28 дек. 2020 14:30:40,272 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+28 дек. 2020 14:30:40,285 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Attempt to create presentations
+28 дек. 2020 14:30:40,687 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  id ae12b691-dd9b-4d46-acec-79ec4a270852
+28 дек. 2020 14:30:40,688 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  name Моя презентация
+28 дек. 2020 14:30:40,688 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  fillColor blue
+28 дек. 2020 14:30:40,689 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  fontFamily Comic Sans
+28 дек. 2020 14:30:40,689 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  slides []
+28 дек. 2020 14:30:40,690 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  comments []
+28 дек. 2020 14:30:40,691 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  marks []
+28 дек. 2020 14:30:40,692 [main] DEBUG ru.sfedu.course_project.tools.Creator - Arguments was validate 
+28 дек. 2020 14:30:40,707 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value: Optional[Presentation{id=ae12b691-dd9b-4d46-acec-79ec4a270852, name='Моя презентация', fillColor='blue', fontFamily='Comic Sans', slides=[], comments=[]}] }
+28 дек. 2020 14:30:40,711 [main] DEBUG ru.sfedu.course_project.tools.jdbc.QueryBuilder - Query body: INSERT INTO PRESITOR.PUBLIC.%s %s VALUES %s
+28 дек. 2020 14:30:40,712 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Query string: INSERT INTO PRESITOR.PUBLIC.PRESENTATION (id, name, fillColor, fontFamily) VALUES (ae12b691-dd9b-4d46-acec-79ec4a270852, Моя презентация, blue, Comic Sans)
+28 дек. 2020 14:30:40,731 [main] ERROR ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "INSERT INTO PRESITOR.PUBLIC.PRESENTATION (ID, NAME, FILLCOLOR, FONTFAMILY) VALUES (AE12B691-DD9B-4D46[*]-ACEC-79EC4A270852, МОЯ ПРЕЗЕНТАЦИЯ, BLUE, COMIC SANS)"; ожидалось "[, ::, AT, FORMAT, *, /, %, +, -, ||, ~, !~, NOT, LIKE, ILIKE, REGEXP, IS, IN, BETWEEN, AND, OR, ,, )"
+Syntax error in SQL statement "INSERT INTO PRESITOR.PUBLIC.PRESENTATION (ID, NAME, FILLCOLOR, FONTFAMILY) VALUES (AE12B691-DD9B-4D46[*]-ACEC-79EC4A270852, МОЯ ПРЕЗЕНТАЦИЯ, BLUE, COMIC SANS)"; expected "[, ::, AT, FORMAT, *, /, %, +, -, ||, ~, !~, NOT, LIKE, ILIKE, REGEXP, IS, IN, BETWEEN, AND, OR, ,, )"; SQL statement:
+INSERT INTO PRESITOR.PUBLIC.PRESENTATION (id, name, fillColor, fontFamily) VALUES (ae12b691-dd9b-4d46-acec-79ec4a270852, Моя презентация, blue, Comic Sans) [42001-200]
+28 дек. 2020 14:30:40,732 [main] ERROR ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Unable to create presentation
+28 дек. 2020 14:30:40,733 [main] INFO  ru.sfedu.course_project.tools.Result - { status: error, value: Unable to create presentation }
+28 дек. 2020 14:32:53,633 [main] WARN  ru.sfedu.course_project.Main - arguments {fillColor=blue, role=editor, fontFamily=Comic Sans, method=createPresentation, datatype=db, name=Моя презентация, id=ae12b691-dd9b-4d46-acec-79ec4a270852}
+28 дек. 2020 14:32:53,639 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [fillColor=blue, role=editor, fontFamily=Comic Sans, method=createPresentation, datatype=db, name=Моя презентация, id=ae12b691-dd9b-4d46-acec-79ec4a270852]
+28 дек. 2020 14:32:53,640 [main] INFO  ru.sfedu.course_project.Main - Attempt to create db data provider
+28 дек. 2020 14:32:53,644 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: db
+28 дек. 2020 14:32:53,647 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: createPresentation
+28 дек. 2020 14:32:53,647 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+28 дек. 2020 14:32:53,649 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Attempt to create presentations
+28 дек. 2020 14:32:54,041 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  id ae12b691-dd9b-4d46-acec-79ec4a270852
+28 дек. 2020 14:32:54,042 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  name Моя презентация
+28 дек. 2020 14:32:54,043 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  fillColor blue
+28 дек. 2020 14:32:54,043 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  fontFamily Comic Sans
+28 дек. 2020 14:32:54,044 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  slides []
+28 дек. 2020 14:32:54,045 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  comments []
+28 дек. 2020 14:32:54,046 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  marks []
+28 дек. 2020 14:32:54,047 [main] DEBUG ru.sfedu.course_project.tools.Creator - Arguments was validate 
+28 дек. 2020 14:32:54,065 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value: Optional[Presentation{id=ae12b691-dd9b-4d46-acec-79ec4a270852, name='Моя презентация', fillColor='blue', fontFamily='Comic Sans', slides=[], comments=[]}] }
+28 дек. 2020 14:32:54,084 [main] DEBUG ru.sfedu.course_project.tools.jdbc.QueryBuilder - Query body: INSERT INTO PRESITOR.PUBLIC.%s %s VALUES %s
+28 дек. 2020 14:32:54,085 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Query string: INSERT INTO PRESITOR.PUBLIC.PRESENTATION (id, name, fillColor, fontFamily) VALUES (unhex(replace(ae12b691-dd9b-4d46-acec-79ec4a270852,'-','')), Моя презентация, blue, Comic Sans)
+28 дек. 2020 14:32:54,121 [main] ERROR ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - org.h2.jdbc.JdbcSQLSyntaxErrorException: Функция "UNHEX" не найдена
+Function "UNHEX" not found; SQL statement:
+INSERT INTO PRESITOR.PUBLIC.PRESENTATION (id, name, fillColor, fontFamily) VALUES (unhex(replace(ae12b691-dd9b-4d46-acec-79ec4a270852,'-','')), Моя презентация, blue, Comic Sans) [90022-200]
+28 дек. 2020 14:32:54,122 [main] ERROR ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Unable to create presentation
+28 дек. 2020 14:32:54,123 [main] INFO  ru.sfedu.course_project.tools.Result - { status: error, value: Unable to create presentation }
+28 дек. 2020 14:33:27,411 [main] WARN  ru.sfedu.course_project.Main - arguments {fillColor=blue, role=editor, fontFamily=Comic Sans, method=createPresentation, datatype=db, name=Моя презентация, id=ae12b691-dd9b-4d46-acec-79ec4a270852}
+28 дек. 2020 14:33:27,417 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [fillColor=blue, role=editor, fontFamily=Comic Sans, method=createPresentation, datatype=db, name=Моя презентация, id=ae12b691-dd9b-4d46-acec-79ec4a270852]
+28 дек. 2020 14:33:27,418 [main] INFO  ru.sfedu.course_project.Main - Attempt to create db data provider
+28 дек. 2020 14:33:27,421 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: db
+28 дек. 2020 14:33:27,425 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: createPresentation
+28 дек. 2020 14:33:27,426 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+28 дек. 2020 14:33:27,428 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Attempt to create presentations
+28 дек. 2020 14:33:27,826 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  id ae12b691-dd9b-4d46-acec-79ec4a270852
+28 дек. 2020 14:33:27,826 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  name Моя презентация
+28 дек. 2020 14:33:27,827 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  fillColor blue
+28 дек. 2020 14:33:27,827 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  fontFamily Comic Sans
+28 дек. 2020 14:33:27,827 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  slides []
+28 дек. 2020 14:33:27,828 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  comments []
+28 дек. 2020 14:33:27,828 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  marks []
+28 дек. 2020 14:33:27,829 [main] DEBUG ru.sfedu.course_project.tools.Creator - Arguments was validate 
+28 дек. 2020 14:33:27,841 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value: Optional[Presentation{id=ae12b691-dd9b-4d46-acec-79ec4a270852, name='Моя презентация', fillColor='blue', fontFamily='Comic Sans', slides=[], comments=[]}] }
+28 дек. 2020 14:33:27,858 [main] DEBUG ru.sfedu.course_project.tools.jdbc.QueryBuilder - Query body: INSERT INTO PRESITOR.PUBLIC.%s %s VALUES %s
+28 дек. 2020 14:33:27,859 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Query string: INSERT INTO PRESITOR.PUBLIC.PRESENTATION (id, name, fillColor, fontFamily) VALUES replace(ae12b691-dd9b-4d46-acec-79ec4a270852,'-',''), Моя презентация, blue, Comic Sans)
+28 дек. 2020 14:33:27,881 [main] ERROR ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "INSERT INTO PRESITOR.PUBLIC.PRESENTATION (ID, NAME, FILLCOLOR, FONTFAMILY) VALUES REPLACE(AE12B691-DD9B-4D46[*]-ACEC-79EC4A270852,'-',''), МОЯ ПРЕЗЕНТАЦИЯ, BLUE, COMIC SANS)"; ожидалось "[, ::, AT, FORMAT, *, /, %, +, -, ||, ~, !~, NOT, LIKE, ILIKE, REGEXP, IS, IN, BETWEEN, AND, OR, ,, )"
+Syntax error in SQL statement "INSERT INTO PRESITOR.PUBLIC.PRESENTATION (ID, NAME, FILLCOLOR, FONTFAMILY) VALUES REPLACE(AE12B691-DD9B-4D46[*]-ACEC-79EC4A270852,'-',''), МОЯ ПРЕЗЕНТАЦИЯ, BLUE, COMIC SANS)"; expected "[, ::, AT, FORMAT, *, /, %, +, -, ||, ~, !~, NOT, LIKE, ILIKE, REGEXP, IS, IN, BETWEEN, AND, OR, ,, )"; SQL statement:
+INSERT INTO PRESITOR.PUBLIC.PRESENTATION (id, name, fillColor, fontFamily) VALUES replace(ae12b691-dd9b-4d46-acec-79ec4a270852,'-',''), Моя презентация, blue, Comic Sans) [42001-200]
+28 дек. 2020 14:33:27,883 [main] ERROR ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Unable to create presentation
+28 дек. 2020 14:33:27,883 [main] INFO  ru.sfedu.course_project.tools.Result - { status: error, value: Unable to create presentation }
+28 дек. 2020 14:34:28,753 [main] WARN  ru.sfedu.course_project.Main - arguments {fillColor=blue, role=editor, fontFamily=Comic Sans, method=createPresentation, datatype=db, name=Моя презентация, id=ae12b691-dd9b-4d46-acec-79ec4a270852}
+28 дек. 2020 14:34:28,760 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [fillColor=blue, role=editor, fontFamily=Comic Sans, method=createPresentation, datatype=db, name=Моя презентация, id=ae12b691-dd9b-4d46-acec-79ec4a270852]
+28 дек. 2020 14:34:28,761 [main] INFO  ru.sfedu.course_project.Main - Attempt to create db data provider
+28 дек. 2020 14:34:28,764 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: db
+28 дек. 2020 14:34:28,767 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: createPresentation
+28 дек. 2020 14:34:28,768 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+28 дек. 2020 14:34:28,770 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Attempt to create presentations
+28 дек. 2020 14:34:29,216 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  id ae12b691-dd9b-4d46-acec-79ec4a270852
+28 дек. 2020 14:34:29,217 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  name Моя презентация
+28 дек. 2020 14:34:29,218 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  fillColor blue
+28 дек. 2020 14:34:29,219 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  fontFamily Comic Sans
+28 дек. 2020 14:34:29,220 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  slides []
+28 дек. 2020 14:34:29,220 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  comments []
+28 дек. 2020 14:34:29,221 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  marks []
+28 дек. 2020 14:34:29,223 [main] DEBUG ru.sfedu.course_project.tools.Creator - Arguments was validate 
+28 дек. 2020 14:34:29,239 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value: Optional[Presentation{id=ae12b691-dd9b-4d46-acec-79ec4a270852, name='Моя презентация', fillColor='blue', fontFamily='Comic Sans', slides=[], comments=[]}] }
+28 дек. 2020 14:34:29,257 [main] DEBUG ru.sfedu.course_project.tools.jdbc.QueryBuilder - Query body: INSERT INTO PRESITOR.PUBLIC.%s %s VALUES %s
+28 дек. 2020 14:34:29,258 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Query string: INSERT INTO PRESITOR.PUBLIC.PRESENTATION (id, name, fillColor, fontFamily) VALUES ae12b691dd9b4d46acec79ec4a270852, Моя презентация, blue, Comic Sans)
+28 дек. 2020 14:34:29,274 [main] ERROR ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "INSERT INTO PRESITOR.PUBLIC.PRESENTATION (ID, NAME, FILLCOLOR, FONTFAMILY) VALUES AE12B691DD9B4D46ACEC79EC4A270852, МОЯ ПРЕЗЕНТАЦИЯ[*], BLUE, COMIC SANS)"
+Syntax error in SQL statement "INSERT INTO PRESITOR.PUBLIC.PRESENTATION (ID, NAME, FILLCOLOR, FONTFAMILY) VALUES AE12B691DD9B4D46ACEC79EC4A270852, МОЯ ПРЕЗЕНТАЦИЯ[*], BLUE, COMIC SANS)"; SQL statement:
+INSERT INTO PRESITOR.PUBLIC.PRESENTATION (id, name, fillColor, fontFamily) VALUES ae12b691dd9b4d46acec79ec4a270852, Моя презентация, blue, Comic Sans) [42000-200]
+28 дек. 2020 14:34:29,275 [main] ERROR ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Unable to create presentation
+28 дек. 2020 14:34:29,276 [main] INFO  ru.sfedu.course_project.tools.Result - { status: error, value: Unable to create presentation }
+28 дек. 2020 14:35:37,963 [main] WARN  ru.sfedu.course_project.Main - arguments {fillColor=blue, role=editor, fontFamily=Comic Sans, method=createPresentation, datatype=db, name=Моя презентация, id=ae12b691-dd9b-4d46-acec-79ec4a270852}
+28 дек. 2020 14:35:37,967 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [fillColor=blue, role=editor, fontFamily=Comic Sans, method=createPresentation, datatype=db, name=Моя презентация, id=ae12b691-dd9b-4d46-acec-79ec4a270852]
+28 дек. 2020 14:35:37,969 [main] INFO  ru.sfedu.course_project.Main - Attempt to create db data provider
+28 дек. 2020 14:35:37,971 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: db
+28 дек. 2020 14:35:37,974 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: createPresentation
+28 дек. 2020 14:35:37,974 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+28 дек. 2020 14:35:37,976 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Attempt to create presentations
+28 дек. 2020 14:35:38,358 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  id ae12b691-dd9b-4d46-acec-79ec4a270852
+28 дек. 2020 14:35:38,358 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  name Моя презентация
+28 дек. 2020 14:35:38,359 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  fillColor blue
+28 дек. 2020 14:35:38,359 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  fontFamily Comic Sans
+28 дек. 2020 14:35:38,360 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  slides []
+28 дек. 2020 14:35:38,361 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  comments []
+28 дек. 2020 14:35:38,362 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  marks []
+28 дек. 2020 14:35:38,363 [main] DEBUG ru.sfedu.course_project.tools.Creator - Arguments was validate 
+28 дек. 2020 14:35:38,382 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value: Optional[Presentation{id=ae12b691-dd9b-4d46-acec-79ec4a270852, name='Моя презентация', fillColor='blue', fontFamily='Comic Sans', slides=[], comments=[]}] }
+28 дек. 2020 14:35:38,399 [main] DEBUG ru.sfedu.course_project.tools.jdbc.QueryBuilder - Query body: INSERT INTO PRESITOR.PUBLIC.%s %s VALUES %s
+28 дек. 2020 14:35:38,400 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Query string: INSERT INTO PRESITOR.PUBLIC.PRESENTATION (id, name, fillColor, fontFamily) VALUES ae12b691dd9b4d46acec79ec4a270852, 'Моя презентация', blue, Comic Sans)
+28 дек. 2020 14:35:38,417 [main] ERROR ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "INSERT INTO PRESITOR.PUBLIC.PRESENTATION (ID, NAME, FILLCOLOR, FONTFAMILY) VALUES AE12B691DD9B4D46ACEC79EC4A270852, 'Моя презентация', BLUE, COMIC SANS[*])"
+Syntax error in SQL statement "INSERT INTO PRESITOR.PUBLIC.PRESENTATION (ID, NAME, FILLCOLOR, FONTFAMILY) VALUES AE12B691DD9B4D46ACEC79EC4A270852, 'Моя презентация', BLUE, COMIC SANS[*])"; SQL statement:
+INSERT INTO PRESITOR.PUBLIC.PRESENTATION (id, name, fillColor, fontFamily) VALUES ae12b691dd9b4d46acec79ec4a270852, 'Моя презентация', blue, Comic Sans) [42000-200]
+28 дек. 2020 14:35:38,418 [main] ERROR ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Unable to create presentation
+28 дек. 2020 14:35:38,419 [main] INFO  ru.sfedu.course_project.tools.Result - { status: error, value: Unable to create presentation }
+28 дек. 2020 14:36:20,133 [main] WARN  ru.sfedu.course_project.Main - arguments {fillColor=blue, role=editor, fontFamily=Comic Sans, method=createPresentation, datatype=db, name=Моя презентация, id=ae12b691-dd9b-4d46-acec-79ec4a270852}
+28 дек. 2020 14:36:20,140 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [fillColor=blue, role=editor, fontFamily=Comic Sans, method=createPresentation, datatype=db, name=Моя презентация, id=ae12b691-dd9b-4d46-acec-79ec4a270852]
+28 дек. 2020 14:36:20,142 [main] INFO  ru.sfedu.course_project.Main - Attempt to create db data provider
+28 дек. 2020 14:36:20,144 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: db
+28 дек. 2020 14:36:20,148 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: createPresentation
+28 дек. 2020 14:36:20,149 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+28 дек. 2020 14:36:20,151 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Attempt to create presentations
+28 дек. 2020 14:36:20,542 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  id ae12b691-dd9b-4d46-acec-79ec4a270852
+28 дек. 2020 14:36:20,543 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  name Моя презентация
+28 дек. 2020 14:36:20,544 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  fillColor blue
+28 дек. 2020 14:36:20,544 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  fontFamily Comic Sans
+28 дек. 2020 14:36:20,545 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  slides []
+28 дек. 2020 14:36:20,545 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  comments []
+28 дек. 2020 14:36:20,546 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  marks []
+28 дек. 2020 14:36:20,547 [main] DEBUG ru.sfedu.course_project.tools.Creator - Arguments was validate 
+28 дек. 2020 14:36:20,563 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value: Optional[Presentation{id=ae12b691-dd9b-4d46-acec-79ec4a270852, name='Моя презентация', fillColor='blue', fontFamily='Comic Sans', slides=[], comments=[]}] }
+28 дек. 2020 14:36:20,584 [main] DEBUG ru.sfedu.course_project.tools.jdbc.QueryBuilder - Query body: INSERT INTO PRESITOR.PUBLIC.%s %s VALUES %s
+28 дек. 2020 14:36:20,585 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Query string: INSERT INTO PRESITOR.PUBLIC.PRESENTATION (id, name, fillColor, fontFamily) VALUES 'ae12b691-dd9b-4d46-acec-79ec4a270852', 'Моя презентация', 'blue', 'Comic Sans')
+28 дек. 2020 14:36:20,603 [main] ERROR ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "INSERT INTO PRESITOR.PUBLIC.PRESENTATION (ID, NAME, FILLCOLOR, FONTFAMILY) VALUES 'ae12b691-dd9b-4d46-acec-79ec4a270852', 'Моя презентация', 'blue', 'Comic Sans')[*]"
+Syntax error in SQL statement "INSERT INTO PRESITOR.PUBLIC.PRESENTATION (ID, NAME, FILLCOLOR, FONTFAMILY) VALUES 'ae12b691-dd9b-4d46-acec-79ec4a270852', 'Моя презентация', 'blue', 'Comic Sans')[*]"; SQL statement:
+INSERT INTO PRESITOR.PUBLIC.PRESENTATION (id, name, fillColor, fontFamily) VALUES 'ae12b691-dd9b-4d46-acec-79ec4a270852', 'Моя презентация', 'blue', 'Comic Sans') [42000-200]
+28 дек. 2020 14:36:20,605 [main] ERROR ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Unable to create presentation
+28 дек. 2020 14:36:20,606 [main] INFO  ru.sfedu.course_project.tools.Result - { status: error, value: Unable to create presentation }
+28 дек. 2020 14:37:00,249 [main] WARN  ru.sfedu.course_project.Main - arguments {fillColor=blue, role=editor, fontFamily=Comic Sans, method=createPresentation, datatype=db, name=Моя презентация, id=ae12b691-dd9b-4d46-acec-79ec4a270852}
+28 дек. 2020 14:37:00,254 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [fillColor=blue, role=editor, fontFamily=Comic Sans, method=createPresentation, datatype=db, name=Моя презентация, id=ae12b691-dd9b-4d46-acec-79ec4a270852]
+28 дек. 2020 14:37:00,255 [main] INFO  ru.sfedu.course_project.Main - Attempt to create db data provider
+28 дек. 2020 14:37:00,258 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: db
+28 дек. 2020 14:37:00,261 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: createPresentation
+28 дек. 2020 14:37:00,261 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+28 дек. 2020 14:37:00,263 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Attempt to create presentations
+28 дек. 2020 14:37:00,660 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  id ae12b691-dd9b-4d46-acec-79ec4a270852
+28 дек. 2020 14:37:00,661 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  name Моя презентация
+28 дек. 2020 14:37:00,661 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  fillColor blue
+28 дек. 2020 14:37:00,662 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  fontFamily Comic Sans
+28 дек. 2020 14:37:00,663 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  slides []
+28 дек. 2020 14:37:00,667 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  comments []
+28 дек. 2020 14:37:00,668 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  marks []
+28 дек. 2020 14:37:00,669 [main] DEBUG ru.sfedu.course_project.tools.Creator - Arguments was validate 
+28 дек. 2020 14:37:00,684 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value: Optional[Presentation{id=ae12b691-dd9b-4d46-acec-79ec4a270852, name='Моя презентация', fillColor='blue', fontFamily='Comic Sans', slides=[], comments=[]}] }
+28 дек. 2020 14:37:00,717 [main] DEBUG ru.sfedu.course_project.tools.jdbc.QueryBuilder - Query body: INSERT INTO PRESITOR.PUBLIC.%s %s VALUES %s
+28 дек. 2020 14:37:00,719 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Query string: INSERT INTO PRESITOR.PUBLIC.PRESENTATION (id, name, fillColor, fontFamily) VALUES ('ae12b691-dd9b-4d46-acec-79ec4a270852', 'Моя презентация', 'blue', 'Comic Sans')
+28 дек. 2020 14:37:01,355 [main] INFO  ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Presentation successfully created 
+28 дек. 2020 14:37:01,355 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value: Presentation successfully created  }
+28 дек. 2020 15:07:59,311 [main] WARN  ru.sfedu.course_project.Main - arguments {fillColor=blue, role=editor, fontFamily=Comic Sans, method=createPresentation, datatype=db, name=Моя презентация, id=ae12b691-dd9b-4d46-acec-79ec4a270852}
+28 дек. 2020 15:07:59,324 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [fillColor=blue, role=editor, fontFamily=Comic Sans, method=createPresentation, datatype=db, name=Моя презентация, id=ae12b691-dd9b-4d46-acec-79ec4a270852]
+28 дек. 2020 15:07:59,326 [main] INFO  ru.sfedu.course_project.Main - Attempt to create db data provider
+28 дек. 2020 15:07:59,331 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: db
+28 дек. 2020 15:07:59,335 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: createPresentation
+28 дек. 2020 15:07:59,337 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+28 дек. 2020 15:07:59,355 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Attempt to create presentations
+28 дек. 2020 15:07:59,992 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  id ae12b691-dd9b-4d46-acec-79ec4a270852
+28 дек. 2020 15:07:59,993 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  name Моя презентация
+28 дек. 2020 15:07:59,994 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  fillColor blue
+28 дек. 2020 15:07:59,995 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  fontFamily Comic Sans
+28 дек. 2020 15:07:59,997 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  slides []
+28 дек. 2020 15:07:59,998 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  comments []
+28 дек. 2020 15:07:59,999 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  marks []
+28 дек. 2020 15:08:00,002 [main] DEBUG ru.sfedu.course_project.tools.Creator - Arguments was validate 
+28 дек. 2020 15:08:00,044 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value: Optional[Presentation{id=ae12b691-dd9b-4d46-acec-79ec4a270852, name='Моя презентация', fillColor='blue', fontFamily='Comic Sans', slides=[], comments=[]}] }
+28 дек. 2020 15:08:00,081 [main] DEBUG ru.sfedu.course_project.tools.jdbc.QueryBuilder - Query body: INSERT INTO PRESITOR.PUBLIC.%s %s VALUES %s
+28 дек. 2020 15:08:00,082 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Query string: INSERT INTO PRESITOR.PUBLIC.PRESENTATION (id, name, fillColor, fontFamily) VALUES ('ae12b691-dd9b-4d46-acec-79ec4a270852', 'Моя презентация', 'blue', 'Comic Sans')
+28 дек. 2020 15:08:00,114 [main] ERROR ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - org.h2.jdbc.JdbcSQLSyntaxErrorException: Таблица "PRESENTATION" уже существует
+Table "PRESENTATION" already exists; SQL statement:
+CREATE TABLE PRESENTATION (id varchar(36), name varchar(200), fillColor varchar(200), fontFamily varchar(200)) [42101-200]
+28 дек. 2020 15:08:00,116 [main] ERROR ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Unable to create presentation
+28 дек. 2020 15:08:00,117 [main] INFO  ru.sfedu.course_project.tools.Result - { status: error, value: Unable to create presentation }
+28 дек. 2020 15:10:10,177 [main] WARN  ru.sfedu.course_project.Main - arguments {fillColor=blue, role=editor, fontFamily=Comic Sans, method=createPresentation, datatype=db, name=Моя презентация, id=ae12b691-dd9b-4d46-acec-79ec4a270852}
+28 дек. 2020 15:10:10,185 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [fillColor=blue, role=editor, fontFamily=Comic Sans, method=createPresentation, datatype=db, name=Моя презентация, id=ae12b691-dd9b-4d46-acec-79ec4a270852]
+28 дек. 2020 15:10:10,187 [main] INFO  ru.sfedu.course_project.Main - Attempt to create db data provider
+28 дек. 2020 15:10:10,192 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: db
+28 дек. 2020 15:10:10,197 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: createPresentation
+28 дек. 2020 15:10:10,197 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+28 дек. 2020 15:10:10,217 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Attempt to create presentations
+28 дек. 2020 15:10:10,870 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  id ae12b691-dd9b-4d46-acec-79ec4a270852
+28 дек. 2020 15:10:10,871 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  name Моя презентация
+28 дек. 2020 15:10:10,872 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  fillColor blue
+28 дек. 2020 15:10:10,873 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  fontFamily Comic Sans
+28 дек. 2020 15:10:10,874 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  slides []
+28 дек. 2020 15:10:10,876 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  comments []
+28 дек. 2020 15:10:10,877 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  marks []
+28 дек. 2020 15:10:10,879 [main] DEBUG ru.sfedu.course_project.tools.Creator - Arguments was validate 
+28 дек. 2020 15:10:10,906 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value: Optional[Presentation{id=ae12b691-dd9b-4d46-acec-79ec4a270852, name='Моя презентация', fillColor='blue', fontFamily='Comic Sans', slides=[], comments=[]}] }
+28 дек. 2020 15:10:10,912 [main] DEBUG ru.sfedu.course_project.tools.jdbc.QueryBuilder - Query body: INSERT INTO PRESITOR.PUBLIC.%s %s VALUES %s
+28 дек. 2020 15:10:10,913 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Query string: INSERT INTO PRESITOR.PUBLIC.PRESENTATION (id, name, fillColor, fontFamily) VALUES ('ae12b691-dd9b-4d46-acec-79ec4a270852', 'Моя презентация', 'blue', 'Comic Sans')
+28 дек. 2020 15:10:11,212 [main] INFO  ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Presentation successfully created 
+28 дек. 2020 15:10:11,213 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value: Presentation successfully created  }
+28 дек. 2020 15:29:45,228 [main] WARN  ru.sfedu.course_project.Main - arguments {fillColor=blue, role=editor, fontFamily=Comic Sans, method=createPresentation, datatype=db, name=Моя презентация, id=ae12b691-dd9b-4d46-acec-79ec4a270852}
+28 дек. 2020 15:29:45,239 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [fillColor=blue, role=editor, fontFamily=Comic Sans, method=createPresentation, datatype=db, name=Моя презентация, id=ae12b691-dd9b-4d46-acec-79ec4a270852]
+28 дек. 2020 15:29:45,242 [main] INFO  ru.sfedu.course_project.Main - Attempt to create db data provider
+28 дек. 2020 15:29:45,248 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: db
+28 дек. 2020 15:29:45,254 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: createPresentation
+28 дек. 2020 15:29:45,255 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+28 дек. 2020 15:29:45,278 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Attempt to create presentations
+28 дек. 2020 15:29:45,982 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  id ae12b691-dd9b-4d46-acec-79ec4a270852
+28 дек. 2020 15:29:45,983 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  name Моя презентация
+28 дек. 2020 15:29:45,984 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  fillColor blue
+28 дек. 2020 15:29:45,985 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  fontFamily Comic Sans
+28 дек. 2020 15:29:45,986 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  slides []
+28 дек. 2020 15:29:45,987 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  comments []
+28 дек. 2020 15:29:45,988 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  marks []
+28 дек. 2020 15:29:45,990 [main] DEBUG ru.sfedu.course_project.tools.Creator - Arguments was validate 
+28 дек. 2020 15:29:46,013 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value: Optional[Presentation{id=ae12b691-dd9b-4d46-acec-79ec4a270852, name='Моя презентация', fillColor='blue', fontFamily='Comic Sans', slides=[], comments=[]}] }
+28 дек. 2020 15:29:46,046 [main] DEBUG ru.sfedu.course_project.tools.jdbc.QueryBuilder - Query body: INSERT INTO PRESITOR.PUBLIC.%s %s VALUES %s
+28 дек. 2020 15:29:46,048 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Query string: INSERT INTO PRESITOR.PUBLIC.PRESENTATION (id, name, fillColor, fontFamily) VALUES ('ae12b691-dd9b-4d46-acec-79ec4a270852', 'Моя презентация', 'blue', 'Comic Sans')
+28 дек. 2020 15:29:46,900 [main] INFO  ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Presentation successfully created 
+28 дек. 2020 15:29:46,901 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value: Presentation successfully created  }
+28 дек. 2020 15:30:09,695 [main] WARN  ru.sfedu.course_project.Main - arguments {fillColor=blue, role=editor, fontFamily=Comic Sans, method=getPresentations, datatype=db, name=Моя презентация, id=ae12b691-dd9b-4d46-acec-79ec4a270852}
+28 дек. 2020 15:30:09,704 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [fillColor=blue, role=editor, fontFamily=Comic Sans, method=getPresentations, datatype=db, name=Моя презентация, id=ae12b691-dd9b-4d46-acec-79ec4a270852]
+28 дек. 2020 15:30:09,706 [main] INFO  ru.sfedu.course_project.Main - Attempt to create db data provider
+28 дек. 2020 15:30:09,712 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: db
+28 дек. 2020 15:30:09,717 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: getPresentations
+28 дек. 2020 15:30:09,718 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+28 дек. 2020 15:31:43,574 [main] WARN  ru.sfedu.course_project.Main - arguments {fillColor=blue, role=editor, fontFamily=Comic Sans, method=getPresentations, datatype=db, name=Моя презентация, id=ae12b691-dd9b-4d46-acec-79ec4a270852}
+28 дек. 2020 15:31:43,582 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [fillColor=blue, role=editor, fontFamily=Comic Sans, method=getPresentations, datatype=db, name=Моя презентация, id=ae12b691-dd9b-4d46-acec-79ec4a270852]
+28 дек. 2020 15:31:43,585 [main] INFO  ru.sfedu.course_project.Main - Attempt to create db data provider
+28 дек. 2020 15:31:43,589 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: db
+28 дек. 2020 15:31:43,593 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: getPresentations
+28 дек. 2020 15:31:43,594 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+28 дек. 2020 15:32:46,193 [main] WARN  ru.sfedu.course_project.Main - arguments {fillColor=blue, role=editor, fontFamily=Comic Sans, method=getPresentations, datatype=db, name=Моя презентация, id=ae12b691-dd9b-4d46-acec-79ec4a270852}
+28 дек. 2020 15:32:46,203 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [fillColor=blue, role=editor, fontFamily=Comic Sans, method=getPresentations, datatype=db, name=Моя презентация, id=ae12b691-dd9b-4d46-acec-79ec4a270852]
+28 дек. 2020 15:32:46,206 [main] INFO  ru.sfedu.course_project.Main - Attempt to create db data provider
+28 дек. 2020 15:32:46,228 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: db
+28 дек. 2020 15:32:46,234 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: getPresentations
+28 дек. 2020 15:32:46,235 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+28 дек. 2020 15:32:46,254 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Attempt to get presentations
+28 дек. 2020 15:32:46,860 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCCommonMethods - Get collection: presentation
+28 дек. 2020 15:32:46,866 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCCommonMethods - Query string: 
+28 дек. 2020 15:32:46,866 [main] ERROR ru.sfedu.course_project.api.jdbc.JDBCCommonMethods - Query string is empty
+28 дек. 2020 15:32:46,871 [main] INFO  ru.sfedu.course_project.tools.Result - { status: error, value: Unable to create presentation }
+28 дек. 2020 15:34:15,313 [main] WARN  ru.sfedu.course_project.Main - arguments {fillColor=blue, role=editor, fontFamily=Comic Sans, method=getPresentations, datatype=db, name=Моя презентация, id=ae12b691-dd9b-4d46-acec-79ec4a270852}
+28 дек. 2020 15:34:15,323 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [fillColor=blue, role=editor, fontFamily=Comic Sans, method=getPresentations, datatype=db, name=Моя презентация, id=ae12b691-dd9b-4d46-acec-79ec4a270852]
+28 дек. 2020 15:34:15,326 [main] INFO  ru.sfedu.course_project.Main - Attempt to create db data provider
+28 дек. 2020 15:34:15,331 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: db
+28 дек. 2020 15:34:15,336 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: getPresentations
+28 дек. 2020 15:34:15,337 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+28 дек. 2020 15:34:15,342 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Attempt to get presentations
+28 дек. 2020 15:34:15,931 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCCommonMethods - Get collection: presentation
+28 дек. 2020 15:34:15,955 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCCommonMethods - Query string: SELECT * FROM PRESITOR.PUBLIC.presentation
+28 дек. 2020 15:34:15,997 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCCommonMethods - Presentation: rs0: org.h2.result.LocalResultImpl@6b00f608 columns: 4 rows: 3 pos: 0
+28 дек. 2020 15:34:15,997 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCCommonMethods - Presentation: rs0: org.h2.result.LocalResultImpl@6b00f608 columns: 4 rows: 3 pos: 1
+28 дек. 2020 15:34:15,998 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCCommonMethods - Presentation: rs0: org.h2.result.LocalResultImpl@6b00f608 columns: 4 rows: 3 pos: 2
+28 дек. 2020 15:34:16,001 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value:  }
+28 дек. 2020 15:38:41,220 [main] WARN  ru.sfedu.course_project.Main - arguments {fillColor=blue, role=editor, fontFamily=Comic Sans, method=getPresentations, datatype=db, name=Моя презентация, id=ae12b691-dd9b-4d46-acec-79ec4a270852}
+28 дек. 2020 15:38:41,234 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [fillColor=blue, role=editor, fontFamily=Comic Sans, method=getPresentations, datatype=db, name=Моя презентация, id=ae12b691-dd9b-4d46-acec-79ec4a270852]
+28 дек. 2020 15:38:41,236 [main] INFO  ru.sfedu.course_project.Main - Attempt to create db data provider
+28 дек. 2020 15:38:41,242 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: db
+28 дек. 2020 15:38:41,249 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: getPresentations
+28 дек. 2020 15:38:41,250 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+28 дек. 2020 15:38:41,254 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Attempt to get presentations
+28 дек. 2020 15:38:41,834 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCCommonMethods - Get collection: presentation
+28 дек. 2020 15:38:41,839 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCCommonMethods - Query string: SELECT * FROM PRESITOR.PUBLIC.presentation
+28 дек. 2020 15:38:41,896 [main] ERROR ru.sfedu.course_project.api.jdbc.JDBCCommonMethods - org.h2.jdbc.JdbcSQLDataException: Недопустимое значение "0" для параметра "columnIndex"
+Invalid value "0" for parameter "columnIndex" [90008-200]
+28 дек. 2020 15:38:41,902 [main] INFO  ru.sfedu.course_project.tools.Result - { status: error, value: Unable to read result set }
+28 дек. 2020 15:39:04,238 [main] WARN  ru.sfedu.course_project.Main - arguments {fillColor=blue, role=editor, fontFamily=Comic Sans, method=getPresentations, datatype=db, name=Моя презентация, id=ae12b691-dd9b-4d46-acec-79ec4a270852}
+28 дек. 2020 15:39:04,252 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [fillColor=blue, role=editor, fontFamily=Comic Sans, method=getPresentations, datatype=db, name=Моя презентация, id=ae12b691-dd9b-4d46-acec-79ec4a270852]
+28 дек. 2020 15:39:04,257 [main] INFO  ru.sfedu.course_project.Main - Attempt to create db data provider
+28 дек. 2020 15:39:04,264 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: db
+28 дек. 2020 15:39:04,271 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: getPresentations
+28 дек. 2020 15:39:04,273 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+28 дек. 2020 15:39:04,275 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Attempt to get presentations
+28 дек. 2020 15:39:04,828 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCCommonMethods - Get collection: presentation
+28 дек. 2020 15:39:04,835 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCCommonMethods - Query string: SELECT * FROM PRESITOR.PUBLIC.presentation
+28 дек. 2020 15:39:04,898 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCCommonMethods - Presentation: Presentation{id=ae12b691-dd9b-4d46-acec-79ec4a270852, name='Моя презентация', fillColor='blue', fontFamily='Comic Sans'}
+28 дек. 2020 15:39:04,899 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCCommonMethods - Presentation: Presentation{id=ae12b691-dd9b-4d46-acec-79ec4a270852, name='Моя презентация', fillColor='blue', fontFamily='Comic Sans'}
+28 дек. 2020 15:39:04,900 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCCommonMethods - Presentation: Presentation{id=ae12b691-dd9b-4d46-acec-79ec4a270852, name='Моя презентация', fillColor='blue', fontFamily='Comic Sans'}
+28 дек. 2020 15:39:04,906 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value:  }
+28 дек. 2020 15:41:08,087 [main] WARN  ru.sfedu.course_project.Main - arguments {fillColor=blue, role=editor, fontFamily=Comic Sans, method=createPresentation, datatype=db, name=Моя презентация}
+28 дек. 2020 15:41:08,099 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [fillColor=blue, role=editor, fontFamily=Comic Sans, method=createPresentation, datatype=db, name=Моя презентация]
+28 дек. 2020 15:41:08,102 [main] INFO  ru.sfedu.course_project.Main - Attempt to create db data provider
+28 дек. 2020 15:41:08,107 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: db
+28 дек. 2020 15:41:08,113 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: createPresentation
+28 дек. 2020 15:41:08,114 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+28 дек. 2020 15:41:08,117 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Attempt to create presentations
+28 дек. 2020 15:41:08,889 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  id 2bd787cf-5a0e-4ca4-b664-b0105b30f6a9
+28 дек. 2020 15:41:08,891 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  name Моя презентация
+28 дек. 2020 15:41:08,891 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  fillColor blue
+28 дек. 2020 15:41:08,893 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  fontFamily Comic Sans
+28 дек. 2020 15:41:08,894 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  slides []
+28 дек. 2020 15:41:08,896 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  comments []
+28 дек. 2020 15:41:08,897 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  marks []
+28 дек. 2020 15:41:08,899 [main] DEBUG ru.sfedu.course_project.tools.Creator - Arguments was validate 
+28 дек. 2020 15:41:08,931 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value: Optional[Presentation{id=2bd787cf-5a0e-4ca4-b664-b0105b30f6a9, name='Моя презентация', fillColor='blue', fontFamily='Comic Sans', slides=[], comments=[]}] }
+28 дек. 2020 15:41:08,938 [main] DEBUG ru.sfedu.course_project.tools.jdbc.QueryBuilder - Query body: INSERT INTO PRESITOR.PUBLIC.%s %s VALUES %s
+28 дек. 2020 15:41:08,940 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Query string: INSERT INTO PRESITOR.PUBLIC.PRESENTATION (id, name, fillColor, fontFamily) VALUES ('2bd787cf-5a0e-4ca4-b664-b0105b30f6a9', 'Моя презентация', 'blue', 'Comic Sans')
+28 дек. 2020 15:41:09,490 [main] INFO  ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Presentation successfully created 
+28 дек. 2020 15:41:09,491 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value: Presentation successfully created  }
+28 дек. 2020 15:42:59,380 [main] WARN  ru.sfedu.course_project.Main - arguments {fillColor=blue, role=editor, fontFamily=Comic Sans, method=getPresentations, datatype=db, name=Моя презентация}
+28 дек. 2020 15:42:59,389 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [fillColor=blue, role=editor, fontFamily=Comic Sans, method=getPresentations, datatype=db, name=Моя презентация]
+28 дек. 2020 15:42:59,392 [main] INFO  ru.sfedu.course_project.Main - Attempt to create db data provider
+28 дек. 2020 15:42:59,396 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: db
+28 дек. 2020 15:42:59,404 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: getPresentations
+28 дек. 2020 15:42:59,405 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+28 дек. 2020 15:42:59,408 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Attempt to get presentations
+28 дек. 2020 15:43:00,008 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCCommonMethods - Get collection: presentation
+28 дек. 2020 15:43:00,016 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCCommonMethods - Query string: SELECT * FROM PRESITOR.PUBLIC.presentation
+28 дек. 2020 15:43:00,082 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCCommonMethods - Presentation: Presentation{id=ae12b691-dd9b-4d46-acec-79ec4a270852, name='Моя презентация', fillColor='blue', fontFamily='Comic Sans'}
+28 дек. 2020 15:43:00,083 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCCommonMethods - Presentation: Presentation{id=ae12b691-dd9b-4d46-acec-79ec4a270852, name='Моя презентация', fillColor='blue', fontFamily='Comic Sans'}
+28 дек. 2020 15:43:00,085 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCCommonMethods - Presentation: Presentation{id=ae12b691-dd9b-4d46-acec-79ec4a270852, name='Моя презентация', fillColor='blue', fontFamily='Comic Sans'}
+28 дек. 2020 15:43:00,086 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCCommonMethods - Presentation: Presentation{id=2bd787cf-5a0e-4ca4-b664-b0105b30f6a9, name='Моя презентация', fillColor='blue', fontFamily='Comic Sans'}
+28 дек. 2020 15:43:00,090 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value:  }
+28 дек. 2020 15:47:32,438 [main] WARN  ru.sfedu.course_project.Main - arguments {fillColor=blue, role=editor, fontFamily=Comic Sans, method=getPresentations, datatype=db, name=Моя презентация}
+28 дек. 2020 15:47:32,448 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [fillColor=blue, role=editor, fontFamily=Comic Sans, method=getPresentations, datatype=db, name=Моя презентация]
+28 дек. 2020 15:47:32,451 [main] INFO  ru.sfedu.course_project.Main - Attempt to create db data provider
+28 дек. 2020 15:47:32,456 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: db
+28 дек. 2020 15:47:32,461 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: getPresentations
+28 дек. 2020 15:47:32,462 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+28 дек. 2020 15:47:32,466 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Attempt to get presentations
+28 дек. 2020 15:47:33,041 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCCommonMethods - Get collection: presentation
+28 дек. 2020 15:47:33,047 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCCommonMethods - Query string: SELECT * FROM PRESITOR.PUBLIC.presentation
+28 дек. 2020 15:47:33,117 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCCommonMethods - Presentation: Presentation{id=ae12b691-dd9b-4d46-acec-79ec4a270852, name='Моя презентация', fillColor='blue', fontFamily='Comic Sans'}
+28 дек. 2020 15:47:33,117 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCCommonMethods - Presentation: Presentation{id=ae12b691-dd9b-4d46-acec-79ec4a270852, name='Моя презентация', fillColor='blue', fontFamily='Comic Sans'}
+28 дек. 2020 15:47:33,119 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCCommonMethods - Presentation: Presentation{id=ae12b691-dd9b-4d46-acec-79ec4a270852, name='Моя презентация', fillColor='blue', fontFamily='Comic Sans'}
+28 дек. 2020 15:47:33,119 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCCommonMethods - Presentation: Presentation{id=2bd787cf-5a0e-4ca4-b664-b0105b30f6a9, name='Моя презентация', fillColor='blue', fontFamily='Comic Sans'}
+28 дек. 2020 15:47:33,123 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value: [Presentation{id=ae12b691-dd9b-4d46-acec-79ec4a270852, name='Моя презентация', fillColor='blue', fontFamily='Comic Sans'}, Presentation{id=ae12b691-dd9b-4d46-acec-79ec4a270852, name='Моя презентация', fillColor='blue', fontFamily='Comic Sans'}, Presentation{id=ae12b691-dd9b-4d46-acec-79ec4a270852, name='Моя презентация', fillColor='blue', fontFamily='Comic Sans'}, Presentation{id=2bd787cf-5a0e-4ca4-b664-b0105b30f6a9, name='Моя презентация', fillColor='blue', fontFamily='Comic Sans'}] }
+28 дек. 2020 15:54:53,086 [main] WARN  ru.sfedu.course_project.Main - arguments {fillColor=blue, role=editor, fontFamily=Comic Sans, method=getPresentationById, datatype=db, name=Моя презентация, id=2bd787cf-5a0e-4ca4-b664-b0105b30f6a9}
+28 дек. 2020 15:54:53,094 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [fillColor=blue, role=editor, fontFamily=Comic Sans, method=getPresentationById, datatype=db, name=Моя презентация, id=2bd787cf-5a0e-4ca4-b664-b0105b30f6a9]
+28 дек. 2020 15:54:53,096 [main] INFO  ru.sfedu.course_project.Main - Attempt to create db data provider
+28 дек. 2020 15:54:53,117 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: db
+28 дек. 2020 15:54:53,123 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: getPresentationById
+28 дек. 2020 15:54:53,124 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+28 дек. 2020 15:54:53,148 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Attempt to get presentations
+28 дек. 2020 15:54:53,778 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCCommonMethods - Get collection: presentation
+28 дек. 2020 15:54:53,784 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCCommonMethods - Query string: SELECT * FROM PRESITOR.PUBLIC.presentation
+28 дек. 2020 15:54:53,843 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCCommonMethods - Presentation: Presentation{id=ae12b691-dd9b-4d46-acec-79ec4a270852, name='Моя презентация', fillColor='blue', fontFamily='Comic Sans'}
+28 дек. 2020 15:54:53,844 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCCommonMethods - Presentation: Presentation{id=ae12b691-dd9b-4d46-acec-79ec4a270852, name='Моя презентация', fillColor='blue', fontFamily='Comic Sans'}
+28 дек. 2020 15:54:53,845 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCCommonMethods - Presentation: Presentation{id=ae12b691-dd9b-4d46-acec-79ec4a270852, name='Моя презентация', fillColor='blue', fontFamily='Comic Sans'}
+28 дек. 2020 15:54:53,846 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCCommonMethods - Presentation: Presentation{id=2bd787cf-5a0e-4ca4-b664-b0105b30f6a9, name='Моя презентация', fillColor='blue', fontFamily='Comic Sans'}
+28 дек. 2020 15:54:53,849 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value: [Presentation{id=ae12b691-dd9b-4d46-acec-79ec4a270852, name='Моя презентация', fillColor='blue', fontFamily='Comic Sans'}, Presentation{id=ae12b691-dd9b-4d46-acec-79ec4a270852, name='Моя презентация', fillColor='blue', fontFamily='Comic Sans'}, Presentation{id=ae12b691-dd9b-4d46-acec-79ec4a270852, name='Моя презентация', fillColor='blue', fontFamily='Comic Sans'}, Presentation{id=2bd787cf-5a0e-4ca4-b664-b0105b30f6a9, name='Моя презентация', fillColor='blue', fontFamily='Comic Sans'}] }
+28 дек. 2020 15:54:53,852 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value: Presentation{id=2bd787cf-5a0e-4ca4-b664-b0105b30f6a9, name='Моя презентация', fillColor='blue', fontFamily='Comic Sans'} }
+28 дек. 2020 15:55:23,459 [main] WARN  ru.sfedu.course_project.Main - arguments {fillColor=blue, role=editor, fontFamily=Comic Sans, method=getPresentationById, datatype=db, name=Моя презентация, id=ae12b691-dd9b-4d46-acec-79ec4a270852}
+28 дек. 2020 15:55:23,468 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [fillColor=blue, role=editor, fontFamily=Comic Sans, method=getPresentationById, datatype=db, name=Моя презентация, id=ae12b691-dd9b-4d46-acec-79ec4a270852]
+28 дек. 2020 15:55:23,471 [main] INFO  ru.sfedu.course_project.Main - Attempt to create db data provider
+28 дек. 2020 15:55:23,477 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: db
+28 дек. 2020 15:55:23,483 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: getPresentationById
+28 дек. 2020 15:55:23,484 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+28 дек. 2020 15:55:23,487 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Attempt to get presentations
+28 дек. 2020 15:55:24,021 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCCommonMethods - Get collection: presentation
+28 дек. 2020 15:55:24,029 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCCommonMethods - Query string: SELECT * FROM PRESITOR.PUBLIC.presentation
+28 дек. 2020 15:55:24,086 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCCommonMethods - Presentation: Presentation{id=ae12b691-dd9b-4d46-acec-79ec4a270852, name='Моя презентация', fillColor='blue', fontFamily='Comic Sans'}
+28 дек. 2020 15:55:24,087 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCCommonMethods - Presentation: Presentation{id=ae12b691-dd9b-4d46-acec-79ec4a270852, name='Моя презентация', fillColor='blue', fontFamily='Comic Sans'}
+28 дек. 2020 15:55:24,087 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCCommonMethods - Presentation: Presentation{id=ae12b691-dd9b-4d46-acec-79ec4a270852, name='Моя презентация', fillColor='blue', fontFamily='Comic Sans'}
+28 дек. 2020 15:55:24,087 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCCommonMethods - Presentation: Presentation{id=2bd787cf-5a0e-4ca4-b664-b0105b30f6a9, name='Моя презентация', fillColor='blue', fontFamily='Comic Sans'}
+28 дек. 2020 15:55:24,090 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value: [Presentation{id=ae12b691-dd9b-4d46-acec-79ec4a270852, name='Моя презентация', fillColor='blue', fontFamily='Comic Sans'}, Presentation{id=ae12b691-dd9b-4d46-acec-79ec4a270852, name='Моя презентация', fillColor='blue', fontFamily='Comic Sans'}, Presentation{id=ae12b691-dd9b-4d46-acec-79ec4a270852, name='Моя презентация', fillColor='blue', fontFamily='Comic Sans'}, Presentation{id=2bd787cf-5a0e-4ca4-b664-b0105b30f6a9, name='Моя презентация', fillColor='blue', fontFamily='Comic Sans'}] }
+28 дек. 2020 15:55:24,093 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value: Presentation{id=ae12b691-dd9b-4d46-acec-79ec4a270852, name='Моя презентация', fillColor='blue', fontFamily='Comic Sans'} }
+28 дек. 2020 15:56:11,777 [main] WARN  ru.sfedu.course_project.Main - arguments {fillColor=blue, role=editor, fontFamily=Comic Sans, method=getPresentationById, datatype=db, name=Моя презентация, id=ae12b691-dd9b-4d46-acec-79ec4a270853}
+28 дек. 2020 15:56:11,786 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [fillColor=blue, role=editor, fontFamily=Comic Sans, method=getPresentationById, datatype=db, name=Моя презентация, id=ae12b691-dd9b-4d46-acec-79ec4a270853]
+28 дек. 2020 15:56:11,788 [main] INFO  ru.sfedu.course_project.Main - Attempt to create db data provider
+28 дек. 2020 15:56:11,794 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: db
+28 дек. 2020 15:56:11,800 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: getPresentationById
+28 дек. 2020 15:56:11,800 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+28 дек. 2020 15:56:11,827 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Attempt to get presentations
+28 дек. 2020 15:56:12,391 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCCommonMethods - Get collection: presentation
+28 дек. 2020 15:56:12,398 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCCommonMethods - Query string: SELECT * FROM PRESITOR.PUBLIC.presentation
+28 дек. 2020 15:56:12,455 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCCommonMethods - Presentation: Presentation{id=ae12b691-dd9b-4d46-acec-79ec4a270852, name='Моя презентация', fillColor='blue', fontFamily='Comic Sans'}
+28 дек. 2020 15:56:12,456 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCCommonMethods - Presentation: Presentation{id=ae12b691-dd9b-4d46-acec-79ec4a270852, name='Моя презентация', fillColor='blue', fontFamily='Comic Sans'}
+28 дек. 2020 15:56:12,457 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCCommonMethods - Presentation: Presentation{id=ae12b691-dd9b-4d46-acec-79ec4a270852, name='Моя презентация', fillColor='blue', fontFamily='Comic Sans'}
+28 дек. 2020 15:56:12,458 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCCommonMethods - Presentation: Presentation{id=2bd787cf-5a0e-4ca4-b664-b0105b30f6a9, name='Моя презентация', fillColor='blue', fontFamily='Comic Sans'}
+28 дек. 2020 15:56:12,462 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value: [Presentation{id=ae12b691-dd9b-4d46-acec-79ec4a270852, name='Моя презентация', fillColor='blue', fontFamily='Comic Sans'}, Presentation{id=ae12b691-dd9b-4d46-acec-79ec4a270852, name='Моя презентация', fillColor='blue', fontFamily='Comic Sans'}, Presentation{id=ae12b691-dd9b-4d46-acec-79ec4a270852, name='Моя презентация', fillColor='blue', fontFamily='Comic Sans'}, Presentation{id=2bd787cf-5a0e-4ca4-b664-b0105b30f6a9, name='Моя презентация', fillColor='blue', fontFamily='Comic Sans'}] }
+28 дек. 2020 15:56:12,467 [main] ERROR ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - java.lang.NullPointerException
+28 дек. 2020 15:56:12,469 [main] ERROR ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Unable to find presentation 
+28 дек. 2020 15:56:12,472 [main] INFO  ru.sfedu.course_project.tools.Result - { status: error, value: Unable to find presentation  }
+28 дек. 2020 16:23:25,868 [main] WARN  ru.sfedu.course_project.Main - arguments {fillColor=blue, role=editor, fontFamily=Comic Sans, method=removePresentationById, datatype=db, name=Моя презентация, id=ae12b691-dd9b-4d46-acec-79ec4a270853}
+28 дек. 2020 16:23:25,883 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [fillColor=blue, role=editor, fontFamily=Comic Sans, method=removePresentationById, datatype=db, name=Моя презентация, id=ae12b691-dd9b-4d46-acec-79ec4a270853]
+28 дек. 2020 16:23:25,886 [main] INFO  ru.sfedu.course_project.Main - Attempt to create db data provider
+28 дек. 2020 16:23:25,911 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: db
+28 дек. 2020 16:23:25,918 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: removePresentationById
+28 дек. 2020 16:23:25,918 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+28 дек. 2020 16:23:26,591 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Query string: DELETE FROM PRESITOR.PUBLIC.presentation WHERE id = 'ae12b691-dd9b-4d46-acec-79ec4a270853'
+28 дек. 2020 16:23:26,616 [main] INFO  ru.sfedu.course_project.tools.Result - { status: error, value: Unable to remove presentation by id }
+28 дек. 2020 16:24:06,702 [main] WARN  ru.sfedu.course_project.Main - arguments {fillColor=blue, role=editor, fontFamily=Comic Sans, method=getPresentationById, datatype=db, name=Моя презентация, id=ae12b691-dd9b-4d46-acec-79ec4a270853}
+28 дек. 2020 16:24:06,713 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [fillColor=blue, role=editor, fontFamily=Comic Sans, method=getPresentationById, datatype=db, name=Моя презентация, id=ae12b691-dd9b-4d46-acec-79ec4a270853]
+28 дек. 2020 16:24:06,716 [main] INFO  ru.sfedu.course_project.Main - Attempt to create db data provider
+28 дек. 2020 16:24:06,722 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: db
+28 дек. 2020 16:24:06,729 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: getPresentationById
+28 дек. 2020 16:24:06,729 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+28 дек. 2020 16:24:06,734 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Attempt to get presentations
+28 дек. 2020 16:24:07,305 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCCommonMethods - Get collection: presentation
+28 дек. 2020 16:24:07,312 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCCommonMethods - Query string: SELECT * FROM PRESITOR.PUBLIC.presentation
+28 дек. 2020 16:24:07,384 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCCommonMethods - Presentation: Presentation{id=ae12b691-dd9b-4d46-acec-79ec4a270852, name='Моя презентация', fillColor='blue', fontFamily='Comic Sans'}
+28 дек. 2020 16:24:07,385 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCCommonMethods - Presentation: Presentation{id=ae12b691-dd9b-4d46-acec-79ec4a270852, name='Моя презентация', fillColor='blue', fontFamily='Comic Sans'}
+28 дек. 2020 16:24:07,386 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCCommonMethods - Presentation: Presentation{id=ae12b691-dd9b-4d46-acec-79ec4a270852, name='Моя презентация', fillColor='blue', fontFamily='Comic Sans'}
+28 дек. 2020 16:24:07,386 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCCommonMethods - Presentation: Presentation{id=2bd787cf-5a0e-4ca4-b664-b0105b30f6a9, name='Моя презентация', fillColor='blue', fontFamily='Comic Sans'}
+28 дек. 2020 16:24:07,388 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value: [Presentation{id=ae12b691-dd9b-4d46-acec-79ec4a270852, name='Моя презентация', fillColor='blue', fontFamily='Comic Sans'}, Presentation{id=ae12b691-dd9b-4d46-acec-79ec4a270852, name='Моя презентация', fillColor='blue', fontFamily='Comic Sans'}, Presentation{id=ae12b691-dd9b-4d46-acec-79ec4a270852, name='Моя презентация', fillColor='blue', fontFamily='Comic Sans'}, Presentation{id=2bd787cf-5a0e-4ca4-b664-b0105b30f6a9, name='Моя презентация', fillColor='blue', fontFamily='Comic Sans'}] }
+28 дек. 2020 16:24:07,392 [main] ERROR ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - java.lang.NullPointerException
+28 дек. 2020 16:24:07,393 [main] ERROR ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Unable to find presentation 
+28 дек. 2020 16:24:07,394 [main] INFO  ru.sfedu.course_project.tools.Result - { status: error, value: Unable to find presentation  }
+28 дек. 2020 16:25:45,851 [main] WARN  ru.sfedu.course_project.Main - arguments {fillColor=blue, role=editor, fontFamily=Comic Sans, method=getPresentations, datatype=db, name=Моя презентация, id=ae12b691-dd9b-4d46-acec-79ec4a270853}
+28 дек. 2020 16:25:45,862 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [fillColor=blue, role=editor, fontFamily=Comic Sans, method=getPresentations, datatype=db, name=Моя презентация, id=ae12b691-dd9b-4d46-acec-79ec4a270853]
+28 дек. 2020 16:25:45,864 [main] INFO  ru.sfedu.course_project.Main - Attempt to create db data provider
+28 дек. 2020 16:25:45,869 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: db
+28 дек. 2020 16:25:45,876 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: getPresentations
+28 дек. 2020 16:25:45,876 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+28 дек. 2020 16:25:45,900 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Attempt to get presentations
+28 дек. 2020 16:25:46,477 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCCommonMethods - Get collection: presentation
+28 дек. 2020 16:25:46,483 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCCommonMethods - Query string: SELECT * FROM PRESITOR.PUBLIC.presentation
+28 дек. 2020 16:25:46,546 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCCommonMethods - Presentation: Presentation{id=ae12b691-dd9b-4d46-acec-79ec4a270852, name='Моя презентация', fillColor='blue', fontFamily='Comic Sans'}
+28 дек. 2020 16:25:46,547 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCCommonMethods - Presentation: Presentation{id=ae12b691-dd9b-4d46-acec-79ec4a270852, name='Моя презентация', fillColor='blue', fontFamily='Comic Sans'}
+28 дек. 2020 16:25:46,548 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCCommonMethods - Presentation: Presentation{id=ae12b691-dd9b-4d46-acec-79ec4a270852, name='Моя презентация', fillColor='blue', fontFamily='Comic Sans'}
+28 дек. 2020 16:25:46,549 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCCommonMethods - Presentation: Presentation{id=2bd787cf-5a0e-4ca4-b664-b0105b30f6a9, name='Моя презентация', fillColor='blue', fontFamily='Comic Sans'}
+28 дек. 2020 16:25:46,554 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value: [Presentation{id=ae12b691-dd9b-4d46-acec-79ec4a270852, name='Моя презентация', fillColor='blue', fontFamily='Comic Sans'}, Presentation{id=ae12b691-dd9b-4d46-acec-79ec4a270852, name='Моя презентация', fillColor='blue', fontFamily='Comic Sans'}, Presentation{id=ae12b691-dd9b-4d46-acec-79ec4a270852, name='Моя презентация', fillColor='blue', fontFamily='Comic Sans'}, Presentation{id=2bd787cf-5a0e-4ca4-b664-b0105b30f6a9, name='Моя презентация', fillColor='blue', fontFamily='Comic Sans'}] }
+28 дек. 2020 16:26:26,420 [main] WARN  ru.sfedu.course_project.Main - arguments {fillColor=blue, role=editor, fontFamily=Comic Sans, method=removePresentationById, datatype=db, name=Моя презентация, id=ae12b691-dd9b-4d46-acec-79ec4a270852}
+28 дек. 2020 16:26:26,430 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [fillColor=blue, role=editor, fontFamily=Comic Sans, method=removePresentationById, datatype=db, name=Моя презентация, id=ae12b691-dd9b-4d46-acec-79ec4a270852]
+28 дек. 2020 16:26:26,433 [main] INFO  ru.sfedu.course_project.Main - Attempt to create db data provider
+28 дек. 2020 16:26:26,437 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: db
+28 дек. 2020 16:26:26,446 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: removePresentationById
+28 дек. 2020 16:26:26,447 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+28 дек. 2020 16:26:26,978 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Query string: DELETE FROM PRESITOR.PUBLIC.presentation WHERE id = 'ae12b691-dd9b-4d46-acec-79ec4a270852'
+28 дек. 2020 16:26:26,996 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Remove status: false
+28 дек. 2020 16:26:27,000 [main] INFO  ru.sfedu.course_project.tools.Result - { status: error, value: Unable to remove presentation by id }
+28 дек. 2020 16:27:05,016 [main] WARN  ru.sfedu.course_project.Main - arguments {fillColor=blue, role=editor, fontFamily=Comic Sans, method=removePresentationById, datatype=db, name=Моя презентация, id=ae12b691-dd9b-4d46-acec-79ec4a270852}
+28 дек. 2020 16:27:05,029 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [fillColor=blue, role=editor, fontFamily=Comic Sans, method=removePresentationById, datatype=db, name=Моя презентация, id=ae12b691-dd9b-4d46-acec-79ec4a270852]
+28 дек. 2020 16:27:05,033 [main] INFO  ru.sfedu.course_project.Main - Attempt to create db data provider
+28 дек. 2020 16:27:05,037 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: db
+28 дек. 2020 16:27:05,044 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: removePresentationById
+28 дек. 2020 16:27:05,045 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+28 дек. 2020 16:27:05,598 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Query string: DELETE FROM PRESITOR.PUBLIC.presentation WHERE id = 'ae12b691-dd9b-4d46-acec-79ec4a270852'
+28 дек. 2020 16:27:05,618 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Remove status: false
+28 дек. 2020 16:27:05,621 [main] INFO  ru.sfedu.course_project.tools.Result - { status: error, value: Unable to remove presentation by id }
+28 дек. 2020 16:27:28,944 [main] WARN  ru.sfedu.course_project.Main - arguments {fillColor=blue, role=editor, fontFamily=Comic Sans, method=getPresentations, datatype=db, name=Моя презентация, id=ae12b691-dd9b-4d46-acec-79ec4a270852}
+28 дек. 2020 16:27:28,956 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [fillColor=blue, role=editor, fontFamily=Comic Sans, method=getPresentations, datatype=db, name=Моя презентация, id=ae12b691-dd9b-4d46-acec-79ec4a270852]
+28 дек. 2020 16:27:28,960 [main] INFO  ru.sfedu.course_project.Main - Attempt to create db data provider
+28 дек. 2020 16:27:28,967 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: db
+28 дек. 2020 16:27:28,973 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: getPresentations
+28 дек. 2020 16:27:28,976 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+28 дек. 2020 16:27:28,978 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Attempt to get presentations
+28 дек. 2020 16:27:29,533 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCCommonMethods - Get collection: presentation
+28 дек. 2020 16:27:29,538 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCCommonMethods - Query string: SELECT * FROM PRESITOR.PUBLIC.presentation
+28 дек. 2020 16:27:29,590 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCCommonMethods - Presentation: Presentation{id=2bd787cf-5a0e-4ca4-b664-b0105b30f6a9, name='Моя презентация', fillColor='blue', fontFamily='Comic Sans'}
+28 дек. 2020 16:27:29,594 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value: [Presentation{id=2bd787cf-5a0e-4ca4-b664-b0105b30f6a9, name='Моя презентация', fillColor='blue', fontFamily='Comic Sans'}] }
+28 дек. 2020 16:28:49,315 [main] WARN  ru.sfedu.course_project.Main - arguments {fillColor=blue, role=editor, fontFamily=Comic Sans, method=getPresentations, datatype=db, name=Моя презентация, id=ae12b691-dd9b-4d46-acec-79ec4a270852}
+28 дек. 2020 16:28:49,326 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [fillColor=blue, role=editor, fontFamily=Comic Sans, method=getPresentations, datatype=db, name=Моя презентация, id=ae12b691-dd9b-4d46-acec-79ec4a270852]
+28 дек. 2020 16:28:49,328 [main] INFO  ru.sfedu.course_project.Main - Attempt to create db data provider
+28 дек. 2020 16:28:49,335 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: db
+28 дек. 2020 16:28:49,341 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: getPresentations
+28 дек. 2020 16:28:49,342 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+28 дек. 2020 16:28:49,366 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Attempt to get presentations
+28 дек. 2020 16:28:49,950 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCCommonMethods - Get collection: presentation
+28 дек. 2020 16:28:49,956 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCCommonMethods - Query string: SELECT * FROM PRESITOR.PUBLIC.presentation
+28 дек. 2020 16:28:50,021 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCCommonMethods - Presentation: Presentation{id=2bd787cf-5a0e-4ca4-b664-b0105b30f6a9, name='Моя презентация', fillColor='blue', fontFamily='Comic Sans'}
+28 дек. 2020 16:28:50,025 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value: [Presentation{id=2bd787cf-5a0e-4ca4-b664-b0105b30f6a9, name='Моя презентация', fillColor='blue', fontFamily='Comic Sans'}] }
+28 дек. 2020 16:29:28,569 [main] WARN  ru.sfedu.course_project.Main - arguments {fillColor=blue, role=editor, fontFamily=Comic Sans, method=removePresentationById, datatype=db, name=Моя презентация, id=2bd787cf-5a0e-4ca4-b664-b0105b30f6a9}
+28 дек. 2020 16:29:28,581 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [fillColor=blue, role=editor, fontFamily=Comic Sans, method=removePresentationById, datatype=db, name=Моя презентация, id=2bd787cf-5a0e-4ca4-b664-b0105b30f6a9]
+28 дек. 2020 16:29:28,585 [main] INFO  ru.sfedu.course_project.Main - Attempt to create db data provider
+28 дек. 2020 16:29:28,591 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: db
+28 дек. 2020 16:29:28,596 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: removePresentationById
+28 дек. 2020 16:29:28,598 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+28 дек. 2020 16:29:29,228 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Query string: DELETE FROM PRESITOR.PUBLIC.presentation WHERE id = '2bd787cf-5a0e-4ca4-b664-b0105b30f6a9'
+28 дек. 2020 16:29:29,259 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value: Unable to remove presentation  }
+28 дек. 2020 16:30:11,924 [main] WARN  ru.sfedu.course_project.Main - arguments {fillColor=blue, role=editor, fontFamily=Comic Sans, method=removePresentationById, datatype=db, name=Моя презентация, id=2bd787cf-5a0e-4ca4-b664-b0105b30f6a9}
+28 дек. 2020 16:30:11,933 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [fillColor=blue, role=editor, fontFamily=Comic Sans, method=removePresentationById, datatype=db, name=Моя презентация, id=2bd787cf-5a0e-4ca4-b664-b0105b30f6a9]
+28 дек. 2020 16:30:11,936 [main] INFO  ru.sfedu.course_project.Main - Attempt to create db data provider
+28 дек. 2020 16:30:11,942 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: db
+28 дек. 2020 16:30:11,947 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: removePresentationById
+28 дек. 2020 16:30:11,948 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+28 дек. 2020 16:30:12,512 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Query string: DELETE FROM PRESITOR.PUBLIC.presentation WHERE id = '2bd787cf-5a0e-4ca4-b664-b0105b30f6a9'
+28 дек. 2020 16:30:12,547 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value: Presentation was successfully removed  }
+28 дек. 2020 16:30:34,522 [main] WARN  ru.sfedu.course_project.Main - arguments {fillColor=blue, role=editor, fontFamily=Comic Sans, method=getPresentations, datatype=db, name=Моя презентация, id=2bd787cf-5a0e-4ca4-b664-b0105b30f6a9}
+28 дек. 2020 16:30:34,535 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [fillColor=blue, role=editor, fontFamily=Comic Sans, method=getPresentations, datatype=db, name=Моя презентация, id=2bd787cf-5a0e-4ca4-b664-b0105b30f6a9]
+28 дек. 2020 16:30:34,537 [main] INFO  ru.sfedu.course_project.Main - Attempt to create db data provider
+28 дек. 2020 16:30:34,543 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: db
+28 дек. 2020 16:30:34,548 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: getPresentations
+28 дек. 2020 16:30:34,549 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+28 дек. 2020 16:30:34,553 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Attempt to get presentations
+28 дек. 2020 16:30:35,218 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCCommonMethods - Get collection: presentation
+28 дек. 2020 16:30:35,225 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCCommonMethods - Query string: SELECT * FROM PRESITOR.PUBLIC.presentation
+28 дек. 2020 16:30:35,286 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value: [] }
+28 дек. 2020 16:32:07,108 [main] WARN  ru.sfedu.course_project.Main - arguments {fillColor=blue, role=editor, fontFamily=Comic Sans, method=removePresentationById, datatype=db, name=Моя презентация, id=2bd787cf-5a0e-4ca4-b664-b0105b30f6a9}
+28 дек. 2020 16:32:07,114 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [fillColor=blue, role=editor, fontFamily=Comic Sans, method=removePresentationById, datatype=db, name=Моя презентация, id=2bd787cf-5a0e-4ca4-b664-b0105b30f6a9]
+28 дек. 2020 16:32:07,115 [main] INFO  ru.sfedu.course_project.Main - Attempt to create db data provider
+28 дек. 2020 16:32:07,119 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: db
+28 дек. 2020 16:32:07,122 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: removePresentationById
+28 дек. 2020 16:32:07,123 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+28 дек. 2020 16:32:07,518 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Attempt to get presentations
+28 дек. 2020 16:32:07,521 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCCommonMethods - Get collection: presentation
+28 дек. 2020 16:32:07,525 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCCommonMethods - Query string: SELECT * FROM PRESITOR.PUBLIC.presentation
+28 дек. 2020 16:32:07,555 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value: [] }
+28 дек. 2020 16:32:07,558 [main] ERROR ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - java.lang.NullPointerException
+28 дек. 2020 16:32:07,559 [main] ERROR ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Unable to find presentation 
+28 дек. 2020 16:32:07,560 [main] INFO  ru.sfedu.course_project.tools.Result - { status: error, value: Unable to find presentation  }
+28 дек. 2020 16:32:33,662 [main] WARN  ru.sfedu.course_project.Main - arguments {fillColor=blue, role=editor, fontFamily=Comic Sans, method=createPresentation, datatype=db, name=Моя презентация, id=2bd787cf-5a0e-4ca4-b664-b0105b30f6a9}
+28 дек. 2020 16:32:33,668 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [fillColor=blue, role=editor, fontFamily=Comic Sans, method=createPresentation, datatype=db, name=Моя презентация, id=2bd787cf-5a0e-4ca4-b664-b0105b30f6a9]
+28 дек. 2020 16:32:33,670 [main] INFO  ru.sfedu.course_project.Main - Attempt to create db data provider
+28 дек. 2020 16:32:33,674 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: db
+28 дек. 2020 16:32:33,677 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: createPresentation
+28 дек. 2020 16:32:33,678 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+28 дек. 2020 16:32:33,680 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Attempt to create presentations
+28 дек. 2020 16:32:34,079 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  id 2bd787cf-5a0e-4ca4-b664-b0105b30f6a9
+28 дек. 2020 16:32:34,080 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  name Моя презентация
+28 дек. 2020 16:32:34,081 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  fillColor blue
+28 дек. 2020 16:32:34,081 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  fontFamily Comic Sans
+28 дек. 2020 16:32:34,082 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  slides []
+28 дек. 2020 16:32:34,082 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  comments []
+28 дек. 2020 16:32:34,083 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  marks []
+28 дек. 2020 16:32:34,084 [main] DEBUG ru.sfedu.course_project.tools.Creator - Arguments was validate 
+28 дек. 2020 16:32:34,104 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value: Optional[Presentation{id=2bd787cf-5a0e-4ca4-b664-b0105b30f6a9, name='Моя презентация', fillColor='blue', fontFamily='Comic Sans', slides=[], comments=[]}] }
+28 дек. 2020 16:32:34,109 [main] DEBUG ru.sfedu.course_project.tools.jdbc.QueryBuilder - Query body: INSERT INTO PRESITOR.PUBLIC.%s %s VALUES %s
+28 дек. 2020 16:32:34,110 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Query string: INSERT INTO PRESITOR.PUBLIC.PRESENTATION (id, name, fillColor, fontFamily) VALUES ('2bd787cf-5a0e-4ca4-b664-b0105b30f6a9', 'Моя презентация', 'blue', 'Comic Sans')
+28 дек. 2020 16:32:34,327 [main] INFO  ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Presentation successfully created 
+28 дек. 2020 16:32:34,328 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value: Presentation successfully created  }
+28 дек. 2020 16:33:25,545 [main] WARN  ru.sfedu.course_project.Main - arguments {fillColor=blue, role=editor, fontFamily=Comic Sans, method=createPresentation, datatype=db, name=Моя презентация}
+28 дек. 2020 16:33:25,550 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [fillColor=blue, role=editor, fontFamily=Comic Sans, method=createPresentation, datatype=db, name=Моя презентация]
+28 дек. 2020 16:33:25,552 [main] INFO  ru.sfedu.course_project.Main - Attempt to create db data provider
+28 дек. 2020 16:33:25,554 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: db
+28 дек. 2020 16:33:25,557 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: createPresentation
+28 дек. 2020 16:33:25,557 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+28 дек. 2020 16:33:25,573 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Attempt to create presentations
+28 дек. 2020 16:33:25,958 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  id 744fda3f-f10b-4f74-b986-42cca663a76a
+28 дек. 2020 16:33:25,959 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  name Моя презентация
+28 дек. 2020 16:33:25,960 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  fillColor blue
+28 дек. 2020 16:33:25,961 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  fontFamily Comic Sans
+28 дек. 2020 16:33:25,962 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  slides []
+28 дек. 2020 16:33:25,962 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  comments []
+28 дек. 2020 16:33:25,963 [main] DEBUG ru.sfedu.course_project.tools.Creator - [createPresentation] Set field  marks []
+28 дек. 2020 16:33:25,964 [main] DEBUG ru.sfedu.course_project.tools.Creator - Arguments was validate 
+28 дек. 2020 16:33:25,979 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value: Optional[Presentation{id=744fda3f-f10b-4f74-b986-42cca663a76a, name='Моя презентация', fillColor='blue', fontFamily='Comic Sans', slides=[], comments=[]}] }
+28 дек. 2020 16:33:25,984 [main] DEBUG ru.sfedu.course_project.tools.jdbc.QueryBuilder - Query body: INSERT INTO PRESITOR.PUBLIC.%s %s VALUES %s
+28 дек. 2020 16:33:25,985 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Query string: INSERT INTO PRESITOR.PUBLIC.PRESENTATION (id, name, fillColor, fontFamily) VALUES ('744fda3f-f10b-4f74-b986-42cca663a76a', 'Моя презентация', 'blue', 'Comic Sans')
+28 дек. 2020 16:33:26,364 [main] INFO  ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Presentation successfully created 
+28 дек. 2020 16:33:26,364 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value: 744fda3f-f10b-4f74-b986-42cca663a76a }
+28 дек. 2020 16:33:51,130 [main] WARN  ru.sfedu.course_project.Main - arguments {fillColor=blue, role=editor, fontFamily=Comic Sans, method=removePresentationById, datatype=db, name=Моя презентация, id=744fda3f-f10b-4f74-b986-42cca663a76a}
+28 дек. 2020 16:33:51,135 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [fillColor=blue, role=editor, fontFamily=Comic Sans, method=removePresentationById, datatype=db, name=Моя презентация, id=744fda3f-f10b-4f74-b986-42cca663a76a]
+28 дек. 2020 16:33:51,137 [main] INFO  ru.sfedu.course_project.Main - Attempt to create db data provider
+28 дек. 2020 16:33:51,140 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: db
+28 дек. 2020 16:33:51,143 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: removePresentationById
+28 дек. 2020 16:33:51,143 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+28 дек. 2020 16:33:51,498 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Attempt to get presentations
+28 дек. 2020 16:33:51,501 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCCommonMethods - Get collection: presentation
+28 дек. 2020 16:33:51,505 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCCommonMethods - Query string: SELECT * FROM PRESITOR.PUBLIC.presentation
+28 дек. 2020 16:33:51,538 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCCommonMethods - Presentation: Presentation{id=2bd787cf-5a0e-4ca4-b664-b0105b30f6a9, name='Моя презентация', fillColor='blue', fontFamily='Comic Sans'}
+28 дек. 2020 16:33:51,539 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCCommonMethods - Presentation: Presentation{id=744fda3f-f10b-4f74-b986-42cca663a76a, name='Моя презентация', fillColor='blue', fontFamily='Comic Sans'}
+28 дек. 2020 16:33:51,541 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value: [Presentation{id=2bd787cf-5a0e-4ca4-b664-b0105b30f6a9, name='Моя презентация', fillColor='blue', fontFamily='Comic Sans'}, Presentation{id=744fda3f-f10b-4f74-b986-42cca663a76a, name='Моя презентация', fillColor='blue', fontFamily='Comic Sans'}] }
+28 дек. 2020 16:33:51,543 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value: Presentation{id=744fda3f-f10b-4f74-b986-42cca663a76a, name='Моя презентация', fillColor='blue', fontFamily='Comic Sans'} }
+28 дек. 2020 16:33:51,544 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Query string: DELETE FROM PRESITOR.PUBLIC.presentation WHERE id = '744fda3f-f10b-4f74-b986-42cca663a76a'
+28 дек. 2020 16:33:51,551 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value: Presentation was successfully removed  }
+28 дек. 2020 16:34:04,486 [main] WARN  ru.sfedu.course_project.Main - arguments {fillColor=blue, role=editor, fontFamily=Comic Sans, method=removePresentationById, datatype=db, name=Моя презентация, id=744fda3f-f10b-4f74-b986-42cca663a76a}
+28 дек. 2020 16:34:04,492 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [fillColor=blue, role=editor, fontFamily=Comic Sans, method=removePresentationById, datatype=db, name=Моя презентация, id=744fda3f-f10b-4f74-b986-42cca663a76a]
+28 дек. 2020 16:34:04,494 [main] INFO  ru.sfedu.course_project.Main - Attempt to create db data provider
+28 дек. 2020 16:34:04,497 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: db
+28 дек. 2020 16:34:04,500 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: removePresentationById
+28 дек. 2020 16:34:04,501 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+28 дек. 2020 16:34:04,829 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Attempt to get presentations
+28 дек. 2020 16:34:04,831 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCCommonMethods - Get collection: presentation
+28 дек. 2020 16:34:04,834 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCCommonMethods - Query string: SELECT * FROM PRESITOR.PUBLIC.presentation
+28 дек. 2020 16:34:04,871 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCCommonMethods - Presentation: Presentation{id=2bd787cf-5a0e-4ca4-b664-b0105b30f6a9, name='Моя презентация', fillColor='blue', fontFamily='Comic Sans'}
+28 дек. 2020 16:34:04,873 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value: [Presentation{id=2bd787cf-5a0e-4ca4-b664-b0105b30f6a9, name='Моя презентация', fillColor='blue', fontFamily='Comic Sans'}] }
+28 дек. 2020 16:34:04,874 [main] ERROR ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - java.lang.NullPointerException
+28 дек. 2020 16:34:04,875 [main] ERROR ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Unable to find presentation 
+28 дек. 2020 16:34:04,876 [main] INFO  ru.sfedu.course_project.tools.Result - { status: error, value: Unable to find presentation  }
+28 дек. 2020 16:54:50,215 [main] WARN  ru.sfedu.course_project.Main - arguments {fillColor=yellow, role=editor, fontFamily=Roboto, method=editPresentationById, datatype=db, name=Моя любимая презентация, id=744fda3f-f10b-4f74-b986-42cca663a76a}
+28 дек. 2020 16:54:50,221 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [fillColor=yellow, role=editor, fontFamily=Roboto, method=editPresentationById, datatype=db, name=Моя любимая презентация, id=744fda3f-f10b-4f74-b986-42cca663a76a]
+28 дек. 2020 16:54:50,222 [main] INFO  ru.sfedu.course_project.Main - Attempt to create db data provider
+28 дек. 2020 16:54:50,235 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: db
+28 дек. 2020 16:54:50,238 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: editPresentationById
+28 дек. 2020 16:54:50,239 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+28 дек. 2020 16:54:50,242 [main] ERROR ru.sfedu.course_project.tools.Runner - Runner Exception: unable to run method: editPresentationById
+28 дек. 2020 16:55:11,742 [main] WARN  ru.sfedu.course_project.Main - arguments {fillColor=yellow, role=editor, fontFamily=Roboto, method=editPresentationOptions, datatype=db, name=Моя любимая презентация, id=744fda3f-f10b-4f74-b986-42cca663a76a}
+28 дек. 2020 16:55:11,746 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [fillColor=yellow, role=editor, fontFamily=Roboto, method=editPresentationOptions, datatype=db, name=Моя любимая презентация, id=744fda3f-f10b-4f74-b986-42cca663a76a]
+28 дек. 2020 16:55:11,748 [main] INFO  ru.sfedu.course_project.Main - Attempt to create db data provider
+28 дек. 2020 16:55:11,751 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: db
+28 дек. 2020 16:55:11,754 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: editPresentationOptions
+28 дек. 2020 16:55:11,755 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+28 дек. 2020 16:55:12,100 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Attempt to get presentations
+28 дек. 2020 16:55:12,102 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCCommonMethods - Get collection: presentation
+28 дек. 2020 16:55:12,118 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCCommonMethods - Query string: SELECT * FROM PRESITOR.PUBLIC.presentation
+28 дек. 2020 16:55:12,151 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCCommonMethods - Presentation: Presentation{id=2bd787cf-5a0e-4ca4-b664-b0105b30f6a9, name='Моя презентация', fillColor='blue', fontFamily='Comic Sans'}
+28 дек. 2020 16:55:12,153 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value: [Presentation{id=2bd787cf-5a0e-4ca4-b664-b0105b30f6a9, name='Моя презентация', fillColor='blue', fontFamily='Comic Sans'}] }
+28 дек. 2020 16:55:12,155 [main] ERROR ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - java.lang.NullPointerException
+28 дек. 2020 16:55:12,156 [main] ERROR ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Unable to find presentation 
+28 дек. 2020 16:55:12,157 [main] INFO  ru.sfedu.course_project.tools.Result - { status: error, value: Unable to find presentation  }
+28 дек. 2020 16:57:47,487 [main] WARN  ru.sfedu.course_project.Main - arguments {fillColor=yellow, role=editor, fontFamily=Roboto, method=editPresentationOptions, datatype=db, name=Моя любимая презентация, id=744fda3f-f10b-4f74-b986-42cca663a76a}
+28 дек. 2020 16:57:47,494 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [fillColor=yellow, role=editor, fontFamily=Roboto, method=editPresentationOptions, datatype=db, name=Моя любимая презентация, id=744fda3f-f10b-4f74-b986-42cca663a76a]
+28 дек. 2020 16:57:47,497 [main] INFO  ru.sfedu.course_project.Main - Attempt to create db data provider
+28 дек. 2020 16:57:47,500 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: db
+28 дек. 2020 16:57:47,503 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: editPresentationOptions
+28 дек. 2020 16:57:47,504 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+28 дек. 2020 16:57:47,996 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Attempt to get presentations
+28 дек. 2020 16:57:47,999 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCCommonMethods - Get collection: presentation
+28 дек. 2020 16:57:48,024 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCCommonMethods - Query string: SELECT * FROM PRESITOR.PUBLIC.presentation
+28 дек. 2020 16:57:48,059 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCCommonMethods - Presentation: Presentation{id=2bd787cf-5a0e-4ca4-b664-b0105b30f6a9, name='Моя презентация', fillColor='blue', fontFamily='Comic Sans'}
+28 дек. 2020 16:57:48,061 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value: [Presentation{id=2bd787cf-5a0e-4ca4-b664-b0105b30f6a9, name='Моя презентация', fillColor='blue', fontFamily='Comic Sans'}] }
+28 дек. 2020 16:57:48,064 [main] ERROR ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - java.lang.NullPointerException
+28 дек. 2020 16:57:48,065 [main] ERROR ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Unable to find presentation 
+28 дек. 2020 16:57:48,066 [main] INFO  ru.sfedu.course_project.tools.Result - { status: error, value: Unable to find presentation  }
+28 дек. 2020 16:58:48,562 [main] WARN  ru.sfedu.course_project.Main - arguments {fillColor=yellow, role=editor, fontFamily=Roboto, method=editPresentationOptions, datatype=db, name=Моя любимая презентация, id=2bd787cf-5a0e-4ca4-b664-b0105b30f6a9}
+28 дек. 2020 16:58:48,567 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [fillColor=yellow, role=editor, fontFamily=Roboto, method=editPresentationOptions, datatype=db, name=Моя любимая презентация, id=2bd787cf-5a0e-4ca4-b664-b0105b30f6a9]
+28 дек. 2020 16:58:48,568 [main] INFO  ru.sfedu.course_project.Main - Attempt to create db data provider
+28 дек. 2020 16:58:48,570 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: db
+28 дек. 2020 16:58:48,574 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: editPresentationOptions
+28 дек. 2020 16:58:48,575 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+28 дек. 2020 16:58:48,902 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Attempt to get presentations
+28 дек. 2020 16:58:48,904 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCCommonMethods - Get collection: presentation
+28 дек. 2020 16:58:48,907 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCCommonMethods - Query string: SELECT * FROM PRESITOR.PUBLIC.presentation
+28 дек. 2020 16:58:48,938 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCCommonMethods - Presentation: Presentation{id=2bd787cf-5a0e-4ca4-b664-b0105b30f6a9, name='Моя презентация', fillColor='blue', fontFamily='Comic Sans'}
+28 дек. 2020 16:58:48,941 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value: [Presentation{id=2bd787cf-5a0e-4ca4-b664-b0105b30f6a9, name='Моя презентация', fillColor='blue', fontFamily='Comic Sans'}] }
+28 дек. 2020 16:58:48,942 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value: Presentation{id=2bd787cf-5a0e-4ca4-b664-b0105b30f6a9, name='Моя презентация', fillColor='blue', fontFamily='Comic Sans'} }
+28 дек. 2020 16:58:48,943 [main] INFO  ru.sfedu.course_project.tools.jdbc.QueryBuilder - Building update method
+28 дек. 2020 16:58:48,943 [main] INFO  ru.sfedu.course_project.tools.jdbc.QueryBuilder - For: presentation
+28 дек. 2020 16:58:48,944 [main] DEBUG ru.sfedu.course_project.tools.jdbc.QueryBuilder - Updating presentation: Presentation{id=2bd787cf-5a0e-4ca4-b664-b0105b30f6a9, name='Моя презентация', fillColor='blue', fontFamily='Comic Sans'}
+28 дек. 2020 16:58:48,945 [main] ERROR ru.sfedu.course_project.tools.jdbc.QueryBuilder - java.util.MissingFormatArgumentException: Format specifier '%s'
+28 дек. 2020 16:58:48,947 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Query string: 
+28 дек. 2020 16:58:48,948 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Rows updated: 0
+28 дек. 2020 16:58:48,950 [main] INFO  ru.sfedu.course_project.tools.Result - { status: error, value: Unable to update presentation  }
+28 дек. 2020 16:59:16,567 [main] WARN  ru.sfedu.course_project.Main - arguments {fillColor=yellow, role=editor, fontFamily=Roboto, method=editPresentationOptions, datatype=db, name=Моя любимая презентация, id=2bd787cf-5a0e-4ca4-b664-b0105b30f6a9}
+28 дек. 2020 16:59:16,574 [main] INFO  ru.sfedu.course_project.Main - Command line parameters: [fillColor=yellow, role=editor, fontFamily=Roboto, method=editPresentationOptions, datatype=db, name=Моя любимая презентация, id=2bd787cf-5a0e-4ca4-b664-b0105b30f6a9]
+28 дек. 2020 16:59:16,576 [main] INFO  ru.sfedu.course_project.Main - Attempt to create db data provider
+28 дек. 2020 16:59:16,579 [main] INFO  ru.sfedu.course_project.Main - Data provider was created: db
+28 дек. 2020 16:59:16,582 [main] DEBUG ru.sfedu.course_project.tools.Runner - Attempt to run method: editPresentationOptions
+28 дек. 2020 16:59:16,583 [main] DEBUG ru.sfedu.course_project.tools.Runner - Current role: editor
+28 дек. 2020 16:59:16,922 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Attempt to get presentations
+28 дек. 2020 16:59:16,925 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCCommonMethods - Get collection: presentation
+28 дек. 2020 16:59:16,941 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCCommonMethods - Query string: SELECT * FROM PRESITOR.PUBLIC.presentation
+28 дек. 2020 16:59:16,977 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCCommonMethods - Presentation: Presentation{id=2bd787cf-5a0e-4ca4-b664-b0105b30f6a9, name='Моя презентация', fillColor='blue', fontFamily='Comic Sans'}
+28 дек. 2020 16:59:16,979 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value: [Presentation{id=2bd787cf-5a0e-4ca4-b664-b0105b30f6a9, name='Моя презентация', fillColor='blue', fontFamily='Comic Sans'}] }
+28 дек. 2020 16:59:16,980 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value: Presentation{id=2bd787cf-5a0e-4ca4-b664-b0105b30f6a9, name='Моя презентация', fillColor='blue', fontFamily='Comic Sans'} }
+28 дек. 2020 16:59:16,981 [main] INFO  ru.sfedu.course_project.tools.jdbc.QueryBuilder - Building update method
+28 дек. 2020 16:59:16,981 [main] INFO  ru.sfedu.course_project.tools.jdbc.QueryBuilder - For: presentation
+28 дек. 2020 16:59:16,982 [main] DEBUG ru.sfedu.course_project.tools.jdbc.QueryBuilder - Updating presentation: Presentation{id=2bd787cf-5a0e-4ca4-b664-b0105b30f6a9, name='Моя презентация', fillColor='blue', fontFamily='Comic Sans'}
+28 дек. 2020 16:59:16,983 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Query string: UPDATE PRESITOR.PUBLIC.presentation SET name = 'Моя любимая презентация', fillColor = 'yellow', fontFamily = 'Roboto' WHERE id = '2bd787cf-5a0e-4ca4-b664-b0105b30f6a9'
+28 дек. 2020 16:59:16,993 [main] DEBUG ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods - Rows updated: 1
+28 дек. 2020 16:59:16,994 [main] INFO  ru.sfedu.course_project.tools.Result - { status: success, value: Presentation options was successfully updated  }

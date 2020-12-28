@@ -8,10 +8,14 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class Constants {
-    public static String SOURCE = "NAME";
-    public static String CSV_PATH="csv_path";
-    public static String UUID_REGEXP="uuid_regexp";
-    public static String DATA_PATH="dataPath";
+    public static final String SOURCE = "NAME";
+    public static final String CSV_PATH="csv_path";
+    public static final String UUID_REGEXP="uuid_regexp";
+    public static final String DATA_PATH="dataPath";
+    public static final String DATABASE_PATH="database_path";
+    public static final String DATABASE_USER="database_user";
+    public static final String DATABASE_PASSWORD="database_password";
+    public static final String DATABASE_PROTOCOL="database_protocol";
 
     public final static Map FIELD_REGEXP = Stream.of(new Object[][] {
             { "x", "x=\\d*" },
