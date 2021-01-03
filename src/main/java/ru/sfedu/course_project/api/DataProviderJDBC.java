@@ -26,12 +26,6 @@ public class DataProviderJDBC implements DataProvider {
         return JDBCPresentationMethods.createPresentation(arguments);
     }
 
-
-    @Override
-    public Result addPresentationInTemplate(Presentation presentation) {
-        return null;
-    }
-
     @Override
     public Result getPresentations() {
         return JDBCPresentationMethods.getPresentations();
@@ -51,6 +45,12 @@ public class DataProviderJDBC implements DataProvider {
     public Result editPresentationOptions(HashMap arguments) throws CsvDataTypeMismatchException, IOException, CsvRequiredFieldEmptyException {
         return JDBCPresentationMethods.editPresentationOptions(arguments);
     }
+
+    @Override
+    public Result addPresentationInTemplate(Presentation presentation) {
+        return null;
+    }
+
 
     @Override
     public Result getPresentationSlides(HashMap arguments) {

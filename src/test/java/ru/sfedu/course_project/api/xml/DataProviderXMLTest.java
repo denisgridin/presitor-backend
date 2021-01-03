@@ -28,6 +28,7 @@ public class DataProviderXMLTest extends TestBase {
 
     @Test
     void createPresentationSuccess () throws IOException {
+
         Result result = makeRandomPresentation(provider);
 
         HashMap args = new HashMap();
@@ -103,6 +104,7 @@ public class DataProviderXMLTest extends TestBase {
         }
     }
 
+    @Test
     void removePresentationByIdFail () throws IOException, CsvDataTypeMismatchException, CsvRequiredFieldEmptyException {
         HashMap args = new HashMap();
         args.put("id", String.valueOf(UUID.randomUUID()));
