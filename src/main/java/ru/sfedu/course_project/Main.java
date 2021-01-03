@@ -8,6 +8,7 @@ import ru.sfedu.course_project.api.DataProviderJDBC;
 import ru.sfedu.course_project.api.DataProviderXML;
 import ru.sfedu.course_project.enums.DataType;
 import ru.sfedu.course_project.tools.Runner;
+import ru.sfedu.course_project.utils.ConfigurationUtil;
 
 import java.io.IOException;
 import java.util.*;
@@ -16,6 +17,7 @@ public class Main {
     public static Logger log = LogManager.getLogger(Main.class);
     public static void main(String[] args) throws RuntimeException {
         try {
+            System.setProperty("dataPath", ConfigurationUtil.getConfigurationEntry("dataPath"));
             List<String> arguments = Arrays.asList(args);
             HashMap<String, String> params = parseParameters(arguments);
             if (params == null) {
@@ -27,7 +29,7 @@ public class Main {
             DataProvider provider = createDataProvider(datatype);
             Runner runner = new Runner(provider);
             runner.run(params.get("method"), params);
-        } catch (RuntimeException e) {
+        } catch (RuntimeException | IOException e) {
             e.printStackTrace();
             log.error(e);
             log.error("Error in main function");

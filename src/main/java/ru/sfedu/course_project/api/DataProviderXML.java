@@ -4,16 +4,10 @@ import com.opencsv.exceptions.CsvDataTypeMismatchException;
 import com.opencsv.exceptions.CsvRequiredFieldEmptyException;
 import ru.sfedu.course_project.api.xml.XMLPresentationMethods;
 import ru.sfedu.course_project.bean.Presentation;
-import ru.sfedu.course_project.enums.CollectionType;
-import ru.sfedu.course_project.enums.Status;
-import ru.sfedu.course_project.tools.BaseClass;
 import ru.sfedu.course_project.tools.Result;
 
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
 
 public class DataProviderXML implements DataProvider {
 
@@ -22,7 +16,6 @@ public class DataProviderXML implements DataProvider {
         return XMLPresentationMethods.createPresentation(args);
     }
 
-    @Override
     public Result addPresentationInTemplate(Presentation presentation) {
         return null;
     }

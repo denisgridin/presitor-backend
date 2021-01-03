@@ -1,20 +1,13 @@
 package ru.sfedu.course_project.bean;
 
-import com.opencsv.bean.CsvBindAndSplitByName;
 import com.opencsv.bean.CsvBindByName;
 import com.opencsv.bean.CsvCustomBindByName;
 import com.opencsv.bean.CsvIgnore;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.simpleframework.xml.Attribute;
-import org.simpleframework.xml.Element;
 import org.simpleframework.xml.Root;
-import org.simpleframework.xml.convert.Convert;
-import ru.sfedu.course_project.Constants;
-import ru.sfedu.course_project.converters.ListIdsConverter;
 import ru.sfedu.course_project.converters.UUIDConverter;
-import ru.sfedu.course_project.converters.xml.PresentationConverter;
-import ru.sfedu.course_project.tools.BaseClass;
 
 import java.io.Serializable;
 import java.util.*;

@@ -7,15 +7,17 @@ import com.opencsv.bean.CsvIgnore;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import ru.sfedu.course_project.Constants;
+import ru.sfedu.course_project.api.DataProviderCSV;
 import ru.sfedu.course_project.converters.ListIdsConverter;
 import ru.sfedu.course_project.converters.UUIDConverter;
+import ru.sfedu.course_project.utils.ConstantsField;
 
 
 import java.io.Serializable;
 import java.util.*;
 
 public class Slide implements Serializable {
-    @CsvCustomBindByName(column = "id", converter = UUIDConverter.class)
+    @CsvCustomBindByName(column = ConstantsField.ID, converter = UUIDConverter.class)
     private UUID id;
 
     @CsvBindByName
@@ -24,7 +26,7 @@ public class Slide implements Serializable {
     @CsvBindByName
     private int index;
 
-    @CsvCustomBindByName(column = "presentationId", converter = UUIDConverter.class)
+    @CsvCustomBindByName(column = ConstantsField.PRESENTATION_ID, converter = UUIDConverter.class)
     private UUID presentationId;
 
 //    @CsvBindAndSplitByName(column = "elements", elementType = List.class, converter = ListIdsConverter.class)

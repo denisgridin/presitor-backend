@@ -2,18 +2,10 @@ package ru.sfedu.course_project.api;
 
 import com.opencsv.exceptions.CsvDataTypeMismatchException;
 import com.opencsv.exceptions.CsvRequiredFieldEmptyException;
-import ru.sfedu.course_project.bean.Presentation;
-import ru.sfedu.course_project.bean.Slide;
-import ru.sfedu.course_project.enums.CollectionType;
-import ru.sfedu.course_project.enums.Status;
-import ru.sfedu.course_project.tools.BaseClass;
 import ru.sfedu.course_project.tools.Result;
 
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
 
 public interface DataProvider {
 //    public String getName();
@@ -24,7 +16,6 @@ public interface DataProvider {
 //    public Optional getInstanceById (Class cl, CollectionType collectionType, HashMap arguments);
 
     public Result createPresentation (HashMap arguments);
-    public Result addPresentationInTemplate (Presentation presentation);
     public Result getPresentations ();
     public Result getPresentationById (HashMap arguments) throws IOException;
     public Result removePresentationById (HashMap arguments) throws CsvRequiredFieldEmptyException, IOException, CsvDataTypeMismatchException;

@@ -5,9 +5,8 @@ import com.opencsv.exceptions.CsvRequiredFieldEmptyException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import ru.sfedu.course_project.ConstantsInfo;
-import ru.sfedu.course_project.ErrorConstants;
-import ru.sfedu.course_project.SuccessConstants;
-import ru.sfedu.course_project.api.csv.CSVCommonMethods;
+import ru.sfedu.course_project.ConstantsError;
+import ru.sfedu.course_project.ConstantsSuccess;
 import ru.sfedu.course_project.bean.Presentation;
 import ru.sfedu.course_project.enums.CollectionType;
 import ru.sfedu.course_project.enums.Status;
@@ -29,13 +28,13 @@ public class XMLPresentationMethods {
             if (args.get("id") != null) {
                 String id = (String) args.get("id");
                 if (XMLCommonMethods.isIdInUse(id, listPresentations, presentation)) {
-                    return new Result(Status.error, ErrorConstants.ID_IN_USE);
+                    return new Result(Status.error, ConstantsError.ID_IN_USE);
                 };
             }
             Optional<Presentation> optionalPresentation = (Optional<Presentation>) new Creator().create(Presentation.class, args).getReturnValue();
             if (!optionalPresentation.isPresent()) {
-                log.error(ErrorConstants.ARGUMENTS_ERROR);
-                return new Result(Status.error, ErrorConstants.ARGUMENTS_ERROR);
+                log.error(ConstantsError.ARGUMENTS_ERROR);
+                return new Result(Status.error, ConstantsError.ARGUMENTS_ERROR);
             }
             Presentation presentation = optionalPresentation.get();
             listPresentations.add(presentation);
@@ -47,16 +46,16 @@ public class XMLPresentationMethods {
 //            }
 
             if (result == Status.success) {
-                log.info(SuccessConstants.PRESENTATION_CREATE + presentation.getId());
+                log.info(ConstantsSuccess.PRESENTATION_CREATE + presentation.getId());
                 return new Result(Status.success, presentation.getId());
             } else {
-                log.error(ErrorConstants.PRESENTATION_CREATE);
-                return new Result(Status.error, ErrorConstants.PRESENTATION_CREATE);
+                log.error(ConstantsError.PRESENTATION_CREATE);
+                return new Result(Status.error, ConstantsError.PRESENTATION_CREATE);
             }
         } catch (IndexOutOfBoundsException e) {
             log.error(e);
-            log.error(ErrorConstants.PRESENTATION_CREATE);
-            return new Result(Status.error, ErrorConstants.PRESENTATION_CREATE);
+            log.error(ConstantsError.PRESENTATION_CREATE);
+            return new Result(Status.error, ConstantsError.PRESENTATION_CREATE);
         }
     }
 
@@ -67,8 +66,8 @@ public class XMLPresentationMethods {
             return optionalPresentations.map(list -> new Result(Status.success, list)).orElseGet(() -> new Result(Status.success, new ArrayList()));
         } catch (RuntimeException e) {
             log.error(e);
-            log.error(ErrorConstants.PRESENTATIONS_GET);
-            return new Result(Status.error, ErrorConstants.PRESENTATIONS_GET);
+            log.error(ConstantsError.PRESENTATIONS_GET);
+            return new Result(Status.error, ConstantsError.PRESENTATIONS_GET);
         }
     }
 
@@ -83,7 +82,7 @@ public class XMLPresentationMethods {
 
             Optional<Presentation> optionalPresentation = XMLCommonMethods.getInstanceExistenceByField(presentation, Presentation.class, "id", (String) arguments.get("id"));
             if (!optionalPresentation.isPresent()) {
-                return new Result(Status.error, ErrorConstants.INSTANCE_NOT_FOUND);
+                return new Result(Status.error, ConstantsError.INSTANCE_NOT_FOUND);
             }
 
             Optional<Object> slideId = Optional.ofNullable(arguments.get("slideId"));
@@ -139,31 +138,31 @@ public class XMLPresentationMethods {
 
             return optionalPresentation.isPresent() ?
                     new Result(Status.success, presentation) :
-                    new Result(Status.error, ErrorConstants.PRESENTATION_GET);
+                    new Result(Status.error, ConstantsError.PRESENTATION_GET);
         } catch (RuntimeException e) {
             log.error(e);
-            log.error(ErrorConstants.PRESENTATION_GET);
-            return new Result(Status.error, ErrorConstants.PRESENTATION_GET);
+            log.error(ConstantsError.PRESENTATION_GET);
+            return new Result(Status.error, ConstantsError.PRESENTATION_GET);
         }
     }
 
     public static Result removePresentationById (HashMap arguments) {
         try {
             if (arguments.get("id") == null) {
-                return new Result(Status.error, ErrorConstants.ARGUMENT_IS_NOT_PROVIDED + "id");
+                return new Result(Status.error, ConstantsError.ARGUMENT_IS_NOT_PROVIDED + "id");
             } else {
                 UUID id = UUID.fromString((String) arguments.get("id"));
                 Status status = XMLCommonMethods.removeRecordById(presentation, Presentation.class, id);
                 if (status == Status.success) {
-                    return new Result(Status.success, SuccessConstants.PRESENTATION_REMOVE);
+                    return new Result(Status.success, ConstantsSuccess.PRESENTATION_REMOVE);
                 } else {
-                    return new Result(Status.error, ErrorConstants.PRESENTATION_REMOVE);
+                    return new Result(Status.error, ConstantsError.PRESENTATION_REMOVE);
                 }
             }
         } catch (RuntimeException e) {
             e.printStackTrace();
             log.error(e);
-            return new Result(Status.error, ErrorConstants.PRESENTATION_REMOVE);
+            return new Result(Status.error, ConstantsError.PRESENTATION_REMOVE);
         }
     }
 
@@ -171,8 +170,8 @@ public class XMLPresentationMethods {
         try {
             UUID id = UUID.fromString((String) arguments.getOrDefault("id", null));
             if (id == null) {
-                log.error(ErrorConstants.ARGUMENT_IS_NOT_PROVIDED + "id");
-                return new Result(Status.error, ErrorConstants.ARGUMENT_IS_NOT_PROVIDED + "id");
+                log.error(ConstantsError.ARGUMENT_IS_NOT_PROVIDED + "id");
+                return new Result(Status.error, ConstantsError.ARGUMENT_IS_NOT_PROVIDED + "id");
             }
             boolean validId = XMLCommonMethods.getInstanceById(presentation, arguments).isPresent();
             if (validId) {
@@ -196,18 +195,18 @@ public class XMLPresentationMethods {
                 }).collect(Collectors.toList());
                 Status result = XMLCommonMethods.writeCollection(updatedList, Presentation.class, presentation);
                 if (result == Status.success) {
-                    log.info(SuccessConstants.PRESENTATION_UPDATE + id);
-                    return new Result(Status.success, SuccessConstants.PRESENTATION_UPDATE + id);
+                    log.info(ConstantsSuccess.PRESENTATION_UPDATE + id);
+                    return new Result(Status.success, ConstantsSuccess.PRESENTATION_UPDATE + id);
                 }
-                return new Result(Status.error, ErrorConstants.PRESENTATION_UPDATE + id);
+                return new Result(Status.error, ConstantsError.PRESENTATION_UPDATE + id);
             } else {
                 log.info("[editPresentationOptions] Unable to find presentation: " + id);
-                return new Result(Status.error, ErrorConstants.PRESENTATION_NOT_FOUND + id);
+                return new Result(Status.error, ConstantsError.PRESENTATION_NOT_FOUND + id);
             }
         } catch (RuntimeException e) {
             e.printStackTrace();
             log.error("Unable to edit presentation options");
-            return new Result(Status.error, ErrorConstants.PRESENTATION_NOT_FOUND);
+            return new Result(Status.error, ConstantsError.PRESENTATION_NOT_FOUND);
         }
     }
 }

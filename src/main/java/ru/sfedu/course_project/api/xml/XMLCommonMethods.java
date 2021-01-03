@@ -7,7 +7,7 @@ import org.simpleframework.xml.convert.AnnotationStrategy;
 import org.simpleframework.xml.core.Persister;
 import org.simpleframework.xml.strategy.Strategy;
 import ru.sfedu.course_project.ConstantsInfo;
-import ru.sfedu.course_project.ErrorConstants;
+import ru.sfedu.course_project.ConstantsError;
 import ru.sfedu.course_project.bean.*;
 import ru.sfedu.course_project.enums.CollectionType;
 import ru.sfedu.course_project.enums.Status;
@@ -128,7 +128,7 @@ public class XMLCommonMethods {
 
             Optional<String> path = getFilePath(collectionType);
             if (!path.isPresent()) {
-                log.error(ErrorConstants.COLLECTION_WRITE);
+                log.error(ConstantsError.COLLECTION_WRITE);
                 return Status.error;
             }
             String filePath = path.get();
@@ -232,7 +232,7 @@ public class XMLCommonMethods {
             return optionalInstance;
         } catch (RuntimeException e) {
             log.error(e);
-            log.error(ErrorConstants.INSTANCE_NOT_FOUND);
+            log.error(ConstantsError.INSTANCE_NOT_FOUND);
             return Optional.empty();
         }
     }

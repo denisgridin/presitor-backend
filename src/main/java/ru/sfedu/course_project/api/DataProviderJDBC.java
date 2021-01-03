@@ -46,7 +46,6 @@ public class DataProviderJDBC implements DataProvider {
         return JDBCPresentationMethods.editPresentationOptions(arguments);
     }
 
-    @Override
     public Result addPresentationInTemplate(Presentation presentation) {
         return null;
     }

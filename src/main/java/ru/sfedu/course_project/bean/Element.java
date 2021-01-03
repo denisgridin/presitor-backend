@@ -2,33 +2,35 @@ package ru.sfedu.course_project.bean;
 
 import com.opencsv.bean.CsvBindByName;
 import com.opencsv.bean.CsvCustomBindByName;
+import ru.sfedu.course_project.api.DataProviderCSV;
 import ru.sfedu.course_project.converters.ElementTypeConverter;
 import ru.sfedu.course_project.converters.LayoutConverter;
 import ru.sfedu.course_project.converters.UUIDConverter;
+import ru.sfedu.course_project.utils.ConstantsField;
 
 import java.util.Objects;
 import java.util.UUID;
 
 public abstract class Element {
-    @CsvCustomBindByName(column = "slideId", converter = UUIDConverter.class)
+    @CsvCustomBindByName(column = ConstantsField.SLIDE_ID, converter = UUIDConverter.class)
     private UUID slideId;
 
-    @CsvCustomBindByName(column = "presentationId", converter = UUIDConverter.class)
+    @CsvCustomBindByName(column = ConstantsField.PRESENTATION_ID, converter = UUIDConverter.class)
     private UUID presentationId;
 
-    @CsvCustomBindByName(column = "id", converter = UUIDConverter.class)
+    @CsvCustomBindByName(column = ConstantsField.ID, converter = UUIDConverter.class)
     private UUID id;
 
     @CsvBindByName
     private String name;
 
-    @CsvCustomBindByName(column = "elementType", converter = ElementTypeConverter.class)
+    @CsvCustomBindByName(column = ConstantsField.ELEMENT_TYPE, converter = ElementTypeConverter.class)
     private ElementType elementType;
 
-    @CsvCustomBindByName(column = "layout", converter = LayoutConverter.class)
+    @CsvCustomBindByName(column = ConstantsField.LAYOUT, converter = LayoutConverter.class)
     private Layout layout;
 
-    public Element() { }
+    protected Element() { }
 
     public UUID getId() {
         return id;

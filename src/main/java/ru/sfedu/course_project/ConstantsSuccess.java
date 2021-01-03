@@ -1,6 +1,6 @@
 package ru.sfedu.course_project;
 
-public class SuccessConstants {
+public class ConstantsSuccess {
     public static String PRESENTATION_CREATE = "Presentation successfully created ";
 
     public static String ARGUMENTS_VALIDATE = "Arguments was validate ";

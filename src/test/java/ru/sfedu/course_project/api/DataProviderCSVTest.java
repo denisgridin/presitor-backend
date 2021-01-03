@@ -5,15 +5,19 @@ import com.opencsv.exceptions.CsvRequiredFieldEmptyException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.BeforeAll;
 import ru.sfedu.course_project.TestBase;
 import ru.sfedu.course_project.api.csv.CSVCommonMethods;
+import ru.sfedu.course_project.bean.Comment;
 import ru.sfedu.course_project.bean.Presentation;
 import ru.sfedu.course_project.bean.Slide;
 import ru.sfedu.course_project.enums.CollectionType;
+import ru.sfedu.course_project.enums.Role;
 import ru.sfedu.course_project.enums.Status;
 import ru.sfedu.course_project.tools.Creator;
 import ru.sfedu.course_project.tools.Result;
 import ru.sfedu.course_project.utils.ConfigurationUtil;
+import ru.sfedu.course_project.utils.ConstantsField;
 
 import javax.xml.crypto.Data;
 import java.io.IOException;
@@ -25,39 +29,55 @@ public class DataProviderCSVTest extends TestBase {
 
     private static Logger log = LogManager.getLogger(DataProviderCSVTest.class);
 
+    DataProviderCSV provider = new DataProviderCSV();
+
+    @BeforeAll
+    static void setTestFilePath () throws IOException {
+        try {
+            System.setProperty("dataPath", ConfigurationUtil.getConfigurationEntry("testDataPath"));
+        } catch (IOException e) {
+            log.debug(e);
+        }
+    }
+
+
     @Test
     void createPresentationSuccess() throws IOException {
         log.debug("{TEST} createPresentationSuccess START");
 
-        DataProviderCSV provider = new DataProviderCSV();
-
         HashMap args = new HashMap();
-        args.put("id", String.valueOf(UUID.randomUUID()));
+        args.put(ConstantsField.ID, String.valueOf(UUID.randomUUID()));
 
         Optional<Presentation> optionalPresentation = (Optional<Presentation>) new Creator().create(Presentation.class, args).getReturnValue();
-        Presentation presentation = optionalPresentation.get();
+        if (optionalPresentation.isPresent()) {
+            Presentation presentation = optionalPresentation.get();
 
-        Result result = provider.createPresentation(args);
-        String id = result.getReturnValue().toString();
+            Result result = provider.createPresentation(args);
+            String id = result.getReturnValue().toString();
 
-        HashMap params = new HashMap();
-        params.put("id", id);
+            HashMap params = new HashMap();
+            params.put(ConstantsField.ID, id);
 
-        assertEquals(presentation.toString(),
-                CSVCommonMethods.getInstanceById(Presentation.class, CollectionType.presentation, params).get().toString());
-        assertEquals(result.getStatus(), Status.success);
+            Optional<Presentation> optionalItem = CSVCommonMethods.getInstanceById(Presentation.class, CollectionType.presentation, params);
+
+            if (optionalItem.isPresent()) {
+                assertEquals(presentation.getId().toString(),
+                        optionalItem.get().getId().toString());
+            }
+            assertEquals(result.getStatus(), Status.success);
+        }
         log.debug("{TEST} createPresentationSuccess END");
     }
 
     @Test
     void createPresentationFail() {
         log.debug("{TEST} createPresentationFail START");
-        DataProviderCSV provider = new DataProviderCSV();
+
 
         String id = String.valueOf(UUID.randomUUID());
 
         HashMap args = new HashMap();
-        args.put("id", id);
+        args.put(ConstantsField.ID, id);
 
         provider.createPresentation(args);
         Result result = provider.createPresentation(args);
@@ -70,17 +90,17 @@ public class DataProviderCSVTest extends TestBase {
     @Test
     void getPresentationByIdSuccess() {
         log.debug("{TEST} getPresentationByIdSuccess START");
-        DataProviderCSV provider = new DataProviderCSV();
+
         Result result = makeRandomPresentation(provider);
-        if (result.getStatus() == Status.success) {
+        if (Status.success == result.getStatus()) {
             HashMap args = new HashMap();
-            args.put("id", String.valueOf(result.getReturnValue()));
+            args.put(ConstantsField.ID, String.valueOf(result.getReturnValue()));
             Result getPresResult = provider.getPresentationById(args);
             Presentation presentation = (Presentation) getPresResult.getReturnValue();
             assertEquals(presentation.getId(), result.getReturnValue());
             assertEquals(getPresResult.getStatus(), Status.success);
         } else {
-            assertFalse(true);
+            fail();
         }
         log.debug("{TEST} getPresentationByIdSuccess END");
     }
@@ -88,9 +108,9 @@ public class DataProviderCSVTest extends TestBase {
     @Test
     void getPresentationByIdFail() {
         log.debug("{TEST} getPresentationByIdFail START");
-        DataProviderCSV provider = new DataProviderCSV();
+
         HashMap args = new HashMap();
-        args.put("id", String.valueOf(UUID.randomUUID()));
+        args.put(ConstantsField.ID, String.valueOf(UUID.randomUUID()));
 
         Result getPresResult = provider.getPresentationById(args);
 
@@ -110,7 +130,7 @@ public class DataProviderCSVTest extends TestBase {
 
             if (createResult.getStatus() == Status.success) {
                 HashMap args = new HashMap();
-                args.put("id", String.valueOf(id));
+                args.put(ConstantsField.ID, String.valueOf(id));
                 Result removeResult = provider.removePresentationById(args);
                 assertEquals(removeResult.getStatus(), Status.success);
             }
@@ -133,7 +153,7 @@ public class DataProviderCSVTest extends TestBase {
 
             if (createResult.getStatus() == Status.success) {
                 HashMap args = new HashMap();
-                args.put("id", String.valueOf(UUID.randomUUID()));
+                args.put(ConstantsField.ID, String.valueOf(UUID.randomUUID()));
                 Result removeResult = provider.removePresentationById(args);
                 assertEquals(removeResult.getStatus(), Status.error);
             }
@@ -148,16 +168,16 @@ public class DataProviderCSVTest extends TestBase {
     @Test
     void editPresentationOptionsSuccess() throws CsvRequiredFieldEmptyException, IOException, CsvDataTypeMismatchException {
         log.debug("{TEST} editPresentationOptionsSuccess START");
-        DataProviderCSV provider = new DataProviderCSV();
+
         UUID id = UUID.randomUUID();
         Result createResult = makePresentationWithId(provider, id);
 
         if (createResult.getStatus() == Status.success) {
             HashMap arguments = new HashMap();
-            arguments.put("name", "My presentation");
-            arguments.put("fillColor", "#403add");
-            arguments.put("fontFamily", "Times New Roman");
-            arguments.put("id", String.valueOf(id));
+            arguments.put(ConstantsField.NAME, "My presentation");
+            arguments.put(ConstantsField.FILL_COLOR, "#403add");
+            arguments.put(ConstantsField.FONT_FAMILY, "Times New Roman");
+            arguments.put(ConstantsField.ID, String.valueOf(id));
 
             assertEquals(provider.editPresentationOptions(arguments).getStatus(), Status.success);
 
@@ -178,14 +198,14 @@ public class DataProviderCSVTest extends TestBase {
     @Test
     void editPresentationOptionsFail() throws CsvRequiredFieldEmptyException, IOException, CsvDataTypeMismatchException {
         log.debug("{TEST} editPresentationOptionsFail START");
-        DataProviderCSV provider = new DataProviderCSV();
+
         UUID id = UUID.randomUUID();
 
         HashMap arguments = new HashMap();
-        arguments.put("name", "My presentation");
-        arguments.put("fillColor", "#403add");
-        arguments.put("fontFamily", "Times New Roman");
-        arguments.put("id", String.valueOf(id));
+        arguments.put(ConstantsField.NAME, "My presentation");
+        arguments.put(ConstantsField.FILL_COLOR, "#403add");
+        arguments.put(ConstantsField.FONT_FAMILY, "Times New Roman");
+        arguments.put(ConstantsField.ID, String.valueOf(id));
 
         assertEquals(provider.editPresentationOptions(arguments).getStatus(), Status.error);
         log.debug("{TEST} editPresentationOptionsFail END");
@@ -198,11 +218,11 @@ public class DataProviderCSVTest extends TestBase {
         DataProvider provider = new DataProviderCSV();
         UUID presId = UUID.randomUUID();
         HashMap args = new HashMap();
-        args.put("presentationId", String.valueOf(presId));
-        args.put("id", String.valueOf(presId));
+        args.put(ConstantsField.PRESENTATION_ID, String.valueOf(presId));
+        args.put(ConstantsField.ID, String.valueOf(presId));
         Result createResult = makePresentationWithId(provider, presId);
 
-        if (createResult.getStatus() == Status.success) {
+        if (Status.success == createResult.getStatus()) {
             Result getSlidesResult = provider.getPresentationSlides(args);
             assertEquals(getSlidesResult.getStatus(), Status.success);
         }
@@ -215,7 +235,7 @@ public class DataProviderCSVTest extends TestBase {
         DataProvider provider = new DataProviderCSV();
         UUID presId = UUID.randomUUID();
         HashMap args = new HashMap();
-        args.put("presentationId", String.valueOf(presId));
+        args.put(ConstantsField.PRESENTATION_ID, String.valueOf(presId));
         Result getSlidesResult = provider.getPresentationSlides(args);
         assertEquals(getSlidesResult.getStatus(), Status.error);
         log.debug("{TEST} getPresentationSlidesFail END");
@@ -228,12 +248,12 @@ public class DataProviderCSVTest extends TestBase {
         HashMap args = new HashMap();
         String presId = String.valueOf(UUID.randomUUID());
         String slideId = String.valueOf(UUID.randomUUID());
-        args.put("id", presId);
+        args.put(ConstantsField.ID, presId);
 
         Result createPresResult = makePresentationWithId(provider, UUID.fromString(presId));
-        if (createPresResult.getStatus() == Status.success) {
-            args.put("id", slideId);
-            args.put("presentationId", presId);
+        if (Status.success == createPresResult.getStatus()) {
+            args.put(ConstantsField.ID, slideId);
+            args.put(ConstantsField.PRESENTATION_ID, presId);
             Result createSlideResult = provider.createPresentationSlide(args);
             assertEquals(createSlideResult.getStatus(), Status.success);
             Optional<Slide> optionalSlide = CSVCommonMethods.getInstanceById(Slide.class, CollectionType.slide, args);
@@ -256,10 +276,10 @@ public class DataProviderCSVTest extends TestBase {
 
         assertEquals(resultCreatePresentation.getStatus(), Status.success);
         assertEquals(resultCreateSlide.getStatus(), Status.success);
-        if (resultCreatePresentation.getStatus() == Status.success && resultCreateSlide.getStatus() == Status.success) {
+        if (resultCreatePresentation.getStatus() == Status.success && Status.success == resultCreateSlide.getStatus()) {
             HashMap args = new HashMap();
-            args.put("presentationId", String.valueOf(presentationId));
-            args.put("id", String.valueOf(slideId));
+            args.put(ConstantsField.PRESENTATION_ID, String.valueOf(presentationId));
+            args.put(ConstantsField.ID, String.valueOf(slideId));
             Result resultGetSlide = provider.getSlideById(args);
             assertEquals(resultGetSlide.getStatus(), Status.success);
 
@@ -279,14 +299,14 @@ public class DataProviderCSVTest extends TestBase {
         Result resultCreateSlide = makeSlideWithId(provider, slideId, presentationId);
         if (resultCreateSlide.getStatus() == Status.success) {
             HashMap args = new HashMap();
-            args.put("presentationId", String.valueOf(presentationId));
-            args.put("id", String.valueOf(slideId));
-            args.put("name", name);
+            args.put(ConstantsField.PRESENTATION_ID, String.valueOf(presentationId));
+            args.put(ConstantsField.ID, String.valueOf(slideId));
+            args.put(ConstantsField.NAME, name);
             Result resultEditSlide = provider.editPresentationSlideById(args);
             assertEquals(resultEditSlide.getStatus(), Status.success);
-            if (resultEditSlide.getStatus() == Status.success) {
+            if (Status.success == resultEditSlide.getStatus()) {
                 Result resultGetSlide = provider.getSlideById(args);
-                if (resultGetSlide.getStatus() == Status.success) {
+                if (Status.success == resultGetSlide.getStatus()) {
                     Slide slide = (Slide) resultGetSlide.getReturnValue();
                     assertEquals(slide.getName(),  name);
                 }
@@ -302,11 +322,11 @@ public class DataProviderCSVTest extends TestBase {
         DataProvider provider = new DataProviderCSV();
         makePresentationWithId(provider, presentationId);
         Result resultCreateSlide = makeSlideWithId(provider, slideId, presentationId);
-        if (resultCreateSlide.getStatus() == Status.success) {
+        if (Status.success == resultCreateSlide.getStatus()) {
             HashMap args = new HashMap();
-            args.put("presentationId", String.valueOf(UUID.randomUUID())); // Set random id
-            args.put("id", String.valueOf(UUID.randomUUID())); // Set random id
-            args.put("name", name);
+            args.put(ConstantsField.PRESENTATION_ID, String.valueOf(UUID.randomUUID())); // Set random id
+            args.put(ConstantsField.ID, String.valueOf(UUID.randomUUID())); // Set random id
+            args.put(ConstantsField.NAME, name);
             Result resultEditSlide = provider.editPresentationSlideById(args);
             assertNotEquals(resultEditSlide.getStatus(), Status.success);
         }
@@ -323,41 +343,39 @@ public class DataProviderCSVTest extends TestBase {
             if (resultCreatePresentation.getStatus() == Status.success) {
 
                 HashMap args = new HashMap();
-                args.put("presentationId", String.valueOf(presentationId));
-                args.put("text", "Тестовый текст");
-                args.put("role", "editor");
+                args.put(ConstantsField.PRESENTATION_ID, String.valueOf(presentationId));
+                args.put(ConstantsField.TEXT, "Тестовый текст");
+                args.put(ConstantsField.ROLE, String.valueOf(Role.editor));
                 Result resultCommentPresentation = provider.commentPresentation(args);
 
-                assertTrue(resultCommentPresentation.getStatus() == Status.success);
+                assertTrue(Status.success == resultCommentPresentation.getStatus());
 
                 HashMap params = new HashMap();
-                params.put("id", String.valueOf(presentationId));
+                params.put(ConstantsField.ID, String.valueOf(presentationId));
 
-                String commentId = String.valueOf(resultCommentPresentation.getReturnValue());
+                UUID commentId = (UUID) resultCommentPresentation.getReturnValue();
 
                 Optional resultGetPresentation = CSVCommonMethods.getInstanceById(Presentation.class, CollectionType.presentation, params);
                 assertTrue(resultGetPresentation.isPresent());
-                Presentation presentation = (Presentation) resultGetPresentation.get();
-                log.debug(presentation);
-                log.debug(presentation.getComments());
-                ArrayList comments = presentation.getComments();
+                Result resultGetComments = provider.getPresentationComments(args);
 
-                log.debug("comments: " + comments);
-
+                log.debug("comments: " + resultGetComments.getReturnValue());
+                ArrayList comments = (ArrayList) resultGetComments.getReturnValue();
                 Optional presentationCommentId = comments.stream().filter(el -> {
-                    log.debug(el.getClass().getName());
+                    Comment comment = (Comment) el;
                     log.debug("comment id: " + commentId);
-                    log.debug(el.equals(commentId));
-                    return el.equals(commentId);
+                    log.debug("current item id: " + comment.getId());
+                    log.debug(comment.getId().equals(commentId));
+                    return comment.getId().equals(commentId);
                 }).limit(1).findFirst();
                 assertTrue(presentationCommentId.isPresent());
             } else {
-                assertTrue(false);
+                fail();
             }
         } catch (RuntimeException e) {
             log.error(e);
             e.printStackTrace();
-            assertTrue(false);
+            fail();
         }
     }
 
@@ -372,19 +390,19 @@ public class DataProviderCSVTest extends TestBase {
             if (resultCreatePresentation.getStatus() == Status.success) {
 
                 HashMap args = new HashMap();
-                args.put("presentationId", String.valueOf(UUID.randomUUID()));
-                args.put("text", "Тестовый текст");
-                args.put("role", "editor");
+                args.put(ConstantsField.PRESENTATION_ID, String.valueOf(UUID.randomUUID()));
+                args.put(ConstantsField.TEXT, "Тестовый текст");
+                args.put(ConstantsField.ROLE, String.valueOf(Role.editor));
                 Result resultCommentPresentation = provider.commentPresentation(args);
 
                 assertTrue(resultCommentPresentation.getStatus() == Status.error);
             } else {
-                assertTrue(false);
+                fail();
             }
         } catch (RuntimeException e) {
             log.error(e);
             e.printStackTrace();
-            assertTrue(false);
+            fail();
         }
     }
 
@@ -398,9 +416,9 @@ public class DataProviderCSVTest extends TestBase {
 
             if (resultCreatePresentation.getStatus() == Status.success) {
                 HashMap args = new HashMap();
-                args.put("presentationId", String.valueOf(presentationId));
-                args.put("text", "Тестовый текст");
-                args.put("role", "editor");
+                args.put(ConstantsField.PRESENTATION_ID, String.valueOf(presentationId));
+                args.put(ConstantsField.TEXT, "Тестовый текст");
+                args.put(ConstantsField.ROLE, String.valueOf(Role.editor));
                 Result resultCommentPresentation = provider.commentPresentation(args);
                 Result resultGetPresentationComments = provider.getPresentationComments(args);
                 assertTrue(resultGetPresentationComments.getStatus() == Status.success);
@@ -409,12 +427,12 @@ public class DataProviderCSVTest extends TestBase {
                 ArrayList comments = (ArrayList) resultGetPresentationComments.getReturnValue();
                 assertTrue(comments.size() > 0);
             } else {
-                assertTrue(false);
+                fail();
             }
         } catch (RuntimeException e) {
             log.error(e);
             e.printStackTrace();
-            assertTrue(false);
+            fail();
         }
     }
 
@@ -428,9 +446,9 @@ public class DataProviderCSVTest extends TestBase {
 
             if (resultCreatePresentation.getStatus() == Status.success) {
                 HashMap args = new HashMap();
-                args.put("presentationId", String.valueOf(UUID.randomUUID()));
-                args.put("text", null);
-                args.put("role", "editor");
+                args.put(ConstantsField.PRESENTATION_ID, String.valueOf(UUID.randomUUID()));
+                args.put(ConstantsField.TEXT, null);
+                args.put(ConstantsField.ROLE, String.valueOf(Role.editor));
                 Result resultCommentPresentation = provider.commentPresentation(args);
                 Result resultGetPresentationComments = provider.getPresentationComments(args);
 
@@ -442,12 +460,12 @@ public class DataProviderCSVTest extends TestBase {
                     assertTrue(comments.size() == 0);
                 }
             } else {
-                assertTrue(false);
+                fail();
             }
         } catch (RuntimeException e) {
             log.error(e);
             e.printStackTrace();
-            assertTrue(false);
+            fail();
         }
     }
 
@@ -460,11 +478,11 @@ public class DataProviderCSVTest extends TestBase {
 
         if (resultCreatePresentation.getStatus() == Status.success) {
             HashMap args = new HashMap();
-            args.put("presentationId", String.valueOf(presentationId));
-            args.put("text", "Тестовый измененный текст");
-            args.put("role", "editor");
+            args.put(ConstantsField.PRESENTATION_ID, String.valueOf(presentationId));
+            args.put(ConstantsField.TEXT, "Тестовый измененный текст");
+            args.put(ConstantsField.ROLE, String.valueOf(Role.editor));
             Result resultCommentPresentation = provider.commentPresentation(args);
-            args.put("id", String.valueOf(resultCommentPresentation.getReturnValue()));
+            args.put(ConstantsField.ID, String.valueOf(resultCommentPresentation.getReturnValue()));
             Result resultEditComment = provider.editPresentationComment(args);
             Result resultGetPresentationComments = provider.getPresentationComments(args);
 
@@ -472,7 +490,7 @@ public class DataProviderCSVTest extends TestBase {
             assertTrue(resultGetPresentationComments.getStatus() == Status.success);
             assertTrue(resultEditComment.getStatus() == Status.success);
         } else {
-            assertTrue(false);
+            fail();
         }
     }
 
@@ -485,26 +503,26 @@ public class DataProviderCSVTest extends TestBase {
 
         if (resultCreatePresentation.getStatus() == Status.success) {
             HashMap args = new HashMap();
-            args.put("presentationId", String.valueOf(UUID.randomUUID()));
-            args.put("text", null);
-            args.put("role", "guest");
+            args.put(ConstantsField.PRESENTATION_ID, String.valueOf(UUID.randomUUID()));
+            args.put(ConstantsField.TEXT, null);
+            args.put(ConstantsField.ROLE, "guest");
             Result resultCommentPresentation = provider.commentPresentation(args);
-            args.put("id", String.valueOf(UUID.randomUUID()));
+            args.put(ConstantsField.ID, String.valueOf(UUID.randomUUID()));
             Result resultEditComment = provider.editPresentationComment(args);
             Result resultGetPresentationComments = provider.getPresentationComments(args);
 
-            assertFalse(resultCommentPresentation.getStatus() == Status.success);
-            assertFalse(resultGetPresentationComments.getStatus() == Status.success);
-            assertFalse(resultEditComment.getStatus() == Status.success);
+            assertFalse(Status.success == resultCommentPresentation.getStatus());
+            assertFalse(Status.success == resultGetPresentationComments.getStatus());
+            assertFalse(Status.success == resultEditComment.getStatus());
         } else {
-            assertTrue(false);
+            fail();
         }
     }
 
 //    @Test
 //    void getCollectionsListSuccess() {
 //        log.debug("getCollectionSuccess");
-//        DataProviderCSV provider = new DataProviderCSV();
+//
 //        HashMap args = new HashMap();
 //        provider.createPresentation(args);
 //        Optional<List> optionalPresentationList = provider.getCollection(CollectionType.presentation, Presentation.class);
@@ -514,7 +532,7 @@ public class DataProviderCSVTest extends TestBase {
 //    @Test
 //    void getCollectionsListFail() {
 //        System.out.println("getCollection(CollectionType.presentation)Fail");
-//        DataProviderCSV provider = new DataProviderCSV();
+//
 //        Optional<List> optionalPresentationList = provider.getCollection(CollectionType.error, Presentation.class);
 //        assertFalse(optionalPresentationList.isPresent());
 //    }

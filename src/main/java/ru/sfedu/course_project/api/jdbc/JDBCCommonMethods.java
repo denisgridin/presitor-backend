@@ -7,7 +7,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import ru.sfedu.course_project.Constants;
 import ru.sfedu.course_project.ConstantsInfo;
-import ru.sfedu.course_project.ErrorConstants;
+import ru.sfedu.course_project.ConstantsError;
 import ru.sfedu.course_project.bean.Presentation;
 import ru.sfedu.course_project.enums.CollectionType;
 import ru.sfedu.course_project.enums.Method;
@@ -44,7 +44,7 @@ public class JDBCCommonMethods {
             return statement;
         } catch (SQLException | IOException e) {
             log.error(e);
-            log.error(ErrorConstants.CONNECTION_ERROR);
+            log.error(ConstantsError.CONNECTION_ERROR);
             return null;
         }
     }
@@ -59,7 +59,7 @@ public class JDBCCommonMethods {
             log.debug("Get collection: " + collectionType);
             Statement statement = setConnection();
             if (statement == null) {
-                return new Result(Status.error, ErrorConstants.CONNECTION_ERROR);
+                return new Result(Status.error, ConstantsError.CONNECTION_ERROR);
             }
 
             String query = QueryBuilder.build(Method.get, CollectionType.presentation, null, null);
@@ -67,7 +67,7 @@ public class JDBCCommonMethods {
 
             if (query.isEmpty()) {
                 log.error("Query string is empty");
-                return new Result(Status.error, ErrorConstants.PRESENTATION_GET);
+                return new Result(Status.error, ConstantsError.PRESENTATION_GET);
             }
             ResultSet resultSet = statement.executeQuery(query);
             Result result = getListFromResultSet(resultSet, collectionType);

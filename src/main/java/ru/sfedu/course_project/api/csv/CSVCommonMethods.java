@@ -11,35 +11,50 @@ import com.opencsv.exceptions.CsvRequiredFieldEmptyException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import ru.sfedu.course_project.Constants;
-import ru.sfedu.course_project.ErrorConstants;
-import ru.sfedu.course_project.api.xml.XMLCommonMethods;
+import ru.sfedu.course_project.ConstantsError;
 import ru.sfedu.course_project.bean.*;
 import ru.sfedu.course_project.enums.CollectionType;
 import ru.sfedu.course_project.enums.Status;
 import ru.sfedu.course_project.tools.Result;
 import ru.sfedu.course_project.utils.ConfigurationUtil;
+import ru.sfedu.course_project.utils.ConstantsField;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.*;
 import java.util.stream.Collectors;
 
 public class CSVCommonMethods {
-    private static final Logger log = LogManager.getLogger(XMLCommonMethods.class);
+    private static final Logger log = LogManager.getLogger(CSVCommonMethods.class);
     private static final String DATA_PATH="dataPath";
 
     private static final String FILE_EXTENTION="csv";
     private static String getFilePath (CollectionType collectionType) {
         try {
-            return String.format("%s/%s/%s.%s",
-                    ConfigurationUtil.getConfigurationEntry(DATA_PATH),
+            String dataPath = System.getProperty("dataPath");
+            String filePath = String.format("/%s/%s/%s.%s",
+                    System.getProperty("dataPath"),
                     ConfigurationUtil.getConfigurationEntry(FILE_EXTENTION),
                     collectionType,
                     ConfigurationUtil.getConfigurationEntry(FILE_EXTENTION));
+
+            String root = System.getProperty("user.dir");
+            log.debug("file path: " + filePath);
+            log.debug("Current directory " + root);
+            String path = (root + filePath).replace("\\", "/");
+            log.debug("path: " + path );
+
+            File directory = new File(path.substring(0, path.lastIndexOf("/")));
+            log.debug("directory path: " + directory);
+
+            if (!directory.exists()){
+                directory.mkdirs();
+            }
+
+            new File(path).createNewFile();
+            return path;
         } catch (IOException e) {
             e.printStackTrace();
+            log.error(e);
             return null;
         }
     }
@@ -94,6 +109,7 @@ public class CSVCommonMethods {
             return Status.success;
         } catch (IOException | CsvDataTypeMismatchException | CsvRequiredFieldEmptyException e) {
             e.printStackTrace();
+            log.error(e);
             log.error("[writeCollection] Unable to write collection");
             return Status.error;
         }
@@ -196,12 +212,12 @@ public class CSVCommonMethods {
             return new Result(status, "");
         } catch (RuntimeException e) {
             log.error(e);
-            return new Result(Status.error, ErrorConstants.INSTANCE_UPDATE);
+            return new Result(Status.error, ConstantsError.INSTANCE_UPDATE);
         }
     }
 
     public static Optional getInstanceById (Class cl, CollectionType collectionType, HashMap arguments) {
-        UUID id = UUID.fromString((String) arguments.get("id"));
+        UUID id = UUID.fromString((String) arguments.get(ConstantsField.ID));
         log.debug(collectionType + " id: " + id);
         try {
             switch (collectionType) {
@@ -269,7 +285,7 @@ public class CSVCommonMethods {
             return optionalInstance;
         } catch (RuntimeException e) {
             log.error(e);
-            log.error(ErrorConstants.INSTANCE_NOT_FOUND);
+            log.error(ConstantsError.INSTANCE_NOT_FOUND);
             return Optional.empty();
         }
     }
@@ -296,6 +312,23 @@ public class CSVCommonMethods {
             e.printStackTrace();
             log.error(e);
             return false;
+        }
+    }
+
+    public static Status updatePresentationCollection (Presentation presentation) {
+        Optional<List> optionalList = getCollection(CollectionType.presentation, Presentation.class);
+        if (optionalList.isPresent()) {
+            ArrayList updatedCollection = (ArrayList) optionalList.get().stream().map(el -> {
+                Presentation item = (Presentation) el;
+                if (item.getId().equals(presentation.getId())) {
+                    item.setSlides(presentation.getSlides());
+                }
+                return item;
+            }).collect(Collectors.toList());
+            return Status.success;
+        } else {
+            log.error("[updatePresentationCollection] Unable to get presentations collection");
+            return Status.error;
         }
     }
 }

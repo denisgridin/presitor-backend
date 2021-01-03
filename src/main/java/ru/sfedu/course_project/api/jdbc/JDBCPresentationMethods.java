@@ -2,8 +2,8 @@ package ru.sfedu.course_project.api.jdbc;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import ru.sfedu.course_project.ConstantsInfo;
-import ru.sfedu.course_project.ErrorConstants;
-import ru.sfedu.course_project.SuccessConstants;
+import ru.sfedu.course_project.ConstantsError;
+import ru.sfedu.course_project.ConstantsSuccess;
 import ru.sfedu.course_project.bean.Presentation;
 import ru.sfedu.course_project.enums.CollectionType;
 import ru.sfedu.course_project.enums.Method;
@@ -25,20 +25,20 @@ public class JDBCPresentationMethods {
 
     public static Result createPresentation(HashMap args) {
         if (args.get("id") == null) {
-            log.error(ErrorConstants.ARGUMENT_IS_NOT_PROVIDED + "id");
-            return new Result(Status.error, ErrorConstants.ARGUMENT_IS_NOT_PROVIDED + "id");
+            log.error(ConstantsError.ARGUMENT_IS_NOT_PROVIDED + "id");
+            return new Result(Status.error, ConstantsError.ARGUMENT_IS_NOT_PROVIDED + "id");
         }
         try {
             log.debug(ConstantsInfo.PRESENTATIONS_CREATE);
             Statement statement = JDBCCommonMethods.setConnection();
             if (statement == null) {
-                return new Result(Status.error, ErrorConstants.CONNECTION_ERROR);
+                return new Result(Status.error, ConstantsError.CONNECTION_ERROR);
             }
             Optional<Presentation> optionalPresentation = (Optional<Presentation>) new Creator().create(Presentation.class, args).getReturnValue();
 
             if (!optionalPresentation.isPresent()) {
-                log.error(ErrorConstants.PRESENTATION_CREATE);
-                return new Result(Status.error, ErrorConstants.PRESENTATION_CREATE);
+                log.error(ConstantsError.PRESENTATION_CREATE);
+                return new Result(Status.error, ConstantsError.PRESENTATION_CREATE);
             }
 
             String query = QueryBuilder.build(Method.create, CollectionType.presentation, optionalPresentation.get(), null);
@@ -46,18 +46,18 @@ public class JDBCPresentationMethods {
 
             if (query.isEmpty()) {
                 log.error("Query string is empty");
-                return new Result(Status.error, ErrorConstants.PRESENTATION_CREATE);
+                return new Result(Status.error, ConstantsError.PRESENTATION_CREATE);
             }
             statement.execute("CREATE TABLE IF NOT EXISTS PRESENTATION (id varchar(36), name varchar(200), fillColor varchar(200), fontFamily varchar(200))");
 //            statement.execute("DROP TABLE PRESENTATION");
             statement.execute(query);
             JDBCCommonMethods.closeConnection();
-            log.info(SuccessConstants.PRESENTATION_CREATE);
+            log.info(ConstantsSuccess.PRESENTATION_CREATE);
             return new Result(Status.success, optionalPresentation.get().getId());
         } catch (IndexOutOfBoundsException | SQLException | IOException e) {
             log.error(e);
-            log.error(ErrorConstants.PRESENTATION_CREATE);
-            return new Result(Status.error, ErrorConstants.PRESENTATION_CREATE);
+            log.error(ConstantsError.PRESENTATION_CREATE);
+            return new Result(Status.error, ConstantsError.PRESENTATION_CREATE);
         }
     }
 
@@ -66,7 +66,7 @@ public class JDBCPresentationMethods {
             log.debug("Attempt to get presentations");
             Statement statement = JDBCCommonMethods.setConnection();
             if (statement == null) {
-                return new Result(Status.error, ErrorConstants.CONNECTION_ERROR);
+                return new Result(Status.error, ConstantsError.CONNECTION_ERROR);
             }
             JDBCCommonMethods.closeConnection();
             return JDBCCommonMethods.getCollection(CollectionType.presentation);
@@ -78,14 +78,14 @@ public class JDBCPresentationMethods {
 
     public static Result getPresentationById(HashMap arguments) {
         if (arguments.get("id") == null) {
-            log.error(ErrorConstants.ARGUMENT_IS_NOT_PROVIDED + "id");
-            return new Result(Status.error, ErrorConstants.ARGUMENT_IS_NOT_PROVIDED + "id");
+            log.error(ConstantsError.ARGUMENT_IS_NOT_PROVIDED + "id");
+            return new Result(Status.error, ConstantsError.ARGUMENT_IS_NOT_PROVIDED + "id");
         }
         try {
             log.debug("Attempt to get presentations");
             Statement statement = JDBCCommonMethods.setConnection();
             if (statement == null) {
-                return new Result(Status.error, ErrorConstants.CONNECTION_ERROR);
+                return new Result(Status.error, ConstantsError.CONNECTION_ERROR);
             }
             Result result = JDBCCommonMethods.getCollection(CollectionType.presentation);
             if (result.getStatus() == Status.error) {
@@ -99,20 +99,20 @@ public class JDBCPresentationMethods {
             return new Result(Status.success, optionalPresentation.orElse(null));
         } catch (RuntimeException | SQLException | IOException e) {
             log.error(e);
-            log.error(ErrorConstants.PRESENTATION_NOT_FOUND);
-            return new Result(Status.error, ErrorConstants.PRESENTATION_NOT_FOUND);
+            log.error(ConstantsError.PRESENTATION_NOT_FOUND);
+            return new Result(Status.error, ConstantsError.PRESENTATION_NOT_FOUND);
         }
     }
 
     public static Result removePresentationById (HashMap arguments) {
         if (arguments.get("id") == null) {
-            log.error(ErrorConstants.ARGUMENT_IS_NOT_PROVIDED + "id");
-            return new Result(Status.error, ErrorConstants.ARGUMENT_IS_NOT_PROVIDED + "id");
+            log.error(ConstantsError.ARGUMENT_IS_NOT_PROVIDED + "id");
+            return new Result(Status.error, ConstantsError.ARGUMENT_IS_NOT_PROVIDED + "id");
         }
         try {
             Statement statement = JDBCCommonMethods.setConnection();
             if (statement == null) {
-                return new Result(Status.error, ErrorConstants.CONNECTION_ERROR);
+                return new Result(Status.error, ConstantsError.CONNECTION_ERROR);
             }
 
             Result resultGetPresentation = getPresentationById(arguments);
@@ -125,23 +125,23 @@ public class JDBCPresentationMethods {
             log.debug("Query string: " + query);
             statement.execute(query);
             JDBCCommonMethods.closeConnection();
-            return new Result(Status.success, SuccessConstants.PRESENTATION_REMOVE);
+            return new Result(Status.success, ConstantsSuccess.PRESENTATION_REMOVE);
         } catch (RuntimeException | SQLException | IOException e) {
             log.error(e);
             e.printStackTrace();
-            return new Result(Status.error, ErrorConstants.PRESENTATION_REMOVE);
+            return new Result(Status.error, ConstantsError.PRESENTATION_REMOVE);
         }
     }
 
     public static Result editPresentationOptions (HashMap arguments) {
         if (arguments.get("id") == null) {
-            log.error(ErrorConstants.ARGUMENT_IS_NOT_PROVIDED + "id");
-            return new Result(Status.error, ErrorConstants.ARGUMENT_IS_NOT_PROVIDED + "id");
+            log.error(ConstantsError.ARGUMENT_IS_NOT_PROVIDED + "id");
+            return new Result(Status.error, ConstantsError.ARGUMENT_IS_NOT_PROVIDED + "id");
         }
         try {
             Statement statement = JDBCCommonMethods.setConnection();
             if (statement == null) {
-                return new Result(Status.error, ErrorConstants.CONNECTION_ERROR);
+                return new Result(Status.error, ConstantsError.CONNECTION_ERROR);
             }
 
             Result resultGetPresentation = getPresentationById(arguments);
@@ -158,14 +158,14 @@ public class JDBCPresentationMethods {
             log.debug("Rows updated: " + resultRows);
             JDBCCommonMethods.closeConnection();
             if (resultRows > 0) {
-                return new Result(Status.success, SuccessConstants.PRESENTATION_UPDATE);
+                return new Result(Status.success, ConstantsSuccess.PRESENTATION_UPDATE);
             } else {
-                return new Result(Status.error, ErrorConstants.PRESENTATION_UPDATE);
+                return new Result(Status.error, ConstantsError.PRESENTATION_UPDATE);
             }
         } catch (RuntimeException | SQLException | IOException e){
             e.printStackTrace();
             log.error(e);
-            return new Result(Status.error, ErrorConstants.PRESENTATION_UPDATE);
+            return new Result(Status.error, ConstantsError.PRESENTATION_UPDATE);
         }
     }
 }

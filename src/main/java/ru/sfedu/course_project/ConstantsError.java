@@ -1,6 +1,6 @@
 package ru.sfedu.course_project;
 
-public class ErrorConstants {
+public class ConstantsError {
     public static String ID_IN_USE = "Identifier is already in use";
     public static String UNEXPECTED_ERROR = "Unexpected error";
     public static String INSTANCE_NOT_FOUND = "Instance not found ";
