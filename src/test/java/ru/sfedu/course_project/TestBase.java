@@ -8,6 +8,7 @@ import ru.sfedu.course_project.tools.Creator;
 import ru.sfedu.course_project.tools.Result;
 import ru.sfedu.course_project.utils.ConstantsField;
 
+import javax.xml.crypto.Data;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.UUID;
@@ -131,5 +132,66 @@ public class TestBase {
             Shape shape = (Shape) resultCreateShape.getReturnValue();
             assertEquals(shape.toString(), result.getReturnValue().toString());
         }
+    }
+
+    public void makeContentWithId (DataProvider provider, UUID id, UUID slideId, UUID presentationId, HashMap args) {
+        makePresentationWithId(provider, presentationId);
+        makeSlideWithId(provider, slideId, presentationId);
+
+
+        Result resultCreateContent = new Creator().create(Content.class, args);
+        Result result = provider.addElementInSlide(args);
+        assertTrue(Status.success == result.getStatus());
+
+        if (Status.success == resultCreateContent.getStatus()) {
+            Content content = (Content) resultCreateContent.getReturnValue();
+            assertEquals(content.toString(), result.getReturnValue().toString());
+        }
+    }
+
+    public void makeCustomContent (DataProvider provider, UUID id, UUID slideId, UUID presentationId) {
+        makePresentationWithId(provider, presentationId);
+        makeSlideWithId(provider, slideId, presentationId);
+
+        String fontFamily = "Product Sans";
+        String fontSize = "1.2rem";
+        String letterSpacing = "2px";
+        String lineSpacing = "12px";
+        FontCase fontCase = FontCase.uppercase;
+        String name = "Тестовое имя";
+        String text = "Тестовый текст";
+
+        HashMap args = new HashMap();
+        args.put(ConstantsField.PRESENTATION_ID, String.valueOf(presentationId));
+        args.put(ConstantsField.SLIDE_ID, String.valueOf(slideId));
+        args.put(ConstantsField.ID, String.valueOf(id));
+
+        args.put(ConstantsField.FONT_CASE, String.valueOf(fontCase));
+        args.put(ConstantsField.FONT_SIZE, fontSize);
+        args.put(ConstantsField.FONT_FAMILY, fontFamily);
+        args.put(ConstantsField.LINE_SPACING, lineSpacing);
+        args.put(ConstantsField.LETTER_SPACING, letterSpacing);
+        args.put(ConstantsField.NAME, name);
+
+        Layout layout = new Layout();
+        layout.setHeight(120);
+        layout.setWidth(420);
+        layout.setRotation(13);
+        layout.setX(132);
+        layout.setY(13);
+
+        args.put(ConstantsField.X, String.valueOf(layout.getX()));
+        args.put(ConstantsField.Y, String.valueOf(layout.getY()));
+        args.put(ConstantsField.ROTATION, String.valueOf(layout.getRotation()));
+        args.put(ConstantsField.WIDTH, String.valueOf(layout.getWidth()));
+        args.put(ConstantsField.HEIGHT, String.valueOf(layout.getHeight()));
+
+        args.put(ConstantsField.TEXT, text);
+
+        args.put(ConstantsField.ELEMENT_TYPE, String.valueOf(ElementType.content));
+
+        Result result = provider.addElementInSlide(args);
+
+        assertTrue(Status.success == result.getStatus());
     }
 }

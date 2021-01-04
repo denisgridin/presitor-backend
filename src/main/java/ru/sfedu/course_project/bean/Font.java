@@ -7,10 +7,10 @@ import java.util.Objects;
 
 public class Font implements Serializable {
     @CsvBindByName
-    private String family;
+    private String fontFamily;
 
     @CsvBindByName
-    private String size;
+    private String fontSize;
 
     @CsvBindByName
     private String letterSpacing;
@@ -24,20 +24,20 @@ public class Font implements Serializable {
     public Font () { }
 
 
-    public String getFamily() {
-        return family;
+    public String getFontFamily() {
+        return fontFamily;
     }
 
-    public void setFamily(String family) {
-        this.family = family;
+    public void setFontFamily(String fontFamily) {
+        this.fontFamily = fontFamily;
     }
 
-    public String getSize() {
-        return size;
+    public String getFontSize() {
+        return fontSize;
     }
 
-    public void setSize(String size) {
-        this.size = size;
+    public void setFontSize(String fontSize) {
+        this.fontSize = fontSize;
     }
 
     public String getLetterSpacing() {
@@ -69,8 +69,8 @@ public class Font implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Font font = (Font) o;
-        return Objects.equals(family, font.family) &&
-                Objects.equals(size, font.size) &&
+        return Objects.equals(fontFamily, font.fontFamily) &&
+                Objects.equals(fontSize, font.fontSize) &&
                 Objects.equals(letterSpacing, font.letterSpacing) &&
                 Objects.equals(lineSpacing, font.lineSpacing) &&
                 fontCase == font.fontCase;
@@ -78,14 +78,14 @@ public class Font implements Serializable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(family, size, letterSpacing, lineSpacing, fontCase);
+        return Objects.hash(fontFamily, fontSize, letterSpacing, lineSpacing, fontCase);
     }
 
     @Override
     public String toString() {
         return "Font{" +
-                "family='" + family + '\'' +
-                ", size='" + size + '\'' +
+                "fontFamily='" + fontFamily + '\'' +
+                ", fontSize='" + fontSize + '\'' +
                 ", letterSpacing='" + letterSpacing + '\'' +
                 ", lineSpacing='" + lineSpacing + '\'' +
                 ", fontCase=" + fontCase +

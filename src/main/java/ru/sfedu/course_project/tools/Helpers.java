@@ -35,7 +35,7 @@ public class Helpers {
 
             FontCase fontCase = FontCase.normal;
             try {
-                fontCase = FontCase.valueOf((String) args.getOrDefault(ConstantsField.CASE, String.valueOf(font.getFontCase())));
+                fontCase = FontCase.valueOf((String) args.getOrDefault(ConstantsField.FONT_CASE, String.valueOf(font.getFontCase())));
             } catch (RuntimeException e) {
                 fontCase = FontCase.normal;
                 log.error(e);
@@ -43,9 +43,9 @@ public class Helpers {
             log.debug(ConstantsInfo.FIELD_EDIT + " fontCase " + fontCase);
             font.setFontCase(fontCase);
 
-            String family = Optional.of((String) args.getOrDefault(ConstantsField.FONT_FAMILY, font.getFamily())).orElse("");
+            String family = Optional.of((String) args.getOrDefault(ConstantsField.FONT_FAMILY, font.getFontFamily())).orElse("");
             log.debug(ConstantsInfo.FIELD_EDIT + " family " + family);
-            font.setFamily(family);
+            font.setFontFamily(family);
 
             String letterSpacing = Optional.of((String) args.getOrDefault(ConstantsField.LETTER_SPACING, font.getLetterSpacing())).orElse("");
             log.debug(ConstantsInfo.FIELD_EDIT + " letterSpacing " + letterSpacing);
@@ -55,9 +55,9 @@ public class Helpers {
             log.debug(ConstantsInfo.FIELD_EDIT + " lineSpacing " + lineSpacing);
             font.setLineSpacing(lineSpacing);
 
-            String size = Optional.of((String) args.getOrDefault(ConstantsField.FONT_SIZE, font.getSize())).orElse("");
+            String size = Optional.of((String) args.getOrDefault(ConstantsField.FONT_SIZE, font.getFontSize())).orElse("");
             log.debug(ConstantsInfo.FIELD_EDIT + " size " + size);
-            font.setSize(size);
+            font.setFontSize(size);
             log.debug("Updated content Font: " + font);
 
             Layout layout = content.getLayout();

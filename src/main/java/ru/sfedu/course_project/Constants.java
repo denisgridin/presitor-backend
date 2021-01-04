@@ -26,18 +26,18 @@ public class Constants {
             { ConstantsField.ROTATION, "rotation=\\d{1,}"},
 
             { ConstantsField.FILL_COLOR, "fillColor='\\w{1,}'" },
-            { ConstantsField.BOX_SHADOW, "boxShadow='.{1,}''" },
+            { ConstantsField.BOX_SHADOW, "boxShadow=[^,]{1,}" },
             { ConstantsField.OPACITY, "opacity=\\d*" },
             { ConstantsField.BORDER_COLOR, "borderColor='\\w{1,}'" },
             { ConstantsField.BORDER_RADIUS, "borderRadius='\\w{1,}'" },
             { ConstantsField.BORDER_WIDTH, "borderWidth='\\w{1,}'" },
             { ConstantsField.BORDER_STYLE, "borderStyle=\\w{1,}" },
 
-            { ConstantsField.FONT_FAMILY, "family=\\d*" },
-            { ConstantsField.FONT_SIZE, "fontSize=\\d*" },
-            { ConstantsField.LETTER_SPACING, "letterSpacing=\\d*" },
-            { ConstantsField.LINE_SPACING, "lineSpacing=\\d*" },
-            { ConstantsField.CASE, "case=\\d*" }
+            { ConstantsField.FONT_FAMILY, "fontFamily=[^,]{1,}" },
+            { ConstantsField.FONT_SIZE, "fontSize=[^,]{1,}" },
+            { ConstantsField.LETTER_SPACING, "letterSpacing=[^,]{1,}" },
+            { ConstantsField.LINE_SPACING, "lineSpacing=[^,]{1,}" },
+            { ConstantsField.FONT_CASE, "fontCase=\\w{1,}" }
     }).collect(Collectors.toMap(data -> (String) data[0], data -> (Object) data[1]));
 
 
@@ -96,11 +96,11 @@ public class Constants {
     public final static Font DEFAULT_FONT (HashMap args) {
         Font font = new Font();
 
-        font.setFamily((String) args.getOrDefault(ConstantsField.FONT_FAMILY,"Roboto"));
-        font.setFontCase(FontCase.normal);
+        font.setFontFamily((String) args.getOrDefault(ConstantsField.FONT_FAMILY,"Roboto"));
+        font.setFontCase(FontCase.valueOf((String) args.getOrDefault(ConstantsField.FONT_CASE, String.valueOf(FontCase.normal))));
         font.setLetterSpacing((String) args.getOrDefault(ConstantsField.LETTER_SPACING,""));
         font.setLineSpacing((String) args.getOrDefault(ConstantsField.LINE_SPACING,""));
-        font.setSize((String) args.getOrDefault(ConstantsField.FONT_SIZE,"14px"));
+        font.setFontSize((String) args.getOrDefault(ConstantsField.FONT_SIZE,"14px"));
 
         return font;
     }

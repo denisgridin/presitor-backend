@@ -20,6 +20,7 @@ import ru.sfedu.course_project.tools.Result;
 import ru.sfedu.course_project.utils.ConfigurationUtil;
 import ru.sfedu.course_project.utils.ConstantsField;
 
+import javax.print.DocFlavor;
 import javax.xml.crypto.Data;
 import java.io.IOException;
 import java.util.*;
@@ -744,7 +745,66 @@ public class DataProviderCSVTest extends TestBase {
     }
 
 
+    @Test
+    void addContentInSlideSuccess() {
+        log.info("{ addContentInSlideSuccess } START");
+        UUID presentationId = UUID.randomUUID();
+        UUID slideId = UUID.randomUUID();
+        UUID id = UUID.randomUUID();
+        HashMap args = new HashMap();
+        args.put(ConstantsField.PRESENTATION_ID, String.valueOf(presentationId));
+        args.put(ConstantsField.SLIDE_ID, String.valueOf(slideId));
+        args.put(ConstantsField.ELEMENT_TYPE, String.valueOf(ElementType.content));
+        args.put(ConstantsField.ID, String.valueOf(id));
 
+        makeContentWithId(provider, id, slideId, presentationId, args);
+
+        Result resultRemove = provider.removeSlideElement(args);
+
+        log.info("{ addContentInSlideSuccess } END");
+    }
+
+    @Test
+    void addContentInSlideContentSuccess() {
+        log.info("{ addContentInSlideContentSuccess } START");
+        UUID presentationId = UUID.randomUUID();
+        UUID slideId = UUID.randomUUID();
+        UUID id = UUID.randomUUID();
+
+        makeCustomContent(provider, id, slideId, presentationId);
+
+        log.info("{ addContentInSlideContentSuccess } END");
+    }
+
+    @Test
+    void removeSlideElementContentSuccess() {
+        log.info("{ removeSlideElementContentSuccess } START");
+
+
+        UUID presentationId = UUID.randomUUID();
+        UUID slideId = UUID.randomUUID();
+        makePresentationWithId(provider, presentationId);
+        makeSlideWithId(provider, slideId, presentationId);
+
+        UUID id = UUID.randomUUID();
+
+        HashMap params = new HashMap();
+        params.put(ConstantsField.ID, String.valueOf(id));
+        params.put(ConstantsField.PRESENTATION_ID, String.valueOf(presentationId));
+        params.put(ConstantsField.SLIDE_ID, String.valueOf(slideId));
+        params.put(ConstantsField.ELEMENT_TYPE, String.valueOf(ElementType.shape));
+        params.put(ConstantsField.FIGURE, String.valueOf(Figure.rectangle));
+
+        Result addResult = provider.addElementInSlide(params);
+
+        if (Status.success == addResult.getStatus()) {
+
+            Result resultRemove = provider.removeSlideElement(params);
+            assertTrue(Status.success == resultRemove.getStatus());
+        }
+
+        log.info("{ removeSlideElementContentSuccess } END");
+    }
 
 //    @Test
 //    void getCollectionsListSuccess() {

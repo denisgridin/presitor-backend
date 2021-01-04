@@ -31,7 +31,7 @@ public class ConstantsField {
     public static final String FONT = "font";
     public static final String LAYOUT = "layout";
 
-    public static final String CASE = "case";
+    public static final String FONT_CASE = "fontCase";
     public static final String LETTER_SPACING = "letterSpacing";
     public static final String LINE_SPACING = "lineSpacing";
     public static final String FONT_SIZE = "fontSize";

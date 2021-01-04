@@ -31,7 +31,6 @@ public class CSVElementMethods {
             fields.add(ConstantsField.PRESENTATION_ID);
             fields.add(ConstantsField.SLIDE_ID);
             fields.add(ConstantsField.ELEMENT_TYPE);
-            fields.add(ConstantsField.FIGURE);
             Result isArgsValid = new ArgsValidator().validate(args, fields);
             if (Status.error == isArgsValid.getStatus()) {
                 return isArgsValid;
