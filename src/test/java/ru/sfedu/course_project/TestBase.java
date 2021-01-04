@@ -120,15 +120,16 @@ public class TestBase {
         args.put(ConstantsField.SLIDE_ID, String.valueOf(slideId));
         args.put(ConstantsField.ELEMENT_TYPE, String.valueOf(ElementType.shape));
         args.put(ConstantsField.FIGURE, String.valueOf(Figure.rectangle));
+        args.put(ConstantsField.ID, String.valueOf(id));
 
 
-        Result resultCreateShape = new Creator().create(Shape.class, new HashMap());
+        Result resultCreateShape = new Creator().create(Shape.class, args);
         Result result = provider.addElementInSlide(args);
         assertTrue(Status.success == result.getStatus());
 
         if (Status.success == resultCreateShape.getStatus()) {
             Shape shape = (Shape) resultCreateShape.getReturnValue();
-            assertEquals(shape, result.getReturnValue());
+            assertEquals(shape.toString(), result.getReturnValue().toString());
         }
     }
 }
