@@ -23,4 +23,6 @@ public class ConstantsSuccess {
     public static String CONTENT_EDIT = "Content successfully updated ";
     public static String CONTENT_REMOVE = "Content successfully removed ";
 
+    public static String ASSESSMENT_CREATE = "Presentation was successfully rated ";
+
 }

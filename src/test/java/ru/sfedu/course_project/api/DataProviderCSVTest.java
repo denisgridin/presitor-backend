@@ -2,26 +2,19 @@ package ru.sfedu.course_project.api;
 
 import com.opencsv.exceptions.CsvDataTypeMismatchException;
 import com.opencsv.exceptions.CsvRequiredFieldEmptyException;
-import org.apache.commons.collections4.multimap.HashSetValuedHashMap;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeAll;
-import ru.sfedu.course_project.Constants;
-import ru.sfedu.course_project.ConstantsInfo;
 import ru.sfedu.course_project.TestBase;
 import ru.sfedu.course_project.api.csv.CSVCommonMethods;
 import ru.sfedu.course_project.bean.*;
-import ru.sfedu.course_project.enums.CollectionType;
-import ru.sfedu.course_project.enums.Role;
-import ru.sfedu.course_project.enums.Status;
+import ru.sfedu.course_project.enums.*;
 import ru.sfedu.course_project.tools.Creator;
 import ru.sfedu.course_project.tools.Result;
 import ru.sfedu.course_project.utils.ConfigurationUtil;
 import ru.sfedu.course_project.utils.ConstantsField;
 
-import javax.print.DocFlavor;
-import javax.xml.crypto.Data;
 import java.io.IOException;
 import java.util.*;
 
@@ -804,6 +797,87 @@ public class DataProviderCSVTest extends TestBase {
         }
 
         log.info("{ removeSlideElementContentSuccess } END");
+    }
+
+    @Test
+    void getSlideElementsContentSuccess () {
+        log.info("{ getSlideElementByIdShapeSuccess } START");
+
+        UUID presentationId = UUID.randomUUID();
+        UUID slideId = UUID.randomUUID();
+        UUID id = UUID.randomUUID();
+
+        makeCustomContent(provider, id, slideId, presentationId);
+
+        HashMap args = new HashMap();
+        args.put(ConstantsField.ID, String.valueOf(id));
+        args.put(ConstantsField.PRESENTATION_ID, String.valueOf(presentationId));
+        args.put(ConstantsField.SLIDE_ID, String.valueOf(slideId));
+
+        Result resultGet = provider.getSlideElements(args);
+
+        assertEquals(Status.success, resultGet.getStatus());
+        ArrayList list = (ArrayList) resultGet.getReturnValue();
+        assertTrue(!list.isEmpty());
+
+        log.info("{ getSlideElementByIdShapeSuccess } END");
+    }
+
+    @Test
+    void rateByMarkSuccess() {
+        log.info("{ rateByMarkSuccess } START");
+
+        UUID presentationId = UUID.randomUUID();
+        makePresentationWithId(provider, presentationId);
+
+        HashMap args = new HashMap();
+        args.put(ConstantsField.PRESENTATION_ID, String.valueOf(presentationId));
+        args.put(ConstantsField.MARK, "bed");
+        Result resultRate = provider.rateByMark(args);
+
+        assertTrue(Status.success == resultRate.getStatus());
+
+        log.info("{ rateByMarkSuccess } END");
+    }
+
+    @Test
+    void getPresentationMarksSuccess() {
+        log.info("{ getPresentationMarksSuccess } START");
+
+        HashMap args = new HashMap();
+        args.put(ConstantsField.PRESENTATION_ID, "1415aa57-83e2-4076-a317-75463ea17e6b");
+        Result result = provider.getPresentationMarks(args);
+
+        assertTrue(Status.success == result.getStatus());
+        log.info("{ getPresentationMarksSuccess } END");
+    }
+
+
+    @Test
+    void rateByMarkFail() {
+        log.info("{ rateByMarkFail } START");
+
+
+        HashMap args = new HashMap();
+        args.put(ConstantsField.PRESENTATION_ID, String.valueOf(UUID.randomUUID()));
+        args.put(ConstantsField.MARK, 123);
+        Result resultRate = provider.rateByMark(args);
+
+        assertTrue(Status.error == resultRate.getStatus());
+
+        log.info("{ rateByMarkFail } END");
+    }
+
+    @Test
+    void getPresentationMarksFail() {
+        log.info("{ getPresentationMarksSuccess } START");
+
+        HashMap args = new HashMap();
+        args.put(ConstantsField.PRESENTATION_ID, String.valueOf(UUID.randomUUID()));
+        Result result = provider.getPresentationMarks(args);
+
+        assertTrue(Status.error == result.getStatus());
+        log.info("{ getPresentationMarksSuccess } END");
     }
 
 //    @Test

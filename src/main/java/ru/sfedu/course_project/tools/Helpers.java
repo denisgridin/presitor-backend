@@ -5,6 +5,7 @@ import org.apache.logging.log4j.Logger;
 import ru.sfedu.course_project.ConstantsInfo;
 import ru.sfedu.course_project.ConstantsError;
 import ru.sfedu.course_project.bean.*;
+import ru.sfedu.course_project.enums.BorderStyle;
 import ru.sfedu.course_project.enums.Status;
 import ru.sfedu.course_project.utils.ConstantsField;
 

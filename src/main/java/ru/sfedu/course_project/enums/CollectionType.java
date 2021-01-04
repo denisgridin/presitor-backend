@@ -8,5 +8,6 @@ public enum CollectionType {
     comment,
     shape,
     content,
+    assessment,
     error
 }

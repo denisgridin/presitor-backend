@@ -1,15 +1,15 @@
 package ru.sfedu.course_project;
 
 import ru.sfedu.course_project.api.DataProvider;
-import ru.sfedu.course_project.api.DataProviderCSV;
 import ru.sfedu.course_project.bean.*;
+import ru.sfedu.course_project.enums.BorderStyle;
+import ru.sfedu.course_project.enums.ElementType;
+import ru.sfedu.course_project.enums.Figure;
 import ru.sfedu.course_project.enums.Status;
 import ru.sfedu.course_project.tools.Creator;
 import ru.sfedu.course_project.tools.Result;
 import ru.sfedu.course_project.utils.ConstantsField;
 
-import javax.xml.crypto.Data;
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.UUID;
 

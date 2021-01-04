@@ -6,10 +6,8 @@ import ru.sfedu.course_project.Constants;
 import ru.sfedu.course_project.ConstantsInfo;
 import ru.sfedu.course_project.ConstantsError;
 import ru.sfedu.course_project.ConstantsSuccess;
-import ru.sfedu.course_project.api.DataProviderCSV;
 import ru.sfedu.course_project.bean.*;
-import ru.sfedu.course_project.enums.Role;
-import ru.sfedu.course_project.enums.Status;
+import ru.sfedu.course_project.enums.*;
 import ru.sfedu.course_project.utils.ConstantsField;
 
 import java.time.LocalDateTime;
@@ -43,10 +41,45 @@ public class Creator {
             case "content": {
                 return createContent(args);
             }
+            case "assessment": {
+                return createAssessment(args);
+            }
             default: {
                 log.error("Unable to create instance");
                 return new Result(Status.error, "Unable to create instance");
             }
+        }
+    }
+
+    private Result createAssessment (HashMap args) {
+        try {
+            UUID id = UUID.fromString((String) args.getOrDefault(ConstantsField.ID, String.valueOf(UUID.randomUUID())));
+            UUID presentationId = UUID.fromString((String) args.get(ConstantsField.PRESENTATION_ID));
+            Mark mark = Mark.valueOf((String) args.get(ConstantsField.MARK));
+            Role role = Role.valueOf((String) args.getOrDefault(ConstantsField.ROLE, String.valueOf(Role.guest)));
+            Assessment assessment = new Assessment();
+
+
+            log.debug(String.format(ConstantsInfo.FIELD_FORMAT_SET, ConstantsField.ID, id));
+            assessment.setId(id);
+
+            log.debug(String.format(ConstantsInfo.FIELD_FORMAT_SET, ConstantsField.PRESENTATION_ID, presentationId));
+            assessment.setPresentationId(presentationId);
+
+            log.debug(String.format(ConstantsInfo.FIELD_FORMAT_SET, ConstantsField.MARK, mark));
+            assessment.setMark(mark);
+
+            log.debug(String.format(ConstantsInfo.FIELD_FORMAT_SET, ConstantsField.ROLE, role));
+            assessment.setRole(role);
+
+            log.info("Assessment created: " + assessment);
+            return new Result(Status.success, assessment);
+
+        } catch (RuntimeException e) {
+            e.printStackTrace();
+            log.error(e);
+            log.error("Unable to create Assessment");
+            return new Result(Status.error, ConstantsError.ASSESSMENT_CREATE_ERROR);
         }
     }
 

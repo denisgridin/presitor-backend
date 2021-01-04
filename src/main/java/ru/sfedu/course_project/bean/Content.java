@@ -38,6 +38,11 @@ public class Content extends Element implements Serializable {
         return "Content{" +
                 "font=" + font +
                 ", text='" + text + '\'' +
+                ", name='" + getName() + '\'' +
+                ", id=" + getId() +
+                ", presentationId=" + getPresentationId() +
+                ", slideId=" + getSlideId() +
+                ", layout=" + getLayout() +
                 '}';
     }
 }

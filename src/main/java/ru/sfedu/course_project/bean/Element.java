@@ -2,10 +2,10 @@ package ru.sfedu.course_project.bean;
 
 import com.opencsv.bean.CsvBindByName;
 import com.opencsv.bean.CsvCustomBindByName;
-import ru.sfedu.course_project.api.DataProviderCSV;
 import ru.sfedu.course_project.converters.ElementTypeConverter;
 import ru.sfedu.course_project.converters.LayoutConverter;
 import ru.sfedu.course_project.converters.UUIDConverter;
+import ru.sfedu.course_project.enums.ElementType;
 import ru.sfedu.course_project.utils.ConstantsField;
 
 import java.util.Objects;

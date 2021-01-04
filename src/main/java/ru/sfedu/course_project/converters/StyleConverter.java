@@ -4,13 +4,11 @@ import com.opencsv.bean.AbstractBeanField;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import ru.sfedu.course_project.Constants;
-import ru.sfedu.course_project.bean.BorderStyle;
-import ru.sfedu.course_project.bean.Layout;
+import ru.sfedu.course_project.enums.BorderStyle;
 import ru.sfedu.course_project.bean.Style;
 import ru.sfedu.course_project.tools.Helpers;
 import ru.sfedu.course_project.utils.ConstantsField;
 
-import javax.swing.border.Border;
 import java.util.regex.Pattern;
 
 public class StyleConverter extends AbstractBeanField  {

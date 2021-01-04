@@ -109,4 +109,14 @@ public class DataProviderXML implements DataProvider {
     public Result getSlideElements(HashMap arguments) {
         return null;
     }
+
+    @Override
+    public Result rateByMark(HashMap arguments) {
+        return null;
+    }
+
+    @Override
+    public Result getPresentationMarks(HashMap arguments) {
+        return null;
+    }
 }

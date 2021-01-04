@@ -1,13 +1,11 @@
 package ru.sfedu.course_project.bean;
 
-import com.opencsv.bean.CsvBindAndSplitByName;
 import com.opencsv.bean.CsvBindByName;
 
 import com.opencsv.bean.CsvCustomBindByName;
-import ru.sfedu.course_project.bean.Element;
 import ru.sfedu.course_project.converters.FigureConverter;
-import ru.sfedu.course_project.converters.RoleConverter;
 import ru.sfedu.course_project.converters.StyleConverter;
+import ru.sfedu.course_project.enums.Figure;
 import ru.sfedu.course_project.utils.ConstantsField;
 
 import java.util.Objects;

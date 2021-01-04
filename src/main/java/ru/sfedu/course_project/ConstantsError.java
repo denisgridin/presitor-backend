@@ -54,4 +54,8 @@ public class ConstantsError {
 
     public static String CONTENT_EDIT = "Unable to update content element ";
     public static String CONTENT_REMOVE = "Unable to remove content element ";
+
+    public static String ASSESSMENT_ADD_ERROR = "Unable to rate presentation ";
+    public static String ASSESSMENT_CREATE_ERROR = "Unable to create assessment ";
+    public static String ASSESSMENT_GET_ERROR = "Unable to get presentation assessments ";
 }

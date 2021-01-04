@@ -167,4 +167,14 @@ public class DataProviderCSV implements DataProvider {
     public Result getSlideElements (HashMap arguments) {
         return CSVElementMethods.getSlideElements(arguments);
     }
+
+    @Override
+    public Result rateByMark(HashMap arguments) {
+        return CSVAssessmentMethods.rateByMark(arguments);
+    }
+
+    @Override
+    public Result getPresentationMarks (HashMap args) {
+        return CSVAssessmentMethods.getPresentationMarks(args);
+    }
 }

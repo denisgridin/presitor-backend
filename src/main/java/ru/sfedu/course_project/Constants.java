@@ -1,9 +1,9 @@
 package ru.sfedu.course_project;
 
 import ru.sfedu.course_project.bean.*;
+import ru.sfedu.course_project.enums.BorderStyle;
 import ru.sfedu.course_project.utils.ConstantsField;
 
-import javax.swing.border.Border;
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;

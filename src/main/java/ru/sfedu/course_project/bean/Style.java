@@ -1,6 +1,7 @@
 package ru.sfedu.course_project.bean;
 
 import com.opencsv.bean.CsvBindByName;
+import ru.sfedu.course_project.enums.BorderStyle;
 
 import java.io.Serializable;
 import java.util.Objects;

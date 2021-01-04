@@ -51,4 +51,8 @@ public class ConstantsField {
 
     public static final String STYLE = "style";
 
+    public static final String MARK = "mark";
+
+
+
 }

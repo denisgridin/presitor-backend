@@ -1,15 +1,19 @@
 package ru.sfedu.course_project.bean;
 
 import com.opencsv.bean.CsvBindByName;
+import com.opencsv.bean.CsvCustomBindByName;
+import ru.sfedu.course_project.converters.ElementTypeConverter;
+import ru.sfedu.course_project.converters.MarkConverter;
 import ru.sfedu.course_project.enums.Mark;
 import ru.sfedu.course_project.enums.Role;
+import ru.sfedu.course_project.utils.ConstantsField;
 
 import java.io.Serializable;
 import java.util.Objects;
 import java.util.UUID;
 
 public class Assessment extends Feedback implements Serializable {
-    @CsvBindByName
+    @CsvCustomBindByName(column = ConstantsField.MARK, converter = MarkConverter.class)
     private Mark mark;
 
     public Assessment () {

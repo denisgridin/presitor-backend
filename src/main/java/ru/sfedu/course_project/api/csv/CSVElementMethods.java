@@ -6,6 +6,7 @@ import ru.sfedu.course_project.ConstantsError;
 import ru.sfedu.course_project.ConstantsSuccess;
 import ru.sfedu.course_project.bean.*;
 import ru.sfedu.course_project.enums.CollectionType;
+import ru.sfedu.course_project.enums.ElementType;
 import ru.sfedu.course_project.enums.Status;
 import ru.sfedu.course_project.tools.ArgsValidator;
 import ru.sfedu.course_project.tools.Creator;
@@ -14,7 +15,7 @@ import ru.sfedu.course_project.tools.Result;
 import ru.sfedu.course_project.utils.ConstantsField;
 
 import ru.sfedu.course_project.bean.Element;
-import java.lang.reflect.Array;
+
 import java.util.*;
 import java.util.stream.Collectors;
 

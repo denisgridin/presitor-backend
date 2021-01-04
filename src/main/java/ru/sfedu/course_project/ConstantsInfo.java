@@ -18,4 +18,6 @@ public class ConstantsInfo {
     public static String COLLECTION_CHECK_ID = "Check for unique id ";
     public static String COLLECTION_FOUND_ID = "Id is on use ";
 
+    public static String ASSESSMENTS_GET = "Attempt to get assessments ";
+
 }
