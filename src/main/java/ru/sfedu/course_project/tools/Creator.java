@@ -155,6 +155,9 @@ public class Creator {
 
             Shape shape = new Shape();
 
+            String text = (String) args.getOrDefault(ConstantsField.TEXT, "");
+            shape.setText(text);
+
             shape.setSlideId(UUID.fromString((String) args.get(ConstantsField.SLIDE_ID)));
             log.debug(String.format(ConstantsInfo.FIELD_FORMAT_SET, ConstantsField.SLIDE_ID, args.get(ConstantsField.SLIDE_ID)));
 
@@ -165,13 +168,13 @@ public class Creator {
             shape.setElementType(elementType);
             log.debug(String.format(ConstantsInfo.FIELD_FORMAT_SET, ConstantsField.ELEMENT_TYPE, elementType));
 
-            Figure figure = Figure.valueOf((String) args.get("figure"));
+            Figure figure = Figure.valueOf((String) args.get(ConstantsField.FIGURE));
             shape.setFigure(figure);
-            log.debug(String.format(ConstantsInfo.FIELD_FORMAT_SET, "figure", figure));
+            log.debug(String.format(ConstantsInfo.FIELD_FORMAT_SET, ConstantsField.FIGURE, figure));
 
             Style style = Constants.DEFAULT_STYLE(args);
             shape.setStyle(style);
-            log.debug(String.format(ConstantsInfo.FIELD_FORMAT_SET, "style", style));
+            log.debug(String.format(ConstantsInfo.FIELD_FORMAT_SET, ConstantsField.STYLE, style));
 
             Layout layout = Constants.DEFAULT_LAYOUT(args);
             log.debug(String.format(ConstantsInfo.FIELD_FORMAT_SET, ConstantsField.LAYOUT, layout));

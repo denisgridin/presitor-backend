@@ -8,6 +8,7 @@ import ru.sfedu.course_project.bean.BorderStyle;
 import ru.sfedu.course_project.bean.Layout;
 import ru.sfedu.course_project.bean.Style;
 import ru.sfedu.course_project.tools.Helpers;
+import ru.sfedu.course_project.utils.ConstantsField;
 
 import javax.swing.border.Border;
 import java.util.regex.Pattern;
@@ -20,13 +21,13 @@ public class StyleConverter extends AbstractBeanField  {
     protected Object convert(String s) throws RuntimeException {
         try {
 
-            String fillColorRegExp = (String) Constants.FIELD_REGEXP.get("fillColor");
-            String boxShadowRegExp = (String) Constants.FIELD_REGEXP.get("boxShadow");
-            String opacityRegExp = (String) Constants.FIELD_REGEXP.get("opacity");
-            String borderColorRegExp = (String) Constants.FIELD_REGEXP.get("borderColor");
-            String borderRadiusRegExp = (String) Constants.FIELD_REGEXP.get("borderRadius");
-            String borderWidthRegExp = (String) Constants.FIELD_REGEXP.get("borderWidth");
-            String borderStyleRegExp = (String) Constants.FIELD_REGEXP.get("borderStyle");
+            String fillColorRegExp = (String) Constants.FIELD_REGEXP.get(ConstantsField.FILL_COLOR);
+            String boxShadowRegExp = (String) Constants.FIELD_REGEXP.get(ConstantsField.BOX_SHADOW);
+            String opacityRegExp = (String) Constants.FIELD_REGEXP.get(ConstantsField.OPACITY);
+            String borderColorRegExp = (String) Constants.FIELD_REGEXP.get(ConstantsField.BORDER_COLOR);
+            String borderRadiusRegExp = (String) Constants.FIELD_REGEXP.get(ConstantsField.BORDER_RADIUS);
+            String borderWidthRegExp = (String) Constants.FIELD_REGEXP.get(ConstantsField.BORDER_WIDTH);
+            String borderStyleRegExp = (String) Constants.FIELD_REGEXP.get(ConstantsField.BORDER_STYLE);
 
             Pattern fillColorPattern = Pattern.compile(fillColorRegExp);
             Pattern boxShadowPattern = Pattern.compile(boxShadowRegExp);
@@ -36,13 +37,13 @@ public class StyleConverter extends AbstractBeanField  {
             Pattern borderWidthPattern = Pattern.compile(borderWidthRegExp);
             Pattern borderStylePattern = Pattern.compile(borderStyleRegExp);
 
-            String fillColor = Helpers.getFieldFromMather(fillColorPattern, s, "fillColor");
-            String boxShadow = Helpers.getFieldFromMather(boxShadowPattern, s, "boxShadow");
-            String opacity = Helpers.getFieldFromMather(opacityPattern, s, "opacity");
-            String borderColor = Helpers.getFieldFromMather(borderColorPattern, s, "borderColor");
-            String borderRadius = Helpers.getFieldFromMather(borderRadiusPattern, s, "borderRadius");
-            String borderWidth = Helpers.getFieldFromMather(borderWidthPattern, s, "borderWidth");
-            String borderStyle = Helpers.getFieldFromMather(borderStylePattern, s, "borderStyle");
+            String fillColor = Helpers.getFieldFromMather(fillColorPattern, s, ConstantsField.FILL_COLOR);
+            String boxShadow = Helpers.getFieldFromMather(boxShadowPattern, s, ConstantsField.BOX_SHADOW);
+            String opacity = Helpers.getFieldFromMather(opacityPattern, s, ConstantsField.OPACITY);
+            String borderColor = Helpers.getFieldFromMather(borderColorPattern, s, ConstantsField.BORDER_COLOR);
+            String borderRadius = Helpers.getFieldFromMather(borderRadiusPattern, s, ConstantsField.BORDER_RADIUS);
+            String borderWidth = Helpers.getFieldFromMather(borderWidthPattern, s, ConstantsField.BORDER_WIDTH);
+            String borderStyle = Helpers.getFieldFromMather(borderStylePattern, s, ConstantsField.BORDER_STYLE);
 
             Style style = new Style();
 

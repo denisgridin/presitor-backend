@@ -13,6 +13,8 @@ import ru.sfedu.course_project.tools.Helpers;
 import ru.sfedu.course_project.tools.Result;
 import ru.sfedu.course_project.utils.ConstantsField;
 
+import ru.sfedu.course_project.bean.Element;
+import java.lang.reflect.Array;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -29,6 +31,7 @@ public class CSVElementMethods {
             fields.add(ConstantsField.PRESENTATION_ID);
             fields.add(ConstantsField.SLIDE_ID);
             fields.add(ConstantsField.ELEMENT_TYPE);
+            fields.add(ConstantsField.FIGURE);
             Result isArgsValid = new ArgsValidator().validate(args, fields);
             if (Status.error == isArgsValid.getStatus()) {
                 return isArgsValid;
@@ -74,6 +77,8 @@ public class CSVElementMethods {
 
 
         } catch (RuntimeException e) {
+            log.error(e);
+            log.error(ConstantsError.FIGURE_CREATE);
             return new Result(Status.error, ConstantsError.FIGURE_CREATE);
         }
     }
@@ -114,6 +119,7 @@ public class CSVElementMethods {
             Shape shape = (Shape) resultCreateShape.getReturnValue();
             log.info("Create new shape: " + shape);
             ArrayList<Shape> shapes = (ArrayList<Shape>) CSVCommonMethods.getCollection(CollectionType.shape, Shape.class).orElse(new ArrayList());
+            log.debug("Shapes: " + shapes);
             shapes.add(shape);
             Status status = CSVCommonMethods.writeCollection(shapes, Shape.class, CollectionType.shape);
             log.debug("Shape added in collection: " + status);
@@ -157,6 +163,9 @@ public class CSVElementMethods {
                 case shape: {
                     return removeShape(args);
                 }
+                case content: {
+                    return removeContent(args);
+                }
                 default: {
                     return new Result(Status.error, ConstantsError.ELEMENT_NOT_FOUND + elementType);
                 }
@@ -192,6 +201,32 @@ public class CSVElementMethods {
             log.error(e);
             log.error(ConstantsError.SHAPE_REMOVE);
             return new Result(Status.error, ConstantsError.SHAPE_REMOVE);
+        }
+    }
+
+    public static Result removeContent (HashMap args) {
+        try {
+            Optional<Shape> optionalContent = CSVCommonMethods.getInstanceExistenceByField(content, Content.class, ConstantsField.ID, (String) args.get(ConstantsField.ID));
+            if (!optionalContent.isPresent()) {
+                return new Result(Status.error, ConstantsError.INSTANCE_NOT_FOUND + " content " + args.get(ConstantsField.ID));
+            }
+
+            UUID id = UUID.fromString((String) args.get(ConstantsField.ID));
+
+            List<Shape> collection = CSVCommonMethods.getCollection(CollectionType.shape, Shape.class).orElse(new ArrayList());
+            List<Shape> updatedCollection = collection.stream().filter(el -> !el.getId().equals(id)).collect(Collectors.toList());
+            Status writeStatus = CSVCommonMethods.writeCollection(updatedCollection, Shape.class, CollectionType.shape);
+            if (Status.success == writeStatus) {
+                return new Result(Status.success, ConstantsSuccess.CONTENT_REMOVE);
+            } else {
+                return new Result(Status.error, ConstantsError.CONTENT_REMOVE);
+            }
+
+        } catch (RuntimeException e) {
+            e.printStackTrace();
+            log.error(e);
+            log.error(ConstantsError.CONTENT_REMOVE);
+            return new Result(Status.error, ConstantsError.CONTENT_REMOVE);
         }
     }
 
@@ -300,6 +335,108 @@ public class CSVElementMethods {
         } catch (RuntimeException e) {
             log.error(ConstantsError.SHAPE_EDIT);
             return new Result(Status.error, ConstantsError.SHAPE_EDIT);
+        }
+    }
+
+    public static Result getSlideElementById (HashMap args) {
+        try {
+            ArrayList fields = new ArrayList();
+            fields.add(ConstantsField.PRESENTATION_ID);
+            fields.add(ConstantsField.SLIDE_ID);
+            fields.add(ConstantsField.ID);
+            fields.add(ConstantsField.ELEMENT_TYPE);
+            Result isArgsValid = new ArgsValidator().validate(args, fields);
+            if (Status.error == isArgsValid.getStatus()) {
+                return isArgsValid;
+            }
+
+            Optional<Presentation> optionalPresentation = CSVCommonMethods.getInstanceExistenceByField(presentation, Presentation.class, ConstantsField.ID, (String) args.get(ConstantsField.PRESENTATION_ID));
+            if (!optionalPresentation.isPresent()) {
+                return new Result(Status.error, ConstantsError.INSTANCE_NOT_FOUND + ConstantsField.PRESENTATION_ID);
+            }
+            Optional<Presentation> optionalSlide = CSVCommonMethods.getInstanceExistenceByField(slide, Slide.class, ConstantsField.ID, (String) args.get(ConstantsField.SLIDE_ID));
+            if (!optionalSlide.isPresent()) {
+                return new Result(Status.error, ConstantsError.INSTANCE_NOT_FOUND + ConstantsField.SLIDE_ID);
+            }
+
+            ElementType elementType = ElementType.valueOf((String) args.get(ConstantsField.ELEMENT_TYPE));
+            log.debug("Attempt to get: " + elementType);
+
+            switch (elementType) {
+                case shape: {
+                    Optional<Shape> optionalElement = CSVCommonMethods.getInstanceExistenceByField(shape, Shape.class, ConstantsField.ID, (String) args.get(ConstantsField.ID));
+                    if (!optionalSlide.isPresent()) {
+                        return new Result(Status.error, ConstantsError.INSTANCE_NOT_FOUND + ConstantsField.ID);
+                    }
+                    return new Result(Status.success, optionalElement.get());
+                }
+                case content: {
+                    Optional<Content> optionalElement = CSVCommonMethods.getInstanceExistenceByField(content, Content.class, ConstantsField.ID, (String) args.get(ConstantsField.ID));
+                    if (!optionalSlide.isPresent()) {
+                        return new Result(Status.error, ConstantsError.INSTANCE_NOT_FOUND + ConstantsField.ID);
+                    }
+                    return new Result(Status.success, optionalElement.get());
+                }
+                default: {
+                    return new Result(Status.error, ConstantsError.ELEMENT_NOT_FOUND);
+                }
+            }
+
+        } catch (RuntimeException e) {
+            log.error(e);
+            log.error(ConstantsError.ELEMENTS_GET);
+            return new Result(Status.error, ConstantsError.ELEMENTS_GET);
+        }
+    }
+
+    public static Result getSlideElements (HashMap args) {
+        try {
+            ArrayList fields = new ArrayList();
+            fields.add(ConstantsField.PRESENTATION_ID);
+            fields.add(ConstantsField.SLIDE_ID);
+            fields.add(ConstantsField.ID);
+            Result isArgsValid = new ArgsValidator().validate(args, fields);
+            if (Status.error == isArgsValid.getStatus()) {
+                return isArgsValid;
+            }
+
+            Optional<Presentation> optionalPresentation = CSVCommonMethods.getInstanceExistenceByField(presentation, Presentation.class, ConstantsField.ID, (String) args.get(ConstantsField.PRESENTATION_ID));
+            if (!optionalPresentation.isPresent()) {
+                return new Result(Status.error, ConstantsError.INSTANCE_NOT_FOUND + ConstantsField.PRESENTATION_ID);
+            }
+
+            log.info("Presentation found: " +  optionalPresentation.get());
+
+            Optional<Presentation> optionalSlide = CSVCommonMethods.getInstanceExistenceByField(slide, Slide.class, ConstantsField.ID, (String) args.get(ConstantsField.SLIDE_ID));
+            if (!optionalSlide.isPresent()) {
+                return new Result(Status.error, ConstantsError.INSTANCE_NOT_FOUND + ConstantsField.SLIDE_ID);
+            }
+            log.info("Slide found: " +  optionalSlide.get());
+
+            log.debug("Set slide elements");
+            ArrayList elements = new ArrayList();
+            List shapes = CSVCommonMethods.getCollection(shape, Shape.class).orElse(new ArrayList());
+            List contents = CSVCommonMethods.getCollection(content, Content.class).orElse(new ArrayList());
+
+            elements.addAll(shapes);
+            elements.addAll(contents);
+
+            UUID presentationId = UUID.fromString((String) args.get(ConstantsField.PRESENTATION_ID));
+            UUID slideId = UUID.fromString((String) args.get(ConstantsField.SLIDE_ID));
+
+            ArrayList slideElements = (ArrayList) elements.stream().filter(el -> {
+                Element item = (Element) el;
+                return item.getPresentationId().equals(presentationId) && item.getSlideId().equals(slideId);
+            }).collect(Collectors.toList());
+
+            log.info("Slides found: " + slideElements);
+
+            return new Result(Status.success, slideElements);
+
+        } catch (RuntimeException e) {
+            log.error(e);
+            log.error(ConstantsError.ELEMENTS_GET);
+            return new Result(Status.error, ConstantsError.ELEMENTS_GET);
         }
     }
 }

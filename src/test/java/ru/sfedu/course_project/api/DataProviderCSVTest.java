@@ -2,15 +2,16 @@ package ru.sfedu.course_project.api;
 
 import com.opencsv.exceptions.CsvDataTypeMismatchException;
 import com.opencsv.exceptions.CsvRequiredFieldEmptyException;
+import org.apache.commons.collections4.multimap.HashSetValuedHashMap;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeAll;
+import ru.sfedu.course_project.Constants;
+import ru.sfedu.course_project.ConstantsInfo;
 import ru.sfedu.course_project.TestBase;
 import ru.sfedu.course_project.api.csv.CSVCommonMethods;
-import ru.sfedu.course_project.bean.Comment;
-import ru.sfedu.course_project.bean.Presentation;
-import ru.sfedu.course_project.bean.Slide;
+import ru.sfedu.course_project.bean.*;
 import ru.sfedu.course_project.enums.CollectionType;
 import ru.sfedu.course_project.enums.Role;
 import ru.sfedu.course_project.enums.Status;
@@ -517,6 +518,141 @@ public class DataProviderCSVTest extends TestBase {
         } else {
             fail();
         }
+    }
+
+    @Test
+    void addElementInSlideFail() {
+        log.info("{ addElementInSlideFail } START");
+
+        HashMap args = new HashMap();
+        args.put(ConstantsField.PRESENTATION_ID, String.valueOf(UUID.randomUUID()));
+        args.put(ConstantsField.SLIDE_ID, String.valueOf(UUID.randomUUID()));
+        args.put(ConstantsField.ELEMENT_TYPE, 123);
+        args.put(ConstantsField.FIGURE, 123);
+
+        Result result = provider.addElementInSlide(args);
+
+        assertTrue(Status.error == result.getStatus());
+
+        log.info("{ addElementInSlideFail } END");
+    }
+
+    @Test
+    void addRectangleInSlideSuccess() {
+        log.info("{ addElementInSlideSuccess } START");
+        UUID presentationId = UUID.randomUUID();
+        UUID slideId = UUID.randomUUID();
+        UUID id = UUID.randomUUID();
+        makeRectangleWithId(provider, id, slideId, presentationId);
+
+        log.info("{ addElementInSlideSuccess } END");
+    }
+
+    @Test
+    void getSlideElementByIdShapeSuccess () {
+        log.info("{ getSlideElementByIdShapeSuccess } START");
+
+        UUID presentationId = UUID.randomUUID();
+        UUID slideId = UUID.randomUUID();
+        UUID id = UUID.randomUUID();
+        makeRectangleWithId(provider, id, slideId, presentationId);
+
+        HashMap args = new HashMap();
+        args.put(ConstantsField.PRESENTATION_ID, String.valueOf(presentationId));
+        args.put(ConstantsField.SLIDE_ID, String.valueOf(slideId));
+        args.put(ConstantsField.ID, String.valueOf(id));
+        args.put(ConstantsField.ELEMENT_TYPE, String.valueOf(ElementType.shape));
+        args.put(ConstantsField.FIGURE, String.valueOf(Figure.rectangle));
+        Result resultGet = provider.getSlideElementById(args);
+
+        assertTrue(Status.success == resultGet.getStatus());
+        log.info("{ getSlideElementByIdShapeSuccess } END");
+    }
+
+    @Test
+    void getSlideElementsSuccess () {
+        log.info("{ getSlideElementByIdShapeSuccess } START");
+
+        UUID presentationId = UUID.randomUUID();
+        UUID slideId = UUID.randomUUID();
+        UUID id = UUID.randomUUID();
+        makeRectangleWithId(provider, id, slideId, presentationId);
+
+        HashMap args = new HashMap();
+        args.put(ConstantsField.ID, String.valueOf(id));
+        args.put(ConstantsField.PRESENTATION_ID, String.valueOf(presentationId));
+        args.put(ConstantsField.SLIDE_ID, String.valueOf(slideId));
+
+        Result resultGet = provider.getSlideElements(args);
+
+        assertEquals(Status.success, resultGet.getStatus());
+        ArrayList list = (ArrayList) resultGet.getReturnValue();
+        assertTrue(!list.isEmpty());
+
+        log.info("{ getSlideElementByIdShapeSuccess } END");
+    }
+
+    @Test
+    void addCustomRectangleInSlideSuccess() {
+        log.info("{ addCustomRectangleInSlideSuccess } START");
+
+        UUID presentationId = UUID.randomUUID();
+        UUID slideId = UUID.randomUUID();
+        makePresentationWithId(provider, presentationId);
+        makeSlideWithId(provider, slideId, presentationId);
+
+        HashMap testData = getUpdatedShape(UUID.randomUUID(), slideId, presentationId);
+
+        Shape shape = (Shape) testData.get("shape");
+        Result result = provider.addElementInSlide((HashMap) testData.get("args"));
+
+        assertTrue(Status.success == result.getStatus());
+
+        log.info("{ addCustomRectangleInSlideSuccess } END");
+    }
+
+    @Test
+    void editCustomRectangleInSlideSuccess() {
+        log.info("{ editCustomRectangleInSlideSuccess } START");
+
+        UUID presentationId = UUID.randomUUID();
+        UUID slideId = UUID.randomUUID();
+        makePresentationWithId(provider, presentationId);
+        makeSlideWithId(provider, slideId, presentationId);
+
+        UUID id = UUID.randomUUID();
+
+        HashMap createParams = new HashMap();
+        createParams.put(ConstantsField.ID, String.valueOf(id));
+        createParams.put(ConstantsField.PRESENTATION_ID, String.valueOf(presentationId));
+        createParams.put(ConstantsField.SLIDE_ID, String.valueOf(slideId));
+        createParams.put(ConstantsField.ELEMENT_TYPE, String.valueOf(ElementType.shape));
+        createParams.put(ConstantsField.FIGURE, String.valueOf(Figure.rectangle));
+
+        Result addResult = provider.addElementInSlide(createParams);
+
+        if (Status.success == addResult.getStatus()) {
+            Shape testShape = (Shape) addResult.getReturnValue();
+
+            HashMap testData = getUpdatedShape(testShape.getId(), slideId, presentationId);
+
+            Shape updatedShape = (Shape) testData.get("shape");
+            Result result = provider.editSlideElement((HashMap) testData.get("args"));
+
+            assertTrue(Status.success == result.getStatus());
+        }
+
+
+        log.info("{ editCustomRectangleInSlideSuccess } END");
+    }
+
+
+    @Test
+    void removeSlideElement() {
+    }
+
+    @Test
+    void editSlideElement() {
     }
 
 //    @Test

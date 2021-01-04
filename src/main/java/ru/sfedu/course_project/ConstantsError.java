@@ -45,10 +45,13 @@ public class ConstantsError {
     public static String FIGURE_CREATE = "Unable to create figure ";
 
     public static String ELEMENT_REMOVE = "Unable to remove element ";
-    public static String ELEMENT_EDIT = "Unable to edit shape ";
+    public static String ELEMENT_EDIT = "Unable to edit element ";
+    public static String ELEMENTS_GET = "Unable to get elements ";
 
     public static String SHAPE_REMOVE = "Unable to remove shape ";
     public static String SHAPE_EDIT = "Unable to edit shape ";
+    public static String SHAPE_GET = "Unable to get shape ";
 
     public static String CONTENT_EDIT = "Unable to update content element ";
+    public static String CONTENT_REMOVE = "Unable to remove content element ";
 }

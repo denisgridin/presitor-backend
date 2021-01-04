@@ -23,7 +23,7 @@ public class Helpers {
         while (matcher.find()) {
             log.debug("FIND");
             log.debug(matcher.group());
-            item = matcher.group().replace(String.format("%s=", field), "");
+            item = matcher.group().replace(String.format("%s=", field), "").replace("'", "");
             log.debug(String.format("%s: %s", field, item));
         }
         return item;

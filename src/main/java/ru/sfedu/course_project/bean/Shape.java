@@ -8,18 +8,19 @@ import ru.sfedu.course_project.bean.Element;
 import ru.sfedu.course_project.converters.FigureConverter;
 import ru.sfedu.course_project.converters.RoleConverter;
 import ru.sfedu.course_project.converters.StyleConverter;
+import ru.sfedu.course_project.utils.ConstantsField;
 
 import java.util.Objects;
 
 public class Shape extends Element {
 
-    @CsvCustomBindByName(column = "style", converter = StyleConverter.class)
+    @CsvCustomBindByName(column = ConstantsField.STYLE, converter = StyleConverter.class)
     private Style style;
 
     @CsvBindByName
     private String text;
 
-    @CsvCustomBindByName(column = "figure", converter = FigureConverter.class)
+    @CsvCustomBindByName(column = ConstantsField.FIGURE, converter = FigureConverter.class)
     private Figure figure;
 
     public Shape() { }
@@ -54,9 +55,7 @@ public class Shape extends Element {
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
         Shape shape = (Shape) o;
-        return Objects.equals(style, shape.style) &&
-                Objects.equals(text, shape.text) &&
-                figure == shape.figure;
+        return o.toString().equals(shape.toString());
     }
 
     @Override
@@ -70,6 +69,11 @@ public class Shape extends Element {
                 "style=" + style +
                 ", text='" + text + '\'' +
                 ", figure=" + figure +
+                ", id=" + getId() +
+                ", presentationId=" + getPresentationId() +
+                ", slideId=" + getSlideId() +
+                ", name=" + getName() +
+                ", layout=" + getLayout() +
                 '}';
     }
 }

@@ -45,8 +45,10 @@ public class ConstantsField {
     public static final String BOX_SHADOW = "boxShadow";
     public static final String BORDER_STYLE = "borderStyle";
     public static final String BORDER_WIDTH = "borderWidth";
-    public static final String BORDER_RADIUS = "borderRaduis";
+    public static final String BORDER_RADIUS = "borderRadius";
     public static final String BORDER_COLOR = "borderColor";
     public static final String OPACITY = "opacity";
+
+    public static final String STYLE = "style";
 
 }
