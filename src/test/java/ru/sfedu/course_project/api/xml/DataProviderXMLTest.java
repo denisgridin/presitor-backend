@@ -1,11 +1,14 @@
 package ru.sfedu.course_project.api.xml;
 
+import com.opencsv.exceptions.CsvDataTypeMismatchException;
+import com.opencsv.exceptions.CsvRequiredFieldEmptyException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import ru.sfedu.course_project.TestBase;
 import ru.sfedu.course_project.api.DataProvider;
+import ru.sfedu.course_project.api.DataProviderCSV;
 import ru.sfedu.course_project.api.DataProviderXML;
 import ru.sfedu.course_project.api.jdbc.DataProviderJDBCTest;
 import ru.sfedu.course_project.bean.Comment;
@@ -27,6 +30,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class DataProviderXMLTest extends TestBase {
     private static Logger log = LogManager.getLogger(DataProviderJDBCTest.class);
+
+    UUID pres = UUID.fromString("58a9ad3a-dd3a-4a6b-b125-18d1eca7b80c");
 
     DataProvider provider = new DataProviderXML();
 
@@ -52,6 +57,16 @@ public class DataProviderXMLTest extends TestBase {
         assertTrue(getPresentationResult.getStatus() == Status.success);
         assertTrue(result.getStatus() == Status.success);
         assertTrue(result.getReturnValue() instanceof UUID);
+    }
+
+    @Test
+    void createPresentationFromTemplateSuccess ()  {
+        HashMap args = new HashMap();
+        args.put(ConstantsField.TEMPLATE_ID, String.valueOf(pres));
+
+        Result result = provider.createPresentation(args);
+
+        assertTrue(Status.success == result.getStatus());
     }
 
     @Test
@@ -101,29 +116,6 @@ public class DataProviderXMLTest extends TestBase {
         assertTrue(result2.getStatus() == Status.error);
     }
 
-    @Test
-    void removePresentationByIdSuccess () throws IOException {
-        Result result = makeRandomPresentation(provider);
-
-        if (result.getStatus() == Status.success) {
-            HashMap args = new HashMap();
-            UUID presentationId = (UUID) result.getReturnValue();
-            args.put("id", String.valueOf(presentationId));
-            Result resultRemovePresentation = provider.removePresentationById(args);
-
-            assertTrue(resultRemovePresentation.getStatus() == Status.success);
-        } else {
-            assertTrue(false);
-        }
-    }
-
-    @Test
-    void removePresentationByIdFail () throws IOException {
-        HashMap args = new HashMap();
-        args.put("id", String.valueOf(UUID.randomUUID()));
-        Result result = provider.removePresentationById(args);
-        assertTrue(result.getStatus() == Status.error);
-    }
 
     @Test
     void editPresentationOptionsSuccess () throws IOException {
@@ -787,5 +779,67 @@ public class DataProviderXMLTest extends TestBase {
         assertTrue(!list.isEmpty());
 
         log.info("{ getSlideElementByIdShapeSuccess } END");
+    }
+
+    @Test
+    void rateByMarkSuccess() {
+        log.info("{ rateByMarkSuccess } START");
+
+        UUID presentationId = UUID.randomUUID();
+        makePresentationWithId(provider, presentationId);
+
+        HashMap args = new HashMap();
+        args.put(ConstantsField.PRESENTATION_ID, String.valueOf(presentationId));
+        args.put(ConstantsField.MARK, "bed");
+        Result resultRate = provider.rateByMark(args);
+
+        assertTrue(Status.success == resultRate.getStatus());
+
+        log.info("{ rateByMarkSuccess } END");
+    }
+
+    @Test
+    void removePresentationByIdSuccess() throws IOException {
+        log.debug("{TEST} removePresentationByIdSuccess START");
+        try {
+            DataProvider provider = new DataProviderCSV();
+
+            UUID id = pres;
+            Result createResult = makePresentationWithId(provider, id);
+
+            if (createResult.getStatus() == Status.success) {
+                HashMap args = new HashMap();
+                args.put(ConstantsField.ID, String.valueOf(id));
+                Result removeResult = provider.removePresentationById(args);
+                assertEquals(removeResult.getStatus(), Status.success);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            log.error(e);
+        }
+        log.debug("{TEST} removePresentationByIdSuccess END");
+    }
+
+    @Test
+    void removePresentationByIdFail() throws IOException {
+        log.debug("{TEST} removePresentationByIdFail START");
+        try {
+            DataProvider provider = new DataProviderCSV();
+
+            UUID id = UUID.randomUUID();
+            Result createResult = makePresentationWithId(provider, id);
+
+            if (createResult.getStatus() == Status.success) {
+                HashMap args = new HashMap();
+                args.put(ConstantsField.ID, String.valueOf(UUID.randomUUID()));
+                Result removeResult = provider.removePresentationById(args);
+                assertEquals(removeResult.getStatus(), Status.error);
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            log.error(e);
+        }
+        log.debug("{TEST} removePresentationByIdFail END");
     }
 }

@@ -97,42 +97,42 @@ public class XMLPresentationMethods {
             Presentation presentation = optionalPresentation.get();
 
 
-//            if (slideId.isPresent()) {
-//                HashMap paramsGetSlide = new HashMap();
-//                paramsGetSlide.put("presentationId", arguments.get("id"));
-//                paramsGetSlide.put("id", slideId.get());
-//                Result resultGetSlide = this.getSlideById(paramsGetSlide);
-//                if (resultGetSlide.getStatus() == Status.success) {
-//                    ArrayList slides = new ArrayList();
-//                    slides.add(resultGetSlide.getReturnValue());
-//                    presentation.setSlides(slides);
-//
-//                } else {
-//                    return resultGetSlide;
-//                }
-//            } else if (withSlides) {
-//                HashMap paramsGetSlides = new HashMap();
-//                paramsGetSlides.put("presentationId", arguments.get("id"));
-//                Result resultGetSlides = this.getPresentationSlides(paramsGetSlides);
-//                log.debug("[getPresentationById] get presentation slides: " + paramsGetSlides.get("presentationId"));
-//                if (resultGetSlides.getStatus() == Status.success) {
-//                    presentation.setSlides((ArrayList) resultGetSlides.getReturnValue());
-//                } else {
-//                    return resultGetSlides;
-//                }
-//            }
+            if (slideId.isPresent()) {
+                HashMap paramsGetSlide = new HashMap();
+                paramsGetSlide.put("presentationId", arguments.get("id"));
+                paramsGetSlide.put("id", slideId.get());
+                Result resultGetSlide = XMLSlideMethods.getSlideById(paramsGetSlide);
+                if (resultGetSlide.getStatus() == Status.success) {
+                    ArrayList slides = new ArrayList();
+                    slides.add(resultGetSlide.getReturnValue());
+                    presentation.setSlides(slides);
 
-//            if (withComments) {
-//                HashMap paramsGetComments = new HashMap();
-//                paramsGetComments.put("presentationId", arguments.get("id"));
-//                Result resultGetComments = this.getPresentationComments(paramsGetComments);
-//                log.debug("[getPresentationById] get presentation comments: " + paramsGetComments.get("presentationId"));
-//                if (resultGetComments.getStatus() == Status.success) {
-//                    presentation.setComments((ArrayList) resultGetComments.getReturnValue());
-//                } else {
-//                    return resultGetComments;
-//                }
-//            }
+                } else {
+                    return resultGetSlide;
+                }
+            } else if (withSlides) {
+                HashMap paramsGetSlides = new HashMap();
+                paramsGetSlides.put("presentationId", arguments.get("id"));
+                Result resultGetSlides = XMLSlideMethods.getPresentationSlides(paramsGetSlides);
+                log.debug("[getPresentationById] get presentation slides: " + paramsGetSlides.get("presentationId"));
+                if (resultGetSlides.getStatus() == Status.success) {
+                    presentation.setSlides((ArrayList) resultGetSlides.getReturnValue());
+                } else {
+                    return resultGetSlides;
+                }
+            }
+
+            if (withComments) {
+                HashMap paramsGetComments = new HashMap();
+                paramsGetComments.put("presentationId", arguments.get("id"));
+                Result resultGetComments = XMLCommentMethods.getPresentationComments(paramsGetComments);
+                log.debug("[getPresentationById] get presentation comments: " + paramsGetComments.get("presentationId"));
+                if (resultGetComments.getStatus() == Status.success) {
+                    presentation.setComments((ArrayList) resultGetComments.getReturnValue());
+                } else {
+                    return resultGetComments;
+                }
+            }
 
             return optionalPresentation.isPresent() ?
                     new Result(Status.success, presentation) :

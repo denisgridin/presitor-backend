@@ -2,10 +2,7 @@ package ru.sfedu.course_project.api;
 
 import com.opencsv.exceptions.CsvDataTypeMismatchException;
 import com.opencsv.exceptions.CsvRequiredFieldEmptyException;
-import ru.sfedu.course_project.api.xml.XMLCommentMethods;
-import ru.sfedu.course_project.api.xml.XMLElementMethods;
-import ru.sfedu.course_project.api.xml.XMLPresentationMethods;
-import ru.sfedu.course_project.api.xml.XMLSlideMethods;
+import ru.sfedu.course_project.api.xml.*;
 import ru.sfedu.course_project.bean.Presentation;
 import ru.sfedu.course_project.tools.Result;
 
@@ -115,11 +112,11 @@ public class DataProviderXML implements DataProvider {
 
     @Override
     public Result rateByMark(HashMap arguments) {
-        return null;
+        return XMLAssessmentMethods.rateByMark(arguments);
     }
 
     @Override
     public Result getPresentationMarks(HashMap arguments) {
-        return null;
+        return XMLAssessmentMethods.getPresentationMarks(arguments);
     }
 }
