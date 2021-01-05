@@ -37,12 +37,12 @@ public class DataProviderJDBC implements DataProvider {
     }
 
     @Override
-    public Result removePresentationById(HashMap arguments) throws CsvRequiredFieldEmptyException, IOException, CsvDataTypeMismatchException {
+    public Result removePresentationById(HashMap arguments) throws IOException {
         return JDBCPresentationMethods.removePresentationById(arguments);
     }
 
     @Override
-    public Result editPresentationOptions(HashMap arguments) throws CsvDataTypeMismatchException, IOException, CsvRequiredFieldEmptyException {
+    public Result editPresentationOptions(HashMap arguments) throws IOException {
         return JDBCPresentationMethods.editPresentationOptions(arguments);
     }
 

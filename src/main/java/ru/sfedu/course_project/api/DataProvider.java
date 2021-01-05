@@ -18,8 +18,8 @@ public interface DataProvider {
     public Result createPresentation (HashMap arguments);
     public Result getPresentations ();
     public Result getPresentationById (HashMap arguments) throws IOException;
-    public Result removePresentationById (HashMap arguments) throws CsvRequiredFieldEmptyException, IOException, CsvDataTypeMismatchException;
-    public Result editPresentationOptions (HashMap arguments) throws CsvDataTypeMismatchException, IOException, CsvRequiredFieldEmptyException;
+    public Result removePresentationById (HashMap arguments) throws  IOException;
+    public Result editPresentationOptions (HashMap arguments) throws IOException;
 
     public Result getPresentationSlides (HashMap arguments);
     public Result createPresentationSlide (HashMap arguments);

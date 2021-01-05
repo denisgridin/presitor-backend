@@ -88,7 +88,7 @@ public class Runner {
             } else {
                 return null; // TODO return error exception
             }
-        } catch (RuntimeException | IOException | CsvDataTypeMismatchException | CsvRequiredFieldEmptyException e) {
+        } catch (RuntimeException | IOException e) {
             e.printStackTrace();
             log.error("Runner Exception: unable to run method: " + method);
         }

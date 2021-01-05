@@ -1,30 +1,42 @@
 package ru.sfedu.course_project.api.xml;
 
-import com.opencsv.exceptions.CsvDataTypeMismatchException;
-import com.opencsv.exceptions.CsvRequiredFieldEmptyException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import ru.sfedu.course_project.TestBase;
 import ru.sfedu.course_project.api.DataProvider;
 import ru.sfedu.course_project.api.DataProviderXML;
 import ru.sfedu.course_project.api.jdbc.DataProviderJDBCTest;
 import ru.sfedu.course_project.bean.Presentation;
+import ru.sfedu.course_project.bean.Slide;
+import ru.sfedu.course_project.enums.CollectionType;
 import ru.sfedu.course_project.enums.Status;
 import ru.sfedu.course_project.tools.Result;
+import ru.sfedu.course_project.utils.ConfigurationUtil;
+import ru.sfedu.course_project.utils.ConstantsField;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Optional;
 import java.util.UUID;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class DataProviderXMLTest extends TestBase {
     private static Logger log = LogManager.getLogger(DataProviderJDBCTest.class);
 
     DataProvider provider = new DataProviderXML();
+
+    @BeforeAll
+    static void setTestFilePath () throws IOException {
+        try {
+            System.setProperty("dataPath", ConfigurationUtil.getConfigurationEntry("testDataPath"));
+        } catch (IOException e) {
+            log.debug(e);
+        }
+    }
 
     @Test
     void createPresentationSuccess () throws IOException {
@@ -89,7 +101,7 @@ public class DataProviderXMLTest extends TestBase {
     }
 
     @Test
-    void removePresentationByIdSuccess () throws CsvRequiredFieldEmptyException, IOException, CsvDataTypeMismatchException {
+    void removePresentationByIdSuccess () throws IOException {
         Result result = makeRandomPresentation(provider);
 
         if (result.getStatus() == Status.success) {
@@ -105,7 +117,7 @@ public class DataProviderXMLTest extends TestBase {
     }
 
     @Test
-    void removePresentationByIdFail () throws IOException, CsvDataTypeMismatchException, CsvRequiredFieldEmptyException {
+    void removePresentationByIdFail () throws IOException {
         HashMap args = new HashMap();
         args.put("id", String.valueOf(UUID.randomUUID()));
         Result result = provider.removePresentationById(args);
@@ -113,7 +125,7 @@ public class DataProviderXMLTest extends TestBase {
     }
 
     @Test
-    void editPresentationOptionsSuccess () throws CsvRequiredFieldEmptyException, IOException, CsvDataTypeMismatchException {
+    void editPresentationOptionsSuccess () throws IOException {
         Result result = makeRandomPresentation(provider);
 
         if (result.getStatus() == Status.success) {
@@ -147,7 +159,7 @@ public class DataProviderXMLTest extends TestBase {
     }
 
     @Test
-    void editPresentationOptionsFail () {
+    void editPresentationOptionsFail () throws IOException {
         try {
             HashMap args = new HashMap();
             args.put("id", String.valueOf(UUID.randomUUID()));
@@ -155,8 +167,128 @@ public class DataProviderXMLTest extends TestBase {
             Result resultRemovePresentation = provider.editPresentationOptions(args);
 
             assertEquals(Status.error, resultRemovePresentation.getStatus());
-        } catch (RuntimeException | CsvRequiredFieldEmptyException | IOException | CsvDataTypeMismatchException e) {
+        } catch (RuntimeException | IOException e) {
             log.error(e);
+        }
+    }
+
+    @Test
+    void getPresentationSlidesSuccess() {
+        log.debug("{TEST} getPresentationSlidesSuccess START");
+        DataProvider provider = new DataProviderXML();
+        UUID presId = UUID.randomUUID();
+        HashMap args = new HashMap();
+        args.put(ConstantsField.PRESENTATION_ID, String.valueOf(presId));
+        args.put(ConstantsField.ID, String.valueOf(presId));
+        Result createResult = makePresentationWithId(provider, presId);
+
+        if (Status.success == createResult.getStatus()) {
+            Result getSlidesResult = provider.getPresentationSlides(args);
+            assertEquals(getSlidesResult.getStatus(), Status.success);
+        }
+        log.debug("{TEST} getPresentationSlidesSuccess END");
+    }
+
+    @Test
+    void getPresentationSlidesFail() {
+        log.debug("{TEST} getPresentationSlidesFail START");
+        DataProvider provider = new DataProviderXML();
+        UUID presId = UUID.randomUUID();
+        HashMap args = new HashMap();
+        args.put(ConstantsField.PRESENTATION_ID, String.valueOf(presId));
+        Result getSlidesResult = provider.getPresentationSlides(args);
+        assertEquals(getSlidesResult.getStatus(), Status.error);
+        log.debug("{TEST} getPresentationSlidesFail END");
+    }
+
+    @Test
+    void createPresentationSlideSuccess() {
+        log.debug("{TEST} createPresentationSlideSuccess START");
+        DataProvider provider = new DataProviderXML();
+        HashMap args = new HashMap();
+        String presId = String.valueOf(UUID.randomUUID());
+        String slideId = String.valueOf(UUID.randomUUID());
+        args.put(ConstantsField.ID, presId);
+
+        Result createPresResult = makePresentationWithId(provider, UUID.fromString(presId));
+        if (Status.success == createPresResult.getStatus()) {
+            args.put(ConstantsField.ID, slideId);
+            args.put(ConstantsField.PRESENTATION_ID, presId);
+            Result createSlideResult = provider.createPresentationSlide(args);
+            assertEquals(createSlideResult.getStatus(), Status.success);
+            Optional<Slide> optionalSlide = XMLCommonMethods.getInstanceById(CollectionType.slide, args);
+            assertTrue(optionalSlide.isPresent());
+        }
+        log.debug("{TEST} createPresentationSlideSuccess END");
+    }
+
+    @Test
+    void removePresentationSlideByIdSuccess() {
+        log.debug("{TEST} removePresentationSlideByIdSuccess START");
+
+        DataProvider provider = new DataProviderXML();
+
+        UUID presentationId = UUID.randomUUID();
+        UUID slideId = UUID.randomUUID();
+
+        Result resultCreatePresentation = makePresentationWithId(provider, presentationId);
+        Result resultCreateSlide = makeSlideWithId(provider, slideId, presentationId);
+
+        assertEquals(resultCreatePresentation.getStatus(), Status.success);
+        assertEquals(resultCreateSlide.getStatus(), Status.success);
+        if (resultCreatePresentation.getStatus() == Status.success && Status.success == resultCreateSlide.getStatus()) {
+            HashMap args = new HashMap();
+            args.put(ConstantsField.PRESENTATION_ID, String.valueOf(presentationId));
+            args.put(ConstantsField.ID, String.valueOf(slideId));
+            Result resultGetSlide = provider.getSlideById(args);
+            assertEquals(resultGetSlide.getStatus(), Status.success);
+
+            Result resultRemoveSlide = provider.removePresentationSlideById(args);
+            assertEquals(resultRemoveSlide.getStatus(), Status.success);
+        }
+        log.debug("{TEST} removePresentationSlideByIdSuccess END");
+    }
+
+    @Test
+    void editPresentationSlideByIdSuccess() {
+        UUID presentationId = UUID.randomUUID();
+        UUID slideId = UUID.randomUUID();
+        String name = "Test name";
+        DataProvider provider = new DataProviderXML();
+        makePresentationWithId(provider, presentationId);
+        Result resultCreateSlide = makeSlideWithId(provider, slideId, presentationId);
+        if (resultCreateSlide.getStatus() == Status.success) {
+            HashMap args = new HashMap();
+            args.put(ConstantsField.PRESENTATION_ID, String.valueOf(presentationId));
+            args.put(ConstantsField.ID, String.valueOf(slideId));
+            args.put(ConstantsField.NAME, name);
+            Result resultEditSlide = provider.editPresentationSlideById(args);
+            assertEquals(resultEditSlide.getStatus(), Status.success);
+            if (Status.success == resultEditSlide.getStatus()) {
+                Result resultGetSlide = provider.getSlideById(args);
+                if (Status.success == resultGetSlide.getStatus()) {
+                    Slide slide = (Slide) resultGetSlide.getReturnValue();
+                    assertEquals(slide.getName(),  name);
+                }
+            }
+        }
+    }
+
+    @Test
+    void editPresentationSlideByIdFail() {
+        UUID presentationId = UUID.randomUUID();
+        UUID slideId = UUID.randomUUID();
+        String name = "Test name";
+        DataProvider provider = new DataProviderXML();
+        makePresentationWithId(provider, presentationId);
+        Result resultCreateSlide = makeSlideWithId(provider, slideId, presentationId);
+        if (Status.success == resultCreateSlide.getStatus()) {
+            HashMap args = new HashMap();
+            args.put(ConstantsField.PRESENTATION_ID, String.valueOf(UUID.randomUUID())); // Set random id
+            args.put(ConstantsField.ID, String.valueOf(UUID.randomUUID())); // Set random id
+            args.put(ConstantsField.NAME, name);
+            Result resultEditSlide = provider.editPresentationSlideById(args);
+            assertNotEquals(resultEditSlide.getStatus(), Status.success);
         }
     }
 }

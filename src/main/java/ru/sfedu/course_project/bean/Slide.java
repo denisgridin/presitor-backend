@@ -1,14 +1,12 @@
 package ru.sfedu.course_project.bean;
 
-import com.opencsv.bean.CsvBindAndSplitByName;
 import com.opencsv.bean.CsvBindByName;
 import com.opencsv.bean.CsvCustomBindByName;
 import com.opencsv.bean.CsvIgnore;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import ru.sfedu.course_project.Constants;
-import ru.sfedu.course_project.api.DataProviderCSV;
-import ru.sfedu.course_project.converters.ListIdsConverter;
+import org.simpleframework.xml.Attribute;
+import org.simpleframework.xml.Root;
 import ru.sfedu.course_project.converters.UUIDConverter;
 import ru.sfedu.course_project.utils.ConstantsField;
 
@@ -16,16 +14,21 @@ import ru.sfedu.course_project.utils.ConstantsField;
 import java.io.Serializable;
 import java.util.*;
 
+@Root
 public class Slide implements Serializable {
+    @Attribute
     @CsvCustomBindByName(column = ConstantsField.ID, converter = UUIDConverter.class)
     private UUID id;
 
+    @Attribute
     @CsvBindByName
     private String name;
 
+    @Attribute
     @CsvBindByName
     private int index;
 
+    @Attribute
     @CsvCustomBindByName(column = ConstantsField.PRESENTATION_ID, converter = UUIDConverter.class)
     private UUID presentationId;
 

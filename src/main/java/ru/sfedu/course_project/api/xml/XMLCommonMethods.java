@@ -30,25 +30,38 @@ public class XMLCommonMethods {
         return "XML";
     }
 
-    private static Optional<String> getFilePath(CollectionType collectionType) {
+    private static String getFilePath (CollectionType collectionType) {
         try {
-            Optional <String> path = Optional.of(String.format("%s/%s/%s.%s",
-                    ConfigurationUtil.getConfigurationEntry(DATA_PATH),
+            String dataPath = System.getProperty("dataPath");
+            String filePath = String.format("/%s/%s/%s.%s",
+                    System.getProperty("dataPath"),
                     ConfigurationUtil.getConfigurationEntry(FILE_EXTENTION),
                     collectionType,
-                    ConfigurationUtil.getConfigurationEntry(FILE_EXTENTION)));
-            log.debug(path);
+                    ConfigurationUtil.getConfigurationEntry(FILE_EXTENTION));
+
+            String root = System.getProperty("user.dir");
+            String path = (root + filePath).replace("\\", "/");
+            log.debug("path: " + path );
+
+            File directory = new File(path.substring(0, path.lastIndexOf("/")));
+
+            if (!directory.exists()){
+                directory.mkdirs();
+            }
+
+            new File(path).createNewFile();
             return path;
         } catch (IOException e) {
             e.printStackTrace();
-            return Optional.empty();
+            log.error(e);
+            return null;
         }
     }
 
     public static <T> Optional<List> getCollection(CollectionType collectionType) {
         try {
             log.debug(ConstantsInfo.COLLECTION_GET);
-            Optional<String> path = getFilePath(collectionType);
+            Optional<String> path = Optional.ofNullable(getFilePath(collectionType));
             if (!path.isPresent()) {
                 return Optional.empty();
             }
@@ -126,7 +139,7 @@ public class XMLCommonMethods {
         try {
             log.debug(String.format("[writeCollection] Attempt to write in %s", cl.getSimpleName().toLowerCase()));
 
-            Optional<String> path = getFilePath(collectionType);
+            Optional<String> path = Optional.ofNullable(getFilePath(collectionType));
             if (!path.isPresent()) {
                 log.error(ConstantsError.COLLECTION_WRITE);
                 return Status.error;

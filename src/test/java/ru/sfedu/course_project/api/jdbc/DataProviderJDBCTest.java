@@ -144,7 +144,7 @@ public class DataProviderJDBCTest extends TestBase {
             Result resultRemovePresentation = provider.editPresentationOptions(args);
 
             assertEquals(Status.error, resultRemovePresentation.getStatus());
-        } catch (RuntimeException | CsvRequiredFieldEmptyException | IOException | CsvDataTypeMismatchException e) {
+        } catch (RuntimeException | IOException  e) {
             log.error(e);
         }
     }

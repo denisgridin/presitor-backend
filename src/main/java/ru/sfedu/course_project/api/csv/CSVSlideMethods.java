@@ -1,7 +1,5 @@
 package ru.sfedu.course_project.api.csv;
 
-import com.opencsv.exceptions.CsvDataTypeMismatchException;
-import com.opencsv.exceptions.CsvRequiredFieldEmptyException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import ru.sfedu.course_project.ConstantsError;
@@ -16,7 +14,6 @@ import ru.sfedu.course_project.tools.Result;
 import ru.sfedu.course_project.utils.ConstantsField;
 import ru.sfedu.course_project.bean.Element;
 
-import java.io.IOException;
 import java.util.*;
 import java.util.stream.Collectors;
 

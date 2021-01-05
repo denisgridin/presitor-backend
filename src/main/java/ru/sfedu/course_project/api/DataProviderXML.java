@@ -3,6 +3,7 @@ package ru.sfedu.course_project.api;
 import com.opencsv.exceptions.CsvDataTypeMismatchException;
 import com.opencsv.exceptions.CsvRequiredFieldEmptyException;
 import ru.sfedu.course_project.api.xml.XMLPresentationMethods;
+import ru.sfedu.course_project.api.xml.XMLSlideMethods;
 import ru.sfedu.course_project.bean.Presentation;
 import ru.sfedu.course_project.tools.Result;
 
@@ -31,38 +32,38 @@ public class DataProviderXML implements DataProvider {
     }
 
     @Override
-    public Result removePresentationById(HashMap arguments) throws CsvRequiredFieldEmptyException, IOException, CsvDataTypeMismatchException {
+    public Result removePresentationById(HashMap arguments) throws IOException {
         return XMLPresentationMethods.removePresentationById(arguments);
     }
 
     @Override
-    public Result editPresentationOptions(HashMap arguments) throws CsvDataTypeMismatchException, IOException, CsvRequiredFieldEmptyException {
+    public Result editPresentationOptions(HashMap arguments) throws IOException {
         return XMLPresentationMethods.editPresentationOptions(arguments);
     }
 
     @Override
     public Result getPresentationSlides(HashMap arguments) {
-        return null;
+        return XMLSlideMethods.getPresentationSlides(arguments);
     }
 
     @Override
     public Result createPresentationSlide(HashMap arguments) {
-        return null;
+        return XMLSlideMethods.createPresentationSlide(arguments);
     }
 
     @Override
     public Result removePresentationSlideById(HashMap arguments) {
-        return null;
+        return XMLSlideMethods.removePresentationSlideById(arguments);
     }
 
     @Override
     public Result editPresentationSlideById(HashMap arguments) {
-        return null;
+        return XMLSlideMethods.editPresentationSlideById(arguments);
     }
 
     @Override
     public Result getSlideById(HashMap arguments) {
-        return null;
+        return XMLSlideMethods.getSlideById(arguments);
     }
 
     @Override

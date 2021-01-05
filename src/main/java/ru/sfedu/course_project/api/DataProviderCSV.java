@@ -77,7 +77,7 @@ public class DataProviderCSV implements DataProvider {
     }
 
     @Override
-    public Result editPresentationOptions (HashMap arguments) throws CsvDataTypeMismatchException, IOException, CsvRequiredFieldEmptyException {
+    public Result editPresentationOptions (HashMap arguments) throws IOException {
         return CSVPresentationMethods.editPresentationOptions(arguments);
     }
 

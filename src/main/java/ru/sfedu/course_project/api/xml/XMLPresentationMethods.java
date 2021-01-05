@@ -1,7 +1,5 @@
 package ru.sfedu.course_project.api.xml;
 
-import com.opencsv.exceptions.CsvDataTypeMismatchException;
-import com.opencsv.exceptions.CsvRequiredFieldEmptyException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import ru.sfedu.course_project.ConstantsInfo;
@@ -166,7 +164,7 @@ public class XMLPresentationMethods {
         }
     }
 
-    public static Result editPresentationOptions (HashMap arguments) throws CsvDataTypeMismatchException, IOException, CsvRequiredFieldEmptyException {
+    public static Result editPresentationOptions (HashMap arguments) throws IOException {
         try {
             UUID id = UUID.fromString((String) arguments.getOrDefault("id", null));
             if (id == null) {

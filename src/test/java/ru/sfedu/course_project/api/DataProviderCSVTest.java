@@ -874,7 +874,7 @@ public class DataProviderCSVTest extends TestBase {
             Result removeResult = provider.removePresentationById(args);
             assertEquals(removeResult.getStatus(), Status.success);
 
-        } catch (CsvRequiredFieldEmptyException | IOException | CsvDataTypeMismatchException e) {
+        } catch (IOException e) {
             e.printStackTrace();
             log.error(e);
         }
@@ -882,7 +882,7 @@ public class DataProviderCSVTest extends TestBase {
     }
 
     @Test
-    void removePresentationByIdFail() throws CsvRequiredFieldEmptyException, IOException, CsvDataTypeMismatchException {
+    void removePresentationByIdFail() throws IOException, CsvDataTypeMismatchException {
         log.debug("{TEST} removePresentationByIdFail START");
         try {
             DataProvider provider = new DataProviderCSV();
@@ -897,7 +897,7 @@ public class DataProviderCSVTest extends TestBase {
                 assertEquals(removeResult.getStatus(), Status.error);
             }
 
-        } catch (CsvRequiredFieldEmptyException | IOException | CsvDataTypeMismatchException e) {
+        } catch (IOException e) {
             e.printStackTrace();
             log.error(e);
         }

@@ -350,7 +350,7 @@ public class CSVPresentationMethods {
         }
     }
 
-    public static Result editPresentationOptions (HashMap arguments) throws CsvDataTypeMismatchException, IOException, CsvRequiredFieldEmptyException {
+    public static Result editPresentationOptions (HashMap arguments) throws IOException {
         try {
             UUID id = UUID.fromString((String) arguments.getOrDefault(ConstantsField.ID, null));
             if (null == id) {
