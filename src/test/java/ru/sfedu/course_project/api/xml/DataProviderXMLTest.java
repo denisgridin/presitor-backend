@@ -10,10 +10,9 @@ import ru.sfedu.course_project.api.DataProviderXML;
 import ru.sfedu.course_project.api.jdbc.DataProviderJDBCTest;
 import ru.sfedu.course_project.bean.Comment;
 import ru.sfedu.course_project.bean.Presentation;
+import ru.sfedu.course_project.bean.Shape;
 import ru.sfedu.course_project.bean.Slide;
-import ru.sfedu.course_project.enums.CollectionType;
-import ru.sfedu.course_project.enums.Role;
-import ru.sfedu.course_project.enums.Status;
+import ru.sfedu.course_project.enums.*;
 import ru.sfedu.course_project.tools.Result;
 import ru.sfedu.course_project.utils.ConfigurationUtil;
 import ru.sfedu.course_project.utils.ConstantsField;
@@ -478,5 +477,315 @@ public class DataProviderXMLTest extends TestBase {
         } else {
             fail();
         }
+    }
+
+
+    @Test
+    void addElementInSlideFail() {
+        log.info("{ addElementInSlideFail } START");
+
+        HashMap args = new HashMap();
+        args.put(ConstantsField.PRESENTATION_ID, String.valueOf(UUID.randomUUID()));
+        args.put(ConstantsField.SLIDE_ID, String.valueOf(UUID.randomUUID()));
+        args.put(ConstantsField.ELEMENT_TYPE, 123);
+        args.put(ConstantsField.FIGURE, 123);
+
+        Result result = provider.addElementInSlide(args);
+
+        assertTrue(Status.error == result.getStatus());
+
+        log.info("{ addElementInSlideFail } END");
+    }
+
+    @Test
+    void addRectangleInSlideSuccess() {
+        log.info("{ addElementInSlideSuccess } START");
+        UUID presentationId = UUID.randomUUID();
+        UUID slideId = UUID.randomUUID();
+        UUID id = UUID.randomUUID();
+        makeRectangleWithId(provider, id, slideId, presentationId);
+
+        log.info("{ addElementInSlideSuccess } END");
+    }
+
+    @Test
+    void getSlideElementByIdShapeSuccess () {
+        log.info("{ getSlideElementByIdShapeSuccess } START");
+
+        UUID presentationId = UUID.randomUUID();
+        UUID slideId = UUID.randomUUID();
+        UUID id = UUID.randomUUID();
+        makeRectangleWithId(provider, id, slideId, presentationId);
+
+        HashMap args = new HashMap();
+        args.put(ConstantsField.PRESENTATION_ID, String.valueOf(presentationId));
+        args.put(ConstantsField.SLIDE_ID, String.valueOf(slideId));
+        args.put(ConstantsField.ID, String.valueOf(id));
+        args.put(ConstantsField.ELEMENT_TYPE, String.valueOf(ElementType.shape));
+        args.put(ConstantsField.FIGURE, String.valueOf(Figure.rectangle));
+        Result resultGet = provider.getSlideElementById(args);
+
+        assertTrue(Status.success == resultGet.getStatus());
+        log.info("{ getSlideElementByIdShapeSuccess } END");
+    }
+
+    @Test
+    void getSlideElementsSuccess () {
+        log.info("{ getSlideElementByIdShapeSuccess } START");
+
+        UUID presentationId = UUID.randomUUID();
+        UUID slideId = UUID.randomUUID();
+        UUID id = UUID.randomUUID();
+        makeRectangleWithId(provider, id, slideId, presentationId);
+
+        HashMap args = new HashMap();
+        args.put(ConstantsField.ID, String.valueOf(id));
+        args.put(ConstantsField.PRESENTATION_ID, String.valueOf(presentationId));
+        args.put(ConstantsField.SLIDE_ID, String.valueOf(slideId));
+
+        Result resultGet = provider.getSlideElements(args);
+
+        assertEquals(Status.success, resultGet.getStatus());
+        ArrayList list = (ArrayList) resultGet.getReturnValue();
+        assertTrue(!list.isEmpty());
+
+        log.info("{ getSlideElementByIdShapeSuccess } END");
+    }
+
+    @Test
+    void addCustomRectangleInSlideSuccess() {
+        log.info("{ addCustomRectangleInSlideSuccess } START");
+
+        UUID presentationId = UUID.randomUUID();
+        UUID slideId = UUID.randomUUID();
+        makePresentationWithId(provider, presentationId);
+        makeSlideWithId(provider, slideId, presentationId);
+
+        HashMap testData = getUpdatedShape(UUID.randomUUID(), slideId, presentationId);
+
+        Shape shape = (Shape) testData.get("shape");
+        Result result = provider.addElementInSlide((HashMap) testData.get("args"));
+
+        assertTrue(Status.success == result.getStatus());
+
+        log.info("{ addCustomRectangleInSlideSuccess } END");
+    }
+
+    @Test
+    void editCustomRectangleInSlideSuccess() {
+        log.info("{ editCustomRectangleInSlideSuccess } START");
+
+        UUID presentationId = UUID.randomUUID();
+        UUID slideId = UUID.randomUUID();
+        makePresentationWithId(provider, presentationId);
+        makeSlideWithId(provider, slideId, presentationId);
+
+        UUID id = UUID.randomUUID();
+
+        HashMap createParams = new HashMap();
+        createParams.put(ConstantsField.ID, String.valueOf(id));
+        createParams.put(ConstantsField.PRESENTATION_ID, String.valueOf(presentationId));
+        createParams.put(ConstantsField.SLIDE_ID, String.valueOf(slideId));
+        createParams.put(ConstantsField.ELEMENT_TYPE, String.valueOf(ElementType.shape));
+        createParams.put(ConstantsField.FIGURE, String.valueOf(Figure.rectangle));
+
+        Result addResult = provider.addElementInSlide(createParams);
+
+        if (Status.success == addResult.getStatus()) {
+            Shape testShape = (Shape) addResult.getReturnValue();
+
+            HashMap testData = getUpdatedShape(testShape.getId(), slideId, presentationId);
+
+            Shape updatedShape = (Shape) testData.get("shape");
+            Result result = provider.editSlideElement((HashMap) testData.get("args"));
+
+            assertTrue(Status.success == result.getStatus());
+        }
+
+
+        log.info("{ editCustomRectangleInSlideSuccess } END");
+    }
+
+
+    @Test
+    void removeSlideElementSuccess() {
+        log.info("{ removeSlideElementSuccess } START");
+
+
+        UUID presentationId = UUID.randomUUID();
+        UUID slideId = UUID.randomUUID();
+        makePresentationWithId(provider, presentationId);
+        makeSlideWithId(provider, slideId, presentationId);
+
+        UUID id = UUID.randomUUID();
+
+        HashMap params = new HashMap();
+        params.put(ConstantsField.ID, String.valueOf(id));
+        params.put(ConstantsField.PRESENTATION_ID, String.valueOf(presentationId));
+        params.put(ConstantsField.SLIDE_ID, String.valueOf(slideId));
+        params.put(ConstantsField.ELEMENT_TYPE, String.valueOf(ElementType.shape));
+        params.put(ConstantsField.FIGURE, String.valueOf(Figure.rectangle));
+
+        Result addResult = provider.addElementInSlide(params);
+
+        if (Status.success == addResult.getStatus()) {
+
+            Result resultRemove = provider.removeSlideElement(params);
+            assertTrue(Status.success == resultRemove.getStatus());
+        }
+
+        log.info("{ removeSlideElementSuccess } END");
+    }
+
+    ////////////////
+
+    @Test
+    void getSlideElementByIdShapeFail () {
+        log.info("{ getSlideElementByIdShapeFail } START");
+
+        HashMap args = new HashMap();
+        args.put(ConstantsField.PRESENTATION_ID, String.valueOf(UUID.randomUUID()));
+        args.put(ConstantsField.SLIDE_ID, String.valueOf(UUID.randomUUID()));
+        args.put(ConstantsField.ID, String.valueOf(UUID.randomUUID()));
+        args.put(ConstantsField.ELEMENT_TYPE, String.valueOf(123));
+        args.put(ConstantsField.FIGURE, String.valueOf(123));
+        Result resultGet = provider.getSlideElementById(args);
+
+        assertFalse(Status.success == resultGet.getStatus());
+        log.info("{ getSlideElementByIdShapeFail } END");
+    }
+
+    @Test
+    void getSlideElementsFail () {
+        log.info("{ getSlideElementsFail } START");
+
+        Result resultGet = provider.getSlideElements(new HashMap());
+
+        assertEquals(Status.error, resultGet.getStatus());
+
+        log.info("{ getSlideElementsFail } END");
+    }
+
+    @Test
+    void addCustomRectangleInSlideFail() {
+        log.info("{ addCustomRectangleInSlideFail } START");
+
+        Result result = provider.addElementInSlide(new HashMap());
+
+        assertTrue(Status.error == result.getStatus());
+
+        log.info("{ addCustomRectangleInSlideFail } END");
+    }
+
+    @Test
+    void editCustomRectangleInSlideFail() {
+        log.info("{ editCustomRectangleInSlideFail } START");
+
+        Result result = provider.editSlideElement(new HashMap());
+        assertTrue(Status.error == result.getStatus());
+        log.info("{ editCustomRectangleInSlideFail } END");
+    }
+
+
+    @Test
+    void removeSlideElementFail() {
+        log.info("{ removeSlideElementFail } START");
+
+        HashMap args = new HashMap();
+        args.put(ConstantsField.PRESENTATION_ID, String.valueOf(UUID.randomUUID()));
+        args.put(ConstantsField.SLIDE_ID, String.valueOf(UUID.randomUUID()));
+        args.put(ConstantsField.ID, String.valueOf(UUID.randomUUID()));
+        args.put(ConstantsField.ELEMENT_TYPE, String.valueOf(123));
+        args.put(ConstantsField.FIGURE, String.valueOf(123));
+        Result resultRemove = provider.removeSlideElement(args);
+        assertTrue(Status.error == resultRemove.getStatus());
+
+        log.info("{ removeSlideElementSuccess } END");
+    }
+
+
+    @Test
+    void addContentInSlideSuccess() {
+        log.info("{ addContentInSlideSuccess } START");
+        UUID presentationId = UUID.randomUUID();
+        UUID slideId = UUID.randomUUID();
+        UUID id = UUID.randomUUID();
+        HashMap args = new HashMap();
+        args.put(ConstantsField.PRESENTATION_ID, String.valueOf(presentationId));
+        args.put(ConstantsField.SLIDE_ID, String.valueOf(slideId));
+        args.put(ConstantsField.ELEMENT_TYPE, String.valueOf(ElementType.content));
+        args.put(ConstantsField.ID, String.valueOf(id));
+
+        makeContentWithId(provider, id, slideId, presentationId, args);
+
+        Result resultRemove = provider.removeSlideElement(args);
+
+        log.info("{ addContentInSlideSuccess } END");
+    }
+
+    @Test
+    void addContentInSlideContentSuccess() {
+        log.info("{ addContentInSlideContentSuccess } START");
+        UUID presentationId = UUID.randomUUID();
+        UUID slideId = UUID.randomUUID();
+        UUID id = UUID.randomUUID();
+
+        makeCustomContent(provider, id, slideId, presentationId);
+
+        log.info("{ addContentInSlideContentSuccess } END");
+    }
+
+    @Test
+    void removeSlideElementContentSuccess() {
+        log.info("{ removeSlideElementContentSuccess } START");
+
+
+        UUID presentationId = UUID.randomUUID();
+        UUID slideId = UUID.randomUUID();
+        makePresentationWithId(provider, presentationId);
+        makeSlideWithId(provider, slideId, presentationId);
+
+        UUID id = UUID.randomUUID();
+
+        HashMap params = new HashMap();
+        params.put(ConstantsField.ID, String.valueOf(id));
+        params.put(ConstantsField.PRESENTATION_ID, String.valueOf(presentationId));
+        params.put(ConstantsField.SLIDE_ID, String.valueOf(slideId));
+        params.put(ConstantsField.ELEMENT_TYPE, String.valueOf(ElementType.shape));
+        params.put(ConstantsField.FIGURE, String.valueOf(Figure.rectangle));
+
+        Result addResult = provider.addElementInSlide(params);
+
+        if (Status.success == addResult.getStatus()) {
+
+            Result resultRemove = provider.removeSlideElement(params);
+            assertTrue(Status.success == resultRemove.getStatus());
+        }
+
+        log.info("{ removeSlideElementContentSuccess } END");
+    }
+
+    @Test
+    void getSlideElementsContentSuccess () {
+        log.info("{ getSlideElementByIdShapeSuccess } START");
+
+        UUID presentationId = UUID.randomUUID();
+        UUID slideId = UUID.randomUUID();
+        UUID id = UUID.randomUUID();
+
+        makeCustomContent(provider, id, slideId, presentationId);
+
+        HashMap args = new HashMap();
+        args.put(ConstantsField.ID, String.valueOf(id));
+        args.put(ConstantsField.PRESENTATION_ID, String.valueOf(presentationId));
+        args.put(ConstantsField.SLIDE_ID, String.valueOf(slideId));
+
+        Result resultGet = provider.getSlideElements(args);
+
+        assertEquals(Status.success, resultGet.getStatus());
+        ArrayList list = (ArrayList) resultGet.getReturnValue();
+        assertTrue(!list.isEmpty());
+
+        log.info("{ getSlideElementByIdShapeSuccess } END");
     }
 }
