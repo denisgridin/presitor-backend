@@ -27,6 +27,8 @@ public class DataProviderCSVTest extends TestBase {
 
     DataProviderCSV provider = new DataProviderCSV();
 
+    UUID presentatioId = UUID.fromString("e6d3523a-84bd-42da-b086-390cc1f95376"); // set last presentation id
+
     @BeforeAll
     static void setTestFilePath () throws IOException {
         try {
@@ -35,29 +37,6 @@ public class DataProviderCSVTest extends TestBase {
             log.debug(e);
         }
     }
-
-    @Test
-    void createPresentationFromTemplateSuccess () {
-        HashMap args = new HashMap();
-        args.put(ConstantsField.TEMPLATE_ID, "353038aa-9497-4f1a-ad1e-9e539fe2ecfd");
-
-        Result result = provider.createPresentation(args);
-
-        assertTrue(Status.success == result.getStatus());
-    }
-
-    @Test
-    void getPresentationWithOptionsSuccess () {
-        HashMap args = new HashMap();
-        args.put(ConstantsField.ID, "353038aa-9497-4f1a-ad1e-9e539fe2ecfd");
-        args.put(ConstantsField.WITH_SLIDES, "true");
-        args.put(ConstantsField.WITH_ELEMENTS, "true");
-
-        Result result = provider.getPresentationById(args);
-
-        assertTrue(Status.success == result.getStatus());
-    }
-
 
     @Test
     void createPresentationSuccess() throws IOException {
@@ -105,6 +84,28 @@ public class DataProviderCSVTest extends TestBase {
         log.debug("{TEST} createPresentationFail END");
     }
 
+
+    @Test
+    void getPresentationWithOptionsSuccess () {
+        HashMap args = new HashMap();
+        args.put(ConstantsField.ID, String.valueOf(presentatioId));
+        args.put(ConstantsField.WITH_SLIDES, "true");
+        args.put(ConstantsField.WITH_ELEMENTS, "true");
+
+        Result result = provider.getPresentationById(args);
+
+        assertTrue(Status.success == result.getStatus());
+    }
+    @Test
+    void createPresentationFromTemplateSuccess () {
+        HashMap args = new HashMap();
+        args.put(ConstantsField.TEMPLATE_ID, String.valueOf(presentatioId));
+
+        Result result = provider.createPresentation(args);
+
+        assertTrue(Status.success == result.getStatus());
+    }
+
     @Test
     void getPresentationByIdSuccess() {
         log.debug("{TEST} getPresentationByIdSuccess START");
@@ -134,53 +135,6 @@ public class DataProviderCSVTest extends TestBase {
 
         assertEquals(getPresResult.getStatus(), Status.error);
         log.debug("{TEST} getPresentationByIdFail END");
-    }
-
-
-    @Test
-    void removePresentationByIdSuccess() throws CsvRequiredFieldEmptyException, IOException, CsvDataTypeMismatchException {
-        log.debug("{TEST} removePresentationByIdSuccess START");
-        try {
-            DataProvider provider = new DataProviderCSV();
-
-            UUID id = UUID.fromString("353038aa-9497-4f1a-ad1e-9e539fe2ecfd");
-//            Result createResult = makePresentationWithId(provider, id);
-
-//            if (createResult.getStatus() == Status.success) {
-//            }
-            HashMap args = new HashMap();
-            args.put(ConstantsField.ID, String.valueOf(id));
-            Result removeResult = provider.removePresentationById(args);
-            assertEquals(removeResult.getStatus(), Status.success);
-
-        } catch (CsvRequiredFieldEmptyException | IOException | CsvDataTypeMismatchException e) {
-            e.printStackTrace();
-            log.error(e);
-        }
-        log.debug("{TEST} removePresentationByIdSuccess END");
-    }
-
-    @Test
-    void removePresentationByIdFail() throws CsvRequiredFieldEmptyException, IOException, CsvDataTypeMismatchException {
-        log.debug("{TEST} removePresentationByIdFail START");
-        try {
-            DataProvider provider = new DataProviderCSV();
-
-            UUID id = UUID.randomUUID();
-            Result createResult = makePresentationWithId(provider, id);
-
-            if (createResult.getStatus() == Status.success) {
-                HashMap args = new HashMap();
-                args.put(ConstantsField.ID, String.valueOf(UUID.randomUUID()));
-                Result removeResult = provider.removePresentationById(args);
-                assertEquals(removeResult.getStatus(), Status.error);
-            }
-
-        } catch (CsvRequiredFieldEmptyException | IOException | CsvDataTypeMismatchException e) {
-            e.printStackTrace();
-            log.error(e);
-        }
-        log.debug("{TEST} removePresentationByIdFail END");
     }
 
     @Test
@@ -868,7 +822,7 @@ public class DataProviderCSVTest extends TestBase {
         log.info("{ getPresentationMarksSuccess } START");
 
         HashMap args = new HashMap();
-        args.put(ConstantsField.PRESENTATION_ID, "1415aa57-83e2-4076-a317-75463ea17e6b");
+        args.put(ConstantsField.PRESENTATION_ID, String.valueOf(presentatioId));
         Result result = provider.getPresentationMarks(args);
 
         assertTrue(Status.success == result.getStatus());
@@ -902,6 +856,54 @@ public class DataProviderCSVTest extends TestBase {
         assertTrue(Status.error == result.getStatus());
         log.info("{ getPresentationMarksSuccess } END");
     }
+
+
+    @Test
+    void removePresentationByIdSuccess() throws CsvRequiredFieldEmptyException, IOException, CsvDataTypeMismatchException {
+        log.debug("{TEST} removePresentationByIdSuccess START");
+        try {
+            DataProvider provider = new DataProviderCSV();
+
+            UUID id = presentatioId;
+//            Result createResult = makePresentationWithId(provider, id);
+
+//            if (createResult.getStatus() == Status.success) {
+//            }
+            HashMap args = new HashMap();
+            args.put(ConstantsField.ID, String.valueOf(id));
+            Result removeResult = provider.removePresentationById(args);
+            assertEquals(removeResult.getStatus(), Status.success);
+
+        } catch (CsvRequiredFieldEmptyException | IOException | CsvDataTypeMismatchException e) {
+            e.printStackTrace();
+            log.error(e);
+        }
+        log.debug("{TEST} removePresentationByIdSuccess END");
+    }
+
+    @Test
+    void removePresentationByIdFail() throws CsvRequiredFieldEmptyException, IOException, CsvDataTypeMismatchException {
+        log.debug("{TEST} removePresentationByIdFail START");
+        try {
+            DataProvider provider = new DataProviderCSV();
+
+            UUID id = UUID.randomUUID();
+            Result createResult = makePresentationWithId(provider, id);
+
+            if (createResult.getStatus() == Status.success) {
+                HashMap args = new HashMap();
+                args.put(ConstantsField.ID, String.valueOf(UUID.randomUUID()));
+                Result removeResult = provider.removePresentationById(args);
+                assertEquals(removeResult.getStatus(), Status.error);
+            }
+
+        } catch (CsvRequiredFieldEmptyException | IOException | CsvDataTypeMismatchException e) {
+            e.printStackTrace();
+            log.error(e);
+        }
+        log.debug("{TEST} removePresentationByIdFail END");
+    }
+
 
 //    @Test
 //    void getCollectionsListSuccess() {
