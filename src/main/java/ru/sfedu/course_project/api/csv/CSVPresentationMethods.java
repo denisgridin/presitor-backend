@@ -274,16 +274,77 @@ public class CSVPresentationMethods {
             if (null == arguments.get(ConstantsField.ID)) {
                 return new Result(Status.error, ConstantsError.ARGUMENT_IS_NOT_PROVIDED + "id");
             } else {
+                log.debug("Presentation removing");
                 UUID id = UUID.fromString((String) arguments.get(ConstantsField.ID));
                 Status status = CSVCommonMethods.removeRecordById(presentation, Presentation.class, id);
                 if (Status.success == status) {
-                    return new Result(Status.success, ConstantsSuccess.PRESENTATION_REMOVE);
+                    log.info(ConstantsSuccess.PRESENTATION_REMOVE);
+                    log.info("Removing presentation children..");
+                    return removePresentationChildren(id);
                 } else {
                     return new Result(Status.error, ConstantsError.PRESENTATION_REMOVE);
                 }
             }
         } catch (RuntimeException e) {
             e.printStackTrace();
+            log.error(e);
+            return new Result(Status.error, ConstantsError.PRESENTATION_REMOVE);
+        }
+    }
+
+    public static Result removePresentationChildren (UUID presentationId){
+        try {
+            ArrayList allSlides = (ArrayList) CSVCommonMethods.getCollection(CollectionType.slide, Slide.class).orElse(new ArrayList());
+            log.debug("get allSlides");
+            ArrayList allShapes = (ArrayList) CSVCommonMethods.getCollection(CollectionType.shape, Shape.class).orElse(new ArrayList());
+            log.debug("get allShapes");
+            ArrayList allContents = (ArrayList) CSVCommonMethods.getCollection(CollectionType.content, Content.class).orElse(new ArrayList());
+            log.debug("get allContents");
+            ArrayList allComments = (ArrayList) CSVCommonMethods.getCollection(CollectionType.comment, Comment.class).orElse(new ArrayList());
+            log.debug("get allComments");
+            ArrayList allMarks = (ArrayList) CSVCommonMethods.getCollection(CollectionType.assessment, Assessment.class).orElse(new ArrayList());
+            log.debug("get allMarks");
+
+            allSlides = (ArrayList) allSlides.stream().filter(el -> {
+                Slide slide = (Slide) el;
+                return !slide.getPresentationId().equals(presentationId);
+            }).collect(Collectors.toList());
+            log.debug("Filter allSlides");
+            allShapes = (ArrayList) allShapes.stream().filter(el -> {
+                Shape shape = (Shape) el;
+                return !shape.getPresentationId().equals(presentationId);
+            }).collect(Collectors.toList());
+            log.debug("Filter allShapes");
+            allContents = (ArrayList) allContents.stream().filter(el -> {
+                Content content = (Content) el;
+                return !content.getPresentationId().equals(presentationId);
+            }).collect(Collectors.toList());
+            log.debug("Filter allContents");
+            allComments = (ArrayList) allComments.stream().filter(el -> {
+                Comment comment = (Comment) el;
+                return !comment.getPresentationId().equals(presentationId);
+            }).collect(Collectors.toList());
+            log.debug("Filter allComments");
+            allMarks = (ArrayList) allMarks.stream().filter(el -> {
+                Assessment assessment = (Assessment) el;
+                return !assessment.getPresentationId().equals(presentationId);
+            }).collect(Collectors.toList());
+            log.debug("Filter allMarks");
+
+
+            Status statusWriteAllSlides = CSVCommonMethods.writeCollection(allSlides, Slide.class, CollectionType.slide);
+            log.debug("statusWriteAllSlides: " + statusWriteAllSlides);
+            Status statusWriteAllShapes = CSVCommonMethods.writeCollection(allShapes, Shape.class, CollectionType.shape);
+            log.debug("statusWriteAllShapes: " + statusWriteAllShapes);
+            Status statusWriteAllContents = CSVCommonMethods.writeCollection(allContents, Content.class, CollectionType.content);
+            log.debug("statusWriteAllContents: " + statusWriteAllContents);
+            Status statusWriteAllComments = CSVCommonMethods.writeCollection(allComments, Comment.class, CollectionType.comment);
+            log.debug("statusWriteAllComments: " + statusWriteAllComments);
+            Status statusWriteAllMarks = CSVCommonMethods.writeCollection(allMarks, Assessment.class, CollectionType.assessment);
+            log.debug("statusWriteAllMarks: " + statusWriteAllMarks);
+
+            return new Result(Status.success, ConstantsSuccess.PRESENTATION_REMOVE);
+        } catch (RuntimeException e) {
             log.error(e);
             return new Result(Status.error, ConstantsError.PRESENTATION_REMOVE);
         }

@@ -143,15 +143,15 @@ public class DataProviderCSVTest extends TestBase {
         try {
             DataProvider provider = new DataProviderCSV();
 
-            UUID id = UUID.randomUUID();
-            Result createResult = makePresentationWithId(provider, id);
+            UUID id = UUID.fromString("353038aa-9497-4f1a-ad1e-9e539fe2ecfd");
+//            Result createResult = makePresentationWithId(provider, id);
 
-            if (createResult.getStatus() == Status.success) {
-                HashMap args = new HashMap();
-                args.put(ConstantsField.ID, String.valueOf(id));
-                Result removeResult = provider.removePresentationById(args);
-                assertEquals(removeResult.getStatus(), Status.success);
-            }
+//            if (createResult.getStatus() == Status.success) {
+//            }
+            HashMap args = new HashMap();
+            args.put(ConstantsField.ID, String.valueOf(id));
+            Result removeResult = provider.removePresentationById(args);
+            assertEquals(removeResult.getStatus(), Status.success);
 
         } catch (CsvRequiredFieldEmptyException | IOException | CsvDataTypeMismatchException e) {
             e.printStackTrace();

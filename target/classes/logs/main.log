@@ -2775,3 +2775,880 @@
 [line 105]	05 янв. 2021 14:07:35,838 [main] INFO  CSVCommonMethods/writeCollection - [writeCollection] Collection was wrote
 [line 183]	05 янв. 2021 14:07:35,838 [main] INFO  CSVPresentationMethods/buildPresentationFromTemplate - Contents wrote
 [line 35]	05 янв. 2021 14:07:35,838 [main] INFO  Result/<init> - { status: success, value: Presentation successfully created  }
+[line 79]	05 янв. 2021 14:09:39,266 [main] INFO  CSVPresentationMethods/createPresentationFromTemplate - Searching template presentation
+[line 22]	05 янв. 2021 14:09:39,280 [main] DEBUG ArgsValidator/validate - [validate] Validate: [id]
+[line 24]	05 янв. 2021 14:09:39,284 [main] DEBUG ArgsValidator/validate - [validate] Null fields: []
+[line 25]	05 янв. 2021 14:09:39,286 [main] DEBUG ArgsValidator/validate - [validate] Null fields: []
+[line 35]	05 янв. 2021 14:09:39,290 [main] INFO  Result/<init> - { status: success, value:  }
+[line 277]	05 янв. 2021 14:09:39,326 [main] DEBUG CSVCommonMethods/getInstanceExistenceByField - [getInstanceExistenceByField] Get: Presentation; id: 353038aa-9497-4f1a-ad1e-9e539fe2ecfd
+[line 218]	05 янв. 2021 14:09:39,328 [main] DEBUG CSVCommonMethods/getInstanceById - presentation id: 353038aa-9497-4f1a-ad1e-9e539fe2ecfd
+[line 66]	05 янв. 2021 14:09:39,332 [main] DEBUG CSVCommonMethods/getCollection - [getCollection] Attempt to get collection: presentation
+[line 42]	05 янв. 2021 14:09:39,335 [main] DEBUG CSVCommonMethods/getFilePath - path: D:/Универ/CourseProject/src/main/resources/data/test/csv/presentation.csv
+[line 77]	05 янв. 2021 14:09:39,609 [main] INFO  CSVCommonMethods/getCollection - [getCollection] Collection was retrieved: presentation
+[line 223]	05 янв. 2021 14:09:39,611 [main] DEBUG CSVCommonMethods/getInstanceById - Attempt to find presentation: 353038aa-9497-4f1a-ad1e-9e539fe2ecfd
+[line 224]	05 янв. 2021 14:09:39,654 [main] DEBUG CSVCommonMethods/getInstanceById - list instance: [Presentation{id=353038aa-9497-4f1a-ad1e-9e539fe2ecfd, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}]
+[line 227]	05 янв. 2021 14:09:39,661 [main] DEBUG CSVCommonMethods/getInstanceById - Optional[Presentation{id=353038aa-9497-4f1a-ad1e-9e539fe2ecfd, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}]
+[line 281]	05 янв. 2021 14:09:39,662 [main] DEBUG CSVCommonMethods/getInstanceExistenceByField - Optional[Presentation{id=353038aa-9497-4f1a-ad1e-9e539fe2ecfd, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}]
+[line 229]	05 янв. 2021 14:09:39,666 [main] INFO  CSVPresentationMethods/getPresentationById - Field with slide id: : false
+[line 230]	05 янв. 2021 14:09:39,667 [main] INFO  CSVPresentationMethods/getPresentationById - Field withSlides: : true
+[line 231]	05 янв. 2021 14:09:39,668 [main] INFO  CSVPresentationMethods/getPresentationById - Field withComments: : false
+[line 232]	05 янв. 2021 14:09:39,670 [main] INFO  CSVPresentationMethods/getPresentationById - Field withMarks: : false
+[line 233]	05 янв. 2021 14:09:39,671 [main] INFO  CSVPresentationMethods/getPresentationById - Field withElements: : true
+[line 218]	05 янв. 2021 14:09:39,677 [main] DEBUG CSVCommonMethods/getInstanceById - presentation id: 353038aa-9497-4f1a-ad1e-9e539fe2ecfd
+[line 66]	05 янв. 2021 14:09:39,678 [main] DEBUG CSVCommonMethods/getCollection - [getCollection] Attempt to get collection: presentation
+[line 42]	05 янв. 2021 14:09:39,680 [main] DEBUG CSVCommonMethods/getFilePath - path: D:/Универ/CourseProject/src/main/resources/data/test/csv/presentation.csv
+[line 77]	05 янв. 2021 14:09:39,697 [main] INFO  CSVCommonMethods/getCollection - [getCollection] Collection was retrieved: presentation
+[line 223]	05 янв. 2021 14:09:39,698 [main] DEBUG CSVCommonMethods/getInstanceById - Attempt to find presentation: 353038aa-9497-4f1a-ad1e-9e539fe2ecfd
+[line 224]	05 янв. 2021 14:09:39,699 [main] DEBUG CSVCommonMethods/getInstanceById - list instance: [Presentation{id=353038aa-9497-4f1a-ad1e-9e539fe2ecfd, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}]
+[line 227]	05 янв. 2021 14:09:39,700 [main] DEBUG CSVCommonMethods/getInstanceById - Optional[Presentation{id=353038aa-9497-4f1a-ad1e-9e539fe2ecfd, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}]
+[line 66]	05 янв. 2021 14:09:39,704 [main] DEBUG CSVCommonMethods/getCollection - [getCollection] Attempt to get collection: slide
+[line 42]	05 янв. 2021 14:09:39,705 [main] DEBUG CSVCommonMethods/getFilePath - path: D:/Универ/CourseProject/src/main/resources/data/test/csv/slide.csv
+[line 77]	05 янв. 2021 14:09:39,719 [main] INFO  CSVCommonMethods/getCollection - [getCollection] Collection was retrieved: slide
+[line 89]	05 янв. 2021 14:09:39,721 [main] DEBUG CSVSlideMethods/getPresentationSlides - [getPresentationSlides] Attempt to find presentation slides for: 353038aa-9497-4f1a-ad1e-9e539fe2ecfd
+[line 93]	05 янв. 2021 14:09:39,723 [main] INFO  CSVSlideMethods/getPresentationSlides - Presentation slides get!
+[line 95]	05 янв. 2021 14:09:39,724 [main] DEBUG CSVSlideMethods/getPresentationSlides - Get elements from slide: 
+[line 124]	05 янв. 2021 14:09:39,727 [main] INFO  CSVSlideMethods/lambda$setElementsBySlide$1 - Search elements for slide: b3bbca54-6d3b-4bc5-b461-077892546f82
+[line 22]	05 янв. 2021 14:09:39,732 [main] DEBUG ArgsValidator/validate - [validate] Validate: [presentationId, slideId]
+[line 24]	05 янв. 2021 14:09:39,733 [main] DEBUG ArgsValidator/validate - [validate] Null fields: []
+[line 25]	05 янв. 2021 14:09:39,734 [main] DEBUG ArgsValidator/validate - [validate] Null fields: []
+[line 35]	05 янв. 2021 14:09:39,735 [main] INFO  Result/<init> - { status: success, value:  }
+[line 277]	05 янв. 2021 14:09:39,736 [main] DEBUG CSVCommonMethods/getInstanceExistenceByField - [getInstanceExistenceByField] Get: Presentation; id: 353038aa-9497-4f1a-ad1e-9e539fe2ecfd
+[line 218]	05 янв. 2021 14:09:39,737 [main] DEBUG CSVCommonMethods/getInstanceById - presentation id: 353038aa-9497-4f1a-ad1e-9e539fe2ecfd
+[line 66]	05 янв. 2021 14:09:39,738 [main] DEBUG CSVCommonMethods/getCollection - [getCollection] Attempt to get collection: presentation
+[line 42]	05 янв. 2021 14:09:39,740 [main] DEBUG CSVCommonMethods/getFilePath - path: D:/Универ/CourseProject/src/main/resources/data/test/csv/presentation.csv
+[line 77]	05 янв. 2021 14:09:39,761 [main] INFO  CSVCommonMethods/getCollection - [getCollection] Collection was retrieved: presentation
+[line 223]	05 янв. 2021 14:09:39,762 [main] DEBUG CSVCommonMethods/getInstanceById - Attempt to find presentation: 353038aa-9497-4f1a-ad1e-9e539fe2ecfd
+[line 224]	05 янв. 2021 14:09:39,764 [main] DEBUG CSVCommonMethods/getInstanceById - list instance: [Presentation{id=353038aa-9497-4f1a-ad1e-9e539fe2ecfd, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}]
+[line 227]	05 янв. 2021 14:09:39,766 [main] DEBUG CSVCommonMethods/getInstanceById - Optional[Presentation{id=353038aa-9497-4f1a-ad1e-9e539fe2ecfd, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}]
+[line 281]	05 янв. 2021 14:09:39,767 [main] DEBUG CSVCommonMethods/getInstanceExistenceByField - Optional[Presentation{id=353038aa-9497-4f1a-ad1e-9e539fe2ecfd, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}]
+[line 407]	05 янв. 2021 14:09:39,769 [main] INFO  CSVElementMethods/getSlideElements - Presentation found: Presentation{id=353038aa-9497-4f1a-ad1e-9e539fe2ecfd, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}
+[line 277]	05 янв. 2021 14:09:39,770 [main] DEBUG CSVCommonMethods/getInstanceExistenceByField - [getInstanceExistenceByField] Get: Slide; id: b3bbca54-6d3b-4bc5-b461-077892546f82
+[line 218]	05 янв. 2021 14:09:39,771 [main] DEBUG CSVCommonMethods/getInstanceById - slide id: b3bbca54-6d3b-4bc5-b461-077892546f82
+[line 66]	05 янв. 2021 14:09:39,771 [main] DEBUG CSVCommonMethods/getCollection - [getCollection] Attempt to get collection: slide
+[line 42]	05 янв. 2021 14:09:39,773 [main] DEBUG CSVCommonMethods/getFilePath - path: D:/Универ/CourseProject/src/main/resources/data/test/csv/slide.csv
+[line 77]	05 янв. 2021 14:09:39,789 [main] INFO  CSVCommonMethods/getCollection - [getCollection] Collection was retrieved: slide
+[line 232]	05 янв. 2021 14:09:39,791 [main] DEBUG CSVCommonMethods/getInstanceById - Attempt to find slide: b3bbca54-6d3b-4bc5-b461-077892546f82
+[line 281]	05 янв. 2021 14:09:39,822 [main] DEBUG CSVCommonMethods/getInstanceExistenceByField - Optional[Slide{id=b3bbca54-6d3b-4bc5-b461-077892546f82, name='Test name', index=0, presentationId=353038aa-9497-4f1a-ad1e-9e539fe2ecfd}]
+[line 413]	05 янв. 2021 14:09:39,824 [main] INFO  CSVElementMethods/getSlideElements - Slide found: Slide{id=b3bbca54-6d3b-4bc5-b461-077892546f82, name='Test name', index=0, presentationId=353038aa-9497-4f1a-ad1e-9e539fe2ecfd}
+[line 415]	05 янв. 2021 14:09:39,826 [main] DEBUG CSVElementMethods/getSlideElements - Set slide elements
+[line 66]	05 янв. 2021 14:09:39,832 [main] DEBUG CSVCommonMethods/getCollection - [getCollection] Attempt to get collection: shape
+[line 42]	05 янв. 2021 14:09:39,834 [main] DEBUG CSVCommonMethods/getFilePath - path: D:/Универ/CourseProject/src/main/resources/data/test/csv/shape.csv
+[line 25]	05 янв. 2021 14:09:40,280 [pool-7-thread-1] DEBUG Helpers/getFieldFromMather - FIND
+[line 25]	05 янв. 2021 14:09:40,280 [pool-7-thread-2] DEBUG Helpers/getFieldFromMather - FIND
+[line 26]	05 янв. 2021 14:09:40,282 [pool-7-thread-1] DEBUG Helpers/getFieldFromMather - width=420
+[line 26]	05 янв. 2021 14:09:40,282 [pool-7-thread-2] DEBUG Helpers/getFieldFromMather - width=420
+[line 28]	05 янв. 2021 14:09:40,282 [pool-7-thread-2] DEBUG Helpers/getFieldFromMather - width: 420
+[line 28]	05 янв. 2021 14:09:40,282 [pool-7-thread-1] DEBUG Helpers/getFieldFromMather - width: 420
+[line 25]	05 янв. 2021 14:09:40,283 [pool-7-thread-2] DEBUG Helpers/getFieldFromMather - FIND
+[line 26]	05 янв. 2021 14:09:40,283 [pool-7-thread-2] DEBUG Helpers/getFieldFromMather - height=120
+[line 25]	05 янв. 2021 14:09:40,283 [pool-7-thread-1] DEBUG Helpers/getFieldFromMather - FIND
+[line 26]	05 янв. 2021 14:09:40,284 [pool-7-thread-1] DEBUG Helpers/getFieldFromMather - height=120
+[line 28]	05 янв. 2021 14:09:40,285 [pool-7-thread-1] DEBUG Helpers/getFieldFromMather - height: 120
+[line 28]	05 янв. 2021 14:09:40,284 [pool-7-thread-2] DEBUG Helpers/getFieldFromMather - height: 120
+[line 25]	05 янв. 2021 14:09:40,285 [pool-7-thread-2] DEBUG Helpers/getFieldFromMather - FIND
+[line 25]	05 янв. 2021 14:09:40,285 [pool-7-thread-1] DEBUG Helpers/getFieldFromMather - FIND
+[line 26]	05 янв. 2021 14:09:40,286 [pool-7-thread-2] DEBUG Helpers/getFieldFromMather - x=132
+[line 26]	05 янв. 2021 14:09:40,286 [pool-7-thread-1] DEBUG Helpers/getFieldFromMather - x=132
+[line 28]	05 янв. 2021 14:09:40,286 [pool-7-thread-2] DEBUG Helpers/getFieldFromMather - x: 132
+[line 25]	05 янв. 2021 14:09:40,287 [pool-7-thread-2] DEBUG Helpers/getFieldFromMather - FIND
+[line 28]	05 янв. 2021 14:09:40,287 [pool-7-thread-1] DEBUG Helpers/getFieldFromMather - x: 132
+[line 25]	05 янв. 2021 14:09:40,287 [pool-7-thread-1] DEBUG Helpers/getFieldFromMather - FIND
+[line 26]	05 янв. 2021 14:09:40,287 [pool-7-thread-2] DEBUG Helpers/getFieldFromMather - y=13
+[line 28]	05 янв. 2021 14:09:40,288 [pool-7-thread-2] DEBUG Helpers/getFieldFromMather - y: 13
+[line 26]	05 янв. 2021 14:09:40,288 [pool-7-thread-1] DEBUG Helpers/getFieldFromMather - y=13
+[line 25]	05 янв. 2021 14:09:40,288 [pool-7-thread-2] DEBUG Helpers/getFieldFromMather - FIND
+[line 28]	05 янв. 2021 14:09:40,288 [pool-7-thread-1] DEBUG Helpers/getFieldFromMather - y: 13
+[line 26]	05 янв. 2021 14:09:40,289 [pool-7-thread-2] DEBUG Helpers/getFieldFromMather - rotation=13
+[line 25]	05 янв. 2021 14:09:40,289 [pool-7-thread-1] DEBUG Helpers/getFieldFromMather - FIND
+[line 26]	05 янв. 2021 14:09:40,289 [pool-7-thread-1] DEBUG Helpers/getFieldFromMather - rotation=13
+[line 28]	05 янв. 2021 14:09:40,289 [pool-7-thread-2] DEBUG Helpers/getFieldFromMather - rotation: 13
+[line 28]	05 янв. 2021 14:09:40,289 [pool-7-thread-1] DEBUG Helpers/getFieldFromMather - rotation: 13
+[line 47]	05 янв. 2021 14:09:40,290 [pool-7-thread-2] DEBUG LayoutConverter/convert - [LayoutConverter] layout converted
+[line 47]	05 янв. 2021 14:09:40,290 [pool-7-thread-1] DEBUG LayoutConverter/convert - [LayoutConverter] layout converted
+[line 25]	05 янв. 2021 14:09:40,292 [pool-7-thread-1] DEBUG Helpers/getFieldFromMather - FIND
+[line 25]	05 янв. 2021 14:09:40,292 [pool-7-thread-2] DEBUG Helpers/getFieldFromMather - FIND
+[line 26]	05 янв. 2021 14:09:40,292 [pool-7-thread-2] DEBUG Helpers/getFieldFromMather - fillColor='blue'
+[line 26]	05 янв. 2021 14:09:40,292 [pool-7-thread-1] DEBUG Helpers/getFieldFromMather - fillColor='blue'
+[line 28]	05 янв. 2021 14:09:40,293 [pool-7-thread-2] DEBUG Helpers/getFieldFromMather - fillColor: blue
+[line 28]	05 янв. 2021 14:09:40,293 [pool-7-thread-1] DEBUG Helpers/getFieldFromMather - fillColor: blue
+[line 25]	05 янв. 2021 14:09:40,294 [pool-7-thread-1] DEBUG Helpers/getFieldFromMather - FIND
+[line 25]	05 янв. 2021 14:09:40,294 [pool-7-thread-2] DEBUG Helpers/getFieldFromMather - FIND
+[line 26]	05 янв. 2021 14:09:40,294 [pool-7-thread-1] DEBUG Helpers/getFieldFromMather - boxShadow='1px 2px 4px 2px blue'
+[line 28]	05 янв. 2021 14:09:40,295 [pool-7-thread-1] DEBUG Helpers/getFieldFromMather - boxShadow: 1px 2px 4px 2px blue
+[line 26]	05 янв. 2021 14:09:40,295 [pool-7-thread-2] DEBUG Helpers/getFieldFromMather - boxShadow='1px 2px 4px 2px blue'
+[line 25]	05 янв. 2021 14:09:40,295 [pool-7-thread-1] DEBUG Helpers/getFieldFromMather - FIND
+[line 28]	05 янв. 2021 14:09:40,296 [pool-7-thread-2] DEBUG Helpers/getFieldFromMather - boxShadow: 1px 2px 4px 2px blue
+[line 26]	05 янв. 2021 14:09:40,296 [pool-7-thread-1] DEBUG Helpers/getFieldFromMather - opacity=23
+[line 25]	05 янв. 2021 14:09:40,296 [pool-7-thread-2] DEBUG Helpers/getFieldFromMather - FIND
+[line 28]	05 янв. 2021 14:09:40,296 [pool-7-thread-1] DEBUG Helpers/getFieldFromMather - opacity: 23
+[line 25]	05 янв. 2021 14:09:40,297 [pool-7-thread-1] DEBUG Helpers/getFieldFromMather - FIND
+[line 26]	05 янв. 2021 14:09:40,297 [pool-7-thread-2] DEBUG Helpers/getFieldFromMather - opacity=23
+[line 26]	05 янв. 2021 14:09:40,297 [pool-7-thread-1] DEBUG Helpers/getFieldFromMather - borderColor='yellow'
+[line 28]	05 янв. 2021 14:09:40,298 [pool-7-thread-2] DEBUG Helpers/getFieldFromMather - opacity: 23
+[line 25]	05 янв. 2021 14:09:40,298 [pool-7-thread-2] DEBUG Helpers/getFieldFromMather - FIND
+[line 28]	05 янв. 2021 14:09:40,298 [pool-7-thread-1] DEBUG Helpers/getFieldFromMather - borderColor: yellow
+[line 26]	05 янв. 2021 14:09:40,299 [pool-7-thread-2] DEBUG Helpers/getFieldFromMather - borderColor='yellow'
+[line 25]	05 янв. 2021 14:09:40,299 [pool-7-thread-1] DEBUG Helpers/getFieldFromMather - FIND
+[line 26]	05 янв. 2021 14:09:40,299 [pool-7-thread-1] DEBUG Helpers/getFieldFromMather - borderRadius='3px'
+[line 28]	05 янв. 2021 14:09:40,300 [pool-7-thread-2] DEBUG Helpers/getFieldFromMather - borderColor: yellow
+[line 28]	05 янв. 2021 14:09:40,300 [pool-7-thread-1] DEBUG Helpers/getFieldFromMather - borderRadius: 3px
+[line 25]	05 янв. 2021 14:09:40,300 [pool-7-thread-2] DEBUG Helpers/getFieldFromMather - FIND
+[line 25]	05 янв. 2021 14:09:40,301 [pool-7-thread-1] DEBUG Helpers/getFieldFromMather - FIND
+[line 26]	05 янв. 2021 14:09:40,301 [pool-7-thread-2] DEBUG Helpers/getFieldFromMather - borderRadius='3px'
+[line 26]	05 янв. 2021 14:09:40,301 [pool-7-thread-1] DEBUG Helpers/getFieldFromMather - borderWidth='2px'
+[line 28]	05 янв. 2021 14:09:40,301 [pool-7-thread-2] DEBUG Helpers/getFieldFromMather - borderRadius: 3px
+[line 28]	05 янв. 2021 14:09:40,302 [pool-7-thread-1] DEBUG Helpers/getFieldFromMather - borderWidth: 2px
+[line 25]	05 янв. 2021 14:09:40,302 [pool-7-thread-2] DEBUG Helpers/getFieldFromMather - FIND
+[line 25]	05 янв. 2021 14:09:40,303 [pool-7-thread-1] DEBUG Helpers/getFieldFromMather - FIND
+[line 26]	05 янв. 2021 14:09:40,303 [pool-7-thread-2] DEBUG Helpers/getFieldFromMather - borderWidth='2px'
+[line 26]	05 янв. 2021 14:09:40,303 [pool-7-thread-1] DEBUG Helpers/getFieldFromMather - borderStyle=dashed
+[line 28]	05 янв. 2021 14:09:40,304 [pool-7-thread-1] DEBUG Helpers/getFieldFromMather - borderStyle: dashed
+[line 28]	05 янв. 2021 14:09:40,304 [pool-7-thread-2] DEBUG Helpers/getFieldFromMather - borderWidth: 2px
+[line 25]	05 янв. 2021 14:09:40,305 [pool-7-thread-2] DEBUG Helpers/getFieldFromMather - FIND
+[line 26]	05 янв. 2021 14:09:40,306 [pool-7-thread-2] DEBUG Helpers/getFieldFromMather - borderStyle=dashed
+[line 28]	05 янв. 2021 14:09:40,307 [pool-7-thread-2] DEBUG Helpers/getFieldFromMather - borderStyle: dashed
+[line 58]	05 янв. 2021 14:09:40,308 [pool-7-thread-2] DEBUG StyleConverter/convert - [StyleConverter] style converted
+[line 58]	05 янв. 2021 14:09:40,308 [pool-7-thread-1] DEBUG StyleConverter/convert - [StyleConverter] style converted
+[line 77]	05 янв. 2021 14:09:40,310 [main] INFO  CSVCommonMethods/getCollection - [getCollection] Collection was retrieved: shape
+[line 66]	05 янв. 2021 14:09:40,313 [main] DEBUG CSVCommonMethods/getCollection - [getCollection] Attempt to get collection: content
+[line 42]	05 янв. 2021 14:09:40,314 [main] DEBUG CSVCommonMethods/getFilePath - path: D:/Универ/CourseProject/src/main/resources/data/test/csv/content.csv
+[line 25]	05 янв. 2021 14:09:40,330 [pool-8-thread-3] DEBUG Helpers/getFieldFromMather - FIND
+[line 25]	05 янв. 2021 14:09:40,330 [pool-8-thread-1] DEBUG Helpers/getFieldFromMather - FIND
+[line 25]	05 янв. 2021 14:09:40,330 [pool-8-thread-2] DEBUG Helpers/getFieldFromMather - FIND
+[line 26]	05 янв. 2021 14:09:40,331 [pool-8-thread-3] DEBUG Helpers/getFieldFromMather - fontFamily='Product Sans'
+[line 26]	05 янв. 2021 14:09:40,331 [pool-8-thread-2] DEBUG Helpers/getFieldFromMather - fontFamily='Product Sans'
+[line 26]	05 янв. 2021 14:09:40,331 [pool-8-thread-1] DEBUG Helpers/getFieldFromMather - fontFamily='Product Sans'
+[line 28]	05 янв. 2021 14:09:40,332 [pool-8-thread-3] DEBUG Helpers/getFieldFromMather - fontFamily: Product Sans
+[line 28]	05 янв. 2021 14:09:40,332 [pool-8-thread-2] DEBUG Helpers/getFieldFromMather - fontFamily: Product Sans
+[line 28]	05 янв. 2021 14:09:40,332 [pool-8-thread-1] DEBUG Helpers/getFieldFromMather - fontFamily: Product Sans
+[line 25]	05 янв. 2021 14:09:40,332 [pool-8-thread-3] DEBUG Helpers/getFieldFromMather - FIND
+[line 25]	05 янв. 2021 14:09:40,332 [pool-8-thread-2] DEBUG Helpers/getFieldFromMather - FIND
+[line 25]	05 янв. 2021 14:09:40,332 [pool-8-thread-1] DEBUG Helpers/getFieldFromMather - FIND
+[line 26]	05 янв. 2021 14:09:40,332 [pool-8-thread-3] DEBUG Helpers/getFieldFromMather - fontSize='1.2rem'
+[line 26]	05 янв. 2021 14:09:40,332 [pool-8-thread-2] DEBUG Helpers/getFieldFromMather - fontSize='1.2rem'
+[line 26]	05 янв. 2021 14:09:40,332 [pool-8-thread-1] DEBUG Helpers/getFieldFromMather - fontSize='1.2rem'
+[line 28]	05 янв. 2021 14:09:40,333 [pool-8-thread-2] DEBUG Helpers/getFieldFromMather - fontSize: 1.2rem
+[line 28]	05 янв. 2021 14:09:40,333 [pool-8-thread-3] DEBUG Helpers/getFieldFromMather - fontSize: 1.2rem
+[line 28]	05 янв. 2021 14:09:40,333 [pool-8-thread-1] DEBUG Helpers/getFieldFromMather - fontSize: 1.2rem
+[line 25]	05 янв. 2021 14:09:40,333 [pool-8-thread-2] DEBUG Helpers/getFieldFromMather - FIND
+[line 26]	05 янв. 2021 14:09:40,334 [pool-8-thread-2] DEBUG Helpers/getFieldFromMather - letterSpacing='2px'
+[line 25]	05 янв. 2021 14:09:40,333 [pool-8-thread-1] DEBUG Helpers/getFieldFromMather - FIND
+[line 25]	05 янв. 2021 14:09:40,334 [pool-8-thread-3] DEBUG Helpers/getFieldFromMather - FIND
+[line 28]	05 янв. 2021 14:09:40,334 [pool-8-thread-2] DEBUG Helpers/getFieldFromMather - letterSpacing: 2px
+[line 26]	05 янв. 2021 14:09:40,334 [pool-8-thread-3] DEBUG Helpers/getFieldFromMather - letterSpacing='2px'
+[line 25]	05 янв. 2021 14:09:40,335 [pool-8-thread-2] DEBUG Helpers/getFieldFromMather - FIND
+[line 26]	05 янв. 2021 14:09:40,335 [pool-8-thread-1] DEBUG Helpers/getFieldFromMather - letterSpacing='2px'
+[line 28]	05 янв. 2021 14:09:40,336 [pool-8-thread-1] DEBUG Helpers/getFieldFromMather - letterSpacing: 2px
+[line 28]	05 янв. 2021 14:09:40,336 [pool-8-thread-3] DEBUG Helpers/getFieldFromMather - letterSpacing: 2px
+[line 26]	05 янв. 2021 14:09:40,336 [pool-8-thread-2] DEBUG Helpers/getFieldFromMather - lineSpacing='12px'
+[line 28]	05 янв. 2021 14:09:40,336 [pool-8-thread-2] DEBUG Helpers/getFieldFromMather - lineSpacing: 12px
+[line 25]	05 янв. 2021 14:09:40,336 [pool-8-thread-1] DEBUG Helpers/getFieldFromMather - FIND
+[line 25]	05 янв. 2021 14:09:40,337 [pool-8-thread-3] DEBUG Helpers/getFieldFromMather - FIND
+[line 26]	05 янв. 2021 14:09:40,337 [pool-8-thread-1] DEBUG Helpers/getFieldFromMather - lineSpacing='12px'
+[line 25]	05 янв. 2021 14:09:40,337 [pool-8-thread-2] DEBUG Helpers/getFieldFromMather - FIND
+[line 26]	05 янв. 2021 14:09:40,337 [pool-8-thread-3] DEBUG Helpers/getFieldFromMather - lineSpacing='12px'
+[line 26]	05 янв. 2021 14:09:40,337 [pool-8-thread-2] DEBUG Helpers/getFieldFromMather - fontCase=normal
+[line 28]	05 янв. 2021 14:09:40,337 [pool-8-thread-1] DEBUG Helpers/getFieldFromMather - lineSpacing: 12px
+[line 28]	05 янв. 2021 14:09:40,337 [pool-8-thread-3] DEBUG Helpers/getFieldFromMather - lineSpacing: 12px
+[line 28]	05 янв. 2021 14:09:40,338 [pool-8-thread-2] DEBUG Helpers/getFieldFromMather - fontCase: normal
+[line 25]	05 янв. 2021 14:09:40,338 [pool-8-thread-1] DEBUG Helpers/getFieldFromMather - FIND
+[line 25]	05 янв. 2021 14:09:40,338 [pool-8-thread-3] DEBUG Helpers/getFieldFromMather - FIND
+[line 26]	05 янв. 2021 14:09:40,338 [pool-8-thread-1] DEBUG Helpers/getFieldFromMather - fontCase=normal
+[line 26]	05 янв. 2021 14:09:40,338 [pool-8-thread-3] DEBUG Helpers/getFieldFromMather - fontCase=normal
+[line 28]	05 янв. 2021 14:09:40,338 [pool-8-thread-1] DEBUG Helpers/getFieldFromMather - fontCase: normal
+[line 28]	05 янв. 2021 14:09:40,339 [pool-8-thread-3] DEBUG Helpers/getFieldFromMather - fontCase: normal
+[line 49]	05 янв. 2021 14:09:40,341 [pool-8-thread-2] DEBUG FontConverter/convert - [FontConverter] font converted
+[line 49]	05 янв. 2021 14:09:40,341 [pool-8-thread-1] DEBUG FontConverter/convert - [FontConverter] font converted
+[line 49]	05 янв. 2021 14:09:40,341 [pool-8-thread-3] DEBUG FontConverter/convert - [FontConverter] font converted
+[line 25]	05 янв. 2021 14:09:40,342 [pool-8-thread-3] DEBUG Helpers/getFieldFromMather - FIND
+[line 25]	05 янв. 2021 14:09:40,342 [pool-8-thread-2] DEBUG Helpers/getFieldFromMather - FIND
+[line 25]	05 янв. 2021 14:09:40,342 [pool-8-thread-1] DEBUG Helpers/getFieldFromMather - FIND
+[line 26]	05 янв. 2021 14:09:40,342 [pool-8-thread-3] DEBUG Helpers/getFieldFromMather - width=420
+[line 26]	05 янв. 2021 14:09:40,342 [pool-8-thread-2] DEBUG Helpers/getFieldFromMather - width=420
+[line 26]	05 янв. 2021 14:09:40,342 [pool-8-thread-1] DEBUG Helpers/getFieldFromMather - width=420
+[line 28]	05 янв. 2021 14:09:40,343 [pool-8-thread-3] DEBUG Helpers/getFieldFromMather - width: 420
+[line 28]	05 янв. 2021 14:09:40,343 [pool-8-thread-2] DEBUG Helpers/getFieldFromMather - width: 420
+[line 28]	05 янв. 2021 14:09:40,343 [pool-8-thread-1] DEBUG Helpers/getFieldFromMather - width: 420
+[line 25]	05 янв. 2021 14:09:40,344 [pool-8-thread-1] DEBUG Helpers/getFieldFromMather - FIND
+[line 25]	05 янв. 2021 14:09:40,344 [pool-8-thread-3] DEBUG Helpers/getFieldFromMather - FIND
+[line 25]	05 янв. 2021 14:09:40,344 [pool-8-thread-2] DEBUG Helpers/getFieldFromMather - FIND
+[line 26]	05 янв. 2021 14:09:40,344 [pool-8-thread-1] DEBUG Helpers/getFieldFromMather - height=120
+[line 26]	05 янв. 2021 14:09:40,344 [pool-8-thread-3] DEBUG Helpers/getFieldFromMather - height=120
+[line 26]	05 янв. 2021 14:09:40,344 [pool-8-thread-2] DEBUG Helpers/getFieldFromMather - height=120
+[line 28]	05 янв. 2021 14:09:40,344 [pool-8-thread-1] DEBUG Helpers/getFieldFromMather - height: 120
+[line 28]	05 янв. 2021 14:09:40,345 [pool-8-thread-3] DEBUG Helpers/getFieldFromMather - height: 120
+[line 28]	05 янв. 2021 14:09:40,345 [pool-8-thread-2] DEBUG Helpers/getFieldFromMather - height: 120
+[line 25]	05 янв. 2021 14:09:40,345 [pool-8-thread-3] DEBUG Helpers/getFieldFromMather - FIND
+[line 25]	05 янв. 2021 14:09:40,345 [pool-8-thread-2] DEBUG Helpers/getFieldFromMather - FIND
+[line 25]	05 янв. 2021 14:09:40,345 [pool-8-thread-1] DEBUG Helpers/getFieldFromMather - FIND
+[line 26]	05 янв. 2021 14:09:40,345 [pool-8-thread-3] DEBUG Helpers/getFieldFromMather - x=132
+[line 26]	05 янв. 2021 14:09:40,345 [pool-8-thread-1] DEBUG Helpers/getFieldFromMather - x=132
+[line 26]	05 янв. 2021 14:09:40,345 [pool-8-thread-2] DEBUG Helpers/getFieldFromMather - x=132
+[line 28]	05 янв. 2021 14:09:40,346 [pool-8-thread-1] DEBUG Helpers/getFieldFromMather - x: 132
+[line 28]	05 янв. 2021 14:09:40,346 [pool-8-thread-2] DEBUG Helpers/getFieldFromMather - x: 132
+[line 28]	05 янв. 2021 14:09:40,346 [pool-8-thread-3] DEBUG Helpers/getFieldFromMather - x: 132
+[line 25]	05 янв. 2021 14:09:40,346 [pool-8-thread-3] DEBUG Helpers/getFieldFromMather - FIND
+[line 25]	05 янв. 2021 14:09:40,346 [pool-8-thread-1] DEBUG Helpers/getFieldFromMather - FIND
+[line 25]	05 янв. 2021 14:09:40,346 [pool-8-thread-2] DEBUG Helpers/getFieldFromMather - FIND
+[line 26]	05 янв. 2021 14:09:40,346 [pool-8-thread-3] DEBUG Helpers/getFieldFromMather - y=13
+[line 26]	05 янв. 2021 14:09:40,346 [pool-8-thread-2] DEBUG Helpers/getFieldFromMather - y=13
+[line 26]	05 янв. 2021 14:09:40,346 [pool-8-thread-1] DEBUG Helpers/getFieldFromMather - y=13
+[line 28]	05 янв. 2021 14:09:40,347 [pool-8-thread-1] DEBUG Helpers/getFieldFromMather - y: 13
+[line 28]	05 янв. 2021 14:09:40,347 [pool-8-thread-3] DEBUG Helpers/getFieldFromMather - y: 13
+[line 25]	05 янв. 2021 14:09:40,347 [pool-8-thread-3] DEBUG Helpers/getFieldFromMather - FIND
+[line 28]	05 янв. 2021 14:09:40,347 [pool-8-thread-2] DEBUG Helpers/getFieldFromMather - y: 13
+[line 25]	05 янв. 2021 14:09:40,347 [pool-8-thread-1] DEBUG Helpers/getFieldFromMather - FIND
+[line 26]	05 янв. 2021 14:09:40,348 [pool-8-thread-3] DEBUG Helpers/getFieldFromMather - rotation=13
+[line 26]	05 янв. 2021 14:09:40,348 [pool-8-thread-1] DEBUG Helpers/getFieldFromMather - rotation=13
+[line 25]	05 янв. 2021 14:09:40,348 [pool-8-thread-2] DEBUG Helpers/getFieldFromMather - FIND
+[line 28]	05 янв. 2021 14:09:40,348 [pool-8-thread-3] DEBUG Helpers/getFieldFromMather - rotation: 13
+[line 28]	05 янв. 2021 14:09:40,348 [pool-8-thread-1] DEBUG Helpers/getFieldFromMather - rotation: 13
+[line 26]	05 янв. 2021 14:09:40,348 [pool-8-thread-2] DEBUG Helpers/getFieldFromMather - rotation=13
+[line 47]	05 янв. 2021 14:09:40,348 [pool-8-thread-3] DEBUG LayoutConverter/convert - [LayoutConverter] layout converted
+[line 47]	05 янв. 2021 14:09:40,348 [pool-8-thread-1] DEBUG LayoutConverter/convert - [LayoutConverter] layout converted
+[line 28]	05 янв. 2021 14:09:40,349 [pool-8-thread-2] DEBUG Helpers/getFieldFromMather - rotation: 13
+[line 47]	05 янв. 2021 14:09:40,350 [pool-8-thread-2] DEBUG LayoutConverter/convert - [LayoutConverter] layout converted
+[line 77]	05 янв. 2021 14:09:40,352 [main] INFO  CSVCommonMethods/getCollection - [getCollection] Collection was retrieved: content
+[line 431]	05 янв. 2021 14:09:40,410 [main] INFO  CSVElementMethods/getSlideElements - Slides found: [Shape{style=Style{fillColor='blue', boxShadow='1px 2px 4px 2px blue', opacity=23, borderColor='yellow', borderRadius='3px', borderWidth='2px', borderStyle=dashed}, text='Тестовый текст', figure=rectangle, id=1565438e-50ba-4071-ad8f-723c6ed4e775, presentationId=353038aa-9497-4f1a-ad1e-9e539fe2ecfd, slideId=b3bbca54-6d3b-4bc5-b461-077892546f82, name=Test name, layout=Layout{x=132, y=13, width=420, height=120, rotation=13}}]
+[line 35]	05 янв. 2021 14:09:40,411 [main] INFO  Result/<init> - { status: success, value: [Shape{style=Style{fillColor='blue', boxShadow='1px 2px 4px 2px blue', opacity=23, borderColor='yellow', borderRadius='3px', borderWidth='2px', borderStyle=dashed}, text='Тестовый текст', figure=rectangle, id=1565438e-50ba-4071-ad8f-723c6ed4e775, presentationId=353038aa-9497-4f1a-ad1e-9e539fe2ecfd, slideId=b3bbca54-6d3b-4bc5-b461-077892546f82, name=Test name, layout=Layout{x=132, y=13, width=420, height=120, rotation=13}}] }
+[line 130]	05 янв. 2021 14:09:40,413 [main] DEBUG CSVSlideMethods/lambda$setElementsBySlide$1 - get elements status: success
+[line 131]	05 янв. 2021 14:09:40,414 [main] DEBUG CSVSlideMethods/lambda$setElementsBySlide$1 - Slide elements: [Shape{style=Style{fillColor='blue', boxShadow='1px 2px 4px 2px blue', opacity=23, borderColor='yellow', borderRadius='3px', borderWidth='2px', borderStyle=dashed}, text='Тестовый текст', figure=rectangle, id=1565438e-50ba-4071-ad8f-723c6ed4e775, presentationId=353038aa-9497-4f1a-ad1e-9e539fe2ecfd, slideId=b3bbca54-6d3b-4bc5-b461-077892546f82, name=Test name, layout=Layout{x=132, y=13, width=420, height=120, rotation=13}}]
+[line 124]	05 янв. 2021 14:09:40,415 [main] INFO  CSVSlideMethods/lambda$setElementsBySlide$1 - Search elements for slide: 641986b5-d2c2-4541-b905-ee2b4a2ca881
+[line 22]	05 янв. 2021 14:09:40,416 [main] DEBUG ArgsValidator/validate - [validate] Validate: [presentationId, slideId]
+[line 24]	05 янв. 2021 14:09:40,416 [main] DEBUG ArgsValidator/validate - [validate] Null fields: []
+[line 25]	05 янв. 2021 14:09:40,417 [main] DEBUG ArgsValidator/validate - [validate] Null fields: []
+[line 35]	05 янв. 2021 14:09:40,418 [main] INFO  Result/<init> - { status: success, value:  }
+[line 277]	05 янв. 2021 14:09:40,418 [main] DEBUG CSVCommonMethods/getInstanceExistenceByField - [getInstanceExistenceByField] Get: Presentation; id: 353038aa-9497-4f1a-ad1e-9e539fe2ecfd
+[line 218]	05 янв. 2021 14:09:40,419 [main] DEBUG CSVCommonMethods/getInstanceById - presentation id: 353038aa-9497-4f1a-ad1e-9e539fe2ecfd
+[line 66]	05 янв. 2021 14:09:40,420 [main] DEBUG CSVCommonMethods/getCollection - [getCollection] Attempt to get collection: presentation
+[line 42]	05 янв. 2021 14:09:40,421 [main] DEBUG CSVCommonMethods/getFilePath - path: D:/Универ/CourseProject/src/main/resources/data/test/csv/presentation.csv
+[line 77]	05 янв. 2021 14:09:40,447 [main] INFO  CSVCommonMethods/getCollection - [getCollection] Collection was retrieved: presentation
+[line 223]	05 янв. 2021 14:09:40,448 [main] DEBUG CSVCommonMethods/getInstanceById - Attempt to find presentation: 353038aa-9497-4f1a-ad1e-9e539fe2ecfd
+[line 224]	05 янв. 2021 14:09:40,449 [main] DEBUG CSVCommonMethods/getInstanceById - list instance: [Presentation{id=353038aa-9497-4f1a-ad1e-9e539fe2ecfd, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}]
+[line 227]	05 янв. 2021 14:09:40,450 [main] DEBUG CSVCommonMethods/getInstanceById - Optional[Presentation{id=353038aa-9497-4f1a-ad1e-9e539fe2ecfd, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}]
+[line 281]	05 янв. 2021 14:09:40,451 [main] DEBUG CSVCommonMethods/getInstanceExistenceByField - Optional[Presentation{id=353038aa-9497-4f1a-ad1e-9e539fe2ecfd, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}]
+[line 407]	05 янв. 2021 14:09:40,452 [main] INFO  CSVElementMethods/getSlideElements - Presentation found: Presentation{id=353038aa-9497-4f1a-ad1e-9e539fe2ecfd, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}
+[line 277]	05 янв. 2021 14:09:40,453 [main] DEBUG CSVCommonMethods/getInstanceExistenceByField - [getInstanceExistenceByField] Get: Slide; id: 641986b5-d2c2-4541-b905-ee2b4a2ca881
+[line 218]	05 янв. 2021 14:09:40,454 [main] DEBUG CSVCommonMethods/getInstanceById - slide id: 641986b5-d2c2-4541-b905-ee2b4a2ca881
+[line 66]	05 янв. 2021 14:09:40,455 [main] DEBUG CSVCommonMethods/getCollection - [getCollection] Attempt to get collection: slide
+[line 42]	05 янв. 2021 14:09:40,456 [main] DEBUG CSVCommonMethods/getFilePath - path: D:/Универ/CourseProject/src/main/resources/data/test/csv/slide.csv
+[line 77]	05 янв. 2021 14:09:40,466 [main] INFO  CSVCommonMethods/getCollection - [getCollection] Collection was retrieved: slide
+[line 232]	05 янв. 2021 14:09:40,467 [main] DEBUG CSVCommonMethods/getInstanceById - Attempt to find slide: 641986b5-d2c2-4541-b905-ee2b4a2ca881
+[line 281]	05 янв. 2021 14:09:40,469 [main] DEBUG CSVCommonMethods/getInstanceExistenceByField - Optional[Slide{id=641986b5-d2c2-4541-b905-ee2b4a2ca881, name='Slide 2', index=1, presentationId=353038aa-9497-4f1a-ad1e-9e539fe2ecfd}]
+[line 413]	05 янв. 2021 14:09:40,471 [main] INFO  CSVElementMethods/getSlideElements - Slide found: Slide{id=641986b5-d2c2-4541-b905-ee2b4a2ca881, name='Slide 2', index=1, presentationId=353038aa-9497-4f1a-ad1e-9e539fe2ecfd}
+[line 415]	05 янв. 2021 14:09:40,472 [main] DEBUG CSVElementMethods/getSlideElements - Set slide elements
+[line 66]	05 янв. 2021 14:09:40,473 [main] DEBUG CSVCommonMethods/getCollection - [getCollection] Attempt to get collection: shape
+[line 42]	05 янв. 2021 14:09:40,474 [main] DEBUG CSVCommonMethods/getFilePath - path: D:/Универ/CourseProject/src/main/resources/data/test/csv/shape.csv
+[line 25]	05 янв. 2021 14:09:40,483 [pool-11-thread-1] DEBUG Helpers/getFieldFromMather - FIND
+[line 25]	05 янв. 2021 14:09:40,483 [pool-11-thread-2] DEBUG Helpers/getFieldFromMather - FIND
+[line 26]	05 янв. 2021 14:09:40,486 [pool-11-thread-2] DEBUG Helpers/getFieldFromMather - width=420
+[line 26]	05 янв. 2021 14:09:40,486 [pool-11-thread-1] DEBUG Helpers/getFieldFromMather - width=420
+[line 28]	05 янв. 2021 14:09:40,486 [pool-11-thread-1] DEBUG Helpers/getFieldFromMather - width: 420
+[line 28]	05 янв. 2021 14:09:40,486 [pool-11-thread-2] DEBUG Helpers/getFieldFromMather - width: 420
+[line 25]	05 янв. 2021 14:09:40,487 [pool-11-thread-1] DEBUG Helpers/getFieldFromMather - FIND
+[line 25]	05 янв. 2021 14:09:40,487 [pool-11-thread-2] DEBUG Helpers/getFieldFromMather - FIND
+[line 26]	05 янв. 2021 14:09:40,487 [pool-11-thread-1] DEBUG Helpers/getFieldFromMather - height=120
+[line 26]	05 янв. 2021 14:09:40,487 [pool-11-thread-2] DEBUG Helpers/getFieldFromMather - height=120
+[line 28]	05 янв. 2021 14:09:40,487 [pool-11-thread-1] DEBUG Helpers/getFieldFromMather - height: 120
+[line 28]	05 янв. 2021 14:09:40,487 [pool-11-thread-2] DEBUG Helpers/getFieldFromMather - height: 120
+[line 25]	05 янв. 2021 14:09:40,488 [pool-11-thread-1] DEBUG Helpers/getFieldFromMather - FIND
+[line 25]	05 янв. 2021 14:09:40,488 [pool-11-thread-2] DEBUG Helpers/getFieldFromMather - FIND
+[line 26]	05 янв. 2021 14:09:40,488 [pool-11-thread-1] DEBUG Helpers/getFieldFromMather - x=132
+[line 26]	05 янв. 2021 14:09:40,488 [pool-11-thread-2] DEBUG Helpers/getFieldFromMather - x=132
+[line 28]	05 янв. 2021 14:09:40,489 [pool-11-thread-1] DEBUG Helpers/getFieldFromMather - x: 132
+[line 28]	05 янв. 2021 14:09:40,489 [pool-11-thread-2] DEBUG Helpers/getFieldFromMather - x: 132
+[line 25]	05 янв. 2021 14:09:40,489 [pool-11-thread-1] DEBUG Helpers/getFieldFromMather - FIND
+[line 25]	05 янв. 2021 14:09:40,489 [pool-11-thread-2] DEBUG Helpers/getFieldFromMather - FIND
+[line 26]	05 янв. 2021 14:09:40,489 [pool-11-thread-1] DEBUG Helpers/getFieldFromMather - y=13
+[line 26]	05 янв. 2021 14:09:40,489 [pool-11-thread-2] DEBUG Helpers/getFieldFromMather - y=13
+[line 28]	05 янв. 2021 14:09:40,489 [pool-11-thread-2] DEBUG Helpers/getFieldFromMather - y: 13
+[line 28]	05 янв. 2021 14:09:40,489 [pool-11-thread-1] DEBUG Helpers/getFieldFromMather - y: 13
+[line 25]	05 янв. 2021 14:09:40,490 [pool-11-thread-1] DEBUG Helpers/getFieldFromMather - FIND
+[line 25]	05 янв. 2021 14:09:40,490 [pool-11-thread-2] DEBUG Helpers/getFieldFromMather - FIND
+[line 26]	05 янв. 2021 14:09:40,490 [pool-11-thread-2] DEBUG Helpers/getFieldFromMather - rotation=13
+[line 26]	05 янв. 2021 14:09:40,490 [pool-11-thread-1] DEBUG Helpers/getFieldFromMather - rotation=13
+[line 28]	05 янв. 2021 14:09:40,491 [pool-11-thread-1] DEBUG Helpers/getFieldFromMather - rotation: 13
+[line 28]	05 янв. 2021 14:09:40,491 [pool-11-thread-2] DEBUG Helpers/getFieldFromMather - rotation: 13
+[line 47]	05 янв. 2021 14:09:40,491 [pool-11-thread-1] DEBUG LayoutConverter/convert - [LayoutConverter] layout converted
+[line 47]	05 янв. 2021 14:09:40,491 [pool-11-thread-2] DEBUG LayoutConverter/convert - [LayoutConverter] layout converted
+[line 25]	05 янв. 2021 14:09:40,493 [pool-11-thread-2] DEBUG Helpers/getFieldFromMather - FIND
+[line 25]	05 янв. 2021 14:09:40,493 [pool-11-thread-1] DEBUG Helpers/getFieldFromMather - FIND
+[line 26]	05 янв. 2021 14:09:40,494 [pool-11-thread-2] DEBUG Helpers/getFieldFromMather - fillColor='blue'
+[line 26]	05 янв. 2021 14:09:40,494 [pool-11-thread-1] DEBUG Helpers/getFieldFromMather - fillColor='blue'
+[line 28]	05 янв. 2021 14:09:40,495 [pool-11-thread-2] DEBUG Helpers/getFieldFromMather - fillColor: blue
+[line 28]	05 янв. 2021 14:09:40,495 [pool-11-thread-1] DEBUG Helpers/getFieldFromMather - fillColor: blue
+[line 25]	05 янв. 2021 14:09:40,495 [pool-11-thread-2] DEBUG Helpers/getFieldFromMather - FIND
+[line 25]	05 янв. 2021 14:09:40,495 [pool-11-thread-1] DEBUG Helpers/getFieldFromMather - FIND
+[line 26]	05 янв. 2021 14:09:40,495 [pool-11-thread-2] DEBUG Helpers/getFieldFromMather - boxShadow='1px 2px 4px 2px blue'
+[line 26]	05 янв. 2021 14:09:40,495 [pool-11-thread-1] DEBUG Helpers/getFieldFromMather - boxShadow='1px 2px 4px 2px blue'
+[line 28]	05 янв. 2021 14:09:40,496 [pool-11-thread-1] DEBUG Helpers/getFieldFromMather - boxShadow: 1px 2px 4px 2px blue
+[line 25]	05 янв. 2021 14:09:40,496 [pool-11-thread-1] DEBUG Helpers/getFieldFromMather - FIND
+[line 28]	05 янв. 2021 14:09:40,496 [pool-11-thread-2] DEBUG Helpers/getFieldFromMather - boxShadow: 1px 2px 4px 2px blue
+[line 26]	05 янв. 2021 14:09:40,496 [pool-11-thread-1] DEBUG Helpers/getFieldFromMather - opacity=23
+[line 28]	05 янв. 2021 14:09:40,497 [pool-11-thread-1] DEBUG Helpers/getFieldFromMather - opacity: 23
+[line 25]	05 янв. 2021 14:09:40,497 [pool-11-thread-2] DEBUG Helpers/getFieldFromMather - FIND
+[line 26]	05 янв. 2021 14:09:40,497 [pool-11-thread-2] DEBUG Helpers/getFieldFromMather - opacity=23
+[line 25]	05 янв. 2021 14:09:40,497 [pool-11-thread-1] DEBUG Helpers/getFieldFromMather - FIND
+[line 26]	05 янв. 2021 14:09:40,497 [pool-11-thread-1] DEBUG Helpers/getFieldFromMather - borderColor='yellow'
+[line 28]	05 янв. 2021 14:09:40,498 [pool-11-thread-2] DEBUG Helpers/getFieldFromMather - opacity: 23
+[line 28]	05 янв. 2021 14:09:40,498 [pool-11-thread-1] DEBUG Helpers/getFieldFromMather - borderColor: yellow
+[line 25]	05 янв. 2021 14:09:40,498 [pool-11-thread-2] DEBUG Helpers/getFieldFromMather - FIND
+[line 25]	05 янв. 2021 14:09:40,498 [pool-11-thread-1] DEBUG Helpers/getFieldFromMather - FIND
+[line 26]	05 янв. 2021 14:09:40,498 [pool-11-thread-2] DEBUG Helpers/getFieldFromMather - borderColor='yellow'
+[line 26]	05 янв. 2021 14:09:40,498 [pool-11-thread-1] DEBUG Helpers/getFieldFromMather - borderRadius='3px'
+[line 28]	05 янв. 2021 14:09:40,499 [pool-11-thread-1] DEBUG Helpers/getFieldFromMather - borderRadius: 3px
+[line 28]	05 янв. 2021 14:09:40,500 [pool-11-thread-2] DEBUG Helpers/getFieldFromMather - borderColor: yellow
+[line 25]	05 янв. 2021 14:09:40,500 [pool-11-thread-2] DEBUG Helpers/getFieldFromMather - FIND
+[line 25]	05 янв. 2021 14:09:40,500 [pool-11-thread-1] DEBUG Helpers/getFieldFromMather - FIND
+[line 26]	05 янв. 2021 14:09:40,500 [pool-11-thread-2] DEBUG Helpers/getFieldFromMather - borderRadius='3px'
+[line 26]	05 янв. 2021 14:09:40,500 [pool-11-thread-1] DEBUG Helpers/getFieldFromMather - borderWidth='2px'
+[line 28]	05 янв. 2021 14:09:40,502 [pool-11-thread-1] DEBUG Helpers/getFieldFromMather - borderWidth: 2px
+[line 28]	05 янв. 2021 14:09:40,502 [pool-11-thread-2] DEBUG Helpers/getFieldFromMather - borderRadius: 3px
+[line 25]	05 янв. 2021 14:09:40,503 [pool-11-thread-2] DEBUG Helpers/getFieldFromMather - FIND
+[line 25]	05 янв. 2021 14:09:40,503 [pool-11-thread-1] DEBUG Helpers/getFieldFromMather - FIND
+[line 26]	05 янв. 2021 14:09:40,503 [pool-11-thread-2] DEBUG Helpers/getFieldFromMather - borderWidth='2px'
+[line 28]	05 янв. 2021 14:09:40,504 [pool-11-thread-2] DEBUG Helpers/getFieldFromMather - borderWidth: 2px
+[line 26]	05 янв. 2021 14:09:40,504 [pool-11-thread-1] DEBUG Helpers/getFieldFromMather - borderStyle=dashed
+[line 25]	05 янв. 2021 14:09:40,504 [pool-11-thread-2] DEBUG Helpers/getFieldFromMather - FIND
+[line 26]	05 янв. 2021 14:09:40,505 [pool-11-thread-2] DEBUG Helpers/getFieldFromMather - borderStyle=dashed
+[line 28]	05 янв. 2021 14:09:40,505 [pool-11-thread-1] DEBUG Helpers/getFieldFromMather - borderStyle: dashed
+[line 58]	05 янв. 2021 14:09:40,505 [pool-11-thread-1] DEBUG StyleConverter/convert - [StyleConverter] style converted
+[line 28]	05 янв. 2021 14:09:40,505 [pool-11-thread-2] DEBUG Helpers/getFieldFromMather - borderStyle: dashed
+[line 58]	05 янв. 2021 14:09:40,506 [pool-11-thread-2] DEBUG StyleConverter/convert - [StyleConverter] style converted
+[line 77]	05 янв. 2021 14:09:40,507 [main] INFO  CSVCommonMethods/getCollection - [getCollection] Collection was retrieved: shape
+[line 66]	05 янв. 2021 14:09:40,508 [main] DEBUG CSVCommonMethods/getCollection - [getCollection] Attempt to get collection: content
+[line 42]	05 янв. 2021 14:09:40,510 [main] DEBUG CSVCommonMethods/getFilePath - path: D:/Универ/CourseProject/src/main/resources/data/test/csv/content.csv
+[line 25]	05 янв. 2021 14:09:40,519 [pool-12-thread-8] DEBUG Helpers/getFieldFromMather - FIND
+[line 25]	05 янв. 2021 14:09:40,520 [pool-12-thread-3] DEBUG Helpers/getFieldFromMather - FIND
+[line 25]	05 янв. 2021 14:09:40,520 [pool-12-thread-2] DEBUG Helpers/getFieldFromMather - FIND
+[line 26]	05 янв. 2021 14:09:40,521 [pool-12-thread-8] DEBUG Helpers/getFieldFromMather - fontFamily='Product Sans'
+[line 26]	05 янв. 2021 14:09:40,522 [pool-12-thread-2] DEBUG Helpers/getFieldFromMather - fontFamily='Product Sans'
+[line 26]	05 янв. 2021 14:09:40,522 [pool-12-thread-3] DEBUG Helpers/getFieldFromMather - fontFamily='Product Sans'
+[line 28]	05 янв. 2021 14:09:40,522 [pool-12-thread-8] DEBUG Helpers/getFieldFromMather - fontFamily: Product Sans
+[line 28]	05 янв. 2021 14:09:40,522 [pool-12-thread-2] DEBUG Helpers/getFieldFromMather - fontFamily: Product Sans
+[line 25]	05 янв. 2021 14:09:40,523 [pool-12-thread-8] DEBUG Helpers/getFieldFromMather - FIND
+[line 26]	05 янв. 2021 14:09:40,524 [pool-12-thread-8] DEBUG Helpers/getFieldFromMather - fontSize='1.2rem'
+[line 25]	05 янв. 2021 14:09:40,524 [pool-12-thread-2] DEBUG Helpers/getFieldFromMather - FIND
+[line 28]	05 янв. 2021 14:09:40,526 [pool-12-thread-3] DEBUG Helpers/getFieldFromMather - fontFamily: Product Sans
+[line 28]	05 янв. 2021 14:09:40,526 [pool-12-thread-8] DEBUG Helpers/getFieldFromMather - fontSize: 1.2rem
+[line 26]	05 янв. 2021 14:09:40,525 [pool-12-thread-2] DEBUG Helpers/getFieldFromMather - fontSize='1.2rem'
+[line 25]	05 янв. 2021 14:09:40,527 [pool-12-thread-8] DEBUG Helpers/getFieldFromMather - FIND
+[line 25]	05 янв. 2021 14:09:40,527 [pool-12-thread-3] DEBUG Helpers/getFieldFromMather - FIND
+[line 28]	05 янв. 2021 14:09:40,527 [pool-12-thread-2] DEBUG Helpers/getFieldFromMather - fontSize: 1.2rem
+[line 25]	05 янв. 2021 14:09:40,528 [pool-12-thread-2] DEBUG Helpers/getFieldFromMather - FIND
+[line 26]	05 янв. 2021 14:09:40,528 [pool-12-thread-8] DEBUG Helpers/getFieldFromMather - letterSpacing='2px'
+[line 26]	05 янв. 2021 14:09:40,528 [pool-12-thread-2] DEBUG Helpers/getFieldFromMather - letterSpacing='2px'
+[line 28]	05 янв. 2021 14:09:40,529 [pool-12-thread-8] DEBUG Helpers/getFieldFromMather - letterSpacing: 2px
+[line 26]	05 янв. 2021 14:09:40,529 [pool-12-thread-3] DEBUG Helpers/getFieldFromMather - fontSize='1.2rem'
+[line 28]	05 янв. 2021 14:09:40,529 [pool-12-thread-2] DEBUG Helpers/getFieldFromMather - letterSpacing: 2px
+[line 25]	05 янв. 2021 14:09:40,529 [pool-12-thread-8] DEBUG Helpers/getFieldFromMather - FIND
+[line 25]	05 янв. 2021 14:09:40,529 [pool-12-thread-2] DEBUG Helpers/getFieldFromMather - FIND
+[line 26]	05 янв. 2021 14:09:40,530 [pool-12-thread-2] DEBUG Helpers/getFieldFromMather - lineSpacing='12px'
+[line 26]	05 янв. 2021 14:09:40,530 [pool-12-thread-8] DEBUG Helpers/getFieldFromMather - lineSpacing='12px'
+[line 28]	05 янв. 2021 14:09:40,530 [pool-12-thread-3] DEBUG Helpers/getFieldFromMather - fontSize: 1.2rem
+[line 25]	05 янв. 2021 14:09:40,530 [pool-12-thread-3] DEBUG Helpers/getFieldFromMather - FIND
+[line 28]	05 янв. 2021 14:09:40,530 [pool-12-thread-2] DEBUG Helpers/getFieldFromMather - lineSpacing: 12px
+[line 28]	05 янв. 2021 14:09:40,530 [pool-12-thread-8] DEBUG Helpers/getFieldFromMather - lineSpacing: 12px
+[line 26]	05 янв. 2021 14:09:40,531 [pool-12-thread-3] DEBUG Helpers/getFieldFromMather - letterSpacing='2px'
+[line 25]	05 янв. 2021 14:09:40,531 [pool-12-thread-2] DEBUG Helpers/getFieldFromMather - FIND
+[line 25]	05 янв. 2021 14:09:40,531 [pool-12-thread-8] DEBUG Helpers/getFieldFromMather - FIND
+[line 26]	05 янв. 2021 14:09:40,531 [pool-12-thread-2] DEBUG Helpers/getFieldFromMather - fontCase=normal
+[line 26]	05 янв. 2021 14:09:40,531 [pool-12-thread-8] DEBUG Helpers/getFieldFromMather - fontCase=normal
+[line 28]	05 янв. 2021 14:09:40,531 [pool-12-thread-2] DEBUG Helpers/getFieldFromMather - fontCase: normal
+[line 28]	05 янв. 2021 14:09:40,531 [pool-12-thread-3] DEBUG Helpers/getFieldFromMather - letterSpacing: 2px
+[line 28]	05 янв. 2021 14:09:40,532 [pool-12-thread-8] DEBUG Helpers/getFieldFromMather - fontCase: normal
+[line 25]	05 янв. 2021 14:09:40,532 [pool-12-thread-3] DEBUG Helpers/getFieldFromMather - FIND
+[line 49]	05 янв. 2021 14:09:40,532 [pool-12-thread-2] DEBUG FontConverter/convert - [FontConverter] font converted
+[line 49]	05 янв. 2021 14:09:40,532 [pool-12-thread-8] DEBUG FontConverter/convert - [FontConverter] font converted
+[line 26]	05 янв. 2021 14:09:40,532 [pool-12-thread-3] DEBUG Helpers/getFieldFromMather - lineSpacing='12px'
+[line 25]	05 янв. 2021 14:09:40,532 [pool-12-thread-2] DEBUG Helpers/getFieldFromMather - FIND
+[line 25]	05 янв. 2021 14:09:40,532 [pool-12-thread-8] DEBUG Helpers/getFieldFromMather - FIND
+[line 26]	05 янв. 2021 14:09:40,533 [pool-12-thread-2] DEBUG Helpers/getFieldFromMather - width=420
+[line 28]	05 янв. 2021 14:09:40,533 [pool-12-thread-3] DEBUG Helpers/getFieldFromMather - lineSpacing: 12px
+[line 28]	05 янв. 2021 14:09:40,534 [pool-12-thread-2] DEBUG Helpers/getFieldFromMather - width: 420
+[line 25]	05 янв. 2021 14:09:40,535 [pool-12-thread-2] DEBUG Helpers/getFieldFromMather - FIND
+[line 26]	05 янв. 2021 14:09:40,534 [pool-12-thread-8] DEBUG Helpers/getFieldFromMather - width=420
+[line 26]	05 янв. 2021 14:09:40,537 [pool-12-thread-2] DEBUG Helpers/getFieldFromMather - height=120
+[line 25]	05 янв. 2021 14:09:40,534 [pool-12-thread-3] DEBUG Helpers/getFieldFromMather - FIND
+[line 28]	05 янв. 2021 14:09:40,538 [pool-12-thread-2] DEBUG Helpers/getFieldFromMather - height: 120
+[line 26]	05 янв. 2021 14:09:40,538 [pool-12-thread-3] DEBUG Helpers/getFieldFromMather - fontCase=normal
+[line 25]	05 янв. 2021 14:09:40,538 [pool-12-thread-2] DEBUG Helpers/getFieldFromMather - FIND
+[line 28]	05 янв. 2021 14:09:40,538 [pool-12-thread-8] DEBUG Helpers/getFieldFromMather - width: 420
+[line 26]	05 янв. 2021 14:09:40,539 [pool-12-thread-2] DEBUG Helpers/getFieldFromMather - x=132
+[line 28]	05 янв. 2021 14:09:40,539 [pool-12-thread-3] DEBUG Helpers/getFieldFromMather - fontCase: normal
+[line 25]	05 янв. 2021 14:09:40,539 [pool-12-thread-8] DEBUG Helpers/getFieldFromMather - FIND
+[line 49]	05 янв. 2021 14:09:40,539 [pool-12-thread-3] DEBUG FontConverter/convert - [FontConverter] font converted
+[line 26]	05 янв. 2021 14:09:40,539 [pool-12-thread-8] DEBUG Helpers/getFieldFromMather - height=120
+[line 28]	05 янв. 2021 14:09:40,540 [pool-12-thread-8] DEBUG Helpers/getFieldFromMather - height: 120
+[line 28]	05 янв. 2021 14:09:40,540 [pool-12-thread-2] DEBUG Helpers/getFieldFromMather - x: 132
+[line 25]	05 янв. 2021 14:09:40,542 [pool-12-thread-3] DEBUG Helpers/getFieldFromMather - FIND
+[line 25]	05 янв. 2021 14:09:40,542 [pool-12-thread-2] DEBUG Helpers/getFieldFromMather - FIND
+[line 25]	05 янв. 2021 14:09:40,542 [pool-12-thread-8] DEBUG Helpers/getFieldFromMather - FIND
+[line 26]	05 янв. 2021 14:09:40,543 [pool-12-thread-2] DEBUG Helpers/getFieldFromMather - y=13
+[line 26]	05 янв. 2021 14:09:40,543 [pool-12-thread-3] DEBUG Helpers/getFieldFromMather - width=420
+[line 26]	05 янв. 2021 14:09:40,543 [pool-12-thread-8] DEBUG Helpers/getFieldFromMather - x=132
+[line 28]	05 янв. 2021 14:09:40,543 [pool-12-thread-2] DEBUG Helpers/getFieldFromMather - y: 13
+[line 28]	05 янв. 2021 14:09:40,543 [pool-12-thread-3] DEBUG Helpers/getFieldFromMather - width: 420
+[line 25]	05 янв. 2021 14:09:40,544 [pool-12-thread-3] DEBUG Helpers/getFieldFromMather - FIND
+[line 28]	05 янв. 2021 14:09:40,544 [pool-12-thread-8] DEBUG Helpers/getFieldFromMather - x: 132
+[line 26]	05 янв. 2021 14:09:40,544 [pool-12-thread-3] DEBUG Helpers/getFieldFromMather - height=120
+[line 25]	05 янв. 2021 14:09:40,544 [pool-12-thread-8] DEBUG Helpers/getFieldFromMather - FIND
+[line 28]	05 янв. 2021 14:09:40,544 [pool-12-thread-3] DEBUG Helpers/getFieldFromMather - height: 120
+[line 26]	05 янв. 2021 14:09:40,544 [pool-12-thread-8] DEBUG Helpers/getFieldFromMather - y=13
+[line 25]	05 янв. 2021 14:09:40,544 [pool-12-thread-3] DEBUG Helpers/getFieldFromMather - FIND
+[line 28]	05 янв. 2021 14:09:40,544 [pool-12-thread-8] DEBUG Helpers/getFieldFromMather - y: 13
+[line 26]	05 янв. 2021 14:09:40,544 [pool-12-thread-3] DEBUG Helpers/getFieldFromMather - x=132
+[line 25]	05 янв. 2021 14:09:40,545 [pool-12-thread-8] DEBUG Helpers/getFieldFromMather - FIND
+[line 28]	05 янв. 2021 14:09:40,545 [pool-12-thread-3] DEBUG Helpers/getFieldFromMather - x: 132
+[line 25]	05 янв. 2021 14:09:40,543 [pool-12-thread-2] DEBUG Helpers/getFieldFromMather - FIND
+[line 26]	05 янв. 2021 14:09:40,545 [pool-12-thread-8] DEBUG Helpers/getFieldFromMather - rotation=13
+[line 26]	05 янв. 2021 14:09:40,545 [pool-12-thread-2] DEBUG Helpers/getFieldFromMather - rotation=13
+[line 28]	05 янв. 2021 14:09:40,545 [pool-12-thread-8] DEBUG Helpers/getFieldFromMather - rotation: 13
+[line 25]	05 янв. 2021 14:09:40,545 [pool-12-thread-3] DEBUG Helpers/getFieldFromMather - FIND
+[line 28]	05 янв. 2021 14:09:40,545 [pool-12-thread-2] DEBUG Helpers/getFieldFromMather - rotation: 13
+[line 47]	05 янв. 2021 14:09:40,545 [pool-12-thread-8] DEBUG LayoutConverter/convert - [LayoutConverter] layout converted
+[line 47]	05 янв. 2021 14:09:40,546 [pool-12-thread-2] DEBUG LayoutConverter/convert - [LayoutConverter] layout converted
+[line 26]	05 янв. 2021 14:09:40,546 [pool-12-thread-3] DEBUG Helpers/getFieldFromMather - y=13
+[line 28]	05 янв. 2021 14:09:40,547 [pool-12-thread-3] DEBUG Helpers/getFieldFromMather - y: 13
+[line 25]	05 янв. 2021 14:09:40,549 [pool-12-thread-3] DEBUG Helpers/getFieldFromMather - FIND
+[line 26]	05 янв. 2021 14:09:40,549 [pool-12-thread-3] DEBUG Helpers/getFieldFromMather - rotation=13
+[line 28]	05 янв. 2021 14:09:40,550 [pool-12-thread-3] DEBUG Helpers/getFieldFromMather - rotation: 13
+[line 47]	05 янв. 2021 14:09:40,552 [pool-12-thread-3] DEBUG LayoutConverter/convert - [LayoutConverter] layout converted
+[line 77]	05 янв. 2021 14:09:40,553 [main] INFO  CSVCommonMethods/getCollection - [getCollection] Collection was retrieved: content
+[line 431]	05 янв. 2021 14:09:40,570 [main] INFO  CSVElementMethods/getSlideElements - Slides found: [Content{font=Font{fontFamily='Product Sans', fontSize='1.2rem', letterSpacing='2px', lineSpacing='12px', fontCase=normal}, text='Тестовый текст', name='Тестовое имя', id=115cde12-c629-4c06-bac2-d1376a7739a8, presentationId=353038aa-9497-4f1a-ad1e-9e539fe2ecfd, slideId=641986b5-d2c2-4541-b905-ee2b4a2ca881, layout=Layout{x=132, y=13, width=420, height=120, rotation=13}}]
+[line 35]	05 янв. 2021 14:09:40,571 [main] INFO  Result/<init> - { status: success, value: [Content{font=Font{fontFamily='Product Sans', fontSize='1.2rem', letterSpacing='2px', lineSpacing='12px', fontCase=normal}, text='Тестовый текст', name='Тестовое имя', id=115cde12-c629-4c06-bac2-d1376a7739a8, presentationId=353038aa-9497-4f1a-ad1e-9e539fe2ecfd, slideId=641986b5-d2c2-4541-b905-ee2b4a2ca881, layout=Layout{x=132, y=13, width=420, height=120, rotation=13}}] }
+[line 130]	05 янв. 2021 14:09:40,572 [main] DEBUG CSVSlideMethods/lambda$setElementsBySlide$1 - get elements status: success
+[line 131]	05 янв. 2021 14:09:40,573 [main] DEBUG CSVSlideMethods/lambda$setElementsBySlide$1 - Slide elements: [Content{font=Font{fontFamily='Product Sans', fontSize='1.2rem', letterSpacing='2px', lineSpacing='12px', fontCase=normal}, text='Тестовый текст', name='Тестовое имя', id=115cde12-c629-4c06-bac2-d1376a7739a8, presentationId=353038aa-9497-4f1a-ad1e-9e539fe2ecfd, slideId=641986b5-d2c2-4541-b905-ee2b4a2ca881, layout=Layout{x=132, y=13, width=420, height=120, rotation=13}}]
+[line 124]	05 янв. 2021 14:09:40,574 [main] INFO  CSVSlideMethods/lambda$setElementsBySlide$1 - Search elements for slide: a7d2ca77-ca2d-4527-952a-e89189b1fbf3
+[line 22]	05 янв. 2021 14:09:40,575 [main] DEBUG ArgsValidator/validate - [validate] Validate: [presentationId, slideId]
+[line 24]	05 янв. 2021 14:09:40,576 [main] DEBUG ArgsValidator/validate - [validate] Null fields: []
+[line 25]	05 янв. 2021 14:09:40,577 [main] DEBUG ArgsValidator/validate - [validate] Null fields: []
+[line 35]	05 янв. 2021 14:09:40,577 [main] INFO  Result/<init> - { status: success, value:  }
+[line 277]	05 янв. 2021 14:09:40,578 [main] DEBUG CSVCommonMethods/getInstanceExistenceByField - [getInstanceExistenceByField] Get: Presentation; id: 353038aa-9497-4f1a-ad1e-9e539fe2ecfd
+[line 218]	05 янв. 2021 14:09:40,578 [main] DEBUG CSVCommonMethods/getInstanceById - presentation id: 353038aa-9497-4f1a-ad1e-9e539fe2ecfd
+[line 66]	05 янв. 2021 14:09:40,579 [main] DEBUG CSVCommonMethods/getCollection - [getCollection] Attempt to get collection: presentation
+[line 42]	05 янв. 2021 14:09:40,580 [main] DEBUG CSVCommonMethods/getFilePath - path: D:/Универ/CourseProject/src/main/resources/data/test/csv/presentation.csv
+[line 77]	05 янв. 2021 14:09:40,593 [main] INFO  CSVCommonMethods/getCollection - [getCollection] Collection was retrieved: presentation
+[line 223]	05 янв. 2021 14:09:40,594 [main] DEBUG CSVCommonMethods/getInstanceById - Attempt to find presentation: 353038aa-9497-4f1a-ad1e-9e539fe2ecfd
+[line 224]	05 янв. 2021 14:09:40,594 [main] DEBUG CSVCommonMethods/getInstanceById - list instance: [Presentation{id=353038aa-9497-4f1a-ad1e-9e539fe2ecfd, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}]
+[line 227]	05 янв. 2021 14:09:40,595 [main] DEBUG CSVCommonMethods/getInstanceById - Optional[Presentation{id=353038aa-9497-4f1a-ad1e-9e539fe2ecfd, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}]
+[line 281]	05 янв. 2021 14:09:40,597 [main] DEBUG CSVCommonMethods/getInstanceExistenceByField - Optional[Presentation{id=353038aa-9497-4f1a-ad1e-9e539fe2ecfd, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}]
+[line 407]	05 янв. 2021 14:09:40,598 [main] INFO  CSVElementMethods/getSlideElements - Presentation found: Presentation{id=353038aa-9497-4f1a-ad1e-9e539fe2ecfd, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}
+[line 277]	05 янв. 2021 14:09:40,599 [main] DEBUG CSVCommonMethods/getInstanceExistenceByField - [getInstanceExistenceByField] Get: Slide; id: a7d2ca77-ca2d-4527-952a-e89189b1fbf3
+[line 218]	05 янв. 2021 14:09:40,600 [main] DEBUG CSVCommonMethods/getInstanceById - slide id: a7d2ca77-ca2d-4527-952a-e89189b1fbf3
+[line 66]	05 янв. 2021 14:09:40,602 [main] DEBUG CSVCommonMethods/getCollection - [getCollection] Attempt to get collection: slide
+[line 42]	05 янв. 2021 14:09:40,604 [main] DEBUG CSVCommonMethods/getFilePath - path: D:/Универ/CourseProject/src/main/resources/data/test/csv/slide.csv
+[line 77]	05 янв. 2021 14:09:40,613 [main] INFO  CSVCommonMethods/getCollection - [getCollection] Collection was retrieved: slide
+[line 232]	05 янв. 2021 14:09:40,613 [main] DEBUG CSVCommonMethods/getInstanceById - Attempt to find slide: a7d2ca77-ca2d-4527-952a-e89189b1fbf3
+[line 281]	05 янв. 2021 14:09:40,614 [main] DEBUG CSVCommonMethods/getInstanceExistenceByField - Optional[Slide{id=a7d2ca77-ca2d-4527-952a-e89189b1fbf3, name='Slide 3', index=2, presentationId=353038aa-9497-4f1a-ad1e-9e539fe2ecfd}]
+[line 413]	05 янв. 2021 14:09:40,615 [main] INFO  CSVElementMethods/getSlideElements - Slide found: Slide{id=a7d2ca77-ca2d-4527-952a-e89189b1fbf3, name='Slide 3', index=2, presentationId=353038aa-9497-4f1a-ad1e-9e539fe2ecfd}
+[line 415]	05 янв. 2021 14:09:40,615 [main] DEBUG CSVElementMethods/getSlideElements - Set slide elements
+[line 66]	05 янв. 2021 14:09:40,616 [main] DEBUG CSVCommonMethods/getCollection - [getCollection] Attempt to get collection: shape
+[line 42]	05 янв. 2021 14:09:40,616 [main] DEBUG CSVCommonMethods/getFilePath - path: D:/Универ/CourseProject/src/main/resources/data/test/csv/shape.csv
+[line 25]	05 янв. 2021 14:09:40,625 [pool-15-thread-2] DEBUG Helpers/getFieldFromMather - FIND
+[line 25]	05 янв. 2021 14:09:40,625 [pool-15-thread-1] DEBUG Helpers/getFieldFromMather - FIND
+[line 26]	05 янв. 2021 14:09:40,626 [pool-15-thread-1] DEBUG Helpers/getFieldFromMather - width=420
+[line 26]	05 янв. 2021 14:09:40,626 [pool-15-thread-2] DEBUG Helpers/getFieldFromMather - width=420
+[line 28]	05 янв. 2021 14:09:40,627 [pool-15-thread-1] DEBUG Helpers/getFieldFromMather - width: 420
+[line 28]	05 янв. 2021 14:09:40,627 [pool-15-thread-2] DEBUG Helpers/getFieldFromMather - width: 420
+[line 25]	05 янв. 2021 14:09:40,627 [pool-15-thread-2] DEBUG Helpers/getFieldFromMather - FIND
+[line 25]	05 янв. 2021 14:09:40,627 [pool-15-thread-1] DEBUG Helpers/getFieldFromMather - FIND
+[line 26]	05 янв. 2021 14:09:40,628 [pool-15-thread-2] DEBUG Helpers/getFieldFromMather - height=120
+[line 26]	05 янв. 2021 14:09:40,628 [pool-15-thread-1] DEBUG Helpers/getFieldFromMather - height=120
+[line 28]	05 янв. 2021 14:09:40,628 [pool-15-thread-2] DEBUG Helpers/getFieldFromMather - height: 120
+[line 28]	05 янв. 2021 14:09:40,628 [pool-15-thread-1] DEBUG Helpers/getFieldFromMather - height: 120
+[line 25]	05 янв. 2021 14:09:40,628 [pool-15-thread-2] DEBUG Helpers/getFieldFromMather - FIND
+[line 25]	05 янв. 2021 14:09:40,628 [pool-15-thread-1] DEBUG Helpers/getFieldFromMather - FIND
+[line 26]	05 янв. 2021 14:09:40,628 [pool-15-thread-2] DEBUG Helpers/getFieldFromMather - x=132
+[line 26]	05 янв. 2021 14:09:40,628 [pool-15-thread-1] DEBUG Helpers/getFieldFromMather - x=132
+[line 28]	05 янв. 2021 14:09:40,629 [pool-15-thread-2] DEBUG Helpers/getFieldFromMather - x: 132
+[line 28]	05 янв. 2021 14:09:40,629 [pool-15-thread-1] DEBUG Helpers/getFieldFromMather - x: 132
+[line 25]	05 янв. 2021 14:09:40,629 [pool-15-thread-2] DEBUG Helpers/getFieldFromMather - FIND
+[line 25]	05 янв. 2021 14:09:40,629 [pool-15-thread-1] DEBUG Helpers/getFieldFromMather - FIND
+[line 26]	05 янв. 2021 14:09:40,629 [pool-15-thread-1] DEBUG Helpers/getFieldFromMather - y=13
+[line 26]	05 янв. 2021 14:09:40,629 [pool-15-thread-2] DEBUG Helpers/getFieldFromMather - y=13
+[line 28]	05 янв. 2021 14:09:40,629 [pool-15-thread-1] DEBUG Helpers/getFieldFromMather - y: 13
+[line 28]	05 янв. 2021 14:09:40,629 [pool-15-thread-2] DEBUG Helpers/getFieldFromMather - y: 13
+[line 25]	05 янв. 2021 14:09:40,630 [pool-15-thread-2] DEBUG Helpers/getFieldFromMather - FIND
+[line 25]	05 янв. 2021 14:09:40,630 [pool-15-thread-1] DEBUG Helpers/getFieldFromMather - FIND
+[line 26]	05 янв. 2021 14:09:40,630 [pool-15-thread-1] DEBUG Helpers/getFieldFromMather - rotation=13
+[line 26]	05 янв. 2021 14:09:40,630 [pool-15-thread-2] DEBUG Helpers/getFieldFromMather - rotation=13
+[line 28]	05 янв. 2021 14:09:40,630 [pool-15-thread-1] DEBUG Helpers/getFieldFromMather - rotation: 13
+[line 28]	05 янв. 2021 14:09:40,630 [pool-15-thread-2] DEBUG Helpers/getFieldFromMather - rotation: 13
+[line 47]	05 янв. 2021 14:09:40,630 [pool-15-thread-1] DEBUG LayoutConverter/convert - [LayoutConverter] layout converted
+[line 47]	05 янв. 2021 14:09:40,630 [pool-15-thread-2] DEBUG LayoutConverter/convert - [LayoutConverter] layout converted
+[line 25]	05 янв. 2021 14:09:40,632 [pool-15-thread-2] DEBUG Helpers/getFieldFromMather - FIND
+[line 25]	05 янв. 2021 14:09:40,632 [pool-15-thread-1] DEBUG Helpers/getFieldFromMather - FIND
+[line 26]	05 янв. 2021 14:09:40,632 [pool-15-thread-2] DEBUG Helpers/getFieldFromMather - fillColor='blue'
+[line 26]	05 янв. 2021 14:09:40,633 [pool-15-thread-1] DEBUG Helpers/getFieldFromMather - fillColor='blue'
+[line 28]	05 янв. 2021 14:09:40,633 [pool-15-thread-2] DEBUG Helpers/getFieldFromMather - fillColor: blue
+[line 25]	05 янв. 2021 14:09:40,633 [pool-15-thread-2] DEBUG Helpers/getFieldFromMather - FIND
+[line 26]	05 янв. 2021 14:09:40,634 [pool-15-thread-2] DEBUG Helpers/getFieldFromMather - boxShadow='1px 2px 4px 2px blue'
+[line 28]	05 янв. 2021 14:09:40,635 [pool-15-thread-2] DEBUG Helpers/getFieldFromMather - boxShadow: 1px 2px 4px 2px blue
+[line 25]	05 янв. 2021 14:09:40,635 [pool-15-thread-2] DEBUG Helpers/getFieldFromMather - FIND
+[line 26]	05 янв. 2021 14:09:40,636 [pool-15-thread-2] DEBUG Helpers/getFieldFromMather - opacity=23
+[line 28]	05 янв. 2021 14:09:40,637 [pool-15-thread-1] DEBUG Helpers/getFieldFromMather - fillColor: blue
+[line 28]	05 янв. 2021 14:09:40,637 [pool-15-thread-2] DEBUG Helpers/getFieldFromMather - opacity: 23
+[line 25]	05 янв. 2021 14:09:40,637 [pool-15-thread-1] DEBUG Helpers/getFieldFromMather - FIND
+[line 26]	05 янв. 2021 14:09:40,638 [pool-15-thread-1] DEBUG Helpers/getFieldFromMather - boxShadow='1px 2px 4px 2px blue'
+[line 25]	05 янв. 2021 14:09:40,638 [pool-15-thread-2] DEBUG Helpers/getFieldFromMather - FIND
+[line 26]	05 янв. 2021 14:09:40,639 [pool-15-thread-2] DEBUG Helpers/getFieldFromMather - borderColor='yellow'
+[line 28]	05 янв. 2021 14:09:40,639 [pool-15-thread-1] DEBUG Helpers/getFieldFromMather - boxShadow: 1px 2px 4px 2px blue
+[line 25]	05 янв. 2021 14:09:40,639 [pool-15-thread-1] DEBUG Helpers/getFieldFromMather - FIND
+[line 28]	05 янв. 2021 14:09:40,639 [pool-15-thread-2] DEBUG Helpers/getFieldFromMather - borderColor: yellow
+[line 26]	05 янв. 2021 14:09:40,639 [pool-15-thread-1] DEBUG Helpers/getFieldFromMather - opacity=23
+[line 25]	05 янв. 2021 14:09:40,639 [pool-15-thread-2] DEBUG Helpers/getFieldFromMather - FIND
+[line 26]	05 янв. 2021 14:09:40,639 [pool-15-thread-2] DEBUG Helpers/getFieldFromMather - borderRadius='3px'
+[line 28]	05 янв. 2021 14:09:40,639 [pool-15-thread-1] DEBUG Helpers/getFieldFromMather - opacity: 23
+[line 28]	05 янв. 2021 14:09:40,640 [pool-15-thread-2] DEBUG Helpers/getFieldFromMather - borderRadius: 3px
+[line 25]	05 янв. 2021 14:09:40,640 [pool-15-thread-1] DEBUG Helpers/getFieldFromMather - FIND
+[line 25]	05 янв. 2021 14:09:40,640 [pool-15-thread-2] DEBUG Helpers/getFieldFromMather - FIND
+[line 26]	05 янв. 2021 14:09:40,640 [pool-15-thread-1] DEBUG Helpers/getFieldFromMather - borderColor='yellow'
+[line 26]	05 янв. 2021 14:09:40,640 [pool-15-thread-2] DEBUG Helpers/getFieldFromMather - borderWidth='2px'
+[line 28]	05 янв. 2021 14:09:40,640 [pool-15-thread-1] DEBUG Helpers/getFieldFromMather - borderColor: yellow
+[line 25]	05 янв. 2021 14:09:40,640 [pool-15-thread-1] DEBUG Helpers/getFieldFromMather - FIND
+[line 26]	05 янв. 2021 14:09:40,640 [pool-15-thread-1] DEBUG Helpers/getFieldFromMather - borderRadius='3px'
+[line 28]	05 янв. 2021 14:09:40,641 [pool-15-thread-2] DEBUG Helpers/getFieldFromMather - borderWidth: 2px
+[line 25]	05 янв. 2021 14:09:40,641 [pool-15-thread-2] DEBUG Helpers/getFieldFromMather - FIND
+[line 28]	05 янв. 2021 14:09:40,641 [pool-15-thread-1] DEBUG Helpers/getFieldFromMather - borderRadius: 3px
+[line 26]	05 янв. 2021 14:09:40,641 [pool-15-thread-2] DEBUG Helpers/getFieldFromMather - borderStyle=dashed
+[line 25]	05 янв. 2021 14:09:40,641 [pool-15-thread-1] DEBUG Helpers/getFieldFromMather - FIND
+[line 26]	05 янв. 2021 14:09:40,641 [pool-15-thread-1] DEBUG Helpers/getFieldFromMather - borderWidth='2px'
+[line 28]	05 янв. 2021 14:09:40,641 [pool-15-thread-2] DEBUG Helpers/getFieldFromMather - borderStyle: dashed
+[line 58]	05 янв. 2021 14:09:40,641 [pool-15-thread-2] DEBUG StyleConverter/convert - [StyleConverter] style converted
+[line 28]	05 янв. 2021 14:09:40,641 [pool-15-thread-1] DEBUG Helpers/getFieldFromMather - borderWidth: 2px
+[line 25]	05 янв. 2021 14:09:40,642 [pool-15-thread-1] DEBUG Helpers/getFieldFromMather - FIND
+[line 26]	05 янв. 2021 14:09:40,642 [pool-15-thread-1] DEBUG Helpers/getFieldFromMather - borderStyle=dashed
+[line 28]	05 янв. 2021 14:09:40,642 [pool-15-thread-1] DEBUG Helpers/getFieldFromMather - borderStyle: dashed
+[line 58]	05 янв. 2021 14:09:40,643 [pool-15-thread-1] DEBUG StyleConverter/convert - [StyleConverter] style converted
+[line 77]	05 янв. 2021 14:09:40,644 [main] INFO  CSVCommonMethods/getCollection - [getCollection] Collection was retrieved: shape
+[line 66]	05 янв. 2021 14:09:40,645 [main] DEBUG CSVCommonMethods/getCollection - [getCollection] Attempt to get collection: content
+[line 42]	05 янв. 2021 14:09:40,646 [main] DEBUG CSVCommonMethods/getFilePath - path: D:/Универ/CourseProject/src/main/resources/data/test/csv/content.csv
+[line 25]	05 янв. 2021 14:09:40,654 [pool-16-thread-4] DEBUG Helpers/getFieldFromMather - FIND
+[line 25]	05 янв. 2021 14:09:40,654 [pool-16-thread-3] DEBUG Helpers/getFieldFromMather - FIND
+[line 25]	05 янв. 2021 14:09:40,654 [pool-16-thread-1] DEBUG Helpers/getFieldFromMather - FIND
+[line 26]	05 янв. 2021 14:09:40,656 [pool-16-thread-4] DEBUG Helpers/getFieldFromMather - fontFamily='Product Sans'
+[line 26]	05 янв. 2021 14:09:40,656 [pool-16-thread-3] DEBUG Helpers/getFieldFromMather - fontFamily='Product Sans'
+[line 28]	05 янв. 2021 14:09:40,656 [pool-16-thread-4] DEBUG Helpers/getFieldFromMather - fontFamily: Product Sans
+[line 26]	05 янв. 2021 14:09:40,656 [pool-16-thread-1] DEBUG Helpers/getFieldFromMather - fontFamily='Product Sans'
+[line 25]	05 янв. 2021 14:09:40,657 [pool-16-thread-4] DEBUG Helpers/getFieldFromMather - FIND
+[line 28]	05 янв. 2021 14:09:40,657 [pool-16-thread-3] DEBUG Helpers/getFieldFromMather - fontFamily: Product Sans
+[line 28]	05 янв. 2021 14:09:40,657 [pool-16-thread-1] DEBUG Helpers/getFieldFromMather - fontFamily: Product Sans
+[line 25]	05 янв. 2021 14:09:40,657 [pool-16-thread-3] DEBUG Helpers/getFieldFromMather - FIND
+[line 25]	05 янв. 2021 14:09:40,657 [pool-16-thread-1] DEBUG Helpers/getFieldFromMather - FIND
+[line 26]	05 янв. 2021 14:09:40,657 [pool-16-thread-3] DEBUG Helpers/getFieldFromMather - fontSize='1.2rem'
+[line 26]	05 янв. 2021 14:09:40,657 [pool-16-thread-4] DEBUG Helpers/getFieldFromMather - fontSize='1.2rem'
+[line 28]	05 янв. 2021 14:09:40,658 [pool-16-thread-3] DEBUG Helpers/getFieldFromMather - fontSize: 1.2rem
+[line 28]	05 янв. 2021 14:09:40,658 [pool-16-thread-4] DEBUG Helpers/getFieldFromMather - fontSize: 1.2rem
+[line 25]	05 янв. 2021 14:09:40,658 [pool-16-thread-3] DEBUG Helpers/getFieldFromMather - FIND
+[line 25]	05 янв. 2021 14:09:40,658 [pool-16-thread-4] DEBUG Helpers/getFieldFromMather - FIND
+[line 26]	05 янв. 2021 14:09:40,658 [pool-16-thread-1] DEBUG Helpers/getFieldFromMather - fontSize='1.2rem'
+[line 26]	05 янв. 2021 14:09:40,658 [pool-16-thread-3] DEBUG Helpers/getFieldFromMather - letterSpacing='2px'
+[line 26]	05 янв. 2021 14:09:40,658 [pool-16-thread-4] DEBUG Helpers/getFieldFromMather - letterSpacing='2px'
+[line 28]	05 янв. 2021 14:09:40,658 [pool-16-thread-1] DEBUG Helpers/getFieldFromMather - fontSize: 1.2rem
+[line 25]	05 янв. 2021 14:09:40,659 [pool-16-thread-1] DEBUG Helpers/getFieldFromMather - FIND
+[line 28]	05 янв. 2021 14:09:40,659 [pool-16-thread-4] DEBUG Helpers/getFieldFromMather - letterSpacing: 2px
+[line 26]	05 янв. 2021 14:09:40,659 [pool-16-thread-1] DEBUG Helpers/getFieldFromMather - letterSpacing='2px'
+[line 28]	05 янв. 2021 14:09:40,659 [pool-16-thread-3] DEBUG Helpers/getFieldFromMather - letterSpacing: 2px
+[line 25]	05 янв. 2021 14:09:40,659 [pool-16-thread-4] DEBUG Helpers/getFieldFromMather - FIND
+[line 25]	05 янв. 2021 14:09:40,659 [pool-16-thread-3] DEBUG Helpers/getFieldFromMather - FIND
+[line 26]	05 янв. 2021 14:09:40,659 [pool-16-thread-4] DEBUG Helpers/getFieldFromMather - lineSpacing='12px'
+[line 28]	05 янв. 2021 14:09:40,659 [pool-16-thread-1] DEBUG Helpers/getFieldFromMather - letterSpacing: 2px
+[line 26]	05 янв. 2021 14:09:40,659 [pool-16-thread-3] DEBUG Helpers/getFieldFromMather - lineSpacing='12px'
+[line 25]	05 янв. 2021 14:09:40,659 [pool-16-thread-1] DEBUG Helpers/getFieldFromMather - FIND
+[line 28]	05 янв. 2021 14:09:40,659 [pool-16-thread-4] DEBUG Helpers/getFieldFromMather - lineSpacing: 12px
+[line 26]	05 янв. 2021 14:09:40,659 [pool-16-thread-1] DEBUG Helpers/getFieldFromMather - lineSpacing='12px'
+[line 25]	05 янв. 2021 14:09:40,659 [pool-16-thread-4] DEBUG Helpers/getFieldFromMather - FIND
+[line 26]	05 янв. 2021 14:09:40,659 [pool-16-thread-4] DEBUG Helpers/getFieldFromMather - fontCase=normal
+[line 28]	05 янв. 2021 14:09:40,659 [pool-16-thread-1] DEBUG Helpers/getFieldFromMather - lineSpacing: 12px
+[line 25]	05 янв. 2021 14:09:40,660 [pool-16-thread-1] DEBUG Helpers/getFieldFromMather - FIND
+[line 28]	05 янв. 2021 14:09:40,660 [pool-16-thread-4] DEBUG Helpers/getFieldFromMather - fontCase: normal
+[line 28]	05 янв. 2021 14:09:40,660 [pool-16-thread-3] DEBUG Helpers/getFieldFromMather - lineSpacing: 12px
+[line 26]	05 янв. 2021 14:09:40,660 [pool-16-thread-1] DEBUG Helpers/getFieldFromMather - fontCase=normal
+[line 49]	05 янв. 2021 14:09:40,660 [pool-16-thread-4] DEBUG FontConverter/convert - [FontConverter] font converted
+[line 25]	05 янв. 2021 14:09:40,660 [pool-16-thread-3] DEBUG Helpers/getFieldFromMather - FIND
+[line 28]	05 янв. 2021 14:09:40,660 [pool-16-thread-1] DEBUG Helpers/getFieldFromMather - fontCase: normal
+[line 26]	05 янв. 2021 14:09:40,660 [pool-16-thread-3] DEBUG Helpers/getFieldFromMather - fontCase=normal
+[line 49]	05 янв. 2021 14:09:40,660 [pool-16-thread-1] DEBUG FontConverter/convert - [FontConverter] font converted
+[line 25]	05 янв. 2021 14:09:40,660 [pool-16-thread-4] DEBUG Helpers/getFieldFromMather - FIND
+[line 26]	05 янв. 2021 14:09:40,660 [pool-16-thread-4] DEBUG Helpers/getFieldFromMather - width=420
+[line 28]	05 янв. 2021 14:09:40,661 [pool-16-thread-4] DEBUG Helpers/getFieldFromMather - width: 420
+[line 28]	05 янв. 2021 14:09:40,661 [pool-16-thread-3] DEBUG Helpers/getFieldFromMather - fontCase: normal
+[line 25]	05 янв. 2021 14:09:40,661 [pool-16-thread-1] DEBUG Helpers/getFieldFromMather - FIND
+[line 25]	05 янв. 2021 14:09:40,661 [pool-16-thread-4] DEBUG Helpers/getFieldFromMather - FIND
+[line 26]	05 янв. 2021 14:09:40,661 [pool-16-thread-1] DEBUG Helpers/getFieldFromMather - width=420
+[line 26]	05 янв. 2021 14:09:40,661 [pool-16-thread-4] DEBUG Helpers/getFieldFromMather - height=120
+[line 49]	05 янв. 2021 14:09:40,661 [pool-16-thread-3] DEBUG FontConverter/convert - [FontConverter] font converted
+[line 28]	05 янв. 2021 14:09:40,661 [pool-16-thread-4] DEBUG Helpers/getFieldFromMather - height: 120
+[line 28]	05 янв. 2021 14:09:40,661 [pool-16-thread-1] DEBUG Helpers/getFieldFromMather - width: 420
+[line 25]	05 янв. 2021 14:09:40,662 [pool-16-thread-4] DEBUG Helpers/getFieldFromMather - FIND
+[line 25]	05 янв. 2021 14:09:40,662 [pool-16-thread-1] DEBUG Helpers/getFieldFromMather - FIND
+[line 25]	05 янв. 2021 14:09:40,662 [pool-16-thread-3] DEBUG Helpers/getFieldFromMather - FIND
+[line 26]	05 янв. 2021 14:09:40,662 [pool-16-thread-4] DEBUG Helpers/getFieldFromMather - x=132
+[line 26]	05 янв. 2021 14:09:40,662 [pool-16-thread-1] DEBUG Helpers/getFieldFromMather - height=120
+[line 26]	05 янв. 2021 14:09:40,662 [pool-16-thread-3] DEBUG Helpers/getFieldFromMather - width=420
+[line 28]	05 янв. 2021 14:09:40,662 [pool-16-thread-1] DEBUG Helpers/getFieldFromMather - height: 120
+[line 28]	05 янв. 2021 14:09:40,662 [pool-16-thread-4] DEBUG Helpers/getFieldFromMather - x: 132
+[line 25]	05 янв. 2021 14:09:40,662 [pool-16-thread-1] DEBUG Helpers/getFieldFromMather - FIND
+[line 25]	05 янв. 2021 14:09:40,662 [pool-16-thread-4] DEBUG Helpers/getFieldFromMather - FIND
+[line 26]	05 янв. 2021 14:09:40,662 [pool-16-thread-1] DEBUG Helpers/getFieldFromMather - x=132
+[line 28]	05 янв. 2021 14:09:40,662 [pool-16-thread-3] DEBUG Helpers/getFieldFromMather - width: 420
+[line 26]	05 янв. 2021 14:09:40,662 [pool-16-thread-4] DEBUG Helpers/getFieldFromMather - y=13
+[line 25]	05 янв. 2021 14:09:40,663 [pool-16-thread-3] DEBUG Helpers/getFieldFromMather - FIND
+[line 28]	05 янв. 2021 14:09:40,663 [pool-16-thread-1] DEBUG Helpers/getFieldFromMather - x: 132
+[line 25]	05 янв. 2021 14:09:40,663 [pool-16-thread-1] DEBUG Helpers/getFieldFromMather - FIND
+[line 28]	05 янв. 2021 14:09:40,663 [pool-16-thread-4] DEBUG Helpers/getFieldFromMather - y: 13
+[line 26]	05 янв. 2021 14:09:40,664 [pool-16-thread-1] DEBUG Helpers/getFieldFromMather - y=13
+[line 26]	05 янв. 2021 14:09:40,664 [pool-16-thread-3] DEBUG Helpers/getFieldFromMather - height=120
+[line 25]	05 янв. 2021 14:09:40,664 [pool-16-thread-4] DEBUG Helpers/getFieldFromMather - FIND
+[line 28]	05 янв. 2021 14:09:40,664 [pool-16-thread-3] DEBUG Helpers/getFieldFromMather - height: 120
+[line 28]	05 янв. 2021 14:09:40,664 [pool-16-thread-1] DEBUG Helpers/getFieldFromMather - y: 13
+[line 26]	05 янв. 2021 14:09:40,664 [pool-16-thread-4] DEBUG Helpers/getFieldFromMather - rotation=13
+[line 25]	05 янв. 2021 14:09:40,664 [pool-16-thread-3] DEBUG Helpers/getFieldFromMather - FIND
+[line 25]	05 янв. 2021 14:09:40,664 [pool-16-thread-1] DEBUG Helpers/getFieldFromMather - FIND
+[line 26]	05 янв. 2021 14:09:40,664 [pool-16-thread-3] DEBUG Helpers/getFieldFromMather - x=132
+[line 26]	05 янв. 2021 14:09:40,664 [pool-16-thread-1] DEBUG Helpers/getFieldFromMather - rotation=13
+[line 28]	05 янв. 2021 14:09:40,664 [pool-16-thread-4] DEBUG Helpers/getFieldFromMather - rotation: 13
+[line 47]	05 янв. 2021 14:09:40,665 [pool-16-thread-4] DEBUG LayoutConverter/convert - [LayoutConverter] layout converted
+[line 28]	05 янв. 2021 14:09:40,665 [pool-16-thread-3] DEBUG Helpers/getFieldFromMather - x: 132
+[line 28]	05 янв. 2021 14:09:40,665 [pool-16-thread-1] DEBUG Helpers/getFieldFromMather - rotation: 13
+[line 25]	05 янв. 2021 14:09:40,665 [pool-16-thread-3] DEBUG Helpers/getFieldFromMather - FIND
+[line 47]	05 янв. 2021 14:09:40,665 [pool-16-thread-1] DEBUG LayoutConverter/convert - [LayoutConverter] layout converted
+[line 26]	05 янв. 2021 14:09:40,665 [pool-16-thread-3] DEBUG Helpers/getFieldFromMather - y=13
+[line 28]	05 янв. 2021 14:09:40,666 [pool-16-thread-3] DEBUG Helpers/getFieldFromMather - y: 13
+[line 25]	05 янв. 2021 14:09:40,667 [pool-16-thread-3] DEBUG Helpers/getFieldFromMather - FIND
+[line 26]	05 янв. 2021 14:09:40,667 [pool-16-thread-3] DEBUG Helpers/getFieldFromMather - rotation=13
+[line 28]	05 янв. 2021 14:09:40,668 [pool-16-thread-3] DEBUG Helpers/getFieldFromMather - rotation: 13
+[line 47]	05 янв. 2021 14:09:40,669 [pool-16-thread-3] DEBUG LayoutConverter/convert - [LayoutConverter] layout converted
+[line 77]	05 янв. 2021 14:09:40,670 [main] INFO  CSVCommonMethods/getCollection - [getCollection] Collection was retrieved: content
+[line 431]	05 янв. 2021 14:09:40,671 [main] INFO  CSVElementMethods/getSlideElements - Slides found: [Shape{style=Style{fillColor='blue', boxShadow='1px 2px 4px 2px blue', opacity=23, borderColor='yellow', borderRadius='3px', borderWidth='2px', borderStyle=dashed}, text='Тестовый текст', figure=rectangle, id=14780e91-49d0-43ec-ad65-c30d8036c712, presentationId=353038aa-9497-4f1a-ad1e-9e539fe2ecfd, slideId=a7d2ca77-ca2d-4527-952a-e89189b1fbf3, name=Test name, layout=Layout{x=132, y=13, width=420, height=120, rotation=13}}, Content{font=Font{fontFamily='Product Sans', fontSize='1.2rem', letterSpacing='2px', lineSpacing='12px', fontCase=normal}, text='Тестовый текст', name='Тестовое имя', id=b9387570-62e2-4c7d-a8d8-e56ffa6ae377, presentationId=353038aa-9497-4f1a-ad1e-9e539fe2ecfd, slideId=a7d2ca77-ca2d-4527-952a-e89189b1fbf3, layout=Layout{x=132, y=13, width=420, height=120, rotation=13}}, Content{font=Font{fontFamily='Product Sans', fontSize='1.2rem', letterSpacing='2px', lineSpacing='12px', fontCase=normal}, text='Тестовый текст', name='Тестовое имя', id=8c6cb8b2-ba07-4068-9de0-6f39026083da, presentationId=353038aa-9497-4f1a-ad1e-9e539fe2ecfd, slideId=a7d2ca77-ca2d-4527-952a-e89189b1fbf3, layout=Layout{x=132, y=13, width=420, height=120, rotation=13}}]
+[line 35]	05 янв. 2021 14:09:40,672 [main] INFO  Result/<init> - { status: success, value: [Shape{style=Style{fillColor='blue', boxShadow='1px 2px 4px 2px blue', opacity=23, borderColor='yellow', borderRadius='3px', borderWidth='2px', borderStyle=dashed}, text='Тестовый текст', figure=rectangle, id=14780e91-49d0-43ec-ad65-c30d8036c712, presentationId=353038aa-9497-4f1a-ad1e-9e539fe2ecfd, slideId=a7d2ca77-ca2d-4527-952a-e89189b1fbf3, name=Test name, layout=Layout{x=132, y=13, width=420, height=120, rotation=13}}, Content{font=Font{fontFamily='Product Sans', fontSize='1.2rem', letterSpacing='2px', lineSpacing='12px', fontCase=normal}, text='Тестовый текст', name='Тестовое имя', id=b9387570-62e2-4c7d-a8d8-e56ffa6ae377, presentationId=353038aa-9497-4f1a-ad1e-9e539fe2ecfd, slideId=a7d2ca77-ca2d-4527-952a-e89189b1fbf3, layout=Layout{x=132, y=13, width=420, height=120, rotation=13}}, Content{font=Font{fontFamily='Product Sans', fontSize='1.2rem', letterSpacing='2px', lineSpacing='12px', fontCase=normal}, text='Тестовый текст', name='Тестовое имя', id=8c6cb8b2-ba07-4068-9de0-6f39026083da, presentationId=353038aa-9497-4f1a-ad1e-9e539fe2ecfd, slideId=a7d2ca77-ca2d-4527-952a-e89189b1fbf3, layout=Layout{x=132, y=13, width=420, height=120, rotation=13}}] }
+[line 130]	05 янв. 2021 14:09:40,676 [main] DEBUG CSVSlideMethods/lambda$setElementsBySlide$1 - get elements status: success
+[line 131]	05 янв. 2021 14:09:40,677 [main] DEBUG CSVSlideMethods/lambda$setElementsBySlide$1 - Slide elements: [Shape{style=Style{fillColor='blue', boxShadow='1px 2px 4px 2px blue', opacity=23, borderColor='yellow', borderRadius='3px', borderWidth='2px', borderStyle=dashed}, text='Тестовый текст', figure=rectangle, id=14780e91-49d0-43ec-ad65-c30d8036c712, presentationId=353038aa-9497-4f1a-ad1e-9e539fe2ecfd, slideId=a7d2ca77-ca2d-4527-952a-e89189b1fbf3, name=Test name, layout=Layout{x=132, y=13, width=420, height=120, rotation=13}}, Content{font=Font{fontFamily='Product Sans', fontSize='1.2rem', letterSpacing='2px', lineSpacing='12px', fontCase=normal}, text='Тестовый текст', name='Тестовое имя', id=b9387570-62e2-4c7d-a8d8-e56ffa6ae377, presentationId=353038aa-9497-4f1a-ad1e-9e539fe2ecfd, slideId=a7d2ca77-ca2d-4527-952a-e89189b1fbf3, layout=Layout{x=132, y=13, width=420, height=120, rotation=13}}, Content{font=Font{fontFamily='Product Sans', fontSize='1.2rem', letterSpacing='2px', lineSpacing='12px', fontCase=normal}, text='Тестовый текст', name='Тестовое имя', id=8c6cb8b2-ba07-4068-9de0-6f39026083da, presentationId=353038aa-9497-4f1a-ad1e-9e539fe2ecfd, slideId=a7d2ca77-ca2d-4527-952a-e89189b1fbf3, layout=Layout{x=132, y=13, width=420, height=120, rotation=13}}]
+[line 138]	05 янв. 2021 14:09:40,678 [main] DEBUG CSVSlideMethods/setElementsBySlide - Slide: slide
+[line 35]	05 янв. 2021 14:09:40,680 [main] INFO  Result/<init> - { status: success, value: [Slide{id=b3bbca54-6d3b-4bc5-b461-077892546f82, name='Test name', index=0, presentationId=353038aa-9497-4f1a-ad1e-9e539fe2ecfd, elements=[Shape{style=Style{fillColor='blue', boxShadow='1px 2px 4px 2px blue', opacity=23, borderColor='yellow', borderRadius='3px', borderWidth='2px', borderStyle=dashed}, text='Тестовый текст', figure=rectangle, id=1565438e-50ba-4071-ad8f-723c6ed4e775, presentationId=353038aa-9497-4f1a-ad1e-9e539fe2ecfd, slideId=b3bbca54-6d3b-4bc5-b461-077892546f82, name=Test name, layout=Layout{x=132, y=13, width=420, height=120, rotation=13}}]}, Slide{id=641986b5-d2c2-4541-b905-ee2b4a2ca881, name='Slide 2', index=1, presentationId=353038aa-9497-4f1a-ad1e-9e539fe2ecfd, elements=[Content{font=Font{fontFamily='Product Sans', fontSize='1.2rem', letterSpacing='2px', lineSpacing='12px', fontCase=normal}, text='Тестовый текст', name='Тестовое имя', id=115cde12-c629-4c06-bac2-d1376a7739a8, presentationId=353038aa-9497-4f1a-ad1e-9e539fe2ecfd, slideId=641986b5-d2c2-4541-b905-ee2b4a2ca881, layout=Layout{x=132, y=13, width=420, height=120, rotation=13}}]}, Slide{id=a7d2ca77-ca2d-4527-952a-e89189b1fbf3, name='Slide 3', index=2, presentationId=353038aa-9497-4f1a-ad1e-9e539fe2ecfd, elements=[Shape{style=Style{fillColor='blue', boxShadow='1px 2px 4px 2px blue', opacity=23, borderColor='yellow', borderRadius='3px', borderWidth='2px', borderStyle=dashed}, text='Тестовый текст', figure=rectangle, id=14780e91-49d0-43ec-ad65-c30d8036c712, presentationId=353038aa-9497-4f1a-ad1e-9e539fe2ecfd, slideId=a7d2ca77-ca2d-4527-952a-e89189b1fbf3, name=Test name, layout=Layout{x=132, y=13, width=420, height=120, rotation=13}}, Content{font=Font{fontFamily='Product Sans', fontSize='1.2rem', letterSpacing='2px', lineSpacing='12px', fontCase=normal}, text='Тестовый текст', name='Тестовое имя', id=b9387570-62e2-4c7d-a8d8-e56ffa6ae377, presentationId=353038aa-9497-4f1a-ad1e-9e539fe2ecfd, slideId=a7d2ca77-ca2d-4527-952a-e89189b1fbf3, layout=Layout{x=132, y=13, width=420, height=120, rotation=13}}, Content{font=Font{fontFamily='Product Sans', fontSize='1.2rem', letterSpacing='2px', lineSpacing='12px', fontCase=normal}, text='Тестовый текст', name='Тестовое имя', id=8c6cb8b2-ba07-4068-9de0-6f39026083da, presentationId=353038aa-9497-4f1a-ad1e-9e539fe2ecfd, slideId=a7d2ca77-ca2d-4527-952a-e89189b1fbf3, layout=Layout{x=132, y=13, width=420, height=120, rotation=13}}]}] }
+[line 103]	05 янв. 2021 14:09:40,682 [main] DEBUG CSVSlideMethods/getPresentationSlides - Presentation slides: [Slide{id=b3bbca54-6d3b-4bc5-b461-077892546f82, name='Test name', index=0, presentationId=353038aa-9497-4f1a-ad1e-9e539fe2ecfd, elements=[Shape{style=Style{fillColor='blue', boxShadow='1px 2px 4px 2px blue', opacity=23, borderColor='yellow', borderRadius='3px', borderWidth='2px', borderStyle=dashed}, text='Тестовый текст', figure=rectangle, id=1565438e-50ba-4071-ad8f-723c6ed4e775, presentationId=353038aa-9497-4f1a-ad1e-9e539fe2ecfd, slideId=b3bbca54-6d3b-4bc5-b461-077892546f82, name=Test name, layout=Layout{x=132, y=13, width=420, height=120, rotation=13}}]}, Slide{id=641986b5-d2c2-4541-b905-ee2b4a2ca881, name='Slide 2', index=1, presentationId=353038aa-9497-4f1a-ad1e-9e539fe2ecfd, elements=[Content{font=Font{fontFamily='Product Sans', fontSize='1.2rem', letterSpacing='2px', lineSpacing='12px', fontCase=normal}, text='Тестовый текст', name='Тестовое имя', id=115cde12-c629-4c06-bac2-d1376a7739a8, presentationId=353038aa-9497-4f1a-ad1e-9e539fe2ecfd, slideId=641986b5-d2c2-4541-b905-ee2b4a2ca881, layout=Layout{x=132, y=13, width=420, height=120, rotation=13}}]}, Slide{id=a7d2ca77-ca2d-4527-952a-e89189b1fbf3, name='Slide 3', index=2, presentationId=353038aa-9497-4f1a-ad1e-9e539fe2ecfd, elements=[Shape{style=Style{fillColor='blue', boxShadow='1px 2px 4px 2px blue', opacity=23, borderColor='yellow', borderRadius='3px', borderWidth='2px', borderStyle=dashed}, text='Тестовый текст', figure=rectangle, id=14780e91-49d0-43ec-ad65-c30d8036c712, presentationId=353038aa-9497-4f1a-ad1e-9e539fe2ecfd, slideId=a7d2ca77-ca2d-4527-952a-e89189b1fbf3, name=Test name, layout=Layout{x=132, y=13, width=420, height=120, rotation=13}}, Content{font=Font{fontFamily='Product Sans', fontSize='1.2rem', letterSpacing='2px', lineSpacing='12px', fontCase=normal}, text='Тестовый текст', name='Тестовое имя', id=b9387570-62e2-4c7d-a8d8-e56ffa6ae377, presentationId=353038aa-9497-4f1a-ad1e-9e539fe2ecfd, slideId=a7d2ca77-ca2d-4527-952a-e89189b1fbf3, layout=Layout{x=132, y=13, width=420, height=120, rotation=13}}, Content{font=Font{fontFamily='Product Sans', fontSize='1.2rem', letterSpacing='2px', lineSpacing='12px', fontCase=normal}, text='Тестовый текст', name='Тестовое имя', id=8c6cb8b2-ba07-4068-9de0-6f39026083da, presentationId=353038aa-9497-4f1a-ad1e-9e539fe2ecfd, slideId=a7d2ca77-ca2d-4527-952a-e89189b1fbf3, layout=Layout{x=132, y=13, width=420, height=120, rotation=13}}]}]
+[line 106]	05 янв. 2021 14:09:40,683 [main] DEBUG CSVSlideMethods/getPresentationSlides - [getPresentationSlides] Found presentation slides: [Slide{id=b3bbca54-6d3b-4bc5-b461-077892546f82, name='Test name', index=0, presentationId=353038aa-9497-4f1a-ad1e-9e539fe2ecfd, elements=[Shape{style=Style{fillColor='blue', boxShadow='1px 2px 4px 2px blue', opacity=23, borderColor='yellow', borderRadius='3px', borderWidth='2px', borderStyle=dashed}, text='Тестовый текст', figure=rectangle, id=1565438e-50ba-4071-ad8f-723c6ed4e775, presentationId=353038aa-9497-4f1a-ad1e-9e539fe2ecfd, slideId=b3bbca54-6d3b-4bc5-b461-077892546f82, name=Test name, layout=Layout{x=132, y=13, width=420, height=120, rotation=13}}]}, Slide{id=641986b5-d2c2-4541-b905-ee2b4a2ca881, name='Slide 2', index=1, presentationId=353038aa-9497-4f1a-ad1e-9e539fe2ecfd, elements=[Content{font=Font{fontFamily='Product Sans', fontSize='1.2rem', letterSpacing='2px', lineSpacing='12px', fontCase=normal}, text='Тестовый текст', name='Тестовое имя', id=115cde12-c629-4c06-bac2-d1376a7739a8, presentationId=353038aa-9497-4f1a-ad1e-9e539fe2ecfd, slideId=641986b5-d2c2-4541-b905-ee2b4a2ca881, layout=Layout{x=132, y=13, width=420, height=120, rotation=13}}]}, Slide{id=a7d2ca77-ca2d-4527-952a-e89189b1fbf3, name='Slide 3', index=2, presentationId=353038aa-9497-4f1a-ad1e-9e539fe2ecfd, elements=[Shape{style=Style{fillColor='blue', boxShadow='1px 2px 4px 2px blue', opacity=23, borderColor='yellow', borderRadius='3px', borderWidth='2px', borderStyle=dashed}, text='Тестовый текст', figure=rectangle, id=14780e91-49d0-43ec-ad65-c30d8036c712, presentationId=353038aa-9497-4f1a-ad1e-9e539fe2ecfd, slideId=a7d2ca77-ca2d-4527-952a-e89189b1fbf3, name=Test name, layout=Layout{x=132, y=13, width=420, height=120, rotation=13}}, Content{font=Font{fontFamily='Product Sans', fontSize='1.2rem', letterSpacing='2px', lineSpacing='12px', fontCase=normal}, text='Тестовый текст', name='Тестовое имя', id=b9387570-62e2-4c7d-a8d8-e56ffa6ae377, presentationId=353038aa-9497-4f1a-ad1e-9e539fe2ecfd, slideId=a7d2ca77-ca2d-4527-952a-e89189b1fbf3, layout=Layout{x=132, y=13, width=420, height=120, rotation=13}}, Content{font=Font{fontFamily='Product Sans', fontSize='1.2rem', letterSpacing='2px', lineSpacing='12px', fontCase=normal}, text='Тестовый текст', name='Тестовое имя', id=8c6cb8b2-ba07-4068-9de0-6f39026083da, presentationId=353038aa-9497-4f1a-ad1e-9e539fe2ecfd, slideId=a7d2ca77-ca2d-4527-952a-e89189b1fbf3, layout=Layout{x=132, y=13, width=420, height=120, rotation=13}}]}]
+[line 35]	05 янв. 2021 14:09:40,685 [main] INFO  Result/<init> - { status: success, value: [Slide{id=b3bbca54-6d3b-4bc5-b461-077892546f82, name='Test name', index=0, presentationId=353038aa-9497-4f1a-ad1e-9e539fe2ecfd, elements=[Shape{style=Style{fillColor='blue', boxShadow='1px 2px 4px 2px blue', opacity=23, borderColor='yellow', borderRadius='3px', borderWidth='2px', borderStyle=dashed}, text='Тестовый текст', figure=rectangle, id=1565438e-50ba-4071-ad8f-723c6ed4e775, presentationId=353038aa-9497-4f1a-ad1e-9e539fe2ecfd, slideId=b3bbca54-6d3b-4bc5-b461-077892546f82, name=Test name, layout=Layout{x=132, y=13, width=420, height=120, rotation=13}}]}, Slide{id=641986b5-d2c2-4541-b905-ee2b4a2ca881, name='Slide 2', index=1, presentationId=353038aa-9497-4f1a-ad1e-9e539fe2ecfd, elements=[Content{font=Font{fontFamily='Product Sans', fontSize='1.2rem', letterSpacing='2px', lineSpacing='12px', fontCase=normal}, text='Тестовый текст', name='Тестовое имя', id=115cde12-c629-4c06-bac2-d1376a7739a8, presentationId=353038aa-9497-4f1a-ad1e-9e539fe2ecfd, slideId=641986b5-d2c2-4541-b905-ee2b4a2ca881, layout=Layout{x=132, y=13, width=420, height=120, rotation=13}}]}, Slide{id=a7d2ca77-ca2d-4527-952a-e89189b1fbf3, name='Slide 3', index=2, presentationId=353038aa-9497-4f1a-ad1e-9e539fe2ecfd, elements=[Shape{style=Style{fillColor='blue', boxShadow='1px 2px 4px 2px blue', opacity=23, borderColor='yellow', borderRadius='3px', borderWidth='2px', borderStyle=dashed}, text='Тестовый текст', figure=rectangle, id=14780e91-49d0-43ec-ad65-c30d8036c712, presentationId=353038aa-9497-4f1a-ad1e-9e539fe2ecfd, slideId=a7d2ca77-ca2d-4527-952a-e89189b1fbf3, name=Test name, layout=Layout{x=132, y=13, width=420, height=120, rotation=13}}, Content{font=Font{fontFamily='Product Sans', fontSize='1.2rem', letterSpacing='2px', lineSpacing='12px', fontCase=normal}, text='Тестовый текст', name='Тестовое имя', id=b9387570-62e2-4c7d-a8d8-e56ffa6ae377, presentationId=353038aa-9497-4f1a-ad1e-9e539fe2ecfd, slideId=a7d2ca77-ca2d-4527-952a-e89189b1fbf3, layout=Layout{x=132, y=13, width=420, height=120, rotation=13}}, Content{font=Font{fontFamily='Product Sans', fontSize='1.2rem', letterSpacing='2px', lineSpacing='12px', fontCase=normal}, text='Тестовый текст', name='Тестовое имя', id=8c6cb8b2-ba07-4068-9de0-6f39026083da, presentationId=353038aa-9497-4f1a-ad1e-9e539fe2ecfd, slideId=a7d2ca77-ca2d-4527-952a-e89189b1fbf3, layout=Layout{x=132, y=13, width=420, height=120, rotation=13}}]}] }
+[line 242]	05 янв. 2021 14:09:40,687 [main] DEBUG CSVPresentationMethods/getPresentationById - [getPresentationById] get presentation slides: 353038aa-9497-4f1a-ad1e-9e539fe2ecfd
+[line 35]	05 янв. 2021 14:09:40,689 [main] INFO  Result/<init> - { status: success, value: Presentation{id=353038aa-9497-4f1a-ad1e-9e539fe2ecfd, name='New presentation', fillColor='#ffffff', fontFamily='Roboto', slides=[Slide{id=b3bbca54-6d3b-4bc5-b461-077892546f82, name='Test name', index=0, presentationId=353038aa-9497-4f1a-ad1e-9e539fe2ecfd, elements=[Shape{style=Style{fillColor='blue', boxShadow='1px 2px 4px 2px blue', opacity=23, borderColor='yellow', borderRadius='3px', borderWidth='2px', borderStyle=dashed}, text='Тестовый текст', figure=rectangle, id=1565438e-50ba-4071-ad8f-723c6ed4e775, presentationId=353038aa-9497-4f1a-ad1e-9e539fe2ecfd, slideId=b3bbca54-6d3b-4bc5-b461-077892546f82, name=Test name, layout=Layout{x=132, y=13, width=420, height=120, rotation=13}}]}, Slide{id=641986b5-d2c2-4541-b905-ee2b4a2ca881, name='Slide 2', index=1, presentationId=353038aa-9497-4f1a-ad1e-9e539fe2ecfd, elements=[Content{font=Font{fontFamily='Product Sans', fontSize='1.2rem', letterSpacing='2px', lineSpacing='12px', fontCase=normal}, text='Тестовый текст', name='Тестовое имя', id=115cde12-c629-4c06-bac2-d1376a7739a8, presentationId=353038aa-9497-4f1a-ad1e-9e539fe2ecfd, slideId=641986b5-d2c2-4541-b905-ee2b4a2ca881, layout=Layout{x=132, y=13, width=420, height=120, rotation=13}}]}, Slide{id=a7d2ca77-ca2d-4527-952a-e89189b1fbf3, name='Slide 3', index=2, presentationId=353038aa-9497-4f1a-ad1e-9e539fe2ecfd, elements=[Shape{style=Style{fillColor='blue', boxShadow='1px 2px 4px 2px blue', opacity=23, borderColor='yellow', borderRadius='3px', borderWidth='2px', borderStyle=dashed}, text='Тестовый текст', figure=rectangle, id=14780e91-49d0-43ec-ad65-c30d8036c712, presentationId=353038aa-9497-4f1a-ad1e-9e539fe2ecfd, slideId=a7d2ca77-ca2d-4527-952a-e89189b1fbf3, name=Test name, layout=Layout{x=132, y=13, width=420, height=120, rotation=13}}, Content{font=Font{fontFamily='Product Sans', fontSize='1.2rem', letterSpacing='2px', lineSpacing='12px', fontCase=normal}, text='Тестовый текст', name='Тестовое имя', id=b9387570-62e2-4c7d-a8d8-e56ffa6ae377, presentationId=353038aa-9497-4f1a-ad1e-9e539fe2ecfd, slideId=a7d2ca77-ca2d-4527-952a-e89189b1fbf3, layout=Layout{x=132, y=13, width=420, height=120, rotation=13}}, Content{font=Font{fontFamily='Product Sans', fontSize='1.2rem', letterSpacing='2px', lineSpacing='12px', fontCase=normal}, text='Тестовый текст', name='Тестовое имя', id=8c6cb8b2-ba07-4068-9de0-6f39026083da, presentationId=353038aa-9497-4f1a-ad1e-9e539fe2ecfd, slideId=a7d2ca77-ca2d-4527-952a-e89189b1fbf3, layout=Layout{x=132, y=13, width=420, height=120, rotation=13}}]}]} }
+[line 91]	05 янв. 2021 14:09:40,691 [main] DEBUG CSVPresentationMethods/createPresentationFromTemplate - Template found: Presentation{id=353038aa-9497-4f1a-ad1e-9e539fe2ecfd, name='New presentation', fillColor='#ffffff', fontFamily='Roboto', slides=[Slide{id=b3bbca54-6d3b-4bc5-b461-077892546f82, name='Test name', index=0, presentationId=353038aa-9497-4f1a-ad1e-9e539fe2ecfd, elements=[Shape{style=Style{fillColor='blue', boxShadow='1px 2px 4px 2px blue', opacity=23, borderColor='yellow', borderRadius='3px', borderWidth='2px', borderStyle=dashed}, text='Тестовый текст', figure=rectangle, id=1565438e-50ba-4071-ad8f-723c6ed4e775, presentationId=353038aa-9497-4f1a-ad1e-9e539fe2ecfd, slideId=b3bbca54-6d3b-4bc5-b461-077892546f82, name=Test name, layout=Layout{x=132, y=13, width=420, height=120, rotation=13}}]}, Slide{id=641986b5-d2c2-4541-b905-ee2b4a2ca881, name='Slide 2', index=1, presentationId=353038aa-9497-4f1a-ad1e-9e539fe2ecfd, elements=[Content{font=Font{fontFamily='Product Sans', fontSize='1.2rem', letterSpacing='2px', lineSpacing='12px', fontCase=normal}, text='Тестовый текст', name='Тестовое имя', id=115cde12-c629-4c06-bac2-d1376a7739a8, presentationId=353038aa-9497-4f1a-ad1e-9e539fe2ecfd, slideId=641986b5-d2c2-4541-b905-ee2b4a2ca881, layout=Layout{x=132, y=13, width=420, height=120, rotation=13}}]}, Slide{id=a7d2ca77-ca2d-4527-952a-e89189b1fbf3, name='Slide 3', index=2, presentationId=353038aa-9497-4f1a-ad1e-9e539fe2ecfd, elements=[Shape{style=Style{fillColor='blue', boxShadow='1px 2px 4px 2px blue', opacity=23, borderColor='yellow', borderRadius='3px', borderWidth='2px', borderStyle=dashed}, text='Тестовый текст', figure=rectangle, id=14780e91-49d0-43ec-ad65-c30d8036c712, presentationId=353038aa-9497-4f1a-ad1e-9e539fe2ecfd, slideId=a7d2ca77-ca2d-4527-952a-e89189b1fbf3, name=Test name, layout=Layout{x=132, y=13, width=420, height=120, rotation=13}}, Content{font=Font{fontFamily='Product Sans', fontSize='1.2rem', letterSpacing='2px', lineSpacing='12px', fontCase=normal}, text='Тестовый текст', name='Тестовое имя', id=b9387570-62e2-4c7d-a8d8-e56ffa6ae377, presentationId=353038aa-9497-4f1a-ad1e-9e539fe2ecfd, slideId=a7d2ca77-ca2d-4527-952a-e89189b1fbf3, layout=Layout{x=132, y=13, width=420, height=120, rotation=13}}, Content{font=Font{fontFamily='Product Sans', fontSize='1.2rem', letterSpacing='2px', lineSpacing='12px', fontCase=normal}, text='Тестовый текст', name='Тестовое имя', id=8c6cb8b2-ba07-4068-9de0-6f39026083da, presentationId=353038aa-9497-4f1a-ad1e-9e539fe2ecfd, slideId=a7d2ca77-ca2d-4527-952a-e89189b1fbf3, layout=Layout{x=132, y=13, width=420, height=120, rotation=13}}]}]}
+[line 109]	05 янв. 2021 14:09:40,692 [main] INFO  CSVPresentationMethods/buildPresentationFromTemplate - Build presentation from template
+[line 66]	05 янв. 2021 14:09:40,693 [main] DEBUG CSVCommonMethods/getCollection - [getCollection] Attempt to get collection: presentation
+[line 42]	05 янв. 2021 14:09:40,693 [main] DEBUG CSVCommonMethods/getFilePath - path: D:/Универ/CourseProject/src/main/resources/data/test/csv/presentation.csv
+[line 77]	05 янв. 2021 14:09:40,703 [main] INFO  CSVCommonMethods/getCollection - [getCollection] Collection was retrieved: presentation
+[line 98]	05 янв. 2021 14:09:40,714 [main] DEBUG Creator/createPresentation - [createPresentation] Set field  id ad4ee65b-a201-4298-9516-93f698c57e3c
+[line 100]	05 янв. 2021 14:09:40,715 [main] DEBUG Creator/createPresentation - [createPresentation] Set field  name New presentation [New presentation]
+[line 102]	05 янв. 2021 14:09:40,717 [main] DEBUG Creator/createPresentation - [createPresentation] Set field  fillColor #ffffff
+[line 104]	05 янв. 2021 14:09:40,719 [main] DEBUG Creator/createPresentation - [createPresentation] Set field  fontFamily Roboto
+[line 106]	05 янв. 2021 14:09:40,720 [main] DEBUG Creator/createPresentation - [createPresentation] Set field  slides []
+[line 108]	05 янв. 2021 14:09:40,723 [main] DEBUG Creator/createPresentation - [createPresentation] Set field  comments []
+[line 110]	05 янв. 2021 14:09:40,724 [main] DEBUG Creator/createPresentation - [createPresentation] Set field  marks []
+[line 111]	05 янв. 2021 14:09:40,727 [main] DEBUG Creator/createPresentation - Arguments was validate 
+[line 35]	05 янв. 2021 14:09:40,728 [main] INFO  Result/<init> - { status: success, value: Optional[Presentation{id=ad4ee65b-a201-4298-9516-93f698c57e3c, name='New presentation [New presentation]', fillColor='#ffffff', fontFamily='Roboto', slides=[], comments=[]}] }
+[line 97]	05 янв. 2021 14:09:40,729 [main] DEBUG CSVCommonMethods/writeCollection - [writeCollection] Attempt to write in presentation
+[line 42]	05 янв. 2021 14:09:40,730 [main] DEBUG CSVCommonMethods/getFilePath - path: D:/Универ/CourseProject/src/main/resources/data/test/csv/presentation.csv
+[line 105]	05 янв. 2021 14:09:40,766 [main] INFO  CSVCommonMethods/writeCollection - [writeCollection] Collection was wrote
+[line 63]	05 янв. 2021 14:09:40,767 [main] INFO  CSVPresentationMethods/createPresentation - Presentation successfully created ad4ee65b-a201-4298-9516-93f698c57e3c
+[line 35]	05 янв. 2021 14:09:40,769 [main] INFO  Result/<init> - { status: success, value: ad4ee65b-a201-4298-9516-93f698c57e3c }
+[line 123]	05 янв. 2021 14:09:40,770 [main] INFO  CSVPresentationMethods/buildPresentationFromTemplate - Presentation created from template
+[line 139]	05 янв. 2021 14:09:40,773 [main] INFO  CSVPresentationMethods/lambda$buildPresentationFromTemplate$2 - Write new presentation elements from slide: Slide{id=2ae58d0f-11eb-4f60-b775-a72938007b7c, name='Test name', index=0, presentationId=ad4ee65b-a201-4298-9516-93f698c57e3c, elements=[Shape{style=Style{fillColor='blue', boxShadow='1px 2px 4px 2px blue', opacity=23, borderColor='yellow', borderRadius='3px', borderWidth='2px', borderStyle=dashed}, text='Тестовый текст', figure=rectangle, id=1565438e-50ba-4071-ad8f-723c6ed4e775, presentationId=353038aa-9497-4f1a-ad1e-9e539fe2ecfd, slideId=b3bbca54-6d3b-4bc5-b461-077892546f82, name=Test name, layout=Layout{x=132, y=13, width=420, height=120, rotation=13}}]}
+[line 139]	05 янв. 2021 14:09:40,779 [main] INFO  CSVPresentationMethods/lambda$buildPresentationFromTemplate$2 - Write new presentation elements from slide: Slide{id=1fc42942-2027-4d96-8858-a8b73c611585, name='Slide 2', index=1, presentationId=ad4ee65b-a201-4298-9516-93f698c57e3c, elements=[Content{font=Font{fontFamily='Product Sans', fontSize='1.2rem', letterSpacing='2px', lineSpacing='12px', fontCase=normal}, text='Тестовый текст', name='Тестовое имя', id=115cde12-c629-4c06-bac2-d1376a7739a8, presentationId=353038aa-9497-4f1a-ad1e-9e539fe2ecfd, slideId=641986b5-d2c2-4541-b905-ee2b4a2ca881, layout=Layout{x=132, y=13, width=420, height=120, rotation=13}}]}
+[line 139]	05 янв. 2021 14:09:40,781 [main] INFO  CSVPresentationMethods/lambda$buildPresentationFromTemplate$2 - Write new presentation elements from slide: Slide{id=146312ec-c313-4daa-a4b8-76c85748d4e0, name='Slide 3', index=2, presentationId=ad4ee65b-a201-4298-9516-93f698c57e3c, elements=[Shape{style=Style{fillColor='blue', boxShadow='1px 2px 4px 2px blue', opacity=23, borderColor='yellow', borderRadius='3px', borderWidth='2px', borderStyle=dashed}, text='Тестовый текст', figure=rectangle, id=14780e91-49d0-43ec-ad65-c30d8036c712, presentationId=353038aa-9497-4f1a-ad1e-9e539fe2ecfd, slideId=a7d2ca77-ca2d-4527-952a-e89189b1fbf3, name=Test name, layout=Layout{x=132, y=13, width=420, height=120, rotation=13}}, Content{font=Font{fontFamily='Product Sans', fontSize='1.2rem', letterSpacing='2px', lineSpacing='12px', fontCase=normal}, text='Тестовый текст', name='Тестовое имя', id=b9387570-62e2-4c7d-a8d8-e56ffa6ae377, presentationId=353038aa-9497-4f1a-ad1e-9e539fe2ecfd, slideId=a7d2ca77-ca2d-4527-952a-e89189b1fbf3, layout=Layout{x=132, y=13, width=420, height=120, rotation=13}}, Content{font=Font{fontFamily='Product Sans', fontSize='1.2rem', letterSpacing='2px', lineSpacing='12px', fontCase=normal}, text='Тестовый текст', name='Тестовое имя', id=8c6cb8b2-ba07-4068-9de0-6f39026083da, presentationId=353038aa-9497-4f1a-ad1e-9e539fe2ecfd, slideId=a7d2ca77-ca2d-4527-952a-e89189b1fbf3, layout=Layout{x=132, y=13, width=420, height=120, rotation=13}}]}
+[line 164]	05 янв. 2021 14:09:40,785 [main] DEBUG CSVPresentationMethods/buildPresentationFromTemplate - Presentation slides: [Slide{id=2ae58d0f-11eb-4f60-b775-a72938007b7c, name='Test name', index=0, presentationId=ad4ee65b-a201-4298-9516-93f698c57e3c, elements=[Shape{style=Style{fillColor='blue', boxShadow='1px 2px 4px 2px blue', opacity=23, borderColor='yellow', borderRadius='3px', borderWidth='2px', borderStyle=dashed}, text='Тестовый текст', figure=rectangle, id=79918e5a-95e0-4d19-a1fa-19978173e730, presentationId=ad4ee65b-a201-4298-9516-93f698c57e3c, slideId=2ae58d0f-11eb-4f60-b775-a72938007b7c, name=Test name, layout=Layout{x=132, y=13, width=420, height=120, rotation=13}}]}, Slide{id=1fc42942-2027-4d96-8858-a8b73c611585, name='Slide 2', index=1, presentationId=ad4ee65b-a201-4298-9516-93f698c57e3c, elements=[Content{font=Font{fontFamily='Product Sans', fontSize='1.2rem', letterSpacing='2px', lineSpacing='12px', fontCase=normal}, text='Тестовый текст', name='Тестовое имя', id=6fa2eb57-6f96-4396-b984-89cbdd66fbd8, presentationId=ad4ee65b-a201-4298-9516-93f698c57e3c, slideId=1fc42942-2027-4d96-8858-a8b73c611585, layout=Layout{x=132, y=13, width=420, height=120, rotation=13}}]}, Slide{id=146312ec-c313-4daa-a4b8-76c85748d4e0, name='Slide 3', index=2, presentationId=ad4ee65b-a201-4298-9516-93f698c57e3c, elements=[Shape{style=Style{fillColor='blue', boxShadow='1px 2px 4px 2px blue', opacity=23, borderColor='yellow', borderRadius='3px', borderWidth='2px', borderStyle=dashed}, text='Тестовый текст', figure=rectangle, id=17fc510f-0a91-4e50-a83d-68eb1de48bc9, presentationId=ad4ee65b-a201-4298-9516-93f698c57e3c, slideId=146312ec-c313-4daa-a4b8-76c85748d4e0, name=Test name, layout=Layout{x=132, y=13, width=420, height=120, rotation=13}}, Content{font=Font{fontFamily='Product Sans', fontSize='1.2rem', letterSpacing='2px', lineSpacing='12px', fontCase=normal}, text='Тестовый текст', name='Тестовое имя', id=c815f8ae-f21b-4a8b-954b-c113fb8ee5ff, presentationId=ad4ee65b-a201-4298-9516-93f698c57e3c, slideId=146312ec-c313-4daa-a4b8-76c85748d4e0, layout=Layout{x=132, y=13, width=420, height=120, rotation=13}}, Content{font=Font{fontFamily='Product Sans', fontSize='1.2rem', letterSpacing='2px', lineSpacing='12px', fontCase=normal}, text='Тестовый текст', name='Тестовое имя', id=cb8e5931-95a5-4684-b78c-867c762cfdfe, presentationId=ad4ee65b-a201-4298-9516-93f698c57e3c, slideId=146312ec-c313-4daa-a4b8-76c85748d4e0, layout=Layout{x=132, y=13, width=420, height=120, rotation=13}}]}]
+[line 165]	05 янв. 2021 14:09:40,787 [main] DEBUG CSVPresentationMethods/buildPresentationFromTemplate - Presentation shapes: [Shape{style=Style{fillColor='blue', boxShadow='1px 2px 4px 2px blue', opacity=23, borderColor='yellow', borderRadius='3px', borderWidth='2px', borderStyle=dashed}, text='Тестовый текст', figure=rectangle, id=79918e5a-95e0-4d19-a1fa-19978173e730, presentationId=ad4ee65b-a201-4298-9516-93f698c57e3c, slideId=2ae58d0f-11eb-4f60-b775-a72938007b7c, name=Test name, layout=Layout{x=132, y=13, width=420, height=120, rotation=13}}, Shape{style=Style{fillColor='blue', boxShadow='1px 2px 4px 2px blue', opacity=23, borderColor='yellow', borderRadius='3px', borderWidth='2px', borderStyle=dashed}, text='Тестовый текст', figure=rectangle, id=17fc510f-0a91-4e50-a83d-68eb1de48bc9, presentationId=ad4ee65b-a201-4298-9516-93f698c57e3c, slideId=146312ec-c313-4daa-a4b8-76c85748d4e0, name=Test name, layout=Layout{x=132, y=13, width=420, height=120, rotation=13}}]
+[line 166]	05 янв. 2021 14:09:40,788 [main] DEBUG CSVPresentationMethods/buildPresentationFromTemplate - Presentation contents: [Content{font=Font{fontFamily='Product Sans', fontSize='1.2rem', letterSpacing='2px', lineSpacing='12px', fontCase=normal}, text='Тестовый текст', name='Тестовое имя', id=6fa2eb57-6f96-4396-b984-89cbdd66fbd8, presentationId=ad4ee65b-a201-4298-9516-93f698c57e3c, slideId=1fc42942-2027-4d96-8858-a8b73c611585, layout=Layout{x=132, y=13, width=420, height=120, rotation=13}}, Content{font=Font{fontFamily='Product Sans', fontSize='1.2rem', letterSpacing='2px', lineSpacing='12px', fontCase=normal}, text='Тестовый текст', name='Тестовое имя', id=c815f8ae-f21b-4a8b-954b-c113fb8ee5ff, presentationId=ad4ee65b-a201-4298-9516-93f698c57e3c, slideId=146312ec-c313-4daa-a4b8-76c85748d4e0, layout=Layout{x=132, y=13, width=420, height=120, rotation=13}}, Content{font=Font{fontFamily='Product Sans', fontSize='1.2rem', letterSpacing='2px', lineSpacing='12px', fontCase=normal}, text='Тестовый текст', name='Тестовое имя', id=cb8e5931-95a5-4684-b78c-867c762cfdfe, presentationId=ad4ee65b-a201-4298-9516-93f698c57e3c, slideId=146312ec-c313-4daa-a4b8-76c85748d4e0, layout=Layout{x=132, y=13, width=420, height=120, rotation=13}}]
+[line 66]	05 янв. 2021 14:09:40,789 [main] DEBUG CSVCommonMethods/getCollection - [getCollection] Attempt to get collection: slide
+[line 42]	05 янв. 2021 14:09:40,790 [main] DEBUG CSVCommonMethods/getFilePath - path: D:/Универ/CourseProject/src/main/resources/data/test/csv/slide.csv
+[line 77]	05 янв. 2021 14:09:40,804 [main] INFO  CSVCommonMethods/getCollection - [getCollection] Collection was retrieved: slide
+[line 66]	05 янв. 2021 14:09:40,804 [main] DEBUG CSVCommonMethods/getCollection - [getCollection] Attempt to get collection: shape
+[line 42]	05 янв. 2021 14:09:40,805 [main] DEBUG CSVCommonMethods/getFilePath - path: D:/Универ/CourseProject/src/main/resources/data/test/csv/shape.csv
+[line 25]	05 янв. 2021 14:09:40,813 [pool-20-thread-1] DEBUG Helpers/getFieldFromMather - FIND
+[line 25]	05 янв. 2021 14:09:40,813 [pool-20-thread-3] DEBUG Helpers/getFieldFromMather - FIND
+[line 26]	05 янв. 2021 14:09:40,815 [pool-20-thread-1] DEBUG Helpers/getFieldFromMather - width=420
+[line 26]	05 янв. 2021 14:09:40,815 [pool-20-thread-3] DEBUG Helpers/getFieldFromMather - width=420
+[line 28]	05 янв. 2021 14:09:40,816 [pool-20-thread-1] DEBUG Helpers/getFieldFromMather - width: 420
+[line 28]	05 янв. 2021 14:09:40,816 [pool-20-thread-3] DEBUG Helpers/getFieldFromMather - width: 420
+[line 25]	05 янв. 2021 14:09:40,817 [pool-20-thread-3] DEBUG Helpers/getFieldFromMather - FIND
+[line 25]	05 янв. 2021 14:09:40,817 [pool-20-thread-1] DEBUG Helpers/getFieldFromMather - FIND
+[line 26]	05 янв. 2021 14:09:40,817 [pool-20-thread-3] DEBUG Helpers/getFieldFromMather - height=120
+[line 26]	05 янв. 2021 14:09:40,818 [pool-20-thread-1] DEBUG Helpers/getFieldFromMather - height=120
+[line 28]	05 янв. 2021 14:09:40,818 [pool-20-thread-3] DEBUG Helpers/getFieldFromMather - height: 120
+[line 28]	05 янв. 2021 14:09:40,819 [pool-20-thread-1] DEBUG Helpers/getFieldFromMather - height: 120
+[line 25]	05 янв. 2021 14:09:40,819 [pool-20-thread-3] DEBUG Helpers/getFieldFromMather - FIND
+[line 25]	05 янв. 2021 14:09:40,819 [pool-20-thread-1] DEBUG Helpers/getFieldFromMather - FIND
+[line 26]	05 янв. 2021 14:09:40,819 [pool-20-thread-3] DEBUG Helpers/getFieldFromMather - x=132
+[line 26]	05 янв. 2021 14:09:40,820 [pool-20-thread-1] DEBUG Helpers/getFieldFromMather - x=132
+[line 28]	05 янв. 2021 14:09:40,820 [pool-20-thread-1] DEBUG Helpers/getFieldFromMather - x: 132
+[line 28]	05 янв. 2021 14:09:40,820 [pool-20-thread-3] DEBUG Helpers/getFieldFromMather - x: 132
+[line 25]	05 янв. 2021 14:09:40,820 [pool-20-thread-1] DEBUG Helpers/getFieldFromMather - FIND
+[line 25]	05 янв. 2021 14:09:40,820 [pool-20-thread-3] DEBUG Helpers/getFieldFromMather - FIND
+[line 26]	05 янв. 2021 14:09:40,820 [pool-20-thread-1] DEBUG Helpers/getFieldFromMather - y=13
+[line 26]	05 янв. 2021 14:09:40,820 [pool-20-thread-3] DEBUG Helpers/getFieldFromMather - y=13
+[line 28]	05 янв. 2021 14:09:40,820 [pool-20-thread-1] DEBUG Helpers/getFieldFromMather - y: 13
+[line 28]	05 янв. 2021 14:09:40,820 [pool-20-thread-3] DEBUG Helpers/getFieldFromMather - y: 13
+[line 25]	05 янв. 2021 14:09:40,820 [pool-20-thread-1] DEBUG Helpers/getFieldFromMather - FIND
+[line 25]	05 янв. 2021 14:09:40,821 [pool-20-thread-3] DEBUG Helpers/getFieldFromMather - FIND
+[line 26]	05 янв. 2021 14:09:40,821 [pool-20-thread-1] DEBUG Helpers/getFieldFromMather - rotation=13
+[line 26]	05 янв. 2021 14:09:40,821 [pool-20-thread-3] DEBUG Helpers/getFieldFromMather - rotation=13
+[line 28]	05 янв. 2021 14:09:40,821 [pool-20-thread-3] DEBUG Helpers/getFieldFromMather - rotation: 13
+[line 28]	05 янв. 2021 14:09:40,821 [pool-20-thread-1] DEBUG Helpers/getFieldFromMather - rotation: 13
+[line 47]	05 янв. 2021 14:09:40,821 [pool-20-thread-3] DEBUG LayoutConverter/convert - [LayoutConverter] layout converted
+[line 47]	05 янв. 2021 14:09:40,821 [pool-20-thread-1] DEBUG LayoutConverter/convert - [LayoutConverter] layout converted
+[line 25]	05 янв. 2021 14:09:40,824 [pool-20-thread-3] DEBUG Helpers/getFieldFromMather - FIND
+[line 26]	05 янв. 2021 14:09:40,824 [pool-20-thread-3] DEBUG Helpers/getFieldFromMather - fillColor='blue'
+[line 28]	05 янв. 2021 14:09:40,824 [pool-20-thread-3] DEBUG Helpers/getFieldFromMather - fillColor: blue
+[line 25]	05 янв. 2021 14:09:40,824 [pool-20-thread-3] DEBUG Helpers/getFieldFromMather - FIND
+[line 26]	05 янв. 2021 14:09:40,824 [pool-20-thread-3] DEBUG Helpers/getFieldFromMather - boxShadow='1px 2px 4px 2px blue'
+[line 28]	05 янв. 2021 14:09:40,825 [pool-20-thread-3] DEBUG Helpers/getFieldFromMather - boxShadow: 1px 2px 4px 2px blue
+[line 25]	05 янв. 2021 14:09:40,825 [pool-20-thread-3] DEBUG Helpers/getFieldFromMather - FIND
+[line 26]	05 янв. 2021 14:09:40,825 [pool-20-thread-3] DEBUG Helpers/getFieldFromMather - opacity=23
+[line 28]	05 янв. 2021 14:09:40,825 [pool-20-thread-3] DEBUG Helpers/getFieldFromMather - opacity: 23
+[line 25]	05 янв. 2021 14:09:40,825 [pool-20-thread-3] DEBUG Helpers/getFieldFromMather - FIND
+[line 26]	05 янв. 2021 14:09:40,825 [pool-20-thread-3] DEBUG Helpers/getFieldFromMather - borderColor='yellow'
+[line 28]	05 янв. 2021 14:09:40,825 [pool-20-thread-3] DEBUG Helpers/getFieldFromMather - borderColor: yellow
+[line 25]	05 янв. 2021 14:09:40,826 [pool-20-thread-3] DEBUG Helpers/getFieldFromMather - FIND
+[line 25]	05 янв. 2021 14:09:40,826 [pool-20-thread-1] DEBUG Helpers/getFieldFromMather - FIND
+[line 26]	05 янв. 2021 14:09:40,826 [pool-20-thread-3] DEBUG Helpers/getFieldFromMather - borderRadius='3px'
+[line 26]	05 янв. 2021 14:09:40,826 [pool-20-thread-1] DEBUG Helpers/getFieldFromMather - fillColor='blue'
+[line 28]	05 янв. 2021 14:09:40,826 [pool-20-thread-3] DEBUG Helpers/getFieldFromMather - borderRadius: 3px
+[line 28]	05 янв. 2021 14:09:40,826 [pool-20-thread-1] DEBUG Helpers/getFieldFromMather - fillColor: blue
+[line 25]	05 янв. 2021 14:09:40,826 [pool-20-thread-3] DEBUG Helpers/getFieldFromMather - FIND
+[line 26]	05 янв. 2021 14:09:40,826 [pool-20-thread-3] DEBUG Helpers/getFieldFromMather - borderWidth='2px'
+[line 25]	05 янв. 2021 14:09:40,826 [pool-20-thread-1] DEBUG Helpers/getFieldFromMather - FIND
+[line 28]	05 янв. 2021 14:09:40,826 [pool-20-thread-3] DEBUG Helpers/getFieldFromMather - borderWidth: 2px
+[line 26]	05 янв. 2021 14:09:40,826 [pool-20-thread-1] DEBUG Helpers/getFieldFromMather - boxShadow='1px 2px 4px 2px blue'
+[line 25]	05 янв. 2021 14:09:40,826 [pool-20-thread-3] DEBUG Helpers/getFieldFromMather - FIND
+[line 28]	05 янв. 2021 14:09:40,826 [pool-20-thread-1] DEBUG Helpers/getFieldFromMather - boxShadow: 1px 2px 4px 2px blue
+[line 25]	05 янв. 2021 14:09:40,827 [pool-20-thread-1] DEBUG Helpers/getFieldFromMather - FIND
+[line 26]	05 янв. 2021 14:09:40,827 [pool-20-thread-1] DEBUG Helpers/getFieldFromMather - opacity=23
+[line 26]	05 янв. 2021 14:09:40,827 [pool-20-thread-3] DEBUG Helpers/getFieldFromMather - borderStyle=dashed
+[line 28]	05 янв. 2021 14:09:40,827 [pool-20-thread-1] DEBUG Helpers/getFieldFromMather - opacity: 23
+[line 28]	05 янв. 2021 14:09:40,827 [pool-20-thread-3] DEBUG Helpers/getFieldFromMather - borderStyle: dashed
+[line 25]	05 янв. 2021 14:09:40,827 [pool-20-thread-1] DEBUG Helpers/getFieldFromMather - FIND
+[line 58]	05 янв. 2021 14:09:40,827 [pool-20-thread-3] DEBUG StyleConverter/convert - [StyleConverter] style converted
+[line 26]	05 янв. 2021 14:09:40,827 [pool-20-thread-1] DEBUG Helpers/getFieldFromMather - borderColor='yellow'
+[line 28]	05 янв. 2021 14:09:40,828 [pool-20-thread-1] DEBUG Helpers/getFieldFromMather - borderColor: yellow
+[line 25]	05 янв. 2021 14:09:40,828 [pool-20-thread-1] DEBUG Helpers/getFieldFromMather - FIND
+[line 26]	05 янв. 2021 14:09:40,828 [pool-20-thread-1] DEBUG Helpers/getFieldFromMather - borderRadius='3px'
+[line 28]	05 янв. 2021 14:09:40,828 [pool-20-thread-1] DEBUG Helpers/getFieldFromMather - borderRadius: 3px
+[line 25]	05 янв. 2021 14:09:40,828 [pool-20-thread-1] DEBUG Helpers/getFieldFromMather - FIND
+[line 26]	05 янв. 2021 14:09:40,828 [pool-20-thread-1] DEBUG Helpers/getFieldFromMather - borderWidth='2px'
+[line 28]	05 янв. 2021 14:09:40,829 [pool-20-thread-1] DEBUG Helpers/getFieldFromMather - borderWidth: 2px
+[line 25]	05 янв. 2021 14:09:40,829 [pool-20-thread-1] DEBUG Helpers/getFieldFromMather - FIND
+[line 26]	05 янв. 2021 14:09:40,829 [pool-20-thread-1] DEBUG Helpers/getFieldFromMather - borderStyle=dashed
+[line 28]	05 янв. 2021 14:09:40,829 [pool-20-thread-1] DEBUG Helpers/getFieldFromMather - borderStyle: dashed
+[line 58]	05 янв. 2021 14:09:40,830 [pool-20-thread-1] DEBUG StyleConverter/convert - [StyleConverter] style converted
+[line 77]	05 янв. 2021 14:09:40,831 [main] INFO  CSVCommonMethods/getCollection - [getCollection] Collection was retrieved: shape
+[line 66]	05 янв. 2021 14:09:40,831 [main] DEBUG CSVCommonMethods/getCollection - [getCollection] Attempt to get collection: content
+[line 42]	05 янв. 2021 14:09:40,832 [main] DEBUG CSVCommonMethods/getFilePath - path: D:/Универ/CourseProject/src/main/resources/data/test/csv/content.csv
+[line 25]	05 янв. 2021 14:09:40,841 [pool-21-thread-1] DEBUG Helpers/getFieldFromMather - FIND
+[line 26]	05 янв. 2021 14:09:40,842 [pool-21-thread-1] DEBUG Helpers/getFieldFromMather - fontFamily='Product Sans'
+[line 25]	05 янв. 2021 14:09:40,842 [pool-21-thread-3] DEBUG Helpers/getFieldFromMather - FIND
+[line 28]	05 янв. 2021 14:09:40,843 [pool-21-thread-1] DEBUG Helpers/getFieldFromMather - fontFamily: Product Sans
+[line 25]	05 янв. 2021 14:09:40,843 [pool-21-thread-1] DEBUG Helpers/getFieldFromMather - FIND
+[line 25]	05 янв. 2021 14:09:40,843 [pool-21-thread-2] DEBUG Helpers/getFieldFromMather - FIND
+[line 26]	05 янв. 2021 14:09:40,843 [pool-21-thread-1] DEBUG Helpers/getFieldFromMather - fontSize='1.2rem'
+[line 26]	05 янв. 2021 14:09:40,843 [pool-21-thread-3] DEBUG Helpers/getFieldFromMather - fontFamily='Product Sans'
+[line 26]	05 янв. 2021 14:09:40,843 [pool-21-thread-2] DEBUG Helpers/getFieldFromMather - fontFamily='Product Sans'
+[line 28]	05 янв. 2021 14:09:40,843 [pool-21-thread-1] DEBUG Helpers/getFieldFromMather - fontSize: 1.2rem
+[line 28]	05 янв. 2021 14:09:40,843 [pool-21-thread-3] DEBUG Helpers/getFieldFromMather - fontFamily: Product Sans
+[line 28]	05 янв. 2021 14:09:40,843 [pool-21-thread-2] DEBUG Helpers/getFieldFromMather - fontFamily: Product Sans
+[line 25]	05 янв. 2021 14:09:40,843 [pool-21-thread-3] DEBUG Helpers/getFieldFromMather - FIND
+[line 25]	05 янв. 2021 14:09:40,844 [pool-21-thread-1] DEBUG Helpers/getFieldFromMather - FIND
+[line 25]	05 янв. 2021 14:09:40,844 [pool-21-thread-2] DEBUG Helpers/getFieldFromMather - FIND
+[line 26]	05 янв. 2021 14:09:40,844 [pool-21-thread-3] DEBUG Helpers/getFieldFromMather - fontSize='1.2rem'
+[line 26]	05 янв. 2021 14:09:40,844 [pool-21-thread-1] DEBUG Helpers/getFieldFromMather - letterSpacing='2px'
+[line 26]	05 янв. 2021 14:09:40,844 [pool-21-thread-2] DEBUG Helpers/getFieldFromMather - fontSize='1.2rem'
+[line 28]	05 янв. 2021 14:09:40,844 [pool-21-thread-1] DEBUG Helpers/getFieldFromMather - letterSpacing: 2px
+[line 28]	05 янв. 2021 14:09:40,844 [pool-21-thread-2] DEBUG Helpers/getFieldFromMather - fontSize: 1.2rem
+[line 28]	05 янв. 2021 14:09:40,844 [pool-21-thread-3] DEBUG Helpers/getFieldFromMather - fontSize: 1.2rem
+[line 25]	05 янв. 2021 14:09:40,844 [pool-21-thread-1] DEBUG Helpers/getFieldFromMather - FIND
+[line 25]	05 янв. 2021 14:09:40,844 [pool-21-thread-2] DEBUG Helpers/getFieldFromMather - FIND
+[line 25]	05 янв. 2021 14:09:40,844 [pool-21-thread-3] DEBUG Helpers/getFieldFromMather - FIND
+[line 26]	05 янв. 2021 14:09:40,844 [pool-21-thread-1] DEBUG Helpers/getFieldFromMather - lineSpacing='12px'
+[line 26]	05 янв. 2021 14:09:40,844 [pool-21-thread-2] DEBUG Helpers/getFieldFromMather - letterSpacing='2px'
+[line 26]	05 янв. 2021 14:09:40,844 [pool-21-thread-3] DEBUG Helpers/getFieldFromMather - letterSpacing='2px'
+[line 28]	05 янв. 2021 14:09:40,844 [pool-21-thread-1] DEBUG Helpers/getFieldFromMather - lineSpacing: 12px
+[line 28]	05 янв. 2021 14:09:40,845 [pool-21-thread-3] DEBUG Helpers/getFieldFromMather - letterSpacing: 2px
+[line 25]	05 янв. 2021 14:09:40,845 [pool-21-thread-1] DEBUG Helpers/getFieldFromMather - FIND
+[line 28]	05 янв. 2021 14:09:40,845 [pool-21-thread-2] DEBUG Helpers/getFieldFromMather - letterSpacing: 2px
+[line 25]	05 янв. 2021 14:09:40,845 [pool-21-thread-3] DEBUG Helpers/getFieldFromMather - FIND
+[line 26]	05 янв. 2021 14:09:40,845 [pool-21-thread-1] DEBUG Helpers/getFieldFromMather - fontCase=normal
+[line 26]	05 янв. 2021 14:09:40,845 [pool-21-thread-3] DEBUG Helpers/getFieldFromMather - lineSpacing='12px'
+[line 28]	05 янв. 2021 14:09:40,845 [pool-21-thread-1] DEBUG Helpers/getFieldFromMather - fontCase: normal
+[line 28]	05 янв. 2021 14:09:40,845 [pool-21-thread-3] DEBUG Helpers/getFieldFromMather - lineSpacing: 12px
+[line 49]	05 янв. 2021 14:09:40,845 [pool-21-thread-1] DEBUG FontConverter/convert - [FontConverter] font converted
+[line 25]	05 янв. 2021 14:09:40,845 [pool-21-thread-3] DEBUG Helpers/getFieldFromMather - FIND
+[line 25]	05 янв. 2021 14:09:40,845 [pool-21-thread-2] DEBUG Helpers/getFieldFromMather - FIND
+[line 26]	05 янв. 2021 14:09:40,845 [pool-21-thread-3] DEBUG Helpers/getFieldFromMather - fontCase=normal
+[line 26]	05 янв. 2021 14:09:40,845 [pool-21-thread-2] DEBUG Helpers/getFieldFromMather - lineSpacing='12px'
+[line 25]	05 янв. 2021 14:09:40,845 [pool-21-thread-1] DEBUG Helpers/getFieldFromMather - FIND
+[line 26]	05 янв. 2021 14:09:40,846 [pool-21-thread-1] DEBUG Helpers/getFieldFromMather - width=420
+[line 28]	05 янв. 2021 14:09:40,846 [pool-21-thread-3] DEBUG Helpers/getFieldFromMather - fontCase: normal
+[line 49]	05 янв. 2021 14:09:40,846 [pool-21-thread-3] DEBUG FontConverter/convert - [FontConverter] font converted
+[line 28]	05 янв. 2021 14:09:40,846 [pool-21-thread-1] DEBUG Helpers/getFieldFromMather - width: 420
+[line 28]	05 янв. 2021 14:09:40,846 [pool-21-thread-2] DEBUG Helpers/getFieldFromMather - lineSpacing: 12px
+[line 25]	05 янв. 2021 14:09:40,846 [pool-21-thread-1] DEBUG Helpers/getFieldFromMather - FIND
+[line 25]	05 янв. 2021 14:09:40,846 [pool-21-thread-2] DEBUG Helpers/getFieldFromMather - FIND
+[line 26]	05 янв. 2021 14:09:40,846 [pool-21-thread-2] DEBUG Helpers/getFieldFromMather - fontCase=normal
+[line 26]	05 янв. 2021 14:09:40,846 [pool-21-thread-1] DEBUG Helpers/getFieldFromMather - height=120
+[line 28]	05 янв. 2021 14:09:40,847 [pool-21-thread-2] DEBUG Helpers/getFieldFromMather - fontCase: normal
+[line 28]	05 янв. 2021 14:09:40,847 [pool-21-thread-1] DEBUG Helpers/getFieldFromMather - height: 120
+[line 49]	05 янв. 2021 14:09:40,847 [pool-21-thread-2] DEBUG FontConverter/convert - [FontConverter] font converted
+[line 25]	05 янв. 2021 14:09:40,847 [pool-21-thread-1] DEBUG Helpers/getFieldFromMather - FIND
+[line 26]	05 янв. 2021 14:09:40,847 [pool-21-thread-1] DEBUG Helpers/getFieldFromMather - x=132
+[line 25]	05 янв. 2021 14:09:40,848 [pool-21-thread-3] DEBUG Helpers/getFieldFromMather - FIND
+[line 28]	05 янв. 2021 14:09:40,848 [pool-21-thread-1] DEBUG Helpers/getFieldFromMather - x: 132
+[line 26]	05 янв. 2021 14:09:40,848 [pool-21-thread-3] DEBUG Helpers/getFieldFromMather - width=420
+[line 25]	05 янв. 2021 14:09:40,848 [pool-21-thread-1] DEBUG Helpers/getFieldFromMather - FIND
+[line 28]	05 янв. 2021 14:09:40,848 [pool-21-thread-3] DEBUG Helpers/getFieldFromMather - width: 420
+[line 26]	05 янв. 2021 14:09:40,848 [pool-21-thread-1] DEBUG Helpers/getFieldFromMather - y=13
+[line 25]	05 янв. 2021 14:09:40,848 [pool-21-thread-3] DEBUG Helpers/getFieldFromMather - FIND
+[line 26]	05 янв. 2021 14:09:40,848 [pool-21-thread-3] DEBUG Helpers/getFieldFromMather - height=120
+[line 25]	05 янв. 2021 14:09:40,848 [pool-21-thread-2] DEBUG Helpers/getFieldFromMather - FIND
+[line 28]	05 янв. 2021 14:09:40,848 [pool-21-thread-1] DEBUG Helpers/getFieldFromMather - y: 13
+[line 25]	05 янв. 2021 14:09:40,849 [pool-21-thread-1] DEBUG Helpers/getFieldFromMather - FIND
+[line 26]	05 янв. 2021 14:09:40,849 [pool-21-thread-2] DEBUG Helpers/getFieldFromMather - width=420
+[line 26]	05 янв. 2021 14:09:40,849 [pool-21-thread-1] DEBUG Helpers/getFieldFromMather - rotation=13
+[line 28]	05 янв. 2021 14:09:40,849 [pool-21-thread-2] DEBUG Helpers/getFieldFromMather - width: 420
+[line 28]	05 янв. 2021 14:09:40,849 [pool-21-thread-1] DEBUG Helpers/getFieldFromMather - rotation: 13
+[line 25]	05 янв. 2021 14:09:40,849 [pool-21-thread-2] DEBUG Helpers/getFieldFromMather - FIND
+[line 47]	05 янв. 2021 14:09:40,849 [pool-21-thread-1] DEBUG LayoutConverter/convert - [LayoutConverter] layout converted
+[line 26]	05 янв. 2021 14:09:40,849 [pool-21-thread-2] DEBUG Helpers/getFieldFromMather - height=120
+[line 28]	05 янв. 2021 14:09:40,849 [pool-21-thread-3] DEBUG Helpers/getFieldFromMather - height: 120
+[line 28]	05 янв. 2021 14:09:40,849 [pool-21-thread-2] DEBUG Helpers/getFieldFromMather - height: 120
+[line 25]	05 янв. 2021 14:09:40,850 [pool-21-thread-3] DEBUG Helpers/getFieldFromMather - FIND
+[line 25]	05 янв. 2021 14:09:40,850 [pool-21-thread-2] DEBUG Helpers/getFieldFromMather - FIND
+[line 26]	05 янв. 2021 14:09:40,850 [pool-21-thread-2] DEBUG Helpers/getFieldFromMather - x=132
+[line 26]	05 янв. 2021 14:09:40,850 [pool-21-thread-3] DEBUG Helpers/getFieldFromMather - x=132
+[line 28]	05 янв. 2021 14:09:40,850 [pool-21-thread-2] DEBUG Helpers/getFieldFromMather - x: 132
+[line 25]	05 янв. 2021 14:09:40,850 [pool-21-thread-2] DEBUG Helpers/getFieldFromMather - FIND
+[line 26]	05 янв. 2021 14:09:40,850 [pool-21-thread-2] DEBUG Helpers/getFieldFromMather - y=13
+[line 28]	05 янв. 2021 14:09:40,850 [pool-21-thread-3] DEBUG Helpers/getFieldFromMather - x: 132
+[line 28]	05 янв. 2021 14:09:40,851 [pool-21-thread-2] DEBUG Helpers/getFieldFromMather - y: 13
+[line 25]	05 янв. 2021 14:09:40,851 [pool-21-thread-3] DEBUG Helpers/getFieldFromMather - FIND
+[line 25]	05 янв. 2021 14:09:40,852 [pool-21-thread-2] DEBUG Helpers/getFieldFromMather - FIND
+[line 26]	05 янв. 2021 14:09:40,852 [pool-21-thread-3] DEBUG Helpers/getFieldFromMather - y=13
+[line 26]	05 янв. 2021 14:09:40,852 [pool-21-thread-2] DEBUG Helpers/getFieldFromMather - rotation=13
+[line 28]	05 янв. 2021 14:09:40,852 [pool-21-thread-2] DEBUG Helpers/getFieldFromMather - rotation: 13
+[line 28]	05 янв. 2021 14:09:40,852 [pool-21-thread-3] DEBUG Helpers/getFieldFromMather - y: 13
+[line 47]	05 янв. 2021 14:09:40,852 [pool-21-thread-2] DEBUG LayoutConverter/convert - [LayoutConverter] layout converted
+[line 25]	05 янв. 2021 14:09:40,852 [pool-21-thread-3] DEBUG Helpers/getFieldFromMather - FIND
+[line 26]	05 янв. 2021 14:09:40,853 [pool-21-thread-3] DEBUG Helpers/getFieldFromMather - rotation=13
+[line 28]	05 янв. 2021 14:09:40,854 [pool-21-thread-3] DEBUG Helpers/getFieldFromMather - rotation: 13
+[line 47]	05 янв. 2021 14:09:40,854 [pool-21-thread-3] DEBUG LayoutConverter/convert - [LayoutConverter] layout converted
+[line 77]	05 янв. 2021 14:09:40,855 [main] INFO  CSVCommonMethods/getCollection - [getCollection] Collection was retrieved: content
+[line 97]	05 янв. 2021 14:09:40,856 [main] DEBUG CSVCommonMethods/writeCollection - [writeCollection] Attempt to write in slide
+[line 42]	05 янв. 2021 14:09:40,857 [main] DEBUG CSVCommonMethods/getFilePath - path: D:/Универ/CourseProject/src/main/resources/data/test/csv/slide.csv
+[line 105]	05 янв. 2021 14:09:40,866 [main] INFO  CSVCommonMethods/writeCollection - [writeCollection] Collection was wrote
+[line 177]	05 янв. 2021 14:09:40,866 [main] INFO  CSVPresentationMethods/buildPresentationFromTemplate - Slides wrote
+[line 97]	05 янв. 2021 14:09:40,867 [main] DEBUG CSVCommonMethods/writeCollection - [writeCollection] Attempt to write in shape
+[line 42]	05 янв. 2021 14:09:40,868 [main] DEBUG CSVCommonMethods/getFilePath - path: D:/Универ/CourseProject/src/main/resources/data/test/csv/shape.csv
+[line 105]	05 янв. 2021 14:09:40,880 [main] INFO  CSVCommonMethods/writeCollection - [writeCollection] Collection was wrote
+[line 180]	05 янв. 2021 14:09:40,881 [main] INFO  CSVPresentationMethods/buildPresentationFromTemplate - Shapes wrote
+[line 97]	05 янв. 2021 14:09:40,881 [main] DEBUG CSVCommonMethods/writeCollection - [writeCollection] Attempt to write in content
+[line 42]	05 янв. 2021 14:09:40,882 [main] DEBUG CSVCommonMethods/getFilePath - path: D:/Универ/CourseProject/src/main/resources/data/test/csv/content.csv
+[line 105]	05 янв. 2021 14:09:40,893 [main] INFO  CSVCommonMethods/writeCollection - [writeCollection] Collection was wrote
+[line 183]	05 янв. 2021 14:09:40,893 [main] INFO  CSVPresentationMethods/buildPresentationFromTemplate - Contents wrote
+[line 35]	05 янв. 2021 14:09:40,894 [main] INFO  Result/<init> - { status: success, value: Presentation successfully created  }
