@@ -2,6 +2,7 @@ package ru.sfedu.course_project.api;
 
 import com.opencsv.exceptions.CsvDataTypeMismatchException;
 import com.opencsv.exceptions.CsvRequiredFieldEmptyException;
+import ru.sfedu.course_project.api.xml.XMLCommentMethods;
 import ru.sfedu.course_project.api.xml.XMLPresentationMethods;
 import ru.sfedu.course_project.api.xml.XMLSlideMethods;
 import ru.sfedu.course_project.bean.Presentation;
@@ -68,22 +69,22 @@ public class DataProviderXML implements DataProvider {
 
     @Override
     public Result getPresentationComments(HashMap arguments) {
-        return null;
+        return XMLCommentMethods.getPresentationComments(arguments);
     }
 
     @Override
     public Result commentPresentation(HashMap arguments) {
-        return null;
+        return XMLCommentMethods.commentPresentation(arguments);
     }
 
     @Override
     public Result editPresentationComment(HashMap arguments) {
-        return null;
+        return XMLCommentMethods.editPresentationComment(arguments);
     }
 
     @Override
     public Result removePresentationComment(HashMap arguments) {
-        return null;
+        return XMLCommentMethods.removePresentationComment(arguments);
     }
 
     @Override

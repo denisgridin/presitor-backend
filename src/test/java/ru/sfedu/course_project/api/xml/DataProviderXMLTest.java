@@ -8,9 +8,11 @@ import ru.sfedu.course_project.TestBase;
 import ru.sfedu.course_project.api.DataProvider;
 import ru.sfedu.course_project.api.DataProviderXML;
 import ru.sfedu.course_project.api.jdbc.DataProviderJDBCTest;
+import ru.sfedu.course_project.bean.Comment;
 import ru.sfedu.course_project.bean.Presentation;
 import ru.sfedu.course_project.bean.Slide;
 import ru.sfedu.course_project.enums.CollectionType;
+import ru.sfedu.course_project.enums.Role;
 import ru.sfedu.course_project.enums.Status;
 import ru.sfedu.course_project.tools.Result;
 import ru.sfedu.course_project.utils.ConfigurationUtil;
@@ -289,6 +291,192 @@ public class DataProviderXMLTest extends TestBase {
             args.put(ConstantsField.NAME, name);
             Result resultEditSlide = provider.editPresentationSlideById(args);
             assertNotEquals(resultEditSlide.getStatus(), Status.success);
+        }
+    }
+
+    @Test
+    void commentPresentationSuccess() {
+        try {
+            UUID presentationId = UUID.randomUUID();
+
+            Result resultCreatePresentation = makePresentationWithId(provider, presentationId);
+
+            if (resultCreatePresentation.getStatus() == Status.success) {
+
+                HashMap args = new HashMap();
+                args.put(ConstantsField.PRESENTATION_ID, String.valueOf(presentationId));
+                args.put(ConstantsField.TEXT, "Тестовый текст");
+                args.put(ConstantsField.ROLE, String.valueOf(Role.editor));
+                Result resultCommentPresentation = provider.commentPresentation(args);
+
+                assertTrue(Status.success == resultCommentPresentation.getStatus());
+
+                HashMap params = new HashMap();
+                params.put(ConstantsField.ID, String.valueOf(presentationId));
+
+                UUID commentId = (UUID) resultCommentPresentation.getReturnValue();
+
+                Optional resultGetPresentation = XMLCommonMethods.getInstanceById(CollectionType.presentation, params);
+                assertTrue(resultGetPresentation.isPresent());
+                Result resultGetComments = provider.getPresentationComments(args);
+
+                log.debug("comments: " + resultGetComments.getReturnValue());
+                ArrayList comments = (ArrayList) resultGetComments.getReturnValue();
+                Optional presentationCommentId = comments.stream().filter(el -> {
+                    Comment comment = (Comment) el;
+                    log.debug("comment id: " + commentId);
+                    log.debug("current item id: " + comment.getId());
+                    log.debug(comment.getId().equals(commentId));
+                    return comment.getId().equals(commentId);
+                }).limit(1).findFirst();
+                assertTrue(presentationCommentId.isPresent());
+            } else {
+                fail();
+            }
+        } catch (RuntimeException e) {
+            log.error(e);
+            e.printStackTrace();
+            fail();
+        }
+    }
+
+    @Test
+    void commentPresentationFail() {
+        try {
+            UUID presentationId = UUID.randomUUID();
+
+            Result resultCreatePresentation = makePresentationWithId(provider, presentationId);
+
+            if (resultCreatePresentation.getStatus() == Status.success) {
+
+                HashMap args = new HashMap();
+                args.put(ConstantsField.PRESENTATION_ID, String.valueOf(UUID.randomUUID()));
+                args.put(ConstantsField.TEXT, "Тестовый текст");
+                args.put(ConstantsField.ROLE, String.valueOf(Role.editor));
+                Result resultCommentPresentation = provider.commentPresentation(args);
+
+                assertTrue(resultCommentPresentation.getStatus() == Status.error);
+            } else {
+                fail();
+            }
+        } catch (RuntimeException e) {
+            log.error(e);
+            e.printStackTrace();
+            fail();
+        }
+    }
+
+    @Test
+    void getPresentationCommentsSuccess () {
+        try {
+            UUID presentationId = UUID.randomUUID();
+
+            Result resultCreatePresentation = makePresentationWithId(provider, presentationId);
+
+            if (resultCreatePresentation.getStatus() == Status.success) {
+                HashMap args = new HashMap();
+                args.put(ConstantsField.PRESENTATION_ID, String.valueOf(presentationId));
+                args.put(ConstantsField.TEXT, "Тестовый текст");
+                args.put(ConstantsField.ROLE, String.valueOf(Role.editor));
+                Result resultCommentPresentation = provider.commentPresentation(args);
+                Result resultGetPresentationComments = provider.getPresentationComments(args);
+                assertTrue(resultGetPresentationComments.getStatus() == Status.success);
+                assertTrue(resultCommentPresentation.getStatus() == Status.success);
+
+                ArrayList comments = (ArrayList) resultGetPresentationComments.getReturnValue();
+                assertTrue(comments.size() > 0);
+            } else {
+                fail();
+            }
+        } catch (RuntimeException e) {
+            log.error(e);
+            e.printStackTrace();
+            fail();
+        }
+    }
+
+    @Test
+    void getPresentationCommentsFail () {
+        try {
+            UUID presentationId = UUID.randomUUID();
+
+            Result resultCreatePresentation = makePresentationWithId(provider, presentationId);
+
+            if (resultCreatePresentation.getStatus() == Status.success) {
+                HashMap args = new HashMap();
+                args.put(ConstantsField.PRESENTATION_ID, String.valueOf(UUID.randomUUID()));
+                args.put(ConstantsField.TEXT, null);
+                args.put(ConstantsField.ROLE, String.valueOf(Role.editor));
+                Result resultCommentPresentation = provider.commentPresentation(args);
+                Result resultGetPresentationComments = provider.getPresentationComments(args);
+
+                assertTrue(resultGetPresentationComments.getStatus() == Status.error);
+                assertTrue(resultCommentPresentation.getStatus() == Status.error);
+
+                if (resultGetPresentationComments.getStatus() == Status.success) {
+                    ArrayList comments = (ArrayList) resultGetPresentationComments.getReturnValue();
+                    assertTrue(comments.size() == 0);
+                }
+            } else {
+                fail();
+            }
+        } catch (RuntimeException e) {
+            log.error(e);
+            e.printStackTrace();
+            fail();
+        }
+    }
+
+    @Test
+    void editPresentationCommentSuccess() {
+        UUID presentationId = UUID.randomUUID();
+
+        Result resultCreatePresentation = makePresentationWithId(provider, presentationId);
+
+        if (resultCreatePresentation.getStatus() == Status.success) {
+            HashMap args = new HashMap();
+            args.put(ConstantsField.PRESENTATION_ID, String.valueOf(presentationId));
+            args.put(ConstantsField.TEXT, "Тестовый измененный текст");
+            args.put(ConstantsField.ROLE, String.valueOf(Role.editor));
+            Result resultCommentPresentation = provider.commentPresentation(args);
+
+            if (Status.success == resultCommentPresentation.getStatus()) {
+                args.put(ConstantsField.ID, String.valueOf(resultCommentPresentation.getReturnValue()));
+                Result resultEditComment = provider.editPresentationComment(args);
+                Result resultGetPresentationComments = provider.getPresentationComments(args);
+
+                assertTrue(resultCommentPresentation.getStatus() == Status.success);
+                assertTrue(resultGetPresentationComments.getStatus() == Status.success);
+                assertTrue(resultEditComment.getStatus() == Status.success);
+            } else {
+                fail();
+            }
+        } else {
+            fail();
+        }
+    }
+
+    @Test
+    void editPresentationCommentFail() {
+        UUID presentationId = UUID.randomUUID();
+
+        Result resultCreatePresentation = makePresentationWithId(provider, presentationId);
+
+        if (resultCreatePresentation.getStatus() == Status.success) {
+            HashMap args = new HashMap();
+            args.put(ConstantsField.PRESENTATION_ID, String.valueOf(UUID.randomUUID()));
+            args.put(ConstantsField.TEXT, null);
+            args.put(ConstantsField.ROLE, "guest");
+            Result resultCommentPresentation = provider.commentPresentation(args);
+            args.put(ConstantsField.ID, String.valueOf(UUID.randomUUID()));
+            Result resultEditComment = provider.editPresentationComment(args);
+            Result resultGetPresentationComments = provider.getPresentationComments(args);
+
+            assertFalse(Status.success == resultCommentPresentation.getStatus());
+            assertFalse(Status.success == resultGetPresentationComments.getStatus());
+            assertFalse(Status.success == resultEditComment.getStatus());
+        } else {
+            fail();
         }
     }
 }

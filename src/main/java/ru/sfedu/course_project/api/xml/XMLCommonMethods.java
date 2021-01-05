@@ -250,4 +250,60 @@ public class XMLCommonMethods {
         }
     }
 
+    public static Result updateRecordInCollection (Class cls, CollectionType collectionType, Object instance, UUID instanceId) {
+        try {
+            log.debug("[updateRecordInCollection] Update: " + instance.toString());
+            ArrayList updatedCollection = new ArrayList();
+            switch (collectionType) {
+                case presentation: {
+                    ArrayList<Presentation> listInstance = (ArrayList<Presentation>) getCollection(collectionType).orElse(new ArrayList());
+                    updatedCollection = (ArrayList) listInstance
+                            .stream()
+                            .map(el -> {
+                                if (el.getId().equals(instanceId)) {
+                                    el = (Presentation) instance;
+                                }
+                                return el;
+                            }).collect(Collectors.toList());
+                    break;
+                }
+                case slide: {
+                    ArrayList<Slide> listInstance = (ArrayList<Slide>) getCollection(collectionType).orElse(new ArrayList());
+                    updatedCollection = (ArrayList) listInstance
+                            .stream()
+                            .map(el -> {
+                                if (el.getId().equals(instanceId)) {
+                                    el = (Slide) instance;
+                                }
+                                return el;
+                            }).collect(Collectors.toList());
+                    break;
+                }
+                case comment: {
+                    ArrayList<Comment> listInstance = (ArrayList<Comment>) getCollection(collectionType).orElse(new ArrayList());
+                    updatedCollection = (ArrayList) listInstance
+                            .stream()
+                            .map(el -> {
+                                if (el.getId().equals(instanceId)) {
+                                    el = (Comment) instance;
+                                }
+                                return el;
+                            }).collect(Collectors.toList());
+                    break;
+                }
+                case element:
+                    // TODO
+                    break;
+                case error:
+                    break;
+            }
+            Status status = writeCollection(updatedCollection, cls, collectionType);
+            log.debug("[updateRecordInCollection] Update status: " + status);
+            return new Result(status, "");
+        } catch (RuntimeException e) {
+            log.error(e);
+            return new Result(Status.error, ConstantsError.INSTANCE_UPDATE);
+        }
+    }
+
 }
