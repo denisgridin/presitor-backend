@@ -4,12 +4,15 @@ import com.opencsv.exceptions.CsvDataTypeMismatchException;
 import com.opencsv.exceptions.CsvRequiredFieldEmptyException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.h2.tools.RunScript;
+import ru.sfedu.course_project.Constants;
 import ru.sfedu.course_project.ConstantsInfo;
 import ru.sfedu.course_project.ConstantsSuccess;
 import ru.sfedu.course_project.ConstantsError;
 import ru.sfedu.course_project.api.DataProviderCSV;
-import ru.sfedu.course_project.bean.Presentation;
+import ru.sfedu.course_project.bean.*;
 import ru.sfedu.course_project.enums.CollectionType;
+import ru.sfedu.course_project.enums.ElementType;
 import ru.sfedu.course_project.enums.Status;
 import ru.sfedu.course_project.tools.ArgsValidator;
 import ru.sfedu.course_project.tools.Creator;
@@ -21,6 +24,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 import static ru.sfedu.course_project.enums.CollectionType.presentation;
+import static ru.sfedu.course_project.enums.CollectionType.template;
 
 public class CSVPresentationMethods {
     private static final Logger log = LogManager.getLogger(CSVPresentationMethods.class);
@@ -29,6 +33,13 @@ public class CSVPresentationMethods {
 
     public static Result createPresentation(HashMap args) {
         try {
+
+            String templateId = (String) args.get(ConstantsField.TEMPLATE_ID);
+            if (null != templateId) {
+                return createPresentationFromTemplate(args);
+            }
+
+
             List<Presentation> listPresentations = CSVCommonMethods.getCollection(CollectionType.presentation, Presentation.class).orElse(new ArrayList<Presentation>());
             if (null != args.get(ConstantsField.ID)) {
                 String id = (String) args.get(ConstantsField.ID);
@@ -48,11 +59,6 @@ public class CSVPresentationMethods {
 
             Status result = CSVCommonMethods.writeCollection(listPresentations, Presentation.class, CollectionType.presentation);
 
-            boolean asTemplate = Boolean.parseBoolean((String) args.getOrDefault(ConstantsField.AS_TEMPLATE, String.valueOf(false)));
-            if (asTemplate) {
-                addPresentationInTemplate(presentation);
-            }
-
             if (Status.success == result) {
                 log.info(ConstantsSuccess.PRESENTATION_CREATE + presentation.getId());
                 return new Result(Status.success, presentation.getId());
@@ -67,30 +73,121 @@ public class CSVPresentationMethods {
         }
     }
 
-    public static Result addPresentationInTemplate (Presentation presentation) {
+
+    public static Result createPresentationFromTemplate (HashMap args) {
         try {
-            HashMap args = new HashMap();
-            args.put(ConstantsField.ID, String.valueOf(presentation.getId()));
-            Optional<Presentation> optionalTemplate = CSVCommonMethods.getInstanceById(Presentation.class, CollectionType.template, args);
-            if (optionalTemplate.isPresent()) {
-                log.error(ConstantsError.TEMPLATE_EXISTS + presentation.getId());
-                return new Result(Status.error, ConstantsError.TEMPLATE_EXISTS + presentation.getId());
+            log.info("Searching template presentation");
+            HashMap params = new HashMap();
+            params.put(ConstantsField.ID, String.valueOf(args.get(ConstantsField.TEMPLATE_ID)));
+            params.put(ConstantsField.WITH_SLIDES, "true");
+            params.put(ConstantsField.WITH_ELEMENTS, "true");
+            Result resultGetTemplate = getPresentationById(params);
+
+            if (Status.error == resultGetTemplate.getStatus()) {
+                return resultGetTemplate;
             }
-            ArrayList templates = (ArrayList) CSVCommonMethods.getCollection(CollectionType.template, Presentation.class)
-                    .orElse(new ArrayList());
-            templates.add(presentation);
-            Status statusWrite = CSVCommonMethods.writeCollection(templates, Presentation.class, CollectionType.template);
-            if (Status.success == statusWrite) {
-                log.info(ConstantsSuccess.TEMPLATE_ADD + presentation.getId());
-                return new Result(Status.success, ConstantsSuccess.TEMPLATE_ADD + presentation.getId());
-            } else {
-                log.error(ConstantsError.TEMPLATE_ADD + presentation.getId());
-                return new Result(Status.error, ConstantsError.TEMPLATE_ADD + presentation.getId());
-            }
+
+            Presentation template = (Presentation) resultGetTemplate.getReturnValue();
+            log.debug("Template found: " + template);
+
+            return buildPresentationFromTemplate(template);
+
         } catch (RuntimeException e) {
             log.error(e);
-            log.error(ConstantsError.TEMPLATE_ADD + presentation.getId());
-            return new Result(Status.error, ConstantsError.TEMPLATE_ADD + presentation.getId());
+            log.error(ConstantsError.PRESENTATION_CREATE_FROM_TEMPLATE);
+            return new Result(Status.error, ConstantsError.PRESENTATION_CREATE_FROM_TEMPLATE);
+        }
+    }
+
+    public static Result buildPresentationFromTemplate (Presentation template) {
+        try {
+            UUID id = UUID.randomUUID();
+            String name = String.format(Constants.TEMPLATE_NAME, Constants.DEFAULT_PRESENTATION.get(ConstantsField.NAME), template.getName());
+            String fillColor = template.getFillColor();
+            String fontFamily = template.getFontFamily();
+
+            log.info("Build presentation from template");
+
+            HashMap args = new HashMap();
+            args.put(ConstantsField.ID, String.valueOf(id));
+            args.put(ConstantsField.NAME, name);
+            args.put(ConstantsField.FILL_COLOR, fillColor);
+            args.put(ConstantsField.FONT_FAMILY, fontFamily);
+
+            Result resultCreatePresentation = createPresentation(args);
+
+            if (Status.error == resultCreatePresentation.getStatus()) {
+                return resultCreatePresentation;
+            }
+
+            log.info("Presentation created from template");
+
+            UUID presentationId = id;
+
+            ArrayList presentationShapes = new ArrayList();
+            ArrayList presentationContents = new ArrayList();
+            ArrayList presentationSlides = new ArrayList();
+
+            ArrayList templateSlides = template.getSlides();
+            templateSlides.stream().forEach(el -> {
+                Slide slide = (Slide) el;
+                UUID slideId = UUID.randomUUID();
+                slide.setId(slideId);
+                slide.setPresentationId(presentationId);
+                presentationSlides.add(slide);
+
+                log.info("Write new presentation elements from slide: " + slide);
+                ArrayList elements = (ArrayList) slide.getElements().stream().peek(item -> item.setId(UUID.randomUUID())).collect(Collectors.toList());
+
+                elements.stream().forEach(item -> {
+                    Element element = (Element) item;
+                    element.setId(UUID.randomUUID());
+                    element.setPresentationId(presentationId);
+                    element.setSlideId(slideId);
+                    ElementType elementType = element.getElementType();
+                    switch (elementType) {
+                        case shape: {
+                            presentationShapes.add(element);
+                            break;
+                        }
+                        case content: {
+                            presentationContents.add(element);
+                            break;
+                        }
+                        default: {
+                            break;
+                        }
+                    }
+                });
+            });
+
+            log.debug("Presentation slides: " + presentationSlides);
+            log.debug("Presentation shapes: " + presentationShapes);
+            log.debug("Presentation contents: " + presentationContents);
+
+            ArrayList allSlides = (ArrayList) CSVCommonMethods.getCollection(CollectionType.slide, Slide.class).orElse(new ArrayList());
+            ArrayList allShapes = (ArrayList) CSVCommonMethods.getCollection(CollectionType.shape, Shape.class).orElse(new ArrayList());
+            ArrayList allContents = (ArrayList) CSVCommonMethods.getCollection(CollectionType.content, Content.class).orElse(new ArrayList());
+
+            allSlides.addAll(presentationSlides);
+            allShapes.addAll(presentationShapes);
+            allContents.addAll(presentationContents);
+
+            Status statusWriteSlides = CSVCommonMethods.writeCollection(allSlides, Slide.class, CollectionType.slide);
+            log.info("Slides wrote");
+
+            Status statusWriteShapes = CSVCommonMethods.writeCollection(allShapes, Shape.class, CollectionType.shape);
+            log.info("Shapes wrote");
+
+            Status statusWriteContents = CSVCommonMethods.writeCollection(allContents, Content.class, CollectionType.content);
+            log.info("Contents wrote");
+
+            return new Result(Status.success, ConstantsSuccess.PRESENTATION_CREATE);
+
+        } catch (RuntimeException e) {
+            log.error(e);
+            log.error(ConstantsError.PRESENTATION_CREATE_FROM_TEMPLATE);
+            return new Result(Status.error, ConstantsError.PRESENTATION_CREATE_FROM_TEMPLATE);
         }
     }
 
@@ -137,22 +234,10 @@ public class CSVPresentationMethods {
 
             Presentation presentation = optionalPresentation.get();
 
-            if (slideId.isPresent()) {
-                HashMap paramsGetSlide = new HashMap();
-                paramsGetSlide.put(ConstantsField.PRESENTATION_ID, arguments.get(ConstantsField.ID));
-                paramsGetSlide.put(ConstantsField.ID, slideId.get());
-                Result resultGetSlide = CSVSlideMethods.getSlideById(paramsGetSlide);
-                if (Status.success == resultGetSlide.getStatus()) {
-                    ArrayList slides = new ArrayList();
-                    slides.add(resultGetSlide.getReturnValue());
-                    presentation.setSlides(slides);
-
-                } else {
-                    return resultGetSlide;
-                }
-            } else if (withSlides) {
+            if (withSlides) {
                 HashMap paramsGetSlides = new HashMap();
                 paramsGetSlides.put(ConstantsField.PRESENTATION_ID, arguments.get(ConstantsField.ID));
+                paramsGetSlides.put(ConstantsField.WITH_ELEMENTS, arguments.get(ConstantsField.WITH_ELEMENTS));
                 Result resultGetSlides = CSVSlideMethods.getPresentationSlides(paramsGetSlides);
                 log.debug("[getPresentationById] get presentation slides: " + paramsGetSlides.get(ConstantsField.PRESENTATION_ID));
                 if (Status.success == resultGetSlides.getStatus()) {
@@ -248,10 +333,6 @@ public class CSVPresentationMethods {
             presentation.setFontFamily(fontFamily);
             log.debug(ConstantsInfo.FIELD_EDIT + ConstantsField.NAME + name);
             presentation.setName(name);
-
-//                        if (asTemplate) {
-//                            addPresentationInTemplate(el);
-//                        } TODO метод добавления флага шаблона
         } return presentation;
     }
 

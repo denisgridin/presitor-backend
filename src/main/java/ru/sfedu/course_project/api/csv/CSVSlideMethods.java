@@ -14,6 +14,7 @@ import ru.sfedu.course_project.enums.Status;
 import ru.sfedu.course_project.tools.Creator;
 import ru.sfedu.course_project.tools.Result;
 import ru.sfedu.course_project.utils.ConstantsField;
+import ru.sfedu.course_project.bean.Element;
 
 import java.io.IOException;
 import java.util.*;
@@ -77,18 +78,33 @@ public class CSVSlideMethods {
             }
             UUID presentationId = UUID.fromString((String) arguments.get(ConstantsField.PRESENTATION_ID));
             HashMap getPresentationByIdParams = new HashMap();
+            boolean withElements = Boolean.parseBoolean((String) arguments.get(ConstantsField.WITH_ELEMENTS));
             getPresentationByIdParams.put(ConstantsField.ID, String.valueOf(presentationId));
             Optional<Presentation> presentation = CSVCommonMethods.getInstanceById(Presentation.class, CollectionType.presentation, getPresentationByIdParams);
             if (presentation.isPresent()) {
                 Optional<List> listSlides = CSVCommonMethods.getCollection(slide, Slide.class);
-                Optional<List> presentationSlides = Optional.empty();
+                Optional<List> optionalPresentationSlides = Optional.empty();
+                ArrayList<Slide> presentationSlides = new ArrayList<>();
                 if (listSlides.isPresent()) {
                     log.debug("[getPresentationSlides] Attempt to find presentation slides for: " + presentationId);
                     List<Slide> list = listSlides.get();
-                    presentationSlides = Optional.of(list.stream().filter(slide -> slide.getPresentationId().equals(presentationId)).collect(Collectors.toList()));
+                    optionalPresentationSlides = Optional.of(list.stream().filter(slide -> slide.getPresentationId().equals(presentationId)).collect(Collectors.toList()));
+                    presentationSlides = (ArrayList) optionalPresentationSlides.orElse(new ArrayList());
+                    log.info("Presentation slides get!");
+
+                    log.debug("Get elements from slide: ");
+                    if (withElements) {
+                        Result resultSetElements = setElementsBySlide(presentationSlides, presentationId);
+                        if (Status.error == resultSetElements.getStatus()) {
+                            return resultSetElements;
+                        }
+
+                        presentationSlides = (ArrayList<Slide>) resultSetElements.getReturnValue();
+                        log.debug("Presentation slides: " + presentationSlides);
+                    }
                 }
-                log.debug("[getPresentationSlides] Found presentation slides: " + presentationSlides.orElse(new ArrayList()));
-                return new Result(Status.success, presentationSlides.orElse(new ArrayList()));
+                log.debug("[getPresentationSlides] Found presentation slides: " + presentationSlides);
+                return new Result(Status.success, presentationSlides);
             } else {
                 log.error(ConstantsError.PRESENTATION_NOT_FOUND + presentationId);
                 return new Result(Status.error, ConstantsError.PRESENTATION_NOT_FOUND + presentationId);
@@ -98,6 +114,33 @@ public class CSVSlideMethods {
             log.error(e);
             log.error(ConstantsError.SLIDES_GET);;
             return new Result(Status.error, ConstantsError.SLIDES_GET);
+        }
+    }
+
+    public static Result setElementsBySlide (ArrayList slides, UUID presentationId) {
+        try {
+            ArrayList<Slide> updatedSlides = (ArrayList<Slide>) slides.stream().map(el -> {
+                Slide slide = (Slide) el;
+                log.info("Search elements for slide: " + slide.getId());
+                HashMap args = new HashMap();
+                args.put(ConstantsField.PRESENTATION_ID, String.valueOf(presentationId));
+                args.put(ConstantsField.SLIDE_ID, String.valueOf(slide.getId()));
+                Result resultGetElements = CSVElementMethods.getSlideElements(args);
+
+                log.debug("get elements status: " + resultGetElements.getStatus());
+                log.debug("Slide elements: " + resultGetElements.getReturnValue());
+                if (Status.success == resultGetElements.getStatus()) {
+                    ArrayList elements = (ArrayList) resultGetElements.getReturnValue();
+                    slide.setElements(elements);
+                }
+                return slide;
+            }).collect(Collectors.toList());
+            log.debug("Slide: " + slide);
+            return new Result(Status.success, updatedSlides);
+        } catch (RuntimeException e) {
+            log.error(e);
+            log.error(ConstantsError.ELEMENTS_GET);
+            return new Result(Status.error, ConstantsError.ELEMENTS_GET);
         }
     }
 

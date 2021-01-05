@@ -38,13 +38,10 @@ public class CSVCommonMethods {
                     ConfigurationUtil.getConfigurationEntry(FILE_EXTENTION));
 
             String root = System.getProperty("user.dir");
-            log.debug("file path: " + filePath);
-            log.debug("Current directory " + root);
             String path = (root + filePath).replace("\\", "/");
             log.debug("path: " + path );
 
             File directory = new File(path.substring(0, path.lastIndexOf("/")));
-            log.debug("directory path: " + directory);
 
             if (!directory.exists()){
                 directory.mkdirs();

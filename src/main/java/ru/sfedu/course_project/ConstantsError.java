@@ -23,6 +23,7 @@ public class ConstantsError {
 
     public static String TEMPLATE_ADD = "Unable to add presentation in templates ";
     public static String TEMPLATE_EXISTS = "Template is already exists ";
+    public static String PRESENTATION_CREATE_FROM_TEMPLATE = "Unable to create presentation from template ";
 
 
     public static String SLIDES_GET = "Unable to get presentation slides";

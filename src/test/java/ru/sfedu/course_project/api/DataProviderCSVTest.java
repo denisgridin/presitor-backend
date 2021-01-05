@@ -2,6 +2,7 @@ package ru.sfedu.course_project.api;
 
 import com.opencsv.exceptions.CsvDataTypeMismatchException;
 import com.opencsv.exceptions.CsvRequiredFieldEmptyException;
+import org.apache.commons.collections4.multimap.HashSetValuedHashMap;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.Test;
@@ -33,6 +34,28 @@ public class DataProviderCSVTest extends TestBase {
         } catch (IOException e) {
             log.debug(e);
         }
+    }
+
+    @Test
+    void createPresentationFromTemplateSuccess () {
+        HashMap args = new HashMap();
+        args.put(ConstantsField.TEMPLATE_ID, "353038aa-9497-4f1a-ad1e-9e539fe2ecfd");
+
+        Result result = provider.createPresentation(args);
+
+        assertTrue(Status.success == result.getStatus());
+    }
+
+    @Test
+    void getPresentationWithOptionsSuccess () {
+        HashMap args = new HashMap();
+        args.put(ConstantsField.ID, "353038aa-9497-4f1a-ad1e-9e539fe2ecfd");
+        args.put(ConstantsField.WITH_SLIDES, "true");
+        args.put(ConstantsField.WITH_ELEMENTS, "true");
+
+        Result result = provider.getPresentationById(args);
+
+        assertTrue(Status.success == result.getStatus());
     }
 
 

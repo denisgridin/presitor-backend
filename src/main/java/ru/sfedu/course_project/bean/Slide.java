@@ -29,7 +29,9 @@ public class Slide implements Serializable {
     @CsvCustomBindByName(column = ConstantsField.PRESENTATION_ID, converter = UUIDConverter.class)
     private UUID presentationId;
 
-//    @CsvBindAndSplitByName(column = "elements", elementType = List.class, converter = ListIdsConverter.class)
+    @CsvIgnore
+    private boolean elementsSet = false;
+
     @CsvIgnore
     private ArrayList<Element> elements;
 
@@ -74,6 +76,7 @@ public class Slide implements Serializable {
     }
 
     public void setElements(ArrayList<Element> elements) {
+        this.elementsSet = true;
         this.elements = elements;
     }
 
@@ -95,11 +98,15 @@ public class Slide implements Serializable {
 
     @Override
     public String toString() {
+
+        String elementsView = elementsSet ? ", elements=" + elements : "";
+
         return "Slide{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", index=" + index +
                 ", presentationId=" + presentationId +
+                elementsView +
                 '}';
     }
 }

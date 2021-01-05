@@ -5,6 +5,7 @@ import ru.sfedu.course_project.api.DataProviderCSV;
 public class ConstantsField {
     public static final String ID = "id";
     public static final String PRESENTATION_ID = "presentationId";
+    public static final String TEMPLATE_ID = "templateId";
     public static final String SLIDE_ID = "slideId";
     public static final String ELEMENT_ID = "elementId";
 

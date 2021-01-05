@@ -18,6 +18,9 @@ public class Constants {
     public static final String DATABASE_PASSWORD="database_password";
     public static final String DATABASE_PROTOCOL="database_protocol";
 
+
+    public static final String TEMPLATE_NAME="%s [%s]";
+
     public final static Map FIELD_REGEXP = Stream.of(new Object[][] {
             { ConstantsField.X, "x=\\d*" },
             { ConstantsField.Y, "y=\\d*" },
