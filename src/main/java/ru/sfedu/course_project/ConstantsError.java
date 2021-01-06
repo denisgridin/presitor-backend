@@ -5,6 +5,7 @@ public class ConstantsError {
     public static String UNEXPECTED_ERROR = "Unexpected error";
     public static String INSTANCE_NOT_FOUND = "Instance not found ";
     public static String INSTANCE_UPDATE = "Unable to update instance";
+    public static String INSTANCE_GET = "Unable to get instance ";
     public static String ELEMENT_NOT_FOUND = "Undefined element type ";
     public static String COLLECTION_WRITE = "Unable to write collection ";
 
@@ -59,4 +60,7 @@ public class ConstantsError {
     public static String ASSESSMENT_ADD_ERROR = "Unable to rate presentation ";
     public static String ASSESSMENT_CREATE_ERROR = "Unable to create assessment ";
     public static String ASSESSMENT_GET_ERROR = "Unable to get presentation assessments ";
+
+    public static String SQL_PARSE = "Unable to parse sql result set ";
+    public static String SQL_ERROR = "SQL error ";
 }

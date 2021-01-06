@@ -5,12 +5,14 @@ import com.opencsv.bean.CsvToBean;
 import com.opencsv.bean.CsvToBeanBuilder;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.h2.tools.RunScript;
 import ru.sfedu.course_project.Constants;
 import ru.sfedu.course_project.ConstantsInfo;
 import ru.sfedu.course_project.ConstantsError;
 import ru.sfedu.course_project.bean.Presentation;
 import ru.sfedu.course_project.enums.CollectionType;
 import ru.sfedu.course_project.enums.Method;
+import ru.sfedu.course_project.enums.QueryMember;
 import ru.sfedu.course_project.enums.Status;
 import ru.sfedu.course_project.tools.Creator;
 import ru.sfedu.course_project.tools.Result;
@@ -21,10 +23,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
+import java.util.*;
 
 public class JDBCCommonMethods {
 
@@ -54,15 +53,9 @@ public class JDBCCommonMethods {
         statement.close();
     }
 
-    public static Result getCollection (CollectionType collectionType) {
+    public static Result getInstance (QueryMember queryMember, String condition) {
         try {
-            log.debug("Get collection: " + collectionType);
-            Statement statement = setConnection();
-            if (statement == null) {
-                return new Result(Status.error, ConstantsError.CONNECTION_ERROR);
-            }
-
-            String query = QueryBuilder.build(Method.get, CollectionType.presentation, null, null);
+            String query = QueryBuilder.build(Method.get, QueryMember.presentation, null, null);
             log.debug("Query string: " + query);
 
             if (query.isEmpty()) {
@@ -70,8 +63,32 @@ public class JDBCCommonMethods {
                 return new Result(Status.error, ConstantsError.PRESENTATION_GET);
             }
             ResultSet resultSet = statement.executeQuery(query);
-            Result result = getListFromResultSet(resultSet, collectionType);
+            Result result = getInstanceFromResultSet(resultSet, queryMember);
             return result;
+        } catch (RuntimeException | SQLException e) {
+            log.error(e);
+            log.error(ConstantsError.INSTANCE_GET);
+            return new Result(Status.error, ConstantsError.INSTANCE_GET);
+        }
+    }
+
+    public static Result getCollection (QueryMember queryMember) {
+        try {
+            log.debug("Get collection: " + queryMember);
+            Statement statement = setConnection();
+            if (null == statement) {
+                return new Result(Status.error, ConstantsError.CONNECTION_ERROR);
+            }
+
+            String query = QueryBuilder.build(Method.get, queryMember, null, null);
+            log.debug("Query string: " + query);
+
+            if (query.isEmpty()) {
+                log.error("Query string is empty");
+                return new Result(Status.error, ConstantsError.PRESENTATION_GET);
+            }
+            ResultSet resultSet = statement.executeQuery(query);
+            return getListFromResultSet(resultSet, queryMember);
         } catch (RuntimeException | SQLException | IOException e) {
             e.printStackTrace();
             log.error(e);
@@ -79,42 +96,62 @@ public class JDBCCommonMethods {
         }
     }
 
-    public static Result getListFromResultSet(ResultSet resultSet, CollectionType collectionType) {
+    public static Result getInstanceFromResultSet (ResultSet resultSet, QueryMember queryMember) {
         try {
-            switch (collectionType) {
+            switch (queryMember) {
                 case presentation: {
-                    return parseResultSetToPresentationList(resultSet);
+                    return parseResultSetToPresentation(resultSet);
                 }
             }
             return new Result(Status.success, "");
-        } catch (RuntimeException e) {
+        } catch (RuntimeException e){
             log.error(e);
-            e.printStackTrace();
-            return new Result(Status.error, "Unable to read result set");
+            return new Result(Status.error, ConstantsError.INSTANCE_GET);
         }
     }
 
-    private static Result parseResultSetToPresentationList(ResultSet resultSet) {
+    public static Result parseResultSetToPresentation (ResultSet resultSet) {
         try {
-            List list = new ArrayList<Presentation>();
-            while (resultSet.next()) {
+            if (resultSet.next()) {
+                log.info(ConstantsInfo.SQL_PARSE);
+                Presentation presentation = new Presentation();
                 String id = resultSet.getString(1);
                 String name = resultSet.getString(2);
                 String fillColor = resultSet.getString(3);
                 String fontFamily = resultSet.getString(4);
-                Presentation presentation = new Presentation();
 
                 presentation.setId(UUID.fromString(id));
                 presentation.setName(name);
                 presentation.setFillColor(fillColor);
                 presentation.setFontFamily(fontFamily);
-                list.add(presentation);
                 log.debug("Presentation: " + presentation);
+                return new Result(Status.success, presentation);
+            } else {
+                return new Result(Status.error, ConstantsError.PRESENTATION_GET);
+            }
+        } catch (RuntimeException | SQLException e) {
+            log.error(e);
+            log.error(ConstantsError.SQL_ERROR);
+            return new Result(Status.error, ConstantsError.SQL_ERROR);
+        }
+    }
+
+    public static Result getListFromResultSet(ResultSet resultSet, QueryMember queryMember) {
+        try {
+            ArrayList list = new ArrayList();
+            while (resultSet.next()) {
+                Result currentResult = parseResultSetToPresentation(resultSet);
+                if (Status.success == currentResult.getStatus()) {
+                    log.info(ConstantsInfo.PRESENTATIONS_GET + currentResult.getReturnValue());
+                    list.add(currentResult.getReturnValue());
+                } else {
+                    log.error(ConstantsError.SQL_ERROR);
+                }
             }
             return new Result(Status.success, list);
         } catch (RuntimeException | SQLException e) {
             log.error(e);
-            return new Result(Status.error, e);
+            return new Result(Status.error, ConstantsError.SQL_ERROR);
         }
     }
 }

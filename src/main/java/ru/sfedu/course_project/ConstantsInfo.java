@@ -20,4 +20,8 @@ public class ConstantsInfo {
 
     public static String ASSESSMENTS_GET = "Attempt to get assessments ";
 
+    public static String SQL_PARSE = "Attempt to parse sql result set ";
+    public static String SQL_QUERY = "SQL query: %s";
+    public static String SQL_BUILD = "Build SQL Query ";
+
 }

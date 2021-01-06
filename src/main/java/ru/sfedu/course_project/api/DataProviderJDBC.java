@@ -46,11 +46,6 @@ public class DataProviderJDBC implements DataProvider {
         return JDBCPresentationMethods.editPresentationOptions(arguments);
     }
 
-    public Result addPresentationInTemplate(Presentation presentation) {
-        return null;
-    }
-
-
     @Override
     public Result getPresentationSlides(HashMap arguments) {
         return null;

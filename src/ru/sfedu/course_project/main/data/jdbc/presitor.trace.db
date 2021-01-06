@@ -174,3 +174,9 @@ Invalid value "0" for parameter "columnIndex" [90008-200]
 	at ru.sfedu.course_project.api.DataProviderJDBC.getPresentations(DataProviderJDBC.java:37)
 	at ru.sfedu.course_project.tools.Runner.run(Runner.java:35)
 	at ru.sfedu.course_project.Main.main(Main.java:29)
+2021-01-06 12:12:09 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: Объект уже закрыт
+The object is already closed [90007-200]
+2021-01-06 12:14:33 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: Нет данных
+No data is available [2000-200]

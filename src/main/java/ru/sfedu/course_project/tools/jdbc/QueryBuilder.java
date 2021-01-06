@@ -7,7 +7,9 @@ import ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods;
 import ru.sfedu.course_project.bean.Presentation;
 import ru.sfedu.course_project.enums.CollectionType;
 import ru.sfedu.course_project.enums.Method;
+import ru.sfedu.course_project.enums.QueryMember;
 import ru.sfedu.course_project.utils.ConfigurationUtil;
+import ru.sfedu.course_project.utils.ConstantsField;
 
 import java.util.HashMap;
 import java.util.Locale;
@@ -20,18 +22,18 @@ public class QueryBuilder {
 
     private static final Logger log = LogManager.getLogger(QueryBuilder.class);
 
-    public static <T> String build (Method method, CollectionType collectionType, T instance, HashMap args) {
+    public static <T> String build (Method method, QueryMember queryMember, T instance, HashMap args) {
         try {
             switch (method) {
                 case create: {
-                    return buildCreateMethod(collectionType, instance);
+                    return buildCreateMethod(queryMember, instance);
                 }
                 case update:
-                    return buildUpdateMethod(collectionType, instance, args);
+                    return buildUpdateMethod(queryMember, instance, args);
                 case remove:
-                    return buildRemoveMethod(collectionType, args);
+                    return buildRemoveMethod(queryMember, args);
                 case get:
-                    return buildGetMethod(collectionType, instance);
+                    return buildGetMethod(queryMember, instance, args);
                 default:
                     return "";
             }
@@ -42,12 +44,12 @@ public class QueryBuilder {
         }
     }
 
-    private static <T> String buildUpdateMethod(CollectionType collectionType, T instance, HashMap args) {
+    private static <T> String buildUpdateMethod(QueryMember queryMember, T instance, HashMap args) {
         try {
             log.info("Building update method");
-            switch (collectionType) {
+            switch (queryMember) {
                 case presentation: {
-                    log.info("For: " + collectionType);
+                    log.info("For: " + queryMember);
                     return buildEditPresentationQuery(instance, args);
                 }
                 default: return "";
@@ -65,9 +67,9 @@ public class QueryBuilder {
             log.debug("Updating presentation: " + presentation);
 
             String id = String.valueOf(presentation.getId());
-            String name = (String) args.getOrDefault("name", presentation.getName());
-            String fillColor = (String) args.getOrDefault("fillColor", presentation.getFillColor());
-            String fontFamily = (String) args.getOrDefault("fontFamily", presentation.getFontFamily());
+            String name = (String) args.getOrDefault(ConstantsField.NAME, presentation.getName());
+            String fillColor = (String) args.getOrDefault(ConstantsField.FILL_COLOR, presentation.getFillColor());
+            String fontFamily = (String) args.getOrDefault(ConstantsField.FONT_FAMILY, presentation.getFontFamily());
             String values = String.format(SQLQuery.PRESENTATION_VALUES_SET, name, fillColor, fontFamily);
             String condition = String.format(SQLQuery.CONDITION_ITEM_ID, id);
 
@@ -79,11 +81,40 @@ public class QueryBuilder {
         }
     }
 
-    private static String buildRemoveMethod(CollectionType collectionType, HashMap args) {
+    private static String buildRemoveMethod(QueryMember queryMember, HashMap args) {
         try {
-            switch (collectionType) {
+            switch (queryMember) {
                 case presentation: {
-                    return buildRemovePresentationQuery(collectionType, args);
+                    return buildRemovePresentationQuery(queryMember, args);
+                }
+
+                default: return "";
+            }
+        } catch (RuntimeException e) {
+            e.printStackTrace();
+            log.error(e);
+            return "";
+        }
+    }
+
+    private static String buildRemovePresentationQuery(QueryMember queryMember, HashMap args) {
+        try {
+            String condition = String.format("id = '%s'", args.get(ConstantsField.ID));
+            return String.format(SQLQuery.RECORD_REMOVE, queryMember, condition);
+        } catch (RuntimeException e) {
+            log.error(e);
+            return "";
+        }
+    }
+
+    private static <T> String buildGetMethod(QueryMember queryMember, T instance, HashMap args) {
+        try {
+            switch (queryMember) {
+                case presentations: {
+                    return buildGetPresentationsQuery(queryMember);
+                }
+                case presentation: {
+                    return buildGetPresentationSingleQuery(queryMember, args);
                 }
                 default: return "";
             }
@@ -94,43 +125,28 @@ public class QueryBuilder {
         }
     }
 
-    private static String buildRemovePresentationQuery(CollectionType collectionType, HashMap args) {
+    private static String buildGetPresentationSingleQuery (QueryMember queryMember, HashMap args) {
         try {
-            String condition = String.format("id = '%s'", args.get("id"));
-            return String.format(SQLQuery.RECORD_REMOVE, collectionType, condition);
+            String condition = String.format("id = '%s'", args.get(ConstantsField.ID));
+            return String.format(SQLQuery.RECORD_GET_WITH_CONDITION, queryMember, condition);
         } catch (RuntimeException e) {
             log.error(e);
             return "";
         }
     }
 
-    private static <T> String buildGetMethod(CollectionType collectionType, T instance) {
+    private static String buildGetPresentationsQuery(QueryMember queryMember) {
         try {
-            switch (collectionType) {
-                case presentation: {
-                    return buildGetPresentationQuery(collectionType);
-                }
-                default: return "";
-            }
-        } catch (RuntimeException e) {
-            e.printStackTrace();
-            log.error(e);
-            return "";
-        }
-    }
-
-    private static String buildGetPresentationQuery(CollectionType collectionType) {
-        try {
-            return String.format(SQLQuery.RECORD_GET, collectionType);
+            return String.format(SQLQuery.RECORD_GET, queryMember);
         } catch (RuntimeException e) {
             log.error(e);
             return "";
         }
     }
 
-    private static <T> String buildCreateMethod(CollectionType collectionType, T instance) {
+    private static <T> String buildCreateMethod(QueryMember queryMember, T instance) {
         try {
-            switch (collectionType) {
+            switch (queryMember) {
                 case presentation: {
                     return buildCreatePresentationQuery(instance);
                 }
