@@ -55,11 +55,35 @@ public class QueryBuilder {
                     log.info("For: " + queryMember);
                     return buildEditPresentationQuery(instance, args);
                 }
+                case slide: {
+                    log.info("For: " + queryMember);
+                    return buildEditSlideQuery(instance, args);
+                }
                 default: return "";
             }
         } catch (RuntimeException e) {
             e.printStackTrace();
             log.error(e);
+            return "";
+        }
+    }
+
+    private static <T> String buildEditSlideQuery (T instance, HashMap args) {
+        try {
+            Slide slide = (Slide) instance;
+            log.debug("Updating slide: " + slide);
+
+            String id = String.valueOf(slide.getId());
+            String name = (String) args.getOrDefault(ConstantsField.NAME, slide.getName());
+            int index = Integer.valueOf((String) args.getOrDefault(ConstantsField.INDEX, String.valueOf(slide.getIndex())));
+
+            String values = String.format(SQLQuery.SLIDE_VALUES_SET, name, index);
+            String condition = String.format(SQLQuery.CONDITION_ITEM_ID, id);
+
+            return String.format(SQLQuery.RECORD_UPDATE, CollectionType.slide, values, condition);
+        } catch (RuntimeException e) {
+            log.error(e);
+            e.printStackTrace();
             return "";
         }
     }
@@ -90,7 +114,6 @@ public class QueryBuilder {
                 case presentation: {
                     return buildRemovePresentationQuery(queryMember, args);
                 }
-
                 default: return "";
             }
         } catch (RuntimeException e) {
@@ -170,9 +193,10 @@ public class QueryBuilder {
             String id = String.valueOf(slide.getId());
             String name = slide.getName();
             int index = slide.getIndex();
+            String presentationId = String.valueOf(slide.getPresentationId());
 
-            String fields = "(id, name, index)";
-            String values = String.format("('%s', '%s', '%s')", id, name, index);
+            String fields = "(id, name, index, presentationId)";
+            String values = String.format("('%s', '%s', '%s', '%s')", id, name, index, presentationId);
             String table = String.valueOf(QueryMember.slide).toUpperCase();
 
             String queryBody = SQLQuery.RECORD_INSERT;

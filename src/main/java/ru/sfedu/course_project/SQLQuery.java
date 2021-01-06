@@ -9,6 +9,7 @@ public class SQLQuery {
     public static final String RECORD_GET_WITH_CONDITION = "SELECT * FROM %s WHERE %s";
 
     public static final String PRESENTATION_VALUES_SET = "name = '%s', fillColor = '%s', fontFamily = '%s'";
+    public static final String SLIDE_VALUES_SET = "name = '%s', index = '%s'";
 
     public static final String CONDITION_ITEM_ID = "id = '%s'";
     public static final String CONDITION_SLIDE_ID = "slideId = '%s'";
@@ -20,5 +21,5 @@ public class SQLQuery {
 
 
     public static final String CREATE_PRESENTATION_TABLE = "CREATE TABLE IF NOT EXISTS PRESENTATION (id varchar(36), name varchar(200), fillColor varchar(200), fontFamily varchar(200))";
-    public static final String CREATE_SLIDE_TABLE = "CREATE TABLE IF NOT EXISTS SLIDE (id varchar(36), name varchar(200), index int)";
+    public static final String CREATE_SLIDE_TABLE = "CREATE TABLE IF NOT EXISTS SLIDE (id varchar(36), name varchar(200), index int, presentationId varchar(36))";
 }

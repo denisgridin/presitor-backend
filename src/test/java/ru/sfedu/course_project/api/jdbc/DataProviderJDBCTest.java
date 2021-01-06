@@ -9,20 +9,15 @@ import org.junit.jupiter.api.Test;
 import ru.sfedu.course_project.TestBase;
 import ru.sfedu.course_project.api.DataProvider;
 import ru.sfedu.course_project.api.DataProviderJDBC;
-import ru.sfedu.course_project.api.DataProviderXML;
-import ru.sfedu.course_project.api.xml.XMLCommonMethods;
 import ru.sfedu.course_project.bean.Presentation;
 import ru.sfedu.course_project.bean.Slide;
-import ru.sfedu.course_project.enums.CollectionType;
 import ru.sfedu.course_project.enums.Status;
 import ru.sfedu.course_project.tools.Result;
 import ru.sfedu.course_project.utils.ConfigurationUtil;
 import ru.sfedu.course_project.utils.ConstantsField;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Optional;
 import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -74,21 +69,16 @@ public class DataProviderJDBCTest extends TestBase {
     @Test
     void getPresentationByIdSuccess () throws IOException {
         Result result = makeRandomPresentation(provider);
+        HashMap args = new HashMap();
+        UUID presentationId = (UUID) result.getReturnValue();
+        args.put(ConstantsField.ID, String.valueOf(presentationId));
+        Result resultGetPresentation = provider.getPresentationById(args);
+        log.debug("Find presentation: " + presentationId);
+        assertSame(resultGetPresentation.getStatus(), Status.success);
 
-        if (Status.success == result.getStatus()) {
-            HashMap args = new HashMap();
-            UUID presentationId = (UUID) result.getReturnValue();
-            args.put(ConstantsField.ID, String.valueOf(presentationId));
-            Result resultGetPresentation = provider.getPresentationById(args);
-            log.debug("Find presentation: " + presentationId);
-            assertSame(resultGetPresentation.getStatus(), Status.success);
-
-            Presentation foundPresentation = (Presentation) resultGetPresentation.getReturnValue();
-            log.debug("Found: presentation: " + foundPresentation.getId());
-            assertEquals(presentationId, foundPresentation.getId());
-        } else {
-            fail();
-        }
+        Presentation foundPresentation = (Presentation) resultGetPresentation.getReturnValue();
+        log.debug("Found: presentation: " + foundPresentation.getId());
+        assertEquals(presentationId, foundPresentation.getId());
     }
 
     @Test
@@ -178,7 +168,6 @@ public class DataProviderJDBCTest extends TestBase {
     @Test
     void getPresentationSlidesSuccess() {
         log.debug("{TEST} getPresentationSlidesSuccess START");
-        DataProvider provider = new DataProviderXML();
         UUID presId = UUID.randomUUID();
         HashMap args = new HashMap();
         args.put(ConstantsField.PRESENTATION_ID, String.valueOf(presId));
@@ -196,13 +185,25 @@ public class DataProviderJDBCTest extends TestBase {
     }
 
     @Test
-    void getPresentationSlidesFail() {
-        log.debug("{TEST} getPresentationSlidesFail START");
-        DataProvider provider = new DataProviderXML();
-        UUID presId = UUID.randomUUID();
+    void getPresentationSlidesSuccess2() {
+        log.debug("{TEST} getPresentationSlidesSuccess START");
+        UUID presId = UUID.fromString("7e8bba60-7c0b-4f8e-b77c-79d0c7ee97a0");
         HashMap args = new HashMap();
         args.put(ConstantsField.PRESENTATION_ID, String.valueOf(presId));
+        args.put(ConstantsField.ID, String.valueOf(presId));
+//        Result createResult = makePresentationWithId(provider, presId);
+
+        args.remove(ConstantsField.ID);
+        provider.createPresentationSlide(args);
         Result getSlidesResult = provider.getPresentationSlides(args);
+        assertEquals(getSlidesResult.getStatus(), Status.success);
+        log.debug("{TEST} getPresentationSlidesSuccess END");
+    }
+
+    @Test
+    void getPresentationSlidesFail() {
+        log.debug("{TEST} getPresentationSlidesFail START");
+        Result getSlidesResult = provider.getPresentationSlides(new HashMap());
         assertEquals(getSlidesResult.getStatus(), Status.error);
         log.debug("{TEST} getPresentationSlidesFail END");
     }
@@ -228,4 +229,90 @@ public class DataProviderJDBCTest extends TestBase {
         }
         log.debug("{TEST} createPresentationSlideSuccess END");
     }
+
+    @Test
+    void createPresentationSlideSuccess2() {
+        log.debug("{TEST} createPresentationSlideSuccess START");
+        HashMap args = new HashMap();
+        String presId = "7e8bba60-7c0b-4f8e-b77c-79d0c7ee97a0";
+        String slideId = String.valueOf(UUID.randomUUID());
+        args.put(ConstantsField.ID, presId);
+
+        log.info("{ Slide creation stage }");
+        args.put(ConstantsField.ID, slideId);
+        args.put(ConstantsField.PRESENTATION_ID, presId);
+        Result createSlideResult = provider.createPresentationSlide(args);
+        assertEquals(createSlideResult.getStatus(), Status.success);
+        log.debug("{TEST} createPresentationSlideSuccess END");
+    }
+
+    @Test
+    void removePresentationSlideByIdSuccess() {
+        log.debug("{TEST} removePresentationSlideByIdSuccess START");
+
+        UUID presentationId = UUID.randomUUID();
+        UUID slideId = UUID.fromString("8603fe2e-8c2c-481f-badf-137103e8d8cf");
+
+        Result resultCreatePresentation = makePresentationWithId(provider, presentationId);
+        Result resultCreateSlide = makeSlideWithId(provider, slideId, presentationId);
+
+        assertEquals(resultCreatePresentation.getStatus(), Status.success);
+        assertEquals(resultCreateSlide.getStatus(), Status.success);
+        if (resultCreatePresentation.getStatus() == Status.success && Status.success == resultCreateSlide.getStatus()) {
+            HashMap args = new HashMap();
+            args.put(ConstantsField.PRESENTATION_ID, String.valueOf(presentationId));
+            args.put(ConstantsField.ID, String.valueOf(slideId));
+            log.debug("{ Get created slide }");
+            Result resultGetSlide = provider.getSlideById(args);
+            assertEquals(resultGetSlide.getStatus(), Status.success);
+
+            log.debug("{ Remove created slide }");
+            Result resultRemoveSlide = provider.removePresentationSlideById(args);
+            assertEquals(resultRemoveSlide.getStatus(), Status.success);
+        }
+        log.debug("{TEST} removePresentationSlideByIdSuccess END");
+    }
+
+
+    @Test
+    void editPresentationSlideByIdSuccess() {
+        UUID presentationId = UUID.randomUUID();
+        UUID slideId = UUID.randomUUID();
+        String name = "Test name";
+        makePresentationWithId(provider, presentationId);
+        Result resultCreateSlide = makeSlideWithId(provider, slideId, presentationId);
+        if (resultCreateSlide.getStatus() == Status.success) {
+            HashMap args = new HashMap();
+            args.put(ConstantsField.PRESENTATION_ID, String.valueOf(presentationId));
+            args.put(ConstantsField.ID, String.valueOf(slideId));
+            args.put(ConstantsField.NAME, name);
+            Result resultEditSlide = provider.editPresentationSlideById(args);
+            assertEquals(resultEditSlide.getStatus(), Status.success);
+            if (Status.success == resultEditSlide.getStatus()) {
+                Result resultGetSlide = provider.getSlideById(args);
+                if (Status.success == resultGetSlide.getStatus()) {
+                    Slide slide = (Slide) resultGetSlide.getReturnValue();
+                    assertEquals(slide.getName(),  name);
+                }
+            }
+        }
+    }
+
+    @Test
+    void editPresentationSlideByIdFail() {
+        UUID presentationId = UUID.randomUUID();
+        UUID slideId = UUID.randomUUID();
+        String name = "Test name";
+        makePresentationWithId(provider, presentationId);
+        Result resultCreateSlide = makeSlideWithId(provider, slideId, presentationId);
+        if (Status.success == resultCreateSlide.getStatus()) {
+            HashMap args = new HashMap();
+            args.put(ConstantsField.PRESENTATION_ID, String.valueOf(UUID.randomUUID())); // Set random id
+            args.put(ConstantsField.ID, String.valueOf(UUID.randomUUID())); // Set random id
+            args.put(ConstantsField.NAME, name);
+            Result resultEditSlide = provider.editPresentationSlideById(args);
+            assertNotEquals(resultEditSlide.getStatus(), Status.success);
+        }
+    }
+
 }

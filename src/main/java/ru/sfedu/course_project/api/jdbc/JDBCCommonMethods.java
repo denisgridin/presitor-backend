@@ -182,10 +182,12 @@ public class JDBCCommonMethods {
                 String id = resultSet.getString(1);
                 String name = resultSet.getString(2);
                 int index = resultSet.getInt(3);
+                String presentationId = resultSet.getString(4);
 
                 slide.setId(UUID.fromString(id));
                 slide.setName(name);
                 slide.setIndex(index);
+                slide.setPresentationId(UUID.fromString(presentationId));
                 log.debug("Slide: " + slide);
                 return new Result(Status.success, slide);
             } else {

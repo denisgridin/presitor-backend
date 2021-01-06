@@ -59,12 +59,12 @@ public class DataProviderJDBC implements DataProvider {
 
     @Override
     public Result removePresentationSlideById(HashMap arguments) {
-        return null;
+        return JDBCSlideMethods.removePresentationSlideById(arguments);
     }
 
     @Override
     public Result editPresentationSlideById(HashMap arguments) {
-        return null;
+        return JDBCSlideMethods.editPresentationSlideById(arguments);
     }
 
     @Override
