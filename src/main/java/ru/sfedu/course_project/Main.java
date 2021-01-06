@@ -17,6 +17,7 @@ public class Main {
     public static Logger log = LogManager.getLogger(Main.class);
     public static void main(String[] args) throws RuntimeException {
         try {
+            System.setProperty("dataBasePath", ConfigurationUtil.getConfigurationEntry("database_path"));
             System.setProperty("dataPath", ConfigurationUtil.getConfigurationEntry("dataPath"));
             List<String> arguments = Arrays.asList(args);
             HashMap<String, String> params = parseParameters(arguments);

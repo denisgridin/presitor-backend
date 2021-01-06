@@ -30,6 +30,7 @@ public class DataProviderJDBCTest extends TestBase {
     @BeforeAll
     static void setTestFilePath () throws IOException {
         try {
+            System.setProperty("dataBasePath", ConfigurationUtil.getConfigurationEntry("database_path_test"));
             System.setProperty("dataPath", ConfigurationUtil.getConfigurationEntry("testDataPath"));
         } catch (IOException e) {
             log.debug(e);
@@ -38,10 +39,11 @@ public class DataProviderJDBCTest extends TestBase {
 
     @Test
     void createPresentationSuccess () throws IOException {
+        log.info("{ createPresentationSuccess }");
         Result result = makeRandomPresentation(provider);
 
         HashMap args = new HashMap();
-        args.put("id", String.valueOf(result.getReturnValue()));
+        args.put(ConstantsField.ID, String.valueOf(result.getReturnValue()));
 
         Result getPresentationResult = provider.getPresentationById(args);
 
@@ -50,11 +52,18 @@ public class DataProviderJDBCTest extends TestBase {
         assertTrue(result.getReturnValue() instanceof UUID);
     }
 
+//    @Test
+//    void createPresentationFail () throws IOException {
+//        HashMap args = new HashMap();
+//        Result result = provider.createPresentation(new HashMap());
+//        assertSame(result.getStatus(), Status.error);
+//    }
+
+
     @Test
-    void createPresentationFail () throws IOException {
-        HashMap args = new HashMap();
-        Result result = provider.createPresentation(new HashMap());
-        assertSame(result.getStatus(), Status.error);
+    void getPresentationsSuccess () {
+        Result result = provider.getPresentations();
+        assertSame(result.getStatus(), Status.success);
     }
 
     @Test
@@ -66,10 +75,11 @@ public class DataProviderJDBCTest extends TestBase {
             UUID presentationId = (UUID) result.getReturnValue();
             args.put(ConstantsField.ID, String.valueOf(presentationId));
             Result resultGetPresentation = provider.getPresentationById(args);
-
+            log.debug("Find presentation: " + presentationId);
             assertSame(resultGetPresentation.getStatus(), Status.success);
 
             Presentation foundPresentation = (Presentation) resultGetPresentation.getReturnValue();
+            log.debug("Found: presentation: " + foundPresentation.getId());
             assertEquals(presentationId, foundPresentation.getId());
         } else {
             fail();

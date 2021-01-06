@@ -9,6 +9,7 @@ import org.h2.tools.RunScript;
 import ru.sfedu.course_project.Constants;
 import ru.sfedu.course_project.ConstantsInfo;
 import ru.sfedu.course_project.ConstantsError;
+import ru.sfedu.course_project.SQLQuery;
 import ru.sfedu.course_project.bean.Presentation;
 import ru.sfedu.course_project.enums.CollectionType;
 import ru.sfedu.course_project.enums.Method;
@@ -19,6 +20,7 @@ import ru.sfedu.course_project.tools.Result;
 import ru.sfedu.course_project.tools.jdbc.QueryBuilder;
 import ru.sfedu.course_project.utils.ConfigurationUtil;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -33,13 +35,62 @@ public class JDBCCommonMethods {
 
     private static final Logger log = LogManager.getLogger(JDBCCommonMethods.class);
 
+
+    private static String getFilePath () {
+        try {
+            String dataPath = System.getProperty("dataPath");
+
+            String root = System.getProperty("user.dir");
+            String database = String.format("/%s/%s", ConfigurationUtil.getConfigurationEntry(Constants.DATABASE_CATALOG), ConfigurationUtil.getConfigurationEntry(Constants.DATABASE_NAME));
+            String protocol = ConfigurationUtil.getConfigurationEntry(Constants.DATABASE_PROTOCOL);
+            String path = String.format("%s/%s", root, dataPath, database).replace("\\", "/");
+
+            log.debug("path: " + path );
+
+            File directory = new File(path);
+
+            log.debug("JDBC directory: " + directory);
+            log.debug("JDBC directory exists: " + directory.exists());
+            if (!directory.exists()){
+                boolean directoriesCreated = directory.mkdirs();
+                log.debug("Directories created: " + directoriesCreated);
+            }
+
+//            new File(path).createNewFile();
+            String databasePath = String.format("%s%s%s", protocol, path, database);
+            log.debug("databasePath: " + databasePath);
+            return databasePath;
+        } catch (IOException e) {
+            e.printStackTrace();
+            log.error(e);
+            return null;
+        }
+    }
+
     public static Statement setConnection() throws SQLException, IOException {
         try {
             String databaseUser = ConfigurationUtil.getConfigurationEntry(Constants.DATABASE_USER);
             String databasePassword = ConfigurationUtil.getConfigurationEntry(Constants.DATABASE_PASSWORD);
-            String databasePath = ConfigurationUtil.getConfigurationEntry(Constants.DATABASE_PATH);
-            connection = DriverManager.getConnection(databasePath, databaseUser, databasePassword);
-            statement = connection.createStatement();
+            String databasePath = getFilePath();
+
+            if (null == databasePath) {
+                log.error(ConstantsError.CONNECTION_ERROR);
+                return null;
+            }
+
+            log.info("Data base path: " + databasePath);
+
+            Properties jdbcProperties = new Properties();
+            jdbcProperties.put("user", databaseUser);
+            jdbcProperties.put("password", databasePassword);
+            jdbcProperties.put("v$session.program", "Presitor");
+
+            connection = DriverManager.getConnection(databasePath, jdbcProperties);
+            statement = connection.createStatement();;
+            statement.execute(SQLQuery.CREATE_SCHEMA);
+            statement.execute(SQLQuery.SET_SCHEMA);
+
+//            statement.execute(SQLQuery.CREATE_SCHEMA);
             return statement;
         } catch (SQLException | IOException e) {
             log.error(e);
@@ -87,6 +138,7 @@ public class JDBCCommonMethods {
                 log.error("Query string is empty");
                 return new Result(Status.error, ConstantsError.PRESENTATION_GET);
             }
+            statement.execute(SQLQuery.CREATE_PRESENTATION_TABLE); // create table if not exist
             ResultSet resultSet = statement.executeQuery(query);
             return getListFromResultSet(resultSet, queryMember);
         } catch (RuntimeException | SQLException | IOException e) {

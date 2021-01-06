@@ -13,6 +13,7 @@ import ru.sfedu.course_project.utils.ConstantsField;
 
 import java.util.HashMap;
 import java.util.Locale;
+import java.util.Optional;
 import java.util.UUID;
 
 import static ru.sfedu.course_project.enums.Method.create;
@@ -110,11 +111,12 @@ public class QueryBuilder {
     private static <T> String buildGetMethod(QueryMember queryMember, T instance, HashMap args) {
         try {
             switch (queryMember) {
-                case presentations: {
-                    return buildGetPresentationsQuery(queryMember);
-                }
                 case presentation: {
-                    return buildGetPresentationSingleQuery(queryMember, args);
+                    if (null == args) {
+                        return buildGetPresentationsQuery(queryMember);
+                    } else {
+                        return buildGetPresentationSingleQuery(queryMember, args);
+                    }
                 }
                 default: return "";
             }
@@ -127,7 +129,9 @@ public class QueryBuilder {
 
     private static String buildGetPresentationSingleQuery (QueryMember queryMember, HashMap args) {
         try {
-            String condition = String.format("id = '%s'", args.get(ConstantsField.ID));
+            UUID id = UUID.fromString((String) args.get(ConstantsField.ID));
+            log.debug("Get presentation: " + id);
+            String condition = String.format("id = '%s'", id);
             return String.format(SQLQuery.RECORD_GET_WITH_CONDITION, queryMember, condition);
         } catch (RuntimeException e) {
             log.error(e);

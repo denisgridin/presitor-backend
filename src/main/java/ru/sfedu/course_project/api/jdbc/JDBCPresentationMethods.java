@@ -29,10 +29,6 @@ public class JDBCPresentationMethods {
     private static final Logger log = LogManager.getLogger(JDBCPresentationMethods.class);
 
     public static Result createPresentation(HashMap args) {
-        if (null == args.get(ConstantsField.ID)) {
-            log.error(ConstantsError.ARGUMENT_IS_NOT_PROVIDED + ConstantsField.ID);
-            return new Result(Status.error, ConstantsError.ARGUMENT_IS_NOT_PROVIDED + ConstantsField.ID);
-        }
         try {
             log.debug(ConstantsInfo.PRESENTATIONS_CREATE);
             Statement statement = JDBCCommonMethods.setConnection();
@@ -74,8 +70,9 @@ public class JDBCPresentationMethods {
             if (null == statement) {
                 return new Result(Status.error, ConstantsError.CONNECTION_ERROR);
             }
+            Result result = JDBCCommonMethods.getCollection(QueryMember.presentation);
             JDBCCommonMethods.closeConnection();
-            return JDBCCommonMethods.getCollection(QueryMember.presentations);
+            return result;
         } catch (RuntimeException | SQLException | IOException e) {
             log.error(e);
             return new Result(Status.error, e);

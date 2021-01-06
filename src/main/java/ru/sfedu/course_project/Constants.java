@@ -17,6 +17,8 @@ public class Constants {
     public static final String DATABASE_USER="database_user";
     public static final String DATABASE_PASSWORD="database_password";
     public static final String DATABASE_PROTOCOL="database_protocol";
+    public static final String DATABASE_CATALOG="database_catalog";
+    public static final String DATABASE_NAME="database_name";
 
 
     public static final String TEMPLATE_NAME="%s [%s]";
