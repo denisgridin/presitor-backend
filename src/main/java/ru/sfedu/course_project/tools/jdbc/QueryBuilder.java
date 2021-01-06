@@ -5,6 +5,7 @@ import org.apache.logging.log4j.Logger;
 import ru.sfedu.course_project.ConstantsInfo;
 import ru.sfedu.course_project.SQLQuery;
 import ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods;
+import ru.sfedu.course_project.bean.Comment;
 import ru.sfedu.course_project.bean.Presentation;
 import ru.sfedu.course_project.bean.Slide;
 import ru.sfedu.course_project.enums.CollectionType;
@@ -59,10 +60,36 @@ public class QueryBuilder {
                     log.info("For: " + queryMember);
                     return buildEditSlideQuery(instance, args);
                 }
+                case comment: {
+                    log.info("For: " + queryMember);
+                    return buildEditCommentQuery(instance, args);
+                }
                 default: return "";
             }
         } catch (RuntimeException e) {
             e.printStackTrace();
+            log.error(e);
+            return "";
+        }
+    }
+
+    private static <T> String buildEditCommentQuery (T instance, HashMap args) {
+        try {
+            Comment comment = (Comment) instance;
+            log.debug("Updating comment: " + comment);
+
+            String text = (String) args.getOrDefault(ConstantsField.TEXT, comment.getText());
+            String presentationId = String.valueOf(comment.getPresentationId());
+            String id = String.valueOf(comment.getId());
+            String role = String.valueOf(args.getOrDefault(ConstantsField.ROLE, comment.getRole()));
+            String datetime = String.valueOf(args.getOrDefault(ConstantsField.DATETIME, comment.getDatetime()));
+
+            String values = String.format(SQLQuery.COMMENT_VALUES_SET, id, role, datetime, presentationId, text);
+            String condition = String.format(SQLQuery.CONDITION_ITEM_ID, id);
+
+            return String.format(SQLQuery.RECORD_UPDATE, CollectionType.comment, values, condition);
+
+        } catch (RuntimeException e) {
             log.error(e);
             return "";
         }
@@ -114,10 +141,23 @@ public class QueryBuilder {
                 case presentation: {
                     return buildRemovePresentationQuery(queryMember, args);
                 }
+                case comment: {
+                    return buildRemoveCommentQuery(queryMember, args);
+                }
                 default: return "";
             }
         } catch (RuntimeException e) {
             e.printStackTrace();
+            log.error(e);
+            return "";
+        }
+    }
+
+    private static String buildRemoveCommentQuery (QueryMember queryMember, HashMap args) {
+        try {
+            String condition = String.format("id = '%s'", args.get(ConstantsField.ID));
+            return String.format(SQLQuery.RECORD_REMOVE, queryMember, condition);
+        } catch (RuntimeException e) {
             log.error(e);
             return "";
         }
@@ -177,10 +217,36 @@ public class QueryBuilder {
                 case slide: {
                     return buildCreateSlideQuery(instance);
                 }
+                case comment: {
+                    return buildCreateCommentQuery(instance);
+                }
                 default: return "";
             }
         } catch (RuntimeException e) {
             e.printStackTrace();
+            log.error(e);
+            return "";
+        }
+    }
+
+    private static <T> String buildCreateCommentQuery (T instance) {
+        try {
+            Comment comment = (Comment) instance;
+
+            String id = String.valueOf(comment.getId());
+            String presentationId = String.valueOf(comment.getPresentationId());
+            String role = String.valueOf(comment.getRole());
+            String text = comment.getText();
+            String datetime = comment.getDatetime();
+
+            String fields = "(id, role, datetime, presentationId, text)";
+            String values = String.format("('%s', '%s', '%s', '%s', '%s')", id, role, datetime, presentationId, text);
+            String table = String.valueOf(QueryMember.comment).toUpperCase();
+
+            String queryBody = SQLQuery.RECORD_INSERT;
+            log.debug("Query body: " + queryBody);
+            return String.format(queryBody, table, fields, values);
+        } catch (RuntimeException e) {
             log.error(e);
             return "";
         }

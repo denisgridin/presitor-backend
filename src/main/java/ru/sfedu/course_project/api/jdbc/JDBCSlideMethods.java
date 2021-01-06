@@ -51,6 +51,15 @@ public class JDBCSlideMethods {
 
     public static Result createPresentationSlide (HashMap arguments) {
         try {
+
+            ArrayList fields = new ArrayList();
+            fields.add(ConstantsField.PRESENTATION_ID);
+            Result isArgsValid = new ArgsValidator().validate(arguments, fields);
+            if (Status.error == isArgsValid.getStatus()) {
+                return isArgsValid;
+            }
+
+
             log.debug(ConstantsInfo.SLIDE_CREATE);
             Statement statement = JDBCCommonMethods.setConnection();
             if (null == statement) {

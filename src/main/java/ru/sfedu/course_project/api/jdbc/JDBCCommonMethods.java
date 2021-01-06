@@ -10,12 +10,10 @@ import ru.sfedu.course_project.Constants;
 import ru.sfedu.course_project.ConstantsInfo;
 import ru.sfedu.course_project.ConstantsError;
 import ru.sfedu.course_project.SQLQuery;
+import ru.sfedu.course_project.bean.Comment;
 import ru.sfedu.course_project.bean.Presentation;
 import ru.sfedu.course_project.bean.Slide;
-import ru.sfedu.course_project.enums.CollectionType;
-import ru.sfedu.course_project.enums.Method;
-import ru.sfedu.course_project.enums.QueryMember;
-import ru.sfedu.course_project.enums.Status;
+import ru.sfedu.course_project.enums.*;
 import ru.sfedu.course_project.tools.Creator;
 import ru.sfedu.course_project.tools.Result;
 import ru.sfedu.course_project.tools.jdbc.QueryBuilder;
@@ -94,6 +92,7 @@ public class JDBCCommonMethods {
             statement.execute(SQLQuery.SET_SCHEMA);
             statement.execute(SQLQuery.CREATE_PRESENTATION_TABLE); // create table if not exist
             statement.execute(SQLQuery.CREATE_SLIDE_TABLE); // create table if not exist
+            statement.execute(SQLQuery.CREATE_COMMENT_TABLE); // create table if not exist
 
 //            statement.execute(SQLQuery.CREATE_SCHEMA);
             return statement;
@@ -173,10 +172,36 @@ public class JDBCCommonMethods {
         }
     }
 
+    public static Result parseResultSetToComment (ResultSet resultSet) {
+        try {
+            Comment comment = new Comment();
+            String id = resultSet.getString(1);
+            String role = resultSet.getString(2);
+            String datetime = resultSet.getString(3);
+            String presentationId = resultSet.getString(4);
+            String text = resultSet.getString(5);
+
+            comment.setId(UUID.fromString(id));
+            comment.setRole(Role.valueOf(role));
+            comment.setDatetime(datetime);
+            comment.setPresentationId(UUID.fromString(presentationId));
+            comment.setText(text);
+
+            log.debug("Parsed comment: " + comment);
+
+            return new Result(Status.success, comment);
+        } catch (RuntimeException | SQLException e) {
+            log.error(e);
+            log.error(ConstantsError.SQL_ERROR);
+            return new Result(Status.error, ConstantsError.SQL_ERROR);
+        }
+    }
+
     public static Result parseResultSetToSlide (ResultSet resultSet) {
         try {
+
+            log.info(ConstantsInfo.SQL_PARSE);
             if (resultSet.next()) {
-                log.info(ConstantsInfo.SQL_PARSE);
                 Slide slide = new Slide();
 
                 String id = resultSet.getString(1);
@@ -191,7 +216,7 @@ public class JDBCCommonMethods {
                 log.debug("Slide: " + slide);
                 return new Result(Status.success, slide);
             } else {
-                return new Result(Status.error, ConstantsError.SLIDE_GET);
+                return new Result(Status.error, ConstantsError.PRESENTATION_NOT_FOUND);
             }
         } catch (RuntimeException | SQLException e) {
             log.error(e);
@@ -202,8 +227,8 @@ public class JDBCCommonMethods {
 
     public static Result parseResultSetToPresentation (ResultSet resultSet) {
         try {
+            log.info(ConstantsInfo.SQL_PARSE);
             if (resultSet.next()) {
-                log.info(ConstantsInfo.SQL_PARSE);
                 Presentation presentation = new Presentation();
                 String id = resultSet.getString(1);
                 String name = resultSet.getString(2);
@@ -217,7 +242,7 @@ public class JDBCCommonMethods {
                 log.debug("Presentation: " + presentation);
                 return new Result(Status.success, presentation);
             } else {
-                return new Result(Status.error, ConstantsError.PRESENTATION_GET);
+                return new Result(Status.error, ConstantsError.PRESENTATION_NOT_FOUND);
             }
         } catch (RuntimeException | SQLException e) {
             log.error(e);
@@ -229,6 +254,7 @@ public class JDBCCommonMethods {
     public static Result getListFromResultSet(ResultSet resultSet, QueryMember queryMember) {
         try {
             ArrayList list = new ArrayList();
+            log.debug("Result set: " + resultSet);
             while (resultSet.next()) {
                 Result currentResult = new Result();
 
@@ -239,6 +265,10 @@ public class JDBCCommonMethods {
                     }
                     case slide: {
                         currentResult = parseResultSetToSlide(resultSet);
+                        break;
+                    }
+                    case comment: {
+                        currentResult = parseResultSetToComment(resultSet);
                         break;
                     }
                 }

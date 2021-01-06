@@ -169,7 +169,7 @@ public class Creator {
             comment.setDatetime(datetime);
             log.debug(String.format(ConstantsInfo.FIELD_FORMAT_SET, "datetime", datetime));
 
-            return new Result(Status.success, comment);
+            return new Result(Status.success, Optional.of(comment));
 
         } catch (RuntimeException e) {
             log.error(e);

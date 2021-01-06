@@ -16,6 +16,8 @@ public class ConstantsSuccess {
 
     public static String COMMENTS_GET = "Comments retrieved ";
     public static String COMMENT_REMOVE = "Comment successfully removed ";
+    public static String COMMENT_EDIT = "Comment successfully edited ";
+    public static String COMMENT_CREATE = "Comment successfully created ";
 
     public static String SHAPE_REMOVE = "Shape successfully removed ";
     public static String SHAPE_EDIT = "Shape successfully updated ";

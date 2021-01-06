@@ -5,6 +5,7 @@ import com.opencsv.exceptions.CsvDataTypeMismatchException;
 import com.opencsv.exceptions.CsvRequiredFieldEmptyException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import ru.sfedu.course_project.api.jdbc.JDBCCommentMethods;
 import ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods;
 import ru.sfedu.course_project.api.jdbc.JDBCSlideMethods;
 import ru.sfedu.course_project.bean.Presentation;
@@ -74,22 +75,22 @@ public class DataProviderJDBC implements DataProvider {
 
     @Override
     public Result getPresentationComments(HashMap arguments) {
-        return null;
+        return JDBCCommentMethods.getPresentationComments(arguments);
     }
 
     @Override
     public Result commentPresentation(HashMap arguments) {
-        return null;
+        return JDBCCommentMethods.commentPresentation(arguments);
     }
 
     @Override
     public Result editPresentationComment(HashMap arguments) {
-        return null;
+        return JDBCCommentMethods.editPresentationComment(arguments);
     }
 
     @Override
     public Result removePresentationComment(HashMap arguments) {
-        return null;
+        return JDBCCommentMethods.removePresentationComment(arguments);
     }
 
     @Override
