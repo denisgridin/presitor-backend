@@ -11,6 +11,7 @@ import ru.sfedu.course_project.ConstantsInfo;
 import ru.sfedu.course_project.ConstantsError;
 import ru.sfedu.course_project.SQLQuery;
 import ru.sfedu.course_project.bean.Presentation;
+import ru.sfedu.course_project.bean.Slide;
 import ru.sfedu.course_project.enums.CollectionType;
 import ru.sfedu.course_project.enums.Method;
 import ru.sfedu.course_project.enums.QueryMember;
@@ -85,10 +86,14 @@ public class JDBCCommonMethods {
             jdbcProperties.put("password", databasePassword);
             jdbcProperties.put("v$session.program", "Presitor");
 
+
             connection = DriverManager.getConnection(databasePath, jdbcProperties);
             statement = connection.createStatement();;
+
             statement.execute(SQLQuery.CREATE_SCHEMA);
             statement.execute(SQLQuery.SET_SCHEMA);
+            statement.execute(SQLQuery.CREATE_PRESENTATION_TABLE); // create table if not exist
+            statement.execute(SQLQuery.CREATE_SLIDE_TABLE); // create table if not exist
 
 //            statement.execute(SQLQuery.CREATE_SCHEMA);
             return statement;
@@ -138,9 +143,12 @@ public class JDBCCommonMethods {
                 log.error("Query string is empty");
                 return new Result(Status.error, ConstantsError.PRESENTATION_GET);
             }
-            statement.execute(SQLQuery.CREATE_PRESENTATION_TABLE); // create table if not exist
             ResultSet resultSet = statement.executeQuery(query);
-            return getListFromResultSet(resultSet, queryMember);
+            Result result = getListFromResultSet(resultSet, queryMember);
+
+            closeConnection();
+
+            return result;
         } catch (RuntimeException | SQLException | IOException e) {
             e.printStackTrace();
             log.error(e);
@@ -154,11 +162,39 @@ public class JDBCCommonMethods {
                 case presentation: {
                     return parseResultSetToPresentation(resultSet);
                 }
+                case slide: {
+                    return parseResultSetToSlide(resultSet);
+                }
             }
             return new Result(Status.success, "");
         } catch (RuntimeException e){
             log.error(e);
             return new Result(Status.error, ConstantsError.INSTANCE_GET);
+        }
+    }
+
+    public static Result parseResultSetToSlide (ResultSet resultSet) {
+        try {
+            if (resultSet.next()) {
+                log.info(ConstantsInfo.SQL_PARSE);
+                Slide slide = new Slide();
+
+                String id = resultSet.getString(1);
+                String name = resultSet.getString(2);
+                int index = resultSet.getInt(3);
+
+                slide.setId(UUID.fromString(id));
+                slide.setName(name);
+                slide.setIndex(index);
+                log.debug("Slide: " + slide);
+                return new Result(Status.success, slide);
+            } else {
+                return new Result(Status.error, ConstantsError.SLIDE_GET);
+            }
+        } catch (RuntimeException | SQLException e) {
+            log.error(e);
+            log.error(ConstantsError.SQL_ERROR);
+            return new Result(Status.error, ConstantsError.SQL_ERROR);
         }
     }
 
@@ -192,9 +228,21 @@ public class JDBCCommonMethods {
         try {
             ArrayList list = new ArrayList();
             while (resultSet.next()) {
-                Result currentResult = parseResultSetToPresentation(resultSet);
+                Result currentResult = new Result();
+
+                switch (queryMember) {
+                    case presentation: {
+                        currentResult = parseResultSetToPresentation(resultSet);
+                        break;
+                    }
+                    case slide: {
+                        currentResult = parseResultSetToSlide(resultSet);
+                        break;
+                    }
+                }
+
                 if (Status.success == currentResult.getStatus()) {
-                    log.info(ConstantsInfo.PRESENTATIONS_GET + currentResult.getReturnValue());
+                    log.info(ConstantsInfo.INSTANCE_GET + currentResult.getReturnValue());
                     list.add(currentResult.getReturnValue());
                 } else {
                     log.error(ConstantsError.SQL_ERROR);

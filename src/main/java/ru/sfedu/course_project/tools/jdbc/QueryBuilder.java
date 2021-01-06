@@ -2,9 +2,11 @@ package ru.sfedu.course_project.tools.jdbc;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import ru.sfedu.course_project.ConstantsInfo;
 import ru.sfedu.course_project.SQLQuery;
 import ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods;
 import ru.sfedu.course_project.bean.Presentation;
+import ru.sfedu.course_project.bean.Slide;
 import ru.sfedu.course_project.enums.CollectionType;
 import ru.sfedu.course_project.enums.Method;
 import ru.sfedu.course_project.enums.QueryMember;
@@ -110,15 +112,10 @@ public class QueryBuilder {
 
     private static <T> String buildGetMethod(QueryMember queryMember, T instance, HashMap args) {
         try {
-            switch (queryMember) {
-                case presentation: {
-                    if (null == args) {
-                        return buildGetPresentationsQuery(queryMember);
-                    } else {
-                        return buildGetPresentationSingleQuery(queryMember, args);
-                    }
-                }
-                default: return "";
+            if (null == args) {
+                return buildGetInstancesQuery(queryMember);
+            } else {
+                return buildGetSingleInstanceQuery(queryMember, args);
             }
         } catch (RuntimeException e) {
             e.printStackTrace();
@@ -127,10 +124,10 @@ public class QueryBuilder {
         }
     }
 
-    private static String buildGetPresentationSingleQuery (QueryMember queryMember, HashMap args) {
+    private static String buildGetSingleInstanceQuery (QueryMember queryMember, HashMap args) {
         try {
             UUID id = UUID.fromString((String) args.get(ConstantsField.ID));
-            log.debug("Get presentation: " + id);
+            log.info(String.format(ConstantsInfo.INSTANCE_GET, queryMember, id));
             String condition = String.format("id = '%s'", id);
             return String.format(SQLQuery.RECORD_GET_WITH_CONDITION, queryMember, condition);
         } catch (RuntimeException e) {
@@ -139,7 +136,7 @@ public class QueryBuilder {
         }
     }
 
-    private static String buildGetPresentationsQuery(QueryMember queryMember) {
+    private static String buildGetInstancesQuery(QueryMember queryMember) {
         try {
             return String.format(SQLQuery.RECORD_GET, queryMember);
         } catch (RuntimeException e) {
@@ -154,8 +151,33 @@ public class QueryBuilder {
                 case presentation: {
                     return buildCreatePresentationQuery(instance);
                 }
+                case slide: {
+                    return buildCreateSlideQuery(instance);
+                }
                 default: return "";
             }
+        } catch (RuntimeException e) {
+            e.printStackTrace();
+            log.error(e);
+            return "";
+        }
+    }
+
+    private static <T> String buildCreateSlideQuery(T instance) {
+        try {
+            Slide slide = (Slide) instance;
+//            String id = String.valueOf(presentation.getId()).replace("-", "");
+            String id = String.valueOf(slide.getId());
+            String name = slide.getName();
+            int index = slide.getIndex();
+
+            String fields = "(id, name, index)";
+            String values = String.format("('%s', '%s', '%s')", id, name, index);
+            String table = String.valueOf(QueryMember.slide).toUpperCase();
+
+            String queryBody = SQLQuery.RECORD_INSERT;
+            log.debug("Query body: " + queryBody);
+            return String.format(queryBody, table, fields, values);
         } catch (RuntimeException e) {
             e.printStackTrace();
             log.error(e);
@@ -166,7 +188,6 @@ public class QueryBuilder {
     private static <T> String buildCreatePresentationQuery(T instance) {
         try {
             Presentation presentation = (Presentation) instance;
-//            String id = String.valueOf(presentation.getId()).replace("-", "");
             String id = String.valueOf(presentation.getId());
             String name = presentation.getName();
             String fillColor = presentation.getFillColor();
@@ -174,7 +195,7 @@ public class QueryBuilder {
 
             String fields = "(id, name, fillColor, fontFamily)";
             String values = String.format("('%s', '%s', '%s', '%s')", id, name, fillColor, fontFamily);
-            String table = String.valueOf(CollectionType.presentation).toUpperCase();
+            String table = String.valueOf(QueryMember.presentation).toUpperCase();
 
             String queryBody = SQLQuery.RECORD_INSERT;
             log.debug("Query body: " + queryBody);

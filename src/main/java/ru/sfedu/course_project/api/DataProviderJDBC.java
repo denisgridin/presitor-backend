@@ -6,6 +6,7 @@ import com.opencsv.exceptions.CsvRequiredFieldEmptyException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods;
+import ru.sfedu.course_project.api.jdbc.JDBCSlideMethods;
 import ru.sfedu.course_project.bean.Presentation;
 import ru.sfedu.course_project.tools.Result;
 
@@ -48,12 +49,12 @@ public class DataProviderJDBC implements DataProvider {
 
     @Override
     public Result getPresentationSlides(HashMap arguments) {
-        return null;
+        return JDBCSlideMethods.getPresentationSlides(arguments);
     }
 
     @Override
     public Result createPresentationSlide(HashMap arguments) {
-        return null;
+        return JDBCSlideMethods.createPresentationSlide(arguments);
     }
 
     @Override
@@ -68,7 +69,7 @@ public class DataProviderJDBC implements DataProvider {
 
     @Override
     public Result getSlideById(HashMap arguments) {
-        return null;
+        return JDBCSlideMethods.getSlideById(arguments);
     }
 
     @Override

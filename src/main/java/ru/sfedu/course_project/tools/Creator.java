@@ -127,12 +127,10 @@ public class Creator {
             log.debug("[createSlide] Set id");
             slide.setName((String) args.getOrDefault(ConstantsField.NAME, defaults.get(ConstantsField.NAME)));
             log.debug("[createSlide] Set name");
-            slide.setIndex((Integer) args.get("index"));
+            slide.setIndex((Integer) args.getOrDefault(ConstantsField.INDEX, 0));
             log.debug("[createSlide] Set index");
             slide.setPresentationId(UUID.fromString((String) args.get(ConstantsField.PRESENTATION_ID)));
             log.debug("[createSlide] Set presentation id");
-            slide.setElements(new ArrayList<Element>());
-            log.debug("[createSlide] Set elements");
             log.debug(slide.toString());
             log.debug(ConstantsSuccess.ARGUMENTS_VALIDATE);
             return Optional.of(slide);

@@ -11,6 +11,7 @@ public class ConstantsInfo {
     public static String PRESENTATIONS_CREATE = "Attempt to create presentations";
 
     public static String SLIDES_REMOVE = "Attempt to remove slides";
+    public static String SLIDE_CREATE = "Attempt to create slide ";
 
     public static String COMMENTS_GET = "Attempt to get comments for presentation";
 
@@ -23,5 +24,8 @@ public class ConstantsInfo {
     public static String SQL_PARSE = "Attempt to parse sql result set ";
     public static String SQL_QUERY = "SQL query: %s";
     public static String SQL_BUILD = "Build SQL Query ";
+    public static String SQL_RESULT = "SQL exec result ";
+
+    public static String INSTANCE_GET = "Get instance: %s\nId: ";
 
 }
