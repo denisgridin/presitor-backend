@@ -5,6 +5,7 @@ import com.opencsv.exceptions.CsvDataTypeMismatchException;
 import com.opencsv.exceptions.CsvRequiredFieldEmptyException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import ru.sfedu.course_project.api.jdbc.JDBCAssessmentMethod;
 import ru.sfedu.course_project.api.jdbc.JDBCCommentMethods;
 import ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods;
 import ru.sfedu.course_project.api.jdbc.JDBCSlideMethods;
@@ -120,11 +121,11 @@ public class DataProviderJDBC implements DataProvider {
 
     @Override
     public Result rateByMark(HashMap arguments) {
-        return null;
+        return JDBCAssessmentMethod.rateByMark(arguments);
     }
 
     @Override
     public Result getPresentationMarks(HashMap arguments) {
-        return null;
+        return JDBCAssessmentMethod.getPresentationMarks(arguments);
     }
 }

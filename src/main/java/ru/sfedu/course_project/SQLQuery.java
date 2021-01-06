@@ -24,4 +24,5 @@ public class SQLQuery {
     public static final String CREATE_PRESENTATION_TABLE = "CREATE TABLE IF NOT EXISTS PRESENTATION (id varchar(36), name varchar(200), fillColor varchar(200), fontFamily varchar(200))";
     public static final String CREATE_SLIDE_TABLE = "CREATE TABLE IF NOT EXISTS SLIDE (id varchar(36), name varchar(200), index int, presentationId varchar(36))";
     public static final String CREATE_COMMENT_TABLE = "CREATE TABLE IF NOT EXISTS COMMENT (id varchar(36), role varchar(200), datetime varchar(50), presentationId varchar(36), text varchar(200))";
+    public static final String CREATE_ASSESSMENT_TABLE = "CREATE TABLE IF NOT EXISTS ASSESSMENT (id varchar(36), role varchar(200), presentationId varchar(36), mark varchar(20))";
 }

@@ -6,7 +6,6 @@ import ru.sfedu.course_project.ConstantsError;
 import ru.sfedu.course_project.ConstantsSuccess;
 import ru.sfedu.course_project.SQLQuery;
 import ru.sfedu.course_project.bean.Comment;
-import ru.sfedu.course_project.bean.Slide;
 import ru.sfedu.course_project.enums.Method;
 import ru.sfedu.course_project.enums.QueryMember;
 import ru.sfedu.course_project.enums.Status;
@@ -16,7 +15,6 @@ import ru.sfedu.course_project.tools.Result;
 import ru.sfedu.course_project.tools.jdbc.QueryBuilder;
 import ru.sfedu.course_project.utils.ConstantsField;
 
-import java.awt.desktop.QuitEvent;
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;

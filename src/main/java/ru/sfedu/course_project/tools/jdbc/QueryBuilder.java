@@ -5,6 +5,7 @@ import org.apache.logging.log4j.Logger;
 import ru.sfedu.course_project.ConstantsInfo;
 import ru.sfedu.course_project.SQLQuery;
 import ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods;
+import ru.sfedu.course_project.bean.Assessment;
 import ru.sfedu.course_project.bean.Comment;
 import ru.sfedu.course_project.bean.Presentation;
 import ru.sfedu.course_project.bean.Slide;
@@ -220,10 +221,35 @@ public class QueryBuilder {
                 case comment: {
                     return buildCreateCommentQuery(instance);
                 }
+                case assessment: {
+                    return buildCreateAssessmentQuery(instance);
+                }
                 default: return "";
             }
         } catch (RuntimeException e) {
             e.printStackTrace();
+            log.error(e);
+            return "";
+        }
+    }
+
+    private static <T> String buildCreateAssessmentQuery (T instance) {
+        try {
+            Assessment assessment = (Assessment) instance;
+
+            String role = String.valueOf(assessment.getRole());
+            String id = String.valueOf(assessment.getId());
+            String presentationId = String.valueOf(assessment.getPresentationId());
+            String mark = String.valueOf(assessment.getMark());
+
+            String fields = "(id, role, presentationId, mark)";
+            String values = String.format("('%s', '%s', '%s', '%s')", id, role, presentationId, mark);
+            String table = String.valueOf(QueryMember.assessment).toUpperCase();
+
+            String queryBody = SQLQuery.RECORD_INSERT;
+            log.debug("Query body: " + queryBody);
+            return String.format(queryBody, table, fields, values);
+        } catch (RuntimeException e) {
             log.error(e);
             return "";
         }

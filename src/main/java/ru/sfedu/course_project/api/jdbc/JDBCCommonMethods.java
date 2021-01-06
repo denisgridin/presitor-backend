@@ -10,6 +10,7 @@ import ru.sfedu.course_project.Constants;
 import ru.sfedu.course_project.ConstantsInfo;
 import ru.sfedu.course_project.ConstantsError;
 import ru.sfedu.course_project.SQLQuery;
+import ru.sfedu.course_project.bean.Assessment;
 import ru.sfedu.course_project.bean.Comment;
 import ru.sfedu.course_project.bean.Presentation;
 import ru.sfedu.course_project.bean.Slide;
@@ -93,6 +94,7 @@ public class JDBCCommonMethods {
             statement.execute(SQLQuery.CREATE_PRESENTATION_TABLE); // create table if not exist
             statement.execute(SQLQuery.CREATE_SLIDE_TABLE); // create table if not exist
             statement.execute(SQLQuery.CREATE_COMMENT_TABLE); // create table if not exist
+            statement.execute(SQLQuery.CREATE_ASSESSMENT_TABLE); // create table if not exist
 
 //            statement.execute(SQLQuery.CREATE_SCHEMA);
             return statement;
@@ -169,6 +171,28 @@ public class JDBCCommonMethods {
         } catch (RuntimeException e){
             log.error(e);
             return new Result(Status.error, ConstantsError.INSTANCE_GET);
+        }
+    }
+
+    public static Result parseResultSetToAssessment (ResultSet resultSet) {
+        try {
+            Assessment assessment = new Assessment();
+
+            String id = resultSet.getString(1);
+            String role = resultSet.getString(2);
+            String presentationId = resultSet.getString(3);
+            String mark = resultSet.getString(4);
+
+            assessment.setId(UUID.fromString(id));
+            assessment.setRole(Role.valueOf(role));
+            assessment.setMark(Mark.valueOf(mark));
+            assessment.setPresentationId(UUID.fromString(presentationId));
+
+            return new Result(Status.success, assessment);
+
+        } catch (RuntimeException | SQLException e) {
+            log.error(e);
+            return new Result(Status.error, ConstantsError.ASSESSMENT_GET_ERROR);
         }
     }
 
@@ -269,6 +293,10 @@ public class JDBCCommonMethods {
                     }
                     case comment: {
                         currentResult = parseResultSetToComment(resultSet);
+                        break;
+                    }
+                    case assessment: {
+                        currentResult = parseResultSetToAssessment(resultSet);
                         break;
                     }
                 }

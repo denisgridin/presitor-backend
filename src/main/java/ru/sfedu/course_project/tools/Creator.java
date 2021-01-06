@@ -73,7 +73,7 @@ public class Creator {
             assessment.setRole(role);
 
             log.info("Assessment created: " + assessment);
-            return new Result(Status.success, assessment);
+            return new Result(Status.success, Optional.of(assessment));
 
         } catch (RuntimeException e) {
             e.printStackTrace();

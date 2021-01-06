@@ -541,4 +541,48 @@ public class DataProviderJDBCTest extends TestBase {
 
         log.info("{ removePresentationCommentSuccess } END");
     }
+
+    @Test
+    void rateByMarkSuccess() {
+        log.info("{ rateByMarkSuccess } START");
+
+        UUID presentationId = UUID.randomUUID();
+        makePresentationWithId(provider, presentationId);
+
+        HashMap args = new HashMap();
+        args.put(ConstantsField.PRESENTATION_ID, String.valueOf(presentationId));
+        args.put(ConstantsField.ROLE, String.valueOf(Role.editor));
+        args.put(ConstantsField.MARK, "bed");
+        Result resultRate = provider.rateByMark(args);
+
+        assertTrue(Status.success == resultRate.getStatus());
+
+        log.info("{ rateByMarkSuccess } END");
+    }
+
+    @Test
+    void getPresentationMarks () {
+        log.info("{ getPresentationMarks } START");
+
+        UUID presentationId = UUID.randomUUID();
+        makePresentationWithId(provider, presentationId);
+
+        HashMap args = new HashMap();
+        args.put(ConstantsField.PRESENTATION_ID, String.valueOf(presentationId));
+        args.put(ConstantsField.ROLE, String.valueOf(Role.editor));
+        args.put(ConstantsField.MARK, "bed");
+        Result resultRate = provider.rateByMark(args);
+
+        assertTrue(Status.success == resultRate.getStatus());
+
+        if (resultRate.getStatus() == Status.success) {
+            Result resultGetMarks = provider.getPresentationMarks(args);
+
+            assertSame(resultGetMarks.getStatus(), Status.success);
+        }
+
+
+        log.info("{ getPresentationMarks } END");
+    }
+
 }
