@@ -135,17 +135,41 @@ public class QueryBuilder {
 
     private static String buildRemoveMethod(QueryMember queryMember, HashMap args) {
         try {
-            switch (queryMember) {
-                case presentation: {
-                    return buildRemovePresentationQuery(queryMember, args);
-                }
-                case comment: {
-                    return buildRemoveCommentQuery(queryMember, args);
-                }
-                default: return "";
-            }
+            return buildRemoveInstanceQuery(queryMember, args);
+//            switch (queryMember) {
+//                case presentation: {
+//                    return buildRemovePresentationQuery(queryMember, args);
+//                }
+//                case comment: {
+//                    return buildRemoveCommentQuery(queryMember, args);
+//                }
+//                case shape: {
+//                    return buildRemoveShapeQuery(queryMember, args);
+//                }
+//                default: return "";
+//            }
         } catch (RuntimeException e) {
             e.printStackTrace();
+            log.error(e);
+            return "";
+        }
+    }
+
+    private static String buildRemoveInstanceQuery (QueryMember queryMember, HashMap args) {
+        try {
+            String condition = String.format("id = '%s'", args.get(ConstantsField.ID));
+            return String.format(SQLQuery.RECORD_REMOVE, queryMember, condition);
+        } catch (RuntimeException e) {
+            log.error(e);
+            return "";
+        }
+    }
+
+    private static String buildRemoveShapeQuery (QueryMember queryMember, HashMap args) {
+        try {
+            String condition = String.format("id = '%s'", args.get(ConstantsField.ID));
+            return String.format(SQLQuery.RECORD_REMOVE, queryMember, condition);
+        } catch (RuntimeException e) {
             log.error(e);
             return "";
         }

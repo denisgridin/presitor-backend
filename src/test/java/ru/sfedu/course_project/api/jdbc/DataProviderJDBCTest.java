@@ -12,6 +12,7 @@ import ru.sfedu.course_project.api.DataProviderJDBC;
 import ru.sfedu.course_project.bean.Presentation;
 import ru.sfedu.course_project.bean.Slide;
 import ru.sfedu.course_project.enums.ElementType;
+import ru.sfedu.course_project.enums.Figure;
 import ru.sfedu.course_project.enums.Role;
 import ru.sfedu.course_project.enums.Status;
 import ru.sfedu.course_project.tools.Result;
@@ -638,6 +639,81 @@ public class DataProviderJDBCTest extends TestBase {
         makeCustomContent(provider, id, slideId, presentationId);
 
         log.info("{ addContentInSlideContentSuccess } END");
+    }
+
+    @Test
+    void removeSlideElementSuccess() {
+        log.info("{ removeSlideElementSuccess } START");
+
+
+        UUID presentationId = UUID.randomUUID();
+        UUID slideId = UUID.randomUUID();
+        makePresentationWithId(provider, presentationId);
+        makeSlideWithId(provider, slideId, presentationId);
+
+        UUID id = UUID.randomUUID();
+
+        HashMap params = new HashMap();
+        params.put(ConstantsField.ID, String.valueOf(id));
+        params.put(ConstantsField.PRESENTATION_ID, String.valueOf(presentationId));
+        params.put(ConstantsField.SLIDE_ID, String.valueOf(slideId));
+        params.put(ConstantsField.ELEMENT_TYPE, String.valueOf(ElementType.shape));
+        params.put(ConstantsField.FIGURE, String.valueOf(Figure.rectangle));
+
+        Result addResult = provider.addElementInSlide(params);
+
+        if (Status.success == addResult.getStatus()) {
+
+            Result resultRemove = provider.removeSlideElement(params);
+            assertTrue(Status.success == resultRemove.getStatus());
+        }
+
+        log.info("{ removeSlideElementSuccess } END");
+    }
+
+    @Test
+    void removeSlideElementFail() {
+        log.info("{ removeSlideElementFail } START");
+
+        HashMap args = new HashMap();
+        args.put(ConstantsField.PRESENTATION_ID, String.valueOf(UUID.randomUUID()));
+        args.put(ConstantsField.SLIDE_ID, String.valueOf(UUID.randomUUID()));
+        args.put(ConstantsField.ID, String.valueOf(UUID.randomUUID()));
+        args.put(ConstantsField.ELEMENT_TYPE, String.valueOf(123));
+        args.put(ConstantsField.FIGURE, String.valueOf(123));
+        Result resultRemove = provider.removeSlideElement(args);
+        assertTrue(Status.error == resultRemove.getStatus());
+
+        log.info("{ removeSlideElementSuccess } END");
+    }
+    @Test
+    void removeSlideElementContentSuccess() {
+        log.info("{ removeSlideElementContentSuccess } START");
+
+
+        UUID presentationId = UUID.randomUUID();
+        UUID slideId = UUID.randomUUID();
+        makePresentationWithId(provider, presentationId);
+        makeSlideWithId(provider, slideId, presentationId);
+
+        UUID id = UUID.randomUUID();
+
+        HashMap params = new HashMap();
+        params.put(ConstantsField.ID, String.valueOf(id));
+        params.put(ConstantsField.PRESENTATION_ID, String.valueOf(presentationId));
+        params.put(ConstantsField.SLIDE_ID, String.valueOf(slideId));
+        params.put(ConstantsField.ELEMENT_TYPE, String.valueOf(ElementType.shape));
+        params.put(ConstantsField.FIGURE, String.valueOf(Figure.rectangle));
+
+        Result addResult = provider.addElementInSlide(params);
+
+        if (Status.success == addResult.getStatus()) {
+
+            Result resultRemove = provider.removeSlideElement(params);
+            assertTrue(Status.success == resultRemove.getStatus());
+        }
+
+        log.info("{ removeSlideElementContentSuccess } END");
     }
 
 

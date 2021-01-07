@@ -5,6 +5,7 @@ import org.apache.logging.log4j.Logger;
 import org.h2.tools.RunScript;
 import ru.sfedu.course_project.ConstantsError;
 import ru.sfedu.course_project.ConstantsInfo;
+import ru.sfedu.course_project.ConstantsSuccess;
 import ru.sfedu.course_project.SQLQuery;
 import ru.sfedu.course_project.api.xml.XMLCommonMethods;
 import ru.sfedu.course_project.api.xml.XMLElementMethods;
@@ -321,4 +322,57 @@ public class JDBCElementMethods {
         }
     }
 
+
+    public static Result removeSlideElement (HashMap args) {
+        try {
+
+            ArrayList elementFields = new ArrayList();
+            elementFields.add(ConstantsField.ELEMENT_TYPE);
+            Result isArgsValid = new ArgsValidator().validate(args, elementFields);
+            if (Status.error == isArgsValid.getStatus()) {
+                return isArgsValid;
+            }
+
+
+            Result resultCheck = checkPresentationAndSlideExistance(args);
+            if (Status.error == resultCheck.getStatus()) {
+                return resultCheck;
+            }
+
+            HashMap returnValue = (HashMap) resultCheck.getReturnValue();
+
+            ArrayList fields = (ArrayList) returnValue.get("fields");
+
+            ElementType elementType = ElementType.valueOf((String) args.get(ConstantsField.ELEMENT_TYPE));
+            log.debug("Attempt to remove: " + elementType);
+
+            QueryMember queryMember = QueryMember.valueOf(String.valueOf(elementType));
+
+            String query = QueryBuilder.build(Method.remove, queryMember, null, args);
+            log.debug("Query string: " + query);
+
+            if (query.isEmpty()) {
+                log.error(ConstantsError.SQL_ERROR);
+                return new Result(Status.error, ConstantsError.SQL_ERROR);
+            }
+
+            log.info("Remove element");
+
+            Statement statement = JDBCCommonMethods.setConnection();
+
+            int resultRows = statement.executeUpdate(query);
+            JDBCCommonMethods.closeConnection();
+
+            if (resultRows > 0) {
+                return new Result(Status.success, ConstantsSuccess.ELEMENT_REMOVE);
+            } else {
+                return new Result(Status.error, ConstantsError.ELEMENT_REMOVE);
+            }
+
+        } catch (RuntimeException | SQLException | IOException e) {
+            log.error(e);
+            log.error(ConstantsError.ELEMENT_REMOVE);
+            return new Result(Status.error, ConstantsError.ELEMENT_REMOVE);
+        }
+    }
 }

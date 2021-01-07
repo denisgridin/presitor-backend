@@ -24098,3 +24098,452 @@ Id:
 [line 243]	07 янв. 2021 14:20:56,263 [main] DEBUG JDBCElementMethods/addContentInSlide - Query string: 
 [line 247]	07 янв. 2021 14:20:56,265 [main] INFO  JDBCElementMethods/addContentInSlide - Execute result: 0
 [line 35]	07 янв. 2021 14:20:56,269 [main] INFO  Result/<init> - { status: error, value: Unable to create content element  }
+[line 614]	07 янв. 2021 14:22:13,762 [main] INFO  DataProviderJDBCTest/addContentInSlideSuccess - { addContentInSlideSuccess } START
+[line 33]	07 янв. 2021 14:22:14,190 [main] DEBUG JDBCPresentationMethods/createPresentation - Attempt to create presentations
+[line 47]	07 янв. 2021 14:22:14,197 [main] DEBUG JDBCCommonMethods/getFilePath - path: D:/Универ/CourseProject/src/main/resources/data/test
+[line 51]	07 янв. 2021 14:22:14,200 [main] DEBUG JDBCCommonMethods/getFilePath - JDBC directory: D:\Универ\CourseProject\src\main\resources\data\test
+[line 52]	07 янв. 2021 14:22:14,202 [main] DEBUG JDBCCommonMethods/getFilePath - JDBC directory exists: true
+[line 60]	07 янв. 2021 14:22:14,203 [main] DEBUG JDBCCommonMethods/getFilePath - databasePath: jdbc:h2:D:/Универ/CourseProject/src/main/resources/data/test/jdbc/presitor
+[line 80]	07 янв. 2021 14:22:14,205 [main] INFO  JDBCCommonMethods/setConnection - Data base path: jdbc:h2:D:/Универ/CourseProject/src/main/resources/data/test/jdbc/presitor
+[line 98]	07 янв. 2021 14:22:14,719 [main] DEBUG Creator/createPresentation - [createPresentation] Set field  id c7ef049f-9264-482c-ab4f-070feee75d9b
+[line 100]	07 янв. 2021 14:22:14,720 [main] DEBUG Creator/createPresentation - [createPresentation] Set field  name New presentation
+[line 102]	07 янв. 2021 14:22:14,722 [main] DEBUG Creator/createPresentation - [createPresentation] Set field  fillColor #ffffff
+[line 104]	07 янв. 2021 14:22:14,723 [main] DEBUG Creator/createPresentation - [createPresentation] Set field  fontFamily Roboto
+[line 106]	07 янв. 2021 14:22:14,725 [main] DEBUG Creator/createPresentation - [createPresentation] Set field  slides []
+[line 108]	07 янв. 2021 14:22:14,726 [main] DEBUG Creator/createPresentation - [createPresentation] Set field  comments []
+[line 110]	07 янв. 2021 14:22:14,728 [main] DEBUG Creator/createPresentation - [createPresentation] Set field  marks []
+[line 111]	07 янв. 2021 14:22:14,731 [main] DEBUG Creator/createPresentation - Arguments was validate 
+[line 35]	07 янв. 2021 14:22:14,773 [main] INFO  Result/<init> - { status: success, value: Optional[Presentation{id=c7ef049f-9264-482c-ab4f-070feee75d9b, name='New presentation', fillColor='#ffffff', fontFamily='Roboto', slides=[], comments=[]}] }
+[line 372]	07 янв. 2021 14:22:14,785 [main] DEBUG QueryBuilder/buildCreatePresentationQuery - Query body: INSERT INTO %s %s VALUES %s
+[line 46]	07 янв. 2021 14:22:14,786 [main] DEBUG JDBCPresentationMethods/createPresentation - Query string: INSERT INTO PRESENTATION (id, name, fillColor, fontFamily) VALUES ('c7ef049f-9264-482c-ab4f-070feee75d9b', 'New presentation', '#ffffff', 'Roboto')
+[line 52]	07 янв. 2021 14:22:14,787 [main] DEBUG JDBCPresentationMethods/createPresentation - Create table if not exist
+[line 57]	07 янв. 2021 14:22:15,170 [main] INFO  JDBCPresentationMethods/createPresentation - Presentation successfully created 
+[line 35]	07 янв. 2021 14:22:15,171 [main] INFO  Result/<init> - { status: success, value: c7ef049f-9264-482c-ab4f-070feee75d9b }
+[line 22]	07 янв. 2021 14:22:15,177 [main] DEBUG ArgsValidator/validate - [validate] Validate: [presentationId]
+[line 24]	07 янв. 2021 14:22:15,179 [main] DEBUG ArgsValidator/validate - [validate] Null fields: []
+[line 25]	07 янв. 2021 14:22:15,180 [main] DEBUG ArgsValidator/validate - [validate] Null fields: []
+[line 35]	07 янв. 2021 14:22:15,180 [main] INFO  Result/<init> - { status: success, value:  }
+[line 63]	07 янв. 2021 14:22:15,181 [main] DEBUG JDBCSlideMethods/createPresentationSlide - Attempt to create slide 
+[line 47]	07 янв. 2021 14:22:15,182 [main] DEBUG JDBCCommonMethods/getFilePath - path: D:/Универ/CourseProject/src/main/resources/data/test
+[line 51]	07 янв. 2021 14:22:15,183 [main] DEBUG JDBCCommonMethods/getFilePath - JDBC directory: D:\Универ\CourseProject\src\main\resources\data\test
+[line 52]	07 янв. 2021 14:22:15,184 [main] DEBUG JDBCCommonMethods/getFilePath - JDBC directory exists: true
+[line 60]	07 янв. 2021 14:22:15,185 [main] DEBUG JDBCCommonMethods/getFilePath - databasePath: jdbc:h2:D:/Универ/CourseProject/src/main/resources/data/test/jdbc/presitor
+[line 80]	07 янв. 2021 14:22:15,185 [main] INFO  JDBCCommonMethods/setConnection - Data base path: jdbc:h2:D:/Универ/CourseProject/src/main/resources/data/test/jdbc/presitor
+[line 47]	07 янв. 2021 14:22:15,207 [main] DEBUG JDBCCommonMethods/getFilePath - path: D:/Универ/CourseProject/src/main/resources/data/test
+[line 51]	07 янв. 2021 14:22:15,208 [main] DEBUG JDBCCommonMethods/getFilePath - JDBC directory: D:\Универ\CourseProject\src\main\resources\data\test
+[line 52]	07 янв. 2021 14:22:15,209 [main] DEBUG JDBCCommonMethods/getFilePath - JDBC directory exists: true
+[line 60]	07 янв. 2021 14:22:15,210 [main] DEBUG JDBCCommonMethods/getFilePath - databasePath: jdbc:h2:D:/Универ/CourseProject/src/main/resources/data/test/jdbc/presitor
+[line 80]	07 янв. 2021 14:22:15,210 [main] INFO  JDBCCommonMethods/setConnection - Data base path: jdbc:h2:D:/Универ/CourseProject/src/main/resources/data/test/jdbc/presitor
+[line 22]	07 янв. 2021 14:22:15,216 [main] DEBUG ArgsValidator/validate - [validate] Validate: [presentationId]
+[line 24]	07 янв. 2021 14:22:15,216 [main] DEBUG ArgsValidator/validate - [validate] Null fields: []
+[line 25]	07 янв. 2021 14:22:15,217 [main] DEBUG ArgsValidator/validate - [validate] Null fields: []
+[line 35]	07 янв. 2021 14:22:15,217 [main] INFO  Result/<init> - { status: success, value:  }
+[line 145]	07 янв. 2021 14:22:15,219 [main] DEBUG JDBCSlideMethods/getPresentationSlides - Query string: SELECT * FROM slide WHERE presentationId = 'c7ef049f-9264-482c-ab4f-070feee75d9b'
+[line 394]	07 янв. 2021 14:22:15,247 [main] DEBUG JDBCCommonMethods/getListFromResultSet - Result set: rs26: org.h2.result.LocalResultImpl@5652f555 columns: 4 rows: 0 pos: -1
+[line 35]	07 янв. 2021 14:22:15,249 [main] INFO  Result/<init> - { status: success, value: [] }
+[line 42]	07 янв. 2021 14:22:15,250 [main] DEBUG JDBCSlideMethods/getSlideIndex - Presentation slides: []
+[line 43]	07 янв. 2021 14:22:15,250 [main] INFO  JDBCSlideMethods/getSlideIndex - Presentation already has slides: 0
+[line 124]	07 янв. 2021 14:22:15,254 [main] INFO  Creator/createSlide - [createSlide] Arguments: [presentationId=c7ef049f-9264-482c-ab4f-070feee75d9b, index=0, id=6f7f460c-5595-45d4-a9dd-1d1b1e3b3259]
+[line 125]	07 янв. 2021 14:22:15,255 [main] INFO  Creator/createSlide - [createSlide] Default slide options: [name=Slide, id=07f1e9b7-23c4-4c4c-855f-9b20fcd55979]
+[line 127]	07 янв. 2021 14:22:15,255 [main] DEBUG Creator/createSlide - [createSlide] Set id
+[line 129]	07 янв. 2021 14:22:15,256 [main] DEBUG Creator/createSlide - [createSlide] Set name
+[line 131]	07 янв. 2021 14:22:15,256 [main] DEBUG Creator/createSlide - [createSlide] Set index
+[line 133]	07 янв. 2021 14:22:15,256 [main] DEBUG Creator/createSlide - [createSlide] Set presentation id
+[line 134]	07 янв. 2021 14:22:15,268 [main] DEBUG Creator/createSlide - Slide{id=6f7f460c-5595-45d4-a9dd-1d1b1e3b3259, name='Slide', index=0, presentationId=c7ef049f-9264-482c-ab4f-070feee75d9b}
+[line 135]	07 янв. 2021 14:22:15,268 [main] DEBUG Creator/createSlide - Arguments was validate 
+[line 35]	07 янв. 2021 14:22:15,269 [main] INFO  Result/<init> - { status: success, value: Optional[Slide{id=6f7f460c-5595-45d4-a9dd-1d1b1e3b3259, name='Slide', index=0, presentationId=c7ef049f-9264-482c-ab4f-070feee75d9b}] }
+[line 350]	07 янв. 2021 14:22:15,270 [main] DEBUG QueryBuilder/buildCreateSlideQuery - Query body: INSERT INTO %s %s VALUES %s
+[line 80]	07 янв. 2021 14:22:15,271 [main] DEBUG JDBCSlideMethods/createPresentationSlide - Query string: INSERT INTO SLIDE (id, name, index, presentationId) VALUES ('6f7f460c-5595-45d4-a9dd-1d1b1e3b3259', 'Slide', '0', 'c7ef049f-9264-482c-ab4f-070feee75d9b')
+[line 88]	07 янв. 2021 14:22:15,273 [main] INFO  JDBCSlideMethods/createPresentationSlide - Slide options was successfully created for presentation: 
+[line 35]	07 янв. 2021 14:22:15,274 [main] INFO  Result/<init> - { status: success, value: 6f7f460c-5595-45d4-a9dd-1d1b1e3b3259 }
+[line 243]	07 янв. 2021 14:22:15,291 [main] DEBUG Creator/createContent - Set field: font; Value: Font{fontFamily='Roboto', fontSize='14px', letterSpacing='', lineSpacing='', fontCase=normal}
+[line 247]	07 янв. 2021 14:22:15,292 [main] DEBUG Creator/createContent - Set field: name; Value: Content
+[line 251]	07 янв. 2021 14:22:15,293 [main] DEBUG Creator/createContent - Set field: text; Value: Content
+[line 254]	07 янв. 2021 14:22:15,304 [main] DEBUG Creator/createContent - Set field: layout; Value: Layout{x=0, y=0, width=100, height=100, rotation=0}
+[line 258]	07 янв. 2021 14:22:15,305 [main] DEBUG Creator/createContent - Set field: slideId; Value: 6f7f460c-5595-45d4-a9dd-1d1b1e3b3259
+[line 261]	07 янв. 2021 14:22:15,306 [main] DEBUG Creator/createContent - Set field: presentationId; Value: c7ef049f-9264-482c-ab4f-070feee75d9b
+[line 265]	07 янв. 2021 14:22:15,307 [main] DEBUG Creator/createContent - Set field: elementType; Value: content
+[line 269]	07 янв. 2021 14:22:15,308 [main] DEBUG Creator/createContent - Set field: id; Value: 552c001e-c3ea-45d1-bf3e-b5206f389b15
+[line 271]	07 янв. 2021 14:22:15,329 [main] INFO  Creator/createContent - [Creator] Content created: Content{font=Font{fontFamily='Roboto', fontSize='14px', letterSpacing='', lineSpacing='', fontCase=normal}, text='Content', name='Content', id=552c001e-c3ea-45d1-bf3e-b5206f389b15, presentationId=c7ef049f-9264-482c-ab4f-070feee75d9b, slideId=6f7f460c-5595-45d4-a9dd-1d1b1e3b3259, layout=Layout{x=0, y=0, width=100, height=100, rotation=0}}
+[line 35]	07 янв. 2021 14:22:15,330 [main] INFO  Result/<init> - { status: success, value: Content{font=Font{fontFamily='Roboto', fontSize='14px', letterSpacing='', lineSpacing='', fontCase=normal}, text='Content', name='Content', id=552c001e-c3ea-45d1-bf3e-b5206f389b15, presentationId=c7ef049f-9264-482c-ab4f-070feee75d9b, slideId=6f7f460c-5595-45d4-a9dd-1d1b1e3b3259, layout=Layout{x=0, y=0, width=100, height=100, rotation=0}} }
+[line 22]	07 янв. 2021 14:22:15,334 [main] DEBUG ArgsValidator/validate - [validate] Validate: [elementType]
+[line 24]	07 янв. 2021 14:22:15,335 [main] DEBUG ArgsValidator/validate - [validate] Null fields: []
+[line 25]	07 янв. 2021 14:22:15,336 [main] DEBUG ArgsValidator/validate - [validate] Null fields: []
+[line 35]	07 янв. 2021 14:22:15,337 [main] INFO  Result/<init> - { status: success, value:  }
+[line 22]	07 янв. 2021 14:22:15,338 [main] DEBUG ArgsValidator/validate - [validate] Validate: [presentationId, slideId]
+[line 24]	07 янв. 2021 14:22:15,338 [main] DEBUG ArgsValidator/validate - [validate] Null fields: []
+[line 25]	07 янв. 2021 14:22:15,339 [main] DEBUG ArgsValidator/validate - [validate] Null fields: []
+[line 35]	07 янв. 2021 14:22:15,340 [main] INFO  Result/<init> - { status: success, value:  }
+[line 88]	07 янв. 2021 14:22:15,341 [main] DEBUG JDBCPresentationMethods/getPresentationById - Attempt to get presentations
+[line 47]	07 янв. 2021 14:22:15,342 [main] DEBUG JDBCCommonMethods/getFilePath - path: D:/Универ/CourseProject/src/main/resources/data/test
+[line 51]	07 янв. 2021 14:22:15,343 [main] DEBUG JDBCCommonMethods/getFilePath - JDBC directory: D:\Универ\CourseProject\src\main\resources\data\test
+[line 52]	07 янв. 2021 14:22:15,343 [main] DEBUG JDBCCommonMethods/getFilePath - JDBC directory exists: true
+[line 60]	07 янв. 2021 14:22:15,344 [main] DEBUG JDBCCommonMethods/getFilePath - databasePath: jdbc:h2:D:/Универ/CourseProject/src/main/resources/data/test/jdbc/presitor
+[line 80]	07 янв. 2021 14:22:15,345 [main] INFO  JDBCCommonMethods/setConnection - Data base path: jdbc:h2:D:/Универ/CourseProject/src/main/resources/data/test/jdbc/presitor
+[line 94]	07 янв. 2021 14:22:15,349 [main] DEBUG JDBCPresentationMethods/getPresentationById - Build SQL Query 
+[line 191]	07 янв. 2021 14:22:15,350 [main] INFO  QueryBuilder/buildGetSingleInstanceQuery - Get instance: presentation
+Id: 
+[line 97]	07 янв. 2021 14:22:15,351 [main] DEBUG JDBCPresentationMethods/getPresentationById - SQL query: SELECT * FROM presentation WHERE id = 'c7ef049f-9264-482c-ab4f-070feee75d9b'
+[line 104]	07 янв. 2021 14:22:15,385 [main] INFO  JDBCPresentationMethods/getPresentationById - SQL exec result: rs36: org.h2.result.LocalResultImpl@3eba57a7 columns: 4 rows: 1 pos: -1
+[line 367]	07 янв. 2021 14:22:15,388 [main] INFO  JDBCCommonMethods/parseResultSetToPresentation - Attempt to parse sql result set 
+[line 379]	07 янв. 2021 14:22:15,390 [main] DEBUG JDBCCommonMethods/parseResultSetToPresentation - Presentation: Presentation{id=c7ef049f-9264-482c-ab4f-070feee75d9b, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}
+[line 35]	07 янв. 2021 14:22:15,391 [main] INFO  Result/<init> - { status: success, value: Presentation{id=c7ef049f-9264-482c-ab4f-070feee75d9b, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'} }
+[line 100]	07 янв. 2021 14:22:15,392 [main] DEBUG JDBCSlideMethods/getSlideById - Attempt to get slide by id
+[line 47]	07 янв. 2021 14:22:15,394 [main] DEBUG JDBCCommonMethods/getFilePath - path: D:/Универ/CourseProject/src/main/resources/data/test
+[line 51]	07 янв. 2021 14:22:15,395 [main] DEBUG JDBCCommonMethods/getFilePath - JDBC directory: D:\Универ\CourseProject\src\main\resources\data\test
+[line 52]	07 янв. 2021 14:22:15,395 [main] DEBUG JDBCCommonMethods/getFilePath - JDBC directory exists: true
+[line 60]	07 янв. 2021 14:22:15,396 [main] DEBUG JDBCCommonMethods/getFilePath - databasePath: jdbc:h2:D:/Универ/CourseProject/src/main/resources/data/test/jdbc/presitor
+[line 80]	07 янв. 2021 14:22:15,397 [main] INFO  JDBCCommonMethods/setConnection - Data base path: jdbc:h2:D:/Универ/CourseProject/src/main/resources/data/test/jdbc/presitor
+[line 106]	07 янв. 2021 14:22:15,402 [main] DEBUG JDBCSlideMethods/getSlideById - Build SQL Query 
+[line 191]	07 янв. 2021 14:22:15,403 [main] INFO  QueryBuilder/buildGetSingleInstanceQuery - Get instance: slide
+Id: 
+[line 110]	07 янв. 2021 14:22:15,404 [main] DEBUG JDBCSlideMethods/getSlideById - SQL query: SELECT * FROM slide WHERE id = '6f7f460c-5595-45d4-a9dd-1d1b1e3b3259'
+[line 117]	07 янв. 2021 14:22:15,408 [main] INFO  JDBCSlideMethods/getSlideById - SQL exec result rs45: org.h2.result.LocalResultImpl@67207d8a columns: 4 rows: 1 pos: -1
+[line 340]	07 янв. 2021 14:22:15,409 [main] INFO  JDBCCommonMethods/parseResultSetToSlide - Attempt to parse sql result set 
+[line 353]	07 янв. 2021 14:22:15,410 [main] DEBUG JDBCCommonMethods/parseResultSetToSlide - Slide: Slide{id=6f7f460c-5595-45d4-a9dd-1d1b1e3b3259, name='Slide', index=0, presentationId=c7ef049f-9264-482c-ab4f-070feee75d9b}
+[line 35]	07 янв. 2021 14:22:15,411 [main] INFO  Result/<init> - { status: success, value: Slide{id=6f7f460c-5595-45d4-a9dd-1d1b1e3b3259, name='Slide', index=0, presentationId=c7ef049f-9264-482c-ab4f-070feee75d9b} }
+[line 35]	07 янв. 2021 14:22:15,413 [main] INFO  Result/<init> - { status: success, value: {presentation=Presentation{id=c7ef049f-9264-482c-ab4f-070feee75d9b, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}, slide=Slide{id=6f7f460c-5595-45d4-a9dd-1d1b1e3b3259, name='Slide', index=0, presentationId=c7ef049f-9264-482c-ab4f-070feee75d9b}, fields=[presentationId, slideId]} }
+[line 59]	07 янв. 2021 14:22:15,414 [main] DEBUG JDBCElementMethods/addElementInSlide - Attempt to add: content
+[line 73]	07 янв. 2021 14:22:15,419 [main] INFO  JDBCElementMethods/addElementInSlide - Content creating
+[line 22]	07 янв. 2021 14:22:15,419 [main] DEBUG ArgsValidator/validate - [validate] Validate: [presentationId, slideId]
+[line 24]	07 янв. 2021 14:22:15,420 [main] DEBUG ArgsValidator/validate - [validate] Null fields: []
+[line 25]	07 янв. 2021 14:22:15,420 [main] DEBUG ArgsValidator/validate - [validate] Null fields: []
+[line 35]	07 янв. 2021 14:22:15,420 [main] INFO  Result/<init> - { status: success, value:  }
+[line 243]	07 янв. 2021 14:22:15,421 [main] DEBUG Creator/createContent - Set field: font; Value: Font{fontFamily='Roboto', fontSize='14px', letterSpacing='', lineSpacing='', fontCase=normal}
+[line 247]	07 янв. 2021 14:22:15,421 [main] DEBUG Creator/createContent - Set field: name; Value: Content
+[line 251]	07 янв. 2021 14:22:15,422 [main] DEBUG Creator/createContent - Set field: text; Value: Content
+[line 254]	07 янв. 2021 14:22:15,422 [main] DEBUG Creator/createContent - Set field: layout; Value: Layout{x=0, y=0, width=100, height=100, rotation=0}
+[line 258]	07 янв. 2021 14:22:15,423 [main] DEBUG Creator/createContent - Set field: slideId; Value: 6f7f460c-5595-45d4-a9dd-1d1b1e3b3259
+[line 261]	07 янв. 2021 14:22:15,424 [main] DEBUG Creator/createContent - Set field: presentationId; Value: c7ef049f-9264-482c-ab4f-070feee75d9b
+[line 265]	07 янв. 2021 14:22:15,424 [main] DEBUG Creator/createContent - Set field: elementType; Value: content
+[line 269]	07 янв. 2021 14:22:15,424 [main] DEBUG Creator/createContent - Set field: id; Value: 552c001e-c3ea-45d1-bf3e-b5206f389b15
+[line 271]	07 янв. 2021 14:22:15,425 [main] INFO  Creator/createContent - [Creator] Content created: Content{font=Font{fontFamily='Roboto', fontSize='14px', letterSpacing='', lineSpacing='', fontCase=normal}, text='Content', name='Content', id=552c001e-c3ea-45d1-bf3e-b5206f389b15, presentationId=c7ef049f-9264-482c-ab4f-070feee75d9b, slideId=6f7f460c-5595-45d4-a9dd-1d1b1e3b3259, layout=Layout{x=0, y=0, width=100, height=100, rotation=0}}
+[line 35]	07 янв. 2021 14:22:15,425 [main] INFO  Result/<init> - { status: success, value: Content{font=Font{fontFamily='Roboto', fontSize='14px', letterSpacing='', lineSpacing='', fontCase=normal}, text='Content', name='Content', id=552c001e-c3ea-45d1-bf3e-b5206f389b15, presentationId=c7ef049f-9264-482c-ab4f-070feee75d9b, slideId=6f7f460c-5595-45d4-a9dd-1d1b1e3b3259, layout=Layout{x=0, y=0, width=100, height=100, rotation=0}} }
+[line 206]	07 янв. 2021 14:22:15,426 [main] INFO  JDBCElementMethods/createContent - Create new content: Content{font=Font{fontFamily='Roboto', fontSize='14px', letterSpacing='', lineSpacing='', fontCase=normal}, text='Content', name='Content', id=552c001e-c3ea-45d1-bf3e-b5206f389b15, presentationId=c7ef049f-9264-482c-ab4f-070feee75d9b, slideId=6f7f460c-5595-45d4-a9dd-1d1b1e3b3259, layout=Layout{x=0, y=0, width=100, height=100, rotation=0}}
+[line 47]	07 янв. 2021 14:22:15,427 [main] DEBUG JDBCCommonMethods/getFilePath - path: D:/Универ/CourseProject/src/main/resources/data/test
+[line 51]	07 янв. 2021 14:22:15,428 [main] DEBUG JDBCCommonMethods/getFilePath - JDBC directory: D:\Универ\CourseProject\src\main\resources\data\test
+[line 52]	07 янв. 2021 14:22:15,428 [main] DEBUG JDBCCommonMethods/getFilePath - JDBC directory exists: true
+[line 60]	07 янв. 2021 14:22:15,429 [main] DEBUG JDBCCommonMethods/getFilePath - databasePath: jdbc:h2:D:/Универ/CourseProject/src/main/resources/data/test/jdbc/presitor
+[line 80]	07 янв. 2021 14:22:15,429 [main] INFO  JDBCCommonMethods/setConnection - Data base path: jdbc:h2:D:/Универ/CourseProject/src/main/resources/data/test/jdbc/presitor
+[line 240]	07 янв. 2021 14:22:15,434 [main] INFO  JDBCElementMethods/addContentInSlide - add content in slide
+[line 256]	07 янв. 2021 14:22:15,435 [main] DEBUG QueryBuilder/buildCreateContentQuery - Query body: INSERT INTO %s %s VALUES %s
+[line 243]	07 янв. 2021 14:22:15,437 [main] DEBUG JDBCElementMethods/addContentInSlide - Query string: INSERT INTO SHAPE (elementType, layout, name, presentationId, slideId, text, id) VALUES ('content', 'Layout{x=0, y=0, width=100, height=100, rotation=0}', 'Content', 'c7ef049f-9264-482c-ab4f-070feee75d9b', '6f7f460c-5595-45d4-a9dd-1d1b1e3b3259', 'Content', '552c001e-c3ea-45d1-bf3e-b5206f389b15')
+[line 247]	07 янв. 2021 14:22:15,440 [main] INFO  JDBCElementMethods/addContentInSlide - Execute result: 1
+[line 35]	07 янв. 2021 14:22:15,441 [main] INFO  Result/<init> - { status: success, value: Content{font=Font{fontFamily='Roboto', fontSize='14px', letterSpacing='', lineSpacing='', fontCase=normal}, text='Content', name='Content', id=552c001e-c3ea-45d1-bf3e-b5206f389b15, presentationId=c7ef049f-9264-482c-ab4f-070feee75d9b, slideId=6f7f460c-5595-45d4-a9dd-1d1b1e3b3259, layout=Layout{x=0, y=0, width=100, height=100, rotation=0}} }
+[line 628]	07 янв. 2021 14:22:15,455 [main] INFO  DataProviderJDBCTest/addContentInSlideSuccess - { addContentInSlideSuccess } END
+[line 646]	07 янв. 2021 14:38:08,235 [main] INFO  DataProviderJDBCTest/removeSlideElementSuccess - { removeSlideElementSuccess } START
+[line 33]	07 янв. 2021 14:38:08,653 [main] DEBUG JDBCPresentationMethods/createPresentation - Attempt to create presentations
+[line 47]	07 янв. 2021 14:38:08,660 [main] DEBUG JDBCCommonMethods/getFilePath - path: D:/Универ/CourseProject/src/main/resources/data/test
+[line 51]	07 янв. 2021 14:38:08,662 [main] DEBUG JDBCCommonMethods/getFilePath - JDBC directory: D:\Универ\CourseProject\src\main\resources\data\test
+[line 52]	07 янв. 2021 14:38:08,664 [main] DEBUG JDBCCommonMethods/getFilePath - JDBC directory exists: true
+[line 60]	07 янв. 2021 14:38:08,665 [main] DEBUG JDBCCommonMethods/getFilePath - databasePath: jdbc:h2:D:/Универ/CourseProject/src/main/resources/data/test/jdbc/presitor
+[line 80]	07 янв. 2021 14:38:08,667 [main] INFO  JDBCCommonMethods/setConnection - Data base path: jdbc:h2:D:/Универ/CourseProject/src/main/resources/data/test/jdbc/presitor
+[line 98]	07 янв. 2021 14:38:09,146 [main] DEBUG Creator/createPresentation - [createPresentation] Set field  id 300ed3c9-c4df-4653-b042-a29fd3a14189
+[line 100]	07 янв. 2021 14:38:09,148 [main] DEBUG Creator/createPresentation - [createPresentation] Set field  name New presentation
+[line 102]	07 янв. 2021 14:38:09,151 [main] DEBUG Creator/createPresentation - [createPresentation] Set field  fillColor #ffffff
+[line 104]	07 янв. 2021 14:38:09,152 [main] DEBUG Creator/createPresentation - [createPresentation] Set field  fontFamily Roboto
+[line 106]	07 янв. 2021 14:38:09,154 [main] DEBUG Creator/createPresentation - [createPresentation] Set field  slides []
+[line 108]	07 янв. 2021 14:38:09,156 [main] DEBUG Creator/createPresentation - [createPresentation] Set field  comments []
+[line 110]	07 янв. 2021 14:38:09,158 [main] DEBUG Creator/createPresentation - [createPresentation] Set field  marks []
+[line 111]	07 янв. 2021 14:38:09,161 [main] DEBUG Creator/createPresentation - Arguments was validate 
+[line 35]	07 янв. 2021 14:38:09,212 [main] INFO  Result/<init> - { status: success, value: Optional[Presentation{id=300ed3c9-c4df-4653-b042-a29fd3a14189, name='New presentation', fillColor='#ffffff', fontFamily='Roboto', slides=[], comments=[]}] }
+[line 396]	07 янв. 2021 14:38:09,222 [main] DEBUG QueryBuilder/buildCreatePresentationQuery - Query body: INSERT INTO %s %s VALUES %s
+[line 46]	07 янв. 2021 14:38:09,224 [main] DEBUG JDBCPresentationMethods/createPresentation - Query string: INSERT INTO PRESENTATION (id, name, fillColor, fontFamily) VALUES ('300ed3c9-c4df-4653-b042-a29fd3a14189', 'New presentation', '#ffffff', 'Roboto')
+[line 52]	07 янв. 2021 14:38:09,225 [main] DEBUG JDBCPresentationMethods/createPresentation - Create table if not exist
+[line 57]	07 янв. 2021 14:38:09,873 [main] INFO  JDBCPresentationMethods/createPresentation - Presentation successfully created 
+[line 35]	07 янв. 2021 14:38:09,875 [main] INFO  Result/<init> - { status: success, value: 300ed3c9-c4df-4653-b042-a29fd3a14189 }
+[line 22]	07 янв. 2021 14:38:09,882 [main] DEBUG ArgsValidator/validate - [validate] Validate: [presentationId]
+[line 24]	07 янв. 2021 14:38:09,884 [main] DEBUG ArgsValidator/validate - [validate] Null fields: []
+[line 25]	07 янв. 2021 14:38:09,885 [main] DEBUG ArgsValidator/validate - [validate] Null fields: []
+[line 35]	07 янв. 2021 14:38:09,886 [main] INFO  Result/<init> - { status: success, value:  }
+[line 63]	07 янв. 2021 14:38:09,886 [main] DEBUG JDBCSlideMethods/createPresentationSlide - Attempt to create slide 
+[line 47]	07 янв. 2021 14:38:09,887 [main] DEBUG JDBCCommonMethods/getFilePath - path: D:/Универ/CourseProject/src/main/resources/data/test
+[line 51]	07 янв. 2021 14:38:09,888 [main] DEBUG JDBCCommonMethods/getFilePath - JDBC directory: D:\Универ\CourseProject\src\main\resources\data\test
+[line 52]	07 янв. 2021 14:38:09,889 [main] DEBUG JDBCCommonMethods/getFilePath - JDBC directory exists: true
+[line 60]	07 янв. 2021 14:38:09,890 [main] DEBUG JDBCCommonMethods/getFilePath - databasePath: jdbc:h2:D:/Универ/CourseProject/src/main/resources/data/test/jdbc/presitor
+[line 80]	07 янв. 2021 14:38:09,890 [main] INFO  JDBCCommonMethods/setConnection - Data base path: jdbc:h2:D:/Универ/CourseProject/src/main/resources/data/test/jdbc/presitor
+[line 47]	07 янв. 2021 14:38:09,914 [main] DEBUG JDBCCommonMethods/getFilePath - path: D:/Универ/CourseProject/src/main/resources/data/test
+[line 51]	07 янв. 2021 14:38:09,915 [main] DEBUG JDBCCommonMethods/getFilePath - JDBC directory: D:\Универ\CourseProject\src\main\resources\data\test
+[line 52]	07 янв. 2021 14:38:09,916 [main] DEBUG JDBCCommonMethods/getFilePath - JDBC directory exists: true
+[line 60]	07 янв. 2021 14:38:09,917 [main] DEBUG JDBCCommonMethods/getFilePath - databasePath: jdbc:h2:D:/Универ/CourseProject/src/main/resources/data/test/jdbc/presitor
+[line 80]	07 янв. 2021 14:38:09,918 [main] INFO  JDBCCommonMethods/setConnection - Data base path: jdbc:h2:D:/Универ/CourseProject/src/main/resources/data/test/jdbc/presitor
+[line 22]	07 янв. 2021 14:38:09,925 [main] DEBUG ArgsValidator/validate - [validate] Validate: [presentationId]
+[line 24]	07 янв. 2021 14:38:09,926 [main] DEBUG ArgsValidator/validate - [validate] Null fields: []
+[line 25]	07 янв. 2021 14:38:09,927 [main] DEBUG ArgsValidator/validate - [validate] Null fields: []
+[line 35]	07 янв. 2021 14:38:09,927 [main] INFO  Result/<init> - { status: success, value:  }
+[line 145]	07 янв. 2021 14:38:09,929 [main] DEBUG JDBCSlideMethods/getPresentationSlides - Query string: SELECT * FROM slide WHERE presentationId = '300ed3c9-c4df-4653-b042-a29fd3a14189'
+[line 394]	07 янв. 2021 14:38:09,971 [main] DEBUG JDBCCommonMethods/getListFromResultSet - Result set: rs26: org.h2.result.LocalResultImpl@4fcc529 columns: 4 rows: 0 pos: -1
+[line 35]	07 янв. 2021 14:38:09,972 [main] INFO  Result/<init> - { status: success, value: [] }
+[line 42]	07 янв. 2021 14:38:09,973 [main] DEBUG JDBCSlideMethods/getSlideIndex - Presentation slides: []
+[line 43]	07 янв. 2021 14:38:09,974 [main] INFO  JDBCSlideMethods/getSlideIndex - Presentation already has slides: 0
+[line 124]	07 янв. 2021 14:38:09,978 [main] INFO  Creator/createSlide - [createSlide] Arguments: [presentationId=300ed3c9-c4df-4653-b042-a29fd3a14189, index=0, id=bd1b9fea-d7b1-4e37-8145-92e6d7262ad0]
+[line 125]	07 янв. 2021 14:38:09,979 [main] INFO  Creator/createSlide - [createSlide] Default slide options: [name=Slide, id=c2c580ae-b790-4d96-b80a-75cfd43d37bf]
+[line 127]	07 янв. 2021 14:38:09,979 [main] DEBUG Creator/createSlide - [createSlide] Set id
+[line 129]	07 янв. 2021 14:38:09,980 [main] DEBUG Creator/createSlide - [createSlide] Set name
+[line 131]	07 янв. 2021 14:38:09,980 [main] DEBUG Creator/createSlide - [createSlide] Set index
+[line 133]	07 янв. 2021 14:38:09,980 [main] DEBUG Creator/createSlide - [createSlide] Set presentation id
+[line 134]	07 янв. 2021 14:38:09,996 [main] DEBUG Creator/createSlide - Slide{id=bd1b9fea-d7b1-4e37-8145-92e6d7262ad0, name='Slide', index=0, presentationId=300ed3c9-c4df-4653-b042-a29fd3a14189}
+[line 135]	07 янв. 2021 14:38:09,997 [main] DEBUG Creator/createSlide - Arguments was validate 
+[line 35]	07 янв. 2021 14:38:09,998 [main] INFO  Result/<init> - { status: success, value: Optional[Slide{id=bd1b9fea-d7b1-4e37-8145-92e6d7262ad0, name='Slide', index=0, presentationId=300ed3c9-c4df-4653-b042-a29fd3a14189}] }
+[line 374]	07 янв. 2021 14:38:10,000 [main] DEBUG QueryBuilder/buildCreateSlideQuery - Query body: INSERT INTO %s %s VALUES %s
+[line 80]	07 янв. 2021 14:38:10,001 [main] DEBUG JDBCSlideMethods/createPresentationSlide - Query string: INSERT INTO SLIDE (id, name, index, presentationId) VALUES ('bd1b9fea-d7b1-4e37-8145-92e6d7262ad0', 'Slide', '0', '300ed3c9-c4df-4653-b042-a29fd3a14189')
+[line 88]	07 янв. 2021 14:38:10,003 [main] INFO  JDBCSlideMethods/createPresentationSlide - Slide options was successfully created for presentation: 
+[line 35]	07 янв. 2021 14:38:10,004 [main] INFO  Result/<init> - { status: success, value: bd1b9fea-d7b1-4e37-8145-92e6d7262ad0 }
+[line 22]	07 янв. 2021 14:38:10,013 [main] DEBUG ArgsValidator/validate - [validate] Validate: [elementType]
+[line 24]	07 янв. 2021 14:38:10,014 [main] DEBUG ArgsValidator/validate - [validate] Null fields: []
+[line 25]	07 янв. 2021 14:38:10,015 [main] DEBUG ArgsValidator/validate - [validate] Null fields: []
+[line 35]	07 янв. 2021 14:38:10,016 [main] INFO  Result/<init> - { status: success, value:  }
+[line 22]	07 янв. 2021 14:38:10,017 [main] DEBUG ArgsValidator/validate - [validate] Validate: [presentationId, slideId]
+[line 24]	07 янв. 2021 14:38:10,017 [main] DEBUG ArgsValidator/validate - [validate] Null fields: []
+[line 25]	07 янв. 2021 14:38:10,018 [main] DEBUG ArgsValidator/validate - [validate] Null fields: []
+[line 35]	07 янв. 2021 14:38:10,019 [main] INFO  Result/<init> - { status: success, value:  }
+[line 88]	07 янв. 2021 14:38:10,020 [main] DEBUG JDBCPresentationMethods/getPresentationById - Attempt to get presentations
+[line 47]	07 янв. 2021 14:38:10,020 [main] DEBUG JDBCCommonMethods/getFilePath - path: D:/Универ/CourseProject/src/main/resources/data/test
+[line 51]	07 янв. 2021 14:38:10,021 [main] DEBUG JDBCCommonMethods/getFilePath - JDBC directory: D:\Универ\CourseProject\src\main\resources\data\test
+[line 52]	07 янв. 2021 14:38:10,022 [main] DEBUG JDBCCommonMethods/getFilePath - JDBC directory exists: true
+[line 60]	07 янв. 2021 14:38:10,023 [main] DEBUG JDBCCommonMethods/getFilePath - databasePath: jdbc:h2:D:/Универ/CourseProject/src/main/resources/data/test/jdbc/presitor
+[line 80]	07 янв. 2021 14:38:10,023 [main] INFO  JDBCCommonMethods/setConnection - Data base path: jdbc:h2:D:/Универ/CourseProject/src/main/resources/data/test/jdbc/presitor
+[line 94]	07 янв. 2021 14:38:10,029 [main] DEBUG JDBCPresentationMethods/getPresentationById - Build SQL Query 
+[line 215]	07 янв. 2021 14:38:10,031 [main] INFO  QueryBuilder/buildGetSingleInstanceQuery - Get instance: presentation
+Id: 
+[line 97]	07 янв. 2021 14:38:10,032 [main] DEBUG JDBCPresentationMethods/getPresentationById - SQL query: SELECT * FROM presentation WHERE id = '300ed3c9-c4df-4653-b042-a29fd3a14189'
+[line 104]	07 янв. 2021 14:38:10,064 [main] INFO  JDBCPresentationMethods/getPresentationById - SQL exec result: rs36: org.h2.result.LocalResultImpl@5488b5c5 columns: 4 rows: 1 pos: -1
+[line 367]	07 янв. 2021 14:38:10,067 [main] INFO  JDBCCommonMethods/parseResultSetToPresentation - Attempt to parse sql result set 
+[line 379]	07 янв. 2021 14:38:10,068 [main] DEBUG JDBCCommonMethods/parseResultSetToPresentation - Presentation: Presentation{id=300ed3c9-c4df-4653-b042-a29fd3a14189, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}
+[line 35]	07 янв. 2021 14:38:10,069 [main] INFO  Result/<init> - { status: success, value: Presentation{id=300ed3c9-c4df-4653-b042-a29fd3a14189, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'} }
+[line 100]	07 янв. 2021 14:38:10,069 [main] DEBUG JDBCSlideMethods/getSlideById - Attempt to get slide by id
+[line 47]	07 янв. 2021 14:38:10,070 [main] DEBUG JDBCCommonMethods/getFilePath - path: D:/Универ/CourseProject/src/main/resources/data/test
+[line 51]	07 янв. 2021 14:38:10,070 [main] DEBUG JDBCCommonMethods/getFilePath - JDBC directory: D:\Универ\CourseProject\src\main\resources\data\test
+[line 52]	07 янв. 2021 14:38:10,071 [main] DEBUG JDBCCommonMethods/getFilePath - JDBC directory exists: true
+[line 60]	07 янв. 2021 14:38:10,072 [main] DEBUG JDBCCommonMethods/getFilePath - databasePath: jdbc:h2:D:/Универ/CourseProject/src/main/resources/data/test/jdbc/presitor
+[line 80]	07 янв. 2021 14:38:10,072 [main] INFO  JDBCCommonMethods/setConnection - Data base path: jdbc:h2:D:/Универ/CourseProject/src/main/resources/data/test/jdbc/presitor
+[line 106]	07 янв. 2021 14:38:10,077 [main] DEBUG JDBCSlideMethods/getSlideById - Build SQL Query 
+[line 215]	07 янв. 2021 14:38:10,078 [main] INFO  QueryBuilder/buildGetSingleInstanceQuery - Get instance: slide
+Id: 
+[line 110]	07 янв. 2021 14:38:10,079 [main] DEBUG JDBCSlideMethods/getSlideById - SQL query: SELECT * FROM slide WHERE id = 'bd1b9fea-d7b1-4e37-8145-92e6d7262ad0'
+[line 117]	07 янв. 2021 14:38:10,082 [main] INFO  JDBCSlideMethods/getSlideById - SQL exec result rs45: org.h2.result.LocalResultImpl@4564e94b columns: 4 rows: 1 pos: -1
+[line 340]	07 янв. 2021 14:38:10,083 [main] INFO  JDBCCommonMethods/parseResultSetToSlide - Attempt to parse sql result set 
+[line 353]	07 янв. 2021 14:38:10,084 [main] DEBUG JDBCCommonMethods/parseResultSetToSlide - Slide: Slide{id=bd1b9fea-d7b1-4e37-8145-92e6d7262ad0, name='Slide', index=0, presentationId=300ed3c9-c4df-4653-b042-a29fd3a14189}
+[line 35]	07 янв. 2021 14:38:10,086 [main] INFO  Result/<init> - { status: success, value: Slide{id=bd1b9fea-d7b1-4e37-8145-92e6d7262ad0, name='Slide', index=0, presentationId=300ed3c9-c4df-4653-b042-a29fd3a14189} }
+[line 35]	07 янв. 2021 14:38:10,088 [main] INFO  Result/<init> - { status: success, value: {presentation=Presentation{id=300ed3c9-c4df-4653-b042-a29fd3a14189, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}, slide=Slide{id=bd1b9fea-d7b1-4e37-8145-92e6d7262ad0, name='Slide', index=0, presentationId=300ed3c9-c4df-4653-b042-a29fd3a14189}, fields=[presentationId, slideId]} }
+[line 60]	07 янв. 2021 14:38:10,089 [main] DEBUG JDBCElementMethods/addElementInSlide - Attempt to add: shape
+[line 64]	07 янв. 2021 14:38:10,093 [main] INFO  JDBCElementMethods/addElementInSlide - Shape creating
+[line 22]	07 янв. 2021 14:38:10,094 [main] DEBUG ArgsValidator/validate - [validate] Validate: [presentationId, slideId]
+[line 24]	07 янв. 2021 14:38:10,094 [main] DEBUG ArgsValidator/validate - [validate] Null fields: []
+[line 25]	07 янв. 2021 14:38:10,095 [main] DEBUG ArgsValidator/validate - [validate] Null fields: []
+[line 35]	07 янв. 2021 14:38:10,096 [main] INFO  Result/<init> - { status: success, value:  }
+[line 193]	07 янв. 2021 14:38:10,101 [main] DEBUG Creator/createShape - Set field: slideId; Value: bd1b9fea-d7b1-4e37-8145-92e6d7262ad0
+[line 196]	07 янв. 2021 14:38:10,102 [main] DEBUG Creator/createShape - Set field: presentationId; Value: 300ed3c9-c4df-4653-b042-a29fd3a14189
+[line 200]	07 янв. 2021 14:38:10,103 [main] DEBUG Creator/createShape - Set field: elementType; Value: shape
+[line 204]	07 янв. 2021 14:38:10,103 [main] DEBUG Creator/createShape - Set field: figure; Value: rectangle
+[line 208]	07 янв. 2021 14:38:10,146 [main] DEBUG Creator/createShape - Set field: style; Value: Style{fillColor='transparent', boxShadow='', opacity=1, borderColor='transparent', borderRadius='0', borderWidth='0', borderStyle=none}
+[line 211]	07 янв. 2021 14:38:10,164 [main] DEBUG Creator/createShape - Set field: layout; Value: Layout{x=0, y=0, width=100, height=100, rotation=0}
+[line 215]	07 янв. 2021 14:38:10,165 [main] DEBUG Creator/createShape - Set field: id; Value: 256ba99c-b31b-4b7b-b75a-29e307654216
+[line 219]	07 янв. 2021 14:38:10,167 [main] DEBUG Creator/createShape - Set field: id; Value: 256ba99c-b31b-4b7b-b75a-29e307654216
+[line 221]	07 янв. 2021 14:38:10,168 [main] DEBUG Creator/createShape - Set field: name; Value: Shape
+[line 223]	07 янв. 2021 14:38:10,193 [main] INFO  Creator/createShape - Created: Shape{style=Style{fillColor='transparent', boxShadow='', opacity=1, borderColor='transparent', borderRadius='0', borderWidth='0', borderStyle=none}, text='', figure=rectangle, id=256ba99c-b31b-4b7b-b75a-29e307654216, presentationId=300ed3c9-c4df-4653-b042-a29fd3a14189, slideId=bd1b9fea-d7b1-4e37-8145-92e6d7262ad0, name=Shape, layout=Layout{x=0, y=0, width=100, height=100, rotation=0}}
+[line 35]	07 янв. 2021 14:38:10,195 [main] INFO  Result/<init> - { status: success, value: Shape{style=Style{fillColor='transparent', boxShadow='', opacity=1, borderColor='transparent', borderRadius='0', borderWidth='0', borderStyle=none}, text='', figure=rectangle, id=256ba99c-b31b-4b7b-b75a-29e307654216, presentationId=300ed3c9-c4df-4653-b042-a29fd3a14189, slideId=bd1b9fea-d7b1-4e37-8145-92e6d7262ad0, name=Shape, layout=Layout{x=0, y=0, width=100, height=100, rotation=0}} }
+[line 226]	07 янв. 2021 14:38:10,196 [main] INFO  JDBCElementMethods/createShape - Create new shape: Shape{style=Style{fillColor='transparent', boxShadow='', opacity=1, borderColor='transparent', borderRadius='0', borderWidth='0', borderStyle=none}, text='', figure=rectangle, id=256ba99c-b31b-4b7b-b75a-29e307654216, presentationId=300ed3c9-c4df-4653-b042-a29fd3a14189, slideId=bd1b9fea-d7b1-4e37-8145-92e6d7262ad0, name=Shape, layout=Layout{x=0, y=0, width=100, height=100, rotation=0}}
+[line 47]	07 янв. 2021 14:38:10,197 [main] DEBUG JDBCCommonMethods/getFilePath - path: D:/Универ/CourseProject/src/main/resources/data/test
+[line 51]	07 янв. 2021 14:38:10,198 [main] DEBUG JDBCCommonMethods/getFilePath - JDBC directory: D:\Универ\CourseProject\src\main\resources\data\test
+[line 52]	07 янв. 2021 14:38:10,198 [main] DEBUG JDBCCommonMethods/getFilePath - JDBC directory exists: true
+[line 60]	07 янв. 2021 14:38:10,199 [main] DEBUG JDBCCommonMethods/getFilePath - databasePath: jdbc:h2:D:/Универ/CourseProject/src/main/resources/data/test/jdbc/presitor
+[line 80]	07 янв. 2021 14:38:10,199 [main] INFO  JDBCCommonMethods/setConnection - Data base path: jdbc:h2:D:/Универ/CourseProject/src/main/resources/data/test/jdbc/presitor
+[line 266]	07 янв. 2021 14:38:10,202 [main] INFO  JDBCElementMethods/addShapeInSlide - add shape in slide
+[line 307]	07 янв. 2021 14:38:10,204 [main] DEBUG QueryBuilder/buildCreateShapeQuery - Query body: INSERT INTO %s %s VALUES %s
+[line 269]	07 янв. 2021 14:38:10,206 [main] DEBUG JDBCElementMethods/addShapeInSlide - Query string: INSERT INTO SHAPE (elementType, figure, id, layout, name, presentationId, slideId, style, text) VALUES ('shape', 'rectangle', '256ba99c-b31b-4b7b-b75a-29e307654216', 'Layout{x=0, y=0, width=100, height=100, rotation=0}', 'Shape', '300ed3c9-c4df-4653-b042-a29fd3a14189', 'bd1b9fea-d7b1-4e37-8145-92e6d7262ad0', 'Style{fillColor=transparent, boxShadow=, opacity=1, borderColor=transparent, borderRadius=0, borderWidth=0, borderStyle=none}', '')
+[line 273]	07 янв. 2021 14:38:10,209 [main] INFO  JDBCElementMethods/addShapeInSlide - Execute result: 1
+[line 35]	07 янв. 2021 14:38:10,210 [main] INFO  Result/<init> - { status: success, value: Shape{style=Style{fillColor='transparent', boxShadow='', opacity=1, borderColor='transparent', borderRadius='0', borderWidth='0', borderStyle=none}, text='', figure=rectangle, id=256ba99c-b31b-4b7b-b75a-29e307654216, presentationId=300ed3c9-c4df-4653-b042-a29fd3a14189, slideId=bd1b9fea-d7b1-4e37-8145-92e6d7262ad0, name=Shape, layout=Layout{x=0, y=0, width=100, height=100, rotation=0}} }
+[line 646]	07 янв. 2021 14:38:47,553 [main] INFO  DataProviderJDBCTest/removeSlideElementSuccess - { removeSlideElementSuccess } START
+[line 33]	07 янв. 2021 14:38:47,945 [main] DEBUG JDBCPresentationMethods/createPresentation - Attempt to create presentations
+[line 47]	07 янв. 2021 14:38:47,951 [main] DEBUG JDBCCommonMethods/getFilePath - path: D:/Универ/CourseProject/src/main/resources/data/test
+[line 51]	07 янв. 2021 14:38:47,953 [main] DEBUG JDBCCommonMethods/getFilePath - JDBC directory: D:\Универ\CourseProject\src\main\resources\data\test
+[line 52]	07 янв. 2021 14:38:47,954 [main] DEBUG JDBCCommonMethods/getFilePath - JDBC directory exists: true
+[line 60]	07 янв. 2021 14:38:47,956 [main] DEBUG JDBCCommonMethods/getFilePath - databasePath: jdbc:h2:D:/Универ/CourseProject/src/main/resources/data/test/jdbc/presitor
+[line 80]	07 янв. 2021 14:38:47,957 [main] INFO  JDBCCommonMethods/setConnection - Data base path: jdbc:h2:D:/Универ/CourseProject/src/main/resources/data/test/jdbc/presitor
+[line 98]	07 янв. 2021 14:38:48,390 [main] DEBUG Creator/createPresentation - [createPresentation] Set field  id 236dfe50-7274-4ed6-a95e-d041a134569e
+[line 100]	07 янв. 2021 14:38:48,392 [main] DEBUG Creator/createPresentation - [createPresentation] Set field  name New presentation
+[line 102]	07 янв. 2021 14:38:48,393 [main] DEBUG Creator/createPresentation - [createPresentation] Set field  fillColor #ffffff
+[line 104]	07 янв. 2021 14:38:48,395 [main] DEBUG Creator/createPresentation - [createPresentation] Set field  fontFamily Roboto
+[line 106]	07 янв. 2021 14:38:48,396 [main] DEBUG Creator/createPresentation - [createPresentation] Set field  slides []
+[line 108]	07 янв. 2021 14:38:48,397 [main] DEBUG Creator/createPresentation - [createPresentation] Set field  comments []
+[line 110]	07 янв. 2021 14:38:48,399 [main] DEBUG Creator/createPresentation - [createPresentation] Set field  marks []
+[line 111]	07 янв. 2021 14:38:48,402 [main] DEBUG Creator/createPresentation - Arguments was validate 
+[line 35]	07 янв. 2021 14:38:48,451 [main] INFO  Result/<init> - { status: success, value: Optional[Presentation{id=236dfe50-7274-4ed6-a95e-d041a134569e, name='New presentation', fillColor='#ffffff', fontFamily='Roboto', slides=[], comments=[]}] }
+[line 396]	07 янв. 2021 14:38:48,463 [main] DEBUG QueryBuilder/buildCreatePresentationQuery - Query body: INSERT INTO %s %s VALUES %s
+[line 46]	07 янв. 2021 14:38:48,465 [main] DEBUG JDBCPresentationMethods/createPresentation - Query string: INSERT INTO PRESENTATION (id, name, fillColor, fontFamily) VALUES ('236dfe50-7274-4ed6-a95e-d041a134569e', 'New presentation', '#ffffff', 'Roboto')
+[line 52]	07 янв. 2021 14:38:48,465 [main] DEBUG JDBCPresentationMethods/createPresentation - Create table if not exist
+[line 57]	07 янв. 2021 14:38:48,810 [main] INFO  JDBCPresentationMethods/createPresentation - Presentation successfully created 
+[line 35]	07 янв. 2021 14:38:48,811 [main] INFO  Result/<init> - { status: success, value: 236dfe50-7274-4ed6-a95e-d041a134569e }
+[line 22]	07 янв. 2021 14:38:48,817 [main] DEBUG ArgsValidator/validate - [validate] Validate: [presentationId]
+[line 24]	07 янв. 2021 14:38:48,819 [main] DEBUG ArgsValidator/validate - [validate] Null fields: []
+[line 25]	07 янв. 2021 14:38:48,820 [main] DEBUG ArgsValidator/validate - [validate] Null fields: []
+[line 35]	07 янв. 2021 14:38:48,821 [main] INFO  Result/<init> - { status: success, value:  }
+[line 63]	07 янв. 2021 14:38:48,821 [main] DEBUG JDBCSlideMethods/createPresentationSlide - Attempt to create slide 
+[line 47]	07 янв. 2021 14:38:48,822 [main] DEBUG JDBCCommonMethods/getFilePath - path: D:/Универ/CourseProject/src/main/resources/data/test
+[line 51]	07 янв. 2021 14:38:48,823 [main] DEBUG JDBCCommonMethods/getFilePath - JDBC directory: D:\Универ\CourseProject\src\main\resources\data\test
+[line 52]	07 янв. 2021 14:38:48,823 [main] DEBUG JDBCCommonMethods/getFilePath - JDBC directory exists: true
+[line 60]	07 янв. 2021 14:38:48,824 [main] DEBUG JDBCCommonMethods/getFilePath - databasePath: jdbc:h2:D:/Универ/CourseProject/src/main/resources/data/test/jdbc/presitor
+[line 80]	07 янв. 2021 14:38:48,825 [main] INFO  JDBCCommonMethods/setConnection - Data base path: jdbc:h2:D:/Универ/CourseProject/src/main/resources/data/test/jdbc/presitor
+[line 47]	07 янв. 2021 14:38:48,846 [main] DEBUG JDBCCommonMethods/getFilePath - path: D:/Универ/CourseProject/src/main/resources/data/test
+[line 51]	07 янв. 2021 14:38:48,846 [main] DEBUG JDBCCommonMethods/getFilePath - JDBC directory: D:\Универ\CourseProject\src\main\resources\data\test
+[line 52]	07 янв. 2021 14:38:48,847 [main] DEBUG JDBCCommonMethods/getFilePath - JDBC directory exists: true
+[line 60]	07 янв. 2021 14:38:48,848 [main] DEBUG JDBCCommonMethods/getFilePath - databasePath: jdbc:h2:D:/Универ/CourseProject/src/main/resources/data/test/jdbc/presitor
+[line 80]	07 янв. 2021 14:38:48,848 [main] INFO  JDBCCommonMethods/setConnection - Data base path: jdbc:h2:D:/Универ/CourseProject/src/main/resources/data/test/jdbc/presitor
+[line 22]	07 янв. 2021 14:38:48,853 [main] DEBUG ArgsValidator/validate - [validate] Validate: [presentationId]
+[line 24]	07 янв. 2021 14:38:48,854 [main] DEBUG ArgsValidator/validate - [validate] Null fields: []
+[line 25]	07 янв. 2021 14:38:48,854 [main] DEBUG ArgsValidator/validate - [validate] Null fields: []
+[line 35]	07 янв. 2021 14:38:48,855 [main] INFO  Result/<init> - { status: success, value:  }
+[line 145]	07 янв. 2021 14:38:48,857 [main] DEBUG JDBCSlideMethods/getPresentationSlides - Query string: SELECT * FROM slide WHERE presentationId = '236dfe50-7274-4ed6-a95e-d041a134569e'
+[line 394]	07 янв. 2021 14:38:48,885 [main] DEBUG JDBCCommonMethods/getListFromResultSet - Result set: rs26: org.h2.result.LocalResultImpl@502f8b57 columns: 4 rows: 0 pos: -1
+[line 35]	07 янв. 2021 14:38:48,886 [main] INFO  Result/<init> - { status: success, value: [] }
+[line 42]	07 янв. 2021 14:38:48,887 [main] DEBUG JDBCSlideMethods/getSlideIndex - Presentation slides: []
+[line 43]	07 янв. 2021 14:38:48,887 [main] INFO  JDBCSlideMethods/getSlideIndex - Presentation already has slides: 0
+[line 124]	07 янв. 2021 14:38:48,891 [main] INFO  Creator/createSlide - [createSlide] Arguments: [presentationId=236dfe50-7274-4ed6-a95e-d041a134569e, index=0, id=c5700435-a860-471d-97bf-ec042e179909]
+[line 125]	07 янв. 2021 14:38:48,893 [main] INFO  Creator/createSlide - [createSlide] Default slide options: [name=Slide, id=9cda7aed-5b68-441b-ac4b-d99ac9cad59e]
+[line 127]	07 янв. 2021 14:38:48,893 [main] DEBUG Creator/createSlide - [createSlide] Set id
+[line 129]	07 янв. 2021 14:38:48,894 [main] DEBUG Creator/createSlide - [createSlide] Set name
+[line 131]	07 янв. 2021 14:38:48,895 [main] DEBUG Creator/createSlide - [createSlide] Set index
+[line 133]	07 янв. 2021 14:38:48,896 [main] DEBUG Creator/createSlide - [createSlide] Set presentation id
+[line 134]	07 янв. 2021 14:38:48,914 [main] DEBUG Creator/createSlide - Slide{id=c5700435-a860-471d-97bf-ec042e179909, name='Slide', index=0, presentationId=236dfe50-7274-4ed6-a95e-d041a134569e}
+[line 135]	07 янв. 2021 14:38:48,915 [main] DEBUG Creator/createSlide - Arguments was validate 
+[line 35]	07 янв. 2021 14:38:48,916 [main] INFO  Result/<init> - { status: success, value: Optional[Slide{id=c5700435-a860-471d-97bf-ec042e179909, name='Slide', index=0, presentationId=236dfe50-7274-4ed6-a95e-d041a134569e}] }
+[line 374]	07 янв. 2021 14:38:48,918 [main] DEBUG QueryBuilder/buildCreateSlideQuery - Query body: INSERT INTO %s %s VALUES %s
+[line 80]	07 янв. 2021 14:38:48,920 [main] DEBUG JDBCSlideMethods/createPresentationSlide - Query string: INSERT INTO SLIDE (id, name, index, presentationId) VALUES ('c5700435-a860-471d-97bf-ec042e179909', 'Slide', '0', '236dfe50-7274-4ed6-a95e-d041a134569e')
+[line 88]	07 янв. 2021 14:38:48,922 [main] INFO  JDBCSlideMethods/createPresentationSlide - Slide options was successfully created for presentation: 
+[line 35]	07 янв. 2021 14:38:48,924 [main] INFO  Result/<init> - { status: success, value: c5700435-a860-471d-97bf-ec042e179909 }
+[line 22]	07 янв. 2021 14:38:48,933 [main] DEBUG ArgsValidator/validate - [validate] Validate: [elementType]
+[line 24]	07 янв. 2021 14:38:48,934 [main] DEBUG ArgsValidator/validate - [validate] Null fields: []
+[line 25]	07 янв. 2021 14:38:48,934 [main] DEBUG ArgsValidator/validate - [validate] Null fields: []
+[line 35]	07 янв. 2021 14:38:48,935 [main] INFO  Result/<init> - { status: success, value:  }
+[line 22]	07 янв. 2021 14:38:48,936 [main] DEBUG ArgsValidator/validate - [validate] Validate: [presentationId, slideId]
+[line 24]	07 янв. 2021 14:38:48,937 [main] DEBUG ArgsValidator/validate - [validate] Null fields: []
+[line 25]	07 янв. 2021 14:38:48,938 [main] DEBUG ArgsValidator/validate - [validate] Null fields: []
+[line 35]	07 янв. 2021 14:38:48,939 [main] INFO  Result/<init> - { status: success, value:  }
+[line 88]	07 янв. 2021 14:38:48,941 [main] DEBUG JDBCPresentationMethods/getPresentationById - Attempt to get presentations
+[line 47]	07 янв. 2021 14:38:48,942 [main] DEBUG JDBCCommonMethods/getFilePath - path: D:/Универ/CourseProject/src/main/resources/data/test
+[line 51]	07 янв. 2021 14:38:48,942 [main] DEBUG JDBCCommonMethods/getFilePath - JDBC directory: D:\Универ\CourseProject\src\main\resources\data\test
+[line 52]	07 янв. 2021 14:38:48,943 [main] DEBUG JDBCCommonMethods/getFilePath - JDBC directory exists: true
+[line 60]	07 янв. 2021 14:38:48,945 [main] DEBUG JDBCCommonMethods/getFilePath - databasePath: jdbc:h2:D:/Универ/CourseProject/src/main/resources/data/test/jdbc/presitor
+[line 80]	07 янв. 2021 14:38:48,946 [main] INFO  JDBCCommonMethods/setConnection - Data base path: jdbc:h2:D:/Универ/CourseProject/src/main/resources/data/test/jdbc/presitor
+[line 94]	07 янв. 2021 14:38:48,951 [main] DEBUG JDBCPresentationMethods/getPresentationById - Build SQL Query 
+[line 215]	07 янв. 2021 14:38:48,953 [main] INFO  QueryBuilder/buildGetSingleInstanceQuery - Get instance: presentation
+Id: 
+[line 97]	07 янв. 2021 14:38:48,954 [main] DEBUG JDBCPresentationMethods/getPresentationById - SQL query: SELECT * FROM presentation WHERE id = '236dfe50-7274-4ed6-a95e-d041a134569e'
+[line 104]	07 янв. 2021 14:38:49,052 [main] INFO  JDBCPresentationMethods/getPresentationById - SQL exec result: rs36: org.h2.result.LocalResultImpl@6dba847b columns: 4 rows: 1 pos: -1
+[line 367]	07 янв. 2021 14:38:49,056 [main] INFO  JDBCCommonMethods/parseResultSetToPresentation - Attempt to parse sql result set 
+[line 379]	07 янв. 2021 14:38:49,059 [main] DEBUG JDBCCommonMethods/parseResultSetToPresentation - Presentation: Presentation{id=236dfe50-7274-4ed6-a95e-d041a134569e, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}
+[line 35]	07 янв. 2021 14:38:49,061 [main] INFO  Result/<init> - { status: success, value: Presentation{id=236dfe50-7274-4ed6-a95e-d041a134569e, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'} }
+[line 100]	07 янв. 2021 14:38:49,063 [main] DEBUG JDBCSlideMethods/getSlideById - Attempt to get slide by id
+[line 47]	07 янв. 2021 14:38:49,064 [main] DEBUG JDBCCommonMethods/getFilePath - path: D:/Универ/CourseProject/src/main/resources/data/test
+[line 51]	07 янв. 2021 14:38:49,065 [main] DEBUG JDBCCommonMethods/getFilePath - JDBC directory: D:\Универ\CourseProject\src\main\resources\data\test
+[line 52]	07 янв. 2021 14:38:49,066 [main] DEBUG JDBCCommonMethods/getFilePath - JDBC directory exists: true
+[line 60]	07 янв. 2021 14:38:49,068 [main] DEBUG JDBCCommonMethods/getFilePath - databasePath: jdbc:h2:D:/Универ/CourseProject/src/main/resources/data/test/jdbc/presitor
+[line 80]	07 янв. 2021 14:38:49,068 [main] INFO  JDBCCommonMethods/setConnection - Data base path: jdbc:h2:D:/Универ/CourseProject/src/main/resources/data/test/jdbc/presitor
+[line 106]	07 янв. 2021 14:38:49,073 [main] DEBUG JDBCSlideMethods/getSlideById - Build SQL Query 
+[line 215]	07 янв. 2021 14:38:49,076 [main] INFO  QueryBuilder/buildGetSingleInstanceQuery - Get instance: slide
+Id: 
+[line 110]	07 янв. 2021 14:38:49,078 [main] DEBUG JDBCSlideMethods/getSlideById - SQL query: SELECT * FROM slide WHERE id = 'c5700435-a860-471d-97bf-ec042e179909'
+[line 117]	07 янв. 2021 14:38:49,082 [main] INFO  JDBCSlideMethods/getSlideById - SQL exec result rs45: org.h2.result.LocalResultImpl@7af1cd63 columns: 4 rows: 1 pos: -1
+[line 340]	07 янв. 2021 14:38:49,083 [main] INFO  JDBCCommonMethods/parseResultSetToSlide - Attempt to parse sql result set 
+[line 353]	07 янв. 2021 14:38:49,085 [main] DEBUG JDBCCommonMethods/parseResultSetToSlide - Slide: Slide{id=c5700435-a860-471d-97bf-ec042e179909, name='Slide', index=0, presentationId=236dfe50-7274-4ed6-a95e-d041a134569e}
+[line 35]	07 янв. 2021 14:38:49,086 [main] INFO  Result/<init> - { status: success, value: Slide{id=c5700435-a860-471d-97bf-ec042e179909, name='Slide', index=0, presentationId=236dfe50-7274-4ed6-a95e-d041a134569e} }
+[line 35]	07 янв. 2021 14:38:49,088 [main] INFO  Result/<init> - { status: success, value: {presentation=Presentation{id=236dfe50-7274-4ed6-a95e-d041a134569e, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}, slide=Slide{id=c5700435-a860-471d-97bf-ec042e179909, name='Slide', index=0, presentationId=236dfe50-7274-4ed6-a95e-d041a134569e}, fields=[presentationId, slideId]} }
+[line 60]	07 янв. 2021 14:38:49,091 [main] DEBUG JDBCElementMethods/addElementInSlide - Attempt to add: shape
+[line 64]	07 янв. 2021 14:38:49,094 [main] INFO  JDBCElementMethods/addElementInSlide - Shape creating
+[line 22]	07 янв. 2021 14:38:49,095 [main] DEBUG ArgsValidator/validate - [validate] Validate: [presentationId, slideId]
+[line 24]	07 янв. 2021 14:38:49,097 [main] DEBUG ArgsValidator/validate - [validate] Null fields: []
+[line 25]	07 янв. 2021 14:38:49,097 [main] DEBUG ArgsValidator/validate - [validate] Null fields: []
+[line 35]	07 янв. 2021 14:38:49,098 [main] INFO  Result/<init> - { status: success, value:  }
+[line 193]	07 янв. 2021 14:38:49,104 [main] DEBUG Creator/createShape - Set field: slideId; Value: c5700435-a860-471d-97bf-ec042e179909
+[line 196]	07 янв. 2021 14:38:49,105 [main] DEBUG Creator/createShape - Set field: presentationId; Value: 236dfe50-7274-4ed6-a95e-d041a134569e
+[line 200]	07 янв. 2021 14:38:49,106 [main] DEBUG Creator/createShape - Set field: elementType; Value: shape
+[line 204]	07 янв. 2021 14:38:49,109 [main] DEBUG Creator/createShape - Set field: figure; Value: rectangle
+[line 208]	07 янв. 2021 14:38:49,153 [main] DEBUG Creator/createShape - Set field: style; Value: Style{fillColor='transparent', boxShadow='', opacity=1, borderColor='transparent', borderRadius='0', borderWidth='0', borderStyle=none}
+[line 211]	07 янв. 2021 14:38:49,167 [main] DEBUG Creator/createShape - Set field: layout; Value: Layout{x=0, y=0, width=100, height=100, rotation=0}
+[line 215]	07 янв. 2021 14:38:49,168 [main] DEBUG Creator/createShape - Set field: id; Value: 41a0525c-653e-49b8-899e-4f46deca5c20
+[line 219]	07 янв. 2021 14:38:49,169 [main] DEBUG Creator/createShape - Set field: id; Value: 41a0525c-653e-49b8-899e-4f46deca5c20
+[line 221]	07 янв. 2021 14:38:49,170 [main] DEBUG Creator/createShape - Set field: name; Value: Shape
+[line 223]	07 янв. 2021 14:38:49,199 [main] INFO  Creator/createShape - Created: Shape{style=Style{fillColor='transparent', boxShadow='', opacity=1, borderColor='transparent', borderRadius='0', borderWidth='0', borderStyle=none}, text='', figure=rectangle, id=41a0525c-653e-49b8-899e-4f46deca5c20, presentationId=236dfe50-7274-4ed6-a95e-d041a134569e, slideId=c5700435-a860-471d-97bf-ec042e179909, name=Shape, layout=Layout{x=0, y=0, width=100, height=100, rotation=0}}
+[line 35]	07 янв. 2021 14:38:49,200 [main] INFO  Result/<init> - { status: success, value: Shape{style=Style{fillColor='transparent', boxShadow='', opacity=1, borderColor='transparent', borderRadius='0', borderWidth='0', borderStyle=none}, text='', figure=rectangle, id=41a0525c-653e-49b8-899e-4f46deca5c20, presentationId=236dfe50-7274-4ed6-a95e-d041a134569e, slideId=c5700435-a860-471d-97bf-ec042e179909, name=Shape, layout=Layout{x=0, y=0, width=100, height=100, rotation=0}} }
+[line 226]	07 янв. 2021 14:38:49,202 [main] INFO  JDBCElementMethods/createShape - Create new shape: Shape{style=Style{fillColor='transparent', boxShadow='', opacity=1, borderColor='transparent', borderRadius='0', borderWidth='0', borderStyle=none}, text='', figure=rectangle, id=41a0525c-653e-49b8-899e-4f46deca5c20, presentationId=236dfe50-7274-4ed6-a95e-d041a134569e, slideId=c5700435-a860-471d-97bf-ec042e179909, name=Shape, layout=Layout{x=0, y=0, width=100, height=100, rotation=0}}
+[line 47]	07 янв. 2021 14:38:49,203 [main] DEBUG JDBCCommonMethods/getFilePath - path: D:/Универ/CourseProject/src/main/resources/data/test
+[line 51]	07 янв. 2021 14:38:49,204 [main] DEBUG JDBCCommonMethods/getFilePath - JDBC directory: D:\Универ\CourseProject\src\main\resources\data\test
+[line 52]	07 янв. 2021 14:38:49,204 [main] DEBUG JDBCCommonMethods/getFilePath - JDBC directory exists: true
+[line 60]	07 янв. 2021 14:38:49,205 [main] DEBUG JDBCCommonMethods/getFilePath - databasePath: jdbc:h2:D:/Универ/CourseProject/src/main/resources/data/test/jdbc/presitor
+[line 80]	07 янв. 2021 14:38:49,206 [main] INFO  JDBCCommonMethods/setConnection - Data base path: jdbc:h2:D:/Универ/CourseProject/src/main/resources/data/test/jdbc/presitor
+[line 266]	07 янв. 2021 14:38:49,209 [main] INFO  JDBCElementMethods/addShapeInSlide - add shape in slide
+[line 307]	07 янв. 2021 14:38:49,212 [main] DEBUG QueryBuilder/buildCreateShapeQuery - Query body: INSERT INTO %s %s VALUES %s
+[line 269]	07 янв. 2021 14:38:49,213 [main] DEBUG JDBCElementMethods/addShapeInSlide - Query string: INSERT INTO SHAPE (elementType, figure, id, layout, name, presentationId, slideId, style, text) VALUES ('shape', 'rectangle', '41a0525c-653e-49b8-899e-4f46deca5c20', 'Layout{x=0, y=0, width=100, height=100, rotation=0}', 'Shape', '236dfe50-7274-4ed6-a95e-d041a134569e', 'c5700435-a860-471d-97bf-ec042e179909', 'Style{fillColor=transparent, boxShadow=, opacity=1, borderColor=transparent, borderRadius=0, borderWidth=0, borderStyle=none}', '')
+[line 273]	07 янв. 2021 14:38:49,216 [main] INFO  JDBCElementMethods/addShapeInSlide - Execute result: 1
+[line 35]	07 янв. 2021 14:38:49,217 [main] INFO  Result/<init> - { status: success, value: Shape{style=Style{fillColor='transparent', boxShadow='', opacity=1, borderColor='transparent', borderRadius='0', borderWidth='0', borderStyle=none}, text='', figure=rectangle, id=41a0525c-653e-49b8-899e-4f46deca5c20, presentationId=236dfe50-7274-4ed6-a95e-d041a134569e, slideId=c5700435-a860-471d-97bf-ec042e179909, name=Shape, layout=Layout{x=0, y=0, width=100, height=100, rotation=0}} }
+[line 22]	07 янв. 2021 14:38:49,218 [main] DEBUG ArgsValidator/validate - [validate] Validate: [elementType]
+[line 24]	07 янв. 2021 14:38:49,219 [main] DEBUG ArgsValidator/validate - [validate] Null fields: []
+[line 25]	07 янв. 2021 14:38:49,220 [main] DEBUG ArgsValidator/validate - [validate] Null fields: []
+[line 35]	07 янв. 2021 14:38:49,220 [main] INFO  Result/<init> - { status: success, value:  }
+[line 22]	07 янв. 2021 14:38:49,221 [main] DEBUG ArgsValidator/validate - [validate] Validate: [presentationId, slideId]
+[line 24]	07 янв. 2021 14:38:49,222 [main] DEBUG ArgsValidator/validate - [validate] Null fields: []
+[line 25]	07 янв. 2021 14:38:49,222 [main] DEBUG ArgsValidator/validate - [validate] Null fields: []
+[line 35]	07 янв. 2021 14:38:49,223 [main] INFO  Result/<init> - { status: success, value:  }
+[line 88]	07 янв. 2021 14:38:49,223 [main] DEBUG JDBCPresentationMethods/getPresentationById - Attempt to get presentations
+[line 47]	07 янв. 2021 14:38:49,224 [main] DEBUG JDBCCommonMethods/getFilePath - path: D:/Универ/CourseProject/src/main/resources/data/test
+[line 51]	07 янв. 2021 14:38:49,225 [main] DEBUG JDBCCommonMethods/getFilePath - JDBC directory: D:\Универ\CourseProject\src\main\resources\data\test
+[line 52]	07 янв. 2021 14:38:49,225 [main] DEBUG JDBCCommonMethods/getFilePath - JDBC directory exists: true
+[line 60]	07 янв. 2021 14:38:49,226 [main] DEBUG JDBCCommonMethods/getFilePath - databasePath: jdbc:h2:D:/Универ/CourseProject/src/main/resources/data/test/jdbc/presitor
+[line 80]	07 янв. 2021 14:38:49,226 [main] INFO  JDBCCommonMethods/setConnection - Data base path: jdbc:h2:D:/Универ/CourseProject/src/main/resources/data/test/jdbc/presitor
+[line 94]	07 янв. 2021 14:38:49,232 [main] DEBUG JDBCPresentationMethods/getPresentationById - Build SQL Query 
+[line 215]	07 янв. 2021 14:38:49,233 [main] INFO  QueryBuilder/buildGetSingleInstanceQuery - Get instance: presentation
+Id: 
+[line 97]	07 янв. 2021 14:38:49,234 [main] DEBUG JDBCPresentationMethods/getPresentationById - SQL query: SELECT * FROM presentation WHERE id = '236dfe50-7274-4ed6-a95e-d041a134569e'
+[line 104]	07 янв. 2021 14:38:49,239 [main] INFO  JDBCPresentationMethods/getPresentationById - SQL exec result: rs62: org.h2.result.LocalResultImpl@63429932 columns: 4 rows: 1 pos: -1
+[line 367]	07 янв. 2021 14:38:49,240 [main] INFO  JDBCCommonMethods/parseResultSetToPresentation - Attempt to parse sql result set 
+[line 379]	07 янв. 2021 14:38:49,241 [main] DEBUG JDBCCommonMethods/parseResultSetToPresentation - Presentation: Presentation{id=236dfe50-7274-4ed6-a95e-d041a134569e, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}
+[line 35]	07 янв. 2021 14:38:49,242 [main] INFO  Result/<init> - { status: success, value: Presentation{id=236dfe50-7274-4ed6-a95e-d041a134569e, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'} }
+[line 100]	07 янв. 2021 14:38:49,243 [main] DEBUG JDBCSlideMethods/getSlideById - Attempt to get slide by id
+[line 47]	07 янв. 2021 14:38:49,244 [main] DEBUG JDBCCommonMethods/getFilePath - path: D:/Универ/CourseProject/src/main/resources/data/test
+[line 51]	07 янв. 2021 14:38:49,245 [main] DEBUG JDBCCommonMethods/getFilePath - JDBC directory: D:\Универ\CourseProject\src\main\resources\data\test
+[line 52]	07 янв. 2021 14:38:49,246 [main] DEBUG JDBCCommonMethods/getFilePath - JDBC directory exists: true
+[line 60]	07 янв. 2021 14:38:49,246 [main] DEBUG JDBCCommonMethods/getFilePath - databasePath: jdbc:h2:D:/Универ/CourseProject/src/main/resources/data/test/jdbc/presitor
+[line 80]	07 янв. 2021 14:38:49,247 [main] INFO  JDBCCommonMethods/setConnection - Data base path: jdbc:h2:D:/Универ/CourseProject/src/main/resources/data/test/jdbc/presitor
+[line 106]	07 янв. 2021 14:38:49,251 [main] DEBUG JDBCSlideMethods/getSlideById - Build SQL Query 
+[line 215]	07 янв. 2021 14:38:49,252 [main] INFO  QueryBuilder/buildGetSingleInstanceQuery - Get instance: slide
+Id: 
+[line 110]	07 янв. 2021 14:38:49,253 [main] DEBUG JDBCSlideMethods/getSlideById - SQL query: SELECT * FROM slide WHERE id = 'c5700435-a860-471d-97bf-ec042e179909'
+[line 117]	07 янв. 2021 14:38:49,256 [main] INFO  JDBCSlideMethods/getSlideById - SQL exec result rs71: org.h2.result.LocalResultImpl@c9d82f9 columns: 4 rows: 1 pos: -1
+[line 340]	07 янв. 2021 14:38:49,257 [main] INFO  JDBCCommonMethods/parseResultSetToSlide - Attempt to parse sql result set 
+[line 353]	07 янв. 2021 14:38:49,258 [main] DEBUG JDBCCommonMethods/parseResultSetToSlide - Slide: Slide{id=c5700435-a860-471d-97bf-ec042e179909, name='Slide', index=0, presentationId=236dfe50-7274-4ed6-a95e-d041a134569e}
+[line 35]	07 янв. 2021 14:38:49,259 [main] INFO  Result/<init> - { status: success, value: Slide{id=c5700435-a860-471d-97bf-ec042e179909, name='Slide', index=0, presentationId=236dfe50-7274-4ed6-a95e-d041a134569e} }
+[line 35]	07 янв. 2021 14:38:49,260 [main] INFO  Result/<init> - { status: success, value: {presentation=Presentation{id=236dfe50-7274-4ed6-a95e-d041a134569e, name='New presentation', fillColor='#ffffff', fontFamily='Roboto'}, slide=Slide{id=c5700435-a860-471d-97bf-ec042e179909, name='Slide', index=0, presentationId=236dfe50-7274-4ed6-a95e-d041a134569e}, fields=[presentationId, slideId]} }
+[line 347]	07 янв. 2021 14:38:49,261 [main] DEBUG JDBCElementMethods/removeSlideElement - Attempt to remove: shape
+[line 352]	07 янв. 2021 14:38:49,263 [main] DEBUG JDBCElementMethods/removeSlideElement - Query string: DELETE FROM shape WHERE id = '41a0525c-653e-49b8-899e-4f46deca5c20'
+[line 359]	07 янв. 2021 14:38:49,263 [main] INFO  JDBCElementMethods/removeSlideElement - Remove element
+[line 47]	07 янв. 2021 14:38:49,264 [main] DEBUG JDBCCommonMethods/getFilePath - path: D:/Универ/CourseProject/src/main/resources/data/test
+[line 51]	07 янв. 2021 14:38:49,265 [main] DEBUG JDBCCommonMethods/getFilePath - JDBC directory: D:\Универ\CourseProject\src\main\resources\data\test
+[line 52]	07 янв. 2021 14:38:49,266 [main] DEBUG JDBCCommonMethods/getFilePath - JDBC directory exists: true
+[line 60]	07 янв. 2021 14:38:49,268 [main] DEBUG JDBCCommonMethods/getFilePath - databasePath: jdbc:h2:D:/Универ/CourseProject/src/main/resources/data/test/jdbc/presitor
+[line 80]	07 янв. 2021 14:38:49,269 [main] INFO  JDBCCommonMethods/setConnection - Data base path: jdbc:h2:D:/Универ/CourseProject/src/main/resources/data/test/jdbc/presitor
+[line 35]	07 янв. 2021 14:38:49,278 [main] INFO  Result/<init> - { status: success, value: Element successfully removed  }
+[line 671]	07 янв. 2021 14:38:49,283 [main] INFO  DataProviderJDBCTest/removeSlideElementSuccess - { removeSlideElementSuccess } END
+[line 676]	07 янв. 2021 14:39:22,958 [main] INFO  DataProviderJDBCTest/removeSlideElementFail - { removeSlideElementFail } START
+[line 22]	07 янв. 2021 14:39:23,368 [main] DEBUG ArgsValidator/validate - [validate] Validate: [elementType]
+[line 24]	07 янв. 2021 14:39:23,371 [main] DEBUG ArgsValidator/validate - [validate] Null fields: []
+[line 25]	07 янв. 2021 14:39:23,372 [main] DEBUG ArgsValidator/validate - [validate] Null fields: []
+[line 35]	07 янв. 2021 14:39:23,376 [main] INFO  Result/<init> - { status: success, value:  }
+[line 22]	07 янв. 2021 14:39:23,377 [main] DEBUG ArgsValidator/validate - [validate] Validate: [presentationId, slideId]
+[line 24]	07 янв. 2021 14:39:23,379 [main] DEBUG ArgsValidator/validate - [validate] Null fields: []
+[line 25]	07 янв. 2021 14:39:23,380 [main] DEBUG ArgsValidator/validate - [validate] Null fields: []
+[line 35]	07 янв. 2021 14:39:23,381 [main] INFO  Result/<init> - { status: success, value:  }
+[line 88]	07 янв. 2021 14:39:23,386 [main] DEBUG JDBCPresentationMethods/getPresentationById - Attempt to get presentations
+[line 47]	07 янв. 2021 14:39:23,392 [main] DEBUG JDBCCommonMethods/getFilePath - path: D:/Универ/CourseProject/src/main/resources/data/test
+[line 51]	07 янв. 2021 14:39:23,394 [main] DEBUG JDBCCommonMethods/getFilePath - JDBC directory: D:\Универ\CourseProject\src\main\resources\data\test
+[line 52]	07 янв. 2021 14:39:23,395 [main] DEBUG JDBCCommonMethods/getFilePath - JDBC directory exists: true
+[line 60]	07 янв. 2021 14:39:23,397 [main] DEBUG JDBCCommonMethods/getFilePath - databasePath: jdbc:h2:D:/Универ/CourseProject/src/main/resources/data/test/jdbc/presitor
+[line 80]	07 янв. 2021 14:39:23,398 [main] INFO  JDBCCommonMethods/setConnection - Data base path: jdbc:h2:D:/Универ/CourseProject/src/main/resources/data/test/jdbc/presitor
+[line 94]	07 янв. 2021 14:39:23,902 [main] DEBUG JDBCPresentationMethods/getPresentationById - Build SQL Query 
+[line 215]	07 янв. 2021 14:39:23,913 [main] INFO  QueryBuilder/buildGetSingleInstanceQuery - Get instance: presentation
+Id: 
+[line 97]	07 янв. 2021 14:39:23,915 [main] DEBUG JDBCPresentationMethods/getPresentationById - SQL query: SELECT * FROM presentation WHERE id = '637e4486-69af-4de4-a367-337bf25e3991'
+[line 104]	07 янв. 2021 14:39:24,005 [main] INFO  JDBCPresentationMethods/getPresentationById - SQL exec result: rs8: org.h2.result.LocalResultImpl@60e9df3c columns: 4 rows: 0 pos: -1
+[line 367]	07 янв. 2021 14:39:24,008 [main] INFO  JDBCCommonMethods/parseResultSetToPresentation - Attempt to parse sql result set 
+[line 35]	07 янв. 2021 14:39:24,011 [main] INFO  Result/<init> - { status: error, value: Unable to find presentation  }
+[line 687]	07 янв. 2021 14:39:24,363 [main] INFO  DataProviderJDBCTest/removeSlideElementFail - { removeSlideElementSuccess } END

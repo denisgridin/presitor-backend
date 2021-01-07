@@ -109,7 +109,7 @@ public class DataProviderJDBC implements DataProvider {
 
     @Override
     public Result removeSlideElement(HashMap arguments) {
-        return null;
+        return JDBCElementMethods.removeSlideElement(arguments);
     }
 
     @Override
