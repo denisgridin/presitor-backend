@@ -11,6 +11,7 @@ import ru.sfedu.course_project.ConstantsInfo;
 import ru.sfedu.course_project.ConstantsError;
 import ru.sfedu.course_project.SQLQuery;
 import ru.sfedu.course_project.bean.*;
+import ru.sfedu.course_project.converters.FontConverter;
 import ru.sfedu.course_project.converters.LayoutConverter;
 import ru.sfedu.course_project.converters.StyleConverter;
 import ru.sfedu.course_project.enums.*;
@@ -186,6 +187,8 @@ public class JDBCCommonMethods {
             String slideId = resultSet.getString(5);
             String text = resultSet.getString(6);
             String id = resultSet.getString(7);
+            String font = resultSet.getString(8);
+
 
             Result resultParseLayout = parseLayout(layout);
             if (Status.error == resultParseLayout.getStatus()) {
@@ -194,6 +197,14 @@ public class JDBCCommonMethods {
 
             Layout parsedLayout = (Layout) resultParseLayout.getReturnValue();
 
+
+            Result resultParseFont = parseFont(font);
+            if (Status.error == resultParseFont.getStatus()) {
+                return resultParseFont;
+            }
+
+            Font parsedFont = (Font) resultParseFont.getReturnValue();
+
             content.setElementType(ElementType.valueOf(elementType));
             content.setId(UUID.fromString(id));
             content.setText(text);
@@ -201,6 +212,7 @@ public class JDBCCommonMethods {
             content.setSlideId(UUID.fromString(slideId));
             content.setLayout(parsedLayout);
             content.setName(name);
+            content.setFont(parsedFont);
 
             log.info("Content parsed: " + content);
 
@@ -260,6 +272,19 @@ public class JDBCCommonMethods {
             log.error(e);
             log.error(ConstantsError.SHAPE_GET);
             return new Result(Status.error, ConstantsError.SHAPE_GET);
+        }
+    }
+
+    private static Result parseFont (String value) {
+        log.debug("Parsing font: " + value);
+        try {
+            Result resultParse = FontConverter.convertFont(value);
+            log.debug("Font convert result: " + resultParse.getReturnValue());
+            return resultParse;
+        } catch (RuntimeException e) {
+            log.error(e);
+            log.error(ConstantsError.PARSE_LAYOUT);
+            return new Result(Status.error, ConstantsError.PARSE_LAYOUT);
         }
     }
 

@@ -11,6 +11,8 @@ public class SQLQuery {
     public static final String PRESENTATION_VALUES_SET = "name = '%s', fillColor = '%s', fontFamily = '%s'";
     public static final String SLIDE_VALUES_SET = "name = '%s', index = '%s'";
     public static final String COMMENT_VALUES_SET = "id = '%s', role = '%s', datetime = '%s', presentationId = '%s', text = '%s'";
+    public static final String SHAPE_VALUES_SET = "elementType ='%s', figure = '%s', id = '%s', layout = '%s', name = '%s', presentationId = '%s', slideId = '%s', style = '%s', text = '%s'";
+    public static final String CONTENT_VALUES_SET = "elementType = '%s', layout = '%s', name = '%s', presentationId = '%s', slideId = '%s', text = '%s', id = '%s', font = '%s'";
 
     public static final String CONDITION_ITEM_ID = "id = '%s'";
     public static final String CONDITION_SLIDE_ID = "slideId = '%s'";
@@ -26,5 +28,5 @@ public class SQLQuery {
     public static final String CREATE_COMMENT_TABLE = "CREATE TABLE IF NOT EXISTS COMMENT (id varchar(36), role varchar(200), datetime varchar(50), presentationId varchar(36), text varchar(200))";
     public static final String CREATE_ASSESSMENT_TABLE = "CREATE TABLE IF NOT EXISTS ASSESSMENT (id varchar(36), role varchar(200), presentationId varchar(36), mark varchar(20))";
     public static final String CREATE_SHAPE_TABLE = "CREATE TABLE IF NOT EXISTS SHAPE (elementType varchar(20), figure varchar(20), id varchar(36), layout varchar(200), name varchar(100), presentationId varchar(36), slideId varchar(36), style varchar(200), text varchar(500))";
-    public static final String CREATE_CONTENT_TABLE = "CREATE TABLE IF NOT EXISTS CONTENT (elementType varchar(20), layout varchar(200), name varchar(100), presentationId varchar(36), slideId varchar(36), text varchar(500), id varchar(36))";
+    public static final String CREATE_CONTENT_TABLE = "CREATE TABLE IF NOT EXISTS CONTENT (elementType varchar(20), layout varchar(200), name varchar(100), presentationId varchar(36), slideId varchar(36), text varchar(500), id varchar(36), font varchar(200))";
 }

@@ -67,4 +67,5 @@ public class ConstantsError {
 
     public static String PARSE_LAYOUT = "Unable to parse to Layout class from string ";
     public static String PARSE_STYLE = "Unable to parse to Style class from string ";
+    public static String PARSE_FONT = "Unable to parse to Font class from string ";
 }

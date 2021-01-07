@@ -2,16 +2,19 @@ package ru.sfedu.course_project.tools.jdbc;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import ru.sfedu.course_project.ConstantsError;
 import ru.sfedu.course_project.ConstantsInfo;
 import ru.sfedu.course_project.SQLQuery;
 import ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods;
 import ru.sfedu.course_project.bean.*;
-import ru.sfedu.course_project.enums.CollectionType;
-import ru.sfedu.course_project.enums.Method;
-import ru.sfedu.course_project.enums.QueryMember;
+import ru.sfedu.course_project.bean.FontCase;
+import ru.sfedu.course_project.converters.LayoutConverter;
+import ru.sfedu.course_project.enums.*;
+import ru.sfedu.course_project.tools.Result;
 import ru.sfedu.course_project.utils.ConfigurationUtil;
 import ru.sfedu.course_project.utils.ConstantsField;
 
+import java.awt.image.RescaleOp;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Optional;
@@ -49,23 +52,138 @@ public class QueryBuilder {
     private static <T> String buildUpdateMethod(QueryMember queryMember, T instance, HashMap args) {
         try {
             log.info("Building update method");
+            log.info("For: " + queryMember);
             switch (queryMember) {
                 case presentation: {
-                    log.info("For: " + queryMember);
                     return buildEditPresentationQuery(instance, args);
                 }
                 case slide: {
-                    log.info("For: " + queryMember);
                     return buildEditSlideQuery(instance, args);
                 }
                 case comment: {
-                    log.info("For: " + queryMember);
                     return buildEditCommentQuery(instance, args);
+                }
+                case shape: {
+                    return buildEditShapeQuery(instance, args);
+                }
+                case content: {
+                    return buildEditContentQuery(instance, args);
                 }
                 default: return "";
             }
         } catch (RuntimeException e) {
             e.printStackTrace();
+            log.error(e);
+            return "";
+        }
+    }
+
+    private static Layout updateLayout (Layout layout, HashMap args) {
+        String x = (String) args.getOrDefault(ConstantsField.X, String.valueOf(layout.getX()));
+        String y = (String) args.getOrDefault(ConstantsField.Y, String.valueOf(layout.getY()));
+        String width = (String) args.getOrDefault(ConstantsField.WIDTH, String.valueOf(layout.getWidth()));
+        String height = (String) args.getOrDefault(ConstantsField.HEIGHT, String.valueOf(layout.getHeight()));
+        String rotation = (String) args.getOrDefault(ConstantsField.ROTATION, String.valueOf(layout.getRotation()));
+
+        layout.setX(Integer.valueOf(x));
+        layout.setY(Integer.valueOf(y));
+        layout.setWidth(Integer.valueOf(width));
+        layout.setHeight(Integer.valueOf(height));
+        layout.setRotation(Integer.valueOf(rotation));
+
+        log.debug("Updated layout: " + layout);
+
+        return layout;
+    }
+
+    private static Font updateFont (Font font, HashMap args) {
+        String fontFamily = (String) args.getOrDefault(args.get(ConstantsField.FONT_FAMILY), font.getFontFamily());
+        String fontSize = (String) args.getOrDefault(args.get(ConstantsField.FONT_SIZE), font.getFontSize());
+        String fontCase = (String) args.getOrDefault(args.get(ConstantsField.FONT_CASE), String.valueOf(font.getFontCase()));
+        String letterSpacing = (String) args.getOrDefault(args.get(ConstantsField.LETTER_SPACING), font.getLetterSpacing());
+        String lineSpacing = (String) args.getOrDefault(args.get(ConstantsField.LINE_SPACING), font.getLineSpacing());
+
+        font.setFontFamily(fontFamily);
+        font.setFontCase(FontCase.valueOf(fontCase));
+        font.setFontSize(fontSize);
+        font.setLetterSpacing(letterSpacing);
+        font.setLineSpacing(lineSpacing);
+
+        return font;
+    }
+
+    private static Style updateStyle (Style style, HashMap args) {
+        String fillColor = (String) args.getOrDefault(ConstantsField.FILL_COLOR, style.getFillColor());
+        String boxShadow = (String) args.getOrDefault(ConstantsField.BOX_SHADOW, style.getBoxShadow());
+        String opacity = (String) args.getOrDefault(ConstantsField.OPACITY, style.getOpacity());
+        String borderColor = (String) args.getOrDefault(ConstantsField.BORDER_COLOR, style.getBorderColor());
+        String borderRadius = (String) args.getOrDefault(ConstantsField.BORDER_RADIUS, style.getBorderRadius());
+        String borderWidth = (String) args.getOrDefault(ConstantsField.BORDER_WIDTH, style.getBorderWidth());
+        String borderStyle = (String) args.getOrDefault(ConstantsField.BORDER_STYLE, style.getBorderStyle());
+
+        style.setFillColor(fillColor);
+        style.setBoxShadow(boxShadow);
+        style.setOpacity(opacity);
+        style.setBorderColor(borderColor);
+        style.setBorderRadius(borderRadius);
+        style.setBorderWidth(borderWidth);
+        style.setBorderStyle(BorderStyle.valueOf(borderStyle));
+        log.debug("Updated style: " + style);
+
+        return style;
+    }
+
+    private static <T> String buildEditContentQuery (T instance, HashMap args) {
+        try {
+            Content content = (Content) instance;
+            log.debug("Updating content: " + content);
+
+            Layout layout = updateLayout(content.getLayout(), args);
+            String layoutValue = layout.toString();
+
+            Font font = updateFont(content.getFont(), args);
+            String fontValue = font.toString().replace("'", "");;
+
+            String name = content.getName().replace("'", "");;
+            String presentationId = String.valueOf(content.getPresentationId());
+            String slideId = String.valueOf(content.getSlideId());
+            String id = String.valueOf(content.getId());
+            String text = content.getText().replace("'", "");
+            String elementType = String.valueOf(content.getElementType());
+
+            String values = String.format(SQLQuery.CONTENT_VALUES_SET, elementType, layoutValue, name, presentationId, slideId, text, id, fontValue);
+            String condition = String.format(SQLQuery.CONDITION_ITEM_ID, id);
+
+            return String.format(SQLQuery.RECORD_UPDATE, CollectionType.content, values, condition);
+        } catch (RuntimeException e) {
+            log.error(e);
+            return "";
+        }
+    }
+
+    private static <T> String buildEditShapeQuery (T instance, HashMap args) {
+        try {
+            Shape shape = (Shape) instance;
+            log.debug("Updating shape: " + shape);
+
+            Layout layout = updateLayout(shape.getLayout(), args);
+            Style style = updateStyle(shape.getStyle(), args);
+
+            String layoutValue = layout.toString();
+            String styleValue = style.toString().replace("'", "");;
+            String name = shape.getName().replace("'", "");;
+            String presentationId = String.valueOf(shape.getPresentationId());
+            String slideId = String.valueOf(shape.getSlideId());
+            String id = String.valueOf(shape.getId());
+            String text = shape.getText().replace("'", "");;
+            String elementType = String.valueOf(shape.getElementType());
+            String figure = String.valueOf(shape.getFigure());
+
+            String values = String.format(SQLQuery.SHAPE_VALUES_SET, elementType, figure, id, layoutValue, name, presentationId, slideId, styleValue, text);
+            String condition = String.format(SQLQuery.CONDITION_ITEM_ID, id);
+
+            return String.format(SQLQuery.RECORD_UPDATE, CollectionType.shape, values, condition);
+        } catch (RuntimeException e) {
             log.error(e);
             return "";
         }
@@ -271,10 +389,11 @@ public class QueryBuilder {
             String slideId = String.valueOf(content.getSlideId());
             String text = String.valueOf(content.getText());
             String id = String.valueOf(content.getId());
+            String font = String.valueOf(content.getFont()).replace("'", "");
 
-            String fields = "(elementType, layout, name, presentationId, slideId, text, id)";
-            String values = String.format("('%s', '%s', '%s', '%s', '%s', '%s', '%s')", elementType, layout, name, presentationId, slideId, text, id);
-            String table = String.valueOf(QueryMember.shape).toUpperCase();
+            String fields = "(elementType, layout, name, presentationId, slideId, text, id, font)";
+            String values = String.format("('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')", elementType, layout, name, presentationId, slideId, text, id, font);
+            String table = String.valueOf(QueryMember.content).toUpperCase();
 
             String queryBody = SQLQuery.RECORD_INSERT;
             log.debug("Query body: " + queryBody);

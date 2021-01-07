@@ -26,8 +26,6 @@ import java.util.HashMap;
 import java.util.Optional;
 import java.util.UUID;
 
-import static ru.sfedu.course_project.enums.CollectionType.presentation;
-import static ru.sfedu.course_project.enums.CollectionType.slide;
 
 public class JDBCElementMethods {
 
@@ -141,6 +139,116 @@ public class JDBCElementMethods {
             log.error(e);
             log.error(ConstantsError.ELEMENTS_GET);
             return new Result(Status.error, ConstantsError.ELEMENTS_GET);
+        }
+    }
+
+    public static Result getSlideElementById (HashMap args) {
+        try {
+            ArrayList elementFields = new ArrayList();
+            elementFields.add(ConstantsField.ELEMENT_TYPE);
+            elementFields.add(ConstantsField.ID);
+            Result isArgsValid = new ArgsValidator().validate(args, elementFields);
+            if (Status.error == isArgsValid.getStatus()) {
+                return isArgsValid;
+            }
+
+            log.debug("Check presentation and slide exist");
+            Result resultCheck = checkPresentationAndSlideExistance(args);
+            if (Status.error == resultCheck.getStatus()) {
+                return resultCheck;
+            }
+
+            HashMap resultValue = (HashMap) resultCheck.getReturnValue();
+
+            ArrayList fields = (ArrayList) resultValue.get("fields");
+
+
+            Slide slide = (Slide) resultValue.get("slide");
+
+            ElementType elementType = ElementType.valueOf((String) args.get(ConstantsField.ELEMENT_TYPE));
+
+            switch (elementType) {
+                case shape: {
+                    log.debug("Get slide shape");
+                    return getSlideShape(args);
+                }
+                case content: {
+                    log.debug("Get slide content");
+                    return getSlideContent(args);
+                }
+                default: {
+                    return new Result(Status.error, ConstantsError.ELEMENTS_GET);
+                }
+            }
+
+        } catch (RuntimeException e) {
+            log.error(e);
+            log.error(ConstantsError.ELEMENTS_GET);
+            return new Result(Status.error, ConstantsError.ELEMENTS_GET);
+        }
+    }
+
+    public static Result getSlideContent (HashMap args) {
+        try {
+            log.info("Get slide content");
+
+            Statement statement = JDBCCommonMethods.setConnection();
+
+            String conditionPresentation = String.format(SQLQuery.CONDITION_PRESENTATION_ID, args.get(ConstantsField.PRESENTATION_ID));
+            String conditionSlide = String.format(SQLQuery.CONDITION_SLIDE_ID, args.get(ConstantsField.SLIDE_ID));
+            String conditionId = String.format(SQLQuery.CONDITION_ITEM_ID, args.get(ConstantsField.ID));
+
+            String condition = String.format("%s and %s and %s", conditionPresentation, conditionSlide, conditionId);
+            String query = String.format(SQLQuery.RECORD_GET_WITH_CONDITION, QueryMember.content, condition);
+            log.info("Query string: " + query);
+
+            ResultSet resultSet = statement.executeQuery(query);
+
+            Result result = JDBCCommonMethods.getListFromResultSet(resultSet, QueryMember.content);
+            JDBCCommonMethods.closeConnection();
+            if (Status.error == result.getStatus()) {
+                return result;
+            }
+
+
+            ArrayList resultValue = (ArrayList) result.getReturnValue();
+            Content content = (Content) resultValue.get(0);
+            return new Result(Status.success, content);
+        } catch (RuntimeException | SQLException | IOException e) {
+            log.error(e);
+            return new Result(Status.error, ConstantsError.CONTENT_GET);
+        }
+    }
+
+    public static Result getSlideShape (HashMap args) {
+        try {
+            log.info("Get slide shapes");
+
+            Statement statement = JDBCCommonMethods.setConnection();
+
+            String conditionPresentation = String.format(SQLQuery.CONDITION_PRESENTATION_ID, args.get(ConstantsField.PRESENTATION_ID));
+            String conditionSlide = String.format(SQLQuery.CONDITION_SLIDE_ID, args.get(ConstantsField.SLIDE_ID));
+            String conditionId = String.format(SQLQuery.CONDITION_ITEM_ID, args.get(ConstantsField.ID));
+
+            String condition = String.format("%s and %s and %s", conditionPresentation, conditionSlide, conditionId);
+            String query = String.format(SQLQuery.RECORD_GET_WITH_CONDITION, QueryMember.shape, condition);
+            log.info("Query string: " + query);
+
+            ResultSet resultSet = statement.executeQuery(query);
+
+            Result result = JDBCCommonMethods.getListFromResultSet(resultSet, QueryMember.shape);
+            JDBCCommonMethods.closeConnection();
+            if (Status.error == result.getStatus()) {
+                return result;
+            }
+
+
+            ArrayList resultValue = (ArrayList) result.getReturnValue();
+            Shape shape = (Shape) resultValue.get(0);
+            return new Result(Status.success, shape);
+        } catch (RuntimeException | SQLException | IOException e) {
+            log.error(e);
+            return new Result(Status.error, ConstantsError.SHAPE_GET);
         }
     }
 
@@ -328,6 +436,7 @@ public class JDBCElementMethods {
 
             ArrayList elementFields = new ArrayList();
             elementFields.add(ConstantsField.ELEMENT_TYPE);
+            elementFields.add(ConstantsField.ID);
             Result isArgsValid = new ArgsValidator().validate(args, elementFields);
             if (Status.error == isArgsValid.getStatus()) {
                 return isArgsValid;
@@ -375,4 +484,61 @@ public class JDBCElementMethods {
             return new Result(Status.error, ConstantsError.ELEMENT_REMOVE);
         }
     }
+
+    public static Result editSlideElement (HashMap args) {
+        try {
+
+            ArrayList elementFields = new ArrayList();
+            elementFields.add(ConstantsField.ELEMENT_TYPE);
+            Result isArgsValid = new ArgsValidator().validate(args, elementFields);
+            if (Status.error == isArgsValid.getStatus()) {
+                return isArgsValid;
+            }
+
+            Result resultCheck = checkPresentationAndSlideExistance(args);
+            if (Status.error == resultCheck.getStatus()) {
+                return resultCheck;
+            }
+
+            HashMap returnValue = (HashMap) resultCheck.getReturnValue();
+
+            ArrayList fields = (ArrayList) returnValue.get("fields");
+
+            ElementType elementType = ElementType.valueOf((String) args.get(ConstantsField.ELEMENT_TYPE));
+            log.debug("Attempt to edit: " + elementType);
+            QueryMember queryMember = QueryMember.valueOf(String.valueOf(elementType));
+
+            Result resultGetElement = getSlideElementById(args);
+            if (Status.error == resultGetElement.getStatus()) {
+                return resultGetElement;
+            }
+
+            String query = QueryBuilder.build(Method.update, queryMember, resultGetElement.getReturnValue(), args);
+            log.debug("Query string: " + query);
+
+            if (query.isEmpty()) {
+                log.error(ConstantsError.SQL_ERROR);
+                return new Result(Status.error, ConstantsError.SQL_ERROR);
+            }
+
+            log.info("Update element");
+
+            Statement statement = JDBCCommonMethods.setConnection();
+
+            int resultRows = statement.executeUpdate(query);
+            JDBCCommonMethods.closeConnection();
+
+            if (resultRows > 0) {
+                return new Result(Status.success, ConstantsSuccess.ELEMENT_EDIT);
+            } else {
+                return new Result(Status.error, ConstantsError.ELEMENT_EDIT);
+            }
+
+        } catch (RuntimeException | SQLException | IOException e) {
+            log.error(e);
+            log.error(ConstantsError.ELEMENT_EDIT);
+            return new Result(Status.error, ConstantsError.ELEMENT_EDIT);
+        }
+    }
+
 }

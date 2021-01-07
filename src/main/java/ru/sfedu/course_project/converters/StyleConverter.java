@@ -21,7 +21,11 @@ public class StyleConverter extends AbstractBeanField  {
     @Override
     protected Object convert(String s) throws RuntimeException {
         Result result = convertStyle(s);
-        return result.getReturnValue();
+        if (Status.success == result.getStatus()) {
+            return result.getReturnValue();
+        } else {
+            return null;
+        }
     }
 
     public static Result convertStyle (String s) {

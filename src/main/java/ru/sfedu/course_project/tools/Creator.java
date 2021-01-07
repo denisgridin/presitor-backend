@@ -20,6 +20,7 @@ public class Creator {
     private static Logger log = LogManager.getLogger(Creator.class);
 
     public Result create (Class cl, HashMap args) {
+        log.debug("Creation arguments: " + args);
         String className = cl.getSimpleName().toLowerCase();
         switch (className) {
             case "presentation": {
@@ -260,7 +261,7 @@ public class Creator {
             content.setPresentationId(UUID.fromString((String) args.get(ConstantsField.PRESENTATION_ID)));
             log.debug(String.format(ConstantsInfo.FIELD_FORMAT_SET, ConstantsField.PRESENTATION_ID, args.get(ConstantsField.PRESENTATION_ID)));
 
-            ElementType elementType = ElementType.valueOf((String) args.get(ConstantsField.ELEMENT_TYPE));
+            ElementType elementType = ElementType.content;
             content.setElementType(elementType);
             log.debug(String.format(ConstantsInfo.FIELD_FORMAT_SET, ConstantsField.ELEMENT_TYPE, elementType));
 

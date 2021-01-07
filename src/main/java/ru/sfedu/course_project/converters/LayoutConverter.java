@@ -21,8 +21,12 @@ public class LayoutConverter extends AbstractBeanField  {
     @Override
     protected Object convert(String s) throws RuntimeException {
 
-        Result resultConvert = convertLayout(s);
-        return resultConvert.getReturnValue();
+        Result result = convertLayout(s);
+        if (Status.success == result.getStatus()) {
+            return result.getReturnValue();
+        } else {
+            return null;
+        }
     }
 
     public static Result convertLayout (String s) {

@@ -19,6 +19,7 @@ public class ArgsValidator {
     public static Logger log = LogManager.getLogger(ArgsValidator.class);
 
     public Result validate (HashMap args, List fields) {
+        log.debug("[validate] Validation arguments: " + args);
         log.debug("[validate] Validate: " + fields);
         ArrayList badFields = (ArrayList) fields.stream().filter(field -> args.get(field) == null).collect(Collectors.toList());
         log.debug("[validate] Null fields: " + badFields);

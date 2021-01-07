@@ -114,12 +114,12 @@ public class DataProviderJDBC implements DataProvider {
 
     @Override
     public Result editSlideElement(HashMap arguments) {
-        return null;
+        return JDBCElementMethods.editSlideElement(arguments);
     }
 
     @Override
     public Result getSlideElementById(HashMap arguments) {
-        return null;
+        return JDBCElementMethods.getSlideElementById(arguments);
     }
 
     @Override

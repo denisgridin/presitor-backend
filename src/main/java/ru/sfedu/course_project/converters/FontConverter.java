@@ -1,15 +1,17 @@
 package ru.sfedu.course_project.converters;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.opencsv.bean.AbstractBeanField;
 import com.opencsv.exceptions.CsvConstraintViolationException;
 import com.opencsv.exceptions.CsvDataTypeMismatchException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import ru.sfedu.course_project.Constants;
+import ru.sfedu.course_project.ConstantsError;
 import ru.sfedu.course_project.bean.Font;
 import ru.sfedu.course_project.bean.FontCase;
+import ru.sfedu.course_project.enums.Status;
 import ru.sfedu.course_project.tools.Helpers;
+import ru.sfedu.course_project.tools.Result;
 import ru.sfedu.course_project.utils.ConstantsField;
 
 import java.util.regex.Pattern;
@@ -19,6 +21,15 @@ public class FontConverter extends AbstractBeanField {
 
     @Override
     protected Object convert(String s) throws CsvDataTypeMismatchException, CsvConstraintViolationException {
+        Result result = convertFont(s);
+        if (Status.success == result.getStatus()) {
+            return result.getReturnValue();
+        } else {
+            return null;
+        }
+    }
+
+    public static Result convertFont (String s) {
         try {
             String familyRegExp = (String) Constants.FIELD_REGEXP.get(ConstantsField.FONT_FAMILY);
             String sizeRegExp = (String) Constants.FIELD_REGEXP.get(ConstantsField.FONT_SIZE);
@@ -48,11 +59,11 @@ public class FontConverter extends AbstractBeanField {
 
             log.debug("[FontConverter] font converted");
 
-            return font;
+            return new Result(Status.success, font);
         } catch (RuntimeException e) {
             log.error(e);
             e.printStackTrace();
-            return null;
+            return new Result(Status.error, ConstantsError.PARSE_FONT);
         }
     }
 }

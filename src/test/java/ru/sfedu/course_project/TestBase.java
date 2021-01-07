@@ -39,6 +39,77 @@ public class TestBase {
         return result;
     }
 
+    public HashMap getUpdatedContent (UUID id, UUID slideId, UUID presentationId) {
+        HashMap args = new HashMap();
+        args.put(ConstantsField.PRESENTATION_ID, String.valueOf(presentationId));
+        args.put(ConstantsField.SLIDE_ID, String.valueOf(slideId));
+        args.put(ConstantsField.ELEMENT_TYPE, String.valueOf(ElementType.shape));
+        args.put(ConstantsField.FIGURE, String.valueOf(Figure.square));
+
+        Content content = new Content();
+
+        content.setSlideId(slideId);
+        content.setPresentationId(presentationId);
+        ElementType elementType = ElementType.content;
+        content.setElementType(elementType);
+        Figure figure = Figure.rectangle;
+
+
+        Style style = new Style();
+        style.setBorderStyle(BorderStyle.dashed);
+        style.setBorderColor("#403221");
+        style.setFillColor("blue");
+        style.setBorderWidth("2px");
+        style.setBorderColor("yellow");
+        style.setBorderRadius("3px");
+        style.setBoxShadow("1px 2px 4px 2px blue");
+        style.setOpacity("23");
+
+        Layout layout = new Layout();
+        layout.setHeight(120);
+        layout.setWidth(420);
+        layout.setRotation(13);
+        layout.setX(132);
+        layout.setY(13);
+        content.setLayout(layout);
+
+        content.setId(id);
+
+        String name = "Test name";
+        content.setName(name);
+
+        String text = "Тестовый текст";
+        content.setText(text);
+
+        args.put(ConstantsField.TEXT, text);
+
+        args.put(ConstantsField.ELEMENT_TYPE, String.valueOf(elementType));
+        args.put(ConstantsField.FIGURE, String.valueOf(figure));
+
+        args.put(ConstantsField.STYLE, style);
+        args.put(ConstantsField.BORDER_STYLE ,String.valueOf(style.getBorderStyle()));
+        args.put(ConstantsField.BORDER_COLOR ,style.getBorderColor());
+        args.put(ConstantsField.FILL_COLOR ,style.getFillColor());
+        args.put(ConstantsField.BORDER_RADIUS ,style.getBorderRadius());
+        args.put(ConstantsField.BORDER_WIDTH ,style.getBorderWidth());
+        args.put(ConstantsField.BOX_SHADOW ,style.getBoxShadow());
+        args.put(ConstantsField.OPACITY ,style.getOpacity());
+
+        args.put(ConstantsField.X, String.valueOf(layout.getX()));
+        args.put(ConstantsField.Y, String.valueOf(layout.getY()));
+        args.put(ConstantsField.ROTATION, String.valueOf(layout.getRotation()));
+        args.put(ConstantsField.WIDTH, String.valueOf(layout.getWidth()));
+        args.put(ConstantsField.HEIGHT, String.valueOf(layout.getHeight()));
+
+        args.put(ConstantsField.ID, String.valueOf(id));
+        args.put(ConstantsField.NAME, name);
+
+        HashMap data = new HashMap();
+        data.put("args", args);
+        data.put("content", content);
+        return data;
+    }
+
     public HashMap getUpdatedShape (UUID id, UUID slideId, UUID presentationId) {
         HashMap args = new HashMap();
         args.put(ConstantsField.PRESENTATION_ID, String.valueOf(presentationId));
@@ -139,7 +210,13 @@ public class TestBase {
         makeSlideWithId(provider, slideId, presentationId);
 
 
-        Result resultCreateContent = new Creator().create(Content.class, args);
+        HashMap params = new HashMap ();
+        params.put(ConstantsField.PRESENTATION_ID, String.valueOf(presentationId));
+        params.put(ConstantsField.SLIDE_ID, String.valueOf(slideId));
+        params.put(ConstantsField.ID, String.valueOf(id));
+        params.put(ConstantsField.ELEMENT_TYPE, String.valueOf(ElementType.content));
+
+        Result resultCreateContent = new Creator().create(Content.class, params);
         Result result = provider.addElementInSlide(args);
         assertTrue(Status.success == result.getStatus());
 
