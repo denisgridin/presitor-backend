@@ -585,4 +585,27 @@ public class DataProviderJDBCTest extends TestBase {
         log.info("{ getPresentationMarks } END");
     }
 
+    @Test
+    void getSlideElementsSuccess () {
+        log.info("{ getSlideElementsSuccess } START");
+
+        UUID presentationId = UUID.randomUUID();
+        UUID slideId = UUID.randomUUID();
+        UUID id = UUID.randomUUID();
+        makeRectangleWithId(provider, id, slideId, presentationId);
+
+        HashMap args = new HashMap();
+        args.put(ConstantsField.ID, String.valueOf(id));
+        args.put(ConstantsField.PRESENTATION_ID, String.valueOf(presentationId));
+        args.put(ConstantsField.SLIDE_ID, String.valueOf(slideId));
+
+        Result resultGet = provider.getSlideElements(args);
+
+        assertEquals(Status.success, resultGet.getStatus());
+        ArrayList list = (ArrayList) resultGet.getReturnValue();
+        assertTrue(!list.isEmpty());
+
+        log.info("{ getSlideElementsSuccess } END");
+    }
+
 }

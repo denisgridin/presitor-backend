@@ -63,4 +63,7 @@ public class ConstantsError {
 
     public static String SQL_PARSE = "Unable to parse sql result set ";
     public static String SQL_ERROR = "SQL error ";
+
+    public static String PARSE_LAYOUT = "Unable to parse to Layout class from string ";
+    public static String PARSE_STYLE = "Unable to parse to Style class from string ";
 }

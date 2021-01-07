@@ -4,9 +4,12 @@ import com.opencsv.bean.AbstractBeanField;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import ru.sfedu.course_project.Constants;
+import ru.sfedu.course_project.ConstantsError;
 import ru.sfedu.course_project.enums.BorderStyle;
 import ru.sfedu.course_project.bean.Style;
+import ru.sfedu.course_project.enums.Status;
 import ru.sfedu.course_project.tools.Helpers;
+import ru.sfedu.course_project.tools.Result;
 import ru.sfedu.course_project.utils.ConstantsField;
 
 import java.util.regex.Pattern;
@@ -17,6 +20,11 @@ public class StyleConverter extends AbstractBeanField  {
 
     @Override
     protected Object convert(String s) throws RuntimeException {
+        Result result = convertStyle(s);
+        return result.getReturnValue();
+    }
+
+    public static Result convertStyle (String s) {
         try {
 
             String fillColorRegExp = (String) Constants.FIELD_REGEXP.get(ConstantsField.FILL_COLOR);
@@ -57,11 +65,12 @@ public class StyleConverter extends AbstractBeanField  {
 
             log.debug("[StyleConverter] style converted");
 
-            return style;
+            return new Result(Status.success, style);
         } catch (RuntimeException e) {
             log.error(e);
             e.printStackTrace();
-            return null;
+            log.error(ConstantsError.PARSE_STYLE);
+            return new Result(Status.error, ConstantsError.PARSE_STYLE);
         }
     }
 }

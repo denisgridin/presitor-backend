@@ -4,5 +4,7 @@ public enum QueryMember {
     presentation,
     slide,
     comment,
-    assessment
+    assessment,
+    shape,
+    content
 }

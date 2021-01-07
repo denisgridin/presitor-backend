@@ -5,10 +5,7 @@ import com.opencsv.exceptions.CsvDataTypeMismatchException;
 import com.opencsv.exceptions.CsvRequiredFieldEmptyException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import ru.sfedu.course_project.api.jdbc.JDBCAssessmentMethod;
-import ru.sfedu.course_project.api.jdbc.JDBCCommentMethods;
-import ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods;
-import ru.sfedu.course_project.api.jdbc.JDBCSlideMethods;
+import ru.sfedu.course_project.api.jdbc.*;
 import ru.sfedu.course_project.bean.Presentation;
 import ru.sfedu.course_project.tools.Result;
 
@@ -95,8 +92,19 @@ public class DataProviderJDBC implements DataProvider {
     }
 
     @Override
+    public Result rateByMark(HashMap arguments) {
+        return JDBCAssessmentMethod.rateByMark(arguments);
+    }
+
+    @Override
+    public Result getPresentationMarks(HashMap arguments) {
+        return JDBCAssessmentMethod.getPresentationMarks(arguments);
+    }
+
+
+    @Override
     public Result addElementInSlide(HashMap arguments) {
-        return null;
+        return JDBCElementMethods.addElementInSlide(arguments);
     }
 
     @Override
@@ -116,16 +124,6 @@ public class DataProviderJDBC implements DataProvider {
 
     @Override
     public Result getSlideElements(HashMap arguments) {
-        return null;
-    }
-
-    @Override
-    public Result rateByMark(HashMap arguments) {
-        return JDBCAssessmentMethod.rateByMark(arguments);
-    }
-
-    @Override
-    public Result getPresentationMarks(HashMap arguments) {
-        return JDBCAssessmentMethod.getPresentationMarks(arguments);
+        return JDBCElementMethods.getSlideElements(arguments);
     }
 }

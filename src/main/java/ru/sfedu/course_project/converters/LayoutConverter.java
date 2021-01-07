@@ -4,8 +4,12 @@ import com.opencsv.bean.AbstractBeanField;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import ru.sfedu.course_project.Constants;
+import ru.sfedu.course_project.ConstantsError;
 import ru.sfedu.course_project.bean.Layout;
+import ru.sfedu.course_project.enums.Status;
 import ru.sfedu.course_project.tools.Helpers;
+import ru.sfedu.course_project.tools.Result;
+import ru.sfedu.course_project.utils.ConstantsField;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -16,13 +20,18 @@ public class LayoutConverter extends AbstractBeanField  {
 
     @Override
     protected Object convert(String s) throws RuntimeException {
-        try {
 
-            String widthRegExp = (String) Constants.FIELD_REGEXP.get("width");
-            String heightRegExp = (String) Constants.FIELD_REGEXP.get("height");
-            String xRegExp = (String) Constants.FIELD_REGEXP.get("x");
-            String yRegExp = (String) Constants.FIELD_REGEXP.get("y");
-            String rotationRegExp = (String) Constants.FIELD_REGEXP.get("rotation");
+        Result resultConvert = convertLayout(s);
+        return resultConvert.getReturnValue();
+    }
+
+    public static Result convertLayout (String s) {
+        try {
+            String widthRegExp = (String) Constants.FIELD_REGEXP.get(ConstantsField.WIDTH);
+            String heightRegExp = (String) Constants.FIELD_REGEXP.get(ConstantsField.HEIGHT);
+            String xRegExp = (String) Constants.FIELD_REGEXP.get(ConstantsField.X);
+            String yRegExp = (String) Constants.FIELD_REGEXP.get(ConstantsField.Y);
+            String rotationRegExp = (String) Constants.FIELD_REGEXP.get(ConstantsField.ROTATION);
 
             Pattern widthPattern = Pattern.compile(widthRegExp);
             Pattern heightPattern = Pattern.compile(heightRegExp);
@@ -30,11 +39,11 @@ public class LayoutConverter extends AbstractBeanField  {
             Pattern xPattern = Pattern.compile(xRegExp);
             Pattern yPattern = Pattern.compile(yRegExp);
 
-            String width = Helpers.getFieldFromMather(widthPattern, s, "width");
-            String height = Helpers.getFieldFromMather(heightPattern, s, "height");
-            String x = Helpers.getFieldFromMather(xPattern, s, "x");
-            String y = Helpers.getFieldFromMather(yPattern, s, "y");
-            String rotation = Helpers.getFieldFromMather(rotationPattern, s, "rotation");
+            String width = Helpers.getFieldFromMather(widthPattern, s, ConstantsField.WIDTH);
+            String height = Helpers.getFieldFromMather(heightPattern, s, ConstantsField.HEIGHT);
+            String x = Helpers.getFieldFromMather(xPattern, s, ConstantsField.X);
+            String y = Helpers.getFieldFromMather(yPattern, s, ConstantsField.Y);
+            String rotation = Helpers.getFieldFromMather(rotationPattern, s, ConstantsField.ROTATION);
 
             Layout layout = new Layout();
 
@@ -46,11 +55,11 @@ public class LayoutConverter extends AbstractBeanField  {
 
             log.debug("[LayoutConverter] layout converted");
 
-            return layout;
+            return new Result(Status.success, layout);
         } catch (RuntimeException e) {
             log.error(e);
             e.printStackTrace();
-            return null;
+            return new Result(Status.error, ConstantsError.PARSE_LAYOUT);
         }
     }
 }

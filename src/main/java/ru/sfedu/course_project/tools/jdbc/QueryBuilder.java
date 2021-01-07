@@ -5,10 +5,7 @@ import org.apache.logging.log4j.Logger;
 import ru.sfedu.course_project.ConstantsInfo;
 import ru.sfedu.course_project.SQLQuery;
 import ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods;
-import ru.sfedu.course_project.bean.Assessment;
-import ru.sfedu.course_project.bean.Comment;
-import ru.sfedu.course_project.bean.Presentation;
-import ru.sfedu.course_project.bean.Slide;
+import ru.sfedu.course_project.bean.*;
 import ru.sfedu.course_project.enums.CollectionType;
 import ru.sfedu.course_project.enums.Method;
 import ru.sfedu.course_project.enums.QueryMember;
@@ -224,10 +221,40 @@ public class QueryBuilder {
                 case assessment: {
                     return buildCreateAssessmentQuery(instance);
                 }
+                case shape: {
+                    return buildCreateShapeQuery(instance);
+                }
                 default: return "";
             }
         } catch (RuntimeException e) {
             e.printStackTrace();
+            log.error(e);
+            return "";
+        }
+    }
+
+    private static <T> String buildCreateShapeQuery (T instance) {
+        try {
+            Shape shape = (Shape) instance;
+
+            String elementType = String.valueOf(shape.getElementType());
+            String figure = String.valueOf(shape.getFigure());
+            String layout = String.valueOf(shape.getLayout());
+            String name = shape.getName();
+            String presentationId = String.valueOf(shape.getPresentationId());
+            String slideId = String.valueOf(shape.getSlideId());
+            String style = String.valueOf(shape.getStyle()).replace("'", "");
+            String text = String.valueOf(shape.getText());
+            String id = String.valueOf(shape.getId());
+
+            String fields = "(elementType, figure, id, layout, name, presentationId, slideId, style, text)";
+            String values = String.format("('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')", elementType, figure, id, layout, name, presentationId, slideId, style, text);
+            String table = String.valueOf(QueryMember.shape).toUpperCase();
+
+            String queryBody = SQLQuery.RECORD_INSERT;
+            log.debug("Query body: " + queryBody);
+            return String.format(queryBody, table, fields, values);
+        } catch (RuntimeException e) {
             log.error(e);
             return "";
         }

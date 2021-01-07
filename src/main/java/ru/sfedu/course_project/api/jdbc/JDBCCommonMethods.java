@@ -10,10 +10,9 @@ import ru.sfedu.course_project.Constants;
 import ru.sfedu.course_project.ConstantsInfo;
 import ru.sfedu.course_project.ConstantsError;
 import ru.sfedu.course_project.SQLQuery;
-import ru.sfedu.course_project.bean.Assessment;
-import ru.sfedu.course_project.bean.Comment;
-import ru.sfedu.course_project.bean.Presentation;
-import ru.sfedu.course_project.bean.Slide;
+import ru.sfedu.course_project.bean.*;
+import ru.sfedu.course_project.converters.LayoutConverter;
+import ru.sfedu.course_project.converters.StyleConverter;
 import ru.sfedu.course_project.enums.*;
 import ru.sfedu.course_project.tools.Creator;
 import ru.sfedu.course_project.tools.Result;
@@ -95,6 +94,7 @@ public class JDBCCommonMethods {
             statement.execute(SQLQuery.CREATE_SLIDE_TABLE); // create table if not exist
             statement.execute(SQLQuery.CREATE_COMMENT_TABLE); // create table if not exist
             statement.execute(SQLQuery.CREATE_ASSESSMENT_TABLE); // create table if not exist
+            statement.execute(SQLQuery.CREATE_SHAPE_TABLE); // create table if not exist
 
 //            statement.execute(SQLQuery.CREATE_SCHEMA);
             return statement;
@@ -171,6 +171,80 @@ public class JDBCCommonMethods {
         } catch (RuntimeException e){
             log.error(e);
             return new Result(Status.error, ConstantsError.INSTANCE_GET);
+        }
+    }
+
+    public static Result parseResultSetToShape (ResultSet resultSet) {
+        try {
+            Shape shape = new Shape();
+
+            String elementType = resultSet.getString(1);
+            String figure = resultSet.getString(2);
+            String id = resultSet.getString(3);
+            String layout = resultSet.getString(4);
+            String name = resultSet.getString(5);
+            String presentationId = resultSet.getString(6);
+            String slideId = resultSet.getString(7);
+            String style = resultSet.getString(8);
+            String text = resultSet.getString(9);
+
+            Result resultParseLayout = parseLayout(layout);
+            if (Status.error == resultParseLayout.getStatus()) {
+                return resultParseLayout;
+            }
+
+            Layout parsedLayout = (Layout) resultParseLayout.getReturnValue();
+
+
+            Result resultParseStyle = parseStyle(style);
+            if (Status.error == resultParseStyle.getStatus()) {
+                return resultParseStyle;
+            }
+
+            Style parsedStyle = (Style) resultParseStyle.getReturnValue();
+
+            shape.setElementType(ElementType.valueOf(elementType));
+            shape.setFigure(Figure.valueOf(figure));
+            shape.setId(UUID.fromString(id));
+            shape.setText(text);
+            shape.setPresentationId(UUID.fromString(presentationId));
+            shape.setSlideId(UUID.fromString(slideId));
+            shape.setLayout(parsedLayout);
+            shape.setStyle(parsedStyle);
+            shape.setName(name);
+
+            log.info("Shape parsed: " + shape);
+
+            return new Result(Status.success, shape);
+
+        } catch (RuntimeException | SQLException e) {
+            log.error(e);
+            log.error(ConstantsError.SHAPE_GET);
+            return new Result(Status.error, ConstantsError.SHAPE_GET);
+        }
+    }
+
+    private static Result parseLayout (String value) {
+        try {
+            Result resultParse = LayoutConverter.convertLayout(value);
+            log.debug("Layout convert result: " + resultParse.getReturnValue());
+            return resultParse;
+        } catch (RuntimeException e) {
+            log.error(e);
+            log.error(ConstantsError.PARSE_LAYOUT);
+            return new Result(Status.error, ConstantsError.PARSE_LAYOUT);
+        }
+    }
+
+    private static Result parseStyle (String value) {
+        try {
+            Result resultParse = StyleConverter.convertStyle(value);
+            log.debug("Style convert result: " + resultParse.getReturnValue());
+            return resultParse;
+        } catch (RuntimeException e) {
+            log.error(e);
+            log.error(ConstantsError.PARSE_STYLE);
+            return new Result(Status.error, ConstantsError.PARSE_STYLE);
         }
     }
 
@@ -297,6 +371,10 @@ public class JDBCCommonMethods {
                     }
                     case assessment: {
                         currentResult = parseResultSetToAssessment(resultSet);
+                        break;
+                    }
+                    case shape: {
+                        currentResult = parseResultSetToShape(resultSet);
                         break;
                     }
                 }
