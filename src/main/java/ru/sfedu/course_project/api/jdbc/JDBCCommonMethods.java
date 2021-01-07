@@ -95,6 +95,7 @@ public class JDBCCommonMethods {
             statement.execute(SQLQuery.CREATE_COMMENT_TABLE); // create table if not exist
             statement.execute(SQLQuery.CREATE_ASSESSMENT_TABLE); // create table if not exist
             statement.execute(SQLQuery.CREATE_SHAPE_TABLE); // create table if not exist
+            statement.execute(SQLQuery.CREATE_CONTENT_TABLE); // create table if not exist
 
 //            statement.execute(SQLQuery.CREATE_SCHEMA);
             return statement;
@@ -171,6 +172,44 @@ public class JDBCCommonMethods {
         } catch (RuntimeException e){
             log.error(e);
             return new Result(Status.error, ConstantsError.INSTANCE_GET);
+        }
+    }
+
+    public static Result parseResultSetToContent (ResultSet resultSet) {
+        try {
+            Content content = new Content();
+
+            String elementType = resultSet.getString(1);
+            String layout = resultSet.getString(2);
+            String name = resultSet.getString(3);
+            String presentationId = resultSet.getString(4);
+            String slideId = resultSet.getString(5);
+            String text = resultSet.getString(6);
+            String id = resultSet.getString(7);
+
+            Result resultParseLayout = parseLayout(layout);
+            if (Status.error == resultParseLayout.getStatus()) {
+                return resultParseLayout;
+            }
+
+            Layout parsedLayout = (Layout) resultParseLayout.getReturnValue();
+
+            content.setElementType(ElementType.valueOf(elementType));
+            content.setId(UUID.fromString(id));
+            content.setText(text);
+            content.setPresentationId(UUID.fromString(presentationId));
+            content.setSlideId(UUID.fromString(slideId));
+            content.setLayout(parsedLayout);
+            content.setName(name);
+
+            log.info("Content parsed: " + content);
+
+            return new Result(Status.success, content);
+
+        } catch (RuntimeException | SQLException e) {
+            log.error(e);
+            log.error(ConstantsError.CONTENT_GET);
+            return new Result(Status.error, ConstantsError.CONTENT_GET);
         }
     }
 
@@ -375,6 +414,10 @@ public class JDBCCommonMethods {
                     }
                     case shape: {
                         currentResult = parseResultSetToShape(resultSet);
+                        break;
+                    }
+                    case content: {
+                        currentResult = parseResultSetToContent(resultSet);
                         break;
                     }
                 }

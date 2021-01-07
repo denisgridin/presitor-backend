@@ -11,6 +11,7 @@ import ru.sfedu.course_project.api.DataProvider;
 import ru.sfedu.course_project.api.DataProviderJDBC;
 import ru.sfedu.course_project.bean.Presentation;
 import ru.sfedu.course_project.bean.Slide;
+import ru.sfedu.course_project.enums.ElementType;
 import ru.sfedu.course_project.enums.Role;
 import ru.sfedu.course_project.enums.Status;
 import ru.sfedu.course_project.tools.Result;
@@ -607,5 +608,37 @@ public class DataProviderJDBCTest extends TestBase {
 
         log.info("{ getSlideElementsSuccess } END");
     }
+
+    @Test
+    void addContentInSlideSuccess() {
+        log.info("{ addContentInSlideSuccess } START");
+        UUID presentationId = UUID.randomUUID();
+        UUID slideId = UUID.randomUUID();
+        UUID id = UUID.randomUUID();
+        HashMap args = new HashMap();
+        args.put(ConstantsField.PRESENTATION_ID, String.valueOf(presentationId));
+        args.put(ConstantsField.SLIDE_ID, String.valueOf(slideId));
+        args.put(ConstantsField.ELEMENT_TYPE, String.valueOf(ElementType.content));
+        args.put(ConstantsField.ID, String.valueOf(id));
+
+        makeContentWithId(provider, id, slideId, presentationId, args);
+
+        Result resultRemove = provider.removeSlideElement(args);
+
+        log.info("{ addContentInSlideSuccess } END");
+    }
+
+    @Test
+    void addContentInSlideContentSuccess() {
+        log.info("{ addContentInSlideContentSuccess } START");
+        UUID presentationId = UUID.randomUUID();
+        UUID slideId = UUID.randomUUID();
+        UUID id = UUID.randomUUID();
+
+        makeCustomContent(provider, id, slideId, presentationId);
+
+        log.info("{ addContentInSlideContentSuccess } END");
+    }
+
 
 }

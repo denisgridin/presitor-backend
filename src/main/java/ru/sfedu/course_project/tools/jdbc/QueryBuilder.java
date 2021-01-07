@@ -224,10 +224,38 @@ public class QueryBuilder {
                 case shape: {
                     return buildCreateShapeQuery(instance);
                 }
+                case content: {
+                    return buildCreateContentQuery(instance);
+                }
                 default: return "";
             }
         } catch (RuntimeException e) {
             e.printStackTrace();
+            log.error(e);
+            return "";
+        }
+    }
+
+    private static <T> String buildCreateContentQuery (T instance) {
+        try {
+            Content content = (Content) instance;
+
+            String elementType = String.valueOf(content.getElementType());
+            String layout = String.valueOf(content.getLayout());
+            String name = content.getName();
+            String presentationId = String.valueOf(content.getPresentationId());
+            String slideId = String.valueOf(content.getSlideId());
+            String text = String.valueOf(content.getText());
+            String id = String.valueOf(content.getId());
+
+            String fields = "(elementType, layout, name, presentationId, slideId, text, id)";
+            String values = String.format("('%s', '%s', '%s', '%s', '%s', '%s', '%s')", elementType, layout, name, presentationId, slideId, text, id);
+            String table = String.valueOf(QueryMember.shape).toUpperCase();
+
+            String queryBody = SQLQuery.RECORD_INSERT;
+            log.debug("Query body: " + queryBody);
+            return String.format(queryBody, table, fields, values);
+        } catch (RuntimeException e) {
             log.error(e);
             return "";
         }

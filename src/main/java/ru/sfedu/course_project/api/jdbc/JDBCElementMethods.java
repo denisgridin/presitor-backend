@@ -8,16 +8,13 @@ import ru.sfedu.course_project.ConstantsInfo;
 import ru.sfedu.course_project.SQLQuery;
 import ru.sfedu.course_project.api.xml.XMLCommonMethods;
 import ru.sfedu.course_project.api.xml.XMLElementMethods;
-import ru.sfedu.course_project.bean.Presentation;
-import ru.sfedu.course_project.bean.Shape;
-import ru.sfedu.course_project.bean.Slide;
+import ru.sfedu.course_project.bean.*;
 import ru.sfedu.course_project.enums.*;
 import ru.sfedu.course_project.tools.ArgsValidator;
 import ru.sfedu.course_project.tools.Creator;
 import ru.sfedu.course_project.tools.Result;
 import ru.sfedu.course_project.tools.jdbc.QueryBuilder;
 import ru.sfedu.course_project.utils.ConstantsField;
-import ru.sfedu.course_project.bean.Element;
 
 import java.io.IOException;
 import java.sql.ResultSet;
@@ -72,16 +69,16 @@ public class JDBCElementMethods {
                     }
                     return createShape(args);
                 }
-//                case content: {
-//                    log.info("Content creating");
-//                    ArrayList contentFields = new ArrayList();
-//                    contentFields.add(ConstantsField.TEXT);
-//                    Result isContentArgsValid = new ArgsValidator().validate(args, fields);
-//                    if (Status.error == isContentArgsValid.getStatus()) {
-//                        return isContentArgsValid;
-//                    }
-//                    return createContent(args);
-//                }
+                case content: {
+                    log.info("Content creating");
+                    ArrayList contentFields = new ArrayList();
+                    contentFields.add(ConstantsField.TEXT);
+                    Result isContentArgsValid = new ArgsValidator().validate(args, fields);
+                    if (Status.error == isContentArgsValid.getStatus()) {
+                        return isContentArgsValid;
+                    }
+                    return createContent(args);
+                }
                 default: {
                     return new Result(Status.error, ConstantsError.FIGURE_UNDEFINED);
                 }
@@ -116,13 +113,26 @@ public class JDBCElementMethods {
             if (Status.error == resultGetShapes.getStatus()) {
                 return resultGetShapes;
             }
-
             ArrayList<Shape> shapes = (ArrayList<Shape>) resultGetShapes.getReturnValue();
             log.debug("Slide shapes: " + shapes);
 
+
+
+
+            log.debug("Get slide contents");
+            Result resultGetContents = getSlideContents(slide);
+            if (Status.error == resultGetContents.getStatus()) {
+                return resultGetContents;
+            }
+            ArrayList<Content> contents = (ArrayList<Content>) resultGetContents.getReturnValue();
+            log.debug("Slide contents: " + shapes);
+
+
+
             ArrayList<Element> elements = new ArrayList<>();
-            log.debug("Slide elements: " + elements);
             elements.addAll(shapes);
+            elements.addAll(contents);
+            log.debug("Slide elements: " + elements);
 
             return new Result(Status.success, elements);
 
@@ -130,6 +140,32 @@ public class JDBCElementMethods {
             log.error(e);
             log.error(ConstantsError.ELEMENTS_GET);
             return new Result(Status.error, ConstantsError.ELEMENTS_GET);
+        }
+    }
+
+    public static Result getSlideContents (Slide slide) {
+        try {
+            log.info("Get slide contents");
+
+            Statement statement = JDBCCommonMethods.setConnection();
+
+            UUID slideId = slide.getId();
+            String conditionPresentation = String.format(SQLQuery.CONDITION_PRESENTATION_ID, slide.getPresentationId());
+            String conditionSlide = String.format(SQLQuery.CONDITION_SLIDE_ID, slideId);
+
+            String condition = String.format("%s and %s", conditionPresentation, conditionSlide);
+            String query = String.format(SQLQuery.RECORD_GET_WITH_CONDITION, QueryMember.content, condition);
+            log.info("Query string: " + query);
+
+            ResultSet resultSet = statement.executeQuery(query);
+
+            Result result = JDBCCommonMethods.getListFromResultSet(resultSet, QueryMember.content);
+
+            JDBCCommonMethods.closeConnection();
+            return result;
+        } catch (RuntimeException | SQLException | IOException e) {
+            log.error(e);
+            return new Result(Status.error, e);
         }
     }
 
@@ -159,6 +195,24 @@ public class JDBCElementMethods {
         }
     }
 
+    public static Result createContent (HashMap args) {
+        try {
+            Result resultCreateContent = new Creator().create(Content.class, args);
+            if (Status.error == resultCreateContent.getStatus()) {
+                return resultCreateContent;
+            }
+
+            Content content = (Content) resultCreateContent.getReturnValue();
+            log.info("Create new content: " + content);
+
+            return addContentInSlide(content);
+        } catch (RuntimeException e) {
+            log.error(e);
+            log.error(ConstantsError.CONTENT_CREATE);
+            return new Result(Status.error, ConstantsError.CONTENT_CREATE);
+        }
+    }
+
 
     public static Result createShape (HashMap args) {
         try {
@@ -175,6 +229,31 @@ public class JDBCElementMethods {
             log.error(e);
             log.error(ConstantsError.SHAPE_CREATE);
             return new Result(Status.error, ConstantsError.SHAPE_CREATE);
+        }
+    }
+
+    private static Result addContentInSlide (Content content) {
+        try {
+
+            Statement statement = JDBCCommonMethods.setConnection();
+
+            log.info("add content in slide");
+
+            String query = QueryBuilder.build(Method.create, QueryMember.content, content, null);
+            log.debug("Query string: " + query);
+
+            int insertResult = statement.executeUpdate(query);
+            JDBCCommonMethods.closeConnection();
+            log.info("Execute result: " + insertResult);
+            if (insertResult > 0) {
+                return new Result(Status.success, content);
+            } else {
+                return new Result(Status.error, ConstantsError.CONTENT_CREATE);
+            }
+        } catch (RuntimeException | IOException | SQLException e) {
+            log.error(e);
+            log.error(ConstantsError.CONTENT_CREATE);
+            return new Result(Status.error, ConstantsError.CONTENT_CREATE);
         }
     }
 
