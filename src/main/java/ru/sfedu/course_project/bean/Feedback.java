@@ -1,15 +1,11 @@
 package ru.sfedu.course_project.bean;
 
-import com.opencsv.bean.CsvBindByName;
 import com.opencsv.bean.CsvCustomBindByName;
-import ru.sfedu.course_project.api.DataProviderCSV;
 import ru.sfedu.course_project.converters.RoleConverter;
 import ru.sfedu.course_project.converters.UUIDConverter;
 import ru.sfedu.course_project.enums.Role;
 import ru.sfedu.course_project.utils.ConstantsField;
 
-import java.io.Serializable;
-import java.util.Objects;
 import java.util.UUID;
 
 public abstract class Feedback {

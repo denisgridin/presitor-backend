@@ -190,7 +190,7 @@ public class CSVPresentationMethods {
             Status statusWriteContents = CSVCommonMethods.writeCollection(allContents, Content.class, CollectionType.content);
             log.info("Contents wrote");
 
-            return new Result(Status.success, ConstantsSuccess.PRESENTATION_CREATE);
+            return new Result(Status.success, id);
 
         } catch (RuntimeException e) {
             log.error(e);

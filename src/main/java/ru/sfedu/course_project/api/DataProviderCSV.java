@@ -1,12 +1,7 @@
 package ru.sfedu.course_project.api;
 
-import com.opencsv.exceptions.CsvDataTypeMismatchException;
-import com.opencsv.exceptions.CsvRequiredFieldEmptyException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import ru.sfedu.course_project.ConstantsError;
-import ru.sfedu.course_project.ConstantsInfo;
-import ru.sfedu.course_project.ConstantsSuccess;
 import ru.sfedu.course_project.api.csv.*;
 import ru.sfedu.course_project.bean.*;
 import ru.sfedu.course_project.enums.CollectionType;
@@ -15,11 +10,6 @@ import ru.sfedu.course_project.tools.*;
 
 import java.io.IOException;
 import java.util.*;
-import java.util.stream.Collectors;
-
-import ru.sfedu.course_project.utils.ConstantsField;
-
-import static ru.sfedu.course_project.enums.CollectionType.*;
 
 public class DataProviderCSV implements DataProvider {
     private static Logger log = LogManager.getLogger(DataProviderCSV.class);
@@ -29,29 +19,6 @@ public class DataProviderCSV implements DataProvider {
     public String getName () {
         return "CSV";
     }
-
-
-//    @Override
-//    public <T> Status addCollectionRecord (T record, UUID id) {
-//        try {
-//            String collectionType = record.getClass().getName().toLowerCase();
-//            List itemsList = getCollection(CollectionType.valueOf(collectionType), record.getClass()).orElse(new ArrayList());
-//            itemsList.add(record);
-//            Status result = writeCollection(itemsList, record.getClass());
-//            if (result == Status.success) {
-//                log.info(String.format("[addCollectionRecord] Item was successfully added: %s %s", collectionType, id));
-//                return Status.success;
-//            } else {
-//                log.error("[addCollectionRecord] Unable to create presentation");
-//                return Status.error;
-//            }
-//        } catch (RuntimeException e) {
-//            e.printStackTrace();
-//            log.error(e);
-//            log.error("[addCollectionRecord] Unable to add collection record ");
-//            return Status.error;
-//        }
-//    }
 
 
     ///                      Presentations section                          \\\

@@ -35,7 +35,8 @@ public class JDBCCommonMethods {
         try {
             String dataPath = System.getProperty("dataPath");
 
-            String root = System.getProperty("user.dir");
+//            String root = System.getProperty("user.dir");
+            String root = ".";
             String database = String.format("/%s/%s", ConfigurationUtil.getConfigurationEntry(Constants.DATABASE_CATALOG), ConfigurationUtil.getConfigurationEntry(Constants.DATABASE_NAME));
             String protocol = ConfigurationUtil.getConfigurationEntry(Constants.DATABASE_PROTOCOL);
             String path = String.format("%s/%s", root, dataPath, database).replace("\\", "/");

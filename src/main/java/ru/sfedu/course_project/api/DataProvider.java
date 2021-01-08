@@ -1,19 +1,11 @@
 package ru.sfedu.course_project.api;
 
-import com.opencsv.exceptions.CsvDataTypeMismatchException;
-import com.opencsv.exceptions.CsvRequiredFieldEmptyException;
 import ru.sfedu.course_project.tools.Result;
 
 import java.io.IOException;
 import java.util.HashMap;
 
 public interface DataProvider {
-//    public String getName();
-//    public <T> Optional<List> getCollection (CollectionType collectionType, Class cl);
-//    public <T> Status writeCollection(List list, Class cl, CollectionType collectionType);
-//    public <T> Boolean isIdInUse (String id, List<T> list, CollectionType collectionType);
-//    public Status removeRecordById (CollectionType collectionType, Class cl, UUID id);
-//    public Optional getInstanceById (Class cl, CollectionType collectionType, HashMap arguments);
 
     public Result createPresentation (HashMap arguments);
     public Result getPresentations ();

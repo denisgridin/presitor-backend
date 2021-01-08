@@ -22,7 +22,7 @@ public enum ApiEndpoint {
     removeSlideElement,
     editSlideElement,
     getSlideElementById,
-    getSlideElement,
+    getSlideElements,
 
     rateByMark,
     getPresentationMarks,

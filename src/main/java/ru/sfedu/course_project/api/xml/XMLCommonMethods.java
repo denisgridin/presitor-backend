@@ -36,7 +36,8 @@ public class XMLCommonMethods {
                     collectionType,
                     ConfigurationUtil.getConfigurationEntry(FILE_EXTENTION));
 
-            String root = System.getProperty("user.dir");
+//            String root = System.getProperty("user.dir");
+            String root = ".";
             String path = (root + filePath).replace("\\", "/");
             log.debug("path: " + path );
 

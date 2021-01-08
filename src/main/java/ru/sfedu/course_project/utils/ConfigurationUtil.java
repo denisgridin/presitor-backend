@@ -1,5 +1,7 @@
 package ru.sfedu.course_project.utils;
 
+import ru.sfedu.course_project.Constants;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -14,6 +16,7 @@ import java.util.Properties;
  */
 public class ConfigurationUtil {
 
+    private static final String CUSTOM_CONFIG_PATH = System.getProperty(Constants.CUSTOM_CONFIG_PATH);
     private static final String DEFAULT_CONFIG_PATH = "./src/main/resources/enviroment.properties";
     private static final Properties configuration = new Properties();
     /**
@@ -34,7 +37,12 @@ public class ConfigurationUtil {
      * @throws IOException In case of the configuration file read failure
      */
     private static void loadConfiguration() throws IOException{
-        File nf = new File(DEFAULT_CONFIG_PATH);
+        File nf;
+        if (CUSTOM_CONFIG_PATH != null) {
+            nf = new File(CUSTOM_CONFIG_PATH);
+        } else {
+            nf = new File(DEFAULT_CONFIG_PATH);
+        }
         InputStream in = new FileInputStream(nf);// DEFAULT_CONFIG_PATH.getClass().getResourceAsStream(DEFAULT_CONFIG_PATH);
         try {
             configuration.load(in);

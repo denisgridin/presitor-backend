@@ -2,16 +2,12 @@ package ru.sfedu.course_project.tools;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import ru.sfedu.course_project.Main;
-import ru.sfedu.course_project.enums.Instance;
 import ru.sfedu.course_project.enums.Status;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class ArgsValidator {
     public ArgsValidator () { }

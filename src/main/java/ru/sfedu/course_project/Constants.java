@@ -9,6 +9,9 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class Constants {
+
+    public static final String CUSTOM_CONFIG_PATH = "environmentFile";
+
     public static final String SOURCE = ConstantsField.NAME;
     public static final String CSV_PATH="csv_path";
     public static final String UUID_REGEXP="uuid_regexp";
@@ -78,9 +81,19 @@ public class Constants {
 
 
     public final static List<String> PUBLIC_METHODS = Arrays.asList(new String[]{
-            "getPresentationById",
             "getPresentations",
-            "commentPresentation"
+            "getPresentationById",
+
+            "getPresentationSlides",
+            "getSlideById",
+
+            "getPresentationComments",
+            "commentPresentation",
+
+            "getSlideElementById",
+            "getSlideElement",
+            "rateByMark",
+            "getPresentationMarks",
     });
 
     public final static String MSG_SUCCESS_RESULT = "[%s] Result: %s";

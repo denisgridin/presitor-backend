@@ -46,28 +46,26 @@ public class Runner {
                         case editPresentationOptions: {
                             return provider.editPresentationOptions(arguments);
                         }
-
-
-                        case createPresentationSlide: {
-                            return provider.createPresentationSlide(arguments);
-                        }
                         case getPresentationSlides: {
                             return provider.getPresentationSlides(arguments);
                         }
-                        case getSlideById: {
-                            return provider.getSlideById(arguments);
-                        }
-                        case editPresentationSlideById: {
-                            return provider.editPresentationSlideById(arguments);
+                        case createPresentationSlide: {
+                            return provider.createPresentationSlide(arguments);
                         }
                         case removePresentationSlideById: {
                             return provider.removePresentationSlideById(arguments);
                         }
-                        case commentPresentation: {
-                            return provider.commentPresentation(arguments);
+                        case editPresentationSlideById: {
+                            return provider.editPresentationSlideById(arguments);
+                        }
+                        case getSlideById: {
+                            return provider.getSlideById(arguments);
                         }
                         case getPresentationComments: {
                             return provider.getPresentationComments(arguments);
+                        }
+                        case commentPresentation: {
+                            return provider.commentPresentation(arguments);
                         }
                         case editPresentationComment: {
                             return provider.editPresentationComment(arguments);
@@ -75,7 +73,6 @@ public class Runner {
                         case removePresentationComment: {
                             return provider.removePresentationComment(arguments);
                         }
-
                         case addElementInSlide: {
                             return provider.addElementInSlide(arguments);
                         }
@@ -85,15 +82,28 @@ public class Runner {
                         case editSlideElement: {
                             return provider.editSlideElement(arguments);
                         }
+                        case getSlideElementById: {
+                            return provider.getSlideElementById(arguments);
+                        }
+                        case getSlideElements: {
+                            return provider.getSlideElements(arguments);
+                        }
+                        case rateByMark: {
+                            return provider.rateByMark(arguments);
+                        }
+                        case getPresentationMarks: {
+                            return provider.getPresentationMarks(arguments);
+                        }
                         default:
                             return new Result(Status.error, ConstantsError.UNEXPECTED_METHOD + method);
                     }
                 } catch (RuntimeException e) {
+                    log.error(e);
                     log.error(ConstantsError.UNEXPECTED_METHOD);
                     return new Result(Status.error, ConstantsError.UNEXPECTED_METHOD);
                 }
             } else {
-                return new Result(Status.error, ConstantsError.UNEXPECTED_METHOD);
+                return new Result(Status.error, ConstantsError.ACCESS_DENIED);
             }
         } catch (RuntimeException | IOException e) {
             e.printStackTrace();

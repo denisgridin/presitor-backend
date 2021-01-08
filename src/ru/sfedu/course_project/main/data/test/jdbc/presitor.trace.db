@@ -1,4 +1,0 @@
-2021-01-06 12:31:26 jdbc[3]: exception
-org.h2.jdbc.JdbcSQLSyntaxErrorException: Таблица "PRESENTATIONS" не найдена
-Table "PRESENTATIONS" not found; SQL statement:
-SELECT * FROM PRESITOR.PUBLIC.presentations [42102-200]

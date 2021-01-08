@@ -18,6 +18,12 @@ public class Main {
     public static Logger log = LogManager.getLogger(Main.class);
     public static void main(String[] args) throws RuntimeException {
         try {
+
+            log.debug("log4j2 configuratoion file " + System.getProperty("log4j2.configurationFile"));
+
+            log.debug("Custom config path name: " + Constants.CUSTOM_CONFIG_PATH);
+            log.debug("Custom config path: " + System.getProperty(Constants.CUSTOM_CONFIG_PATH));
+
             System.setProperty("dataBasePath", ConfigurationUtil.getConfigurationEntry("database_path"));
             System.setProperty("dataPath", ConfigurationUtil.getConfigurationEntry("dataPath"));
             List<String> arguments = Arrays.asList(args);
@@ -35,18 +41,28 @@ public class Main {
         } catch (RuntimeException | IOException e) {
             e.printStackTrace();
             log.error(e);
-            log.error("Error in main function");
+            log.error(ConstantsError.MAIN_ERROR);
+            System.out.println(ConstantsError.MAIN_ERROR);
         }
     }
 
     private static HashMap<String, String> parseParameters (List args) {
         try {
             HashMap params = new HashMap();
+            params.put("datatype", args.get(0));
+            params.put("method", args.get(1));
+
+            log.debug("Default params: " + params);
+
             args.stream().forEach(el -> {
-                List <String> items = Arrays.asList(el.toString().split("="));
-                params.put(items.get(0), items.get(1));
+                if (el.toString().indexOf("=") >= 1) {
+                    List <String> items = Arrays.asList(el.toString().split("="));
+                    log.debug("Set parameter: " + items.get(0));
+                    params.put(items.get(0), items.get(1));
+                }
             });
-            if (params.get("role") != null && params.get("method") != null && params.get("datatype") != null) {
+            log.debug("Parameters: " + params);
+            if (null != params.get("role") && null != params.get("method") && null != params.get("datatype")) {
                 return params;
             } else {
                 log.error("One or more command line parameters was not provided: role, method, datatype!"); // TODO return error exception

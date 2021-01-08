@@ -2,25 +2,15 @@ package ru.sfedu.course_project.tools.jdbc;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import ru.sfedu.course_project.ConstantsError;
 import ru.sfedu.course_project.ConstantsInfo;
 import ru.sfedu.course_project.SQLQuery;
-import ru.sfedu.course_project.api.jdbc.JDBCPresentationMethods;
 import ru.sfedu.course_project.bean.*;
 import ru.sfedu.course_project.bean.FontCase;
-import ru.sfedu.course_project.converters.LayoutConverter;
 import ru.sfedu.course_project.enums.*;
-import ru.sfedu.course_project.tools.Result;
-import ru.sfedu.course_project.utils.ConfigurationUtil;
 import ru.sfedu.course_project.utils.ConstantsField;
 
-import java.awt.image.RescaleOp;
 import java.util.HashMap;
-import java.util.Locale;
-import java.util.Optional;
 import java.util.UUID;
-
-import static ru.sfedu.course_project.enums.Method.create;
 
 public class QueryBuilder {
     public QueryBuilder() { }

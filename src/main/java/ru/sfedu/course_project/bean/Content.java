@@ -3,7 +3,6 @@ package ru.sfedu.course_project.bean;
 import com.opencsv.bean.CsvBindByName;
 import com.opencsv.bean.CsvCustomBindByName;
 import ru.sfedu.course_project.converters.FontConverter;
-import ru.sfedu.course_project.converters.StyleConverter;
 
 import java.io.Serializable;
 

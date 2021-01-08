@@ -12,6 +12,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import ru.sfedu.course_project.Constants;
 import ru.sfedu.course_project.ConstantsError;
+import ru.sfedu.course_project.ConstantsSuccess;
 import ru.sfedu.course_project.bean.*;
 import ru.sfedu.course_project.enums.CollectionType;
 import ru.sfedu.course_project.enums.Status;
@@ -31,13 +32,14 @@ public class CSVCommonMethods {
     private static String getFilePath (CollectionType collectionType) {
         try {
             String dataPath = System.getProperty("dataPath");
-            String filePath = String.format("/%s/%s/%s.%s",
+            String filePath = String.format("/%s%s/%s.%s",
                     System.getProperty("dataPath"),
                     ConfigurationUtil.getConfigurationEntry(FILE_EXTENTION),
                     collectionType,
                     ConfigurationUtil.getConfigurationEntry(FILE_EXTENTION));
 
-            String root = System.getProperty("user.dir");
+//            String root = System.getProperty("user.dir");
+            String root = ".";
             String path = (root + filePath).replace("\\", "/");
             log.debug("path: " + path );
 
@@ -206,7 +208,7 @@ public class CSVCommonMethods {
             }
             Status status = writeCollection(updatedCollection, cls, collectionType);
             log.debug("[updateRecordInCollection] Update status: " + status);
-            return new Result(status, "");
+            return new Result(status, ConstantsSuccess.EDIT_ITEM + collectionType);
         } catch (RuntimeException e) {
             log.error(e);
             return new Result(Status.error, ConstantsError.INSTANCE_UPDATE);

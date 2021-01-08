@@ -1,12 +1,9 @@
 package ru.sfedu.course_project.api;
 
 
-import com.opencsv.exceptions.CsvDataTypeMismatchException;
-import com.opencsv.exceptions.CsvRequiredFieldEmptyException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import ru.sfedu.course_project.api.jdbc.*;
-import ru.sfedu.course_project.bean.Presentation;
 import ru.sfedu.course_project.tools.Result;
 
 import java.io.IOException;
