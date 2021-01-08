@@ -375,28 +375,28 @@ public class DataProviderJDBCTest extends TestBase {
         }
     }
 
-    @Test
-    void getPresentationCommentsSuccess2 () {
-        try {
-            HashMap args = new HashMap();
-            args.put(ConstantsField.PRESENTATION_ID, "73b4b915-7e3f-4185-967b-c6a06b4cfe32");
-            args.put(ConstantsField.TEXT, "Тестовый текст");
-            args.put(ConstantsField.ROLE, String.valueOf(Role.guest));
-            UUID presentationId = UUID.fromString("73b4b915-7e3f-4185-967b-c6a06b4cfe32");
-
-            Result resultCommentPresentation = provider.commentPresentation(args);
-            Result resultGetPresentationComments = provider.getPresentationComments(args);
-            assertTrue(resultGetPresentationComments.getStatus() == Status.success);
-            assertTrue(resultCommentPresentation.getStatus() == Status.success);
-
-            ArrayList comments = (ArrayList) resultGetPresentationComments.getReturnValue();
-            assertTrue(comments.size() > 0);
-        } catch (RuntimeException e) {
-            log.error(e);
-            e.printStackTrace();
-            fail();
-        }
-    }
+//    @Test
+//    void getPresentationCommentsSuccess2 () {
+//        try {
+//            HashMap args = new HashMap();
+//            args.put(ConstantsField.PRESENTATION_ID, "73b4b915-7e3f-4185-967b-c6a06b4cfe32");
+//            args.put(ConstantsField.TEXT, "Тестовый текст");
+//            args.put(ConstantsField.ROLE, String.valueOf(Role.guest));
+//            UUID presentationId = UUID.fromString("73b4b915-7e3f-4185-967b-c6a06b4cfe32");
+//
+//            Result resultCommentPresentation = provider.commentPresentation(args);
+//            Result resultGetPresentationComments = provider.getPresentationComments(args);
+//            assertTrue(resultGetPresentationComments.getStatus() == Status.success);
+//            assertTrue(resultCommentPresentation.getStatus() == Status.success);
+//
+//            ArrayList comments = (ArrayList) resultGetPresentationComments.getReturnValue();
+//            assertTrue(comments.size() > 0);
+//        } catch (RuntimeException e) {
+//            log.error(e);
+//            e.printStackTrace();
+//            fail();
+//        }
+//    }
 
     @Test
     void commentPresentationSuccess() {
@@ -423,23 +423,23 @@ public class DataProviderJDBCTest extends TestBase {
             fail();
         }
     }
-
-    @Test
-    void commentPresentationSuccess2() {
-        try {
-            HashMap args = new HashMap();
-            args.put(ConstantsField.PRESENTATION_ID, "73b4b915-7e3f-4185-967b-c6a06b4cfe32");
-            args.put(ConstantsField.TEXT, "Тестовый текст test");
-            args.put(ConstantsField.ROLE, String.valueOf(Role.guest));
-            Result resultCommentPresentation = provider.commentPresentation(args);
-
-            assertTrue(Status.success == resultCommentPresentation.getStatus());
-        } catch (RuntimeException e) {
-            log.error(e);
-            e.printStackTrace();
-            fail();
-        }
-    }
+//
+//    @Test
+//    void commentPresentationSuccess2() {
+//        try {
+//            HashMap args = new HashMap();
+//            args.put(ConstantsField.PRESENTATION_ID, "73b4b915-7e3f-4185-967b-c6a06b4cfe32");
+//            args.put(ConstantsField.TEXT, "Тестовый текст test");
+//            args.put(ConstantsField.ROLE, String.valueOf(Role.guest));
+//            Result resultCommentPresentation = provider.commentPresentation(args);
+//
+//            assertTrue(Status.success == resultCommentPresentation.getStatus());
+//        } catch (RuntimeException e) {
+//            log.error(e);
+//            e.printStackTrace();
+//            fail();
+//        }
+//    }
 
     @Test
     void commentPresentationFail() {

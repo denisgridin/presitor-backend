@@ -226,20 +226,7 @@ public class XMLPresentationMethods {
             Presentation presentation = optionalPresentation.get();
 
 
-            if (slideId.isPresent()) {
-                HashMap paramsGetSlide = new HashMap();
-                paramsGetSlide.put("presentationId", arguments.get("id"));
-                paramsGetSlide.put("id", slideId.get());
-                Result resultGetSlide = XMLSlideMethods.getSlideById(paramsGetSlide);
-                if (resultGetSlide.getStatus() == Status.success) {
-                    ArrayList slides = new ArrayList();
-                    slides.add(resultGetSlide.getReturnValue());
-                    presentation.setSlides(slides);
-
-                } else {
-                    return resultGetSlide;
-                }
-            } else if (withSlides) {
+            if (withSlides) {
                 HashMap paramsGetSlides = new HashMap();
                 paramsGetSlides.put("presentationId", arguments.get("id"));
                 Result resultGetSlides = XMLSlideMethods.getPresentationSlides(paramsGetSlides);

@@ -59,7 +59,11 @@ public class CSVAssessmentMethods {
 
             log.info(ConstantsInfo.ASSESSMENTS_GET);
             ArrayList<Assessment> assessments = (ArrayList<Assessment>) CSVCommonMethods.getCollection(CollectionType.assessment, Assessment.class).orElse(new ArrayList());
-            Assessment assessment = (Assessment) resultCreate.getReturnValue();
+            Optional resultValue = (Optional) resultCreate.getReturnValue();
+            if (!resultValue.isPresent()) {
+                return new Result(Status.success, ConstantsError.ASSESSMENT_ADD_ERROR);
+            }
+            Assessment assessment = (Assessment) resultValue.get();
             assessments.add(assessment);
 
             Status statusWrite = CSVCommonMethods.writeCollection(assessments, Assessment.class, CollectionType.assessment);

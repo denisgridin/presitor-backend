@@ -2,7 +2,6 @@ package ru.sfedu.course_project.api;
 
 import com.opencsv.exceptions.CsvDataTypeMismatchException;
 import com.opencsv.exceptions.CsvRequiredFieldEmptyException;
-import org.apache.commons.collections4.multimap.HashSetValuedHashMap;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.Test;
@@ -87,24 +86,32 @@ public class DataProviderCSVTest extends TestBase {
 
     @Test
     void getPresentationWithOptionsSuccess () {
+        UUID presentationId = UUID.randomUUID();
+
+        makePresentationWithId(provider, presentationId);
+
+
         HashMap args = new HashMap();
-        args.put(ConstantsField.ID, String.valueOf(presentatioId));
+        args.put(ConstantsField.ID, String.valueOf(presentationId));
         args.put(ConstantsField.WITH_SLIDES, "true");
         args.put(ConstantsField.WITH_ELEMENTS, "true");
+        args.put(ConstantsField.WITH_COMMENTS, "true");
+        args.put(ConstantsField.WITH_MARKS, "true");
 
         Result result = provider.getPresentationById(args);
 
         assertTrue(Status.success == result.getStatus());
     }
-    @Test
-    void createPresentationFromTemplateSuccess () {
-        HashMap args = new HashMap();
-        args.put(ConstantsField.TEMPLATE_ID, String.valueOf(presentatioId));
 
-        Result result = provider.createPresentation(args);
-
-        assertTrue(Status.success == result.getStatus());
-    }
+//    @Test
+//    void createPresentationFromTemplateSuccess () {
+//        HashMap args = new HashMap();
+//        args.put(ConstantsField.TEMPLATE_ID, String.valueOf(presentatioId));
+//
+//        Result result = provider.createPresentation(args);
+//
+//        assertTrue(Status.success == result.getStatus());
+//    }
 
     @Test
     void getPresentationByIdSuccess() {
@@ -825,8 +832,14 @@ public class DataProviderCSVTest extends TestBase {
     void getPresentationMarksSuccess() {
         log.info("{ getPresentationMarksSuccess } START");
 
+        UUID presentationId = UUID.randomUUID();
+        makePresentationWithId(provider, presentationId);
+
         HashMap args = new HashMap();
-        args.put(ConstantsField.PRESENTATION_ID, String.valueOf(presentatioId));
+        args.put(ConstantsField.PRESENTATION_ID, String.valueOf(presentationId));
+        args.put(ConstantsField.MARK, "bed");
+        Result resultRate = provider.rateByMark(args);
+
         Result result = provider.getPresentationMarks(args);
 
         assertTrue(Status.success == result.getStatus());
@@ -868,15 +881,18 @@ public class DataProviderCSVTest extends TestBase {
         try {
             DataProvider provider = new DataProviderCSV();
 
-            UUID id = presentatioId;
-//            Result createResult = makePresentationWithId(provider, id);
+            UUID id = UUID.randomUUID();
 
-//            if (createResult.getStatus() == Status.success) {
-//            }
-            HashMap args = new HashMap();
-            args.put(ConstantsField.ID, String.valueOf(id));
-            Result removeResult = provider.removePresentationById(args);
-            assertEquals(removeResult.getStatus(), Status.success);
+            Result createResult = makePresentationWithId(provider, id);
+
+            if (createResult.getStatus() == Status.success) {
+                HashMap args = new HashMap();
+                args.put(ConstantsField.ID, String.valueOf(id));
+                Result removeResult = provider.removePresentationById(args);
+                assertEquals(removeResult.getStatus(), Status.success);
+            } else {
+                fail();
+            }
 
         } catch (IOException e) {
             e.printStackTrace();

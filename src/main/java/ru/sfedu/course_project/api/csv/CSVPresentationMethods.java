@@ -10,6 +10,7 @@ import ru.sfedu.course_project.ConstantsInfo;
 import ru.sfedu.course_project.ConstantsSuccess;
 import ru.sfedu.course_project.ConstantsError;
 import ru.sfedu.course_project.api.DataProviderCSV;
+import ru.sfedu.course_project.api.jdbc.JDBCAssessmentMethod;
 import ru.sfedu.course_project.bean.*;
 import ru.sfedu.course_project.enums.CollectionType;
 import ru.sfedu.course_project.enums.ElementType;
@@ -268,6 +269,20 @@ public class CSVPresentationMethods {
                     presentation.setComments((ArrayList) resultGetComments.getReturnValue());
                 } else {
                     return resultGetComments;
+                }
+            }
+
+            if (withMarks) {
+                HashMap paramsGetMarks = new HashMap();
+                paramsGetMarks.put(ConstantsField.PRESENTATION_ID, arguments.get(ConstantsField.ID));
+                log.debug("[getPresentationById] get presentation marks: " + paramsGetMarks.get(ConstantsField.ID));
+
+                Result resultGetMarks = CSVAssessmentMethods.getPresentationMarks(paramsGetMarks);
+
+                if (Status.success == resultGetMarks.getStatus()) {
+                    presentation.setMarks((HashMap) resultGetMarks.getReturnValue());
+                } else {
+                    return resultGetMarks;
                 }
             }
 

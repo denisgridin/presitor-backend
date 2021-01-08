@@ -55,7 +55,8 @@ public class CSVCommentMethods {
         log.info("{ createAndWriteComment } Comment creating");
         Result result = new Creator().create(Comment.class, arguments);
         if (Status.success == result.getStatus()) {
-            Comment comment = (Comment) result.getReturnValue();
+            Optional resultValue = (Optional) result.getReturnValue();
+            Comment comment = (Comment) resultValue.get();
             log.debug("{ createAndWriteComment } Comment created: " + comment);
             log.info(ConstantsInfo.PRESENTATIONS_GET + presentation);
             Status resultWrite = writeCommentsCollection(comment);
