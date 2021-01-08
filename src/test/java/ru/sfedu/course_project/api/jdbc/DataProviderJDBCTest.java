@@ -810,7 +810,7 @@ public class DataProviderJDBCTest extends TestBase {
 
             HashMap testData = getUpdatedShape(testShape.getId(), slideId, presentationId);
 
-            Shape updatedShape = (Shape) testData.get("content");
+            Shape updatedShape = (Shape) testData.get("shape");
             Result result = provider.editSlideElement((HashMap) testData.get("args"));
 
             assertTrue(Status.success == result.getStatus());

@@ -158,6 +158,7 @@ public class JDBCCommonMethods {
 
     public static Result getInstanceFromResultSet (ResultSet resultSet, QueryMember queryMember) {
         try {
+            resultSet.next();
             switch (queryMember) {
                 case presentation: {
                     return parseResultSetToPresentation(resultSet);
@@ -167,7 +168,7 @@ public class JDBCCommonMethods {
                 }
             }
             return new Result(Status.success, "");
-        } catch (RuntimeException e){
+        } catch (RuntimeException | SQLException e){
             log.error(e);
             return new Result(Status.error, ConstantsError.INSTANCE_GET);
         }
@@ -175,8 +176,6 @@ public class JDBCCommonMethods {
 
     public static Result parseResultSetToContent (ResultSet resultSet) {
         try {
-
-            resultSet.next();
             Content content = new Content();
 
             String elementType = resultSet.getString(1);
@@ -226,7 +225,6 @@ public class JDBCCommonMethods {
 
     public static Result parseResultSetToShape (ResultSet resultSet) {
         try {
-            resultSet.next();
             Shape shape = new Shape();
 
             String elementType = resultSet.getString(1);
@@ -314,7 +312,6 @@ public class JDBCCommonMethods {
 
     public static Result parseResultSetToAssessment (ResultSet resultSet) {
         try {
-            resultSet.next();
             Assessment assessment = new Assessment();
 
             String id = resultSet.getString(1);
@@ -337,7 +334,6 @@ public class JDBCCommonMethods {
 
     public static Result parseResultSetToComment (ResultSet resultSet) {
         try {
-            resultSet.next();
             Comment comment = new Comment();
             String id = resultSet.getString(1);
             String role = resultSet.getString(2);
@@ -363,7 +359,6 @@ public class JDBCCommonMethods {
 
     public static Result parseResultSetToSlide (ResultSet resultSet) {
         try {
-            resultSet.next();
             log.info(ConstantsInfo.SQL_PARSE);
             log.debug("Slides result set: " + resultSet);
             Slide slide = new Slide();
@@ -388,7 +383,6 @@ public class JDBCCommonMethods {
 
     public static Result parseResultSetToPresentation (ResultSet resultSet) {
         try {
-            resultSet.next();
             log.info(ConstantsInfo.SQL_PARSE);
             Presentation presentation = new Presentation();
             String id = resultSet.getString(1);
@@ -413,9 +407,9 @@ public class JDBCCommonMethods {
         try {
             ArrayList list = new ArrayList();
             log.debug("Result set: " + resultSet);
+            resultSet.beforeFirst();
             while (resultSet.next()) {
                 Result currentResult = new Result();
-                resultSet.previous();
                 switch (queryMember) {
                     case presentation: {
                         currentResult = parseResultSetToPresentation(resultSet);
@@ -442,7 +436,6 @@ public class JDBCCommonMethods {
                         break;
                     }
                 }
-                resultSet.next();
                 if (Status.success == currentResult.getStatus()) {
                     log.info(ConstantsInfo.INSTANCE_GET + currentResult.getReturnValue());
                     list.add(currentResult.getReturnValue());
