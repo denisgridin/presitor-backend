@@ -211,11 +211,11 @@ public class XMLPresentationMethods {
                 return new Result(Status.error, ConstantsError.INSTANCE_NOT_FOUND);
             }
 
-            Optional<Object> slideId = Optional.ofNullable(arguments.get("slideId"));
-            boolean withSlides = Boolean.parseBoolean((String) arguments.getOrDefault("withSlides", "false"));
-            boolean withComments = Boolean.parseBoolean((String) arguments.getOrDefault("withComments", "false"));
-            boolean withMarks = Boolean.parseBoolean((String) arguments.getOrDefault("withMarks", "false"));
-            boolean withElements = Boolean.parseBoolean((String) arguments.getOrDefault("withElements", "false"));
+            Optional<Object> slideId = Optional.ofNullable(arguments.get(ConstantsField.SLIDE_ID));
+            boolean withSlides = Boolean.parseBoolean((String) arguments.getOrDefault(ConstantsField.WITH_SLIDES, "false"));
+            boolean withComments = Boolean.parseBoolean((String) arguments.getOrDefault(ConstantsField.WITH_COMMENTS, "false"));
+            boolean withMarks = Boolean.parseBoolean((String) arguments.getOrDefault(ConstantsField.WITH_MARKS, "false"));
+            boolean withElements = Boolean.parseBoolean((String) arguments.getOrDefault(ConstantsField.WITH_ELEMENTS, "false"));
             log.info("Get presentation: with slide id: " + slideId.isPresent());
             log.info("Get presentation: withSlides: " + withSlides);
             log.info("Get presentation: withComments: " + withComments);
@@ -227,9 +227,10 @@ public class XMLPresentationMethods {
 
             if (withSlides) {
                 HashMap paramsGetSlides = new HashMap();
-                paramsGetSlides.put("presentationId", arguments.get("id"));
+                paramsGetSlides.put(ConstantsField.PRESENTATION_ID, arguments.get(ConstantsField.ID));
+                paramsGetSlides.put(ConstantsField.WITH_ELEMENTS, arguments.get(ConstantsField.WITH_ELEMENTS));
                 Result resultGetSlides = XMLSlideMethods.getPresentationSlides(paramsGetSlides);
-                log.debug("[getPresentationById] get presentation slides: " + paramsGetSlides.get("presentationId"));
+                log.debug("[getPresentationById] get presentation slides: " + paramsGetSlides.get(ConstantsField.PRESENTATION_ID));
                 if (resultGetSlides.getStatus() == Status.success) {
                     presentation.setSlides((ArrayList) resultGetSlides.getReturnValue());
                 } else {
@@ -281,29 +282,28 @@ public class XMLPresentationMethods {
 
     public static Result editPresentationOptions (HashMap arguments) throws IOException {
         try {
-            UUID id = UUID.fromString((String) arguments.getOrDefault("id", null));
-            if (id == null) {
-                log.error(ConstantsError.ARGUMENT_IS_NOT_PROVIDED + "id");
-                return new Result(Status.error, ConstantsError.ARGUMENT_IS_NOT_PROVIDED + "id");
+
+            UUID id = UUID.fromString((String) arguments.getOrDefault(ConstantsField.ID, null));
+            if (null == id) {
+                log.error(ConstantsError.ARGUMENT_IS_NOT_PROVIDED + ConstantsField.ID);
+                return new Result(Status.error, ConstantsError.ARGUMENT_IS_NOT_PROVIDED + ConstantsField.ID);
             }
+
+
             boolean validId = XMLCommonMethods.getInstanceById(presentation, arguments).isPresent();
             if (validId) {
                 List<Presentation> list = XMLCommonMethods.getCollection(presentation).orElse(new ArrayList());
                 List<Presentation> updatedList = list.stream().peek(el -> {
                     if (el.getId().equals(id)) {
-                        String fillColor = (String) arguments.getOrDefault("fillColor", el.getFillColor());
-                        String fontFamily = (String) arguments.getOrDefault("fontFamily", el.getFontFamily());
-                        String name = (String) arguments.getOrDefault("name", el.getName());
-//                        boolean asTemplate = Boolean.parseBoolean((String) arguments.getOrDefault("asTemplate", "false"));
+                        String fillColor = (String) arguments.getOrDefault(ConstantsField.FILL_COLOR, el.getFillColor());
+                        String fontFamily = (String) arguments.getOrDefault(ConstantsField.FONT_CASE, el.getFontFamily());
+                        String name = (String) arguments.getOrDefault(ConstantsField.NAME, el.getName());
                         log.debug(ConstantsInfo.FIELD_EDIT + "fillColor " + fillColor);
-                        el.setFillColor(fillColor); // TODO вынести названия полей в const
+                        el.setFillColor(fillColor);
                         log.debug(ConstantsInfo.FIELD_EDIT + "fontFamily " + fontFamily);
                         el.setFontFamily(fontFamily);
                         log.debug(ConstantsInfo.FIELD_EDIT + "name " + name);
                         el.setName(name);
-//                        if (asTemplate) {
-//                            addPresentationInTemplate(el);
-//                        }
                     }
                 }).collect(Collectors.toList());
                 Status result = XMLCommonMethods.writeCollection(updatedList, Presentation.class, presentation);

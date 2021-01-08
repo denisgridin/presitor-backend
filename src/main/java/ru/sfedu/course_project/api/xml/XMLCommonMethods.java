@@ -6,6 +6,7 @@ import org.simpleframework.xml.Serializer;
 import org.simpleframework.xml.core.Persister;
 import ru.sfedu.course_project.ConstantsInfo;
 import ru.sfedu.course_project.ConstantsError;
+import ru.sfedu.course_project.ConstantsSuccess;
 import ru.sfedu.course_project.bean.*;
 import ru.sfedu.course_project.enums.CollectionType;
 import ru.sfedu.course_project.enums.Status;
@@ -297,7 +298,7 @@ public class XMLCommonMethods {
             }
             Status status = writeCollection(updatedCollection, cls, collectionType);
             log.debug("[updateRecordInCollection] Update status: " + status);
-            return new Result(status, "");
+            return new Result(status, ConstantsSuccess.EDIT_ITEM + collectionType);
         } catch (RuntimeException e) {
             log.error(e);
             return new Result(Status.error, ConstantsError.INSTANCE_UPDATE);
