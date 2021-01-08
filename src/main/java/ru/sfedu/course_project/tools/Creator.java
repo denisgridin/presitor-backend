@@ -103,12 +103,6 @@ public class Creator {
             log.debug("[createPresentation] " + ConstantsInfo.FIELD_SET + " fillColor " + fillColor);
             presentation.setFontFamily(fontFamily);
             log.debug("[createPresentation] " + ConstantsInfo.FIELD_SET + " fontFamily " + fontFamily);
-            presentation.setSlides(slides);
-            log.debug("[createPresentation] " + ConstantsInfo.FIELD_SET + " slides " + slides);
-            presentation.setComments(comments);
-            log.debug("[createPresentation] " + ConstantsInfo.FIELD_SET + " comments " + comments);
-            presentation.setMarks(marks);
-            log.debug("[createPresentation] " + ConstantsInfo.FIELD_SET + " marks " + marks);
             log.debug(ConstantsSuccess.ARGUMENTS_VALIDATE);
             return Optional.of(presentation);
         } catch (RuntimeException e) {

@@ -88,16 +88,16 @@ public class XMLSlideMethods {
                     presentationSlides = (ArrayList) optionalPresentationSlides.orElse(new ArrayList());
                     log.info("Presentation slides get!");
 
-//                    log.debug("Get elements from slide: ");
-//                    if (withElements) {
-//                        Result resultSetElements = setElementsBySlide(presentationSlides, presentationId);
-//                        if (Status.error == resultSetElements.getStatus()) {
-//                            return resultSetElements;
-//                        }
-//
-//                        presentationSlides = (ArrayList<Slide>) resultSetElements.getReturnValue();
-//                        log.debug("Presentation slides: " + presentationSlides);
-//                    }
+                    log.debug("Get elements from slide: ");
+                    if (withElements) {
+                        Result resultSetElements = setElementsBySlide(presentationSlides, presentationId);
+                        if (Status.error == resultSetElements.getStatus()) {
+                            return resultSetElements;
+                        }
+
+                        presentationSlides = (ArrayList<Slide>) resultSetElements.getReturnValue();
+                        log.debug("Presentation slides: " + presentationSlides);
+                    }
                 }
                 log.debug("[getPresentationSlides] Found presentation slides: " + presentationSlides);
                 return new Result(Status.success, presentationSlides);
@@ -113,32 +113,32 @@ public class XMLSlideMethods {
         }
     }
 
-//    public static Result setElementsBySlide (ArrayList slides, UUID presentationId) {
-//        try {
-//            ArrayList<Slide> updatedSlides = (ArrayList<Slide>) slides.stream().map(el -> {
-//                Slide slide = (Slide) el;
-//                log.info("Search elements for slide: " + slide.getId());
-//                HashMap args = new HashMap();
-//                args.put(ConstantsField.PRESENTATION_ID, String.valueOf(presentationId));
-//                args.put(ConstantsField.SLIDE_ID, String.valueOf(slide.getId()));
-//                Result resultGetElements = XMLElementMethods.getSlideElements(args);
-//
-//                log.debug("get elements status: " + resultGetElements.getStatus());
-//                log.debug("Slide elements: " + resultGetElements.getReturnValue());
-//                if (Status.success == resultGetElements.getStatus()) {
-//                    ArrayList elements = (ArrayList) resultGetElements.getReturnValue();
-//                    slide.setElements(elements);
-//                }
-//                return slide;
-//            }).collect(Collectors.toList());
-//            log.debug("Slide: " + slide);
-//            return new Result(Status.success, updatedSlides);
-//        } catch (RuntimeException e) {
-//            log.error(e);
-//            log.error(ConstantsError.ELEMENTS_GET);
-//            return new Result(Status.error, ConstantsError.ELEMENTS_GET);
-//        }
-//    }
+    public static Result setElementsBySlide (ArrayList slides, UUID presentationId) {
+        try {
+            ArrayList<Slide> updatedSlides = (ArrayList<Slide>) slides.stream().map(el -> {
+                Slide slide = (Slide) el;
+                log.info("Search elements for slide: " + slide.getId());
+                HashMap args = new HashMap();
+                args.put(ConstantsField.PRESENTATION_ID, String.valueOf(presentationId));
+                args.put(ConstantsField.SLIDE_ID, String.valueOf(slide.getId()));
+                Result resultGetElements = XMLElementMethods.getSlideElements(args);
+
+                log.debug("get elements status: " + resultGetElements.getStatus());
+                log.debug("Slide elements: " + resultGetElements.getReturnValue());
+                if (Status.success == resultGetElements.getStatus()) {
+                    ArrayList elements = (ArrayList) resultGetElements.getReturnValue();
+                    slide.setElements(elements);
+                }
+                return slide;
+            }).collect(Collectors.toList());
+            log.debug("Slide: " + slide);
+            return new Result(Status.success, updatedSlides);
+        } catch (RuntimeException e) {
+            log.error(e);
+            log.error(ConstantsError.ELEMENTS_GET);
+            return new Result(Status.error, ConstantsError.ELEMENTS_GET);
+        }
+    }
 
     public static Result getSlideById (HashMap args) {
         try {

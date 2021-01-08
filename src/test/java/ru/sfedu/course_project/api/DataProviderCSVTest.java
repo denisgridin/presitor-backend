@@ -908,39 +908,4 @@ public class DataProviderCSVTest extends TestBase {
         log.debug("{TEST} removePresentationByIdFail END");
     }
 
-
-//    @Test
-//    void getCollectionsListSuccess() {
-//        log.debug("getCollectionSuccess");
-//
-//        HashMap args = new HashMap();
-//        provider.createPresentation(args);
-//        Optional<List> optionalPresentationList = provider.getCollection(CollectionType.presentation, Presentation.class);
-//        assertNotNull(optionalPresentationList.get());
-//    }
-//
-//    @Test
-//    void getCollectionsListFail() {
-//        System.out.println("getCollection(CollectionType.presentation)Fail");
-//
-//        Optional<List> optionalPresentationList = provider.getCollection(CollectionType.error, Presentation.class);
-//        assertFalse(optionalPresentationList.isPresent());
-//    }
-
-//
-//
-//
-//    @Test
-//    void getCollectionSuccess() {
-//        DataProvider provider = new DataProviderCSV();
-//        assertNotEquals(provider.getCollection(CollectionType.presentation, Presentation.class), Status.error);
-//        assertNotEquals(provider.getCollection(CollectionType.slide, Slide.class), Status.error);
-//    }
-//
-//    @Test
-//    void getCollectionError() {
-//        DataProvider provider = new DataProviderCSV();
-//        assertEquals(provider.getCollection(CollectionType.error, Presentation.class), Status.error);
-//        assertEquals(provider.getCollection(CollectionType.error, Slide.class), Status.error);
-//    }
 }

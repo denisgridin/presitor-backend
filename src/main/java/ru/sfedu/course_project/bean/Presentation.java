@@ -41,16 +41,18 @@ public class Presentation implements Serializable {
 
 //    @CsvBindAndSplitByName(column = "marks", elementType = List.class, converter = ListIdsConverter.class)
     @CsvIgnore
-    private ArrayList<Assessment> marks;
+    private HashMap marks;
 
     private Boolean slidesConnected = false;
     private Boolean commentsConnected = false;
+    private Boolean marksConnected = false;
 
     private Boolean getSlidesConnected () { return slidesConnected; }
     private Boolean getCommentsConnected () { return commentsConnected; }
 
-    private void setSlidesConnected (Boolean flag) { this.slidesConnected = flag; }
-    private void setCommentsConnected (Boolean flag) { this.commentsConnected = flag; }
+    private void setSlidesConnected (Boolean flag) { slidesConnected = flag; }
+    private void setCommentsConnected (Boolean flag) { commentsConnected = flag; }
+    private void setMarksConnected (Boolean flag) { marksConnected = flag; }
 
     public Presentation () {}
 
@@ -93,7 +95,7 @@ public class Presentation implements Serializable {
     }
 
     public void setSlides(ArrayList slides) {
-        this.setSlidesConnected(true);
+        setSlidesConnected(true);
         this.slides = slides;
     }
 
@@ -102,15 +104,16 @@ public class Presentation implements Serializable {
     }
 
     public void setComments(ArrayList comments) {
-        this.setCommentsConnected(true);
+        setCommentsConnected(true);
         this.comments = comments;
     }
 
-    public ArrayList<Assessment> getMarks() {
+    public HashMap getMarks() {
         return marks;
     }
 
-    public void setMarks(ArrayList marks) {
+    public void setMarks(HashMap marks) {
+        setMarksConnected(true);
         this.marks = marks;
     }
 
@@ -139,6 +142,7 @@ public class Presentation implements Serializable {
                 ", fontFamily='" + fontFamily + '\'' +
                 ( slidesConnected ? ", slides=" + getSlides() : "" ) +
                 ( commentsConnected ? ", comments=" + getComments() : "" ) +
+                ( marksConnected ? ", marks=" + getMarks() : "" ) +
                 '}';
         return formatReturn;
     }

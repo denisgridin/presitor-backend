@@ -87,7 +87,7 @@ public class JDBCCommonMethods {
 
 
             connection = DriverManager.getConnection(databasePath, jdbcProperties);
-            statement = connection.createStatement();;
+            statement = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
 
             statement.execute(SQLQuery.CREATE_SCHEMA);
             statement.execute(SQLQuery.SET_SCHEMA);
@@ -123,6 +123,7 @@ public class JDBCCommonMethods {
             }
             ResultSet resultSet = statement.executeQuery(query);
             Result result = getInstanceFromResultSet(resultSet, queryMember);
+            closeConnection();
             return result;
         } catch (RuntimeException | SQLException e) {
             log.error(e);
@@ -178,6 +179,8 @@ public class JDBCCommonMethods {
 
     public static Result parseResultSetToContent (ResultSet resultSet) {
         try {
+
+            resultSet.next();
             Content content = new Content();
 
             String elementType = resultSet.getString(1);
@@ -227,6 +230,7 @@ public class JDBCCommonMethods {
 
     public static Result parseResultSetToShape (ResultSet resultSet) {
         try {
+            resultSet.next();
             Shape shape = new Shape();
 
             String elementType = resultSet.getString(1);
@@ -314,6 +318,7 @@ public class JDBCCommonMethods {
 
     public static Result parseResultSetToAssessment (ResultSet resultSet) {
         try {
+            resultSet.next();
             Assessment assessment = new Assessment();
 
             String id = resultSet.getString(1);
@@ -336,6 +341,7 @@ public class JDBCCommonMethods {
 
     public static Result parseResultSetToComment (ResultSet resultSet) {
         try {
+            resultSet.next();
             Comment comment = new Comment();
             String id = resultSet.getString(1);
             String role = resultSet.getString(2);
@@ -361,25 +367,22 @@ public class JDBCCommonMethods {
 
     public static Result parseResultSetToSlide (ResultSet resultSet) {
         try {
-
+            resultSet.next();
             log.info(ConstantsInfo.SQL_PARSE);
-            if (resultSet.next()) {
-                Slide slide = new Slide();
+            log.debug("Slides result set: " + resultSet);
+            Slide slide = new Slide();
 
-                String id = resultSet.getString(1);
-                String name = resultSet.getString(2);
-                int index = resultSet.getInt(3);
-                String presentationId = resultSet.getString(4);
+            String id = resultSet.getString(1);
+            String name = resultSet.getString(2);
+            int index = resultSet.getInt(3);
+            String presentationId = resultSet.getString(4);
 
-                slide.setId(UUID.fromString(id));
-                slide.setName(name);
-                slide.setIndex(index);
-                slide.setPresentationId(UUID.fromString(presentationId));
-                log.debug("Slide: " + slide);
-                return new Result(Status.success, slide);
-            } else {
-                return new Result(Status.error, ConstantsError.PRESENTATION_NOT_FOUND);
-            }
+            slide.setId(UUID.fromString(id));
+            slide.setName(name);
+            slide.setIndex(index);
+            slide.setPresentationId(UUID.fromString(presentationId));
+            log.debug("Slide: " + slide);
+            return new Result(Status.success, slide);
         } catch (RuntimeException | SQLException e) {
             log.error(e);
             log.error(ConstantsError.SQL_ERROR);
@@ -389,23 +392,20 @@ public class JDBCCommonMethods {
 
     public static Result parseResultSetToPresentation (ResultSet resultSet) {
         try {
+            resultSet.next();
             log.info(ConstantsInfo.SQL_PARSE);
-            if (resultSet.next()) {
-                Presentation presentation = new Presentation();
-                String id = resultSet.getString(1);
-                String name = resultSet.getString(2);
-                String fillColor = resultSet.getString(3);
-                String fontFamily = resultSet.getString(4);
+            Presentation presentation = new Presentation();
+            String id = resultSet.getString(1);
+            String name = resultSet.getString(2);
+            String fillColor = resultSet.getString(3);
+            String fontFamily = resultSet.getString(4);
 
-                presentation.setId(UUID.fromString(id));
-                presentation.setName(name);
-                presentation.setFillColor(fillColor);
-                presentation.setFontFamily(fontFamily);
-                log.debug("Presentation: " + presentation);
-                return new Result(Status.success, presentation);
-            } else {
-                return new Result(Status.error, ConstantsError.PRESENTATION_NOT_FOUND);
-            }
+            presentation.setId(UUID.fromString(id));
+            presentation.setName(name);
+            presentation.setFillColor(fillColor);
+            presentation.setFontFamily(fontFamily);
+            log.debug("Presentation: " + presentation);
+            return new Result(Status.success, presentation);
         } catch (RuntimeException | SQLException e) {
             log.error(e);
             log.error(ConstantsError.SQL_ERROR);
@@ -419,7 +419,7 @@ public class JDBCCommonMethods {
             log.debug("Result set: " + resultSet);
             while (resultSet.next()) {
                 Result currentResult = new Result();
-
+                resultSet.previous();
                 switch (queryMember) {
                     case presentation: {
                         currentResult = parseResultSetToPresentation(resultSet);
@@ -446,7 +446,7 @@ public class JDBCCommonMethods {
                         break;
                     }
                 }
-
+                resultSet.next();
                 if (Status.success == currentResult.getStatus()) {
                     log.info(ConstantsInfo.INSTANCE_GET + currentResult.getReturnValue());
                     list.add(currentResult.getReturnValue());

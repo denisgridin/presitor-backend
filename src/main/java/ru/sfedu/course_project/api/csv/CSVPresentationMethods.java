@@ -101,6 +101,8 @@ public class CSVPresentationMethods {
 
     public static Result buildPresentationFromTemplate (Presentation template) {
         try {
+            log.info("Create presentation from template: " + template);
+
             UUID id = UUID.randomUUID();
             String name = String.format(Constants.TEMPLATE_NAME, Constants.DEFAULT_PRESENTATION.get(ConstantsField.NAME), template.getName());
             String fillColor = template.getFillColor();
@@ -108,11 +110,19 @@ public class CSVPresentationMethods {
 
             log.info("Build presentation from template");
 
+            log.debug("Add parameters for new presentation");
             HashMap args = new HashMap();
             args.put(ConstantsField.ID, String.valueOf(id));
+            log.info(String.format(ConstantsInfo.FIELD_FORMAT_SET, ConstantsField.ID, id));
+
             args.put(ConstantsField.NAME, name);
+            log.info(String.format(ConstantsInfo.FIELD_FORMAT_SET, ConstantsField.NAME, name));
+
             args.put(ConstantsField.FILL_COLOR, fillColor);
+            log.info(String.format(ConstantsInfo.FIELD_FORMAT_SET, ConstantsField.FILL_COLOR, fillColor));
+
             args.put(ConstantsField.FONT_FAMILY, fontFamily);
+            log.info(String.format(ConstantsInfo.FIELD_FORMAT_SET, ConstantsField.FONT_FAMILY, fontFamily));
 
             Result resultCreatePresentation = createPresentation(args);
 
@@ -136,29 +146,31 @@ public class CSVPresentationMethods {
                 slide.setPresentationId(presentationId);
                 presentationSlides.add(slide);
 
-                log.info("Write new presentation elements from slide: " + slide);
-                ArrayList elements = (ArrayList) slide.getElements().stream().peek(item -> item.setId(UUID.randomUUID())).collect(Collectors.toList());
+                if (slide.getElements() != null) {
+                    log.info("Write new presentation elements from slide: " + slide);
+                    ArrayList elements = (ArrayList) slide.getElements().stream().peek(item -> item.setId(UUID.randomUUID())).collect(Collectors.toList());
 
-                elements.stream().forEach(item -> {
-                    Element element = (Element) item;
-                    element.setId(UUID.randomUUID());
-                    element.setPresentationId(presentationId);
-                    element.setSlideId(slideId);
-                    ElementType elementType = element.getElementType();
-                    switch (elementType) {
-                        case shape: {
-                            presentationShapes.add(element);
-                            break;
+                    elements.stream().forEach(item -> {
+                        Element element = (Element) item;
+                        element.setId(UUID.randomUUID());
+                        element.setPresentationId(presentationId);
+                        element.setSlideId(slideId);
+                        ElementType elementType = element.getElementType();
+                        switch (elementType) {
+                            case shape: {
+                                presentationShapes.add(element);
+                                break;
+                            }
+                            case content: {
+                                presentationContents.add(element);
+                                break;
+                            }
+                            default: {
+                                break;
+                            }
                         }
-                        case content: {
-                            presentationContents.add(element);
-                            break;
-                        }
-                        default: {
-                            break;
-                        }
-                    }
-                });
+                    });
+                }
             });
 
             log.debug("Presentation slides: " + presentationSlides);

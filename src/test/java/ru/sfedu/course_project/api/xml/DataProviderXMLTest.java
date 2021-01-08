@@ -31,7 +31,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class DataProviderXMLTest extends TestBase {
     private static Logger log = LogManager.getLogger(DataProviderJDBCTest.class);
 
-    UUID pres = UUID.fromString("58a9ad3a-dd3a-4a6b-b125-18d1eca7b80c");
+    UUID pres = UUID.fromString("dc7707e6-4b45-4de7-b6f2-b7d5d1d8f3e7");
 
     DataProvider provider = new DataProviderXML();
 

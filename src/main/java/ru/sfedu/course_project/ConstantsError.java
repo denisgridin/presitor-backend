@@ -22,6 +22,8 @@ public class ConstantsError {
     public static String PRESENTATION_UPDATE = "Unable to update presentation ";
     public static String PRESENTATION_NOT_FOUND = "Unable to find presentation ";
 
+    public static String PRESENTATION_MEMBERS_REMOVE = "Unable to remove presentation members ";
+
     public static String TEMPLATE_ADD = "Unable to add presentation in templates ";
     public static String TEMPLATE_EXISTS = "Template is already exists ";
     public static String PRESENTATION_CREATE_FROM_TEMPLATE = "Unable to create presentation from template ";

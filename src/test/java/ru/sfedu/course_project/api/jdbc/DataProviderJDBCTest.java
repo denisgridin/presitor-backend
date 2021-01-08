@@ -101,18 +101,43 @@ public class DataProviderJDBCTest extends TestBase {
 
     @Test
     void removePresentationByIdSuccess () throws CsvRequiredFieldEmptyException, IOException, CsvDataTypeMismatchException {
-        Result result = makeRandomPresentation(provider);
+        UUID presentationId = UUID.randomUUID();
+        UUID slideId = UUID.randomUUID();
+        UUID elementId1 = UUID.randomUUID();
+        UUID elementId2 = UUID.randomUUID();
 
-        if (result.getStatus() == Status.success) {
-            HashMap args = new HashMap();
-            UUID presentationId = (UUID) result.getReturnValue();
-            args.put("id", String.valueOf(presentationId));
-            Result resultRemovePresentation = provider.removePresentationById(args);
+        makePresentationWithId(provider, presentationId);
+        makeSlideWithId(provider, slideId, presentationId);
 
-            assertSame(resultRemovePresentation.getStatus(), Status.success);
-        } else {
-            fail();
-        }
+
+        HashMap args = new HashMap();
+        args.put(ConstantsField.PRESENTATION_ID, String.valueOf(presentationId));
+        args.put(ConstantsField.SLIDE_ID, String.valueOf(slideId));
+        args.put(ConstantsField.ELEMENT_TYPE, String.valueOf(ElementType.content));
+        args.put(ConstantsField.ID, String.valueOf(elementId1));
+        makeContentWithId(provider, elementId1, slideId, presentationId, args);
+
+        args.put(ConstantsField.PRESENTATION_ID, String.valueOf(presentationId));
+        args.put(ConstantsField.TEXT, "Тестовый текст");
+        args.put(ConstantsField.ROLE, String.valueOf(Role.editor));
+        Result resultCommentPresentation = provider.commentPresentation(args);
+        assertSame(resultCommentPresentation.getStatus(), Status.success);
+
+        args.put(ConstantsField.ROLE, String.valueOf(Role.editor));
+        args.put(ConstantsField.MARK, "bed");
+        Result resultRate = provider.rateByMark(args);
+
+        assertSame(resultRate.getStatus(), Status.success);
+
+        args.put(ConstantsField.ID, String.valueOf(presentationId));
+        args.put(ConstantsField.WITH_SLIDES, "true");
+        args.put(ConstantsField.WITH_ELEMENTS, "true");
+        args.put(ConstantsField.WITH_COMMENTS, "true");
+        args.put(ConstantsField.WITH_MARKS, "true");
+        Result resultGetPresentation = provider.getPresentationById(args);
+        Result resultRemovePresentation = provider.removePresentationById(args);
+
+        assertSame(resultRemovePresentation.getStatus(), Status.success);
     }
 
     @Test
@@ -844,4 +869,75 @@ public class DataProviderJDBCTest extends TestBase {
         log.info("{ editCustomContentInSlideSuccess } END");
     }
 
+    @Test
+    void getPresentationByIdSuccessWithOptions () throws IOException {
+        try {
+            UUID presentationId = UUID.randomUUID();
+            UUID slideId = UUID.randomUUID();
+            UUID elementId1 = UUID.randomUUID();
+            UUID elementId2 = UUID.randomUUID();
+
+            makePresentationWithId(provider, presentationId);
+            makeSlideWithId(provider, slideId, presentationId);
+
+
+            HashMap args = new HashMap();
+            args.put(ConstantsField.PRESENTATION_ID, String.valueOf(presentationId));
+            args.put(ConstantsField.SLIDE_ID, String.valueOf(slideId));
+            args.put(ConstantsField.ELEMENT_TYPE, String.valueOf(ElementType.content));
+            args.put(ConstantsField.ID, String.valueOf(elementId1));
+            makeContentWithId(provider, elementId1, slideId, presentationId, args);
+
+            args.put(ConstantsField.PRESENTATION_ID, String.valueOf(presentationId));
+            args.put(ConstantsField.TEXT, "Тестовый текст");
+            args.put(ConstantsField.ROLE, String.valueOf(Role.editor));
+            Result resultCommentPresentation = provider.commentPresentation(args);
+            assertSame(resultCommentPresentation.getStatus(), Status.success);
+
+            args.put(ConstantsField.ROLE, String.valueOf(Role.editor));
+            args.put(ConstantsField.MARK, "bed");
+            Result resultRate = provider.rateByMark(args);
+
+            assertSame(resultRate.getStatus(), Status.success);
+
+
+            HashMap params = new HashMap();
+            params.put(ConstantsField.ID, String.valueOf(presentationId));
+            params.put(ConstantsField.WITH_SLIDES, "true");
+            params.put(ConstantsField.WITH_ELEMENTS, "true");
+            params.put(ConstantsField.WITH_COMMENTS, "true");
+            params.put(ConstantsField.WITH_MARKS, "true");
+            Result resultGetPresentation = provider.getPresentationById(params);
+
+            assertSame(resultGetPresentation.getStatus(), Status.success);
+        } catch (RuntimeException e) {
+            fail();
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    void createPresentationFromTemplateSuccess () throws IOException {
+        UUID presentationId = UUID.randomUUID();
+        UUID slideId = UUID.randomUUID();
+        UUID elementId1 = UUID.randomUUID();
+        UUID elementId2 = UUID.randomUUID();
+
+        makeRectangleWithId(provider, elementId1, slideId, presentationId);
+
+        HashMap args = new HashMap();
+        args.put(ConstantsField.TEMPLATE_ID, String.valueOf(presentationId));
+
+        Result result = provider.createPresentation(args);
+        assertTrue(Status.success == result.getStatus());
+
+        if (Status.success == result.getStatus()) {
+            args.put(ConstantsField.ID, String.valueOf(result.getReturnValue()));
+            args.put(ConstantsField.WITH_SLIDES, "true");
+            args.put(ConstantsField.WITH_ELEMENTS, "true");
+
+            Result resultGet = provider.getPresentationById(args);
+            assertSame(resultGet.getStatus(), Status.success);
+        } else fail();
+    }
 }

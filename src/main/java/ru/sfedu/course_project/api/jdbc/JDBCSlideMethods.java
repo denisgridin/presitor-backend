@@ -7,7 +7,8 @@ import ru.sfedu.course_project.ConstantsError;
 import ru.sfedu.course_project.ConstantsInfo;
 import ru.sfedu.course_project.ConstantsSuccess;
 import ru.sfedu.course_project.SQLQuery;
-import ru.sfedu.course_project.api.xml.XMLCommonMethods;
+import ru.sfedu.course_project.api.jdbc.JDBCCommonMethods;
+import ru.sfedu.course_project.api.jdbc.JDBCElementMethods;
 import ru.sfedu.course_project.bean.Presentation;
 import ru.sfedu.course_project.bean.Slide;
 import ru.sfedu.course_project.enums.Method;
@@ -27,6 +28,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Optional;
 import java.util.UUID;
+import java.util.stream.Collectors;
+
+import static ru.sfedu.course_project.enums.CollectionType.slide;
 
 
 public class JDBCSlideMethods {
@@ -148,6 +152,23 @@ public class JDBCSlideMethods {
             ResultSet resultSet = statement.executeQuery(query);
             Result result = JDBCCommonMethods.getListFromResultSet(resultSet, QueryMember.slide);
 
+            if (Status.error == result.getStatus()) {
+                return result;
+            }
+
+            ArrayList presentationSlides = (ArrayList) result.getReturnValue();
+
+            boolean withElements = Boolean.parseBoolean((String) args.get(ConstantsField.WITH_ELEMENTS));
+            if (withElements) {
+                Result resultSetElements = setElementsBySlide(presentationSlides, UUID.fromString((String) args.get(ConstantsField.PRESENTATION_ID)));
+                if (Status.error == resultSetElements.getStatus()) {
+                    return resultSetElements;
+                }
+
+                presentationSlides = (ArrayList<Slide>) resultSetElements.getReturnValue();
+                log.debug("Presentation slides: " + presentationSlides);
+            }
+
             JDBCCommonMethods.closeConnection();
 
             return result;
@@ -156,6 +177,33 @@ public class JDBCSlideMethods {
             log.error(e);
             log.error(ConstantsError.SLIDES_GET);
             return new Result(Status.error, ConstantsError.SLIDES_GET);
+        }
+    }
+
+    public static Result setElementsBySlide (ArrayList slides, UUID presentationId) {
+        try {
+            ArrayList<Slide> updatedSlides = (ArrayList<Slide>) slides.stream().map(el -> {
+                Slide slide = (Slide) el;
+                log.info("Search elements for slide: " + slide.getId());
+                HashMap args = new HashMap();
+                args.put(ConstantsField.PRESENTATION_ID, String.valueOf(presentationId));
+                args.put(ConstantsField.SLIDE_ID, String.valueOf(slide.getId()));
+                Result resultGetElements = JDBCElementMethods.getSlideElements(args);
+
+                log.debug("get elements status: " + resultGetElements.getStatus());
+                log.debug("Slide elements: " + resultGetElements.getReturnValue());
+                if (Status.success == resultGetElements.getStatus()) {
+                    ArrayList elements = (ArrayList) resultGetElements.getReturnValue();
+                    slide.setElements(elements);
+                }
+                return slide;
+            }).collect(Collectors.toList());
+            log.debug("Slide: " + slide);
+            return new Result(Status.success, updatedSlides);
+        } catch (RuntimeException e) {
+            log.error(e);
+            log.error(ConstantsError.ELEMENTS_GET);
+            return new Result(Status.error, ConstantsError.ELEMENTS_GET);
         }
     }
 

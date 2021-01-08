@@ -24,9 +24,11 @@ public class ConstantsSuccess {
     
     public static String SHAPE_REMOVE = "Shape successfully removed ";
     public static String SHAPE_EDIT = "Shape successfully updated ";
+    public static String SHAPE_CREATE = "Shape successfully created ";
 
     public static String CONTENT_EDIT = "Content successfully updated ";
     public static String CONTENT_REMOVE = "Content successfully removed ";
+    public static String CONTENT_CREATE = "Content successfully created ";
 
     public static String ASSESSMENT_CREATE = "Presentation was successfully rated ";
 

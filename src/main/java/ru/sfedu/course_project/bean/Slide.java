@@ -79,7 +79,7 @@ public class Slide implements Serializable {
     }
 
     public void setElements(ArrayList<Element> elements) {
-        this.elementsSet = true;
+        elementsSet = true;
         this.elements = elements;
     }
 

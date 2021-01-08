@@ -2,29 +2,162 @@ package ru.sfedu.course_project.api.xml;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.junit.jupiter.api.Test;
+import ru.sfedu.course_project.Constants;
 import ru.sfedu.course_project.ConstantsInfo;
 import ru.sfedu.course_project.ConstantsError;
 import ru.sfedu.course_project.ConstantsSuccess;
-import ru.sfedu.course_project.bean.Presentation;
+import ru.sfedu.course_project.bean.*;
 import ru.sfedu.course_project.enums.CollectionType;
+import ru.sfedu.course_project.enums.ElementType;
 import ru.sfedu.course_project.enums.Status;
 import ru.sfedu.course_project.tools.ArgsValidator;
 import ru.sfedu.course_project.tools.Creator;
 import ru.sfedu.course_project.tools.Result;
+import ru.sfedu.course_project.utils.ConstantsField;
 
 import java.io.IOException;
 import java.util.*;
 import java.util.stream.Collectors;
 
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static ru.sfedu.course_project.enums.CollectionType.presentation;
 
 public class XMLPresentationMethods {
     private static final Logger log = LogManager.getLogger(XMLPresentationMethods.class);
+
+    public static Result buildPresentationFromTemplate (Presentation template) {
+        try {
+            UUID id = UUID.randomUUID();
+            String name = String.format(Constants.TEMPLATE_NAME, Constants.DEFAULT_PRESENTATION.get(ConstantsField.NAME), template.getName());
+            String fillColor = template.getFillColor();
+            String fontFamily = template.getFontFamily();
+
+            log.info("Build presentation from template");
+
+            HashMap args = new HashMap();
+            args.put(ConstantsField.ID, String.valueOf(id));
+            args.put(ConstantsField.NAME, name);
+            args.put(ConstantsField.FILL_COLOR, fillColor);
+            args.put(ConstantsField.FONT_FAMILY, fontFamily);
+
+            Result resultCreatePresentation = createPresentation(args);
+
+            if (Status.error == resultCreatePresentation.getStatus()) {
+                return resultCreatePresentation;
+            }
+
+            log.info("Presentation created from template");
+
+            UUID presentationId = id;
+
+            ArrayList presentationShapes = new ArrayList();
+            ArrayList presentationContents = new ArrayList();
+            ArrayList presentationSlides = new ArrayList();
+
+            ArrayList templateSlides = template.getSlides();
+            templateSlides.stream().forEach(el -> {
+                Slide slide = (Slide) el;
+                UUID slideId = UUID.randomUUID();
+                slide.setId(slideId);
+                slide.setPresentationId(presentationId);
+                presentationSlides.add(slide);
+
+
+                if (slide.getElements() != null) {
+                    log.info("Write new presentation elements from slide: " + slide);
+                    ArrayList elements = (ArrayList) slide.getElements().stream().peek(item -> item.setId(UUID.randomUUID())).collect(Collectors.toList());
+
+                    elements.stream().forEach(item -> {
+                        Element element = (Element) item;
+                        element.setId(UUID.randomUUID());
+                        element.setPresentationId(presentationId);
+                        element.setSlideId(slideId);
+                        ElementType elementType = element.getElementType();
+                        switch (elementType) {
+                            case shape: {
+                                presentationShapes.add(element);
+                                break;
+                            }
+                            case content: {
+                                presentationContents.add(element);
+                                break;
+                            }
+                            default: {
+                                break;
+                            }
+                        }
+                    });
+                }
+            });
+
+            log.debug("Presentation slides: " + presentationSlides);
+            log.debug("Presentation shapes: " + presentationShapes);
+            log.debug("Presentation contents: " + presentationContents);
+
+            ArrayList allSlides = (ArrayList) XMLCommonMethods.getCollection(CollectionType.slide).orElse(new ArrayList());
+            ArrayList allShapes = (ArrayList) XMLCommonMethods.getCollection(CollectionType.shape).orElse(new ArrayList());
+            ArrayList allContents = (ArrayList) XMLCommonMethods.getCollection(CollectionType.content).orElse(new ArrayList());
+
+            allSlides.addAll(presentationSlides);
+            allShapes.addAll(presentationShapes);
+            allContents.addAll(presentationContents);
+
+            Status statusWriteSlides = XMLCommonMethods.writeCollection(allSlides, Slide.class, CollectionType.slide);
+            log.info("Slides wrote");
+
+            Status statusWriteShapes = XMLCommonMethods.writeCollection(allShapes, Shape.class, CollectionType.shape);
+            log.info("Shapes wrote");
+
+            Status statusWriteContents = XMLCommonMethods.writeCollection(allContents, Content.class, CollectionType.content);
+            log.info("Contents wrote");
+
+            return new Result(Status.success, id);
+
+        } catch (RuntimeException e) {
+            log.error(e);
+            log.error(ConstantsError.PRESENTATION_CREATE_FROM_TEMPLATE);
+            return new Result(Status.error, ConstantsError.PRESENTATION_CREATE_FROM_TEMPLATE);
+        }
+    }
+
+    public static Result createPresentationFromTemplate (HashMap args) {
+        try {
+            log.info("Searching template presentation");
+            HashMap params = new HashMap();
+            params.put(ConstantsField.ID, String.valueOf(args.get(ConstantsField.TEMPLATE_ID)));
+            params.put(ConstantsField.WITH_SLIDES, "true");
+            params.put(ConstantsField.WITH_ELEMENTS, "true");
+            Result resultGetTemplate = getPresentationById(params);
+
+            if (Status.error == resultGetTemplate.getStatus()) {
+                return resultGetTemplate;
+            }
+
+            Presentation template = (Presentation) resultGetTemplate.getReturnValue();
+            log.debug("Template found: " + template);
+
+            return buildPresentationFromTemplate(template);
+
+        } catch (RuntimeException e) {
+            log.error(e);
+            log.error(ConstantsError.PRESENTATION_CREATE_FROM_TEMPLATE);
+            return new Result(Status.error, ConstantsError.PRESENTATION_CREATE_FROM_TEMPLATE);
+        }
+    }
+
     public static Result createPresentation(HashMap args) {
         try {
+
+            String templateId = (String) args.get(ConstantsField.TEMPLATE_ID);
+            if (null != templateId) {
+                return createPresentationFromTemplate(args);
+            }
+
+
             List<Presentation> listPresentations = XMLCommonMethods.getCollection(presentation).orElse(new ArrayList<Presentation>());
-            if (args.get("id") != null) {
-                String id = (String) args.get("id");
+            if (args.get(ConstantsField.ID) != null) {
+                String id = (String) args.get(ConstantsField.ID);
                 if (XMLCommonMethods.isIdInUse(id, listPresentations, presentation)) {
                     return new Result(Status.error, ConstantsError.ID_IN_USE);
                 };
@@ -38,10 +171,6 @@ public class XMLPresentationMethods {
             listPresentations.add(presentation);
             Status result = XMLCommonMethods.writeCollection(listPresentations, Presentation.class, CollectionType.presentation);
 
-//            Boolean asTemplate = Boolean.valueOf( (String) args.getOrDefault("asTemplate", "false"));
-//            if (asTemplate) {
-//                addPresentationInTemplate(presentation);
-//            }
 
             if (result == Status.success) {
                 log.info(ConstantsSuccess.PRESENTATION_CREATE + presentation.getId());
