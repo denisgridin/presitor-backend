@@ -3,6 +3,7 @@ package ru.sfedu.course_project;
 public class ConstantsError {
     public static String ID_IN_USE = "Identifier is already in use";
     public static String UNEXPECTED_ERROR = "Unexpected error";
+    public static String UNEXPECTED_METHOD = "Unexpected api method";
     public static String INSTANCE_NOT_FOUND = "Instance not found ";
     public static String INSTANCE_UPDATE = "Unable to update instance";
     public static String INSTANCE_GET = "Unable to get instance ";

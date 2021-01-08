@@ -2,13 +2,9 @@ package ru.sfedu.course_project.api.jdbc;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.h2.tools.RunScript;
 import ru.sfedu.course_project.ConstantsError;
-import ru.sfedu.course_project.ConstantsInfo;
 import ru.sfedu.course_project.ConstantsSuccess;
 import ru.sfedu.course_project.SQLQuery;
-import ru.sfedu.course_project.api.xml.XMLCommonMethods;
-import ru.sfedu.course_project.api.xml.XMLElementMethods;
 import ru.sfedu.course_project.bean.*;
 import ru.sfedu.course_project.enums.*;
 import ru.sfedu.course_project.tools.ArgsValidator;

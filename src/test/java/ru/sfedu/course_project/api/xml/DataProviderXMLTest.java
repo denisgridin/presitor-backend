@@ -1,7 +1,5 @@
 package ru.sfedu.course_project.api.xml;
 
-import com.opencsv.exceptions.CsvDataTypeMismatchException;
-import com.opencsv.exceptions.CsvRequiredFieldEmptyException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.BeforeAll;
@@ -31,7 +29,6 @@ import static org.junit.jupiter.api.Assertions.*;
 public class DataProviderXMLTest extends TestBase {
     private static Logger log = LogManager.getLogger(DataProviderJDBCTest.class);
 
-    UUID pres = UUID.fromString("dc7707e6-4b45-4de7-b6f2-b7d5d1d8f3e7");
 
     DataProvider provider = new DataProviderXML();
 
@@ -61,8 +58,12 @@ public class DataProviderXMLTest extends TestBase {
 
     @Test
     void createPresentationFromTemplateSuccess ()  {
+        UUID presentationId = UUID.randomUUID();
+
+        makePresentationWithId(provider, presentationId);
+
         HashMap args = new HashMap();
-        args.put(ConstantsField.TEMPLATE_ID, String.valueOf(pres));
+        args.put(ConstantsField.TEMPLATE_ID, String.valueOf(presentationId));
 
         Result result = provider.createPresentation(args);
 
@@ -804,7 +805,7 @@ public class DataProviderXMLTest extends TestBase {
         try {
             DataProvider provider = new DataProviderCSV();
 
-            UUID id = pres;
+            UUID id = UUID.randomUUID();
             Result createResult = makePresentationWithId(provider, id);
 
             if (createResult.getStatus() == Status.success) {

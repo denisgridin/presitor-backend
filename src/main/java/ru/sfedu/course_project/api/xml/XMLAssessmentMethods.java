@@ -5,8 +5,6 @@ import org.apache.logging.log4j.Logger;
 import ru.sfedu.course_project.ConstantsError;
 import ru.sfedu.course_project.ConstantsInfo;
 import ru.sfedu.course_project.ConstantsSuccess;
-import ru.sfedu.course_project.api.xml.XMLAssessmentMethods;
-import ru.sfedu.course_project.api.xml.XMLCommonMethods;
 import ru.sfedu.course_project.bean.Assessment;
 import ru.sfedu.course_project.bean.Presentation;
 import ru.sfedu.course_project.enums.CollectionType;
@@ -63,7 +61,8 @@ public class XMLAssessmentMethods {
 
             log.info(ConstantsInfo.ASSESSMENTS_GET);
             ArrayList<Assessment> assessments = (ArrayList<Assessment>) XMLCommonMethods.getCollection(CollectionType.assessment).orElse(new ArrayList());
-            Assessment assessment = (Assessment) resultCreate.getReturnValue();
+            Optional resultValue = (Optional) resultCreate.getReturnValue();
+            Assessment assessment = (Assessment)  resultValue.get();
             assessments.add(assessment);
 
             Status statusWrite = XMLCommonMethods.writeCollection(assessments, Assessment.class, CollectionType.assessment);

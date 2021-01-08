@@ -1,16 +1,11 @@
 package ru.sfedu.course_project.api.csv;
 
-import com.opencsv.exceptions.CsvDataTypeMismatchException;
-import com.opencsv.exceptions.CsvRequiredFieldEmptyException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.h2.tools.RunScript;
 import ru.sfedu.course_project.Constants;
 import ru.sfedu.course_project.ConstantsInfo;
 import ru.sfedu.course_project.ConstantsSuccess;
 import ru.sfedu.course_project.ConstantsError;
-import ru.sfedu.course_project.api.DataProviderCSV;
-import ru.sfedu.course_project.api.jdbc.JDBCAssessmentMethod;
 import ru.sfedu.course_project.bean.*;
 import ru.sfedu.course_project.enums.CollectionType;
 import ru.sfedu.course_project.enums.ElementType;

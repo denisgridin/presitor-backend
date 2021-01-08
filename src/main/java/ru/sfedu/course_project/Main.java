@@ -7,6 +7,7 @@ import ru.sfedu.course_project.api.DataProviderCSV;
 import ru.sfedu.course_project.api.DataProviderJDBC;
 import ru.sfedu.course_project.api.DataProviderXML;
 import ru.sfedu.course_project.enums.DataType;
+import ru.sfedu.course_project.tools.Result;
 import ru.sfedu.course_project.tools.Runner;
 import ru.sfedu.course_project.utils.ConfigurationUtil;
 
@@ -29,7 +30,8 @@ public class Main {
             log.info("Command line parameters: " + params.entrySet());
             DataProvider provider = createDataProvider(datatype);
             Runner runner = new Runner(provider);
-            runner.run(params.get("method"), params);
+            Result result = runner.run(params.get("method"), params);
+            System.out.println(result);
         } catch (RuntimeException | IOException e) {
             e.printStackTrace();
             log.error(e);

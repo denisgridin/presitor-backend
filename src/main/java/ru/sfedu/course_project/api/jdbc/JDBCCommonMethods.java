@@ -1,11 +1,7 @@
 package ru.sfedu.course_project.api.jdbc;
 
-import com.opencsv.CSVReader;
-import com.opencsv.bean.CsvToBean;
-import com.opencsv.bean.CsvToBeanBuilder;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.h2.tools.RunScript;
 import ru.sfedu.course_project.Constants;
 import ru.sfedu.course_project.ConstantsInfo;
 import ru.sfedu.course_project.ConstantsError;
@@ -15,7 +11,6 @@ import ru.sfedu.course_project.converters.FontConverter;
 import ru.sfedu.course_project.converters.LayoutConverter;
 import ru.sfedu.course_project.converters.StyleConverter;
 import ru.sfedu.course_project.enums.*;
-import ru.sfedu.course_project.tools.Creator;
 import ru.sfedu.course_project.tools.Result;
 import ru.sfedu.course_project.tools.jdbc.QueryBuilder;
 import ru.sfedu.course_project.utils.ConfigurationUtil;

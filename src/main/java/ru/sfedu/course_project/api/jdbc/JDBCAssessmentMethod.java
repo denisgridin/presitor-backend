@@ -5,9 +5,7 @@ import org.apache.logging.log4j.Logger;
 import ru.sfedu.course_project.ConstantsError;
 import ru.sfedu.course_project.ConstantsSuccess;
 import ru.sfedu.course_project.SQLQuery;
-import ru.sfedu.course_project.api.xml.XMLCommonMethods;
 import ru.sfedu.course_project.bean.Assessment;
-import ru.sfedu.course_project.bean.Comment;
 import ru.sfedu.course_project.enums.*;
 import ru.sfedu.course_project.tools.ArgsValidator;
 import ru.sfedu.course_project.tools.Creator;
@@ -23,7 +21,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Optional;
 import java.util.UUID;
-import java.util.stream.Collectors;
 
 public class JDBCAssessmentMethod {
 

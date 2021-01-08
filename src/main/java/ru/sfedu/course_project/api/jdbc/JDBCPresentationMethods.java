@@ -1,10 +1,7 @@
 package ru.sfedu.course_project.api.jdbc;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.h2.tools.RunScript;
 import ru.sfedu.course_project.*;
-import ru.sfedu.course_project.api.xml.XMLCommonMethods;
-import ru.sfedu.course_project.api.xml.XMLSlideMethods;
 import ru.sfedu.course_project.bean.*;
 import ru.sfedu.course_project.enums.*;
 import ru.sfedu.course_project.tools.Creator;
@@ -12,7 +9,6 @@ import ru.sfedu.course_project.tools.Result;
 import ru.sfedu.course_project.tools.jdbc.QueryBuilder;
 import ru.sfedu.course_project.utils.ConstantsField;
 
-import java.awt.desktop.QuitEvent;
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -21,7 +17,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Optional;
 import java.util.UUID;
-import java.util.stream.Collectors;
 
 public class JDBCPresentationMethods {
     private static final Logger log = LogManager.getLogger(JDBCPresentationMethods.class);
