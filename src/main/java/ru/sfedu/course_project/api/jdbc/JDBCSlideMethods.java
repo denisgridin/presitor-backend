@@ -270,7 +270,7 @@ public class JDBCSlideMethods {
             JDBCCommonMethods.closeConnection();
 
             if (removedRows > 0) {
-                return new Result(Status.success, ConstantsSuccess.SLIDES_REMOVE);
+                return removeSlideElements(UUID.fromString((String) arguments.get(ConstantsField.ID)));
             } else {
                 return new Result(Status.error, ConstantsError.SLIDE_NOT_FOUND_IN_PRESENTATION);
             }
@@ -278,7 +278,27 @@ public class JDBCSlideMethods {
         } catch (RuntimeException | SQLException | IOException e) {
             log.error(e);
             e.printStackTrace();
-            return new Result(Status.error, ConstantsError.PRESENTATION_REMOVE);
+            return new Result(Status.error, ConstantsError.SLIDE_REMOVE);
+        }
+    }
+
+    public static Result removeSlideElements (UUID slideId) {
+        try {
+            String condition = String.format(SQLQuery.CONDITION_SLIDE_ID, slideId);
+            String queryRemoveShapes = String.format(SQLQuery.RECORD_REMOVE, QueryMember.shape, condition);
+            log.info(ConstantsInfo.QUERY + queryRemoveShapes);
+
+            String queryRemoveContents = String.format(SQLQuery.RECORD_REMOVE, QueryMember.content, condition);
+            log.info(ConstantsInfo.QUERY + queryRemoveContents);
+
+            Statement statement = JDBCCommonMethods.setConnection();
+            statement.executeUpdate(queryRemoveShapes);
+            statement.executeUpdate(queryRemoveContents);
+            return new Result(Status.success, ConstantsSuccess.SLIDES_REMOVE);
+        } catch (RuntimeException | SQLException | IOException e) {
+            log.error(e);
+            log.error(ConstantsError.ELEMENT_REMOVE);
+            return new Result(Status.success, ConstantsError.ELEMENT_REMOVE);
         }
     }
 

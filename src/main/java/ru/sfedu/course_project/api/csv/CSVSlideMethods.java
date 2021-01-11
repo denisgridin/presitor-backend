@@ -5,7 +5,9 @@ import org.apache.logging.log4j.Logger;
 import ru.sfedu.course_project.ConstantsError;
 import ru.sfedu.course_project.ConstantsInfo;
 import ru.sfedu.course_project.ConstantsSuccess;
+import ru.sfedu.course_project.bean.Content;
 import ru.sfedu.course_project.bean.Presentation;
+import ru.sfedu.course_project.bean.Shape;
 import ru.sfedu.course_project.bean.Slide;
 import ru.sfedu.course_project.enums.CollectionType;
 import ru.sfedu.course_project.enums.Status;
@@ -278,7 +280,7 @@ public class CSVSlideMethods {
                     Status status = CSVCommonMethods.removeRecordById(slide, Slide.class, slideId);
                     log.debug(ConstantsInfo.REMOVE_ATTEMPT + CollectionType.slide + status);
                     if (Status.success == status) {
-                        return new Result(Status.success, ConstantsSuccess.SLIDE_REMOVE + slideId);
+                        return removeSlideSlideElements(slideId);
                     } else {
                         return new Result(Status.error, ConstantsError.SLIDE_REMOVE + slideId);
                     }
@@ -293,6 +295,37 @@ public class CSVSlideMethods {
             e.printStackTrace();
             log.error(e);
             return new Result(Status.error, ConstantsError.SLIDE_REMOVE);
+        }
+    }
+
+    public static Result removeSlideSlideElements (UUID slideId) {
+        try {
+            Optional<List> listShapes = CSVCommonMethods.getCollection(CollectionType.shape, Shape.class);
+            ArrayList shapes = (ArrayList) listShapes.get();
+            ArrayList updatedShapes = (ArrayList) shapes.stream().filter(el -> {
+                Shape shape = (Shape) el;
+                return !shape.getSlideId().equals(slideId);
+            }).collect(Collectors.toList());
+            Status statusWriteShapes = CSVCommonMethods.writeCollection(updatedShapes, Shape.class, CollectionType.shape);
+            log.debug(ConstantsInfo.SHAPES + updatedShapes);
+
+            Optional<List> listContents = CSVCommonMethods.getCollection(CollectionType.content, Content.class);
+            ArrayList contents = (ArrayList) listContents.get();
+            ArrayList updatedContents = (ArrayList) contents.stream().filter(el -> {
+                Content content = (Content) el;
+                return !content.getSlideId().equals(slideId);
+            }).collect(Collectors.toList());
+            log.debug(ConstantsInfo.CONTENTS + updatedContents);
+            Status statusWriteContents = CSVCommonMethods.writeCollection(updatedContents, Shape.class, CollectionType.content);
+            log.info(ConstantsInfo.STATUS + statusWriteContents);
+            if (statusWriteShapes == Status.success && statusWriteContents == Status.success) {
+                return new Result(Status.success, ConstantsSuccess.SLIDE_REMOVE + slideId);
+            } else {
+                return new Result(Status.error, ConstantsError.ELEMENTS_REMOVE);
+            }
+        } catch (RuntimeException e) {
+            log.error(e);
+            return new Result(Status.error, ConstantsError.ELEMENT_REMOVE);
         }
     }
 }
