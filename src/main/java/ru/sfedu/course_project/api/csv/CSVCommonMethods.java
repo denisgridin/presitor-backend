@@ -12,6 +12,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import ru.sfedu.course_project.Constants;
 import ru.sfedu.course_project.ConstantsError;
+import ru.sfedu.course_project.ConstantsInfo;
 import ru.sfedu.course_project.ConstantsSuccess;
 import ru.sfedu.course_project.bean.*;
 import ru.sfedu.course_project.enums.CollectionType;
@@ -32,7 +33,7 @@ public class CSVCommonMethods {
     private static String getFilePath (CollectionType collectionType) {
         try {
             String dataPath = System.getProperty("dataPath");
-            String filePath = String.format("/%s%s/%s.%s",
+            String filePath = String.format("/%s/%s/%s.%s",
                     System.getProperty("dataPath"),
                     ConfigurationUtil.getConfigurationEntry(FILE_EXTENTION),
                     collectionType,
@@ -65,7 +66,7 @@ public class CSVCommonMethods {
         try {
             FileReader fileReader;
             try {
-                log.debug("[getCollection] Attempt to get collection: " + collectionType);
+                log.debug(ConstantsInfo.COLLECTION_GET + collectionType);
                 Optional optionalFileReader = Optional.ofNullable(new FileReader(getFilePath(collectionType)));
                 if (optionalFileReader.isPresent()) {
                     fileReader = (FileReader) optionalFileReader.get();
@@ -76,10 +77,10 @@ public class CSVCommonMethods {
                             .withIgnoreLeadingWhiteSpace(true)
                             .build();
                     Optional<List> optionalCollection = Optional.ofNullable(csvToBean.parse());
-                    log.info("[getCollection] Collection was retrieved: " + collectionType);
+                    log.info(ConstantsInfo.COLLECTION_RETRIEVED + collectionType);
                     return optionalCollection;
                 } else {
-                    log.info("[getCollection] Unable to get data source: " + collectionType);
+                    log.info(ConstantsError.DATA_SOURCE_ERROR + collectionType);
                     return Optional.empty();
                 }
             } catch (FileNotFoundException e) {
@@ -96,7 +97,7 @@ public class CSVCommonMethods {
 
     public static <T> Status writeCollection(List list, Class cl, CollectionType collectionType) {
         try {
-            log.debug(String.format("[writeCollection] Attempt to write in %s", cl.getSimpleName().toLowerCase()));
+            log.debug(String.format(ConstantsInfo.COLLECTION_WRITE, cl.getSimpleName().toLowerCase()));
 
             String path = getFilePath(collectionType);
             FileWriter filePath = new FileWriter(path);
@@ -104,36 +105,42 @@ public class CSVCommonMethods {
             StatefulBeanToCsv<T> beanToCsv = new StatefulBeanToCsvBuilder<T>(writer).withSeparator(',').withApplyQuotesToAll(false).build();
             beanToCsv.write(list);
             writer.close();
-            log.info("[writeCollection] Collection was wrote");
+            log.info(ConstantsSuccess.COLLECTION_WROTE);
             return Status.success;
         } catch (IOException | CsvDataTypeMismatchException | CsvRequiredFieldEmptyException e) {
             e.printStackTrace();
             log.error(e);
-            log.error("[writeCollection] Unable to write collection");
+            log.error(ConstantsError.COLLECTION_WRITE);
             return Status.error;
         }
     }
 
     public static Status removeRecordById (CollectionType collectionType, Class cl, UUID id) {
         try {
-            log.debug(String.format("[removeRecordById] Removing elements from collection: %s", collectionType));
+            log.debug(String.format(ConstantsInfo.INSTANCE_REMOVE_FROM_COLLECTION, collectionType));
             List updatedCollection = new ArrayList();
             int collectionSize = 0;
             switch (collectionType) {
                 case presentation: {
-                    List<Presentation> collection = (ArrayList<Presentation>) getCollection(collectionType, cl).orElseThrow(() -> new RuntimeException(String.format("[removeRecordById] Unable to get collection: %s", collectionType)));
+                    List<Presentation> collection = (ArrayList<Presentation>) getCollection(collectionType, cl).orElseThrow(() -> new RuntimeException(String.format(String.format(ConstantsError.COLLECTION_GET, collectionType))));
                     collectionSize = collection.size();
                     updatedCollection = collection.stream().filter(el -> !el.getId().equals(id)).collect(Collectors.toList());
                     break;
                 }
                 case slide: {
-                    List<Slide> collection = (ArrayList<Slide>) getCollection(collectionType, cl).orElseThrow(() -> new RuntimeException(String.format("[removeRecordById] Unable to get collection: %s", collectionType)));
+                    List<Slide> collection = (ArrayList<Slide>) getCollection(collectionType, cl).orElseThrow(() -> new RuntimeException(String.format(String.format(ConstantsError.COLLECTION_GET, collectionType))));
                     collectionSize = collection.size();
                     updatedCollection = collection.stream().filter(el -> !el.getId().equals(id)).collect(Collectors.toList());
                     break;
                 }
                 case comment: {
-                    List<Comment> collection = (ArrayList<Comment>) getCollection(collectionType, cl).orElseThrow(() -> new RuntimeException(String.format("[removeRecordById] Unable to get collection: %s", collectionType)));
+                    List<Comment> collection = (ArrayList<Comment>) getCollection(collectionType, cl).orElseThrow(() -> new RuntimeException(String.format(String.format(ConstantsError.COLLECTION_GET, collectionType))));
+                    collectionSize = collection.size();
+                    updatedCollection = collection.stream().filter(el -> !el.getId().equals(id)).collect(Collectors.toList());
+                    break;
+                }
+                case assessment: {
+                    List<Assessment> collection = (ArrayList<Assessment>) getCollection(collectionType, cl).orElseThrow(() -> new RuntimeException(String.format(String.format(ConstantsError.COLLECTION_GET, collectionType))));
                     collectionSize = collection.size();
                     updatedCollection = collection.stream().filter(el -> !el.getId().equals(id)).collect(Collectors.toList());
                     break;
@@ -145,23 +152,23 @@ public class CSVCommonMethods {
                     break;
             }
             if (updatedCollection.size() == collectionSize) {
-                log.error("[removeRecordById] Unable to find element with provided id: " + id);
+                log.error(ConstantsError.ELEMENT_GET + id);
                 return Status.error;
             }
             writeCollection(updatedCollection, cl, collectionType);
-            log.info("[removeRecordById] Element was successfully removed: " + id);
+            log.info(ConstantsSuccess.INSTANCE_REMOVED + id);
             return Status.success;
         } catch (RuntimeException e) {
             e.printStackTrace();
             log.error(e);
-            log.error("[removeRecordById] Unable to remove element from collection");
+            log.error(ConstantsError.INSTANCE_REMOVE);
             return Status.error;
         }
     }
 
     public static Result updateRecordInCollection (Class cls, CollectionType collectionType, Object instance, UUID instanceId) {
         try {
-            log.debug("[updateRecordInCollection] Update: " + instance.toString());
+            log.debug(ConstantsInfo.INSTANCE_UPDATE + instance.toString());
             ArrayList updatedCollection = new ArrayList();
             switch (collectionType) {
                 case presentation: {
@@ -207,7 +214,7 @@ public class CSVCommonMethods {
                     break;
             }
             Status status = writeCollection(updatedCollection, cls, collectionType);
-            log.debug("[updateRecordInCollection] Update status: " + status);
+            log.debug(ConstantsInfo.STATUS + status);
             return new Result(status, ConstantsSuccess.EDIT_ITEM + collectionType);
         } catch (RuntimeException e) {
             log.error(e);
@@ -222,8 +229,7 @@ public class CSVCommonMethods {
             switch (collectionType) {
                 case presentation: {
                     ArrayList<Presentation> listInstance = (ArrayList<Presentation>) getCollection(collectionType, cl).orElse(new ArrayList());
-                    log.debug("Attempt to find presentation: " + id);
-                    log.debug("list instance: " + listInstance);
+                    log.debug(ConstantsInfo.SEARCH + CollectionType.presentation);
                     Optional instance = listInstance.stream()
                             .filter(el -> el.getId().equals(id)).findFirst();
                     log.debug(instance);
@@ -231,35 +237,36 @@ public class CSVCommonMethods {
                 }
                 case slide: {
                     ArrayList<Slide> listInstance = (ArrayList<Slide>) getCollection(collectionType, cl).orElse(new ArrayList());
-                    log.debug("Attempt to find slide: " + id);
+                    log.debug(ConstantsInfo.SEARCH + CollectionType.slide);
                     Optional instance = listInstance.stream()
                             .filter(el -> el.getId().equals(id)).findFirst();
                     return instance;
                 }
                 case comment: {
                     ArrayList<Comment> listInstance = (ArrayList<Comment>) getCollection(collectionType, cl).orElse(new ArrayList());
-                    log.debug("Attempt to find comment: " + id);
-                    Optional instance = listInstance.stream()
-                            .filter(el -> el.getId().equals(id)).findFirst();
-                    return instance;
-                }
-                case template: {
-                    ArrayList<Presentation> listInstance = (ArrayList<Presentation>) getCollection(collectionType, cl).orElse(new ArrayList());
-                    log.debug("Attempt to find template: " + id);
+                    log.debug(ConstantsInfo.SEARCH + CollectionType.comment);
                     Optional instance = listInstance.stream()
                             .filter(el -> el.getId().equals(id)).findFirst();
                     return instance;
                 }
                 case shape: {
                     ArrayList<Shape> listInstance = (ArrayList<Shape>) getCollection(collectionType, cl).orElse(new ArrayList());
-                    log.debug("Attempt to find Shape: " + id);
+                    log.debug(ConstantsInfo.SEARCH + CollectionType.shape);
                     Optional instance = listInstance.stream()
                             .filter(el -> el.getId().equals(id)).findFirst();
                     return instance;
                 }
                 case content: {
                     ArrayList<Content> listInstance = (ArrayList<Content>) getCollection(collectionType, cl).orElse(new ArrayList());
-                    log.debug("Attempt to find Content: " + id);
+                    log.debug(ConstantsInfo.SEARCH + CollectionType.content);
+                    Optional instance = listInstance.stream()
+                            .filter(el -> el.getId().equals(id)).findFirst();
+                    return instance;
+                }
+                case assessment: {
+                    ArrayList<Assessment> listInstance = (ArrayList<Assessment>) getCollection(collectionType, cl).orElse(new ArrayList());
+                    log.debug(ConstantsInfo.SEARCH + CollectionType.assessment);
+                    log.debug(ConstantsInfo.MARKS + listInstance);
                     Optional instance = listInstance.stream()
                             .filter(el -> el.getId().equals(id)).findFirst();
                     return instance;
@@ -326,7 +333,7 @@ public class CSVCommonMethods {
             }).collect(Collectors.toList());
             return Status.success;
         } else {
-            log.error("[updatePresentationCollection] Unable to get presentations collection");
+            log.error(ConstantsError.PRESENTATIONS_GET);
             return Status.error;
         }
     }

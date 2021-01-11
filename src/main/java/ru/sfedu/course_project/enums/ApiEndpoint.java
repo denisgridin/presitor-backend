@@ -2,6 +2,7 @@ package ru.sfedu.course_project.enums;
 
 public enum ApiEndpoint {
     createPresentation,
+    // createPresentationByTemplate
     getPresentations,
     getPresentationById,
     removePresentationById,
@@ -16,7 +17,7 @@ public enum ApiEndpoint {
     getPresentationComments,
     commentPresentation,
     editPresentationComment,
-    removePresentationComment,
+    removePresentationCommentById,
 
     addElementInSlide,
     removeSlideElement,
@@ -26,4 +27,5 @@ public enum ApiEndpoint {
 
     rateByMark,
     getPresentationMarks,
+    // removePresentationMarkById
 }

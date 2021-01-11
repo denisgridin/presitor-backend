@@ -5,6 +5,7 @@ import org.apache.logging.log4j.Logger;
 import ru.sfedu.course_project.enums.Status;
 
 import java.io.Serializable;
+import java.util.Optional;
 
 public class Result implements Serializable {
     private static Logger log = LogManager.getLogger(Result.class);

@@ -2,6 +2,8 @@ package ru.sfedu.course_project;
 
 public class ConstantsError {
 
+    public static final String DATA_SOURCE_ERROR = "Unable to get data source";
+    public static final String INSTANCE_REMOVE = "Unable to remove instance";
     public static String MAIN_ERROR = "Error in main function ";
     public static String ACCESS_DENIED = "You have no access for this method! ";
 
@@ -12,7 +14,9 @@ public class ConstantsError {
     public static String INSTANCE_UPDATE = "Unable to update instance ";
     public static String INSTANCE_GET = "Unable to get instance ";
     public static String ELEMENT_NOT_FOUND = "Undefined element type ";
+
     public static String COLLECTION_WRITE = "Unable to write collection ";
+    public static final String COLLECTION_GET = "Unable to get collection: %s";
 
     public static String CONNECTION_ERROR = "Connection error ";
 
@@ -46,6 +50,7 @@ public class ConstantsError {
     public static String COMMENTS_GET = "Unable to get comments ";
     public static String COMMENT_EDIT = "Unable to edit comment ";
     public static String COMMENT_REMOVE = "Unable to remove comment ";
+    public static final String COMMENTS_REMOVE = "Unable to remove comments";
 
     public static String SHAPE_CREATE = "Unable to create shape ";
     public static String CONTENT_CREATE = "Unable to create content element ";
@@ -55,8 +60,10 @@ public class ConstantsError {
     public static String FIGURE_CREATE = "Unable to create figure ";
 
     public static String ELEMENT_REMOVE = "Unable to remove element ";
+    public static final String ELEMENTS_REMOVE = "Unable to remove elements";
     public static String ELEMENT_EDIT = "Unable to edit element ";
     public static String ELEMENTS_GET = "Unable to get elements ";
+    public static final String ELEMENT_GET = "Unable to get element with provided id ";
 
     public static String SHAPE_REMOVE = "Unable to remove shape ";
     public static String SHAPE_EDIT = "Unable to edit shape ";
@@ -68,6 +75,9 @@ public class ConstantsError {
     public static String ASSESSMENT_ADD_ERROR = "Unable to rate presentation ";
     public static String ASSESSMENT_CREATE_ERROR = "Unable to create assessment ";
     public static String ASSESSMENT_GET_ERROR = "Unable to get presentation assessments ";
+    public static final String ASSESSMENTS_REMOVE = "Unable to remove assessments";
+    public static final String ASSESSMENT_REMOVE = "Unable to remove assessment ";
+    public static final String ASSESSMENT_UPDATE = "Unable to edit assessment ";
 
     public static String SQL_PARSE = "Unable to parse sql result set ";
     public static String SQL_ERROR = "SQL error ";

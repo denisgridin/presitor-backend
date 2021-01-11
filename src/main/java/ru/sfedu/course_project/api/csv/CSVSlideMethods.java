@@ -37,13 +37,14 @@ public class CSVSlideMethods {
             if (optionalPresentation.isPresent()) {
                 log.info(arguments.entrySet());
 
-                List<Slide> slides = (List<Slide>) getPresentationSlides(arguments).getReturnValue();
+                Optional optionalList = (Optional) getPresentationSlides(arguments).getReturnValue();
+                List<Slide> slides = (List<Slide>) optionalList.orElse(new ArrayList<>());
                 arguments.put(ConstantsField.INDEX, slides.size());
                 Optional<Slide> optionalSlide = (Optional<Slide>) new Creator().create(Slide.class, arguments).getReturnValue();
                 Slide slide = optionalSlide.orElse(new Slide());
 
-                log.info("[createPresentationSlide] Create slide: " + slide);
-                log.debug("[createPresentationSlide] For presentation: " + slide.getPresentationId());
+                log.info(ConstantsInfo.SLIDE_CREATE + slide);
+                log.debug(ConstantsInfo.PRESENTATION + slide.getPresentationId());
 
 
                 ArrayList allSlides = (ArrayList) CSVCommonMethods.getCollection(CollectionType.slide, Slide.class).orElse(new ArrayList());
@@ -82,25 +83,27 @@ public class CSVSlideMethods {
                 Optional<List> optionalPresentationSlides = Optional.empty();
                 ArrayList<Slide> presentationSlides = new ArrayList<>();
                 if (listSlides.isPresent()) {
-                    log.debug("[getPresentationSlides] Attempt to find presentation slides for: " + presentationId);
+                    log.debug(ConstantsInfo.SLIDES_GET + presentationId);
                     List<Slide> list = listSlides.get();
                     optionalPresentationSlides = Optional.of(list.stream().filter(slide -> slide.getPresentationId().equals(presentationId)).collect(Collectors.toList()));
                     presentationSlides = (ArrayList) optionalPresentationSlides.orElse(new ArrayList());
-                    log.info("Presentation slides get!");
 
-                    log.debug("Get elements from slide: ");
+                    log.debug(ConstantsInfo.ELEMENTS_GET);
                     if (withElements) {
                         Result resultSetElements = setElementsBySlide(presentationSlides, presentationId);
                         if (Status.error == resultSetElements.getStatus()) {
                             return resultSetElements;
                         }
 
-                        presentationSlides = (ArrayList<Slide>) resultSetElements.getReturnValue();
-                        log.debug("Presentation slides: " + presentationSlides);
+                        Optional optionalList = (Optional) resultSetElements.getReturnValue();
+                        if (optionalList.isPresent()) {
+                            presentationSlides = (ArrayList<Slide>) optionalList.get();
+                            log.debug(ConstantsInfo.SLIDES + presentationSlides);
+                        }
                     }
                 }
-                log.debug("[getPresentationSlides] Found presentation slides: " + presentationSlides);
-                return new Result(Status.success, presentationSlides);
+                log.debug(ConstantsInfo.SLIDES + presentationSlides);
+                return new Result(Status.success, Optional.of(presentationSlides));
             } else {
                 log.error(ConstantsError.PRESENTATION_NOT_FOUND + presentationId);
                 return new Result(Status.error, ConstantsError.PRESENTATION_NOT_FOUND + presentationId);
@@ -113,26 +116,40 @@ public class CSVSlideMethods {
         }
     }
 
+    public static Result setSlideElements (Slide slide) {
+        try {
+            log.info(ConstantsInfo.ELEMENTS + slide.getId());
+            HashMap args = new HashMap();
+            args.put(ConstantsField.PRESENTATION_ID, String.valueOf(slide.getPresentationId()));
+            args.put(ConstantsField.SLIDE_ID, String.valueOf(slide.getId()));
+            Result resultGetElements = CSVElementMethods.getSlideElements(args);
+
+            log.debug(ConstantsInfo.ELEMENTS + resultGetElements.getStatus());
+            log.debug(ConstantsInfo.ELEMENTS + resultGetElements.getReturnValue());
+            if (Status.success == resultGetElements.getStatus()) {
+                Optional optionalList = (Optional) resultGetElements.getReturnValue();
+                ArrayList elements = (ArrayList) optionalList.orElse(new ArrayList());
+                slide.setElements(elements);
+            }
+            return new Result(Status.success, slide);
+        } catch (RuntimeException e) {
+            log.error(e);
+            return new Result(Status.error, e);
+        }
+    }
+
     public static Result setElementsBySlide (ArrayList slides, UUID presentationId) {
         try {
             ArrayList<Slide> updatedSlides = (ArrayList<Slide>) slides.stream().map(el -> {
-                Slide slide = (Slide) el;
-                log.info("Search elements for slide: " + slide.getId());
-                HashMap args = new HashMap();
-                args.put(ConstantsField.PRESENTATION_ID, String.valueOf(presentationId));
-                args.put(ConstantsField.SLIDE_ID, String.valueOf(slide.getId()));
-                Result resultGetElements = CSVElementMethods.getSlideElements(args);
-
-                log.debug("get elements status: " + resultGetElements.getStatus());
-                log.debug("Slide elements: " + resultGetElements.getReturnValue());
-                if (Status.success == resultGetElements.getStatus()) {
-                    ArrayList elements = (ArrayList) resultGetElements.getReturnValue();
-                    slide.setElements(elements);
+                Result result = setSlideElements((Slide) el);
+                if (result.getStatus() == Status.success) {
+                    return result.getReturnValue();
+                } else {
+                    return el;
                 }
-                return slide;
             }).collect(Collectors.toList());
-            log.debug("Slide: " + slide);
-            return new Result(Status.success, updatedSlides);
+            log.debug(ConstantsInfo.SLIDE + slides);
+            return new Result(Status.success, Optional.of(updatedSlides));
         } catch (RuntimeException e) {
             log.error(e);
             log.error(ConstantsError.ELEMENTS_GET);
@@ -146,20 +163,31 @@ public class CSVSlideMethods {
                 log.error(String.format(ConstantsError.ARGUMENT_IS_NOT_PROVIDED, ConstantsField.PRESENTATION_ID));
                 return new Result(Status.error, String.format(ConstantsError.ARGUMENT_IS_NOT_PROVIDED, ConstantsField.PRESENTATION_ID));
             }
-            if (null == args.get("id")) {
+            if (null == args.get(ConstantsField.ID)) {
                 log.error(String.format(ConstantsError.ARGUMENT_IS_NOT_PROVIDED, ConstantsField.SLIDE_ID));
                 return new Result(Status.error, String.format(ConstantsError.ARGUMENT_IS_NOT_PROVIDED, ConstantsField.SLIDE_ID));
             }
             UUID presentationId = UUID.fromString((String) args.get(ConstantsField.PRESENTATION_ID));
-            UUID slideId = UUID.fromString((String) args.get("id"));
+            UUID slideId = UUID.fromString((String) args.get(ConstantsField.ID));
             Optional<List> optionalSlides = CSVCommonMethods.getCollection(slide, Slide.class);
             if (optionalSlides.isPresent()) {
-                Optional<Slide> slide = optionalSlides.get().stream().filter(el -> {
+                Optional<Slide> optionalSlide = optionalSlides.get().stream().filter(el -> {
                     Slide item = (Slide) el;
                     return item.getPresentationId().equals(presentationId) && item.getId().equals(slideId);
                 }).limit(1).findFirst();
-                if (optionalSlides.isPresent()) {
-                    return new Result(Status.success, slide.get());
+                if (optionalSlide.isPresent()) {
+                    Slide slide = optionalSlide.get();
+                    boolean withElements = Boolean.parseBoolean((String) args.get(ConstantsField.WITH_ELEMENTS));
+                    if (withElements) {
+
+                        Result resultSetElements = setSlideElements(slide);
+                        if (resultSetElements.getStatus() == Status.success) {
+                            slide = (Slide) resultSetElements.getReturnValue();
+                        }
+                        log.debug(ConstantsInfo.SLIDE + slide);
+
+                    }
+                    return new Result(Status.success, Optional.of(slide));
                 } else {
                     return new Result(Status.error, ConstantsError.SLIDE_GET);
                 }
@@ -189,9 +217,7 @@ public class CSVSlideMethods {
             if (optionalSlide.isPresent()) {
                 Optional<List> slides = CSVCommonMethods.getCollection(slide, Slide.class);
                 if (slides.isPresent()) {
-                    ArrayList updatedSlides = (ArrayList) slides.get().stream().map(el -> {
-                        return updateSlide((Slide) el, args, slideId, presentationId);
-                    }).collect(Collectors.toList());
+                    ArrayList updatedSlides = (ArrayList) slides.get().stream().map(el -> updateSlide((Slide) el, args, slideId, presentationId)).collect(Collectors.toList());
                     Status status = CSVCommonMethods.writeCollection(updatedSlides, Slide.class, slide);
                     if (Status.success == status) {
                         log.debug(ConstantsSuccess.SLIDE_EDIT + slideId);
@@ -235,15 +261,33 @@ public class CSVSlideMethods {
             if (null == arguments.get(ConstantsField.PRESENTATION_ID)) {
                 return new Result(Status.error, ConstantsError.ARGUMENT_IS_NOT_PROVIDED + ConstantsField.PRESENTATION_ID);
             }
-            UUID id = UUID.fromString((String) arguments.get(ConstantsField.ID));
             String presentationId = (String) arguments.get(ConstantsField.PRESENTATION_ID);
-            log.debug("[removePresentationSlideById] Attempt to remove slide: " + id);
-            Status status = CSVCommonMethods.removeRecordById(slide, Slide.class, id);
-            log.debug("[removePresentationSlideById] Removed from data source: " + status);
-            if (Status.success == status) {
-                return new Result(Status.success, ConstantsSuccess.SLIDES_REMOVE + id);
+            HashMap getPresentationByIdParams = new HashMap();
+            getPresentationByIdParams.put(ConstantsField.ID, String.valueOf(presentationId));
+
+            Optional<Presentation> optionalPresentation = CSVCommonMethods.getInstanceById(Presentation.class, presentation, getPresentationByIdParams);
+            if (optionalPresentation.isPresent()) {
+
+                UUID slideId = UUID.fromString((String) arguments.get(ConstantsField.ID));
+                HashMap getSlideByIdParams = new HashMap();
+                getSlideByIdParams.put(ConstantsField.ID, String.valueOf(slideId));
+
+                Optional<Presentation> optionalSlide = CSVCommonMethods.getInstanceById(Slide.class, slide, getSlideByIdParams);
+                if (optionalSlide.isPresent()) {
+                    log.debug(ConstantsInfo.REMOVE_ATTEMPT + CollectionType.slide);
+                    Status status = CSVCommonMethods.removeRecordById(slide, Slide.class, slideId);
+                    log.debug(ConstantsInfo.REMOVE_ATTEMPT + CollectionType.slide + status);
+                    if (Status.success == status) {
+                        return new Result(Status.success, ConstantsSuccess.SLIDE_REMOVE + slideId);
+                    } else {
+                        return new Result(Status.error, ConstantsError.SLIDE_REMOVE + slideId);
+                    }
+                } else {
+                    return new Result(Status.error, ConstantsError.SLIDE_NOT_FOUND_IN_PRESENTATION);
+                }
+
             } else {
-                return new Result(Status.error, ConstantsError.SLIDE_REMOVE + id);
+                return new Result(Status.error, ConstantsError.PRESENTATION_NOT_FOUND + arguments.get(ConstantsField.PRESENTATION_ID));
             }
         } catch (RuntimeException e) {
             e.printStackTrace();

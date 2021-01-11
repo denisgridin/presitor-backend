@@ -70,8 +70,8 @@ public class Runner {
                         case editPresentationComment: {
                             return provider.editPresentationComment(arguments);
                         }
-                        case removePresentationComment: {
-                            return provider.removePresentationComment(arguments);
+                        case removePresentationCommentById: {
+                            return provider.removePresentationCommentById(arguments);
                         }
                         case addElementInSlide: {
                             return provider.addElementInSlide(arguments);

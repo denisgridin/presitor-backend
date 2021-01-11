@@ -553,7 +553,7 @@ public class DataProviderJDBCTest extends TestBase {
                 log.info("{ Remove presentation comment }");
 
                 args.put(ConstantsField.ID, String.valueOf(resultCommentPresentation.getReturnValue()));
-                Result resultRemoveComment = provider.removePresentationComment(args);
+                Result resultRemoveComment = provider.removePresentationCommentById(args);
 
                 log.info("{ Get comments }");
                 Result resultGetPresentationComments = provider.getPresentationComments(args);

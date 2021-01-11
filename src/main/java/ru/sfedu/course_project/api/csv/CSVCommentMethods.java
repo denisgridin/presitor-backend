@@ -81,7 +81,7 @@ public class CSVCommentMethods {
             }
 
             HashMap params = new HashMap();
-            params.put("id", args.get(ConstantsField.PRESENTATION_ID));
+            params.put(ConstantsField.ID, args.get(ConstantsField.PRESENTATION_ID));
             Result resultGetPres = CSVPresentationMethods.getPresentationById(params);
 
 
@@ -97,7 +97,7 @@ public class CSVCommentMethods {
                 return item.getPresentationId().equals(presentationId);
             }).collect(Collectors.toList());
             log.info(ConstantsSuccess.COMMENTS_GET + presentationComments);
-            return new Result(Status.success, presentationComments);
+            return new Result(Status.success, Optional.of(presentationComments));
         } catch (RuntimeException e) {
             log.error(e);
             log.error(ConstantsError.COMMENTS_GET);
@@ -151,7 +151,7 @@ public class CSVCommentMethods {
         }
     }
 
-    public static Result removePresentationComment (HashMap arguments) {
+    public static Result removePresentationCommentById (HashMap arguments) {
         try {
             ArrayList fields = new ArrayList();
             fields.add(ConstantsField.PRESENTATION_ID);

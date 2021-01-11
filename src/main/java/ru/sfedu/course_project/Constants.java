@@ -136,4 +136,6 @@ public class Constants {
 
         return style;
     }
+
+    public final static String TRUE_VALUE = "true";
 }

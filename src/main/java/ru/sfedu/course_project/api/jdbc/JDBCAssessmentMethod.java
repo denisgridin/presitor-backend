@@ -120,7 +120,7 @@ public class JDBCAssessmentMethod {
             HashMap marks = new HashMap();
 
             marks.put(String.valueOf(Mark.awful), 0);
-            marks.put(String.valueOf(Mark.bed), 0);
+            marks.put(String.valueOf(Mark.bad), 0);
             marks.put(String.valueOf(Mark.normal), 0);
             marks.put(String.valueOf(Mark.good), 0);
             marks.put(String.valueOf(Mark.excellent), 0);

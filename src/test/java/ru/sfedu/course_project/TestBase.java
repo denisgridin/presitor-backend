@@ -2,19 +2,17 @@ package ru.sfedu.course_project;
 
 import ru.sfedu.course_project.api.DataProvider;
 import ru.sfedu.course_project.bean.*;
-import ru.sfedu.course_project.enums.BorderStyle;
-import ru.sfedu.course_project.enums.ElementType;
-import ru.sfedu.course_project.enums.Figure;
-import ru.sfedu.course_project.enums.Status;
+import ru.sfedu.course_project.bean.FontCase;
+import ru.sfedu.course_project.enums.*;
 import ru.sfedu.course_project.tools.Creator;
 import ru.sfedu.course_project.tools.Result;
 import ru.sfedu.course_project.utils.ConstantsField;
 
 import java.util.HashMap;
+import java.util.Optional;
 import java.util.UUID;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class TestBase {
     public Result makeRandomPresentation (DataProvider provider) {
@@ -195,13 +193,34 @@ public class TestBase {
         args.put(ConstantsField.ID, String.valueOf(id));
 
 
+
+        Style style = new Style();
+        style.setBorderStyle(BorderStyle.inset);
+        style.setBorderColor("#ffffff");
+        style.setFillColor("white");
+        style.setBorderWidth("0px");
+        style.setBorderColor("white");
+        style.setBorderRadius("0px");
+        style.setBoxShadow("0px 0px 0px 0px transparent");
+        style.setOpacity("20");
+
+
+        args.put(ConstantsField.BORDER_STYLE ,String.valueOf(style.getBorderStyle()));
+        args.put(ConstantsField.BORDER_COLOR ,style.getBorderColor());
+        args.put(ConstantsField.FILL_COLOR ,style.getFillColor());
+        args.put(ConstantsField.BORDER_RADIUS ,style.getBorderRadius());
+        args.put(ConstantsField.BORDER_WIDTH ,style.getBorderWidth());
+        args.put(ConstantsField.BOX_SHADOW ,style.getBoxShadow());
+        args.put(ConstantsField.OPACITY ,style.getOpacity());
+
+
         Result resultCreateShape = new Creator().create(Shape.class, args);
         Result result = provider.addElementInSlide(args);
         assertTrue(Status.success == result.getStatus());
 
         if (Status.success == resultCreateShape.getStatus()) {
             Shape shape = (Shape) resultCreateShape.getReturnValue();
-            assertEquals(shape.toString(), result.getReturnValue().toString());
+            assertEquals(Optional.of(shape).toString(), result.getReturnValue().toString());
         }
     }
 
@@ -222,7 +241,12 @@ public class TestBase {
 
         if (Status.success == resultCreateContent.getStatus()) {
             Content content = (Content) resultCreateContent.getReturnValue();
-            assertEquals(content.toString(), result.getReturnValue().toString());
+
+            Optional<Content> optionalContent = (Optional<Content>) result.getReturnValue();
+            Content createdContent = optionalContent.get();
+            assertEquals(content.toString(), createdContent.toString());
+        } else {
+            fail();
         }
     }
 
@@ -270,5 +294,16 @@ public class TestBase {
         Result result = provider.addElementInSlide(args);
 
         assertTrue(Status.success == result.getStatus());
+    }
+
+    public void makePresentationMark (DataProvider provider, UUID markId, UUID presentationId, Mark mark) {
+        makePresentationWithId(provider, presentationId);
+
+        HashMap args = new HashMap();
+        args.put(ConstantsField.PRESENTATION_ID, String.valueOf(presentationId));
+        args.put(ConstantsField.ID, String.valueOf(markId));
+        args.put(ConstantsField.MARK, String.valueOf(mark));
+        Result resultRate = provider.rateByMark(args);
+        assertTrue(resultRate.getStatus() == Status.success);
     }
 }

@@ -197,7 +197,7 @@ public class JDBCCommentMethods {
         }
     }
 
-    public static Result removePresentationComment(HashMap arguments) {
+    public static Result removePresentationCommentById(HashMap arguments) {
         try {
             ArrayList fields = new ArrayList();
             fields.add(ConstantsField.PRESENTATION_ID);

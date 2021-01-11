@@ -6,6 +6,8 @@ import ru.sfedu.course_project.Constants;
 import ru.sfedu.course_project.ConstantsInfo;
 import ru.sfedu.course_project.ConstantsSuccess;
 import ru.sfedu.course_project.ConstantsError;
+
+
 import ru.sfedu.course_project.bean.*;
 import ru.sfedu.course_project.enums.CollectionType;
 import ru.sfedu.course_project.enums.ElementType;
@@ -19,8 +21,8 @@ import java.io.IOException;
 import java.util.*;
 import java.util.stream.Collectors;
 
+import static ru.sfedu.course_project.enums.CollectionType.comment;
 import static ru.sfedu.course_project.enums.CollectionType.presentation;
-import static ru.sfedu.course_project.enums.CollectionType.template;
 
 public class CSVPresentationMethods {
     private static final Logger log = LogManager.getLogger(CSVPresentationMethods.class);
@@ -72,19 +74,20 @@ public class CSVPresentationMethods {
 
     public static Result createPresentationFromTemplate (HashMap args) {
         try {
-            log.info("Searching template presentation");
+            log.info(ConstantsInfo.TEMPLATE_SEARCH);
             HashMap params = new HashMap();
             params.put(ConstantsField.ID, String.valueOf(args.get(ConstantsField.TEMPLATE_ID)));
-            params.put(ConstantsField.WITH_SLIDES, "true");
-            params.put(ConstantsField.WITH_ELEMENTS, "true");
+            params.put(ConstantsField.WITH_SLIDES, Constants.TRUE_VALUE);
+            params.put(ConstantsField.WITH_ELEMENTS, Constants.TRUE_VALUE);
             Result resultGetTemplate = getPresentationById(params);
 
             if (Status.error == resultGetTemplate.getStatus()) {
                 return resultGetTemplate;
             }
 
-            Presentation template = (Presentation) resultGetTemplate.getReturnValue();
-            log.debug("Template found: " + template);
+            Optional <Presentation> optionalTemplate = (Optional<Presentation>) resultGetTemplate.getReturnValue();
+            Presentation template = optionalTemplate.get();
+            log.debug(ConstantsInfo.TEMPLATE_FOUND + template);
 
             return buildPresentationFromTemplate(template);
 
@@ -97,16 +100,16 @@ public class CSVPresentationMethods {
 
     public static Result buildPresentationFromTemplate (Presentation template) {
         try {
-            log.info("Create presentation from template: " + template);
+            log.info(ConstantsInfo.PRESENTATION_CREATE_FROM_TEMPLATE + template);
 
             UUID id = UUID.randomUUID();
             String name = String.format(Constants.TEMPLATE_NAME, Constants.DEFAULT_PRESENTATION.get(ConstantsField.NAME), template.getName());
             String fillColor = template.getFillColor();
             String fontFamily = template.getFontFamily();
 
-            log.info("Build presentation from template");
+            log.info(ConstantsInfo.PRESENTATION_BUILD_FROM_TEMPLATE);
 
-            log.debug("Add parameters for new presentation");
+            log.debug(ConstantsInfo.ARGUMENTS_ADD);
             HashMap args = new HashMap();
             args.put(ConstantsField.ID, String.valueOf(id));
             log.info(String.format(ConstantsInfo.FIELD_FORMAT_SET, ConstantsField.ID, id));
@@ -126,7 +129,7 @@ public class CSVPresentationMethods {
                 return resultCreatePresentation;
             }
 
-            log.info("Presentation created from template");
+            log.info(ConstantsSuccess.PRESENTATION_CREATED_FROM_TEMPLATE);
 
             UUID presentationId = id;
 
@@ -143,7 +146,7 @@ public class CSVPresentationMethods {
                 presentationSlides.add(slide);
 
                 if (slide.getElements() != null) {
-                    log.info("Write new presentation elements from slide: " + slide);
+                    log.info(ConstantsInfo.ELEMENTS_WRITE_FROM_SLIDE + slide);
                     ArrayList elements = (ArrayList) slide.getElements().stream().peek(item -> item.setId(UUID.randomUUID())).collect(Collectors.toList());
 
                     elements.stream().forEach(item -> {
@@ -169,9 +172,9 @@ public class CSVPresentationMethods {
                 }
             });
 
-            log.debug("Presentation slides: " + presentationSlides);
-            log.debug("Presentation shapes: " + presentationShapes);
-            log.debug("Presentation contents: " + presentationContents);
+            log.debug(ConstantsInfo.SLIDES + presentationSlides);
+            log.debug(ConstantsInfo.SHAPES + presentationShapes);
+            log.debug(ConstantsInfo.CONTENTS + presentationContents);
 
             ArrayList allSlides = (ArrayList) CSVCommonMethods.getCollection(CollectionType.slide, Slide.class).orElse(new ArrayList());
             ArrayList allShapes = (ArrayList) CSVCommonMethods.getCollection(CollectionType.shape, Shape.class).orElse(new ArrayList());
@@ -181,14 +184,9 @@ public class CSVPresentationMethods {
             allShapes.addAll(presentationShapes);
             allContents.addAll(presentationContents);
 
-            Status statusWriteSlides = CSVCommonMethods.writeCollection(allSlides, Slide.class, CollectionType.slide);
-            log.info("Slides wrote");
-
-            Status statusWriteShapes = CSVCommonMethods.writeCollection(allShapes, Shape.class, CollectionType.shape);
-            log.info("Shapes wrote");
-
-            Status statusWriteContents = CSVCommonMethods.writeCollection(allContents, Content.class, CollectionType.content);
-            log.info("Contents wrote");
+            CSVCommonMethods.writeCollection(allSlides, Slide.class, CollectionType.slide);
+            CSVCommonMethods.writeCollection(allShapes, Shape.class, CollectionType.shape);
+            CSVCommonMethods.writeCollection(allContents, Content.class, CollectionType.content);
 
             return new Result(Status.success, id);
 
@@ -224,21 +222,19 @@ public class CSVPresentationMethods {
                 return isArgsValid;
             }
 
-            Optional<Presentation> optionalPresentation = CSVCommonMethods.getInstanceExistenceByField(CollectionType.presentation, Presentation.class, ConstantsField.ID, (String) arguments.get(ConstantsField.ID));
-            if (!optionalPresentation.isPresent()) {
-                return new Result(Status.error, ConstantsError.INSTANCE_NOT_FOUND);
-            }
-
-            Optional<Object> slideId = Optional.ofNullable(arguments.get(ConstantsField.SLIDE_ID));
             boolean withSlides = Boolean.parseBoolean((String) arguments.getOrDefault(ConstantsField.WITH_SLIDES, String.valueOf(false)));
             boolean withComments = Boolean.parseBoolean((String) arguments.getOrDefault(ConstantsField.WITH_COMMENTS, String.valueOf(false)));
             boolean withMarks = Boolean.parseBoolean((String) arguments.getOrDefault(ConstantsField.WITH_MARKS, String.valueOf(false)));
             boolean withElements = Boolean.parseBoolean((String) arguments.getOrDefault(ConstantsField.WITH_ELEMENTS, String.valueOf(false)));
-            log.info(String.format(ConstantsInfo.FIELD_VALUE, "with slide id: ", slideId.isPresent()));
-            log.info(String.format(ConstantsInfo.FIELD_VALUE, "withSlides: ", withSlides));
-            log.info(String.format(ConstantsInfo.FIELD_VALUE, "withComments: ", withComments));
-            log.info(String.format(ConstantsInfo.FIELD_VALUE, "withMarks: ", withMarks));
-            log.info(String.format(ConstantsInfo.FIELD_VALUE, "withElements: ", withElements));
+            log.info(String.format(ConstantsInfo.FIELD_VALUE, ConstantsField.WITH_SLIDES, withSlides));
+            log.info(String.format(ConstantsInfo.FIELD_VALUE, ConstantsField.WITH_COMMENTS, withComments));
+            log.info(String.format(ConstantsInfo.FIELD_VALUE, ConstantsField.WITH_MARKS, withMarks));
+            log.info(String.format(ConstantsInfo.FIELD_VALUE, ConstantsField.WITH_ELEMENTS, withElements));
+
+            Optional<Presentation> optionalPresentation = CSVCommonMethods.getInstanceExistenceByField(CollectionType.presentation, Presentation.class, ConstantsField.ID, (String) arguments.get(ConstantsField.ID));
+            if (!optionalPresentation.isPresent()) {
+                return new Result(Status.error, ConstantsError.INSTANCE_NOT_FOUND);
+            }
 
             Presentation presentation = optionalPresentation.get();
 
@@ -247,9 +243,13 @@ public class CSVPresentationMethods {
                 paramsGetSlides.put(ConstantsField.PRESENTATION_ID, arguments.get(ConstantsField.ID));
                 paramsGetSlides.put(ConstantsField.WITH_ELEMENTS, arguments.get(ConstantsField.WITH_ELEMENTS));
                 Result resultGetSlides = CSVSlideMethods.getPresentationSlides(paramsGetSlides);
-                log.debug("[getPresentationById] get presentation slides: " + paramsGetSlides.get(ConstantsField.PRESENTATION_ID));
+                log.debug(ConstantsInfo.SLIDES_GET + paramsGetSlides.get(ConstantsField.PRESENTATION_ID));
                 if (Status.success == resultGetSlides.getStatus()) {
-                    presentation.setSlides((ArrayList) resultGetSlides.getReturnValue());
+                    Optional optional = (Optional) resultGetSlides.getReturnValue();
+                    if (optional.isPresent()) {
+                        ArrayList slides = (ArrayList) optional.get();
+                        presentation.setSlides(slides);
+                    }
                 } else {
                     return resultGetSlides;
                 }
@@ -259,9 +259,14 @@ public class CSVPresentationMethods {
                 HashMap paramsGetComments = new HashMap();
                 paramsGetComments.put(ConstantsField.PRESENTATION_ID, arguments.get(ConstantsField.ID));
                 Result resultGetComments = CSVCommentMethods.getPresentationComments(paramsGetComments);
-                log.debug("[getPresentationById] get presentation comments: " + paramsGetComments.get(ConstantsField.PRESENTATION_ID));
+                log.debug(ConstantsInfo.COMMENTS_GET + paramsGetComments.get(ConstantsField.PRESENTATION_ID));
                 if (Status.success == resultGetComments.getStatus()) {
-                    presentation.setComments((ArrayList) resultGetComments.getReturnValue());
+                    Optional optional = (Optional) resultGetComments.getReturnValue();
+                    if (optional.isPresent()) {
+                        ArrayList comments = (ArrayList) optional.get();
+                        presentation.setComments(comments);
+                    }
+
                 } else {
                     return resultGetComments;
                 }
@@ -270,19 +275,23 @@ public class CSVPresentationMethods {
             if (withMarks) {
                 HashMap paramsGetMarks = new HashMap();
                 paramsGetMarks.put(ConstantsField.PRESENTATION_ID, arguments.get(ConstantsField.ID));
-                log.debug("[getPresentationById] get presentation marks: " + paramsGetMarks.get(ConstantsField.ID));
+                log.debug(ConstantsInfo.ASSESSMENTS_GET + paramsGetMarks.get(ConstantsField.ID));
 
                 Result resultGetMarks = CSVAssessmentMethods.getPresentationMarks(paramsGetMarks);
 
                 if (Status.success == resultGetMarks.getStatus()) {
-                    presentation.setMarks((HashMap) resultGetMarks.getReturnValue());
+                    Optional optional = (Optional) resultGetMarks.getReturnValue();
+                    if (optional.isPresent()) {
+                        HashMap marks = (HashMap) optional.get();
+                        presentation.setMarks(marks);
+                    }
                 } else {
                     return resultGetMarks;
                 }
             }
 
             return optionalPresentation.isPresent() ?
-                    new Result(Status.success, presentation) :
+                    new Result(Status.success, Optional.of(presentation)) :
                     new Result(Status.error, ConstantsError.PRESENTATION_GET);
         } catch (RuntimeException e) {
             log.error(e);
@@ -294,14 +303,14 @@ public class CSVPresentationMethods {
     public static Result removePresentationById (HashMap arguments) {
         try {
             if (null == arguments.get(ConstantsField.ID)) {
-                return new Result(Status.error, ConstantsError.ARGUMENT_IS_NOT_PROVIDED + "id");
+                return new Result(Status.error, ConstantsError.ARGUMENT_IS_NOT_PROVIDED + ConstantsField.ID);
             } else {
-                log.debug("Presentation removing");
+                log.debug(ConstantsInfo.PRESENTATION_REMOVE);
                 UUID id = UUID.fromString((String) arguments.get(ConstantsField.ID));
                 Status status = CSVCommonMethods.removeRecordById(presentation, Presentation.class, id);
                 if (Status.success == status) {
                     log.info(ConstantsSuccess.PRESENTATION_REMOVE);
-                    log.info("Removing presentation children..");
+                    log.info(ConstantsInfo.PRESENTATION_CHILDREN_REMOVE);
                     return removePresentationChildren(id);
                 } else {
                     return new Result(Status.error, ConstantsError.PRESENTATION_REMOVE);
@@ -314,58 +323,117 @@ public class CSVPresentationMethods {
         }
     }
 
-    public static Result removePresentationChildren (UUID presentationId){
+    public static Status removePresentationSlides (UUID presentationId) {
         try {
             ArrayList allSlides = (ArrayList) CSVCommonMethods.getCollection(CollectionType.slide, Slide.class).orElse(new ArrayList());
-            log.debug("get allSlides");
-            ArrayList allShapes = (ArrayList) CSVCommonMethods.getCollection(CollectionType.shape, Shape.class).orElse(new ArrayList());
-            log.debug("get allShapes");
-            ArrayList allContents = (ArrayList) CSVCommonMethods.getCollection(CollectionType.content, Content.class).orElse(new ArrayList());
-            log.debug("get allContents");
-            ArrayList allComments = (ArrayList) CSVCommonMethods.getCollection(CollectionType.comment, Comment.class).orElse(new ArrayList());
-            log.debug("get allComments");
-            ArrayList allMarks = (ArrayList) CSVCommonMethods.getCollection(CollectionType.assessment, Assessment.class).orElse(new ArrayList());
-            log.debug("get allMarks");
+            log.debug(ConstantsInfo.MEMBERS_GET + ConstantsInfo.SLIDES);
 
             allSlides = (ArrayList) allSlides.stream().filter(el -> {
                 Slide slide = (Slide) el;
                 return !slide.getPresentationId().equals(presentationId);
             }).collect(Collectors.toList());
-            log.debug("Filter allSlides");
+            Status statusWriteAllSlides = CSVCommonMethods.writeCollection(allSlides, Slide.class, CollectionType.slide);
+            log.debug(String.format(ConstantsInfo.MEMBERS_WROTE, ConstantsInfo.SLIDES, statusWriteAllSlides));
+            log.debug(ConstantsInfo.MEMBERS_FILTER + ConstantsInfo.SLIDES);
+            return statusWriteAllSlides;
+        } catch (RuntimeException e) {
+            log.error(e);
+            log.error(ConstantsError.SLIDES_REMOVE);
+            return Status.error;
+        }
+    }
+
+    public static Status removePresentationElements (UUID presentationId) {
+        try {
+            ArrayList allShapes = (ArrayList) CSVCommonMethods.getCollection(CollectionType.shape, Shape.class).orElse(new ArrayList());
+            log.debug(ConstantsInfo.MEMBERS_GET + ConstantsInfo.SHAPES);
+            ArrayList allContents = (ArrayList) CSVCommonMethods.getCollection(CollectionType.content, Content.class).orElse(new ArrayList());
+            log.debug(ConstantsInfo.MEMBERS_GET + ConstantsInfo.CONTENTS);
+
             allShapes = (ArrayList) allShapes.stream().filter(el -> {
                 Shape shape = (Shape) el;
                 return !shape.getPresentationId().equals(presentationId);
             }).collect(Collectors.toList());
-            log.debug("Filter allShapes");
+            log.debug(ConstantsInfo.MEMBERS_FILTER + ConstantsInfo.SHAPES);
             allContents = (ArrayList) allContents.stream().filter(el -> {
                 Content content = (Content) el;
                 return !content.getPresentationId().equals(presentationId);
             }).collect(Collectors.toList());
-            log.debug("Filter allContents");
+            log.debug(ConstantsInfo.MEMBERS_FILTER + ConstantsInfo.CONTENTS);
+
+            Status statusWriteAllShapes = CSVCommonMethods.writeCollection(allShapes, Shape.class, CollectionType.shape);
+            log.debug(String.format(ConstantsInfo.MEMBERS_WROTE, ConstantsInfo.SHAPES, statusWriteAllShapes));
+            Status statusWriteAllContents = CSVCommonMethods.writeCollection(allContents, Content.class, CollectionType.content);
+            log.debug(String.format(ConstantsInfo.MEMBERS_WROTE, ConstantsInfo.CONTENTS, statusWriteAllContents));
+
+            if (statusWriteAllShapes == Status.success && statusWriteAllContents == Status.success) {
+                return Status.success;
+            } else {
+                return Status.error;
+            }
+        } catch (RuntimeException e) {
+            log.error(e);
+            log.error(ConstantsError.ELEMENTS_REMOVE);
+            return Status.error;
+        }
+    }
+
+    public static Status removePresentationComments (UUID presentationId) {
+        try {
+            ArrayList allComments = (ArrayList) CSVCommonMethods.getCollection(CollectionType.comment, Comment.class).orElse(new ArrayList());
+            log.debug(ConstantsInfo.MEMBERS_GET + ConstantsInfo.COMMENTS);
+
             allComments = (ArrayList) allComments.stream().filter(el -> {
                 Comment comment = (Comment) el;
                 return !comment.getPresentationId().equals(presentationId);
             }).collect(Collectors.toList());
-            log.debug("Filter allComments");
+            log.debug(ConstantsInfo.MEMBERS_FILTER + ConstantsInfo.COMMENTS);
+
+
+            Status statusWriteAllComments = CSVCommonMethods.writeCollection(allComments, Comment.class, CollectionType.comment);
+            log.debug(String.format(ConstantsInfo.MEMBERS_WROTE, ConstantsInfo.COMMENTS, statusWriteAllComments));
+
+            return statusWriteAllComments;
+        } catch (RuntimeException e) {
+            log.error(e);
+            log.error(ConstantsError.COMMENTS_REMOVE);
+            return Status.error;
+        }
+    }
+
+    public static Status removePresentationMarks (UUID presentationId) {
+        try {
+            ArrayList allMarks = (ArrayList) CSVCommonMethods.getCollection(CollectionType.assessment, Assessment.class).orElse(new ArrayList());
+            log.debug(ConstantsInfo.MEMBERS_GET + ConstantsInfo.MARKS);
+
+
             allMarks = (ArrayList) allMarks.stream().filter(el -> {
                 Assessment assessment = (Assessment) el;
                 return !assessment.getPresentationId().equals(presentationId);
             }).collect(Collectors.toList());
-            log.debug("Filter allMarks");
-
-
-            Status statusWriteAllSlides = CSVCommonMethods.writeCollection(allSlides, Slide.class, CollectionType.slide);
-            log.debug("statusWriteAllSlides: " + statusWriteAllSlides);
-            Status statusWriteAllShapes = CSVCommonMethods.writeCollection(allShapes, Shape.class, CollectionType.shape);
-            log.debug("statusWriteAllShapes: " + statusWriteAllShapes);
-            Status statusWriteAllContents = CSVCommonMethods.writeCollection(allContents, Content.class, CollectionType.content);
-            log.debug("statusWriteAllContents: " + statusWriteAllContents);
-            Status statusWriteAllComments = CSVCommonMethods.writeCollection(allComments, Comment.class, CollectionType.comment);
-            log.debug("statusWriteAllComments: " + statusWriteAllComments);
+            log.debug(ConstantsInfo.MEMBERS_FILTER + ConstantsInfo.MARKS);
             Status statusWriteAllMarks = CSVCommonMethods.writeCollection(allMarks, Assessment.class, CollectionType.assessment);
-            log.debug("statusWriteAllMarks: " + statusWriteAllMarks);
+            log.debug(String.format(ConstantsInfo.MEMBERS_WROTE, ConstantsInfo.MARKS, statusWriteAllMarks));
+            return statusWriteAllMarks;
+        } catch (RuntimeException e) {
+            log.error(e);
+            log.error(ConstantsError.ASSESSMENTS_REMOVE);
+            return Status.error;
+        }
+    }
 
-            return new Result(Status.success, ConstantsSuccess.PRESENTATION_REMOVE);
+    public static Result removePresentationChildren (UUID presentationId){
+        try {
+
+            Status statusRemoveSlides = removePresentationSlides(presentationId);
+            Status statusRemoveElements = removePresentationElements(presentationId);
+            Status statusRemoveAssessments = removePresentationMarks(presentationId);
+
+            if (statusRemoveAssessments == Status.success && statusRemoveElements == Status.success && statusRemoveSlides == Status.success) {
+                return new Result(Status.success, ConstantsSuccess.PRESENTATION_REMOVE);
+            } else {
+                return new Result(Status.error, ConstantsError.PRESENTATION_REMOVE);
+            }
         } catch (RuntimeException e) {
             log.error(e);
             return new Result(Status.error, ConstantsError.PRESENTATION_REMOVE);
@@ -374,7 +442,7 @@ public class CSVPresentationMethods {
 
     public static Result editPresentationOptions (HashMap arguments) throws IOException {
         try {
-            UUID id = UUID.fromString((String) arguments.getOrDefault(ConstantsField.ID, null));
+            UUID id = UUID.fromString((String) arguments.get(ConstantsField.ID));
             if (null == id) {
                 log.error(ConstantsError.ARGUMENT_IS_NOT_PROVIDED + ConstantsField.ID);
                 return new Result(Status.error, ConstantsError.ARGUMENT_IS_NOT_PROVIDED + ConstantsField.ID);
@@ -405,10 +473,6 @@ public class CSVPresentationMethods {
             String fillColor = (String) arguments.getOrDefault(ConstantsField.FILL_COLOR, presentation.getFillColor());
             String fontFamily = (String) arguments.getOrDefault(ConstantsField.FONT_FAMILY, presentation.getFontFamily());
             String name = (String) arguments.getOrDefault(ConstantsField.NAME, presentation.getName());
-            boolean asTemplate = Boolean.parseBoolean((String) arguments.getOrDefault(ConstantsField.AS_TEMPLATE, String.valueOf(false)));
-            ArrayList slides = (ArrayList) arguments.getOrDefault(ConstantsField.SLIDES, presentation.getSlides());
-            ArrayList comments = (ArrayList) arguments.getOrDefault(ConstantsField.COMMENTS, presentation.getComments());
-
 
             log.debug(ConstantsInfo.FIELD_EDIT + ConstantsField.FILL_COLOR + fillColor);
             presentation.setFillColor(fillColor);

@@ -1,0 +1,5 @@
+ru\sfedu\course_project\TestBase.class
+ru\sfedu\course_project\tools\RunnerTest.class
+ru\sfedu\course_project\api\xml\DataProviderXMLTest.class
+ru\sfedu\course_project\api\jdbc\DataProviderJDBCTest.class
+ru\sfedu\course_project\api\DataProviderCSVTest.class

@@ -2,11 +2,19 @@
 java -jar -Dtest=123 -DenvironmentFile=./enviroment.properties -Dlog4j2.configurationFile=./log4j2.properties presitor-1.0.jar csv removePresentationById role=editor id=0150d271-783b-4912-8517-f8c0e87abaaf
 
 
-1. Создание презентации
+1.1 Создание презентации
 java -jar -DenvironmentFile=./enviroment.properties -Dlog4j2.configurationFile=./log4j2.properties presitor-1.0.jar csv createPresentation role=editor fillColor=red fontFamily="Comic Sans" name="Моя новая презентация"
 
-2. Получение презентации
+1.2. Создание презентации на основе шаблона
+java -jar -DenvironmentFile=./enviroment.properties -Dlog4j2.configurationFile=./log4j2.properties presitor-1.0.jar csv createPresentation role=editor templateId=a45d013f-8771-4140-8112-9a7c5f68252e
+
+
+2.1 Получение презентации
 java -jar -DenvironmentFile=./enviroment.properties -Dlog4j2.configurationFile=./log4j2.properties presitor-1.0.jar csv getPresentationById role=editor id=a3cacfb6-ca30-446e-8830-af1b5a95c629
+
+2.2. Получение презентации со всеми опциями
+java -jar -DenvironmentFile=./enviroment.properties -Dlog4j2.configurationFile=./log4j2.properties presitor-1.0.jar csv getPresentationById role=editor withComments=true withMarks=true withElements=true withSlides=true id=a45d013f-8771-4140-8112-9a7c5f68252e
+
 
 3. Изменение презентации
 java -jar -DenvironmentFile=./enviroment.properties -Dlog4j2.configurationFile=./log4j2.properties presitor-1.0.jar csv editPresentationOptions role=editor fillColor=green fontFamily="Roboto" name="Моя любимая презентация презентация" id=<id презентации>
@@ -79,14 +87,6 @@ java -jar -DenvironmentFile=./enviroment.properties -Dlog4j2.configurationFile=.
 
 24. Получение оценок презентации
 java -jar -DenvironmentFile=./enviroment.properties -Dlog4j2.configurationFile=./log4j2.properties presitor-1.0.jar csv getPresentationMarks role=editor presentationId=a45d013f-8771-4140-8112-9a7c5f68252e
-
-
-25. Создание презентации на основе шаблона
-java -jar -DenvironmentFile=./enviroment.properties -Dlog4j2.configurationFile=./log4j2.properties presitor-1.0.jar csv createPresentation role=editor templateId=a45d013f-8771-4140-8112-9a7c5f68252e
-
-26. Получение презентации со всеми опциями
-java -jar -DenvironmentFile=./enviroment.properties -Dlog4j2.configurationFile=./log4j2.properties presitor-1.0.jar csv getPresentationById role=editor withComments=true withMarks=true withElements=true withSlides=true id=a45d013f-8771-4140-8112-9a7c5f68252e
-
 
 ///////                       Presentations                        \\\\\\\\\
 	Create Presentation

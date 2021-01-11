@@ -105,8 +105,8 @@ public class DataProviderCSV implements DataProvider {
     }
 
     @Override
-    public Result removePresentationComment (HashMap arguments) {
-        return CSVCommentMethods.removePresentationComment(arguments);
+    public Result removePresentationCommentById (HashMap arguments) {
+        return CSVCommentMethods.removePresentationCommentById(arguments);
     }
 
 
@@ -143,5 +143,16 @@ public class DataProviderCSV implements DataProvider {
     @Override
     public Result getPresentationMarks (HashMap args) {
         return CSVAssessmentMethods.getPresentationMarks(args);
+    }
+
+    @Override
+    public Result removePresentationMarkById (HashMap args) { return CSVAssessmentMethods.removePresentationMarkById(args); }
+
+    @Override
+    public Result getMarkById (HashMap args) { return CSVAssessmentMethods.getMarkById(args); }
+
+    @Override
+    public Result editPresentationMark(HashMap arguments) {
+        return CSVAssessmentMethods.editPresentationMark(arguments);
     }
 }

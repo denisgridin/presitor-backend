@@ -1,5 +1,6 @@
 package ru.sfedu.course_project.api;
 
+import ru.sfedu.course_project.api.csv.CSVAssessmentMethods;
 import ru.sfedu.course_project.tools.Result;
 
 import java.io.IOException;
@@ -215,7 +216,7 @@ public interface DataProvider {
      * @param arguments arguments to remove comment for presentation
      * @return Result class with Status (success or error) and returnValue (success or error message)
      */
-    public Result removePresentationComment (HashMap arguments);
+    public Result removePresentationCommentById (HashMap arguments);
 
 
     /**
@@ -383,4 +384,10 @@ public interface DataProvider {
      * @return Result class with Status (success or error) and returnValue (success or error message)
      */
     public Result getPresentationMarks (HashMap arguments);
+
+    public Result removePresentationMarkById(HashMap arguments);
+
+    public Result getMarkById (HashMap arguments);
+
+    public Result editPresentationMark (HashMap arguments);
 }

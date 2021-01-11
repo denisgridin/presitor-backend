@@ -79,8 +79,8 @@ public class DataProviderXML implements DataProvider {
     }
 
     @Override
-    public Result removePresentationComment(HashMap arguments) {
-        return XMLCommentMethods.removePresentationComment(arguments);
+    public Result removePresentationCommentById(HashMap arguments) {
+        return XMLCommentMethods.removePresentationCommentById(arguments);
     }
 
     @Override
@@ -116,5 +116,20 @@ public class DataProviderXML implements DataProvider {
     @Override
     public Result getPresentationMarks(HashMap arguments) {
         return XMLAssessmentMethods.getPresentationMarks(arguments);
+    }
+
+    @Override
+    public Result removePresentationMarkById(HashMap arguments) {
+        return null;
+    }
+
+    @Override
+    public Result getMarkById(HashMap arguments) {
+        return null;
+    }
+
+    @Override
+    public Result editPresentationMark(HashMap arguments) {
+        return null;
     }
 }
