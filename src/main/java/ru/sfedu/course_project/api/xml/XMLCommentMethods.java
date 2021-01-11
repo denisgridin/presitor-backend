@@ -28,7 +28,6 @@ public class XMLCommentMethods {
 
     public static Result commentPresentation (HashMap arguments) {
         try {
-            log.info("{ commentPresentation }");
             if (null == arguments.get(ConstantsField.TEXT)) {
                 return new Result(Status.error, ConstantsError.ARGUMENT_IS_NOT_PROVIDED + "text");
             }
@@ -39,7 +38,7 @@ public class XMLCommentMethods {
             params.put(ConstantsField.ID, arguments.get(ConstantsField.PRESENTATION_ID));
             Optional<Presentation> optionalPresentation = XMLCommonMethods.getInstanceById(presentation, params);
             if (optionalPresentation.isPresent()) {
-                log.info("{ commentPresentation } Comment for " + optionalPresentation.get());
+                log.info(ConstantsInfo.COMMENTS + optionalPresentation.get());
                 return createAndWriteComment(optionalPresentation.get(), arguments);
             } else {
                 log.error(ConstantsError.PRESENTATION_NOT_FOUND + arguments.get(ConstantsField.PRESENTATION_ID));
@@ -53,20 +52,19 @@ public class XMLCommentMethods {
     }
 
     public static Result createAndWriteComment (Presentation presentation, HashMap arguments) {
-        log.info("{ createAndWriteComment } Comment creating");
         Result result = new Creator().create(Comment.class, arguments);
         if (Status.success == result.getStatus()) {
             Optional resultValue = (Optional) result.getReturnValue();
 
             Comment comment = (Comment) resultValue.get();
-            log.debug("{ createAndWriteComment } Comment created: " + comment);
+            log.debug(ConstantsSuccess.COMMENT_CREATE + comment);
             log.info(ConstantsInfo.PRESENTATIONS_GET + presentation);
             Status resultWrite = writeCommentsCollection(comment);
             if (Status.success == resultWrite) {
-                log.info("{ createAndWriteComment } Comment wrote");
+                log.info(ConstantsSuccess.COMMENT_CREATE);
                 return new Result(Status.success, comment.getId());
             } else {
-                log.error("{ createAndWriteComment } Comment not wrote");
+                log.error(ConstantsError.COMMENT_CREATE);
                 return new Result(Status.success, ConstantsError.UNEXPECTED_ERROR);
             }
         } else {
@@ -83,7 +81,7 @@ public class XMLCommentMethods {
             }
 
             HashMap params = new HashMap();
-            params.put("id", args.get(ConstantsField.PRESENTATION_ID));
+            params.put(ConstantsField.ID, args.get(ConstantsField.PRESENTATION_ID));
             Result resultGetPres = XMLPresentationMethods.getPresentationById(params);
 
 
@@ -99,7 +97,7 @@ public class XMLCommentMethods {
                 return item.getPresentationId().equals(presentationId);
             }).collect(Collectors.toList());
             log.info(ConstantsSuccess.COMMENTS_GET + presentationComments);
-            return new Result(Status.success, presentationComments);
+            return new Result(Status.success, Optional.of(presentationComments));
         } catch (RuntimeException e) {
             log.error(e);
             log.error(ConstantsError.COMMENTS_GET);

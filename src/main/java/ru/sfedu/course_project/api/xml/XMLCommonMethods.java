@@ -14,6 +14,7 @@ import ru.sfedu.course_project.tools.Result;
 import ru.sfedu.course_project.tools.xml.WrapperXML;
 import ru.sfedu.course_project.tools.xml.XMLMatcher;
 import ru.sfedu.course_project.utils.ConfigurationUtil;
+import ru.sfedu.course_project.utils.ConstantsField;
 
 import java.io.*;
 import java.util.*;
@@ -83,46 +84,48 @@ public class XMLCommonMethods {
 
 
     public static Optional getInstanceById(CollectionType collectionType, HashMap arguments) {
-        UUID id = UUID.fromString((String) arguments.get("id"));
+        UUID id = UUID.fromString((String) arguments.get(ConstantsField.ID));
         log.debug(collectionType + " id: " + id);
         try {
             switch (collectionType) {
                 case presentation: {
                     ArrayList<Presentation> listInstance = (ArrayList<Presentation>) getCollection(collectionType).orElse(new ArrayList());
-                    log.debug("Attempt to find presentation: " + id);
-                    log.debug("list instance: " + listInstance);
+                    log.debug(ConstantsInfo.PRESENTATIONS_GET + id);
+                    log.debug(ConstantsInfo.PRESENTATIONS + listInstance);
                     return listInstance.stream()
                             .filter(el -> el.getId().equals(id)).findFirst();
                 }
                 case slide: {
                     ArrayList<Slide> listInstance = (ArrayList<Slide>) getCollection(collectionType).orElse(new ArrayList());
-                    log.debug("Attempt to find slide: " + id);
+                    log.debug(ConstantsInfo.SLIDE + id);
                     return listInstance.stream()
                             .filter(el -> el.getId().equals(id)).findFirst();
                 }
                 case comment: {
                     ArrayList<Comment> listInstance = (ArrayList<Comment>) getCollection(collectionType).orElse(new ArrayList());
-                    log.debug("Attempt to find comment: " + id);
-                    return listInstance.stream()
-                            .filter(el -> el.getId().equals(id)).findFirst();
-                }
-                case template: {
-                    ArrayList<Presentation> listInstance = (ArrayList<Presentation>) getCollection(collectionType).orElse(new ArrayList());
-                    log.debug("Attempt to find template: " + id);
+                    log.debug(ConstantsInfo.COMMENT + id);
                     return listInstance.stream()
                             .filter(el -> el.getId().equals(id)).findFirst();
                 }
                 case shape: {
                     ArrayList<Shape> listInstance = (ArrayList<Shape>) getCollection(collectionType).orElse(new ArrayList());
-                    log.debug("Attempt to find Shape: " + id);
+                    log.debug(ConstantsInfo.SHAPE + id);
                     return listInstance.stream()
                             .filter(el -> el.getId().equals(id)).findFirst();
                 }
                 case content: {
                     ArrayList<Content> listInstance = (ArrayList<Content>) getCollection(collectionType).orElse(new ArrayList());
-                    log.debug("Attempt to find Content: " + id);
+                    log.debug(ConstantsInfo.CONTENT + id);
                     return listInstance.stream()
                             .filter(el -> el.getId().equals(id)).findFirst();
+                }
+                case assessment: {
+                    ArrayList<Assessment> listInstance = (ArrayList<Assessment>) getCollection(collectionType).orElse(new ArrayList());
+                    log.debug(ConstantsInfo.SEARCH + CollectionType.assessment);
+                    log.debug(ConstantsInfo.MARKS + listInstance);
+                    Optional instance = listInstance.stream()
+                            .filter(el -> el.getId().equals(id)).findFirst();
+                    return instance;
                 }
                 default: {
                     return Optional.empty();
@@ -136,7 +139,7 @@ public class XMLCommonMethods {
 
     public static <T> Status writeCollection(List list, Class cl, CollectionType collectionType) {
         try {
-            log.debug(String.format("[writeCollection] Attempt to write in %s", cl.getSimpleName().toLowerCase()));
+            log.debug(String.format(ConstantsInfo.COLLECTION_WRITE, cl.getSimpleName().toLowerCase()));
 
             Optional<String> path = Optional.ofNullable(getFilePath(collectionType));
             if (!path.isPresent()) {
@@ -152,57 +155,60 @@ public class XMLCommonMethods {
             xml.setList(list);
 
             serializer.write(xml, writer);
-            log.info("[writeCollection] Collection was wrote");
+            log.info(ConstantsSuccess.COLLECTION_WROTE);
             return Status.success;
         } catch (Exception e) {
             e.printStackTrace();
             log.error(e);
-            log.error("[writeCollection] Unable to write collection");
+            log.error(ConstantsError.COLLECTION_WRITE);
             return Status.error;
         }
     }
 
     public static Status removeRecordById(CollectionType collectionType, Class cl, UUID id) {
         try {
-            log.debug(String.format("[removeRecordById] Removing elements from collection: %s", collectionType));
+            log.debug(String.format(ConstantsInfo.INSTANCE_REMOVE_FROM_COLLECTION, collectionType));
             List updatedCollection = new ArrayList();
             int collectionSize = 0;
             switch (collectionType) {
                 case presentation: {
-                    List<Presentation> collection = (ArrayList<Presentation>) getCollection(collectionType).orElseThrow(() -> new RuntimeException(String.format("[removeRecordById] Unable to get collection: %s", collectionType)));
+                    List<Presentation> collection = (ArrayList<Presentation>) getCollection(collectionType).orElseThrow(() -> new RuntimeException(String.format(ConstantsError.COLLECTION_GET, collectionType)));
                     collectionSize = collection.size();
                     updatedCollection = collection.stream().filter(el -> !el.getId().equals(id)).collect(Collectors.toList());
                     break;
                 }
                 case slide: {
-                    List<Slide> collection = (ArrayList<Slide>) getCollection(collectionType).orElseThrow(() -> new RuntimeException(String.format("[removeRecordById] Unable to get collection: %s", collectionType)));
+                    List<Slide> collection = (ArrayList<Slide>) getCollection(collectionType).orElseThrow(() -> new RuntimeException(String.format(ConstantsError.COLLECTION_GET, collectionType)));
                     collectionSize = collection.size();
                     updatedCollection = collection.stream().filter(el -> !el.getId().equals(id)).collect(Collectors.toList());
                     break;
                 }
                 case comment: {
-                    List<Comment> collection = (ArrayList<Comment>) getCollection(collectionType).orElseThrow(() -> new RuntimeException(String.format("[removeRecordById] Unable to get collection: %s", collectionType)));
+                    List<Comment> collection = (ArrayList<Comment>) getCollection(collectionType).orElseThrow(() -> new RuntimeException(String.format(ConstantsError.COLLECTION_GET, collectionType)));
                     collectionSize = collection.size();
                     updatedCollection = collection.stream().filter(el -> !el.getId().equals(id)).collect(Collectors.toList());
                     break;
                 }
-                case element:
-                    // TODO
+                case assessment: {
+                    List<Assessment> collection = (ArrayList<Assessment>) getCollection(collectionType).orElseThrow(() -> new RuntimeException(String.format(ConstantsError.COLLECTION_GET, collectionType)));
+                    collectionSize = collection.size();
+                    updatedCollection = collection.stream().filter(el -> !el.getId().equals(id)).collect(Collectors.toList());
                     break;
+                }
                 case error:
                     break;
             }
             if (updatedCollection.size() == collectionSize) {
-                log.error("[removeRecordById] Unable to find element with provided id: " + id);
+                log.error(ConstantsError.PRESENTATION_NOT_FOUND + id);
                 return Status.error;
             }
             writeCollection(updatedCollection, cl, collectionType);
-            log.info("[removeRecordById] Element was successfully removed: " + id);
+            log.info(ConstantsSuccess.INSTANCE_REMOVED + id);
             return Status.success;
         } catch (RuntimeException e) {
             e.printStackTrace();
             log.error(e);
-            log.error("[removeRecordById] Unable to remove element from collection");
+            log.error(ConstantsError.ELEMENT_REMOVE);
             return Status.error;
         }
     }
@@ -297,7 +303,7 @@ public class XMLCommonMethods {
                     break;
             }
             Status status = writeCollection(updatedCollection, cls, collectionType);
-            log.debug("[updateRecordInCollection] Update status: " + status);
+            log.debug(ConstantsInfo.STATUS + status);
             return new Result(status, ConstantsSuccess.EDIT_ITEM + collectionType);
         } catch (RuntimeException e) {
             log.error(e);

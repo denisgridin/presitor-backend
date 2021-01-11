@@ -3,6 +3,7 @@ package ru.sfedu.course_project.api.xml;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import ru.sfedu.course_project.ConstantsError;
+import ru.sfedu.course_project.ConstantsInfo;
 import ru.sfedu.course_project.ConstantsSuccess;
 import ru.sfedu.course_project.bean.*;
 import ru.sfedu.course_project.enums.CollectionType;
@@ -46,11 +47,11 @@ public class XMLElementMethods {
             }
 
             ElementType elementType = ElementType.valueOf((String) args.get(ConstantsField.ELEMENT_TYPE));
-            log.debug("Attempt to add: " + elementType);
+            log.debug(ConstantsInfo.ARGUMENTS_ADD + elementType);
 
             switch (elementType) {
                 case shape: {
-                    log.info("Shape creating");
+                    log.info(ConstantsInfo.SHAPE_CREATE);
                     ArrayList shapeFields = new ArrayList();
                     shapeFields.add(ConstantsField.FIGURE);
                     Result isShapeArgsValid = new ArgsValidator().validate(args, fields);
@@ -60,7 +61,7 @@ public class XMLElementMethods {
                     return createShape(args);
                 }
                 case content: {
-                    log.info("Content creating");
+                    log.info(ConstantsInfo.CONTENT_CREATE);
                     ArrayList contentFields = new ArrayList();
                     contentFields.add(ConstantsField.TEXT);
                     Result isContentArgsValid = new ArgsValidator().validate(args, fields);
@@ -90,13 +91,13 @@ public class XMLElementMethods {
             }
 
             Content content = (Content) resultCreateContent.getReturnValue();
-            log.info("Create new content: " + content);
+            log.info(ConstantsInfo.CONTENT_CREATE + content);
             ArrayList<Content> contents = (ArrayList<Content>) XMLCommonMethods.getCollection(CollectionType.content).orElse(new ArrayList());
             contents.add(content);
             Status status = XMLCommonMethods.writeCollection(contents, Content.class, CollectionType.content);
-            log.debug("Content added in collection: " + status);
+            log.debug(ConstantsInfo.STATUS + status);
             if (Status.success == status) {
-                return new Result(Status.success, content);
+                return new Result(Status.success, Optional.of(content));
             } else {
                 return new Result(Status.error, ConstantsError.CONTENT_CREATE);
             }
@@ -116,14 +117,14 @@ public class XMLElementMethods {
             }
 
             Shape shape = (Shape) resultCreateShape.getReturnValue();
-            log.info("Create new shape: " + shape);
+            log.info(ConstantsInfo.SHAPE_CREATE + shape);
             ArrayList<Shape> shapes = (ArrayList<Shape>) XMLCommonMethods.getCollection(CollectionType.shape).orElse(new ArrayList());
-            log.debug("Shapes: " + shapes);
+            log.debug(ConstantsInfo.SHAPES + shapes);
             shapes.add(shape);
             Status status = XMLCommonMethods.writeCollection(shapes, Shape.class, CollectionType.shape);
-            log.debug("Shape added in collection: " + status);
+            log.debug(ConstantsInfo.STATUS + status);
             if (status == Status.success) {
-                return new Result(Status.success, shape);
+                return new Result(Status.success, Optional.of(shape));
             } else {
                 return new Result(Status.error, ConstantsError.SHAPE_CREATE);
             }
@@ -304,7 +305,6 @@ public class XMLElementMethods {
     }
 
     public static Result editContent (HashMap args) {
-        log.debug("{editContent}");
         try {
             Optional<Shape> optionalContent = XMLCommonMethods.getInstanceExistenceByField(content, Content.class, ConstantsField.ID, (String) args.get(ConstantsField.ID));
             if (!optionalContent.isPresent()) {
@@ -359,7 +359,7 @@ public class XMLElementMethods {
             }
 
             ElementType elementType = ElementType.valueOf((String) args.get(ConstantsField.ELEMENT_TYPE));
-            log.debug("Attempt to get: " + elementType);
+            log.debug(ConstantsInfo.GET_ATTEMPT + elementType);
 
             switch (elementType) {
                 case shape: {
@@ -367,14 +367,14 @@ public class XMLElementMethods {
                     if (!optionalSlide.isPresent()) {
                         return new Result(Status.error, ConstantsError.INSTANCE_NOT_FOUND + ConstantsField.ID);
                     }
-                    return new Result(Status.success, optionalElement.get());
+                    return new Result(Status.success, optionalElement);
                 }
                 case content: {
                     Optional<Content> optionalElement = XMLCommonMethods.getInstanceExistenceByField(content, Content.class, ConstantsField.ID, (String) args.get(ConstantsField.ID));
                     if (!optionalSlide.isPresent()) {
                         return new Result(Status.error, ConstantsError.INSTANCE_NOT_FOUND + ConstantsField.ID);
                     }
-                    return new Result(Status.success, optionalElement.get());
+                    return new Result(Status.success, optionalElement);
                 }
                 default: {
                     return new Result(Status.error, ConstantsError.ELEMENT_NOT_FOUND);
@@ -403,15 +403,14 @@ public class XMLElementMethods {
                 return new Result(Status.error, ConstantsError.INSTANCE_NOT_FOUND + ConstantsField.PRESENTATION_ID);
             }
 
-            log.info("Presentation found: " +  optionalPresentation.get());
+            log.info(ConstantsInfo.PRESENTATION +  optionalPresentation.get());
 
             Optional<Presentation> optionalSlide = XMLCommonMethods.getInstanceExistenceByField(slide, Slide.class, ConstantsField.ID, (String) args.get(ConstantsField.SLIDE_ID));
             if (!optionalSlide.isPresent()) {
                 return new Result(Status.error, ConstantsError.INSTANCE_NOT_FOUND + ConstantsField.SLIDE_ID);
             }
-            log.info("Slide found: " +  optionalSlide.get());
+            log.info(ConstantsInfo.SLIDE +  optionalSlide.get());
 
-            log.debug("Set slide elements");
             ArrayList elements = new ArrayList();
             List shapes = XMLCommonMethods.getCollection(shape).orElse(new ArrayList());
             List contents = XMLCommonMethods.getCollection(content).orElse(new ArrayList());
@@ -427,9 +426,9 @@ public class XMLElementMethods {
                 return item.getPresentationId().equals(presentationId) && item.getSlideId().equals(slideId);
             }).collect(Collectors.toList());
 
-            log.info("Slides found: " + slideElements);
+            log.info(ConstantsInfo.SLIDES + slideElements);
 
-            return new Result(Status.success, slideElements);
+            return new Result(Status.success, Optional.of(slideElements));
 
         } catch (RuntimeException e) {
             log.error(e);

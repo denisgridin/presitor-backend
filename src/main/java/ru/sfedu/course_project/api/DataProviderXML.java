@@ -1,5 +1,6 @@
 package ru.sfedu.course_project.api;
 
+import ru.sfedu.course_project.api.csv.CSVAssessmentMethods;
 import ru.sfedu.course_project.api.xml.*;
 import ru.sfedu.course_project.bean.Presentation;
 import ru.sfedu.course_project.tools.Result;
@@ -119,17 +120,13 @@ public class DataProviderXML implements DataProvider {
     }
 
     @Override
-    public Result removePresentationMarkById(HashMap arguments) {
-        return null;
-    }
+    public Result removePresentationMarkById (HashMap args) { return XMLAssessmentMethods.removePresentationMarkById(args); }
 
     @Override
-    public Result getMarkById(HashMap arguments) {
-        return null;
-    }
+    public Result getMarkById (HashMap args) { return XMLAssessmentMethods.getMarkById(args); }
 
     @Override
     public Result editPresentationMark(HashMap arguments) {
-        return null;
+        return XMLAssessmentMethods.editPresentationMark(arguments);
     }
 }

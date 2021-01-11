@@ -4,16 +4,15 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import ru.sfedu.course_project.Constants;
+import ru.sfedu.course_project.ConstantsInfo;
 import ru.sfedu.course_project.TestBase;
 import ru.sfedu.course_project.api.DataProvider;
-import ru.sfedu.course_project.api.DataProviderCSV;
 import ru.sfedu.course_project.api.DataProviderXML;
 import ru.sfedu.course_project.api.jdbc.DataProviderJDBCTest;
-import ru.sfedu.course_project.bean.Comment;
-import ru.sfedu.course_project.bean.Presentation;
-import ru.sfedu.course_project.bean.Shape;
-import ru.sfedu.course_project.bean.Slide;
+import ru.sfedu.course_project.bean.*;
 import ru.sfedu.course_project.enums.*;
+import ru.sfedu.course_project.tools.Creator;
 import ru.sfedu.course_project.tools.Result;
 import ru.sfedu.course_project.utils.ConfigurationUtil;
 import ru.sfedu.course_project.utils.ConstantsField;
@@ -40,145 +39,240 @@ public class DataProviderXMLTest extends TestBase {
             log.debug(e);
         }
     }
-
     @Test
-    void createPresentationSuccess () throws IOException {
-
-        Result result = makeRandomPresentation(provider);
+    void createPresentationSuccess() throws IOException {
+        log.debug("{TEST} createPresentationSuccess START");
 
         HashMap args = new HashMap();
-        args.put("id", String.valueOf(result.getReturnValue()));
+        args.put(ConstantsField.ID, String.valueOf(UUID.randomUUID()));
+        args.put(ConstantsField.NAME, "Тестовое имя");
 
-        Result getPresentationResult = provider.getPresentationById(args);
+        Optional<Presentation> optionalPresentation = (Optional<Presentation>) new Creator().create(Presentation.class, args).getReturnValue();
+        if (optionalPresentation.isPresent()) {
+            Presentation presentation = optionalPresentation.get();
 
-        assertTrue(getPresentationResult.getStatus() == Status.success);
-        assertTrue(result.getStatus() == Status.success);
-        assertTrue(result.getReturnValue() instanceof UUID);
+            Result result = provider.createPresentation(args);
+            String id = result.getReturnValue().toString();
+
+            HashMap params = new HashMap();
+            params.put(ConstantsField.ID, id);
+
+            Optional<Presentation> optionalItem = XMLCommonMethods.getInstanceById(CollectionType.presentation, params);
+
+            if (optionalItem.isPresent()) {
+                assertEquals(presentation.getId().toString(),
+                        optionalItem.get().getId().toString());
+            }
+            assertEquals(result.getStatus(), Status.success);
+        }
+        log.debug("{TEST} createPresentationSuccess END");
     }
 
     @Test
-    void createPresentationFromTemplateSuccess ()  {
+    void createPresentationFail() {
+        log.debug("{TEST} createPresentationFail START");
+
+
+        String id = String.valueOf(UUID.randomUUID());
+
+        HashMap args = new HashMap();
+        args.put(ConstantsField.ID, id);
+
+        provider.createPresentation(args);
+        Result result = provider.createPresentation(args);
+
+        assertNotEquals(result.getStatus(), Status.success);
+        assertEquals(result.getStatus(), Status.error);
+        log.debug("{TEST} createPresentationFail END");
+    }
+
+
+    @Test
+    void createPresentationFromTemplateSuccess () {
+        log.debug("{TEST} createPresentationFromTemplateSuccess START");
+        UUID templateId = UUID.randomUUID();
+        UUID slideId = UUID.randomUUID();
+        UUID elementId = UUID.randomUUID();
+
+        makeRectangleWithId(provider, elementId, slideId, templateId);
+
+        HashMap params = new HashMap();
+        params.put(ConstantsField.TEMPLATE_ID, String.valueOf(templateId));
+        Result resultCreateFromTemplate = provider.createPresentation(params);
+        assertEquals(Status.success, resultCreateFromTemplate.getStatus());
+
+        log.debug("{TEST} createPresentationFromTemplateSuccess END");
+    }
+
+    @Test
+    void createPresentationFromTemplateFail () {
+        log.debug("{TEST} createPresentationFromTemplateFail START");
+        UUID templateId = UUID.randomUUID();
+
+//        makeRectangleWithId(provider, elementId, slideId, templateId); Create presentation with not existing templateId
+
+        HashMap params = new HashMap();
+        params.put(ConstantsField.TEMPLATE_ID, String.valueOf(templateId));
+        Result resultCreateFromTemplate = provider.createPresentation(params);
+        assertEquals(Status.error, resultCreateFromTemplate.getStatus());
+
+        log.debug("{TEST} createPresentationFromTemplateFail END");
+    }
+
+
+    @Test
+    void getPresentationWithOptionsSuccess () throws IOException {
+        log.debug("{TEST} getPresentationWithOptionsSuccess START");
         UUID presentationId = UUID.randomUUID();
 
         makePresentationWithId(provider, presentationId);
 
-        HashMap args = new HashMap();
-        args.put(ConstantsField.TEMPLATE_ID, String.valueOf(presentationId));
-
-        Result result = provider.createPresentation(args);
-
-        assertTrue(Status.success == result.getStatus());
-    }
-
-    @Test
-    void createPresentationFail () throws IOException {
-        Result result = provider.getPresentations();
-        if (result.getStatus() == Status.success) {
-            ArrayList presentations = (ArrayList) result.getReturnValue();
-            Presentation presentation = (Presentation) presentations.get(0);
-            HashMap args = new HashMap();
-            UUID id = presentation.getId();
-
-            Result resultCreatePresentation = makePresentationWithId(provider, id);
-            assertTrue(resultCreatePresentation.getStatus() == Status.error);
-        } else {
-            assertTrue(false);
-        }
-    }
-
-    @Test
-    void getPresentationByIdSuccess () throws IOException {
-        Result result = makeRandomPresentation(provider);
-
-        if (result.getStatus() == Status.success) {
-            HashMap args = new HashMap();
-            UUID presentationId = (UUID) result.getReturnValue();
-            args.put("id", String.valueOf(presentationId));
-            Result resultGetPresentation = provider.getPresentationById(args);
-
-            assertTrue(resultGetPresentation.getStatus() == Status.success);
-
-            Presentation foundPresentation = (Presentation) resultGetPresentation.getReturnValue();
-            assertTrue(foundPresentation.getId().equals(presentationId));
-        } else {
-            assertTrue(false);
-        }
-    }
-
-    @Test
-    void getPresentationByIdFail () throws IOException {
-        Result result = provider.getPresentationById(new HashMap());
 
         HashMap args = new HashMap();
-        args.put("id", String.valueOf(UUID.randomUUID()));
-        Result result2 = provider.getPresentationById(args);
+        args.put(ConstantsField.ID, String.valueOf(presentationId));
+        args.put(ConstantsField.WITH_SLIDES, Constants.TRUE_VALUE);
+        args.put(ConstantsField.WITH_ELEMENTS, Constants.TRUE_VALUE);
+        args.put(ConstantsField.WITH_COMMENTS, Constants.TRUE_VALUE);
+        args.put(ConstantsField.WITH_MARKS, Constants.TRUE_VALUE);
 
-        assertTrue(result.getStatus() == Status.error);
-        assertTrue(result2.getStatus() == Status.error);
+        Result getPresResult = provider.getPresentationById(args);
+        log.debug(ConstantsInfo.PRESENTATION + getPresResult);
+        Optional optionalPresentation = (Optional) getPresResult.getReturnValue();
+        if (optionalPresentation.isPresent()) {
+            Presentation presentation = (Presentation) optionalPresentation.get();
+            assertEquals(presentation.getId(), presentationId);
+            assertTrue(Status.success == getPresResult.getStatus());
+        }
+
+        log.debug("{TEST} getPresentationWithOptionsSuccess START");
     }
 
+    @Test
+    void getPresentationWithOptionsFail () throws IOException {
+        log.debug("{TEST} getPresentationWithOptionsFail START");
+        HashMap args = new HashMap();
+        Result result = provider.getPresentationById(args);
+
+        assertTrue(Status.error == result.getStatus());
+
+        log.debug("{TEST} getPresentationWithOptionsFail START");
+    }
 
     @Test
-    void editPresentationOptionsSuccess () throws IOException {
-        Result result = makeRandomPresentation(provider);
+    void editPresentationOptionsSuccess() throws IOException {
+        log.debug("{TEST} editPresentationOptionsSuccess START");
 
-        if (result.getStatus() == Status.success) {
-            HashMap args = new HashMap();
-            UUID presentationId = (UUID) result.getReturnValue();
-            String name = "Text name";
-            String fillColor = "black";
-            String fontFamily = "Comic sans";
-            args.put("id", String.valueOf(presentationId));
-            args.put("name", name);
-            args.put("fillColor", fillColor);
-            args.put("fontFamily", fontFamily);
+        UUID id = UUID.randomUUID();
+        Result createResult = makePresentationWithId(provider, id);
 
-            Result resultGetPresentation = provider.getPresentationById(args);
-            Result resultRemovePresentation = provider.editPresentationOptions(args);
+        if (createResult.getStatus() == Status.success) {
+            HashMap arguments = new HashMap();
+            arguments.put(ConstantsField.NAME, "My presentation");
+            arguments.put(ConstantsField.FILL_COLOR, "#403add");
+            arguments.put(ConstantsField.FONT_FAMILY, "Times New Roman");
+            arguments.put(ConstantsField.ID, String.valueOf(id));
 
-            if (resultGetPresentation.getStatus() == Status.success) {
-                assertTrue(resultRemovePresentation.getStatus() == Status.success);
-                assertTrue(resultGetPresentation.getStatus() == Status.success);
+            assertEquals(provider.editPresentationOptions(arguments).getStatus(), Status.success);
 
-                Presentation presentation = (Presentation) provider.getPresentationById(args).getReturnValue();
+            Optional<Presentation> optionalEditedPresentation = XMLCommonMethods.getInstanceById(CollectionType.presentation, arguments);
 
+            assertTrue(optionalEditedPresentation.isPresent());
 
-                assertEquals(presentation.getName(), name);
-                assertEquals(presentation.getFillColor(), fillColor);
-                assertEquals(presentation.getFontFamily(), fontFamily);
+            if (optionalEditedPresentation.isPresent()) {
+                Presentation editedPresentation = optionalEditedPresentation.get();
+                assertEquals(editedPresentation.getName(), "My presentation");
+                assertEquals(editedPresentation.getFillColor(), "#403add");
+                assertEquals(editedPresentation.getFontFamily(), "Times New Roman");
             }
-        } else {
-            assertTrue(false);
         }
+        log.debug("{TEST} editPresentationOptionsSuccess END");
     }
 
     @Test
-    void editPresentationOptionsFail () throws IOException {
+    void editPresentationOptionsFail() throws IOException {
+        log.debug("{TEST} editPresentationOptionsFail START");
+
+        UUID id = UUID.randomUUID();
+
+        HashMap arguments = new HashMap();
+        arguments.put(ConstantsField.NAME, "My presentation");
+        arguments.put(ConstantsField.FILL_COLOR, "#403add");
+        arguments.put(ConstantsField.FONT_FAMILY, "Times New Roman");
+        arguments.put(ConstantsField.ID, String.valueOf(id));
+
+        assertEquals(provider.editPresentationOptions(arguments).getStatus(), Status.error);
+        log.debug("{TEST} editPresentationOptionsFail END");
+    }
+
+    @Test
+    void removePresentationByIdSuccess() throws IOException {
+        log.debug("{TEST} removePresentationByIdSuccess START");
         try {
-            HashMap args = new HashMap();
-            args.put("id", String.valueOf(UUID.randomUUID()));
 
-            Result resultRemovePresentation = provider.editPresentationOptions(args);
+            UUID id = UUID.randomUUID();
 
-            assertEquals(Status.error, resultRemovePresentation.getStatus());
-        } catch (RuntimeException | IOException e) {
+            Result createResult = makePresentationWithId(provider, id);
+
+            if (createResult.getStatus() == Status.success) {
+                HashMap args = new HashMap();
+                args.put(ConstantsField.ID, String.valueOf(id));
+                Result removeResult = provider.removePresentationById(args);
+                Result resultGetPresentation = provider.getPresentationById(args);
+                assertEquals(removeResult.getStatus(), Status.success);
+                assertEquals(resultGetPresentation.getStatus(), Status.error);
+            } else {
+                fail();
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
             log.error(e);
         }
+        log.debug("{TEST} removePresentationByIdSuccess END");
     }
+
+    @Test
+    void removePresentationByIdFail() {
+        log.debug("{TEST} removePresentationByIdFail START");
+        try {
+            HashMap args = new HashMap();
+            args.put(ConstantsField.ID, String.valueOf(UUID.randomUUID()));
+            Result removeResult = provider.removePresentationById(args);
+            assertEquals(removeResult.getStatus(), Status.error);
+        } catch (RuntimeException | IOException e) {
+            e.printStackTrace();
+            log.error(e);
+        }
+        log.debug("{TEST} removePresentationByIdFail END");
+    }
+
 
     @Test
     void getPresentationSlidesSuccess() {
         log.debug("{TEST} getPresentationSlidesSuccess START");
-        DataProvider provider = new DataProviderXML();
         UUID presId = UUID.randomUUID();
+        UUID slideId = UUID.randomUUID();
+        UUID elementId = UUID.randomUUID();
         HashMap args = new HashMap();
         args.put(ConstantsField.PRESENTATION_ID, String.valueOf(presId));
         args.put(ConstantsField.ID, String.valueOf(presId));
-        Result createResult = makePresentationWithId(provider, presId);
+        args.put(ConstantsField.WITH_ELEMENTS, Constants.TRUE_VALUE);
+        makeRectangleWithId(provider, elementId, slideId, presId);
 
-        if (Status.success == createResult.getStatus()) {
-            Result getSlidesResult = provider.getPresentationSlides(args);
-            assertEquals(getSlidesResult.getStatus(), Status.success);
+        Result getSlidesResult = provider.getPresentationSlides(args);
+        assertEquals(getSlidesResult.getStatus(), Status.success);
+
+        Optional optionalList = (Optional) getSlidesResult.getReturnValue();
+        if (optionalList.isPresent()) {
+            ArrayList list = (ArrayList) optionalList.get();
+
+            Slide firstSlide = (Slide) list.get(0);
+            ArrayList elements = firstSlide.getElements();
+
+            assertTrue(list.size() > 0);
+            assertTrue(elements.size() > 0);
+        } else {
+            fail();
         }
         log.debug("{TEST} getPresentationSlidesSuccess END");
     }
@@ -186,7 +280,6 @@ public class DataProviderXMLTest extends TestBase {
     @Test
     void getPresentationSlidesFail() {
         log.debug("{TEST} getPresentationSlidesFail START");
-        DataProvider provider = new DataProviderXML();
         UUID presId = UUID.randomUUID();
         HashMap args = new HashMap();
         args.put(ConstantsField.PRESENTATION_ID, String.valueOf(presId));
@@ -198,7 +291,6 @@ public class DataProviderXMLTest extends TestBase {
     @Test
     void createPresentationSlideSuccess() {
         log.debug("{TEST} createPresentationSlideSuccess START");
-        DataProvider provider = new DataProviderXML();
         HashMap args = new HashMap();
         String presId = String.valueOf(UUID.randomUUID());
         String slideId = String.valueOf(UUID.randomUUID());
@@ -217,10 +309,16 @@ public class DataProviderXMLTest extends TestBase {
     }
 
     @Test
+    void createPresentationSlideFail() {
+        log.debug("{TEST} createPresentationSlideFail START");
+        assertTrue(provider.createPresentationSlide(new HashMap()).getStatus() == Status.error);
+        log.debug("{TEST} createPresentationSlideFail END");
+    }
+
+    @Test
     void removePresentationSlideByIdSuccess() {
         log.debug("{TEST} removePresentationSlideByIdSuccess START");
 
-        DataProvider provider = new DataProviderXML();
 
         UUID presentationId = UUID.randomUUID();
         UUID slideId = UUID.randomUUID();
@@ -238,8 +336,18 @@ public class DataProviderXMLTest extends TestBase {
             assertEquals(resultGetSlide.getStatus(), Status.success);
 
             Result resultRemoveSlide = provider.removePresentationSlideById(args);
+
             assertEquals(resultRemoveSlide.getStatus(), Status.success);
+            assertEquals(provider.getSlideById(args).getStatus(), Status.error);
         }
+        log.debug("{TEST} removePresentationSlideByIdSuccess END");
+    }
+
+    @Test
+    void removePresentationSlideByIdFail() {
+        log.debug("{TEST} removePresentationSlideByIdSuccess START");
+
+        assertEquals(Status.error, provider.removePresentationSlideById(new HashMap()).getStatus());
         log.debug("{TEST} removePresentationSlideByIdSuccess END");
     }
 
@@ -248,7 +356,7 @@ public class DataProviderXMLTest extends TestBase {
         UUID presentationId = UUID.randomUUID();
         UUID slideId = UUID.randomUUID();
         String name = "Test name";
-        DataProvider provider = new DataProviderXML();
+        int index = 1;
         makePresentationWithId(provider, presentationId);
         Result resultCreateSlide = makeSlideWithId(provider, slideId, presentationId);
         if (resultCreateSlide.getStatus() == Status.success) {
@@ -256,13 +364,20 @@ public class DataProviderXMLTest extends TestBase {
             args.put(ConstantsField.PRESENTATION_ID, String.valueOf(presentationId));
             args.put(ConstantsField.ID, String.valueOf(slideId));
             args.put(ConstantsField.NAME, name);
+            args.put(ConstantsField.INDEX, String.valueOf(index));
             Result resultEditSlide = provider.editPresentationSlideById(args);
             assertEquals(resultEditSlide.getStatus(), Status.success);
             if (Status.success == resultEditSlide.getStatus()) {
                 Result resultGetSlide = provider.getSlideById(args);
                 if (Status.success == resultGetSlide.getStatus()) {
-                    Slide slide = (Slide) resultGetSlide.getReturnValue();
-                    assertEquals(slide.getName(),  name);
+                    Optional optional = (Optional) resultGetSlide.getReturnValue();
+                    if (optional.isPresent()) {
+                        Slide slide = (Slide) optional.get();
+                        assertEquals(slide.getName(),  name);
+                        assertEquals(slide.getIndex(), index);
+                    } else {
+                        fail();
+                    }
                 }
             }
         }
@@ -273,7 +388,6 @@ public class DataProviderXMLTest extends TestBase {
         UUID presentationId = UUID.randomUUID();
         UUID slideId = UUID.randomUUID();
         String name = "Test name";
-        DataProvider provider = new DataProviderXML();
         makePresentationWithId(provider, presentationId);
         Result resultCreateSlide = makeSlideWithId(provider, slideId, presentationId);
         if (Status.success == resultCreateSlide.getStatus()) {
@@ -285,6 +399,40 @@ public class DataProviderXMLTest extends TestBase {
             assertNotEquals(resultEditSlide.getStatus(), Status.success);
         }
     }
+
+    @Test
+    void getSlideByIdSuccess () {
+        UUID presentationId = UUID.randomUUID();
+        UUID slideId = UUID.randomUUID();
+        UUID elementId = UUID.randomUUID();
+
+        makeRectangleWithId(provider, elementId, slideId, presentationId);
+
+        HashMap args = new HashMap();
+        args.put(ConstantsField.PRESENTATION_ID, String.valueOf(presentationId));
+        args.put(ConstantsField.ID, String.valueOf(slideId));
+        args.put(ConstantsField.WITH_ELEMENTS, Constants.TRUE_VALUE);
+
+        assertTrue(provider.getSlideById(args).getStatus() == Status.success);
+    }
+
+
+    @Test
+    void getSlideByIdError () {
+        UUID presentationId = UUID.randomUUID();
+        UUID slideId = UUID.randomUUID();
+
+        makePresentationWithId(provider, presentationId);
+        makeSlideWithId(provider, slideId, presentationId);
+
+        HashMap args = new HashMap();
+        args.put(ConstantsField.PRESENTATION_ID, String.valueOf(presentationId));
+        args.put(ConstantsField.ID, String.valueOf(slideId));
+
+        assertTrue(provider.getSlideById(args).getStatus() == Status.success);
+    }
+
+
 
     @Test
     void commentPresentationSuccess() {
@@ -313,7 +461,8 @@ public class DataProviderXMLTest extends TestBase {
                 Result resultGetComments = provider.getPresentationComments(args);
 
                 log.debug("comments: " + resultGetComments.getReturnValue());
-                ArrayList comments = (ArrayList) resultGetComments.getReturnValue();
+                Optional optionalComments = (Optional) resultGetComments.getReturnValue();
+                ArrayList comments = (ArrayList) optionalComments.get();
                 Optional presentationCommentId = comments.stream().filter(el -> {
                     Comment comment = (Comment) el;
                     log.debug("comment id: " + commentId);
@@ -375,7 +524,9 @@ public class DataProviderXMLTest extends TestBase {
                 assertTrue(resultGetPresentationComments.getStatus() == Status.success);
                 assertTrue(resultCommentPresentation.getStatus() == Status.success);
 
-                ArrayList comments = (ArrayList) resultGetPresentationComments.getReturnValue();
+
+                Optional optionalList = (Optional) resultGetPresentationComments.getReturnValue();
+                ArrayList comments = (ArrayList) optionalList.get();
                 assertTrue(comments.size() > 0);
             } else {
                 fail();
@@ -404,11 +555,6 @@ public class DataProviderXMLTest extends TestBase {
 
                 assertTrue(resultGetPresentationComments.getStatus() == Status.error);
                 assertTrue(resultCommentPresentation.getStatus() == Status.error);
-
-                if (resultGetPresentationComments.getStatus() == Status.success) {
-                    ArrayList comments = (ArrayList) resultGetPresentationComments.getReturnValue();
-                    assertTrue(comments.size() == 0);
-                }
             } else {
                 fail();
             }
@@ -424,25 +570,22 @@ public class DataProviderXMLTest extends TestBase {
         UUID presentationId = UUID.randomUUID();
 
         Result resultCreatePresentation = makePresentationWithId(provider, presentationId);
+        String text = "Тестовый измененный текст";
+        String role = String.valueOf(Role.editor);
 
         if (resultCreatePresentation.getStatus() == Status.success) {
             HashMap args = new HashMap();
             args.put(ConstantsField.PRESENTATION_ID, String.valueOf(presentationId));
-            args.put(ConstantsField.TEXT, "Тестовый измененный текст");
-            args.put(ConstantsField.ROLE, String.valueOf(Role.editor));
+            args.put(ConstantsField.TEXT, text);
+            args.put(ConstantsField.ROLE, role);
             Result resultCommentPresentation = provider.commentPresentation(args);
+            args.put(ConstantsField.ID, String.valueOf(resultCommentPresentation.getReturnValue()));
+            Result resultEditComment = provider.editPresentationComment(args);
+            Result resultGetPresentationComments = provider.getPresentationComments(args);
 
-            if (Status.success == resultCommentPresentation.getStatus()) {
-                args.put(ConstantsField.ID, String.valueOf(resultCommentPresentation.getReturnValue()));
-                Result resultEditComment = provider.editPresentationComment(args);
-                Result resultGetPresentationComments = provider.getPresentationComments(args);
-
-                assertTrue(resultCommentPresentation.getStatus() == Status.success);
-                assertTrue(resultGetPresentationComments.getStatus() == Status.success);
-                assertTrue(resultEditComment.getStatus() == Status.success);
-            } else {
-                fail();
-            }
+            assertTrue(resultCommentPresentation.getStatus() == Status.success);
+            assertTrue(resultGetPresentationComments.getStatus() == Status.success);
+            assertTrue(resultEditComment.getStatus() == Status.success);
         } else {
             fail();
         }
@@ -459,12 +602,10 @@ public class DataProviderXMLTest extends TestBase {
             args.put(ConstantsField.PRESENTATION_ID, String.valueOf(UUID.randomUUID()));
             args.put(ConstantsField.TEXT, null);
             args.put(ConstantsField.ROLE, "guest");
-            Result resultCommentPresentation = provider.commentPresentation(args);
             args.put(ConstantsField.ID, String.valueOf(UUID.randomUUID()));
             Result resultEditComment = provider.editPresentationComment(args);
             Result resultGetPresentationComments = provider.getPresentationComments(args);
 
-            assertFalse(Status.success == resultCommentPresentation.getStatus());
             assertFalse(Status.success == resultGetPresentationComments.getStatus());
             assertFalse(Status.success == resultEditComment.getStatus());
         } else {
@@ -472,6 +613,16 @@ public class DataProviderXMLTest extends TestBase {
         }
     }
 
+    @Test
+    void addRectangleInSlideSuccess() {
+        log.info("{ addElementInSlideSuccess } START");
+        UUID presentationId = UUID.randomUUID();
+        UUID slideId = UUID.randomUUID();
+        UUID id = UUID.randomUUID();
+        makeRectangleWithId(provider, id, slideId, presentationId);
+
+        log.info("{ addElementInSlideSuccess } END");
+    }
 
     @Test
     void addElementInSlideFail() {
@@ -488,17 +639,6 @@ public class DataProviderXMLTest extends TestBase {
         assertTrue(Status.error == result.getStatus());
 
         log.info("{ addElementInSlideFail } END");
-    }
-
-    @Test
-    void addRectangleInSlideSuccess() {
-        log.info("{ addElementInSlideSuccess } START");
-        UUID presentationId = UUID.randomUUID();
-        UUID slideId = UUID.randomUUID();
-        UUID id = UUID.randomUUID();
-        makeRectangleWithId(provider, id, slideId, presentationId);
-
-        log.info("{ addElementInSlideSuccess } END");
     }
 
     @Test
@@ -523,6 +663,22 @@ public class DataProviderXMLTest extends TestBase {
     }
 
     @Test
+    void getSlideElementByIdShapeFail () {
+        log.info("{ getSlideElementByIdShapeFail } START");
+
+        HashMap args = new HashMap();
+        args.put(ConstantsField.PRESENTATION_ID, String.valueOf(UUID.randomUUID()));
+        args.put(ConstantsField.SLIDE_ID, String.valueOf(UUID.randomUUID()));
+        args.put(ConstantsField.ID, String.valueOf(UUID.randomUUID()));
+        args.put(ConstantsField.ELEMENT_TYPE, String.valueOf(123));
+        args.put(ConstantsField.FIGURE, String.valueOf(123));
+        Result resultGet = provider.getSlideElementById(args);
+
+        assertFalse(Status.success == resultGet.getStatus());
+        log.info("{ getSlideElementByIdShapeFail } END");
+    }
+
+    @Test
     void getSlideElementsSuccess () {
         log.info("{ getSlideElementByIdShapeSuccess } START");
 
@@ -539,10 +695,24 @@ public class DataProviderXMLTest extends TestBase {
         Result resultGet = provider.getSlideElements(args);
 
         assertEquals(Status.success, resultGet.getStatus());
-        ArrayList list = (ArrayList) resultGet.getReturnValue();
+        Optional optional = (Optional) resultGet.getReturnValue();
+        ArrayList list = (ArrayList) optional.get();
         assertTrue(!list.isEmpty());
 
         log.info("{ getSlideElementByIdShapeSuccess } END");
+    }
+
+
+
+    @Test
+    void getSlideElementsFail () {
+        log.info("{ getSlideElementsFail } START");
+
+        Result resultGet = provider.getSlideElements(new HashMap());
+
+        assertEquals(Status.error, resultGet.getStatus());
+
+        log.info("{ getSlideElementsFail } END");
     }
 
     @Test
@@ -563,42 +733,6 @@ public class DataProviderXMLTest extends TestBase {
 
         log.info("{ addCustomRectangleInSlideSuccess } END");
     }
-
-    @Test
-    void editCustomRectangleInSlideSuccess() {
-        log.info("{ editCustomRectangleInSlideSuccess } START");
-
-        UUID presentationId = UUID.randomUUID();
-        UUID slideId = UUID.randomUUID();
-        makePresentationWithId(provider, presentationId);
-        makeSlideWithId(provider, slideId, presentationId);
-
-        UUID id = UUID.randomUUID();
-
-        HashMap createParams = new HashMap();
-        createParams.put(ConstantsField.ID, String.valueOf(id));
-        createParams.put(ConstantsField.PRESENTATION_ID, String.valueOf(presentationId));
-        createParams.put(ConstantsField.SLIDE_ID, String.valueOf(slideId));
-        createParams.put(ConstantsField.ELEMENT_TYPE, String.valueOf(ElementType.shape));
-        createParams.put(ConstantsField.FIGURE, String.valueOf(Figure.rectangle));
-
-        Result addResult = provider.addElementInSlide(createParams);
-
-        if (Status.success == addResult.getStatus()) {
-            Shape testShape = (Shape) addResult.getReturnValue();
-
-            HashMap testData = getUpdatedShape(testShape.getId(), slideId, presentationId);
-
-            Shape updatedShape = (Shape) testData.get("shape");
-            Result result = provider.editSlideElement((HashMap) testData.get("args"));
-
-            assertTrue(Status.success == result.getStatus());
-        }
-
-
-        log.info("{ editCustomRectangleInSlideSuccess } END");
-    }
-
 
     @Test
     void removeSlideElementSuccess() {
@@ -630,34 +764,44 @@ public class DataProviderXMLTest extends TestBase {
         log.info("{ removeSlideElementSuccess } END");
     }
 
-    ////////////////
+    @Test
+    void addElementInSlideContentSuccess() {
+        log.info("{ addElementInSlideContentSuccess } START");
+        UUID presentationId = UUID.randomUUID();
+        UUID slideId = UUID.randomUUID();
+        UUID id = UUID.randomUUID();
+
+        makeCustomContent(provider, id, slideId, presentationId);
+
+        log.info("{ addElementInSlideContentSuccess } END");
+    }
 
     @Test
-    void getSlideElementByIdShapeFail () {
-        log.info("{ getSlideElementByIdShapeFail } START");
+    void getSlideElementsContentSuccess () {
+        log.info("{ getSlideElementsContentSuccess } START");
+
+        UUID presentationId = UUID.randomUUID();
+        UUID slideId = UUID.randomUUID();
+        UUID id = UUID.randomUUID();
+
+        makeCustomContent(provider, id, slideId, presentationId);
 
         HashMap args = new HashMap();
-        args.put(ConstantsField.PRESENTATION_ID, String.valueOf(UUID.randomUUID()));
-        args.put(ConstantsField.SLIDE_ID, String.valueOf(UUID.randomUUID()));
-        args.put(ConstantsField.ID, String.valueOf(UUID.randomUUID()));
-        args.put(ConstantsField.ELEMENT_TYPE, String.valueOf(123));
-        args.put(ConstantsField.FIGURE, String.valueOf(123));
-        Result resultGet = provider.getSlideElementById(args);
+        args.put(ConstantsField.ID, String.valueOf(id));
+        args.put(ConstantsField.PRESENTATION_ID, String.valueOf(presentationId));
+        args.put(ConstantsField.SLIDE_ID, String.valueOf(slideId));
 
-        assertFalse(Status.success == resultGet.getStatus());
-        log.info("{ getSlideElementByIdShapeFail } END");
+        Result resultGet = provider.getSlideElements(args);
+        Optional optional = (Optional) resultGet.getReturnValue();
+
+        assertEquals(Status.success, resultGet.getStatus());
+        ArrayList list = (ArrayList) optional.orElse(new ArrayList());
+        assertTrue(!list.isEmpty());
+
+        log.info("{ getSlideElementsContentSuccess } END");
     }
 
-    @Test
-    void getSlideElementsFail () {
-        log.info("{ getSlideElementsFail } START");
-
-        Result resultGet = provider.getSlideElements(new HashMap());
-
-        assertEquals(Status.error, resultGet.getStatus());
-
-        log.info("{ getSlideElementsFail } END");
-    }
+    ////////////////
 
     @Test
     void addCustomRectangleInSlideFail() {
@@ -671,6 +815,59 @@ public class DataProviderXMLTest extends TestBase {
     }
 
     @Test
+    void editCustomRectangleInSlideSuccess() {
+        log.info("{ editCustomRectangleInSlideSuccess } START");
+
+        UUID presentationId = UUID.randomUUID();
+        UUID slideId = UUID.randomUUID();
+        makePresentationWithId(provider, presentationId);
+        makeSlideWithId(provider, slideId, presentationId);
+
+        UUID id = UUID.randomUUID();
+
+        HashMap createParams = new HashMap();
+        createParams.put(ConstantsField.ID, String.valueOf(id));
+        createParams.put(ConstantsField.PRESENTATION_ID, String.valueOf(presentationId));
+        createParams.put(ConstantsField.SLIDE_ID, String.valueOf(slideId));
+        createParams.put(ConstantsField.ELEMENT_TYPE, String.valueOf(ElementType.shape));
+        createParams.put(ConstantsField.FIGURE, String.valueOf(Figure.rectangle));
+
+        Result addResult = provider.addElementInSlide(createParams);
+
+        if (Status.success == addResult.getStatus()) {
+            Optional optional = (Optional) addResult.getReturnValue();
+            Shape testShape = (Shape) optional.get();
+
+            HashMap testData = getUpdatedShape(testShape.getId(), slideId, presentationId);
+
+            Shape updatedShape = (Shape) testData.get("shape");
+            Result result = provider.editSlideElement((HashMap) testData.get("args"));
+
+            Result resultGet = provider.getSlideElementById((HashMap) testData.get("args"));
+
+            Optional optionalGet = (Optional) resultGet.getReturnValue();
+
+            if (optionalGet.isPresent()) {
+                Shape shape = (Shape) optionalGet.get();
+
+                log.debug(ConstantsInfo.SHAPE + shape);
+                assertEquals(shape.getFigure(), updatedShape.getFigure());
+                assertEquals(shape.getStyle().toString(), updatedShape.getStyle().toString());
+                assertEquals(shape.getText(), updatedShape.getText());
+                assertEquals(shape.getName(), updatedShape.getName());
+                assertEquals(shape.getLayout().toString(), updatedShape.getLayout().toString());
+            } else {
+                fail();
+            }
+
+            assertTrue(Status.success == result.getStatus());
+        }
+
+
+        log.info("{ editCustomRectangleInSlideSuccess } END");
+    }
+
+    @Test
     void editCustomRectangleInSlideFail() {
         log.info("{ editCustomRectangleInSlideFail } START");
 
@@ -679,27 +876,9 @@ public class DataProviderXMLTest extends TestBase {
         log.info("{ editCustomRectangleInSlideFail } END");
     }
 
-
     @Test
-    void removeSlideElementFail() {
-        log.info("{ removeSlideElementFail } START");
-
-        HashMap args = new HashMap();
-        args.put(ConstantsField.PRESENTATION_ID, String.valueOf(UUID.randomUUID()));
-        args.put(ConstantsField.SLIDE_ID, String.valueOf(UUID.randomUUID()));
-        args.put(ConstantsField.ID, String.valueOf(UUID.randomUUID()));
-        args.put(ConstantsField.ELEMENT_TYPE, String.valueOf(123));
-        args.put(ConstantsField.FIGURE, String.valueOf(123));
-        Result resultRemove = provider.removeSlideElement(args);
-        assertTrue(Status.error == resultRemove.getStatus());
-
-        log.info("{ removeSlideElementSuccess } END");
-    }
-
-
-    @Test
-    void addContentInSlideSuccess() {
-        log.info("{ addContentInSlideSuccess } START");
+    void removeSlideElementByIdSuccess() {
+        log.info("{ removeSlideElementByIdSuccess } START");
         UUID presentationId = UUID.randomUUID();
         UUID slideId = UUID.randomUUID();
         UUID id = UUID.randomUUID();
@@ -712,25 +891,14 @@ public class DataProviderXMLTest extends TestBase {
         makeContentWithId(provider, id, slideId, presentationId, args);
 
         Result resultRemove = provider.removeSlideElement(args);
+        assertTrue(resultRemove.getStatus() == Status.success);
 
-        log.info("{ addContentInSlideSuccess } END");
+        log.info("{ removeSlideElementByIdSuccess } END");
     }
 
     @Test
-    void addContentInSlideContentSuccess() {
-        log.info("{ addContentInSlideContentSuccess } START");
-        UUID presentationId = UUID.randomUUID();
-        UUID slideId = UUID.randomUUID();
-        UUID id = UUID.randomUUID();
-
-        makeCustomContent(provider, id, slideId, presentationId);
-
-        log.info("{ addContentInSlideContentSuccess } END");
-    }
-
-    @Test
-    void removeSlideElementContentSuccess() {
-        log.info("{ removeSlideElementContentSuccess } START");
+    void removeSlideElementShapeSuccess() {
+        log.info("{ removeSlideElementShapeSuccess } START");
 
 
         UUID presentationId = UUID.randomUUID();
@@ -755,32 +923,26 @@ public class DataProviderXMLTest extends TestBase {
             assertTrue(Status.success == resultRemove.getStatus());
         }
 
-        log.info("{ removeSlideElementContentSuccess } END");
+        log.info("{ removeSlideElementShapeSuccess } END");
     }
 
     @Test
-    void getSlideElementsContentSuccess () {
-        log.info("{ getSlideElementByIdShapeSuccess } START");
-
-        UUID presentationId = UUID.randomUUID();
-        UUID slideId = UUID.randomUUID();
-        UUID id = UUID.randomUUID();
-
-        makeCustomContent(provider, id, slideId, presentationId);
+    void removeSlideElementFail() {
+        log.info("{ removeSlideElementFail } START");
 
         HashMap args = new HashMap();
-        args.put(ConstantsField.ID, String.valueOf(id));
-        args.put(ConstantsField.PRESENTATION_ID, String.valueOf(presentationId));
-        args.put(ConstantsField.SLIDE_ID, String.valueOf(slideId));
+        args.put(ConstantsField.PRESENTATION_ID, String.valueOf(UUID.randomUUID()));
+        args.put(ConstantsField.SLIDE_ID, String.valueOf(UUID.randomUUID()));
+        args.put(ConstantsField.ID, String.valueOf(UUID.randomUUID()));
+        args.put(ConstantsField.ELEMENT_TYPE, String.valueOf(123));
+        args.put(ConstantsField.FIGURE, String.valueOf(123));
+        Result resultRemove = provider.removeSlideElement(args);
+        assertTrue(Status.error == resultRemove.getStatus());
 
-        Result resultGet = provider.getSlideElements(args);
-
-        assertEquals(Status.success, resultGet.getStatus());
-        ArrayList list = (ArrayList) resultGet.getReturnValue();
-        assertTrue(!list.isEmpty());
-
-        log.info("{ getSlideElementByIdShapeSuccess } END");
+        log.info("{ removeSlideElementSuccess } END");
     }
+
+    ////
 
     @Test
     void rateByMarkSuccess() {
@@ -791,7 +953,7 @@ public class DataProviderXMLTest extends TestBase {
 
         HashMap args = new HashMap();
         args.put(ConstantsField.PRESENTATION_ID, String.valueOf(presentationId));
-        args.put(ConstantsField.MARK, "bed");
+        args.put(ConstantsField.MARK, "bad");
         Result resultRate = provider.rateByMark(args);
 
         assertTrue(Status.success == resultRate.getStatus());
@@ -800,47 +962,133 @@ public class DataProviderXMLTest extends TestBase {
     }
 
     @Test
-    void removePresentationByIdSuccess() throws IOException {
-        log.debug("{TEST} removePresentationByIdSuccess START");
-        try {
-            DataProvider provider = new DataProviderCSV();
+    void rateByMarkFail() {
+        log.info("{ rateByMarkFail } START");
 
-            UUID id = UUID.randomUUID();
-            Result createResult = makePresentationWithId(provider, id);
 
-            if (createResult.getStatus() == Status.success) {
-                HashMap args = new HashMap();
-                args.put(ConstantsField.ID, String.valueOf(id));
-                Result removeResult = provider.removePresentationById(args);
-                assertEquals(removeResult.getStatus(), Status.success);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-            log.error(e);
-        }
-        log.debug("{TEST} removePresentationByIdSuccess END");
+        HashMap args = new HashMap();
+        args.put(ConstantsField.PRESENTATION_ID, String.valueOf(UUID.randomUUID()));
+        args.put(ConstantsField.MARK, 123);
+        Result resultRate = provider.rateByMark(args);
+
+        assertTrue(Status.error == resultRate.getStatus());
+
+        log.info("{ rateByMarkFail } END");
+    }
+
+
+    @Test
+    void getPresentationMarksSuccess() {
+        log.info("{ getPresentationMarksSuccess } START");
+
+        UUID presentationId = UUID.randomUUID();
+        makePresentationWithId(provider, presentationId);
+
+        HashMap args = new HashMap();
+        args.put(ConstantsField.PRESENTATION_ID, String.valueOf(presentationId));
+        args.put(ConstantsField.MARK, "bad");
+        Result resultRate = provider.rateByMark(args);
+
+        Result result = provider.getPresentationMarks(args);
+
+        assertTrue(Status.success == result.getStatus());
+        log.info("{ getPresentationMarksSuccess } END");
     }
 
     @Test
-    void removePresentationByIdFail() throws IOException {
-        log.debug("{TEST} removePresentationByIdFail START");
-        try {
-            DataProvider provider = new DataProviderCSV();
+    void getPresentationMarksFail() {
+        log.info("{ getPresentationMarksSuccess } START");
 
-            UUID id = UUID.randomUUID();
-            Result createResult = makePresentationWithId(provider, id);
+        HashMap args = new HashMap();
+        args.put(ConstantsField.PRESENTATION_ID, String.valueOf(UUID.randomUUID()));
+        Result result = provider.getPresentationMarks(args);
 
-            if (createResult.getStatus() == Status.success) {
-                HashMap args = new HashMap();
-                args.put(ConstantsField.ID, String.valueOf(UUID.randomUUID()));
-                Result removeResult = provider.removePresentationById(args);
-                assertEquals(removeResult.getStatus(), Status.error);
-            }
+        assertTrue(Status.error == result.getStatus());
+        log.info("{ getPresentationMarksSuccess } END");
+    }
 
-        } catch (IOException e) {
-            e.printStackTrace();
-            log.error(e);
+    @Test
+    void removePresentationMarkByIdSuccess() {
+
+        UUID presentationId = UUID.randomUUID();
+        UUID markId = UUID.randomUUID();
+
+        makePresentationMark(provider, markId, presentationId, Mark.good);
+
+        HashMap args = new HashMap();
+        args.put(ConstantsField.PRESENTATION_ID, String.valueOf(presentationId));
+        args.put(ConstantsField.ID, String.valueOf(markId));
+
+        assertEquals(provider.removePresentationMarkById(args).getStatus(), Status.success);
+    }
+
+    @Test
+    void removePresentationMarkByIdFail() {
+        assertEquals(provider.removePresentationMarkById(new HashMap()).getStatus(), Status.error);
+    }
+
+    @Test
+    void getMarkByIdSuccess() {
+        UUID presentationId = UUID.randomUUID();
+        UUID markId = UUID.randomUUID();
+
+        makePresentationMark(provider, markId, presentationId, Mark.good);
+
+        HashMap args = new HashMap();
+        args.put(ConstantsField.ID, String.valueOf(markId));
+        args.put(ConstantsField.PRESENTATION_ID, String.valueOf(presentationId));
+        assertEquals(provider.getMarkById(args).getStatus(), Status.success);
+
+        Optional returnValue = (Optional) provider.getMarkById(args).getReturnValue();
+        assertTrue(returnValue.isPresent());
+    }
+
+    @Test
+    void getMarkByIdFail() {
+        assertEquals(provider.getMarkById(new HashMap()).getStatus(), Status.error);
+    }
+
+    @Test
+    void editPresentationMarkSuccess() {
+
+        UUID presentationId = UUID.randomUUID();
+        UUID markId = UUID.randomUUID();
+
+        makePresentationMark(provider, markId, presentationId, Mark.bad);
+
+
+        HashMap args = new HashMap();
+        args.put(ConstantsField.PRESENTATION_ID, String.valueOf(presentationId));
+        args.put(ConstantsField.ID, String.valueOf(markId));
+        args.put(ConstantsField.MARK, String.valueOf(Mark.excellent));
+        assertEquals(provider.editPresentationMark(args).getStatus(), Status.success);
+
+        Result resultGetMark = provider.getMarkById(args);
+
+        assertEquals(resultGetMark.getStatus(), Status.success);
+
+        Optional optional = (Optional) resultGetMark.getReturnValue();
+
+        if (optional.isPresent()){
+            Assessment assessment = (Assessment) optional.get();
+            assertEquals(assessment.getMark(), Mark.excellent);
+
+        } else {
+            fail();
         }
-        log.debug("{TEST} removePresentationByIdFail END");
+    }
+
+    @Test
+    void editPresentationMarkFail() {
+
+        UUID presentationId = UUID.randomUUID();
+        UUID markId = UUID.randomUUID();
+
+        HashMap args = new HashMap();
+        args.put(ConstantsField.PRESENTATION_ID, String.valueOf(presentationId));
+        args.put(ConstantsField.ID, String.valueOf(markId));
+        args.put(ConstantsField.MARK, String.valueOf(Mark.excellent));
+
+        assertEquals(provider.editPresentationMark(args).getStatus(), Status.error);
     }
 }

@@ -19,7 +19,6 @@ import java.io.IOException;
 import java.util.*;
 import java.util.stream.Collectors;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import static ru.sfedu.course_project.enums.CollectionType.presentation;
 
 public class XMLPresentationMethods {
@@ -122,19 +121,20 @@ public class XMLPresentationMethods {
 
     public static Result createPresentationFromTemplate (HashMap args) {
         try {
-            log.info("Searching template presentation");
+            log.info(ConstantsInfo.TEMPLATE_SEARCH);
             HashMap params = new HashMap();
             params.put(ConstantsField.ID, String.valueOf(args.get(ConstantsField.TEMPLATE_ID)));
-            params.put(ConstantsField.WITH_SLIDES, "true");
-            params.put(ConstantsField.WITH_ELEMENTS, "true");
+            params.put(ConstantsField.WITH_SLIDES, Constants.TRUE_VALUE);
+            params.put(ConstantsField.WITH_ELEMENTS, Constants.TRUE_VALUE);
             Result resultGetTemplate = getPresentationById(params);
 
             if (Status.error == resultGetTemplate.getStatus()) {
                 return resultGetTemplate;
             }
 
-            Presentation template = (Presentation) resultGetTemplate.getReturnValue();
-            log.debug("Template found: " + template);
+            Optional optional = (Optional) resultGetTemplate.getReturnValue();
+            Presentation template = (Presentation)  optional.get();
+            log.debug(ConstantsInfo.TEMPLATE_FOUND + template);
 
             return buildPresentationFromTemplate(template);
 
@@ -189,7 +189,7 @@ public class XMLPresentationMethods {
         try {
             Optional<List> optionalPresentations = XMLCommonMethods.getCollection(presentation);
             log.debug(ConstantsInfo.PRESENTATIONS_GET);
-            return optionalPresentations.map(list -> new Result(Status.success, list)).orElseGet(() -> new Result(Status.success, new ArrayList()));
+            return new Result(Status.success, optionalPresentations);
         } catch (RuntimeException e) {
             log.error(e);
             log.error(ConstantsError.PRESENTATIONS_GET);
@@ -200,7 +200,7 @@ public class XMLPresentationMethods {
     public static Result getPresentationById (HashMap arguments) {
         try {
             ArrayList fields = new ArrayList();
-            fields.add("id");
+            fields.add(ConstantsField.ID);
             Result isArgsValid = new ArgsValidator().validate(arguments, fields);
             if (isArgsValid.getStatus() == Status.error) {
                 return isArgsValid;
@@ -211,16 +211,14 @@ public class XMLPresentationMethods {
                 return new Result(Status.error, ConstantsError.INSTANCE_NOT_FOUND);
             }
 
-            Optional<Object> slideId = Optional.ofNullable(arguments.get(ConstantsField.SLIDE_ID));
             boolean withSlides = Boolean.parseBoolean((String) arguments.getOrDefault(ConstantsField.WITH_SLIDES, "false"));
             boolean withComments = Boolean.parseBoolean((String) arguments.getOrDefault(ConstantsField.WITH_COMMENTS, "false"));
             boolean withMarks = Boolean.parseBoolean((String) arguments.getOrDefault(ConstantsField.WITH_MARKS, "false"));
             boolean withElements = Boolean.parseBoolean((String) arguments.getOrDefault(ConstantsField.WITH_ELEMENTS, "false"));
-            log.info("Get presentation: with slide id: " + slideId.isPresent());
-            log.info("Get presentation: withSlides: " + withSlides);
-            log.info("Get presentation: withComments: " + withComments);
-            log.info("Get presentation: withMarks: " + withMarks);
-            log.info("Get presentation: withElements: " + withElements);
+            log.info(ConstantsField.WITH_SLIDES + withSlides);
+            log.info(ConstantsField.WITH_COMMENTS + withComments);
+            log.info(ConstantsField.WITH_MARKS + withMarks);
+            log.info(ConstantsField.WITH_ELEMENTS + withElements);
 
             Presentation presentation = optionalPresentation.get();
 
@@ -230,9 +228,10 @@ public class XMLPresentationMethods {
                 paramsGetSlides.put(ConstantsField.PRESENTATION_ID, arguments.get(ConstantsField.ID));
                 paramsGetSlides.put(ConstantsField.WITH_ELEMENTS, arguments.get(ConstantsField.WITH_ELEMENTS));
                 Result resultGetSlides = XMLSlideMethods.getPresentationSlides(paramsGetSlides);
-                log.debug("[getPresentationById] get presentation slides: " + paramsGetSlides.get(ConstantsField.PRESENTATION_ID));
+                log.debug(ConstantsInfo.SLIDES_GET + paramsGetSlides.get(ConstantsField.PRESENTATION_ID));
                 if (resultGetSlides.getStatus() == Status.success) {
-                    presentation.setSlides((ArrayList) resultGetSlides.getReturnValue());
+                    Optional optional = (Optional) resultGetSlides.getReturnValue();
+                    presentation.setSlides((ArrayList) optional.get());
                 } else {
                     return resultGetSlides;
                 }
@@ -240,18 +239,36 @@ public class XMLPresentationMethods {
 
             if (withComments) {
                 HashMap paramsGetComments = new HashMap();
-                paramsGetComments.put("presentationId", arguments.get("id"));
+                paramsGetComments.put(ConstantsField.PRESENTATION_ID, arguments.get(ConstantsField.ID));
                 Result resultGetComments = XMLCommentMethods.getPresentationComments(paramsGetComments);
-                log.debug("[getPresentationById] get presentation comments: " + paramsGetComments.get("presentationId"));
+                log.debug(ConstantsField.COMMENTS + paramsGetComments.get(ConstantsField.PRESENTATION_ID));
                 if (resultGetComments.getStatus() == Status.success) {
-                    presentation.setComments((ArrayList) resultGetComments.getReturnValue());
+                    Optional optional = (Optional) resultGetComments.getReturnValue();
+                    presentation.setComments((ArrayList) optional.get());
                 } else {
                     return resultGetComments;
                 }
             }
+            if (withMarks) {
+                HashMap paramsGetMarks = new HashMap();
+                paramsGetMarks.put(ConstantsField.PRESENTATION_ID, arguments.get(ConstantsField.ID));
+                log.debug(ConstantsInfo.ASSESSMENTS_GET + paramsGetMarks.get(ConstantsField.ID));
+
+                Result resultGetMarks = XMLAssessmentMethods.getPresentationMarks(paramsGetMarks);
+
+                if (Status.success == resultGetMarks.getStatus()) {
+                    Optional optional = (Optional) resultGetMarks.getReturnValue();
+                    if (optional.isPresent()) {
+                        HashMap marks = (HashMap) optional.get();
+                        presentation.setMarks(marks);
+                    }
+                } else {
+                    return resultGetMarks;
+                }
+            }
 
             return optionalPresentation.isPresent() ?
-                    new Result(Status.success, presentation) :
+                    new Result(Status.success, Optional.of(presentation)) :
                     new Result(Status.error, ConstantsError.PRESENTATION_GET);
         } catch (RuntimeException e) {
             log.error(e);
@@ -262,10 +279,10 @@ public class XMLPresentationMethods {
 
     public static Result removePresentationById (HashMap arguments) {
         try {
-            if (arguments.get("id") == null) {
-                return new Result(Status.error, ConstantsError.ARGUMENT_IS_NOT_PROVIDED + "id");
+            if (arguments.get(ConstantsField.ID) == null) {
+                return new Result(Status.error, ConstantsError.ARGUMENT_IS_NOT_PROVIDED + ConstantsField.ID);
             } else {
-                UUID id = UUID.fromString((String) arguments.get("id"));
+                UUID id = UUID.fromString((String) arguments.get(ConstantsField.ID));
                 Status status = XMLCommonMethods.removeRecordById(presentation, Presentation.class, id);
                 if (status == Status.success) {
                     return new Result(Status.success, ConstantsSuccess.PRESENTATION_REMOVE);
@@ -295,8 +312,9 @@ public class XMLPresentationMethods {
                 List<Presentation> list = XMLCommonMethods.getCollection(presentation).orElse(new ArrayList());
                 List<Presentation> updatedList = list.stream().peek(el -> {
                     if (el.getId().equals(id)) {
+                        log.debug(ConstantsInfo.ASSESSMENTS_GET + arguments);
                         String fillColor = (String) arguments.getOrDefault(ConstantsField.FILL_COLOR, el.getFillColor());
-                        String fontFamily = (String) arguments.getOrDefault(ConstantsField.FONT_CASE, el.getFontFamily());
+                        String fontFamily = (String) arguments.getOrDefault(ConstantsField.FONT_FAMILY, el.getFontFamily());
                         String name = (String) arguments.getOrDefault(ConstantsField.NAME, el.getName());
                         log.debug(ConstantsInfo.FIELD_EDIT + "fillColor " + fillColor);
                         el.setFillColor(fillColor);
@@ -313,13 +331,13 @@ public class XMLPresentationMethods {
                 }
                 return new Result(Status.error, ConstantsError.PRESENTATION_UPDATE + id);
             } else {
-                log.info("[editPresentationOptions] Unable to find presentation: " + id);
+                log.info(ConstantsError.PRESENTATION_NOT_FOUND + id);
                 return new Result(Status.error, ConstantsError.PRESENTATION_NOT_FOUND + id);
             }
         } catch (RuntimeException e) {
             e.printStackTrace();
-            log.error("Unable to edit presentation options");
-            return new Result(Status.error, ConstantsError.PRESENTATION_NOT_FOUND);
+            log.error(ConstantsError.PRESENTATION_UPDATE);
+            return new Result(Status.error, ConstantsError.PRESENTATION_UPDATE);
         }
     }
 }

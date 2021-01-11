@@ -145,9 +145,6 @@ public class CSVCommonMethods {
                     updatedCollection = collection.stream().filter(el -> !el.getId().equals(id)).collect(Collectors.toList());
                     break;
                 }
-                case element:
-                    // TODO
-                    break;
                 case error:
                     break;
             }

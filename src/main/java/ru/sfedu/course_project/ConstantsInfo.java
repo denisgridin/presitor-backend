@@ -67,11 +67,13 @@ public class ConstantsInfo {
     public static final String SHAPES = "Shapes ";
     public static final String CONTENTS = "Contents ";
     public static final String COMMENTS = "Comments ";
+    public static final String COMMENT = "Comment ";
     public static final String MARKS = "Presentation marks ";
     public static final String ELEMENTS = "Elements ";
     public static final String SHAPE = "Shape: ";
     public static final String CONTENT = "Content: ";
     public static final String SLIDE = "Slide: ";
+    public static final String PRESENTATIONS = "Presentations: ";
 
     public static final String ELEMENTS_GET = "Get elements ";
 }

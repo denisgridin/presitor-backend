@@ -15,12 +15,10 @@ import ru.sfedu.course_project.tools.Creator;
 import ru.sfedu.course_project.tools.Result;
 import ru.sfedu.course_project.utils.ConstantsField;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Optional;
-import java.util.UUID;
+import java.util.*;
 import java.util.stream.Collectors;
 
+import static ru.sfedu.course_project.enums.CollectionType.assessment;
 import static ru.sfedu.course_project.enums.CollectionType.presentation;
 
 public class XMLAssessmentMethods {
@@ -39,7 +37,7 @@ public class XMLAssessmentMethods {
             if (!optionalPresentation.isPresent()) {
                 return new Result(Status.error, ConstantsError.INSTANCE_NOT_FOUND + ConstantsField.PRESENTATION_ID);
             }
-            log.info("Presentation found: " +  optionalPresentation.get());
+            log.info(ConstantsInfo.PRESENTATION +  optionalPresentation.get());
 
             log.debug("Start to add assessment in data source");
             return addPresentationMark(arguments);
@@ -96,7 +94,7 @@ public class XMLAssessmentMethods {
             if (!optionalPresentation.isPresent()) {
                 return new Result(Status.error, ConstantsError.INSTANCE_NOT_FOUND + ConstantsField.PRESENTATION_ID);
             }
-            log.info("Presentation found: " +  optionalPresentation.get());
+            log.info(ConstantsInfo.PRESENTATIONS +  optionalPresentation.get());
 
             ArrayList<Assessment> assessments = (ArrayList<Assessment>) XMLCommonMethods.getCollection(CollectionType.assessment).orElse(new ArrayList());
 
@@ -118,13 +116,130 @@ public class XMLAssessmentMethods {
                 log.debug(String.format("Mark %s: %s", el.getMark(), currentCount + 1));
                 marks.replace(String.valueOf(el.getMark()), currentCount + 1);
             });
-            log.info("Presentation marks: " + marks);
-            return new Result(Status.success, marks);
+            log.info(ConstantsInfo.MARKS + marks);
+            return new Result(Status.success, Optional.of(marks));
 
         } catch (RuntimeException e) {
             log.error(e);
             log.error(ConstantsError.ASSESSMENT_GET_ERROR);
             return new Result(Status.error, ConstantsError.ASSESSMENT_GET_ERROR);
         }
+    }
+
+    public static Result removePresentationMarkById (HashMap arguments) {
+        try {
+            ArrayList fields = new ArrayList();
+            fields.add(ConstantsField.PRESENTATION_ID);
+            fields.add(ConstantsField.ID);
+            Result isArgsValid = new ArgsValidator().validate(arguments, fields);
+            if (Status.error == isArgsValid.getStatus()) {
+                return isArgsValid;
+            }
+
+            Optional<Presentation> optionalPresentation = XMLCommonMethods.getInstanceExistenceByField(presentation, Presentation.class, ConstantsField.ID, (String) arguments.get(ConstantsField.PRESENTATION_ID));
+            if (!optionalPresentation.isPresent()) {
+                return new Result(Status.error, ConstantsError.INSTANCE_NOT_FOUND + ConstantsField.PRESENTATION_ID);
+            }
+            log.info(ConstantsInfo.PRESENTATION + optionalPresentation.get());
+
+            Optional<Presentation> optionalMark = XMLCommonMethods.getInstanceExistenceByField(assessment, Assessment.class, ConstantsField.ID, (String) arguments.get(ConstantsField.ID));
+            if (!optionalMark.isPresent()) {
+                return new Result(Status.error, ConstantsError.INSTANCE_NOT_FOUND + ConstantsField.ID);
+            }
+            log.info(ConstantsInfo.PRESENTATION + optionalPresentation.get());
+
+            UUID id = UUID.fromString((String) arguments.get(ConstantsField.ID));
+            Status status = XMLCommonMethods.removeRecordById(assessment, Assessment.class, id);
+
+            if (status == Status.success) {
+                return new Result(Status.success, ConstantsSuccess.ASSESSMENT_REMOVE);
+            } else {
+                return new Result(Status.error, ConstantsError.ASSESSMENT_REMOVE);
+            }
+        } catch (RuntimeException e) {
+            log.error(e);
+            log.error(ConstantsError.ASSESSMENT_REMOVE);
+            return new Result(Status.error, ConstantsError.ASSESSMENT_REMOVE);
+        }
+    }
+
+    public static Result getMarkById (HashMap arguments) {
+        try {
+            ArrayList fields = new ArrayList();
+            fields.add(ConstantsField.PRESENTATION_ID);
+            fields.add(ConstantsField.ID);
+            Result isArgsValid = new ArgsValidator().validate(arguments, fields);
+            if (Status.error == isArgsValid.getStatus()) {
+                return isArgsValid;
+            }
+
+            Optional<Presentation> optionalPresentation = XMLCommonMethods.getInstanceExistenceByField(presentation, Presentation.class, ConstantsField.ID, (String) arguments.get(ConstantsField.PRESENTATION_ID));
+            if (!optionalPresentation.isPresent()) {
+                return new Result(Status.error, ConstantsError.INSTANCE_NOT_FOUND + ConstantsField.PRESENTATION_ID);
+            }
+            log.info(ConstantsInfo.PRESENTATION + optionalPresentation.get());
+
+            Optional<Presentation> optionalMark = XMLCommonMethods.getInstanceExistenceByField(assessment, Assessment.class, ConstantsField.ID, (String) arguments.get(ConstantsField.ID));
+            if (!optionalMark.isPresent()) {
+                return new Result(Status.error, ConstantsError.INSTANCE_NOT_FOUND + ConstantsField.ID);
+            } else {
+                return new Result(Status.success, optionalMark);
+            }
+        } catch (RuntimeException e) {
+            log.error(e);
+            log.error(ConstantsError.ASSESSMENT_GET_ERROR);
+            return new Result(Status.error, ConstantsError.ASSESSMENT_GET_ERROR);
+        }
+    }
+
+    public static Result editPresentationMark (HashMap args) {
+        try {
+            ArrayList fields = new ArrayList();
+            fields.add(ConstantsField.PRESENTATION_ID);
+            fields.add(ConstantsField.ID);
+            Result isArgsValid = new ArgsValidator().validate(args, fields);
+            if (Status.error == isArgsValid.getStatus()) {
+                return isArgsValid;
+            }
+
+            UUID id = UUID.fromString((String) args.get(ConstantsField.ID));
+
+            Optional<Presentation> optionalPresentation = XMLCommonMethods.getInstanceExistenceByField(presentation, Presentation.class, ConstantsField.ID, (String) args.get(ConstantsField.PRESENTATION_ID));
+            if (!optionalPresentation.isPresent()) {
+                return new Result(Status.error, ConstantsError.INSTANCE_NOT_FOUND + ConstantsField.PRESENTATION_ID);
+            }
+            log.info(ConstantsInfo.PRESENTATION + optionalPresentation.get());
+
+
+
+            log.debug(ConstantsInfo.ASSESSMENTS_GET);
+            Optional<List> optionalList = XMLCommonMethods.getCollection(assessment);
+            if (optionalList.isPresent()) {
+                ArrayList list = (ArrayList) optionalList.get();
+                List<Assessment> updatedList = (List<Assessment>) list.stream().map(el -> updateAssessmentRecord((Assessment) el, args, id)).collect(Collectors.toList());
+                Status result = XMLCommonMethods.writeCollection(updatedList, Assessment.class, assessment);
+                if (Status.success == result) {
+                    log.info(ConstantsSuccess.ASSESSMENT_UPDATE + id);
+                    return new Result(Status.success, ConstantsSuccess.ASSESSMENT_UPDATE + id);
+                } else {
+                    return new Result(Status.error, ConstantsError.ASSESSMENT_UPDATE + id);
+                }
+            } else {
+                return new Result(Status.error, ConstantsError.ASSESSMENT_GET_ERROR);
+            }
+        } catch (RuntimeException e) {
+            log.error(e);
+            log.error(ConstantsError.ASSESSMENT_UPDATE);
+            return new Result(Status.error, ConstantsError.ASSESSMENT_UPDATE);
+        }
+    }
+
+    public static Assessment updateAssessmentRecord (Assessment assessment, HashMap arguments, UUID id) {
+        if (assessment.getId().equals(id)) {
+            String mark = (String) arguments.getOrDefault(ConstantsField.MARK, assessment.getMark());
+
+            log.debug(ConstantsInfo.FIELD_EDIT + ConstantsField.MARK + mark);
+            assessment.setMark(Mark.valueOf(mark));
+        } return assessment;
     }
 }

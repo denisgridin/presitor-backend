@@ -37,13 +37,14 @@ public class XMLSlideMethods {
             if (optionalPresentation.isPresent()) {
                 log.info(arguments.entrySet());
 
-                List<Slide> slides = (List<Slide>) getPresentationSlides(arguments).getReturnValue();
+                Optional optional = (Optional) getPresentationSlides(arguments).getReturnValue();
+                List<Slide> slides = (List<Slide>) optional.get();
                 arguments.put(ConstantsField.INDEX, slides.size());
                 Optional<Slide> optionalSlide = (Optional<Slide>) new Creator().create(Slide.class, arguments).getReturnValue();
                 Slide slide = optionalSlide.orElse(new Slide());
 
-                log.info("[createPresentationSlide] Create slide: " + slide);
-                log.debug("[createPresentationSlide] For presentation: " + slide.getPresentationId());
+                log.info(ConstantsInfo.SLIDE_CREATE + slide);
+                log.debug(ConstantsInfo.PRESENTATION + slide.getPresentationId());
 
 
                 ArrayList allSlides = (ArrayList) XMLCommonMethods.getCollection(CollectionType.slide).orElse(new ArrayList());
@@ -82,25 +83,26 @@ public class XMLSlideMethods {
                 Optional<List> optionalPresentationSlides = Optional.empty();
                 ArrayList<Slide> presentationSlides = new ArrayList<>();
                 if (listSlides.isPresent()) {
-                    log.debug("[getPresentationSlides] Attempt to find presentation slides for: " + presentationId);
+                    log.debug(ConstantsInfo.PRESENTATIONS_GET + presentationId);
                     List<Slide> list = listSlides.get();
                     optionalPresentationSlides = Optional.of(list.stream().filter(slide -> slide.getPresentationId().equals(presentationId)).collect(Collectors.toList()));
                     presentationSlides = (ArrayList) optionalPresentationSlides.orElse(new ArrayList());
-                    log.info("Presentation slides get!");
 
-                    log.debug("Get elements from slide: ");
+                    log.debug(ConstantsInfo.ELEMENTS_GET);
                     if (withElements) {
                         Result resultSetElements = setElementsBySlide(presentationSlides, presentationId);
                         if (Status.error == resultSetElements.getStatus()) {
                             return resultSetElements;
                         }
 
-                        presentationSlides = (ArrayList<Slide>) resultSetElements.getReturnValue();
-                        log.debug("Presentation slides: " + presentationSlides);
+                        Optional optional = (Optional) resultSetElements.getReturnValue();
+
+                        presentationSlides = (ArrayList<Slide>) optional.get();
+                        log.debug(ConstantsInfo.SLIDES + presentationSlides);
                     }
                 }
-                log.debug("[getPresentationSlides] Found presentation slides: " + presentationSlides);
-                return new Result(Status.success, presentationSlides);
+                log.debug(ConstantsInfo.SLIDES + presentationSlides);
+                return new Result(Status.success, Optional.of(presentationSlides));
             } else {
                 log.error(ConstantsError.PRESENTATION_NOT_FOUND + presentationId);
                 return new Result(Status.error, ConstantsError.PRESENTATION_NOT_FOUND + presentationId);
@@ -113,26 +115,40 @@ public class XMLSlideMethods {
         }
     }
 
+    public static Result setSlideElements (Slide slide) {
+        try {
+            log.info(ConstantsInfo.ELEMENTS + slide.getId());
+            HashMap args = new HashMap();
+            args.put(ConstantsField.PRESENTATION_ID, String.valueOf(slide.getPresentationId()));
+            args.put(ConstantsField.SLIDE_ID, String.valueOf(slide.getId()));
+            Result resultGetElements = XMLElementMethods.getSlideElements(args);
+
+            log.debug(ConstantsInfo.ELEMENTS + resultGetElements.getStatus());
+            log.debug(ConstantsInfo.ELEMENTS + resultGetElements.getReturnValue());
+            if (Status.success == resultGetElements.getStatus()) {
+                Optional optionalList = (Optional) resultGetElements.getReturnValue();
+                ArrayList elements = (ArrayList) optionalList.orElse(new ArrayList());
+                slide.setElements(elements);
+            }
+            return new Result(Status.success, slide);
+        } catch (RuntimeException e) {
+            log.error(e);
+            return new Result(Status.error, e);
+        }
+    }
+
     public static Result setElementsBySlide (ArrayList slides, UUID presentationId) {
         try {
             ArrayList<Slide> updatedSlides = (ArrayList<Slide>) slides.stream().map(el -> {
-                Slide slide = (Slide) el;
-                log.info("Search elements for slide: " + slide.getId());
-                HashMap args = new HashMap();
-                args.put(ConstantsField.PRESENTATION_ID, String.valueOf(presentationId));
-                args.put(ConstantsField.SLIDE_ID, String.valueOf(slide.getId()));
-                Result resultGetElements = XMLElementMethods.getSlideElements(args);
-
-                log.debug("get elements status: " + resultGetElements.getStatus());
-                log.debug("Slide elements: " + resultGetElements.getReturnValue());
-                if (Status.success == resultGetElements.getStatus()) {
-                    ArrayList elements = (ArrayList) resultGetElements.getReturnValue();
-                    slide.setElements(elements);
+                Result result = setSlideElements((Slide) el);
+                if (result.getStatus() == Status.success) {
+                    return result.getReturnValue();
+                } else {
+                    return el;
                 }
-                return slide;
             }).collect(Collectors.toList());
-            log.debug("Slide: " + slide);
-            return new Result(Status.success, updatedSlides);
+            log.debug(ConstantsInfo.SLIDE + slides);
+            return new Result(Status.success, Optional.of(updatedSlides));
         } catch (RuntimeException e) {
             log.error(e);
             log.error(ConstantsError.ELEMENTS_GET);
@@ -146,26 +162,26 @@ public class XMLSlideMethods {
                 log.error(String.format(ConstantsError.ARGUMENT_IS_NOT_PROVIDED, ConstantsField.PRESENTATION_ID));
                 return new Result(Status.error, String.format(ConstantsError.ARGUMENT_IS_NOT_PROVIDED, ConstantsField.PRESENTATION_ID));
             }
-            if (null == args.get("id")) {
+            if (null == args.get(ConstantsField.ID)) {
                 log.error(String.format(ConstantsError.ARGUMENT_IS_NOT_PROVIDED, ConstantsField.SLIDE_ID));
                 return new Result(Status.error, String.format(ConstantsError.ARGUMENT_IS_NOT_PROVIDED, ConstantsField.SLIDE_ID));
             }
             UUID presentationId = UUID.fromString((String) args.get(ConstantsField.PRESENTATION_ID));
-            UUID slideId = UUID.fromString((String) args.get("id"));
+            UUID slideId = UUID.fromString((String) args.get(ConstantsField.ID));
             Optional<List> optionalSlides = XMLCommonMethods.getCollection(slide);
             if (optionalSlides.isPresent()) {
                 Optional<Slide> slide = optionalSlides.get().stream().filter(el -> {
                     Slide item = (Slide) el;
                     return item.getPresentationId().equals(presentationId) && item.getId().equals(slideId);
                 }).limit(1).findFirst();
-                if (optionalSlides.isPresent()) {
-                    return new Result(Status.success, slide.get());
+                if (slide.isPresent()) {
+                    return new Result(Status.success, slide);
                 } else {
                     return new Result(Status.error, ConstantsError.SLIDE_GET);
                 }
             } else {
                 log.error(ConstantsError.SLIDE_NOT_FOUND_IN_PRESENTATION + args.get(ConstantsField.PRESENTATION_ID));
-                return new Result(Status.success, ConstantsError.SLIDE_NOT_FOUND_IN_PRESENTATION + args.get(ConstantsField.PRESENTATION_ID));
+                return new Result(Status.error, ConstantsError.SLIDE_NOT_FOUND_IN_PRESENTATION + args.get(ConstantsField.PRESENTATION_ID));
             }
         } catch (RuntimeException e) {
             log.error(ConstantsError.SLIDE_GET);
@@ -237,9 +253,9 @@ public class XMLSlideMethods {
             }
             UUID id = UUID.fromString((String) arguments.get(ConstantsField.ID));
             String presentationId = (String) arguments.get(ConstantsField.PRESENTATION_ID);
-            log.debug("[removePresentationSlideById] Attempt to remove slide: " + id);
+            log.debug(ConstantsInfo.SLIDES_REMOVE + id);
             Status status = XMLCommonMethods.removeRecordById(slide, Slide.class, id);
-            log.debug("[removePresentationSlideById] Removed from data source: " + status);
+            log.debug(ConstantsInfo.STATUS + status);
             if (Status.success == status) {
                 return new Result(Status.success, ConstantsSuccess.SLIDES_REMOVE + id);
             } else {
