@@ -41,4 +41,5 @@ public class SQLQuery {
 
     public static final String PREPARED_SHAPE_UPDATE = "UPDATE shape SET elementType=?, figure=?, id=?, layout=?, name=?, presentationId=?, slideId=?, style=?, text=? WHERE id = ?";
     public static final String PREPARED_CONTENT_UPDATE = "UPDATE content SET elementType=?, layout=?, name=?, presentationId=?, slideId=?, text=?, id=?, font=? WHERE id=?";
+    public static final String PREPARED_ASSESSMENT_UPDATE = "UPDATE assessment SET mark=? WHERE id=? and presentationId=?";
 }

@@ -166,6 +166,9 @@ public class JDBCCommonMethods {
                 case slide: {
                     return parseResultSetToSlide(resultSet);
                 }
+                case assessment: {
+                    return parseResultSetToAssessment(resultSet);
+                }
             }
             return new Result(Status.success, "");
         } catch (RuntimeException | SQLException e){

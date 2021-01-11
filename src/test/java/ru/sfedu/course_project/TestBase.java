@@ -303,6 +303,7 @@ public class TestBase {
         args.put(ConstantsField.PRESENTATION_ID, String.valueOf(presentationId));
         args.put(ConstantsField.ID, String.valueOf(markId));
         args.put(ConstantsField.MARK, String.valueOf(mark));
+        args.put(ConstantsField.ROLE, String.valueOf(Role.editor));
         Result resultRate = provider.rateByMark(args);
         assertTrue(resultRate.getStatus() == Status.success);
     }

@@ -101,17 +101,17 @@ public class DataProviderJDBC implements DataProvider {
 
     @Override
     public Result removePresentationMarkById(HashMap arguments) {
-        return null;
+        return JDBCAssessmentMethod.removePresentationMarkById(arguments);
     }
 
     @Override
     public Result getMarkById(HashMap arguments) {
-        return null;
+        return JDBCAssessmentMethod.getMarkById(arguments);
     }
 
     @Override
     public Result editPresentationMark(HashMap arguments) {
-        return null;
+        return JDBCAssessmentMethod.editPresentationMark(arguments);
     }
 
 
@@ -139,4 +139,5 @@ public class DataProviderJDBC implements DataProvider {
     public Result getSlideElements(HashMap arguments) {
         return JDBCElementMethods.getSlideElements(arguments);
     }
+
 }

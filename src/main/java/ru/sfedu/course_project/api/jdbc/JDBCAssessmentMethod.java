@@ -7,6 +7,9 @@ import ru.sfedu.course_project.ConstantsInfo;
 import ru.sfedu.course_project.ConstantsSuccess;
 import ru.sfedu.course_project.SQLQuery;
 import ru.sfedu.course_project.bean.Assessment;
+import ru.sfedu.course_project.bean.Layout;
+import ru.sfedu.course_project.bean.Shape;
+import ru.sfedu.course_project.bean.Style;
 import ru.sfedu.course_project.enums.*;
 import ru.sfedu.course_project.tools.ArgsValidator;
 import ru.sfedu.course_project.tools.Creator;
@@ -15,9 +18,7 @@ import ru.sfedu.course_project.tools.jdbc.QueryBuilder;
 import ru.sfedu.course_project.utils.ConstantsField;
 
 import java.io.IOException;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Optional;
@@ -139,6 +140,182 @@ public class JDBCAssessmentMethod {
         } catch (RuntimeException | SQLException | IOException e) {
             log.error(e);
             return new Result(Status.error, ConstantsError.ASSESSMENT_GET_ERROR);
+        }
+    }
+
+    public static Result getMarkById (HashMap args) {
+        try {
+
+            ArrayList elementFields = new ArrayList();
+            elementFields.add(ConstantsField.ID);
+            elementFields.add(ConstantsField.PRESENTATION_ID);
+            Result isArgsValid = new ArgsValidator().validate(args, elementFields);
+            if (Status.error == isArgsValid.getStatus()) {
+                return isArgsValid;
+            }
+
+            Result checkPresentationResult = presentationCheck(args);
+
+            if (checkPresentationResult.getStatus() == Status.error) {
+                return checkPresentationResult;
+            }
+
+            Statement statement = JDBCCommonMethods.setConnection();
+            log.debug(ConstantsInfo.SQL_BUILD);
+
+            String condition = String.format(SQLQuery.CONDITION_ITEM_ID, args.get(ConstantsField.ID));
+            String query = String.format(SQLQuery.RECORD_GET_WITH_CONDITION, QueryMember.assessment, condition);
+
+
+            log.debug(String.format(ConstantsInfo.SQL_QUERY, query));
+            if (query.isEmpty()) {
+                return new Result(Status.error, ConstantsError.SQL_ERROR);
+            }
+
+            ResultSet resultSet = statement.executeQuery(query);
+            log.info(ConstantsInfo.SQL_RESULT + resultSet);
+            Result resultParseSet = JDBCCommonMethods.getInstanceFromResultSet(resultSet, QueryMember.assessment);
+            JDBCCommonMethods.closeConnection();
+
+            if (resultParseSet.getStatus() == Status.success) {
+                return new Result(Status.success, Optional.of(resultParseSet.getReturnValue()));
+            } else {
+                return new Result(Status.error, ConstantsError.ASSESSMENT_GET_ERROR);
+            }
+        } catch (RuntimeException | SQLException | IOException e) {
+            log.error(e);
+            log.error(ConstantsError.ASSESSMENT_GET_ERROR);
+            return new Result(Status.error, ConstantsError.ASSESSMENT_GET_ERROR);
+        }
+    }
+
+    public static Result editPresentationMark (HashMap arguments) {
+        try {
+            ArrayList elementFields = new ArrayList();
+            elementFields.add(ConstantsField.ID);
+            elementFields.add(ConstantsField.PRESENTATION_ID);
+            Result isArgsValid = new ArgsValidator().validate(arguments, elementFields);
+            if (Status.error == isArgsValid.getStatus()) {
+                return isArgsValid;
+            }
+
+            Result checkPresentationResult = presentationCheck(arguments);
+
+            if (checkPresentationResult.getStatus() == Status.error) {
+                return checkPresentationResult;
+            }
+
+            log.debug(ConstantsInfo.ASSESSMENTS_GET);
+            Result resultGetMark = getMarkById(arguments);
+            if (resultGetMark.getStatus() == Status.error) {
+                return resultGetMark;
+            }
+
+            Optional optional = (Optional) resultGetMark.getReturnValue();
+            Assessment assessment = (Assessment) optional.get();
+
+            return updateAssessment(arguments, assessment);
+        } catch (RuntimeException e) {
+            log.error(e);
+            log.error(ConstantsError.ASSESSMENT_UPDATE);
+            return new Result(Status.error, ConstantsError.ASSESSMENT_UPDATE);
+        }
+    }
+
+    private static Result updateAssessment (HashMap arguments, Assessment assessment) {
+        try {
+
+            String query = SQLQuery.PREPARED_ASSESSMENT_UPDATE;
+            log.debug(ConstantsInfo.QUERY + query);
+            log.debug(ConstantsInfo.ASSESSMENT_UPDATE + assessment);
+
+            String mark = (String) arguments.getOrDefault(ConstantsField.MARK, String.valueOf(assessment.getMark()));
+            String id = (String) arguments.get(ConstantsField.ID);
+            String presentationId = (String) arguments.get(ConstantsField.PRESENTATION_ID);
+
+            Connection connection = JDBCCommonMethods.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, mark);
+            preparedStatement.setString(2, String.valueOf(id));
+            preparedStatement.setString(3, String.valueOf(presentationId));
+            int rows = preparedStatement.executeUpdate();
+            if (rows > 0) {
+                return new Result(Status.success, ConstantsSuccess.ASSESSMENT_UPDATE);
+            } else {
+                return new Result(Status.error, ConstantsError.ASSESSMENT_UPDATE);
+            }
+        } catch (RuntimeException | SQLException | IOException e) {
+            log.error(e);
+            log.error(ConstantsError.ASSESSMENT_UPDATE);
+            return new Result(Status.error, ConstantsError.ASSESSMENT_UPDATE);
+        }
+    }
+
+    public static Result removePresentationMarkById(HashMap arguments) {
+        try {
+            ArrayList elementFields = new ArrayList();
+            elementFields.add(ConstantsField.ID);
+            elementFields.add(ConstantsField.PRESENTATION_ID);
+            Result isArgsValid = new ArgsValidator().validate(arguments, elementFields);
+            if (Status.error == isArgsValid.getStatus()) {
+                return isArgsValid;
+            }
+
+            Result checkPresentationResult = presentationCheck(arguments);
+
+            if (checkPresentationResult.getStatus() == Status.error) {
+                return checkPresentationResult;
+            }
+
+            log.debug(ConstantsInfo.ASSESSMENTS_GET);
+            Result resultGetMark = getMarkById(arguments);
+            if (resultGetMark.getStatus() == Status.error) {
+                return resultGetMark;
+            }
+
+            String query = QueryBuilder.build(Method.remove, QueryMember.assessment, null, arguments);
+            log.debug(String.format(ConstantsInfo.SQL_QUERY, query));
+            if (query.isEmpty()) {
+                return new Result(Status.error, ConstantsError.SQL_ERROR);
+            }
+
+            log.debug(ConstantsInfo.QUERY + query);
+
+            Statement statement = JDBCCommonMethods.setConnection();
+
+            int rowsRemoved = statement.executeUpdate(query);
+
+            if (rowsRemoved > 0) {
+                return new Result(Status.success, ConstantsSuccess.ASSESSMENT_REMOVE);
+            } else {
+                return new Result(Status.error, ConstantsError.ASSESSMENT_REMOVE);
+            }
+
+        } catch (RuntimeException | SQLException | IOException e) {
+            log.error(e);
+            log.error(ConstantsError.ASSESSMENT_REMOVE);
+            return new Result(Status.error, ConstantsError.ASSESSMENT_REMOVE);
+        }
+    }
+
+    private static Result presentationCheck (HashMap arguments) {
+        try {
+            ArrayList elementFields = new ArrayList();
+            elementFields.add(ConstantsField.PRESENTATION_ID);
+            Result isArgsValid = new ArgsValidator().validate(arguments, elementFields);
+            if (Status.error == isArgsValid.getStatus()) {
+                return isArgsValid;
+            }
+
+            HashMap paramsGetPres = new HashMap();
+            paramsGetPres.put(ConstantsField.ID, arguments.get(ConstantsField.PRESENTATION_ID));
+            Result resultGetPresentation = JDBCPresentationMethods.getPresentationById(paramsGetPres);
+
+            return resultGetPresentation;
+        } catch (RuntimeException e) {
+            log.error(e);
+            log.error(ConstantsError.PRESENTATION_NOT_FOUND);
+            return new Result(Status.error, ConstantsError.PRESENTATION_NOT_FOUND);
         }
     }
 }

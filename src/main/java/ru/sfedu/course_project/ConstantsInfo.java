@@ -35,6 +35,7 @@ public class ConstantsInfo {
     public static final String SLIDE_REMOVE = "Attempt to remove slide ";
     public static final String SLIDE_NOT_FOUND = "Slide not found";
     public static final String MARKS_GET = "Get marks ";
+    public static final String ASSESSMENT_UPDATE = "Updating assessment";
 
     public static String FIELD_EDIT = "Edit field ";
     public static String FIELD_SET = "Set field ";

@@ -929,6 +929,7 @@ public class DataProviderJDBCTest extends TestBase {
         HashMap args = new HashMap();
         args.put(ConstantsField.PRESENTATION_ID, String.valueOf(presentationId));
         args.put(ConstantsField.MARK, "bad");
+        args.put(ConstantsField.ROLE, String.valueOf(Role.editor));
         Result resultRate = provider.rateByMark(args);
 
         assertTrue(Status.success == resultRate.getStatus());
