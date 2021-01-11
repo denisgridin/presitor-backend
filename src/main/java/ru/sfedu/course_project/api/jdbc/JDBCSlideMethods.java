@@ -38,9 +38,10 @@ public class JDBCSlideMethods {
         try {
             Result resultGet = getPresentationSlides(args);
             if (Status.success == resultGet.getStatus()) {
-                ArrayList slides = (ArrayList) resultGet.getReturnValue();
-                log.debug("Presentation slides: " + slides);
-                log.info("Presentation already has slides: " + slides.size());
+                Optional optional = (Optional) resultGet.getReturnValue();
+                ArrayList slides = (ArrayList) optional.get();
+                log.debug(ConstantsInfo.SLIDES + slides);
+                log.info(ConstantsInfo.SLIDES + slides.size());
                 return slides.size();
             } else return 0;
         } catch (RuntimeException e) {
@@ -77,10 +78,10 @@ public class JDBCSlideMethods {
             }
 
             String query = QueryBuilder.build(Method.create, QueryMember.slide, optionalSlide.get(), null);
-            log.debug("Query string: " + query);
+            log.debug(ConstantsInfo.QUERY + query);
 
             if (query.isEmpty()) {
-                log.error("Query string is empty");
+                log.error(ConstantsError.QUERY_EMPTY);
                 return new Result(Status.error, ConstantsError.SLIDE_CREATE);
             }
             statement.execute(query);
@@ -97,7 +98,7 @@ public class JDBCSlideMethods {
 
     public static Result getSlideById (HashMap arguments) {
         try {
-            log.debug("Attempt to get slide by id");
+            log.debug(ConstantsInfo.SLIDE_GET);
             Statement statement = JDBCCommonMethods.setConnection();
             if (null == statement) {
                 return new Result(Status.error, ConstantsError.CONNECTION_ERROR);
@@ -119,7 +120,18 @@ public class JDBCSlideMethods {
             Result resultParseSet = JDBCCommonMethods.getInstanceFromResultSet(resultSet, QueryMember.slide);
             JDBCCommonMethods.closeConnection();
 
-            return resultParseSet;
+            if (resultParseSet.getStatus() == Status.success) {
+
+                boolean withElements = Boolean.parseBoolean((String) arguments.getOrDefault(ConstantsField.WITH_ELEMENTS, "false"));
+
+                Slide slide = (Slide) resultParseSet.getReturnValue();
+                if (withElements) {
+                    slide = setSlideElements(slide);
+                }
+                return new Result(Status.success, Optional.of(slide));
+            } else {
+                return resultParseSet;
+            }
         } catch (RuntimeException | SQLException | IOException e) {
             log.error(e);
             log.error(ConstantsError.SLIDE_GET);
@@ -139,10 +151,21 @@ public class JDBCSlideMethods {
             if (Status.error == isArgsValid.getStatus()) {
                 return isArgsValid;
             }
+
+            HashMap paramsGetPres = new HashMap();
+            paramsGetPres.put(ConstantsField.ID, args.get(ConstantsField.PRESENTATION_ID));
+            Result resultGetPresentation = JDBCPresentationMethods.getPresentationById(paramsGetPres);
+
+            if (Status.error == resultGetPresentation.getStatus()) {
+                return resultGetPresentation;
+            }
+
+
+
             String condition = String.format(SQLQuery.CONDITION_PRESENTATION_ID, args.get(ConstantsField.PRESENTATION_ID));
 
             String query = String.format(SQLQuery.RECORD_GET_WITH_CONDITION, QueryMember.slide, condition);
-            log.debug("Query string: " + query);
+            log.debug(ConstantsInfo.QUERY + query);
 
 
             ResultSet resultSet = statement.executeQuery(query);
@@ -155,19 +178,21 @@ public class JDBCSlideMethods {
             ArrayList presentationSlides = (ArrayList) result.getReturnValue();
 
             boolean withElements = Boolean.parseBoolean((String) args.get(ConstantsField.WITH_ELEMENTS));
+            log.debug("WithElements: " + withElements);
             if (withElements) {
                 Result resultSetElements = setElementsBySlide(presentationSlides, UUID.fromString((String) args.get(ConstantsField.PRESENTATION_ID)));
                 if (Status.error == resultSetElements.getStatus()) {
                     return resultSetElements;
                 }
 
-                presentationSlides = (ArrayList<Slide>) resultSetElements.getReturnValue();
-                log.debug("Presentation slides: " + presentationSlides);
+                Optional optional = (Optional) resultSetElements.getReturnValue();
+                presentationSlides = (ArrayList<Slide>) optional.get();
+                log.debug(ConstantsInfo.SLIDES + presentationSlides);
             }
 
             JDBCCommonMethods.closeConnection();
 
-            return result;
+            return new Result(Status.success, Optional.of(presentationSlides));
 
         } catch (RuntimeException | SQLException | IOException e) {
             log.error(e);
@@ -178,28 +203,36 @@ public class JDBCSlideMethods {
 
     public static Result setElementsBySlide (ArrayList slides, UUID presentationId) {
         try {
-            ArrayList<Slide> updatedSlides = (ArrayList<Slide>) slides.stream().map(el -> {
-                Slide slide = (Slide) el;
-                log.info("Search elements for slide: " + slide.getId());
-                HashMap args = new HashMap();
-                args.put(ConstantsField.PRESENTATION_ID, String.valueOf(presentationId));
-                args.put(ConstantsField.SLIDE_ID, String.valueOf(slide.getId()));
-                Result resultGetElements = JDBCElementMethods.getSlideElements(args);
-
-                log.debug("get elements status: " + resultGetElements.getStatus());
-                log.debug("Slide elements: " + resultGetElements.getReturnValue());
-                if (Status.success == resultGetElements.getStatus()) {
-                    ArrayList elements = (ArrayList) resultGetElements.getReturnValue();
-                    slide.setElements(elements);
-                }
-                return slide;
-            }).collect(Collectors.toList());
-            log.debug("Slide: " + slide);
-            return new Result(Status.success, updatedSlides);
+            ArrayList<Slide> updatedSlides = (ArrayList<Slide>) slides.stream().map(el -> setSlideElements((Slide) el)).collect(Collectors.toList());
+            log.debug(ConstantsInfo.SLIDE + slide);
+            return new Result(Status.success, Optional.of(updatedSlides));
         } catch (RuntimeException e) {
             log.error(e);
             log.error(ConstantsError.ELEMENTS_GET);
             return new Result(Status.error, ConstantsError.ELEMENTS_GET);
+        }
+    }
+
+    public static Slide setSlideElements (Slide slide) {
+        try {
+            log.info(ConstantsInfo.ELEMENTS_GET + slide.getId());
+            HashMap args = new HashMap();
+            args.put(ConstantsField.PRESENTATION_ID, String.valueOf(slide.getPresentationId()));
+            args.put(ConstantsField.SLIDE_ID, String.valueOf(slide.getId()));
+            Result resultGetElements = JDBCElementMethods.getSlideElements(args);
+
+            Optional optional = (Optional) resultGetElements.getReturnValue();
+
+            log.debug(ConstantsInfo.STATUS + resultGetElements.getStatus());
+            log.debug(ConstantsInfo.ELEMENTS + optional.get());
+            if (Status.success == resultGetElements.getStatus()) {
+                ArrayList elements = (ArrayList) optional.get();
+                slide.setElements(elements);
+            }
+            return slide;
+        } catch (RuntimeException e) {
+            log.error(e);
+            return slide;
         }
     }
 
@@ -211,7 +244,7 @@ public class JDBCSlideMethods {
             fields.add(ConstantsField.PRESENTATION_ID);
             fields.add(ConstantsField.ID);
 
-            log.info("Validate arguments");
+            log.info(ConstantsInfo.ARGUMENTS_VALIDATE);
             Result isArgsValid = new ArgsValidator().validate(arguments, fields);
             if (Status.error == isArgsValid.getStatus()) {
                 return isArgsValid;
@@ -220,19 +253,19 @@ public class JDBCSlideMethods {
             HashMap getPresParams = new HashMap();
             getPresParams.put(ConstantsField.ID, arguments.get(ConstantsField.PRESENTATION_ID));
 
-            log.info("Get removing slide presentation");
+            log.info(ConstantsInfo.PRESENTATION_CHECK);
             Result resultGetPresentation = JDBCPresentationMethods.getPresentationById(getPresParams);
 
             if (Status.error == resultGetPresentation.getStatus()){
-                log.info("Removing slide presentation is not found");
+                log.info(ConstantsError.PRESENTATION_NOT_FOUND);
                 return resultGetPresentation;
             }
 
-            log.debug("Removing slide");
+            log.debug(ConstantsInfo.SLIDE_REMOVE);
             String condition = String.format("id = '%s'", arguments.get(ConstantsField.ID));
             String query = String.format(SQLQuery.RECORD_REMOVE, QueryMember.slide, condition);
 
-            log.debug("Query string: " + query);
+            log.debug(ConstantsInfo.QUERY + query);
             int removedRows = statement.executeUpdate(query);
             JDBCCommonMethods.closeConnection();
 
@@ -256,26 +289,27 @@ public class JDBCSlideMethods {
             fields.add(ConstantsField.PRESENTATION_ID);
             fields.add(ConstantsField.ID);
 
-            log.info("Validate arguments");
+            log.info(ConstantsInfo.ARGUMENTS_VALIDATE);
             Result isArgsValid = new ArgsValidator().validate(arguments, fields);
             if (Status.error == isArgsValid.getStatus()) {
                 return isArgsValid;
             }
 
-            log.info("Get updating slide");
+            log.info(ConstantsInfo.SLIDES_GET);
             Result resultGetSlide = getSlideById(arguments);
 
             if (Status.error == resultGetSlide.getStatus()){
-                log.info("Updating slide is not found");
+                log.info(ConstantsInfo.SLIDE_NOT_FOUND);
                 return resultGetSlide;
             }
 
-            Slide slide = (Slide) resultGetSlide.getReturnValue();
+            Optional optional = (Optional) resultGetSlide.getReturnValue();
+            Slide slide = (Slide) optional.get();
 
             String query = QueryBuilder.build(Method.update, QueryMember.slide, slide, arguments);
-            log.debug("Query string: " + query);
+            log.debug(ConstantsInfo.QUERY + query);
             int resultRows = statement.executeUpdate(query);
-            log.debug("Rows updated: " + resultRows);
+            log.debug(ConstantsInfo.UPDATED_ROWS + resultRows);
             JDBCCommonMethods.closeConnection();
             if (resultRows > 0) {
                 return new Result(Status.success, ConstantsSuccess.PRESENTATION_UPDATE);

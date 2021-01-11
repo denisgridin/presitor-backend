@@ -26,16 +26,17 @@ public class JDBCPresentationMethods {
             log.info("Searching template presentation");
             HashMap params = new HashMap();
             params.put(ConstantsField.ID, String.valueOf(args.get(ConstantsField.TEMPLATE_ID)));
-            params.put(ConstantsField.WITH_SLIDES, "true");
-            params.put(ConstantsField.WITH_ELEMENTS, "true");
+            params.put(ConstantsField.WITH_SLIDES, Constants.TRUE_VALUE);
+            params.put(ConstantsField.WITH_ELEMENTS, Constants.TRUE_VALUE);
             Result resultGetTemplate = getPresentationById(params);
 
             if (Status.error == resultGetTemplate.getStatus()) {
                 return resultGetTemplate;
             }
 
-            Presentation template = (Presentation) resultGetTemplate.getReturnValue();
-            log.debug("Template found: " + template);
+            Optional optional = (Optional) resultGetTemplate.getReturnValue();
+            Presentation template = (Presentation) optional.get();
+            log.debug(ConstantsInfo.TEMPLATE_FOUND + template);
 
             return buildPresentationFromTemplate(template);
 
@@ -53,7 +54,7 @@ public class JDBCPresentationMethods {
             String fillColor = template.getFillColor();
             String fontFamily = template.getFontFamily();
 
-            log.info("Build presentation from template");
+            log.info(ConstantsInfo.PRESENTATION_BUILD_FROM_TEMPLATE);
 
             HashMap args = new HashMap();
             args.put(ConstantsField.ID, String.valueOf(id));
@@ -67,13 +68,9 @@ public class JDBCPresentationMethods {
                 return resultCreatePresentation;
             }
 
-            log.info("Presentation created from template");
+            log.info(ConstantsInfo.PRESENTATION_CREATE_FROM_TEMPLATE);
 
             UUID presentationId = id;
-
-            ArrayList presentationShapes = new ArrayList();
-            ArrayList presentationContents = new ArrayList();
-            ArrayList presentationSlides = new ArrayList();
 
             ArrayList templateSlides = template.getSlides();
 
@@ -87,10 +84,10 @@ public class JDBCPresentationMethods {
                     writeSlide(slide);
 
                     if (slide.getElements() != null) {
-                        log.info("Write new presentation elements from slide: " + slide);
+                        log.info(ConstantsInfo.ARGUMENTS_ADD + slide);
                         ArrayList elements = slide.getElements();
 
-                        log.debug("Presentation elements: " + elements);
+                        log.debug(ConstantsInfo.ELEMENTS + elements);
 
                         elements.stream().forEach(item -> {
                             Element element = (Element) item;
@@ -224,14 +221,19 @@ public class JDBCPresentationMethods {
 
     public static Result getPresentations () {
         try {
-            log.debug("Attempt to get presentations");
+            log.debug(ConstantsInfo.PRESENTATIONS_GET);
             Statement statement = JDBCCommonMethods.setConnection();
             if (null == statement) {
                 return new Result(Status.error, ConstantsError.CONNECTION_ERROR);
             }
             Result result = JDBCCommonMethods.getCollection(QueryMember.presentation);
             JDBCCommonMethods.closeConnection();
-            return result;
+
+            if (result.getStatus() == Status.success) {
+                return new Result(Status.success, Optional.of(result.getReturnValue()));
+            } else {
+                return result;
+            }
         } catch (RuntimeException | SQLException | IOException e) {
             log.error(e);
             return new Result(Status.error, e);
@@ -244,7 +246,7 @@ public class JDBCPresentationMethods {
                 log.error(ConstantsError.ARGUMENT_IS_NOT_PROVIDED + ConstantsField.ID);
                 return new Result(Status.error, ConstantsError.ARGUMENT_IS_NOT_PROVIDED + ConstantsField.ID);
             }
-            log.debug("Attempt to get presentation");
+            log.debug(ConstantsInfo.PRESENTATIONS_GET);
             Statement statement = JDBCCommonMethods.setConnection();
             if (null == statement) {
                 return new Result(Status.error, ConstantsError.CONNECTION_ERROR);
@@ -260,7 +262,7 @@ public class JDBCPresentationMethods {
             }
 
             ResultSet resultSet = statement.executeQuery(query);
-            log.info("SQL exec result: " + resultSet);
+            log.info(ConstantsInfo.EXECUTE_RESULT + resultSet);
 
             Result resultParseSet = JDBCCommonMethods.getInstanceFromResultSet(resultSet, QueryMember.presentation);
             JDBCCommonMethods.closeConnection();
@@ -270,17 +272,15 @@ public class JDBCPresentationMethods {
             }
 
             Presentation presentation = (Presentation) resultParseSet.getReturnValue();
-            log.debug("Found presentation: " + presentation);
-            Optional<Object> slideId = Optional.ofNullable(arguments.get(ConstantsField.SLIDE_ID));
+            log.debug(ConstantsInfo.PRESENTATION + presentation);
             boolean withSlides = Boolean.parseBoolean((String) arguments.getOrDefault(ConstantsField.WITH_SLIDES, "false"));
             boolean withComments = Boolean.parseBoolean((String) arguments.getOrDefault(ConstantsField.WITH_COMMENTS, "false"));
             boolean withMarks = Boolean.parseBoolean((String) arguments.getOrDefault(ConstantsField.WITH_MARKS, "false"));
             boolean withElements = Boolean.parseBoolean((String) arguments.getOrDefault(ConstantsField.WITH_ELEMENTS, "false"));
-            log.info("Get presentation: with slide id: " + slideId.isPresent());
-            log.info("Get presentation: withSlides: " + withSlides);
-            log.info("Get presentation: withComments: " + withComments);
-            log.info("Get presentation: withMarks: " + withMarks);
-            log.info("Get presentation: withElements: " + withElements);
+            log.info(ConstantsField.WITH_SLIDES + withSlides);
+            log.info(ConstantsField.WITH_COMMENTS + withComments);
+            log.info(ConstantsField.WITH_MARKS + withMarks);
+            log.info(ConstantsField.WITH_ELEMENTS + withElements);
 
 
 
@@ -289,9 +289,10 @@ public class JDBCPresentationMethods {
                 paramsGetSlides.put(ConstantsField.PRESENTATION_ID, arguments.get(ConstantsField.ID));
                 paramsGetSlides.put(ConstantsField.WITH_ELEMENTS, arguments.get(ConstantsField.WITH_ELEMENTS));
                 Result resultGetSlides = JDBCSlideMethods.getPresentationSlides(paramsGetSlides);
-                log.debug("[getPresentationById] get presentation slides: " + paramsGetSlides.get(ConstantsField.PRESENTATION_ID));
+                log.debug(ConstantsInfo.SLIDES_GET + paramsGetSlides.get(ConstantsField.PRESENTATION_ID));
                 if (Status.success == resultGetSlides.getStatus()) {
-                    presentation.setSlides((ArrayList) resultGetSlides.getReturnValue());
+                    Optional optional = (Optional) resultGetSlides.getReturnValue();
+                    presentation.setSlides((ArrayList) optional.get());
                 } else {
                     return resultGetSlides;
                 }
@@ -301,9 +302,10 @@ public class JDBCPresentationMethods {
                 HashMap paramsGetComments = new HashMap();
                 paramsGetComments.put(ConstantsField.PRESENTATION_ID, arguments.get(ConstantsField.ID));
                 Result resultGetComments = JDBCCommentMethods.getPresentationComments(paramsGetComments);
-                log.debug("[getPresentationById] get presentation comments: " + paramsGetComments.get(ConstantsField.ID));
+                log.debug(ConstantsInfo.COMMENTS_GET + paramsGetComments.get(ConstantsField.ID));
                 if (Status.success == resultGetComments.getStatus()) {
-                    presentation.setComments((ArrayList) resultGetComments.getReturnValue());
+                    Optional optional = (Optional) resultGetComments.getReturnValue();
+                    presentation.setComments((ArrayList) optional.get());
                 } else {
                     return resultGetComments;
                 }
@@ -312,19 +314,20 @@ public class JDBCPresentationMethods {
             if (withMarks) {
                 HashMap paramsGetMarks = new HashMap();
                 paramsGetMarks.put(ConstantsField.PRESENTATION_ID, arguments.get(ConstantsField.ID));
-                log.debug("[getPresentationById] get presentation marks: " + paramsGetMarks.get(ConstantsField.ID));
+                log.debug(ConstantsInfo.MARKS_GET + paramsGetMarks.get(ConstantsField.ID));
 
                 Result resultGetMarks = JDBCAssessmentMethod.getPresentationMarks(paramsGetMarks);
 
                 if (Status.success == resultGetMarks.getStatus()) {
-                    presentation.setMarks((HashMap) resultGetMarks.getReturnValue());
+                    Optional optional = (Optional) resultGetMarks.getReturnValue();
+                    presentation.setMarks((HashMap) optional.get());
                 } else {
                     return resultGetMarks;
                 }
             }
 
 
-            return new Result(Status.success, presentation);
+            return new Result(Status.success, Optional.of(presentation));
         } catch (RuntimeException | SQLException | IOException e) {
             log.error(e);
             log.error(ConstantsError.PRESENTATION_NOT_FOUND);
@@ -351,7 +354,7 @@ public class JDBCPresentationMethods {
 
             String query = QueryBuilder.build(Method.remove, QueryMember.presentation, null, arguments);
 
-            log.debug("Query string: " + query);
+            log.debug(ConstantsInfo.QUERY + query);
             int rows = statement.executeUpdate(query);
             JDBCCommonMethods.closeConnection();
 
@@ -417,12 +420,13 @@ public class JDBCPresentationMethods {
                 return resultGetPresentation;
             }
 
-            Presentation presentation = (Presentation) resultGetPresentation.getReturnValue();
+            Optional optional = (Optional) resultGetPresentation.getReturnValue();
+            Presentation presentation = (Presentation) optional.get();
 
             String query = QueryBuilder.build(Method.update, QueryMember.presentation, presentation, arguments);
-            log.debug("Query string: " + query);
+            log.debug(ConstantsInfo.QUERY + query);
             int resultRows = statement.executeUpdate(query);
-            log.debug("Rows updated: " + resultRows);
+            log.debug(ConstantsInfo.UPDATED_ROWS + resultRows);
             JDBCCommonMethods.closeConnection();
             if (resultRows > 0) {
                 return new Result(Status.success, ConstantsSuccess.PRESENTATION_UPDATE);

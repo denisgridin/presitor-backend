@@ -17,6 +17,24 @@ public class ConstantsInfo {
     public static final String STATUS = "Status: ";
     public static final String PRESENTATION_GET = "Search presentation ";
     public static final String SEARCH = "Search: ";
+    public static final String DATA_SOURCE_CREATED = "Data source created now: ";
+    public static final String RESULT_SET_OF = "Result set of %s: %s";
+    public static final String PARSED_VALUE = "Parsed value: ";
+    public static final String PRESENTATION_CHECK = "Check presentation existence";
+    public static final String QUERY = "Query: ";
+    public static final String ARGUMENTS_VALIDATE = "Validate arguments";
+    public static final String UPDATED_ROWS = "Rows updated: ";
+    public static final String GET_COMMENT = "Get comment ";
+    public static final String SHAPES_GET = "Get shapes ";
+    public static final String CONTENTS_GET = "Get contents ";
+    public static final String SHAPE_GET = "Get shape ";
+    public static final String CONTENT_GET = "Get content ";
+    public static final String EXECUTE_RESULT = "Execute result ";
+    public static final String EDIT_ATTEMPT = "Attempt to edit ";
+    public static final String SLIDE_GET = "Attempt to get slide ";
+    public static final String SLIDE_REMOVE = "Attempt to remove slide ";
+    public static final String SLIDE_NOT_FOUND = "Slide not found";
+    public static final String MARKS_GET = "Get marks ";
 
     public static String FIELD_EDIT = "Edit field ";
     public static String FIELD_SET = "Set field ";

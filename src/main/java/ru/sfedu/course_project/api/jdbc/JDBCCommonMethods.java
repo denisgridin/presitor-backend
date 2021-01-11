@@ -347,7 +347,7 @@ public class JDBCCommonMethods {
             comment.setPresentationId(UUID.fromString(presentationId));
             comment.setText(text);
 
-            log.debug("Parsed comment: " + comment);
+            log.debug(ConstantsInfo.PARSED_VALUE + comment);
 
             return new Result(Status.success, comment);
         } catch (RuntimeException | SQLException e) {
@@ -360,7 +360,7 @@ public class JDBCCommonMethods {
     public static Result parseResultSetToSlide (ResultSet resultSet) {
         try {
             log.info(ConstantsInfo.SQL_PARSE);
-            log.debug("Slides result set: " + resultSet);
+            log.debug(String.format(ConstantsInfo.RESULT_SET_OF, QueryMember.slide, resultSet));
             Slide slide = new Slide();
 
             String id = resultSet.getString(1);
@@ -372,7 +372,7 @@ public class JDBCCommonMethods {
             slide.setName(name);
             slide.setIndex(index);
             slide.setPresentationId(UUID.fromString(presentationId));
-            log.debug("Slide: " + slide);
+            log.debug(ConstantsInfo.SLIDE + slide);
             return new Result(Status.success, slide);
         } catch (RuntimeException | SQLException e) {
             log.error(e);
@@ -394,7 +394,7 @@ public class JDBCCommonMethods {
             presentation.setName(name);
             presentation.setFillColor(fillColor);
             presentation.setFontFamily(fontFamily);
-            log.debug("Presentation: " + presentation);
+            log.debug(ConstantsInfo.PRESENTATION + presentation);
             return new Result(Status.success, presentation);
         } catch (RuntimeException | SQLException e) {
             log.error(e);
@@ -448,5 +448,10 @@ public class JDBCCommonMethods {
             log.error(e);
             return new Result(Status.error, ConstantsError.SQL_ERROR);
         }
+    }
+
+    public static Connection getConnection() throws IOException, SQLException {
+        setConnection();
+        return connection;
     }
 }

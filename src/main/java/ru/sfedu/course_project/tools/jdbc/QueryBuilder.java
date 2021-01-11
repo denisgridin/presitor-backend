@@ -68,7 +68,7 @@ public class QueryBuilder {
         }
     }
 
-    private static Layout updateLayout (Layout layout, HashMap args) {
+    public static Layout updateLayout(Layout layout, HashMap args) {
         String x = (String) args.getOrDefault(ConstantsField.X, String.valueOf(layout.getX()));
         String y = (String) args.getOrDefault(ConstantsField.Y, String.valueOf(layout.getY()));
         String width = (String) args.getOrDefault(ConstantsField.WIDTH, String.valueOf(layout.getWidth()));
@@ -86,7 +86,7 @@ public class QueryBuilder {
         return layout;
     }
 
-    private static Font updateFont (Font font, HashMap args) {
+    public static Font updateFont(Font font, HashMap args) {
         String fontFamily = (String) args.getOrDefault(args.get(ConstantsField.FONT_FAMILY), font.getFontFamily());
         String fontSize = (String) args.getOrDefault(args.get(ConstantsField.FONT_SIZE), font.getFontSize());
         String fontCase = (String) args.getOrDefault(args.get(ConstantsField.FONT_CASE), String.valueOf(font.getFontCase()));
@@ -102,7 +102,7 @@ public class QueryBuilder {
         return font;
     }
 
-    private static Style updateStyle (Style style, HashMap args) {
+    public static Style updateStyle(Style style, HashMap args) {
         String fillColor = (String) args.getOrDefault(ConstantsField.FILL_COLOR, style.getFillColor());
         String boxShadow = (String) args.getOrDefault(ConstantsField.BOX_SHADOW, style.getBoxShadow());
         String opacity = (String) args.getOrDefault(ConstantsField.OPACITY, style.getOpacity());
@@ -160,8 +160,8 @@ public class QueryBuilder {
             Style style = updateStyle(shape.getStyle(), args);
 
             String layoutValue = layout.toString();
-            String styleValue = style.toString().replace("'", "");;
-            String name = shape.getName().replace("'", "");;
+            String styleValue = style.toString().replace("'", "\'");
+            String name = shape.getName().replace("'", "");
             String presentationId = String.valueOf(shape.getPresentationId());
             String slideId = String.valueOf(shape.getSlideId());
             String id = String.valueOf(shape.getId());
@@ -244,18 +244,6 @@ public class QueryBuilder {
     private static String buildRemoveMethod(QueryMember queryMember, HashMap args) {
         try {
             return buildRemoveInstanceQuery(queryMember, args);
-//            switch (queryMember) {
-//                case presentation: {
-//                    return buildRemovePresentationQuery(queryMember, args);
-//                }
-//                case comment: {
-//                    return buildRemoveCommentQuery(queryMember, args);
-//                }
-//                case shape: {
-//                    return buildRemoveShapeQuery(queryMember, args);
-//                }
-//                default: return "";
-//            }
         } catch (RuntimeException e) {
             e.printStackTrace();
             log.error(e);

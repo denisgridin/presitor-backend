@@ -7,6 +7,7 @@ import ru.sfedu.course_project.api.jdbc.*;
 import ru.sfedu.course_project.tools.Result;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.HashMap;
 
 public class DataProviderJDBC implements DataProvider {

@@ -4,6 +4,7 @@ import ru.sfedu.course_project.api.csv.CSVAssessmentMethods;
 import ru.sfedu.course_project.tools.Result;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.HashMap;
 
 public interface DataProvider {

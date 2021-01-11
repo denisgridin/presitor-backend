@@ -3,6 +3,7 @@ package ru.sfedu.course_project.api.jdbc;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import ru.sfedu.course_project.ConstantsError;
+import ru.sfedu.course_project.ConstantsInfo;
 import ru.sfedu.course_project.ConstantsSuccess;
 import ru.sfedu.course_project.SQLQuery;
 import ru.sfedu.course_project.bean.*;
@@ -14,9 +15,7 @@ import ru.sfedu.course_project.tools.jdbc.QueryBuilder;
 import ru.sfedu.course_project.utils.ConstantsField;
 
 import java.io.IOException;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Optional;
@@ -51,11 +50,11 @@ public class JDBCElementMethods {
             ArrayList fields = (ArrayList) returnValue.get("fields");
 
             ElementType elementType = ElementType.valueOf((String) args.get(ConstantsField.ELEMENT_TYPE));
-            log.debug("Attempt to add: " + elementType);
+            log.debug(ConstantsInfo.ARGUMENTS_ADD + elementType);
 
             switch (elementType) {
                 case shape: {
-                    log.info("Shape creating");
+                    log.info(ConstantsInfo.SHAPE_CREATE);
                     ArrayList shapeFields = new ArrayList();
                     shapeFields.add(ConstantsField.FIGURE);
                     Result isShapeArgsValid = new ArgsValidator().validate(args, fields);
@@ -65,7 +64,7 @@ public class JDBCElementMethods {
                     return createShape(args);
                 }
                 case content: {
-                    log.info("Content creating");
+                    log.info(ConstantsInfo.CONTENT_CREATE);
                     ArrayList contentFields = new ArrayList();
                     contentFields.add(ConstantsField.TEXT);
                     Result isContentArgsValid = new ArgsValidator().validate(args, fields);
@@ -89,7 +88,7 @@ public class JDBCElementMethods {
 
     public static Result getSlideElements (HashMap args) {
         try {
-            log.debug("Check presentation and slide exist");
+            log.debug(ConstantsInfo.PRESENTATION_CHECK);
             Result resultCheck = checkPresentationAndSlideExistance(args);
             if (Status.error == resultCheck.getStatus()) {
                 return resultCheck;
@@ -103,33 +102,35 @@ public class JDBCElementMethods {
             Slide slide = (Slide) resultValue.get("slide");
 
 
-            log.debug("Get slide shapes");
+            log.debug(ConstantsInfo.SHAPES_GET);
             Result resultGetShapes = getSlideShapes(slide);
             if (Status.error == resultGetShapes.getStatus()) {
                 return resultGetShapes;
             }
-            ArrayList<Shape> shapes = (ArrayList<Shape>) resultGetShapes.getReturnValue();
-            log.debug("Slide shapes: " + shapes);
+
+            Optional optional = (Optional) resultGetShapes.getReturnValue();
+            ArrayList<Shape> shapes = (ArrayList<Shape>) optional.get();
+            log.debug(ConstantsInfo.SHAPES + shapes);
 
 
 
 
-            log.debug("Get slide contents");
+            log.debug(ConstantsInfo.CONTENTS_GET);
             Result resultGetContents = getSlideContents(slide);
             if (Status.error == resultGetContents.getStatus()) {
                 return resultGetContents;
             }
             ArrayList<Content> contents = (ArrayList<Content>) resultGetContents.getReturnValue();
-            log.debug("Slide contents: " + shapes);
+            log.debug(ConstantsInfo.CONTENTS + shapes);
 
 
 
             ArrayList<Element> elements = new ArrayList<>();
             elements.addAll(shapes);
             elements.addAll(contents);
-            log.debug("Slide elements: " + elements);
+            log.debug(ConstantsInfo.ELEMENTS + elements);
 
-            return new Result(Status.success, elements);
+            return new Result(Status.success, Optional.of(elements));
 
         } catch (RuntimeException e) {
             log.error(e);
@@ -148,7 +149,7 @@ public class JDBCElementMethods {
                 return isArgsValid;
             }
 
-            log.debug("Check presentation and slide exist");
+            log.debug(ConstantsInfo.PRESENTATION_CHECK);
             Result resultCheck = checkPresentationAndSlideExistance(args);
             if (Status.error == resultCheck.getStatus()) {
                 return resultCheck;
@@ -165,11 +166,11 @@ public class JDBCElementMethods {
 
             switch (elementType) {
                 case shape: {
-                    log.debug("Get slide shape");
+                    log.debug(ConstantsInfo.SHAPE_GET);
                     return getSlideShape(args);
                 }
                 case content: {
-                    log.debug("Get slide content");
+                    log.debug(ConstantsInfo.CONTENT_GET);
                     return getSlideContent(args);
                 }
                 default: {
@@ -186,7 +187,7 @@ public class JDBCElementMethods {
 
     public static Result getSlideContent (HashMap args) {
         try {
-            log.info("Get slide content");
+            log.info(ConstantsInfo.CONTENT_GET);
 
             Statement statement = JDBCCommonMethods.setConnection();
 
@@ -196,7 +197,7 @@ public class JDBCElementMethods {
 
             String condition = String.format("%s and %s and %s", conditionPresentation, conditionSlide, conditionId);
             String query = String.format(SQLQuery.RECORD_GET_WITH_CONDITION, QueryMember.content, condition);
-            log.info("Query string: " + query);
+            log.info(ConstantsInfo.QUERY + query);
 
             ResultSet resultSet = statement.executeQuery(query);
 
@@ -207,9 +208,10 @@ public class JDBCElementMethods {
             }
 
 
-            ArrayList resultValue = (ArrayList) result.getReturnValue();
+            Optional optional = (Optional) result.getReturnValue();
+            ArrayList resultValue = (ArrayList) optional.get();
             Content content = (Content) resultValue.get(0);
-            return new Result(Status.success, content);
+            return new Result(Status.success, Optional.of(content));
         } catch (RuntimeException | SQLException | IOException e) {
             log.error(e);
             return new Result(Status.error, ConstantsError.CONTENT_GET);
@@ -218,7 +220,7 @@ public class JDBCElementMethods {
 
     public static Result getSlideShape (HashMap args) {
         try {
-            log.info("Get slide shapes");
+            log.info(ConstantsInfo.SHAPE_GET);
 
             Statement statement = JDBCCommonMethods.setConnection();
 
@@ -228,7 +230,7 @@ public class JDBCElementMethods {
 
             String condition = String.format("%s and %s and %s", conditionPresentation, conditionSlide, conditionId);
             String query = String.format(SQLQuery.RECORD_GET_WITH_CONDITION, QueryMember.shape, condition);
-            log.info("Query string: " + query);
+            log.info(ConstantsInfo.QUERY + query);
 
             ResultSet resultSet = statement.executeQuery(query);
 
@@ -237,11 +239,9 @@ public class JDBCElementMethods {
             if (Status.error == result.getStatus()) {
                 return result;
             }
-
-
             ArrayList resultValue = (ArrayList) result.getReturnValue();
             Shape shape = (Shape) resultValue.get(0);
-            return new Result(Status.success, shape);
+            return new Result(Status.success, Optional.of(shape));
         } catch (RuntimeException | SQLException | IOException e) {
             log.error(e);
             return new Result(Status.error, ConstantsError.SHAPE_GET);
@@ -250,7 +250,7 @@ public class JDBCElementMethods {
 
     public static Result getSlideContents (Slide slide) {
         try {
-            log.info("Get slide contents");
+            log.info(ConstantsInfo.CONTENTS_GET);
 
             Statement statement = JDBCCommonMethods.setConnection();
 
@@ -260,7 +260,7 @@ public class JDBCElementMethods {
 
             String condition = String.format("%s and %s", conditionPresentation, conditionSlide);
             String query = String.format(SQLQuery.RECORD_GET_WITH_CONDITION, QueryMember.content, condition);
-            log.info("Query string: " + query);
+            log.info(ConstantsInfo.QUERY + query);
 
             ResultSet resultSet = statement.executeQuery(query);
 
@@ -276,7 +276,7 @@ public class JDBCElementMethods {
 
     public static Result getSlideShapes (Slide slide) {
         try {
-            log.info("Get slide shapes");
+            log.info(ConstantsInfo.SHAPES_GET);
 
             Statement statement = JDBCCommonMethods.setConnection();
 
@@ -286,14 +286,17 @@ public class JDBCElementMethods {
 
             String condition = String.format("%s and %s", conditionPresentation, conditionSlide);
             String query = String.format(SQLQuery.RECORD_GET_WITH_CONDITION, QueryMember.shape, condition);
-            log.info("Query string: " + query);
+            log.info(ConstantsInfo.QUERY + query);
 
             ResultSet resultSet = statement.executeQuery(query);
 
             Result result = JDBCCommonMethods.getListFromResultSet(resultSet, QueryMember.shape);
 
-            JDBCCommonMethods.closeConnection();
-            return result;
+            if (result.getStatus() == Status.success) {
+                return new Result(Status.success, Optional.of(result.getReturnValue()));
+            } else {
+                return result;
+            }
         } catch (RuntimeException | SQLException | IOException e) {
             log.error(e);
             return new Result(Status.error, e);
@@ -308,7 +311,7 @@ public class JDBCElementMethods {
             }
 
             Content content = (Content) resultCreateContent.getReturnValue();
-            log.info("Create new content: " + content);
+            log.info(ConstantsInfo.CONTENT_CREATE + content);
 
             return addContentInSlide(content);
         } catch (RuntimeException e) {
@@ -327,7 +330,7 @@ public class JDBCElementMethods {
             }
 
             Shape shape = (Shape) resultCreateShape.getReturnValue();
-            log.info("Create new shape: " + shape);
+            log.info(ConstantsInfo.SHAPE_CREATE + shape);
 
             return addShapeInSlide(shape);
         } catch (RuntimeException e) {
@@ -342,16 +345,16 @@ public class JDBCElementMethods {
 
             Statement statement = JDBCCommonMethods.setConnection();
 
-            log.info("add content in slide");
+            log.info(ConstantsInfo.CONTENT_ADD);
 
             String query = QueryBuilder.build(Method.create, QueryMember.content, content, null);
-            log.debug("Query string: " + query);
+            log.debug(ConstantsInfo.QUERY + query);
 
             int insertResult = statement.executeUpdate(query);
             JDBCCommonMethods.closeConnection();
-            log.info("Execute result: " + insertResult);
+            log.info(ConstantsInfo.EXECUTE_RESULT + insertResult);
             if (insertResult > 0) {
-                return new Result(Status.success, content);
+                return new Result(Status.success, Optional.of(content));
             } else {
                 return new Result(Status.error, ConstantsError.CONTENT_CREATE);
             }
@@ -367,16 +370,16 @@ public class JDBCElementMethods {
 
             Statement statement = JDBCCommonMethods.setConnection();
 
-            log.info("add shape in slide");
+            log.info(ConstantsInfo.SHAPE_ADD);
 
             String query = QueryBuilder.build(Method.create, QueryMember.shape, shape, null);
-            log.debug("Query string: " + query);
+            log.debug(ConstantsInfo.QUERY + query);
 
             int insertResult = statement.executeUpdate(query);
             JDBCCommonMethods.closeConnection();
-            log.info("Execute result: " + insertResult);
+            log.info(ConstantsInfo.EXECUTE_RESULT + insertResult);
             if (insertResult > 0) {
-                return new Result(Status.success, shape);
+                return new Result(Status.success, Optional.of(shape));
             } else {
                 return new Result(Status.error, ConstantsError.SHAPE_CREATE);
             }
@@ -414,10 +417,13 @@ public class JDBCElementMethods {
                 return resultGetSlide;
             }
 
+            Optional optionalPresentation = (Optional) resultGetPresentation.getReturnValue();
+            Optional optionalSlide = (Optional) resultGetSlide.getReturnValue();
+
             HashMap params = new HashMap();
             params.put("fields", fields);
-            params.put("presentation", resultGetPresentation.getReturnValue());
-            params.put("slide", resultGetSlide.getReturnValue());
+            params.put("presentation", optionalPresentation.get());
+            params.put("slide", optionalSlide.get());
 
             return new Result(Status.success, params);
         } catch (RuntimeException e) {
@@ -449,19 +455,19 @@ public class JDBCElementMethods {
             ArrayList fields = (ArrayList) returnValue.get("fields");
 
             ElementType elementType = ElementType.valueOf((String) args.get(ConstantsField.ELEMENT_TYPE));
-            log.debug("Attempt to remove: " + elementType);
+            log.debug(ConstantsInfo.REMOVE_ATTEMPT + elementType);
 
             QueryMember queryMember = QueryMember.valueOf(String.valueOf(elementType));
 
             String query = QueryBuilder.build(Method.remove, queryMember, null, args);
-            log.debug("Query string: " + query);
+            log.debug(ConstantsInfo.QUERY + query);
 
             if (query.isEmpty()) {
                 log.error(ConstantsError.SQL_ERROR);
                 return new Result(Status.error, ConstantsError.SQL_ERROR);
             }
 
-            log.info("Remove element");
+            log.info(ConstantsInfo.REMOVE_ATTEMPT);
 
             Statement statement = JDBCCommonMethods.setConnection();
 
@@ -501,7 +507,7 @@ public class JDBCElementMethods {
             ArrayList fields = (ArrayList) returnValue.get("fields");
 
             ElementType elementType = ElementType.valueOf((String) args.get(ConstantsField.ELEMENT_TYPE));
-            log.debug("Attempt to edit: " + elementType);
+            log.debug(ConstantsInfo.EDIT_ATTEMPT + elementType);
             QueryMember queryMember = QueryMember.valueOf(String.valueOf(elementType));
 
             Result resultGetElement = getSlideElementById(args);
@@ -509,19 +515,91 @@ public class JDBCElementMethods {
                 return resultGetElement;
             }
 
-            String query = QueryBuilder.build(Method.update, queryMember, resultGetElement.getReturnValue(), args);
-            log.debug("Query string: " + query);
+            Optional optional = (Optional) resultGetElement.getReturnValue();
+
+            if (!optional.isPresent()) {
+                return new Result(Status.error, ConstantsError.ELEMENT_NOT_FOUND);
+            }
+
+//            String query = QueryBuilder.build(Method.update, queryMember, optional.get(), args);
+//            log.debug(ConstantsInfo.QUERY + query);
+//
+//            if (query.isEmpty()) {
+//                log.error(ConstantsError.SQL_ERROR);
+//                return new Result(Status.error, ConstantsError.SQL_ERROR);
+//            }
+
+            log.info(ConstantsInfo.EDIT_ATTEMPT);
+
+            Connection connection = JDBCCommonMethods.getConnection();
+            PreparedStatement statement = null;
+
+            String query = "";
+            if (queryMember == QueryMember.shape) {
+                Shape shape = (Shape) optional.get();
+                query = SQLQuery.PREPARED_SHAPE_UPDATE;
+                log.debug(ConstantsInfo.QUERY + query);
+                log.debug("Updating shape: " + shape);
+
+                Layout layout = QueryBuilder.updateLayout(shape.getLayout(), args);
+                Style style = QueryBuilder.updateStyle(shape.getStyle(), args);
+
+                String layoutValue = layout.toString();
+                String styleValue = style.toString();
+                String name = (String) args.getOrDefault(ConstantsField.NAME, shape.getName());
+                String presentationId = String.valueOf(shape.getPresentationId());
+                String slideId = String.valueOf(shape.getSlideId());
+                String id = String.valueOf(shape.getId());
+                String text = (String) args.getOrDefault(ConstantsField.TEXT, shape.getText());
+                String figure = String.valueOf(shape.getFigure());
+
+                PreparedStatement preparedStatement = connection.prepareStatement(query);
+                preparedStatement.setString(1, String.valueOf(elementType));
+                preparedStatement.setString(2, String.valueOf(figure));
+                preparedStatement.setString(3, String.valueOf(id));
+                preparedStatement.setString(4, layoutValue);
+                preparedStatement.setString(5, name);
+                preparedStatement.setString(6, String.valueOf(presentationId));
+                preparedStatement.setString(7, String.valueOf(slideId));
+                preparedStatement.setString(8, String.valueOf(styleValue));
+                preparedStatement.setString(9, text);
+                preparedStatement.setString(10, String.valueOf(id));
+                statement = preparedStatement;
+            } else if (queryMember == QueryMember.content) {
+                Content content = (Content) optional.get();
+                log.debug("Updating content: " + content);
+
+                query = SQLQuery.PREPARED_CONTENT_UPDATE;
+                Layout layout = QueryBuilder.updateLayout(content.getLayout(), args);
+                String layoutValue = layout.toString();
+
+                Font font = QueryBuilder.updateFont(content.getFont(), args);
+                String fontValue = font.toString();
+
+                String name = (String) args.getOrDefault(args.get(ConstantsField.NAME), content.getName());
+                String presentationId = String.valueOf(content.getPresentationId());
+                String slideId = String.valueOf(content.getSlideId());
+                String id = String.valueOf(content.getId());
+                String text = (String) args.getOrDefault(args.get(ConstantsField.TEXT), content.getText());
+
+                PreparedStatement preparedStatement = connection.prepareStatement(query);
+                preparedStatement.setString(1, String.valueOf(elementType));
+                preparedStatement.setString(2, layoutValue);
+                preparedStatement.setString(3, name);
+                preparedStatement.setString(4, String.valueOf(presentationId));
+                preparedStatement.setString(5, String.valueOf(slideId));
+                preparedStatement.setString(6, text);
+                preparedStatement.setString(7, String.valueOf(id));
+                preparedStatement.setString(8, fontValue);
+                statement = preparedStatement;
+            }
 
             if (query.isEmpty()) {
                 log.error(ConstantsError.SQL_ERROR);
                 return new Result(Status.error, ConstantsError.SQL_ERROR);
             }
 
-            log.info("Update element");
-
-            Statement statement = JDBCCommonMethods.setConnection();
-
-            int resultRows = statement.executeUpdate(query);
+            int resultRows = statement.executeUpdate();
             JDBCCommonMethods.closeConnection();
 
             if (resultRows > 0) {
@@ -535,6 +613,7 @@ public class JDBCElementMethods {
             log.error(ConstantsError.ELEMENT_EDIT);
             return new Result(Status.error, ConstantsError.ELEMENT_EDIT);
         }
+
     }
 
 }

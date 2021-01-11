@@ -4,6 +4,8 @@ public class ConstantsError {
 
     public static final String DATA_SOURCE_ERROR = "Unable to get data source";
     public static final String INSTANCE_REMOVE = "Unable to remove instance";
+    public static final String QUERY_EMPTY = "Query string is empty";
+    public static final String COMMENT_NOT_FOUND = "Comment not found";
     public static String MAIN_ERROR = "Error in main function ";
     public static String ACCESS_DENIED = "You have no access for this method! ";
 

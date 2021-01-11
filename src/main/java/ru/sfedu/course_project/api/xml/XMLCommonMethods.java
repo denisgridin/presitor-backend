@@ -49,9 +49,19 @@ public class XMLCommonMethods {
                 directory.mkdirs();
             }
 
-            new File(path).createNewFile();
+            boolean fileCreated = new File(path).createNewFile();
+
+            log.debug(ConstantsInfo.DATA_SOURCE_CREATED + fileCreated);
+            if (fileCreated) {
+                FileWriter writer = new FileWriter(path, false);
+                Serializer serializer = new Persister(new XMLMatcher());
+                WrapperXML xml = new WrapperXML();
+                xml.setList(new ArrayList());
+                serializer.write(xml, writer);
+            }
+
             return path;
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
             log.error(e);
             return null;

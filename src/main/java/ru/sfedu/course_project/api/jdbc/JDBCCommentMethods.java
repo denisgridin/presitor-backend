@@ -3,6 +3,7 @@ package ru.sfedu.course_project.api.jdbc;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import ru.sfedu.course_project.ConstantsError;
+import ru.sfedu.course_project.ConstantsInfo;
 import ru.sfedu.course_project.ConstantsSuccess;
 import ru.sfedu.course_project.SQLQuery;
 import ru.sfedu.course_project.bean.Comment;
@@ -36,7 +37,7 @@ public class JDBCCommentMethods {
                 return isArgsValid;
             }
 
-            log.debug("Check presentation existence");
+            log.debug(ConstantsInfo.PRESENTATION_CHECK);
 
             HashMap paramsGetPres = new HashMap();
             paramsGetPres.put(ConstantsField.ID, args.get(ConstantsField.PRESENTATION_ID));
@@ -57,10 +58,10 @@ public class JDBCCommentMethods {
             }
 
             String query = QueryBuilder.build(Method.create, QueryMember.comment, optionalComment.get(), null);
-            log.debug("Query string: " + query);
+            log.debug(ConstantsInfo.QUERY + query);
 
             if (query.isEmpty()) {
-                log.error("Query string is empty");
+                log.error(ConstantsError.QUERY_EMPTY);
                 return new Result(Status.error, ConstantsError.COMMENT_CREATE);
             }
             statement.execute(query);
@@ -86,7 +87,7 @@ public class JDBCCommentMethods {
             }
             log.debug("Validation pass");
 
-            log.debug("Check presentation existence");
+            log.debug(ConstantsInfo.PRESENTATION_CHECK);
 
             HashMap paramsGetPres = new HashMap();
             paramsGetPres.put(ConstantsField.ID, args.get(ConstantsField.PRESENTATION_ID));
@@ -96,16 +97,22 @@ public class JDBCCommentMethods {
                 return resultGetPresentation;
             }
 
-            log.info("Get presentation comments");
+            log.info(ConstantsInfo.COMMENTS_GET);
 
             String conditionPresentationId = String.format(SQLQuery.CONDITION_PRESENTATION_ID, args.get(ConstantsField.PRESENTATION_ID));
             String condition = String.format("%s", conditionPresentationId);
 
             String query = String.format(SQLQuery.RECORD_GET_WITH_CONDITION, QueryMember.comment, condition);
-            log.info("Query string: " + query);
+            log.info(ConstantsInfo.QUERY + query);
             ResultSet resultSet = statement.executeQuery(query);
             log.info("Executed ");
-            return JDBCCommonMethods.getListFromResultSet(resultSet, QueryMember.comment);
+
+            Result result = JDBCCommonMethods.getListFromResultSet(resultSet, QueryMember.comment);
+            if (result.getStatus() == Status.success) {
+                return new Result(Status.success, Optional.of(result.getReturnValue()));
+            } else {
+                return result;
+            }
 
         } catch (SQLException | IOException throwables) {
             throwables.printStackTrace();
@@ -120,7 +127,7 @@ public class JDBCCommentMethods {
             ArrayList fields = new ArrayList();
             fields.add(ConstantsField.PRESENTATION_ID);
             fields.add(ConstantsField.ID);
-            log.info("Validate arguments");
+            log.info(ConstantsInfo.ARGUMENTS_VALIDATE);
             Result isArgsValid = new ArgsValidator().validate(arguments, fields);
             if (Status.error == isArgsValid.getStatus()) {
                 return isArgsValid;
@@ -129,26 +136,26 @@ public class JDBCCommentMethods {
             HashMap getPresParams = new HashMap();
             getPresParams.put(ConstantsField.ID, arguments.get(ConstantsField.PRESENTATION_ID));
 
-            log.info("Get comment parent presentation");
+            log.info(ConstantsInfo.PRESENTATION_CHECK);
             Result resultGetPresentation = JDBCPresentationMethods.getPresentationById(getPresParams);
 
             if (Status.error == resultGetPresentation.getStatus()){
-                log.info("Presentation is not found");
+                log.info(ConstantsError.PRESENTATION_NOT_FOUND);
                 return resultGetPresentation;
             }
 
-            log.debug("Get comment");
+            log.debug(ConstantsInfo.GET_COMMENT);
             String condition = String.format("id = '%s'", arguments.get(ConstantsField.ID));
             String query = String.format(SQLQuery.RECORD_GET_WITH_CONDITION, QueryMember.comment, condition);
 
-            log.debug("Query string: " + query);
+            log.debug(ConstantsInfo.QUERY + query);
             ResultSet resultSet = statement.executeQuery(query);
             JDBCCommonMethods.closeConnection();
 
             Result result = JDBCCommonMethods.getListFromResultSet(resultSet, QueryMember.comment);
             if (Status.success == result.getStatus()) {
                 ArrayList list = (ArrayList) result.getReturnValue();
-                return new Result(Status.success, list.get(0));
+                return new Result(Status.success, Optional.of(list.get(0)));
             } else {
                 return result;
             }
@@ -164,26 +171,27 @@ public class JDBCCommentMethods {
             Statement statement = JDBCCommonMethods.setConnection();
             ArrayList fields = new ArrayList();
             fields.add(ConstantsField.PRESENTATION_ID);
-            log.info("Validate arguments");
+            log.info(ConstantsInfo.ARGUMENTS_VALIDATE);
             Result isArgsValid = new ArgsValidator().validate(arguments, fields);
             if (Status.error == isArgsValid.getStatus()) {
                 return isArgsValid;
             }
 
-            log.info("Get updating comment");
+            log.info(ConstantsInfo.GET_COMMENT);
             Result resultGetComment = getPresentationCommentById(arguments);
 
             if (Status.error == resultGetComment.getStatus()){
-                log.info("Updating comment is not found");
+                log.info(ConstantsError.COMMENT_NOT_FOUND);
                 return resultGetComment;
             }
 
-            Comment comment = (Comment) resultGetComment.getReturnValue();
+            Optional optional = (Optional) resultGetComment.getReturnValue();
+            Comment comment = (Comment) optional.get();
 
             String query = QueryBuilder.build(Method.update, QueryMember.comment, comment, arguments);
-            log.debug("Query string: " + query);
+            log.debug(ConstantsInfo.QUERY + query);
             int resultRows = statement.executeUpdate(query);
-            log.debug("Rows updated: " + resultRows);
+            log.debug(ConstantsInfo.UPDATED_ROWS + resultRows);
             JDBCCommonMethods.closeConnection();
             if (resultRows > 0) {
                 return new Result(Status.success, ConstantsSuccess.COMMENT_EDIT);
@@ -202,7 +210,7 @@ public class JDBCCommentMethods {
             ArrayList fields = new ArrayList();
             fields.add(ConstantsField.PRESENTATION_ID);
             fields.add(ConstantsField.ID);
-            log.info("Validate arguments");
+            log.info(ConstantsInfo.ARGUMENTS_VALIDATE);
             Result isArgsValid = new ArgsValidator().validate(arguments, fields);
             if (Status.error == isArgsValid.getStatus()) {
                 return isArgsValid;
@@ -217,13 +225,13 @@ public class JDBCCommentMethods {
             HashMap paramsGetPres = new HashMap();
             paramsGetPres.put(ConstantsField.ID, arguments.get(ConstantsField.PRESENTATION_ID));
             Result resultGetPresentation = JDBCPresentationMethods.getPresentationById(paramsGetPres);
-            log.info("Get comment presentation");
+            log.info(ConstantsInfo.COMMENTS_GET);
             if (Status.error == resultGetPresentation.getStatus()){
                 return resultGetPresentation;
             }
 
             String query = QueryBuilder.build(Method.remove, QueryMember.comment, null, arguments);
-            log.debug("Query string: " + query);
+            log.debug(ConstantsInfo.QUERY + query);
             int resultRows = statement.executeUpdate(query);
             JDBCCommonMethods.closeConnection();
             if (resultRows > 0) {

@@ -3,6 +3,7 @@ package ru.sfedu.course_project.api.jdbc;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import ru.sfedu.course_project.ConstantsError;
+import ru.sfedu.course_project.ConstantsInfo;
 import ru.sfedu.course_project.ConstantsSuccess;
 import ru.sfedu.course_project.SQLQuery;
 import ru.sfedu.course_project.bean.Assessment;
@@ -38,7 +39,7 @@ public class JDBCAssessmentMethod {
                 return isArgsValid;
             }
 
-            log.debug("Check presentation existence");
+            log.debug(ConstantsInfo.PRESENTATION_CHECK);
 
             HashMap paramsGetPres = new HashMap();
             paramsGetPres.put(ConstantsField.ID, arguments.get(ConstantsField.PRESENTATION_ID));
@@ -59,16 +60,16 @@ public class JDBCAssessmentMethod {
             }
 
             String query = QueryBuilder.build(Method.create, QueryMember.assessment, optionalAssessment.get(), null);
-            log.debug("Query string: " + query);
+            log.debug(ConstantsInfo.QUERY + query);
 
             if (query.isEmpty()) {
-                log.error("Query string is empty");
+                log.error(ConstantsError.QUERY_EMPTY);
                 return new Result(Status.error, ConstantsError.ASSESSMENT_ADD_ERROR);
             }
             statement.execute(query);
             JDBCCommonMethods.closeConnection();
             log.info(ConstantsSuccess.COMMENT_CREATE);
-            return new Result(Status.success, optionalAssessment.get().getId());
+            return new Result(Status.success, ConstantsSuccess.ASSESSMENT_CREATE);
 
         } catch (RuntimeException | SQLException | IOException e) {
             log.error(e);
@@ -86,7 +87,7 @@ public class JDBCAssessmentMethod {
                 return isArgsValid;
             }
 
-            log.debug("Check presentation existence");
+            log.debug(ConstantsInfo.PRESENTATION_CHECK);
 
             HashMap paramsGetPres = new HashMap();
             paramsGetPres.put(ConstantsField.ID, arguments.get(ConstantsField.PRESENTATION_ID));
@@ -102,7 +103,7 @@ public class JDBCAssessmentMethod {
             String condition = String.format(SQLQuery.CONDITION_PRESENTATION_ID, arguments.get(ConstantsField.PRESENTATION_ID));
 
             String query = String.format(SQLQuery.RECORD_GET_WITH_CONDITION, QueryMember.assessment, condition);
-            log.debug("Query string: " + query);
+            log.debug(ConstantsInfo.QUERY + query);
 
 
             ResultSet resultSet = statement.executeQuery(query);
@@ -132,8 +133,8 @@ public class JDBCAssessmentMethod {
                 log.debug(String.format("Mark %s: %s", el.getMark(), currentCount + 1));
                 marks.replace(String.valueOf(el.getMark()), currentCount + 1);
             });
-            log.info("Presentation marks: " + marks);
-            return new Result(Status.success, marks);
+            log.info(ConstantsInfo.MARKS + marks);
+            return new Result(Status.success, Optional.of(marks));
 
         } catch (RuntimeException | SQLException | IOException e) {
             log.error(e);

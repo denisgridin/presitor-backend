@@ -1,5 +1,13 @@
 package ru.sfedu.course_project;
 
+import ru.sfedu.course_project.enums.Method;
+import ru.sfedu.course_project.enums.QueryMember;
+import ru.sfedu.course_project.utils.ConstantsField;
+
+import java.util.Map;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 public class SQLQuery {
     public static final String RECORD_INSERT = "INSERT INTO %s %s VALUES %s";
     public static final String RECORD_GET = "SELECT * FROM %s";
@@ -29,4 +37,8 @@ public class SQLQuery {
     public static final String CREATE_ASSESSMENT_TABLE = "CREATE TABLE IF NOT EXISTS ASSESSMENT (id varchar(36), role varchar(200), presentationId varchar(36), mark varchar(20))";
     public static final String CREATE_SHAPE_TABLE = "CREATE TABLE IF NOT EXISTS SHAPE (elementType varchar(20), figure varchar(20), id varchar(36), layout varchar(200), name varchar(100), presentationId varchar(36), slideId varchar(36), style varchar(200), text varchar(500))";
     public static final String CREATE_CONTENT_TABLE = "CREATE TABLE IF NOT EXISTS CONTENT (elementType varchar(20), layout varchar(200), name varchar(100), presentationId varchar(36), slideId varchar(36), text varchar(500), id varchar(36), font varchar(200))";
+
+
+    public static final String PREPARED_SHAPE_UPDATE = "UPDATE shape SET elementType=?, figure=?, id=?, layout=?, name=?, presentationId=?, slideId=?, style=?, text=? WHERE id = ?";
+    public static final String PREPARED_CONTENT_UPDATE = "UPDATE content SET elementType=?, layout=?, name=?, presentationId=?, slideId=?, text=?, id=?, font=? WHERE id=?";
 }
